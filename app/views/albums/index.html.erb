@@ -1,6 +1,16 @@
-
 <div id="wrapper">
-<h1>Listing albums</h1>
+  <a href=""><h1>City Pop Album Archive</h1></a>
+  <div id="main-container">
+    <div id="sidebar">
+      <h2>Navigation & Filters</h2>
+      <ul id="nav-list">
+        <li class="nav-btn"><a>Home</a></li>
+        <li class="nav-btn"><a>Filters</a></li>
+        <li class="nav-btn"><a>Browse</a></li>
+        <li class="nav-btn"><a>Random</a></li>
+        <li class="nav-btn"><a>About</a></li>
+      </ul>
+    </div>
  <div id="splash-container">
     <% @albums.each do |album| %>
     <div class="album-container">
@@ -13,4 +23,5 @@
     </div>
     <% end %>
   </div>
+</div>
 </div>

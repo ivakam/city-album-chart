@@ -2,13 +2,59 @@
 @import url("https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css");
 
 body {
-	background: #2b2b2b;
+	background: #171717;
+	padding: 0;
+	margin: 0;
 }
 
 #wrapper {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+}
+
+#sidebar {
+	width: 400px;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background: #393939;
+}
+
+#main-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-self: flex-start;
+}
+
+#nav-list {
+	width: 100%;
+}
+
+#nav-list li {
+	transition: 0.1s;
+	height: 50px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	a {
+		padding: 8px 15px 8px 15px;
+	}
+}
+
+.nav-btn {
+	border-top: 1px solid #171717;
+}
+
+.nav-btn:last-child {
+	border-bottom: 1px solid #171717;
+}
+
+.nav-btn:hover {
+	background: #a8a8a8;
+	cursor: pointer;
 }
 
 #splash-container {
@@ -20,9 +66,9 @@ body {
 	display: flex;
 	flex-direction: column;
 	padding: 8px;
-	margin: 5px;
-	background: #4b4b4b;
-	border-radius: 4px;
+	background: #2a2a2a;
+	transition: 0.1s;
+	max-height: 290px;
 	h2 {
 		align-self: center;
 	}
@@ -30,17 +76,31 @@ body {
 		margin: 2px;
 	}
 	img {
-		max-width: 250px;
-	}
-	img:after {
+		max-width: 150px;
+		:after {
 		content: "";
 		display: block;
 		padding-bottom: 100%;
+		}
 	}
+}
+
+.album-container:hover {
+	background: #8c8c8c;
 }
 
 h1, h2, p, a {
 	font-family: "Roboto";
 	color: #e8e8e8;
 	text-decoration: none;
+}
+
+h1 {
+	margin: 50px 0 50px 0;
+}
+
+ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
 }
