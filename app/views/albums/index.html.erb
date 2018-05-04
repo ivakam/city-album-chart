@@ -1,7 +1,9 @@
+
+<div id="wrapper">
 <h1>Listing albums</h1>
  <div id="splash-container">
     <% @albums.each do |album| %>
-    <div>
+    <div class="album-container">
       <h2><%= album.title %></h2>
       <%= image_tag album.coverlink %>
       <p><%= album.artist %></p>
@@ -9,5 +11,6 @@
       <p><%= album.description %></p>
       <p><%= link_to 'Show', album_path(album) %></p>
     </div>
+    <% end %>
   </div>
-<% end %>
+</div>

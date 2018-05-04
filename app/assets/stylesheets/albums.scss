@@ -1,3 +1,46 @@
-// Place all the styles related to the Albums controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url("https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css");
+
+body {
+	background: #2b2b2b;
+}
+
+#wrapper {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+#splash-container {
+	display: flex;
+	flex-flow: row wrap;
+}
+
+.album-container {
+	display: flex;
+	flex-direction: column;
+	padding: 8px;
+	margin: 5px;
+	background: #4b4b4b;
+	border-radius: 4px;
+	h2 {
+		align-self: center;
+	}
+	p, h2 {
+		margin: 2px;
+	}
+	img {
+		max-width: 250px;
+	}
+	img:after {
+		content: "";
+		display: block;
+		padding-bottom: 100%;
+	}
+}
+
+h1, h2, p, a {
+	font-family: "Roboto";
+	color: #e8e8e8;
+	text-decoration: none;
+}
