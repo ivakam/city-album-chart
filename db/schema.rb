@@ -16,7 +16,8 @@ ActiveRecord::Schema.define(version: 2018_05_04_183726) do
     t.string "title"
     t.string "artist"
     t.string "year"
-    t.text "description"
+    t.string "description"
+    t.string "coverlink"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

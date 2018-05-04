@@ -1,21 +1,13 @@
 <h1>Listing albums</h1>
- 
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Artist</th>
-    <th>Year</th>
-    <th>Description</th>
-    <th></th>
-  </tr>
- 
-  <% @albums.each do |album| %>
-    <tr>
-      <td><%= album.title %></td>
-      <td><%= album.artist %></td>
-      <td><%= album.year %></td>
-      <td><%= album.description %></td>
-      <td><%= link_to 'Show', album_path(album) %></td>
-    </tr>
-  <% end %>
-</table>
+ <div id="splash-container">
+    <% @albums.each do |album| %>
+    <div>
+      <h2><%= album.title %></h2>
+      <%= image_tag album.coverlink %>
+      <p><%= album.artist %></p>
+      <p><%= album.year %></p>
+      <p><%= album.description %></p>
+      <p><%= link_to 'Show', album_path(album) %></p>
+    </div>
+  </div>
+<% end %>

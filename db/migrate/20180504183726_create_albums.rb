@@ -5,6 +5,7 @@ class CreateAlbums < ActiveRecord::Migration[5.2]
       t.string :artist
       t.string :year
       t.string :description
+      t.string :coverlink
 
       t.timestamps
     end
