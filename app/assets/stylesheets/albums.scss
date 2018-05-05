@@ -69,12 +69,16 @@ body {
 .album-container {
 	display: flex;
 	flex-direction: column;
+	justify-content: space-around;
 	padding: 8px;
 	transition: 0.1s;
 	max-height: 290px;
 	max-width: 150px;
 	h2 {
 		align-self: center;
+	}
+	p {
+		font-size: 15px;
 	}
 	p, h2 {
 		margin: 2px;
@@ -90,7 +94,20 @@ body {
 }
 
 .album-container:hover {
-	background: #8c8c8c;
+	cursor: pointer;
+}
+
+.arrow-container {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	border-bottom: 1px #8c8c8c solid;
+}
+
+.album-arrow {
+	color: #e8e8e8;
+	font-size: 18px;
+	align-self: center;
 }
 
 h1, h2, p, a {
