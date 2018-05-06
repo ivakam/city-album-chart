@@ -74,18 +74,19 @@ body {
 	flex-direction: column;
 	position: relative;
 	transition: 0.3s;
+	padding: 8px;
 	width: auto;
+	z-index: 3;
 }
 
 .album-text-container {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-around;
-	padding: 8px;
-	max-width: 200px;
+	width: 100%;
+	overflow-x: hidden;
 	max-height: 280px;
 	background: $album-bg-color;
-	z-index: 5;
 	h2 {
 		align-self: center;
 	}
@@ -97,6 +98,7 @@ body {
 	}
 	img {
 		max-width: 200px;
+		align-self: center;
 		:after {
 		content: "";
 		display: block;
@@ -110,7 +112,6 @@ body {
 }
 
 .arrow-container {
-	z-index: 5;
 	background: $album-bg-color;
 	width: 100%;
 	display: flex;
@@ -125,16 +126,25 @@ body {
 	transition: 0.3s;
 }
 
-.info-container {
-	display: flex;
-	position: absolute;
+.offset {
 	top: 340px;
 	left: 0;
-	width: 80vw;
-	background: $album-bg-color;
-	z-index: -1;
+	position: absolute;
+}
+
+.info-container {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+	padding: 15px;
+	background: #232323;
+	border-top: 1px #8c8c8c solid;
+	border-bottom: 1px #8c8c8c solid;
+	transition: 0.3s;
+	z-index: -3;
 	img {
 		max-width: 400px;
+		margin-right: 100px;
 		:after {
 			content: "";
 			display: block;
@@ -144,6 +154,11 @@ body {
 	p, h2 {
 		font-size: 20px;
 	}
+}
+
+.info-text-container {
+	display: flex;
+	flex-direction: column;
 }
 
 h1, h2, p, a {

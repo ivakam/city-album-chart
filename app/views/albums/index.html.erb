@@ -22,11 +22,13 @@
         </div>
         <div class="arrow-container"><span class="ion-chevron-down album-arrow"></span></div>
       </div>
-      <div class="info-container">
-        <h2><%= album.title %></h2>
-        <p><%= album.artist %></p>
-        <p><%= album.year %></p>
-        <p><%= album.description %></p>
+      <div class="info-container offset">
+      	<div class="info-text-container">
+        	<h2><%= album.title %></h2>
+        	<p><%= album.artist %></p>
+        	<p><%= album.year %></p>
+        	<p><%= album.description %></p>
+        </div>
         <%= image_tag album.coverlink %>
       </div>
     <% end %>
