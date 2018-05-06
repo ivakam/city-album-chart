@@ -67,6 +67,11 @@ body {
 	background: $album-bg-color;
 	max-height: 90vh;
 	overflow-y: scroll;
+	overflow-x: hidden;
+}
+
+#splash-container::-webkit-scrollbar {
+	display: none;
 }
 
 .album-container {
@@ -130,6 +135,7 @@ body {
 	top: 340px;
 	left: 0;
 	position: absolute;
+	transition: 0;
 }
 
 .info-container {

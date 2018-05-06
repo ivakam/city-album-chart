@@ -6,7 +6,9 @@ $ ->
 	console.log("albums.coffee is running.")
 	$(".arrow-container").click ->
 		console.log("clicked!")
-		sibling = $(this).parent().next(".info-container")
+		title = $(this).parent().attr("id")
+		console.log(title)
+		sibling = $(this).parent().next("#" + title + "-info")
 		parent = $(this).parent()
 		arrow = $(this).find(".album-arrow")
 		offset = parent.offset().top + parent.parent().scrollTop() + 220
