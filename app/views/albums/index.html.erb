@@ -1,19 +1,32 @@
 <div id="wrapper">
   <a href=""><h1>City Pop Album Archive</h1></a>
   <div id="main-container">
-    <div id="sidebar">
+    <nav id="sidebar">
       <h2>Navigation & Filters</h2>
-      <ul id="nav-list">
-        <li class="nav-btn"><a>Home</a></li>
-        <li class="nav-btn"><a>Filters</a></li>
-        <li class="nav-btn"><a>Browse</a></li>
-        <li class="nav-btn"><a>Random</a></li>
-        <li class="nav-btn"><a>About</a></li>
+      <ul class="nav-list">
+        <li class="nav-btn"><div class="title-wrapper"><a class="btn-title">Home</a></div></li>
+        <li class="nav-btn" id="filters">
+        	<div class="title-wrapper">
+        		<a class="btn-title">Filters</a>
+        	</div>
+        	<!-- <div class="nav-list-container"> -->
+        		<ul id="filter-list">
+        			<li class="filter-btn"><a>Title</a><span class="ion-chevron-down"></span></li>
+        			<li class="filter-btn"><a>Artist</a><span class="ion-chevron-down"></span></li>
+        			<li class="filter-btn"><a>Year</a><span class="ion-chevron-down"></span></li>
+        			<li class="filter-btn"><a>Placeholder1</a><span class="ion-chevron-down"></span></li>
+        		</ul>
+        		<div class="nav-btn" id="show-sort"><div class="title-wrapper"><a class="btn-title">Show more</a></div>
+        	<!-- </div> -->
+        </li>
+        <li class="nav-btn"><div class="title-wrapper"><a class="btn-title">Browse</a></div></li>
+        <li class="nav-btn"><div class="title-wrapper"><a class="btn-title">Random</a></div></li>
+        <li class="nav-btn"><div class="title-wrapper"><a class="btn-title">About</a></div></li>
       </ul>
-    </div>
- <div id="splash-container">
+    </nav>
+ <ul id="splash-container">
     <% @albums.each do |album| %>
-      <div class="album-container" id="<%= album.title %>">
+      <li class="album-container" id="<%= album.title %>">
         <div class="album-text-container">
           <h2><%= album.title %></h2>
           <%= image_tag album.coverlink %>
@@ -21,8 +34,8 @@
           <p><%= album.year %></p>
         </div>
         <div class="arrow-container"><span class="ion-chevron-down album-arrow"></span></div>
-      </div>
-      <div class="info-container offset" id="<%= album.title %>-info">
+      </li>
+      <li class="info-container offset" id="<%= album.title %>-info">
       	<div class="info-text-container">
         	<h2><%= album.title %></h2>
         	<p><%= album.artist %></p>
@@ -30,8 +43,8 @@
         	<p><%= album.description %></p>
         </div>
         <%= image_tag album.coverlink %>
-      </div>
+      </li>
     <% end %>
-  </div>
+  </ul>
 </div>
 </div>

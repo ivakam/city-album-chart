@@ -3,6 +3,8 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $ ->
 	isOpen = false
+	albumList = $("#splash-container")
+	albums = albumList.children(" ")
 	console.log("albums.coffee is running.")
 	$(".arrow-container").click ->
 		console.log("clicked!")
@@ -12,7 +14,7 @@ $ ->
 		parent = $(this).parent()
 		arrow = $(this).find(".album-arrow")
 		offset = parent.offset().top + parent.parent().scrollTop() + 220
-		if (!isOpen)
+		if !isOpen
 			arrow.css("transform", "rotate(180deg)")
 			parent.css("height", "800px")
 			sibling.css("z-index", "2")
@@ -27,4 +29,21 @@ $ ->
 			sibling.css("max-height", "0")
 			isOpen = false;
 		return
-	return
+
+	$(".nav-btn .title-wrapper").click ->
+		parent = $(this).parent()
+		arrow = parent.find(".nav-arrow")
+		if parent.find(".nav-list-container").hasClass("hide-list")
+			arrow.css("transform", "rotate(180deg)")
+			parent.find(".nav-list-container").toggleClass("hide-list")
+			parent.css("height", "200px")
+		else
+			parent.find(".nav-list-container").toggleClass("hide-list")
+			parent.css("height", "50px")
+			arrow.css("transform", "rotate(0)")
+		return
+
+	$(".filter-btn .ion-chevron-down").click ->
+		$("#filter-list li .ion-chevron-down").removeClass("selected rotated")
+		$(this).addClass("selected")
+		$(this).find("::before").css("transform", "rotate(180deg)")
