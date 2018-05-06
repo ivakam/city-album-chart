@@ -13,16 +13,22 @@
     </div>
  <div id="splash-container">
     <% @albums.each do |album| %>
-    <div class="album-container">
-      <div class="album-text-container">
-      <h2><%= album.title %></h2>
-      <%= image_tag album.coverlink %>
+      <div class="album-container" id="<%= album.title %>">
+        <div class="album-text-container">
+          <h2><%= album.title %></h2>
+          <%= image_tag album.coverlink %>
+          <p><%= album.artist %></p>
+          <p><%= album.year %></p>
+        </div>
+        <div class="arrow-container"><span class="ion-chevron-down album-arrow"></span></div>
+      </div>
+      <div class="info-container">
+        <h2><%= album.title %></h2>
         <p><%= album.artist %></p>
         <p><%= album.year %></p>
         <p><%= album.description %></p>
+        <%= image_tag album.coverlink %>
       </div>
-      <div class="arrow-container"><span class="ion-chevron-down album-arrow"></span></div>
-    </div>
     <% end %>
   </div>
 </div>
