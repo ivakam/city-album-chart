@@ -14,7 +14,7 @@ $ ->
 			arrow.css("transform", "rotate(180deg)")
 			parent.css("height", "800px")
 			sibling.css("z-index", "2")
-			sibling.css("height", "400px")
+			sibling.css("max-height", "400px")
 			$(".offset").css("top", offset)
 			sibling.addClass("offset")
 			isOpen = true
@@ -22,7 +22,7 @@ $ ->
 			arrow.css("transform", "rotate(0)")
 			parent.css("height", "320")
 			sibling.css("z-index", "-1")
-			sibling.css("height", "0")
+			sibling.css("max-height", "0")
 			isOpen = false;
 		return
 	return
