@@ -16,7 +16,7 @@
         			<li class="filter-btn"><a>Year</a><span class="ion-chevron-down"></span></li>
         			<li class="filter-btn"><a>Placeholder1</a><span class="ion-chevron-down"></span></li>
         		</ul>
-        		<div class="nav-btn" id="show-sort"><div class="title-wrapper"><a class="btn-title">Show more</a></div>
+        		<div class="nav-btn" id="show-sort"><div class="title-wrapper" ><a class="btn-title">Show more</a></div>
         	<!-- </div> -->
         </li>
         <li class="nav-btn"><div class="title-wrapper"><a class="btn-title">Browse</a></div></li>
@@ -25,24 +25,26 @@
       </ul>
     </nav>
  <ul id="splash-container">
-    <% @albums.each do |album| %>
-      <li class="album-container" id="<%= album.title %>">
+    <% @albums.each.with_index do |album, index| %>
+      <li class="album-container" id="<%= index %>">
         <div class="album-text-container">
           <h2><%= album.title %></h2>
           <%= image_tag album.coverlink %>
-          <p><%= album.artist %></p>
-          <p><%= album.year %></p>
+          <p class="artist"><%= album.artist %></p>
+          <p class="year"><%= album.year %></p>
         </div>
         <div class="arrow-container"><span class="ion-chevron-down album-arrow"></span></div>
       </li>
-      <li class="info-container offset" id="<%= album.title %>-info">
-      	<div class="info-text-container">
-        	<h2><%= album.title %></h2>
-        	<p><%= album.artist %></p>
-        	<p><%= album.year %></p>
-        	<p><%= album.description %></p>
-        </div>
+      <li class="info-container offset" id="<%= index %>-info">
+      	<div class="info-wrapper">
+      		<div class="info-text-container">
+        		<h2><%= album.title %></h2>
+        		<p><%= album.artist %></p>
+        		<p><%= album.year %></p>
+        		<p><%= album.description %></p>
+        	</div>
         <%= image_tag album.coverlink %>
+        </div>
       </li>
     <% end %>
   </ul>
