@@ -141,7 +141,7 @@ body {
 	display: flex;
 	position: relative;
 	flex-flow: row wrap;
-	justify-content: space-around;
+	justify-content: center;
 	background: $album-bg-color;
 	max-height: 90vh;
 	overflow-y: scroll;
