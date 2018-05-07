@@ -14,7 +14,9 @@ ActiveRecord::Schema.define(version: 2018_05_04_183726) do
 
   create_table "albums", force: :cascade do |t|
     t.string "title"
-    t.string "artist"
+    t.string "romanization"
+    t.string "romaji_artist"
+    t.string "japanese_artist"
     t.string "year"
     t.string "description"
     t.string "coverlink"

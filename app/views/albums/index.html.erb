@@ -28,9 +28,11 @@
     <% @albums.each.with_index do |album, index| %>
       <li class="album-container" id="<%= index %>">
         <div class="album-text-container">
-          <h2><%= album.title %></h2>
+        	<div class="text-size-wrapper">
+          	<h2><%= album.title %></h2>
+        	</div>
           <%= image_tag album.coverlink %>
-          <p class="artist"><%= album.artist %></p>
+          <p class="artist"><%= album.romaji_artist %></p>
           <p class="year"><%= album.year %></p>
         </div>
         <div class="arrow-container"><span class="ion-chevron-down album-arrow"></span></div>
@@ -38,9 +40,15 @@
       <li class="info-container offset" id="<%= index %>-info">
       	<div class="info-wrapper">
       		<div class="info-text-container">
-        		<h2><%= album.title %></h2>
-        		<p><%= album.artist %></p>
-        		<p><%= album.year %></p>
+      			<div class="title-container">
+        			<h2><%= album.title %></h2>
+          		<h3><i><%= album.romanization %></i></h3>
+          	</div>
+          	<div class="artist-container">
+        			<p><%= album.romaji_artist %></p>
+        			<p><%= album.japanese_artist %></p>
+        		</div>
+        		<p class="release-date">Release date: <%= album.year %></p>
         		<p><%= album.description %></p>
         	</div>
         <%= image_tag album.coverlink %>

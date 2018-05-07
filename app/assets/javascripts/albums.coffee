@@ -2,10 +2,17 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $ ->
-	isOpen = false
 	console.log("albums.coffee is running.")
 	# $("#splash-container").show("normal")
 	# $("#splash-container").css("display", "flex")
+	albumContainerWidth = $(".text-size-wrapper").width()
+
+	$(".text-size-wrapper h2, .album-text-container p").each -> 
+		fontSize = 20
+		console.log($(this).text())
+		while ($(this).width() > albumContainerWidth)
+			$(this).css("font-size", fontSize -= 0.5)
+
 	$(".arrow-container").click ->
 		console.log("clicked!")
 		title = $(this).parent().attr("id")
@@ -14,7 +21,14 @@ $ ->
 		parent = $(this).parent()
 		arrow = $(this).find(".album-arrow")
 		offset = parent.offset().top + parent.parent().scrollTop() + 220
-		if !isOpen
+		if !sibling.hasClass("is-open")
+
+			$(".album-arrow").css("transform", "rotate(0)")
+			$(".album-container").css("height", "320")
+			$(".info-wrapper").css("display", "none")
+			$(".info-container").css("display", "none")
+			$(".info-wrapper").css("height", "0")
+
 			arrow.css("transform", "rotate(180deg)")
 			parent.css("height", "800px")
 			sibling.css("display", "flex")
@@ -22,14 +36,15 @@ $ ->
 			sibling.css("height", "400px")
 			$(".offset").css("top", offset)
 			sibling.parent().addClass("offset")
-			isOpen = true
+			$(".info-wrapper").attr("class", "info-wrapper")
+			sibling.addClass("is-open")
 		else
 			arrow.css("transform", "rotate(0)")
 			parent.css("height", "320")
 			sibling.css("display", "none")
 			sibling.parent().toggle()
 			sibling.css("height", "0")
-			isOpen = false;
+			sibling.removeClass("is-open")
 		return
 
 	$(".nav-btn .title-wrapper").click ->
@@ -101,6 +116,11 @@ $ ->
 				break;
 			when "Placeholder1"
 				break;
+		$(".album-arrow").css("transform", "rotate(0)")
+		$(".album-container").css("height", "320")
+		$(".info-wrapper").css("display", "none")
+		$(".info-container").css("display", "none")
+		$(".info-wrapper").css("height", "0")
 		albumList.show("normal")
 		albumList.css("display", "flex")
 

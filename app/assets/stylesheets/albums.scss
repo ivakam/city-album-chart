@@ -158,7 +158,7 @@ body {
 	position: relative;
 	transition: 0.3s;
 	padding: 8px;
-	width: auto;
+	width: 200px;
 }
 
 .album-text-container {
@@ -166,26 +166,35 @@ body {
 	flex-direction: column;
 	justify-content: space-around;
 	width: 100%;
-	overflow-x: hidden;
-	max-height: 280px;
+	max-height: 290px;
 	background: $album-bg-color;
+	.text-size-wrapper {
+		display: flex;
+		width: 100%;
+		height: 35px;
+		justify-content: center;
+		margin-bottom: 4px;
+		overflow-x: hidden;
+	}
 	h2 {
-		align-self: center;
+		font-size: 25px;
 	}
 	p {
-		font-size: 15px;
+		font-size: 19px;
 	}
 	p, h2 {
 		margin: 2px;
+		white-space: nowrap;
+		height: 29px;
 	}
 	img {
-		max-width: 200px;
+		width: 200px;
 		align-self: center;
-		:after {
-		content: "";
-		display: block;
-		padding-bottom: 100%;
-		}
+	}
+	img:after {
+	content: "";
+	display: block;
+	padding-bottom: 100%;
 	}
 }
 
@@ -231,7 +240,7 @@ body {
 	transition: 0.3s;
 	overflow: hidden;
 	img {
-		max-width: 600px;
+		max-width: 400px;
 		margin-right: 100px;
 		:after {
 			content: "";
@@ -241,15 +250,28 @@ body {
 	}
 	p, h2 {
 		font-size: 20px;
+		margin: 3px 0 3px 0;
+	}
+	.info-text-container {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+	}
+	.artist-container {
+		display: flex;
+		flex-direction: column;
+		margin-bottom: 20px;
+	}
+	.title-container {
+		display: flex;
+		flex-direction: column;
+	}
+	.release-date {
+		margin-bottom: 15px;
 	}
 }
 
-.info-text-container {
-	display: flex;
-	flex-direction: column;
-}
-
-h1, h2, p, a {
+h1, h2, h3, p, a, i {
 	font-family: "Roboto";
 	color: #e8e8e8;
 	text-decoration: none;
