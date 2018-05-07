@@ -155,10 +155,12 @@ body {
 .album-container {
 	display: flex;
 	flex-direction: column;
+	justify-content: space-between;
 	position: relative;
 	transition: 0.3s;
 	padding: 8px;
 	width: 200px;
+	height: 320px;
 }
 
 .album-text-container {
@@ -185,7 +187,6 @@ body {
 	p, h2 {
 		margin: 2px;
 		white-space: nowrap;
-		height: 29px;
 	}
 	img {
 		width: 200px;
@@ -204,6 +205,8 @@ body {
 
 .arrow-container {
 	background: $album-bg-color;
+	position: absolute;
+	top: 304px;
 	width: 100%;
 	display: flex;
 	justify-content: center;

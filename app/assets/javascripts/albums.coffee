@@ -9,9 +9,11 @@ $ ->
 
 	$(".text-size-wrapper h2, .album-text-container p").each -> 
 		fontSize = 20
+		padding = 0
 		console.log($(this).text())
 		while ($(this).width() > albumContainerWidth)
 			$(this).css("font-size", fontSize -= 0.5)
+			$(this).css("padding-top", padding += 0.5)
 
 	$(".arrow-container").click ->
 		console.log("clicked!")
