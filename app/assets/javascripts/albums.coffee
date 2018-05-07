@@ -43,7 +43,12 @@ $ ->
 			arrow.css("transform", "rotate(0)")
 		return
 
-	$(".filter-btn .ion-chevron-down").click ->
-		$("#filter-list li .ion-chevron-down").removeClass("selected rotated")
+	$(".filter-btn").click ->
+		$("#filter-list li").removeClass("selected")
 		$(this).addClass("selected")
-		$(this).find("::before").css("transform", "rotate(180deg)")
+		$("#filter-list li").each -> 
+			if !$(this).hasClass("selected")
+				console.log("match")
+				$(this).find(".ion-chevron-down").removeClass("rotated")
+		$(this).find(".ion-chevron-down").toggleClass("rotated")
+		return
