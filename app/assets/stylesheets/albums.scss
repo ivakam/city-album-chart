@@ -59,6 +59,11 @@ body {
 	}
 }
 
+#filters .title-wrapper {
+	background: #2a2a2a;
+	cursor: auto;
+}
+
 .nav-btn:last-child {
 	border-bottom: 1px solid #171717;
 }
@@ -141,7 +146,6 @@ body {
 	display: flex;
 	position: relative;
 	flex-flow: row wrap;
-	justify-content: center;
 	background: $album-bg-color;
 	max-height: 90vh;
 	overflow-y: scroll;
@@ -166,9 +170,9 @@ body {
 .album-text-container {
 	display: flex;
 	flex-direction: column;
-	justify-content: space-around;
+	justify-content: space-between;
 	width: 100%;
-	max-height: 290px;
+	height: 306px;
 	background: $album-bg-color;
 	.text-size-wrapper {
 		display: flex;

@@ -10,7 +10,6 @@ $ ->
 	$(".text-size-wrapper h2, .album-text-container p").each -> 
 		fontSize = 20
 		padding = 0
-		console.log($(this).text())
 		while ($(this).width() > albumContainerWidth)
 			$(this).css("font-size", fontSize -= 0.5)
 			$(this).css("padding-top", padding += 0.5)
@@ -49,7 +48,7 @@ $ ->
 			sibling.removeClass("is-open")
 		return
 
-	$(".nav-btn .title-wrapper").click ->
+	$(".nav-btn .title-wrapper .can-open").click ->
 		parent = $(this).parent()
 		arrow = parent.find(".nav-arrow")
 		if parent.find(".nav-list-container").hasClass("hide-list")
@@ -93,10 +92,11 @@ $ ->
 			when "Artist"
 				if !albumList.hasClass("artist-sorted-up") && !albumList.hasClass("artist-sorted-down")
 					albumList.attr("class", "artist-sorted-down")
-				if albumList.hasClass("artist-sorted-up") then albumList.attr("class", "artist-sorted-down") else albumList.attr("class", "artistsorted-up")
-				albums.sort (a, b) -> 
-					compA = $(a).find("div .artist").text().toUpperCase()
-					compB = $(b).find("div .artist").text().toUpperCase()
+				if albumList.hasClass("artist-sorted-up") then albumList.attr("class", "artist-sorted-down") else albumList.attr("class", "artist-sorted-up")
+				albums.sort (a, b) ->
+					compA = $(a).find("div .artist-year-container .artist").text().toUpperCase()
+					compB = $(b).find("div .artist-year-container .artist").text().toUpperCase()
+					console.log(compA + " and " + compB)
 					if albumList.hasClass("artist-sorted-up")
 						return (compA > compB) ? -1 : (compA < compB) ? 1 : 0
 					else
@@ -108,8 +108,8 @@ $ ->
 					albumList.attr("class", "year-sorted-down")
 				if albumList.hasClass("year-sorted-up") then albumList.attr("class", "year-sorted-down") else albumList.attr("class", "year-sorted-up")
 				albums.sort (a, b) -> 
-					compA = Number($(a).find("div .year").text())
-					compB = Number($(b).find("div .year").text())
+					compA = Number($(a).find("div .artist-year-container .year").text())
+					compB = Number($(b).find("div .artist-year-container .year").text())
 					if albumList.hasClass("year-sorted-up")
 						return (compA > compB) ? -1 : (compA < compB) ? 1 : 0
 					else
