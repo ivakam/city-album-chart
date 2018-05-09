@@ -1,6 +1,7 @@
 class AlbumsController < ApplicationController
 	def index
 		@albums = Album.all
+		@tracks = Track.all
 	end
 
 	def show
@@ -12,7 +13,6 @@ class AlbumsController < ApplicationController
 
 	def create
 		@album = Album.new(album_params)
-
 		@album.save
 		redirect_to @album
 	end

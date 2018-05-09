@@ -276,6 +276,15 @@ body {
 	.release-date {
 		margin-bottom: 15px;
 	}
+	.tracklist-container {
+		li {
+			display: flex;
+			justify-content: space-between;
+		}
+		p, i {
+			font-size: 13px;
+		}
+	}
 }
 
 h1, h2, h3, p, a, i {

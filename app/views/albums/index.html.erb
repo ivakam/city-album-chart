@@ -53,6 +53,18 @@
         		<p class="release-date">Release date: <%= album.year %></p>
         		<p><%= album.description %></p>
         	</div>
+        <ul class="tracklist-container">
+        	<% album.tracks.each.with_index do |track, index| %>
+        		<li>
+        			<div class="track-title-container">
+        				<p><%= index+1 %>. </p>
+        				<p><%= track.title %></p>
+        				<i><%= track.romanization %></i>
+        			</div>
+        			<p><%= track.duration %></p>
+        		</li>
+        	<% end %>
+        </ul>
         <%= image_tag album.coverlink %>
         </div>
       	</li>
