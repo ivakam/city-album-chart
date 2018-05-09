@@ -1,11 +1,19 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
 $ ->
 	console.log("albums.coffee is running.")
 	# $("#splash-container").show("normal")
 	# $("#splash-container").css("display", "flex")
 	albumContainerWidth = $(".text-size-wrapper").width()
+
+	$(".info-wrapper").each ->
+		div = $(this)
+		img = div.find("img").attr("src")
+		RGBaster.colors(img, 
+			{exclude: ['rgb(255,255,255)'],
+			success: (payload) ->
+				console.log(payload.dominant)
+				div.css("background", payload.dominant)
+				div.find("img").css("border", "2px #171717 solid")})
+
 
 	$(".text-size-wrapper h2, .album-text-container p").each -> 
 		fontSize = 20

@@ -7,7 +7,7 @@
         <li class="nav-btn"><div class="title-wrapper"><a class="btn-title">Home</a></div></li>
         <li class="nav-btn" id="filters">
         	<div class="title-wrapper">
-        		<a class="btn-title">Filters</a>
+        		<a class="btn-title">Filters:</a>
         	</div>
         	<!-- <div class="nav-list-container"> -->
         		<ul id="filter-list">
@@ -16,7 +16,9 @@
         			<li class="filter-btn"><a>Year</a><span class="ion-chevron-down"></span></li>
         			<li class="filter-btn"><a>Placeholder1</a><span class="ion-chevron-down"></span></li>
         		</ul>
-        		<div class="nav-btn" id="show-sort"><div class="title-wrapper" ><a class="btn-title">Show more</a></div>
+        		<div class="nav-btn" id="show-sort">
+        			<div class="title-wrapper" ><a class="btn-title">Show more</a></div>
+        		</div>
         	<!-- </div> -->
         </li>
         <li class="nav-btn"><div class="title-wrapper"><a class="btn-title">Browse</a></div></li>
@@ -42,30 +44,40 @@
       	<li class="info-container offset" id="<%= index %>-info">
       	<div class="info-wrapper">
       		<div class="info-text-container">
+      			<div class="text-container">
       			<div class="title-container">
-        			<h2><%= album.title %></h2>
+        				<h2><%= album.title %></h2>
           		<h3><i><%= album.romanization %></i></h3>
           	</div>
-          	<div class="artist-container">
+         		<div class="artist-container">
+          		<p class="label">Artist:</p>
         			<p><%= album.romaji_artist %></p>
-        			<p><%= album.japanese_artist %></p>
+        			<p class="label">(<%= album.japanese_artist %>)</p>
         		</div>
-        		<p class="release-date">Release date: <%= album.year %></p>
-        		<p><%= album.description %></p>
+        		<div class="release-date">
+        			<p class="label">Release date:</p>
+        			<p><%= album.year %></p>
+        		</div>
+        		<div class="description-container">
+        			<p class="label">Description:</p>
+       				<p class="description"><%= album.description %></p>
+        		</div>
         	</div>
-        <ul class="tracklist-container">
-        	<% album.tracks.each.with_index do |track, index| %>
-        		<li>
-        			<div class="track-title-container">
-        				<p><%= index+1 %>. </p>
-        				<p><%= track.title %></p>
-        				<i><%= track.romanization %></i>
-        			</div>
-        			<p><%= track.duration %></p>
-        		</li>
-        	<% end %>
-        </ul>
-        <%= image_tag album.coverlink %>
+  		      <ul class="tracklist-container">
+    		    	<li><h3>Tracklist:</h3></li>
+    		    	<% album.tracks.each.with_index do |track, index| %>
+       			 		<li>
+        						<div class="track-title-container">
+        						<p><%= index+1 %>. &nbsp</p>
+        						<p><%= track.title %></p>
+        						<i><%= track.romanization %></i>
+        					</div>
+        					<p><%= track.duration %></p>
+        				</li>
+        			<% end %>
+      			</ul>
+      	</div>
+      	<%= image_tag album.coverlink %>
         </div>
       	</li>
     	<% end %>

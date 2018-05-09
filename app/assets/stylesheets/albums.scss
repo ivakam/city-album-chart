@@ -25,6 +25,7 @@ body {
 }
 
 #main-container {
+	width: 100%;
 	display: flex;
 	flex-direction: row;
 	justify-content: flex-start;
@@ -36,12 +37,12 @@ body {
 }
 
 .nav-btn {
-	transition: 0.1s;
 	height: 50px;
 	position: relative;
 	overflow-y: hidden;
 	border-top: 1px solid #171717;
 	.title-wrapper {
+		transition: 0.1s;
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -140,9 +141,14 @@ body {
 			font-size: 13px;
 		}
 	}
+	.title-wrapper:hover {
+		cursor: pointer;
+		background: #4c4c4c;
+	}
 }
 
 #splash-container {
+	width: 100%;
 	display: flex;
 	position: relative;
 	flex-flow: row wrap;
@@ -248,7 +254,7 @@ body {
 	overflow: hidden;
 	img {
 		max-width: 400px;
-		margin-right: 100px;
+		margin-right: 4%;
 		:after {
 			content: "";
 			display: block;
@@ -259,30 +265,60 @@ body {
 		font-size: 20px;
 		margin: 3px 0 3px 0;
 	}
+	.label {
+		font-size: 14px;
+	}
 	.info-text-container {
 		display: flex;
-		flex-direction: column;
+		width: 100%;
 		justify-content: space-between;
+	}
+	.text-container {
+		display: flex;
+		flex-direction: column
 	}
 	.artist-container {
 		display: flex;
 		flex-direction: column;
-		margin-bottom: 20px;
 	}
 	.title-container {
 		display: flex;
 		flex-direction: column;
+		h2 {
+			font-size: 25px;
+		}
+	}
+	.description-container {
+		margin-top: 10px;
+		.label {
+			margin-bottom: 10px
+		}
+		.description {
+			font-size: 15px
+	}
 	}
 	.release-date {
-		margin-bottom: 15px;
+		margin-top: 15px;
 	}
 	.tracklist-container {
+		width: 220px;
+		height: 100%;
+		margin-right: 40px;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
 		li {
 			display: flex;
 			justify-content: space-between;
+			div {
+				display: flex;
+			}
+			h3 {
+				margin-top: 4px;
+			}
 		}
 		p, i {
-			font-size: 13px;
+			font-size: 14px;
 		}
 	}
 }
