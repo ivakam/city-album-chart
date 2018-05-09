@@ -261,6 +261,9 @@ body {
 			padding-bottom: 100%;
 		}
 	}
+	img:hover {
+		cursor: pointer;
+	}
 	p, h2 {
 		font-size: 20px;
 		margin: 3px 0 3px 0;
@@ -285,7 +288,7 @@ body {
 		display: flex;
 		flex-direction: column;
 		h2 {
-			font-size: 25px;
+			font-size: 30px;
 		}
 	}
 	.description-container {
@@ -341,4 +344,18 @@ ul {
 
 .hidden {
 	display: none;
+}
+
+#opaque {
+	position: fixed;
+	height: 110vh;
+	width: 110vw;
+	transition: 0.2s;
+	z-index: -2;
+}
+
+.enlargened {
+	z-index: 5;
+	position: fixed;
+	max-width: 90vw;
 }

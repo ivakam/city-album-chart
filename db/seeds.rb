@@ -77,7 +77,16 @@ romanization: "",
 duration: "2:05"}]
 )
 
-
+CreateAlbumWithTracks({
+title: "Seychelles",
+romanization: "",
+romaji_artist: "Masayoshi Takanaka",
+japanese_artist: "虹伝説",
+year: "1976",
+description: "blah",
+coverlink: "seychelles.jpg",
+}
+)
 
 
 

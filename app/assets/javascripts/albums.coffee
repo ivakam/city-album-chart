@@ -22,6 +22,27 @@ $ ->
 			$(this).css("font-size", fontSize -= 0.5)
 			$(this).css("padding-top", padding += 0.5)
 
+	$(".info-wrapper img").click ->
+		opacity = $("#opaque")
+		img = $(".bigimage")
+		imgsrc = $(this).attr("src")
+		if !img.hasClass("enlargened")
+			img.addClass("enlargened")
+			img.attr("src", imgsrc)
+			console.log(img.width())
+			offset = img.width() / 2
+			console.log(offset)
+			$(".enlargened").css("left", ($(window).width() / 2) - offset)
+			$(".enlargened").css("top", ($(window).height() / 2) - offset)
+			opacity.css("background", "rgba(0, 0, 0, 0.5")
+			opacity.css("z-index", "4")
+
+	$("#opaque").click ->
+		$("img").removeClass("enlargened")
+		$(this).css("background", "rgba(0,0,0,0)")
+		$(".bigimage").attr("src", "")
+		$(this).css("z-index", "0")
+
 	$(".arrow-container").click ->
 		console.log("clicked!")
 		title = $(this).parent().attr("id")
