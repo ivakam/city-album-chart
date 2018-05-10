@@ -117,7 +117,7 @@ $ ->
 
 		else
 			arrow.css("transform", "rotate(0)")
-			parent.css("height", "327")
+			parent.css("height", "327px")
 			sibling.css("display", "none")
 			sibling.parent().toggle()
 			sibling.css("height", "0")
@@ -146,6 +146,14 @@ $ ->
 		$(this).find(".ion-chevron-down").toggleClass("rotated")
 		albumSort($(this).find("a").text())
 		return
+
+	$("#show-filter").click ->
+		if !$(".nav-list-container").hasClass("expanded")
+			$(".nav-list-container").addClass("expanded")
+			$(".nav-list-container").css("height", "250px")
+		else
+			$(".nav-list-container").removeClass("expanded")
+			$(".nav-list-container").css("height", "135px")
 
 	albumSort = (string) ->
 		albumList = $("#splash-container")
@@ -195,7 +203,7 @@ $ ->
 			when "Placeholder1"
 				break;
 		$(".album-arrow").css("transform", "rotate(0)")
-		$(".album-container").css("height", "320")
+		$(".album-container").css("height", "327px")
 		$(".info-wrapper").css("display", "none")
 		$(".info-container").css("display", "none")
 		$(".info-wrapper").css("height", "0")
