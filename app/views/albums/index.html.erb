@@ -12,7 +12,7 @@
     <nav id="sidebar">
       <h2>Navigation & Filters</h2>
       <ul class="nav-list">
-        <li class="nav-btn"><div class="title-wrapper"><a class="btn-title">Home</a></div></li>
+        <li class="nav-btn"><div class="title-wrapper"><%= link_to "Home", albums_index_path %></div></li>
         <li class="nav-btn" id="filters">
         	<div class="title-wrapper">
         		<a class="btn-title">Filters:</a>
@@ -24,17 +24,14 @@
         			<li class="sort-btn"><a>Year</a><span class="ion-chevron-down"></span></li>
         			<li class="sort-btn"><a>Flavor</a><span class="ion-chevron-down"></span></li>
         		</ul>
-        		<ul id="filter-list">
-        			<li class="filter-btn"><a>
-        		</ul>
         	</div>
         	<div class="nav-btn" id="show-filter">
-        		<div class="title-wrapper" ><a class="btn-title">Show more</a></div>
+        		<div class="title-wrapper"><a class="btn-title">Show more</a></div>
         	</div>
         </li>
         <li class="nav-btn"><div class="title-wrapper"><a class="btn-title">Browse</a></div></li>
         <li class="nav-btn"><div class="title-wrapper"><a class="btn-title">Random</a></div></li>
-        <li class="nav-btn"><div class="title-wrapper"><a class="btn-title">About</a></div></li>
+        <li class="nav-btn"><div class="title-wrapper"><%= link_to "About", about_index_path %></div></li>
       </ul>
     </nav>
  		<ul id="splash-container">
@@ -101,12 +98,16 @@
 	</div>
 	<div id="footer">
 		<ul id="link-list">
-			<li><a>Linktoplace</a></li>
-			<li><a>Linktoplace</a></li>
-			<li><a>Linktoplace</a></li>
-			<li><a>Linktoplace</a></li>
-			<li><a>Linktoplace</a></li>
-			<li><a>Linktoplace</a></li>
+			<li><a href="https://github.com/ivakam/city-album-chart">GitHub</a></li>
+			<li><a href="mailto:ivar.kamsvag@gmail.com">Email</a></li>
+			<li><a href="https://discord.gg/AhSJCB">City pop Discord server</a></li>
+			<li><a href="https://docs.google.com/spreadsheets/d/1s4-pxu3Ul5D6ynGAw7fQo63910dRBcGClVRX92zTMig/edit?usp=sharing">Submission spreadsheet</a></li>
+			<li><a href="https://i.imgur.com/nTfQAky.png">Album chart</a></li>
+			<li><a href="https://docs.google.com/spreadsheets/d/1UumcUXF3QvJgoQ3j8SsAnPtdbarhFD_wTmguK0RuZbs/edit?usp=sharing">My personal spreadsheet</a></li>
 		</ul>
+		<div id="disclaimers">
+			<p>Site hosted on Rails 5.2 framework with SQLite database</p>
+			<p>Big thanks to the creator of the <a href="https://github.com/briangonzalez/rgbaster.js/tree/master">RGBaster</a> plugin</p>
+		</div>
 	</div>
 </div>

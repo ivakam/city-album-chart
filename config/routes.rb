@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-  get 'welcome/index'
+  get 'about/index'
+  get 'albums/index'
 
   resources :albums
   
-  root 'welcome#index'
+  root 'albums#index'
 end
