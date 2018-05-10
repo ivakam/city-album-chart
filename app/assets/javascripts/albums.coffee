@@ -237,8 +237,10 @@ $ ->
 			)
 
 	checkMatch = (value, condition) ->
-		console.log("value: " + value, "condition: " + condition)
-		if value.match(condition) != null
+		compValue = value.toUpperCase()
+		compCondition = condition.toUpperCase()
+		console.log("value: " + compValue, "condition: " + compCondition)
+		if compValue.match(compCondition) != null
 			#console.log("checkmatch: true")
 			return true
 		else
