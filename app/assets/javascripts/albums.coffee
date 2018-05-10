@@ -203,11 +203,11 @@ $ ->
 		albumList.css("display", "flex")
 
 	$("#main-search").on("input", (e) ->
-		console.log("Hello world")
+		#console.log("Hello world")
 		inputVal = $(this).val()
 		if $(this).data("lastval") isnt inputVal
 			$(this).data("lastval",inputVal)
-			console.log(inputVal)
+			#console.log(inputVal)
 			$(".album-container").each ->
 				text = $(this).find("p,h2,h3")
 				albumContainer = $(this)
@@ -216,18 +216,21 @@ $ ->
 					text.each -> 
 						if !checkMatch($(this).text(), inputVal) && !bufferCheck
 							albumContainer.css("width", "0")
+							albumContainer.css("margin", "0")
 						else
 							albumContainer.css("width", "200px")
+							albumContainer.css("margin", "8px")
 							bufferCheck = true
 				else
 					albumContainer.css("width", "200px")
+					albumContainer.css("margin", "8px")
 			)
 
 	checkMatch = (value, condition) ->
 		console.log("value: " + value, "condition: " + condition)
-		if value == condition
-			console.log("checkmatch: true")
+		if value.match(condition) != null
+			#console.log("checkmatch: true")
 			return true
 		else
-			console.log("checkmatch: false")
+			#console.log("checkmatch: false")
 			return false
