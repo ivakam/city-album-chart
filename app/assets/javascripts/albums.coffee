@@ -212,6 +212,11 @@ $ ->
 		albumList.show("normal")
 		albumList.css("display", "flex")
 
+	$("#regex").click ->
+		regex = $(this)
+		regex.toggleClass("brightness")
+		regex.toggleClass("gray")
+
 	$("#main-search").on("input", (e) ->
 		#console.log("Hello world")
 		inputVal = $(this).val()
@@ -237,12 +242,23 @@ $ ->
 			)
 
 	checkMatch = (value, condition) ->
-		compValue = value.toUpperCase()
-		compCondition = condition.toUpperCase()
-		console.log("value: " + compValue, "condition: " + compCondition)
-		if compValue.match(compCondition) != null
+		#console.log("value: " + compValue, "condition: " + compCondition)
+		console.log(condition)
+		if $("#regex").hasClass("brightness")
+			compCondition = new RegExp(condition)
+			console.log(compCondition)
+			if value.match(compCondition) != null
 			#console.log("checkmatch: true")
-			return true
+				return true
+			else
+				#console.log("checkmatch: false")
+				return false
 		else
-			#console.log("checkmatch: false")
-			return false
+			compValue = value.toUpperCase()
+			compCondition = condition.toUpperCase()
+			if compValue.match(compCondition) != null
+			#console.log("checkmatch: true")
+				return true
+			else
+				#console.log("checkmatch: false")
+				return false
