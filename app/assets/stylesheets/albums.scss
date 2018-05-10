@@ -15,6 +15,40 @@ body {
 	align-items: center;
 }
 
+#footer {
+	height: 125px;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: #232323;
+	border-top: 1px #414141 solid;
+	#link-list {
+		display: flex;
+		flex-flow: row;
+		padding: 0 20px 0 20px;
+		li {
+			padding: 5px 10px 5px 10px;
+			a {
+				text-decoration: underline;
+				font-size: 12px;
+				color: #a7a7a7;
+				transition: 0.1s;
+			}
+			a:hover {
+				cursor: pointer;
+				color: #ccc;
+			}
+		}
+		li:nth-of-type(3) {
+			border-left: 1px #414141 solid;
+		}
+		li:nth-of-type(4) {
+			border-right: 1px #414141 solid;
+		}
+	}
+}
+
 #search-title {
 	width: 70vw;
 	display: flex;
@@ -188,7 +222,7 @@ body {
 	position: relative;
 	flex-flow: row wrap;
 	background: $album-bg-color;
-	max-height: 90vh;
+	max-height: 100vh;
 	overflow-y: scroll;
 	overflow-x: hidden;
 }

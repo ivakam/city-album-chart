@@ -7,6 +7,8 @@ $ ->
 	$(".info-wrapper").each ->
 		div = $(this)
 		img = div.find(".info-background img").attr("src")
+		
+		#TURN THIS ON IN PRODUCTION
 		###
 		RGBaster.colors(img,
 			{exclude: ["rgb(255, 255, 255)", "rgb(0, 0, 0"],
