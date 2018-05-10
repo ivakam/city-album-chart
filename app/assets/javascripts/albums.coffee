@@ -6,7 +6,8 @@ $ ->
 
 	$(".info-wrapper").each ->
 		div = $(this)
-		img = div.find("img").attr("src")
+		img = div.find(".info-background img").attr("src")
+		###
 		RGBaster.colors(img,
 			{exclude: ["rgb(255, 255, 255)", "rgb(0, 0, 0"],
 			success: (payload) ->
@@ -22,9 +23,9 @@ $ ->
 				 	color: "b"
 				 	hue: parseInt(colorSplit[3])
 				]
-				console.log("tempColors[1].hue: " + tempColors[1].hue)
-				console.log(colorSplit)
-				console.log(tempColors)
+				# console.log("tempColors[1].hue: " + tempColors[1].hue)
+				# console.log(colorSplit)
+				# console.log(tempColors)
 				tempColors.sort (a, b) ->
 					if (a.hue < b.hue)
    						return -1
@@ -39,25 +40,26 @@ $ ->
 				distribute(i) for i in [0...3] if overflow > 0
 				console.log(tempColors)
 				combinedColor = tempColors[0].hue + tempColors[1].hue + tempColors[2].hue
-				tempTextColor = (765 - (combinedColor * 4)) 
-				if tempTextColor > 0
-					tempTextColor = tempTextColor / 3
+				tempTextColor = (765 - combinedColor) 
+				if tempTextColor > 765 / 2
+					tempTextColor = 230
 				else 
-					tempTextColor = (765 + (tempTextColor * 4)) / 3
-				r = tempColors.findIndex (element) ->
-					return element.color == "r" 
-				g = tempColors.findIndex (element) ->
-					return element.color == "g" 
-				b = tempColors.findIndex (element) ->
-					return element.color == "b" 
-				console.log("r: " + r)
-				console.log("g: " + g)
-				console.log("b: " + b)
+					tempTextColor = 10
+				# r = tempColors.findIndex (element) ->
+				# 	return element.color == "r" 
+				# g = tempColors.findIndex (element) ->
+				# 	return element.color == "g" 
+				# b = tempColors.findIndex (element) ->
+				# 	return element.color == "b" 
+				# console.log("r: " + r)
+				# console.log("g: " + g)
+				# console.log("b: " + b)
 				textColor = "rgb(" + tempTextColor + "," + tempTextColor + "," + tempTextColor + ")"
-				color = "rgb(" + tempColors[r].hue + "," + tempColors[g].hue + "," + tempColors[b].hue + ")"
-				console.log(color)
+				# color = "rgb(" + tempColors[r].hue + "," + tempColors[g].hue + "," + tempColors[b].hue + ")"
 				div.find("p, h2, h3, i").css("color", textColor)
-				div.css("background", color)})
+				# div.css("background", color)
+				})
+				###
 
 	$(".text-size-wrapper h2, .album-text-container p").each -> 
 		fontSize = 20
@@ -88,17 +90,15 @@ $ ->
 		$(this).css("z-index", "0")
 
 	$(".arrow-container").click ->
-		#console.log("clicked!")
 		title = $(this).parent().attr("id")
-		#console.log(title)
 		sibling = $(this).parent().siblings("#" + title + "-info").find(".info-wrapper")
 		parent = $(this).parent()
 		arrow = $(this).find(".album-arrow")
-		offset = parent.offset().top + parent.parent().scrollTop() + 220
+		offset = parent.offset().top + parent.parent().scrollTop() + 170
 		if !sibling.hasClass("is-open")
 
 			$(".album-arrow").css("transform", "rotate(0)")
-			$(".album-container").css("height", "320")
+			$(".album-container").css("height", "327")
 			$(".info-wrapper").css("display", "none")
 			$(".info-container").css("display", "none")
 			$(".info-wrapper").css("height", "0")
@@ -113,11 +113,11 @@ $ ->
 			$(".info-wrapper").attr("class", "info-wrapper")
 			sibling.addClass("is-open")
 			img = sibling.find("img").attr("src")
-			console.log(img)
+			sibling.find(".info-background img").css("display", "block")
 
 		else
 			arrow.css("transform", "rotate(0)")
-			parent.css("height", "320")
+			parent.css("height", "327")
 			sibling.css("display", "none")
 			sibling.parent().toggle()
 			sibling.css("height", "0")
@@ -137,10 +137,10 @@ $ ->
 			arrow.css("transform", "rotate(0)")
 		return
 
-	$(".filter-btn").click ->
-		$("#filter-list li").removeClass("selected")
+	$(".sort-btn").click ->
+		$("#sort-list li").removeClass("selected")
 		$(this).addClass("selected")
-		$("#filter-list li").each -> 
+		$("#sort-list li").each -> 
 			if !$(this).hasClass("selected")
 				$(this).find(".ion-chevron-down").removeClass("rotated")
 		$(this).find(".ion-chevron-down").toggleClass("rotated")
@@ -202,3 +202,32 @@ $ ->
 		albumList.show("normal")
 		albumList.css("display", "flex")
 
+	$("#main-search").on("input", (e) ->
+		console.log("Hello world")
+		inputVal = $(this).val()
+		if $(this).data("lastval") isnt inputVal
+			$(this).data("lastval",inputVal)
+			console.log(inputVal)
+			$(".album-container").each ->
+				text = $(this).find("p,h2,h3")
+				albumContainer = $(this)
+				if inputVal isnt ""
+					bufferCheck = false
+					text.each -> 
+						if !checkMatch($(this).text(), inputVal) && !bufferCheck
+							albumContainer.css("width", "0")
+						else
+							albumContainer.css("width", "200px")
+							bufferCheck = true
+				else
+					albumContainer.css("width", "200px")
+			)
+
+	checkMatch = (value, condition) ->
+		console.log("value: " + value, "condition: " + condition)
+		if value == condition
+			console.log("checkmatch: true")
+			return true
+		else
+			console.log("checkmatch: false")
+			return false

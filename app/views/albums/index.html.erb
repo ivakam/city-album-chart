@@ -1,7 +1,10 @@
 <div id="wrapper">
 	<img class="bigimage" src="">
 	<div id="opaque"></div>
-  <a href=""><h1>City Pop Album Archive</h1></a>
+	<div id="search-title">
+  	<a href=""><h1>City Pop Album Archive</h1></a>
+  	<div id="input"><input type="text" id="main-search" name="search" placeholder=" Type to search..."><span class="ion-android-search"></span></div>
+	</div>
   <div id="main-container">
     <nav id="sidebar">
       <h2>Navigation & Filters</h2>
@@ -11,17 +14,20 @@
         	<div class="title-wrapper">
         		<a class="btn-title">Filters:</a>
         	</div>
-        	<!-- <div class="nav-list-container"> -->
-        		<ul id="filter-list">
-        			<li class="filter-btn"><a>Title</a><span class="ion-chevron-down"></span></li>
-        			<li class="filter-btn"><a>Artist</a><span class="ion-chevron-down"></span></li>
-        			<li class="filter-btn"><a>Year</a><span class="ion-chevron-down"></span></li>
-        			<li class="filter-btn"><a>Placeholder1</a><span class="ion-chevron-down"></span></li>
+        	<div class="nav-list-container">
+        		<ul id="sort-list">
+        			<li class="sort-btn"><a>Title</a><span class="ion-chevron-down"></span></li>
+        			<li class="sort-btn"><a>Artist</a><span class="ion-chevron-down"></span></li>
+        			<li class="sort-btn"><a>Year</a><span class="ion-chevron-down"></span></li>
+        			<li class="sort-btn"><a>Placeholder1</a><span class="ion-chevron-down"></span></li>
         		</ul>
-        		<div class="nav-btn" id="show-sort">
-        			<div class="title-wrapper" ><a class="btn-title">Show more</a></div>
-        		</div>
-        	<!-- </div> -->
+        		<ul id="filter-list">
+        			<li class="filter-btn"><a>
+        		</ul>
+        	</div>
+        	<div class="nav-btn" id="show-filter">
+        		<div class="title-wrapper" ><a class="btn-title">Show more</a></div>
+        	</div>
         </li>
         <li class="nav-btn"><div class="title-wrapper"><a class="btn-title">Browse</a></div></li>
         <li class="nav-btn"><div class="title-wrapper"><a class="btn-title">Random</a></div></li>
@@ -45,6 +51,7 @@
       	</li>
       	<li class="info-container offset" id="<%= index %>-info">
       	<div class="info-wrapper">
+      		<div class="info-background"><%= image_tag album.coverlink %></div>
       		<div class="info-text-container">
       			<div class="text-container">
       			<div class="title-container">

@@ -99,18 +99,6 @@ coverlink: "adventure.png"
 }
 )
 
-
-CreateAlbumWithTracks({
-title: "Adventure",
-romanization: "",
-romaji_artist: "Momoko Kikuchi",
-japanese_artist: "菊池桃子",
-year: "1986",
-description: "blah",
-coverlink: "adventure.png",
-}
-)
-
 CreateAlbumWithTracks({
 title: "Cologne",
 romanization: "",
