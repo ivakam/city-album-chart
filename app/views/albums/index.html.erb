@@ -31,17 +31,17 @@
  		<ul id="splash-container">
     	<% @albums.each.with_index do |album, index| %>
       	<li class="album-container" id="<%= index %>">
-        <div class="album-text-container">
-        	<div class="text-size-wrapper">
-          	<h2><%= album.title %></h2>
+        	<div class="album-text-container">
+        		<div class="text-size-wrapper">
+          		<h2><%= album.title %></h2>
+        		</div>
+          	<%= image_tag album.coverlink %>
+          	<div class="artist-year-container">
+          		<p class="artist"><%= album.romaji_artist %></p>
+          		<p class="year"><%= album.year %></p>
+        		</div>
         	</div>
-          <%= image_tag album.coverlink %>
-          <div class="artist-year-container">
-          	<p class="artist"><%= album.romaji_artist %></p>
-          	<p class="year"><%= album.year %></p>
-        	</div>
-        </div>
-        <div class="arrow-container"><span class="ion-chevron-down album-arrow"></span></div>
+        	<div class="arrow-container"><span class="ion-chevron-down album-arrow"></span></div>
       	</li>
       	<li class="info-container offset" id="<%= index %>-info">
       	<div class="info-wrapper">

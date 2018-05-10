@@ -7,13 +7,57 @@ $ ->
 	$(".info-wrapper").each ->
 		div = $(this)
 		img = div.find("img").attr("src")
-		RGBaster.colors(img, 
-			{exclude: ['rgb(255,255,255)'],
+		RGBaster.colors(img,
+			{exclude: ["rgb(255, 255, 255)", "rgb(0, 0, 0"],
 			success: (payload) ->
-				console.log(payload.dominant)
-				div.css("background", payload.dominant)
-				div.find("img").css("border", "2px #171717 solid")})
-
+				colorSplit = payload.secondary.split(/rgb\(|,|\)/)
+				console.log(parseInt(colorSplit[1]))
+				tempColors = [
+					color: "r"
+					hue: parseInt(colorSplit[1])
+				,
+				 	color: "g"
+				 	hue: parseInt(colorSplit[2])
+				,
+				 	color: "b"
+				 	hue: parseInt(colorSplit[3])
+				]
+				console.log("tempColors[1].hue: " + tempColors[1].hue)
+				console.log(colorSplit)
+				console.log(tempColors)
+				tempColors.sort (a, b) ->
+					if (a.hue < b.hue)
+   						return -1
+  					if (a.hue > b.hue)
+    					return 1
+  					return
+				overflow = (tempColors[0].hue + tempColors[1].hue + tempColors[2].hue) - 400
+				distribute = (i) -> 
+				  	overflowPortion = Math.min(tempColors[i].hue, Math.ceil(overflow/(3-i)))
+  					tempColors[i].hue -= overflowPortion
+  					overflow -= overflowPortion
+				distribute(i) for i in [0...3] if overflow > 0
+				console.log(tempColors)
+				combinedColor = tempColors[0].hue + tempColors[1].hue + tempColors[2].hue
+				tempTextColor = (765 - (combinedColor * 4)) 
+				if tempTextColor > 0
+					tempTextColor = tempTextColor / 3
+				else 
+					tempTextColor = (765 + (tempTextColor * 4)) / 3
+				r = tempColors.findIndex (element) ->
+					return element.color == "r" 
+				g = tempColors.findIndex (element) ->
+					return element.color == "g" 
+				b = tempColors.findIndex (element) ->
+					return element.color == "b" 
+				console.log("r: " + r)
+				console.log("g: " + g)
+				console.log("b: " + b)
+				textColor = "rgb(" + tempTextColor + "," + tempTextColor + "," + tempTextColor + ")"
+				color = "rgb(" + tempColors[r].hue + "," + tempColors[g].hue + "," + tempColors[b].hue + ")"
+				console.log(color)
+				div.find("p, h2, h3, i").css("color", textColor)
+				div.css("background", color)})
 
 	$(".text-size-wrapper h2, .album-text-container p").each -> 
 		fontSize = 20
@@ -44,9 +88,9 @@ $ ->
 		$(this).css("z-index", "0")
 
 	$(".arrow-container").click ->
-		console.log("clicked!")
+		#console.log("clicked!")
 		title = $(this).parent().attr("id")
-		console.log(title)
+		#console.log(title)
 		sibling = $(this).parent().siblings("#" + title + "-info").find(".info-wrapper")
 		parent = $(this).parent()
 		arrow = $(this).find(".album-arrow")
@@ -68,6 +112,9 @@ $ ->
 			sibling.parent().addClass("offset")
 			$(".info-wrapper").attr("class", "info-wrapper")
 			sibling.addClass("is-open")
+			img = sibling.find("img").attr("src")
+			console.log(img)
+
 		else
 			arrow.css("transform", "rotate(0)")
 			parent.css("height", "320")
