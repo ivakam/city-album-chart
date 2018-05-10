@@ -219,34 +219,50 @@ $ ->
 
 	$("#main-search").on("input", (e) ->
 		#console.log("Hello world")
+		$(".album-arrow").css("transform", "rotate(0)")
+		$(".album-container").css("height", "327px")
+		$(".info-wrapper").css("display", "none")
+		$(".info-container").css("display", "none")
+		$(".info-wrapper").css("height", "0")
 		inputVal = $(this).val()
+		albumContainer = $(".album-container")
 		if $(this).data("lastval") isnt inputVal
 			$(this).data("lastval",inputVal)
 			#console.log(inputVal)
-			$(".album-container").each ->
-				text = $(this).find("p,h2,h3")
-				albumContainer = $(this)
-				if inputVal isnt ""
+			container = $(".info-container, .album-container")
+			
+			if inputVal isnt ""
+				container.each -> 
 					bufferCheck = false
-					text.each -> 
-						if !checkMatch($(this).text(), inputVal) && !bufferCheck
-							albumContainer.css("width", "0")
-							albumContainer.css("margin", "0")
-						else
-							albumContainer.css("width", "200px")
-							albumContainer.css("margin", "8px")
-							bufferCheck = true
-				else
-					albumContainer.css("width", "200px")
-					albumContainer.css("margin", "8px")
+					text = $(this).find("p,h2")
+					#console.log(albumContainer)
+					albumContainer = $(this)
+					if !albumContainer.hasClass("album-container")
+						id = $(this).attr("id").replace("-info", "")
+						albumContainer = $("#" + id)
+					#console.log(albumContainer)
+					text.each ->
+						if !$(this).hasClass("label")
+							test = checkMatch($(this).text(), inputVal)
+							if !bufferCheck
+								if !test
+									albumContainer.css("width", "0")
+									albumContainer.css("margin", "0")
+							if test
+								#console.log("match!")
+								albumContainer.css("width", "200px")
+								albumContainer.css("margin", "8px")
+								bufferCheck = true
+			else
+				albumContainer.css("width", "200px")
+				albumContainer.css("margin", "8px")
 			)
 
 	checkMatch = (value, condition) ->
-		#console.log("value: " + compValue, "condition: " + compCondition)
-		console.log(condition)
+		#console.log(condition)
 		if $("#regex").hasClass("brightness")
 			compCondition = new RegExp(condition)
-			console.log(compCondition)
+			#console.log(compCondition)
 			if value.match(compCondition) != null
 			#console.log("checkmatch: true")
 				return true
@@ -254,11 +270,15 @@ $ ->
 				#console.log("checkmatch: false")
 				return false
 		else
-			compValue = value.toUpperCase()
-			compCondition = condition.toUpperCase()
+			compValue = escapeRegExp(value).toUpperCase()
+			compCondition = escapeRegExp(condition).toUpperCase()
+			#console.log("value: " + compValue, "condition: " + compCondition)
 			if compValue.match(compCondition) != null
-			#console.log("checkmatch: true")
+				#console.log("checkmatch: true")
 				return true
 			else
 				#console.log("checkmatch: false")
 				return false
+
+	escapeRegExp = (string) ->
+  		return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')

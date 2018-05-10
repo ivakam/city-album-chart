@@ -14,7 +14,8 @@ romaji_artist: "Tatsuro Yamashita",
 japanese_artist: "山下達郎",
 year: "1984",
 description: "Big Wave is Tatsuro Yamashita's soundtrack to the 1984 movie of the same name.",
-coverlink: "bigwave.jpg"
+coverlink: "bigwave.jpg",
+flavor: "Dreamy/Ballad"
 },
 [{
 title: "The Theme from Big Wave",
@@ -84,7 +85,8 @@ romaji_artist: "Masayoshi Takanaka",
 japanese_artist: "虹伝説",
 year: "1976",
 description: "blah",
-coverlink: "seychelles.jpg"
+coverlink: "seychelles.jpg",
+flavor: "Funk/Fusion"
 }
 )
 
@@ -95,7 +97,8 @@ romaji_artist: "Momoko Kikuchi",
 japanese_artist: "菊池桃子",
 year: "1986",
 description: "blah",
-coverlink: "adventure.png"
+coverlink: "adventure.png",
+flavor: "Idol"
 }
 )
 
@@ -106,7 +109,8 @@ romaji_artist: "Kaoru Akimoto",
 japanese_artist: "秋元薫",
 year: "1986",
 description: "blah",
-coverlink: "cologne.jpg"
+coverlink: "cologne.jpg",
+flavor: "80's ballad"
 }
 )	
 
@@ -117,7 +121,8 @@ romaji_artist: "EPO",
 japanese_artist: "",
 year: "1983",
 description: "blah",
-coverlink: "EPO.jpg"
+coverlink: "EPO.jpg",
+flavor: "Funk"
 }
 )
 
@@ -128,7 +133,8 @@ romaji_artist: "Mariya Takeuchi",
 japanese_artist: "竹内まりや",
 year: "1980",
 description: "blah",
-coverlink: "missm.jpg"
+coverlink: "missm.jpg",
+flavor: "Soul/Ballad"
 }
 )	
 CreateAlbumWithTracks({
@@ -138,7 +144,8 @@ romaji_artist: "Tatsuro Yamashita",
 japanese_artist: "山下達郎",
 year: "1982",
 description: "",
-coverlink: "foryou.jpg"
+coverlink: "foryou.jpg",
+flavor: "Funk"
 }
 )
 
@@ -149,7 +156,8 @@ romaji_artist: "Tatsuro Yamashita",
 japanese_artist: "山下達郎",
 year: "1983",
 description: "",
-coverlink: "melodies.jpg"
+coverlink: "melodies.jpg",
+flavor: "Funk/Ballad"
 }
 )
 
@@ -160,7 +168,8 @@ romaji_artist: "Tatsuro Yamashita",
 japanese_artist: "山下達郎",
 year: "1986",
 description: "",
-coverlink: "pocketmusic.jpg"
+coverlink: "pocketmusic.jpg",
+flavor: ""
 }
 )
 
@@ -171,7 +180,8 @@ romaji_artist: "Tatsuro Yamashita",
 japanese_artist: "山下達郎",
 year: "1991",
 description: "",
-coverlink: "artisan.jpg"
+coverlink: "artisan.jpg",
+flavor: ""
 }
 )
 
@@ -182,7 +192,8 @@ romaji_artist: "Tatsuro Yamashita",
 japanese_artist: "山下達郎",
 year: "2016",
 description: "",
-coverlink: "cheerupthesummer.jpg"
+coverlink: "cheerupthesummer.jpg",
+flavor: ""
 }
 )
 CreateAlbumWithTracks({
@@ -202,7 +213,8 @@ romaji_artist: "Tatsuro Yamashita",
 japanese_artist: "山下達郎",
 year: "1998",
 description: "",
-coverlink: "cozy.jpg"
+coverlink: "cozy.jpg",
+flavor: ""
 }
 )
 
@@ -213,7 +225,8 @@ romaji_artist: "Tatsuro Yamashita",
 year: "2017",
 japanese_artist: "山下達郎",
 description: "",
-coverlink: "reborn.jpg"
+coverlink: "reborn.jpg",
+flavor: ""
 }
 )
 
@@ -224,7 +237,8 @@ romaji_artist: "Tatsuro Yamashita",
 japanese_artist: "山下達郎",
 year: "1993",
 description: "Tatsuro Christmas album.",
-coverlink: "seasonsgreetings.jpg"
+coverlink: "seasonsgreetings.jpg",
+flavor: "Christmas"
 }
 )
 
@@ -235,7 +249,8 @@ romaji_artist: "Tatsuro Yamashita",
 japanese_artist: "山下達郎",
 year: "1995",
 description: "",
-coverlink: "treasures.jpg"
+coverlink: "treasures.jpg",
+flavor: ""
 }
 )
 
@@ -246,7 +261,8 @@ romaji_artist: "Tatsuro Yamashita",
 japanese_artist: "山下達郎",
 year: "1988",
 description: "",
-coverlink: "僕の中の少年.jpg"
+coverlink: "僕の中の少年.jpg",
+flavor: ""
 }
 )
 
@@ -257,7 +273,8 @@ romaji_artist: "Tatsuro Yamashita",
 japanese_artist: "山下達郎",
 year: "2013",
 description: "",
-coverlink: "光と君へのレクイエム.jpg"
+coverlink: "光と君へのレクイエム.jpg",
+flavor: ""
 }
 )
 CreateAlbumWithTracks({
@@ -267,7 +284,8 @@ romaji_artist: "Yumi Matsutoya",
 japanese_artist: "松任谷由実",
 year: "1980",
 description: "",
-coverlink: "surfsnow.jpg"
+coverlink: "surfsnow.jpg",
+flavor: "Ballad/Soul"
 }
 )
 
@@ -278,7 +296,8 @@ romaji_artist: "Tatsuro Yamashita",
 japanese_artist: "山下達郎",
 year: "1986",
 description: "Tatsuro acapella album.",
-coverlink: "onthestreetcorner1.jpg"
+coverlink: "onthestreetcorner1.jpg",
+flavor: "Acapella"
 }
 )
 
@@ -289,7 +308,8 @@ romaji_artist: "Tatsuro Yamashita",
 japanese_artist: "山下達郎",
 year: "1986",
 description: "Tatsuro acapella album.",
-coverlink: "onthestreetcorner2.jpg"
+coverlink: "onthestreetcorner2.jpg",
+flavor: "Acapella"
 }
 )
 
@@ -300,7 +320,8 @@ romaji_artist: "Tatsuro Yamashita",
 japanese_artist: "山下達郎",
 year: "1999",
 description: "Tatsuro acapella album.",
-coverlink: "onthestreetcorner3.jpg"
+coverlink: "onthestreetcorner3.jpg",
+flavor: "Acapella"
 }
 )
 CreateAlbumWithTracks({
@@ -310,7 +331,8 @@ romaji_artist: "Various Artists",
 japanese_artist: "",
 year: "1990",
 description: "English covers of Tatsuro songs.",
-coverlink: "tatsurosongsfromla.jpg"
+coverlink: "tatsurosongsfromla.jpg",
+flavor: "Cover/English"
 }
 )
 
@@ -321,7 +343,8 @@ romaji_artist: "Various Artists",
 japanese_artist: "",
 year: "1991",
 description: "English covers of Tatsuro songs.",
-coverlink: "tatsurosongsfromla2.jpg"
+coverlink: "tatsurosongsfromla2.jpg",
+flavor: "Cover/English"
 }
 )
 
@@ -332,6 +355,7 @@ romaji_artist: "L.A. Unit",
 japanese_artist: "",
 year: "1990",
 description: "English covers of Tatsuro songs.",
-coverlink: "jody.jpg"
+coverlink: "jody.jpg",
+flavor: ""
 }
 )

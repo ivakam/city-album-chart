@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_09_150709) do
+ActiveRecord::Schema.define(version: 2018_05_10_193252) do
 
   create_table "albums", force: :cascade do |t|
     t.string "title"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 2018_05_09_150709) do
     t.string "coverlink"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "flavor"
   end
 
   create_table "tracks", force: :cascade do |t|

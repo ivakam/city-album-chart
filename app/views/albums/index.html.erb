@@ -22,7 +22,7 @@
         			<li class="sort-btn"><a>Title</a><span class="ion-chevron-down"></span></li>
         			<li class="sort-btn"><a>Artist</a><span class="ion-chevron-down"></span></li>
         			<li class="sort-btn"><a>Year</a><span class="ion-chevron-down"></span></li>
-        			<li class="sort-btn"><a>Placeholder1</a><span class="ion-chevron-down"></span></li>
+        			<li class="sort-btn"><a>Flavor</a><span class="ion-chevron-down"></span></li>
         		</ul>
         		<ul id="filter-list">
         			<li class="filter-btn"><a>
@@ -64,11 +64,15 @@
          		<div class="artist-container">
           		<p class="label">Artist:</p>
         			<p><%= album.romaji_artist %></p>
-        			<p class="label">(<%= album.japanese_artist %>)</p>
+        			<p class="label"><%= album.japanese_artist %></p>
         		</div>
         		<div class="release-date">
         			<p class="label">Release date:</p>
         			<p><%= album.year %></p>
+        		</div>
+        		<div class="flavor">
+        			<p class="label">Flavor:</p>
+        			<p><%= album.flavor %></p>
         		</div>
         		<div class="description-container">
         			<p class="label">Description:</p>
