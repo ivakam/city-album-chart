@@ -295,10 +295,10 @@ $(document).on "turbolinks:load", ->
 		if sibling isnt undefined && !sibling.hasClass("is-open")
 			timeout = 0
 			timeout = 300 if albumOpen 
-			console.log(timeout)
+			#console.log(timeout)
 			setTimeout( ->
 				offset = parent.offset().top + parent.parent().scrollTop() + 170
-				console.log("Album closed")
+				#console.log("Album closed")
 				arrow.css("transform", "rotate(180deg)")
 				parent.css("height", "800px")
 				sibling.css("display", "flex")
