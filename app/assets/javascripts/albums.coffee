@@ -1,4 +1,5 @@
-$ ->
+$(document).on "turbolinks:load", ->
+
 	console.log("albums.coffee is running.")
 	# $("#splash-container").show("normal")
 	# $("#splash-container").css("display", "flex")
@@ -63,6 +64,42 @@ $ ->
 				})
 				###
 
+	$("#random").click (event) ->
+		ids = []
+		$(".album-container").each ->
+			ids.push($(this).attr("id"))
+		random = Math.floor(Math.random() * ids.length)
+		id = ids[random]
+		console.log(id)
+		container = $("#" + id)
+		$('#splash-container').animate({
+		scrollTop: container.offset().top
+		}, 500)
+		title = id
+		sibling = container.siblings("#" + title + "-info").find(".info-wrapper")
+		parent = container
+		arrow = container.find(".album-arrow")
+		offset = parent.offset().top + parent.parent().scrollTop() + 170
+		if !sibling.hasClass("is-open")
+
+			$(".album-arrow").css("transform", "rotate(0)")
+			$(".album-container").css("height", albumHeight)
+			$(".info-wrapper").css("display", "none")
+			$(".info-container").css("display", "none")
+			$(".info-wrapper").css("height", "0")
+
+			arrow.css("transform", "rotate(180deg)")
+			parent.css("height", "800px")
+			sibling.css("display", "flex")
+			sibling.parent().css("display", "block")
+			sibling.css("height", "400px")
+			$(".offset").css("top", offset)
+			sibling.parent().addClass("offset")
+			$(".info-wrapper").attr("class", "info-wrapper")
+			sibling.addClass("is-open")
+			img = sibling.find("img").attr("src")
+			sibling.find(".info-background img").css("display", "block")
+
 	$(".text-size-wrapper h2, .album-text-container p").each -> 
 		fontSize = 20
 		padding = 0
@@ -100,7 +137,7 @@ $ ->
 		if !sibling.hasClass("is-open")
 
 			$(".album-arrow").css("transform", "rotate(0)")
-			$(".album-container").css("height", "327")
+			$(".album-container").css("height", albumHeight)
 			$(".info-wrapper").css("display", "none")
 			$(".info-container").css("display", "none")
 			$(".info-wrapper").css("height", "0")
@@ -119,7 +156,7 @@ $ ->
 
 		else
 			arrow.css("transform", "rotate(0)")
-			parent.css("height", "327px")
+			parent.css("height", albumHeight)
 			sibling.css("display", "none")
 			sibling.parent().toggle()
 			sibling.css("height", "0")
@@ -205,7 +242,7 @@ $ ->
 			when "Placeholder1"
 				break;
 		$(".album-arrow").css("transform", "rotate(0)")
-		$(".album-container").css("height", "327px")
+		$(".album-container").css("height", albumHeight)
 		$(".info-wrapper").css("display", "none")
 		$(".info-container").css("display", "none")
 		$(".info-wrapper").css("height", "0")
@@ -220,7 +257,7 @@ $ ->
 	$("#main-search").on("input", (e) ->
 		#console.log("Hello world")
 		$(".album-arrow").css("transform", "rotate(0)")
-		$(".album-container").css("height", "327px")
+		$(".album-container").css("height", albumHeight)
 		$(".info-wrapper").css("display", "none")
 		$(".info-container").css("display", "none")
 		$(".info-wrapper").css("height", "0")
