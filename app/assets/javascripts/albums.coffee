@@ -8,6 +8,7 @@ $(document).on "turbolinks:load", ->
 
 	albumContainerWidth = $(".text-size-wrapper").width()
 	albumHeight = "327px"
+	albumOpen = false
 
 	#Adjusts text size to make sure the titles fit within their containers
 
@@ -96,26 +97,7 @@ $(document).on "turbolinks:load", ->
 		sibling = container.siblings("#" + title + "-info").find(".info-wrapper")
 		parent = container
 		arrow = container.find(".album-arrow")
-		offset = parent.offset().top + parent.parent().scrollTop() + 170
-		if !sibling.hasClass("is-open")
-
-			$(".album-arrow").css("transform", "rotate(0)")
-			$(".album-container").css("height", albumHeight)
-			$(".info-wrapper").css("display", "none")
-			$(".info-container").css("display", "none")
-			$(".info-wrapper").css("height", "0")
-
-			arrow.css("transform", "rotate(180deg)")
-			parent.css("height", "800px")
-			sibling.css("display", "flex")
-			sibling.parent().css("display", "block")
-			sibling.css("height", "400px")
-			$(".offset").css("top", offset)
-			sibling.parent().addClass("offset")
-			$(".info-wrapper").attr("class", "info-wrapper")
-			sibling.addClass("is-open")
-			img = sibling.find("img").attr("src")
-			sibling.find(".info-background img").css("display", "block")
+		toggleAlbum(title, sibling, parent, arrow)
 		
 	#Handler for image click-zoom
 
@@ -149,35 +131,7 @@ $(document).on "turbolinks:load", ->
 		sibling = $(this).parent().siblings("#" + title + "-info").find(".info-wrapper")
 		parent = $(this).parent()
 		arrow = $(this).find(".album-arrow")
-		offset = parent.offset().top + parent.parent().scrollTop() + 170
-		if !sibling.hasClass("is-open")
-
-			$(".album-arrow").css("transform", "rotate(0)")
-			$(".album-container").css("height", albumHeight)
-			$(".info-wrapper").css("display", "none")
-			$(".info-container").css("display", "none")
-			$(".info-wrapper").css("height", "0")
-
-			arrow.css("transform", "rotate(180deg)")
-			parent.css("height", "800px")
-			sibling.css("display", "flex")
-			sibling.parent().css("display", "block")
-			sibling.css("height", "400px")
-			$(".offset").css("top", offset)
-			sibling.parent().addClass("offset")
-			$(".info-wrapper").attr("class", "info-wrapper")
-			sibling.addClass("is-open")
-			img = sibling.find("img").attr("src")
-			sibling.find(".info-background img").css("display", "block")
-
-		else
-			arrow.css("transform", "rotate(0)")
-			parent.css("height", albumHeight)
-			sibling.css("display", "none")
-			sibling.parent().toggle()
-			sibling.css("height", "0")
-			sibling.removeClass("is-open")
-		return
+		toggleAlbum(title, sibling, parent, arrow)
 
 	#Handler for clicking the 'sort' buttons
 
@@ -212,11 +166,7 @@ $(document).on "turbolinks:load", ->
 
 	$("#main-search").on("input", (e) ->
 		#console.log("Hello world")
-		$(".album-arrow").css("transform", "rotate(0)")
-		$(".album-container").css("height", albumHeight)
-		$(".info-wrapper").css("display", "none")
-		$(".info-container").css("display", "none")
-		$(".info-wrapper").css("height", "0")
+		toggleAlbum(sibling: undefined)
 		inputVal = $(this).val()
 		albumContainer = $(".album-container")
 		if $(this).data("lastval") isnt inputVal
@@ -329,10 +279,41 @@ $(document).on "turbolinks:load", ->
 				break;
 			when "Placeholder1"
 				break;
+		toggleAlbum(sibling: undefined)
+		albumOpen = false
+		albumList.show("normal")
+		albumList.css("display", "flex")
+
+	#Helper method for opening an info container. Call it as 'sibling: undefined' to reset all info containers.
+
+	toggleAlbum = (title, sibling, parent, arrow) ->
 		$(".album-arrow").css("transform", "rotate(0)")
 		$(".album-container").css("height", albumHeight)
 		$(".info-wrapper").css("display", "none")
 		$(".info-container").css("display", "none")
 		$(".info-wrapper").css("height", "0")
-		albumList.show("normal")
-		albumList.css("display", "flex")
+		if sibling isnt undefined && !sibling.hasClass("is-open")
+			timeout = 0
+			timeout = 300 if albumOpen 
+			console.log(timeout)
+			setTimeout( ->
+				offset = parent.offset().top + parent.parent().scrollTop() + 170
+				console.log("Album closed")
+				arrow.css("transform", "rotate(180deg)")
+				parent.css("height", "800px")
+				sibling.css("display", "flex")
+				sibling.parent().css("display", "block")
+				sibling.css("height", "400px")
+				$(".offset").css("top", offset)
+				sibling.parent().addClass("offset")
+				$(".info-wrapper").attr("class", "info-wrapper")
+				sibling.addClass("is-open")
+				img = sibling.find("img").attr("src")
+				sibling.find(".info-background img").css("display", "block")
+				albumOpen = true
+			,
+			timeout)
+		else 
+			albumOpen = false
+			$(".info-wrapper").removeClass("is-open")
+
