@@ -32,7 +32,8 @@
     </nav>
  		<ul id="splash-container">
     	<% @albums.each.with_index do |album, index| %>
-      	<li class="album-container" id="<%= index %>">
+    	<li>
+      	<div class="album-container" id="<%= index %>">
         	<div class="album-text-container">
         		<div class="text-size-wrapper">
           		<h2><%= album.title %></h2>
@@ -44,8 +45,8 @@
         		</div>
         	</div>
         	<div class="arrow-container"><span class="ion-chevron-down album-arrow"></span></div>
-      	</li>
-      	<li class="info-container offset" id="<%= index %>-info">
+      	</div>
+      	<div class="info-container offset" id="<%= index %>-info">
       	<div class="info-wrapper">
       		<div class="info-background"><%= image_tag album.coverlink %></div>
       		<div class="info-text-container">
@@ -88,7 +89,8 @@
       	</div>
       	<%= image_tag album.coverlink %>
         </div>
-      	</li>
+      	</div>
+      </li>
     	<% end %>
   	</ul>
 	</div>

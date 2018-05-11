@@ -9,6 +9,7 @@ $(document).on "turbolinks:load", ->
 	albumContainerWidth = $(".text-size-wrapper").width()
 	albumHeight = "327px"
 	albumOpen = false
+	blackList = []
 
 	#Adjusts text size to make sure the titles fit within their containers
 
@@ -167,63 +168,72 @@ $(document).on "turbolinks:load", ->
 	$("#main-search").on("input", (e) ->
 		#console.log("Hello world")
 		toggleAlbum(sibling: undefined)
-		inputVal = $(this).val()
+		rawInput = $(this).val()
+		inputValues = rawInput.split(/,/)
+		inputValues[i] = inputValues[i].trim() for i of inputValues
+		#console.log(inputValues)
 		albumContainer = $(".album-container")
-		if $(this).data("lastval") isnt inputVal
-			$(this).data("lastval",inputVal)
+		if $(this).data("lastval") isnt rawInput
+			$(this).data("lastval", rawInput)
 			#console.log(inputVal)
-			container = $(".info-container, .album-container")
-			
-			if inputVal isnt ""
+			container = $("#splash-container > li")
+			if rawInput isnt ""
 				container.each -> 
-					bufferCheck = false
+					blackList = []
+					conditionCount = []
+					conditionCount.push(false) for val in inputValues
 					text = $(this).find("p,h2")
-					#console.log(albumContainer)
-					albumContainer = $(this)
-					if !albumContainer.hasClass("album-container")
-						id = $(this).attr("id").replace("-info", "")
-						albumContainer = $("#" + id)
-					#console.log(albumContainer)
 					text.each ->
-						if !$(this).hasClass("label")
-							test = checkMatch($(this).text(), inputVal)
-							if !bufferCheck
-								if !test
-									albumContainer.css("width", "0")
-									albumContainer.css("margin", "0")
+						albumContainer = $(this).closest(".album-container")
+						if !albumContainer.hasClass("album-container")
+							id = $(this).closest(".info-container").attr("id").replace("-info", "")
+							albumContainer = $("#" + id)
+						textVal = $(this).text()
+						if !$(this).hasClass("label") && blackList.findIndex((element) -> element == textVal) == -1
+							test = checkMatch(textVal, inputValues)
 							if test
-								#console.log("match!")
-								albumContainer.css("width", "200px")
-								albumContainer.css("margin", "8px")
-								bufferCheck = true
+								conditionCount[conditionCount.findIndex((element) -> element == false)] = true
+								console.log(conditionCount)
+					console.log(blackList)
+					if conditionCount.findIndex((element) -> element == false) != -1
+						console.log("no match!")
+						albumContainer.css("width", "0")
+						albumContainer.css("margin", "0")
+					if conditionCount.findIndex((element) -> element == false) == -1
+						console.log("match!")
+						albumContainer.css("width", "200px")
+						albumContainer.css("margin", "8px")
 			else
 				albumContainer.css("width", "200px")
 				albumContainer.css("margin", "8px")
-			)
+	)
 
-	#Helper method for checking if 'condition' matches the selected text
+	#Helper method for checking if any 'conditions' match the selected text
 
-	checkMatch = (value, condition) ->
-		#console.log(condition)
-		if $("#regex").hasClass("brightness")
-			compCondition = new RegExp(condition)
-			#console.log(compCondition)
-			if value.match(compCondition) != null
-			#console.log("checkmatch: true")
-				return true
-			else
-				#console.log("checkmatch: false")
-				return false
-		else
-			compValue = escapeRegExp(value).toUpperCase()
-			compCondition = escapeRegExp(condition).toUpperCase()
-			#console.log("value: " + compValue, "condition: " + compCondition)
-			if compValue.match(compCondition) != null
-				#console.log("checkmatch: true")
-				return true
-			else
-				#console.log("checkmatch: false")
-				return false
+	checkMatch = (value, conditions) ->
+		#console.log("conditions",conditions)
+		matchBool = false
+		console.log("values:",value)
+		match = (value, condition) ->
+			if !matchBool
+				if $("#regex").hasClass("brightness")
+					compCondition = new RegExp(condition)
+					console.log(compCondition)
+					if value.match(compCondition) != null && blackList.find((element) -> element == compCondition) == undefined
+						console.log("checkmatch: true")
+						blackList.push(compCondition)
+						matchBool = true
+				else
+					compValue = escapeRegExp(value).toUpperCase()
+					compCondition = escapeRegExp(condition).toUpperCase()
+					#console.log("value: " + compValue, "condition: " + compCondition)
+					if compValue.match(compCondition) != null && blackList.find((element) -> element == compCondition) == undefined
+						console.log("checkmatch: true")
+						blackList.push(compCondition)
+						matchBool = true
+		match(value, cond) for cond in conditions
+		#console.log("matching...")
+		return matchBool
 
 	#Helper method for escaping regex input
 
