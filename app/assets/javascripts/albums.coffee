@@ -194,13 +194,13 @@ $(document).on "turbolinks:load", ->
 							if test
 								conditionCount[conditionCount.findIndex((element) -> element == false)] = true
 								console.log(conditionCount)
-					console.log(blackList)
+					#console.log(blackList)
 					if conditionCount.findIndex((element) -> element == false) != -1
-						console.log("no match!")
+						#console.log("no match!")
 						albumContainer.css("width", "0")
 						albumContainer.css("margin", "0")
 					if conditionCount.findIndex((element) -> element == false) == -1
-						console.log("match!")
+						#console.log("match!")
 						albumContainer.css("width", "200px")
 						albumContainer.css("margin", "8px")
 			else
@@ -212,23 +212,24 @@ $(document).on "turbolinks:load", ->
 
 	checkMatch = (value, conditions) ->
 		#console.log("conditions",conditions)
+		#console.log("values:",value)
 		matchBool = false
-		console.log("values:",value)
 		match = (value, condition) ->
 			if !matchBool
 				if $("#regex").hasClass("brightness")
 					compCondition = new RegExp(condition)
-					console.log(compCondition)
-					if value.match(compCondition) != null && blackList.find((element) -> element == compCondition) == undefined
-						console.log("checkmatch: true")
-						blackList.push(compCondition)
+					#console.log(compCondition)
+					#console.log("blacklist check:",blackList.find((element) -> element == compCondition.source))
+					if compCondition.test(value) && blackList.find((element) -> element == compCondition.source) == undefined
+						#console.log("checkmatch: true")
+						blackList.push(compCondition.source)
 						matchBool = true
 				else
 					compValue = escapeRegExp(value).toUpperCase()
 					compCondition = escapeRegExp(condition).toUpperCase()
 					#console.log("value: " + compValue, "condition: " + compCondition)
 					if compValue.match(compCondition) != null && blackList.find((element) -> element == compCondition) == undefined
-						console.log("checkmatch: true")
+						#console.log("checkmatch: true")
 						blackList.push(compCondition)
 						matchBool = true
 		match(value, cond) for cond in conditions
