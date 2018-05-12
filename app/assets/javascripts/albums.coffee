@@ -10,6 +10,7 @@ $(document).on "turbolinks:load", ->
 	albumHeight = "327px"
 	albumOpen = false
 	blackList = []
+	delayTimer = null
 
 	#Adjusts text size to make sure the titles fit within their containers
 
@@ -107,15 +108,21 @@ $(document).on "turbolinks:load", ->
 	#Search listener
 
 	$("#main-search").on("input", (e) ->
-		#console.log("Hello world")
+		clearTimeout(delayTimer)
+		delayTimer = setTimeout( ->
+			search(e.target)
+		, 120)
+	)
+
+	search = (input) -> 
 		toggleAlbum(sibling: undefined)
-		rawInput = $(this).val()
+		rawInput = $(input).val()
 		inputValues = rawInput.split(/,/)
 		inputValues[i] = inputValues[i].trim() for i of inputValues
 		#console.log(inputValues)
 		albumContainer = $(".album-container")
-		if $(this).data("lastval") isnt rawInput
-			$(this).data("lastval", rawInput)
+		if $(input).data("lastval") isnt rawInput
+			$(input).data("lastval", rawInput)
 			#console.log(inputVal)
 			container = $("#splash-container > li")
 			if rawInput isnt ""
@@ -147,7 +154,7 @@ $(document).on "turbolinks:load", ->
 			else
 				albumContainer.css("width", "200px")
 				albumContainer.css("margin", "8px")
-	)
+
 
 	#Helper method for checking if any 'conditions' match the selected text
 
