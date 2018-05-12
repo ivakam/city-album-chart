@@ -1,0 +1,74 @@
+$album-bg-color: #171717;
+$body-bg-color: #1b1b1b;
+
+#bg-container {
+	overflow: hidden;
+	width: 100%;
+	height: 1150px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	img {
+	position: absolute;
+	top: -100px;
+	left: 0;
+	width: 100%;
+	filter: blur(28px);
+	z-index: -1;
+	}
+	img:after {
+		content: "";
+		display: block;
+		padding-bottom: 100%;
+	}
+}
+
+#input {
+	height: 30px
+}
+
+#wrapper {
+	overflow: hidden;
+}
+
+#search-title {
+	min-width: 100%;
+	background: $body-bg-color;
+}
+
+#sidebar {
+	height: 100% !important;
+}
+
+#about-container {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	position: relative;
+	background: $album-bg-color;
+	opacity: 0.7;
+	h2 {
+		color: white;
+		text-decoration: underline;
+	}
+}
+
+#about-text-container {
+	padding-bottom: 40px;
+	opacity: 1;
+	p,b {
+		color: white;
+		opacity: 1;
+	}
+	p {
+		font-size: 15px;
+	}
+	b {
+		font-size: 17px;
+	}
+	#purpose {
+		font-size: 17px;
+	}
+	width: 50%;
+}
