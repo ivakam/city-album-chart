@@ -20,6 +20,8 @@ $(document).on "turbolinks:load", ->
 			$(this).css("font-size", fontSize -= 0.5)
 			$(this).css("padding-top", padding += 0.5)
 
+	$("#album-total-count").text($("#splash-container").children().length)
+
 	#Handler for 'random' button. Picks an album-container, scrolls to it and then opens it
 
 	$("#random").click (event) ->

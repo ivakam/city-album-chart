@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_10_193252) do
+ActiveRecord::Schema.define(version: 2018_05_12_213002) do
 
   create_table "albums", force: :cascade do |t|
     t.string "title"
@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 2018_05_10_193252) do
     t.string "japanese_artist"
     t.string "year"
     t.string "description"
-    t.string "coverlink"
+    t.string "coverlink", default: "missingcover.jpg"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "flavor"
