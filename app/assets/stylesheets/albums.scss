@@ -396,6 +396,7 @@ body {
 			max-width: 10000px;
 			width: 100%;
 			filter: blur(25px);
+			opacity: 0.6;
 		}
 	}
 	.label {
@@ -434,15 +435,14 @@ body {
 		margin-top: 15px;
 	}
 	.tracklist-container {
-		width: 220px;
-		height: 100%;
-		margin-right: 40px;
+		margin-right: 20px;
 		display: flex;
-		flex-direction: column;
+		flex-flow: column wrap;
 		justify-content: space-between;
 		li {
 			display: flex;
 			justify-content: space-between;
+			margin-right: 15px;
 			div {
 				display: flex;
 			}
@@ -452,6 +452,9 @@ body {
 		}
 		p, i {
 			font-size: 14px;
+		}
+		.duration {
+			padding-left: 20px;
 		}
 	}
 }
@@ -487,7 +490,7 @@ ul {
 .enlargened {
 	z-index: 5;
 	position: fixed;
-	max-width: 90vw;
+	max-width: 90vh;
 }
 
 .gray {

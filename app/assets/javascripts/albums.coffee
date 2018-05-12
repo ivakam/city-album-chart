@@ -20,67 +20,6 @@ $(document).on "turbolinks:load", ->
 			$(this).css("font-size", fontSize -= 0.5)
 			$(this).css("padding-top", padding += 0.5)
 
-	#Adjust text color of info-container based on background color
-
-	$(".info-wrapper").each ->
-		div = $(this)
-		img = div.find(".info-background img").attr("src")
-		
-		#TURN THIS ON IN PRODUCTION
-		###
-		RGBaster.colors(img,
-			{exclude: ["rgb(255, 255, 255)", "rgb(0, 0, 0"],
-			success: (payload) ->
-				colorSplit = payload.secondary.split(/rgb\(|,|\)/)
-				console.log(parseInt(colorSplit[1]))
-				tempColors = [
-					color: "r"
-					hue: parseInt(colorSplit[1])
-				,
-				 	color: "g"
-				 	hue: parseInt(colorSplit[2])
-				,
-				 	color: "b"
-				 	hue: parseInt(colorSplit[3])
-				]
-				# console.log("tempColors[1].hue: " + tempColors[1].hue)
-				# console.log(colorSplit)
-				# console.log(tempColors)
-				tempColors.sort (a, b) ->
-					if (a.hue < b.hue)
-   						return -1
-  					if (a.hue > b.hue)
-    					return 1
-  					return
-				overflow = (tempColors[0].hue + tempColors[1].hue + tempColors[2].hue) - 400
-				distribute = (i) -> 
-				  	overflowPortion = Math.min(tempColors[i].hue, Math.ceil(overflow/(3-i)))
-  					tempColors[i].hue -= overflowPortion
-  					overflow -= overflowPortion
-				distribute(i) for i in [0...3] if overflow > 0
-				console.log(tempColors)
-				combinedColor = tempColors[0].hue + tempColors[1].hue + tempColors[2].hue
-				tempTextColor = (765 - combinedColor) 
-				if tempTextColor > 765 / 2
-					tempTextColor = 230
-				else 
-					tempTextColor = 10
-				# r = tempColors.findIndex (element) ->
-				# 	return element.color == "r" 
-				# g = tempColors.findIndex (element) ->
-				# 	return element.color == "g" 
-				# b = tempColors.findIndex (element) ->
-				# 	return element.color == "b" 
-				# console.log("r: " + r)
-				# console.log("g: " + g)
-				# console.log("b: " + b)
-				textColor = "rgb(" + tempTextColor + "," + tempTextColor + "," + tempTextColor + ")"
-				# color = "rgb(" + tempColors[r].hue + "," + tempColors[g].hue + "," + tempColors[b].hue + ")"
-				div.find("p, h2, h3, i").css("color", textColor)
-				# div.css("background", color)
-				})
-				###
-
 	#Handler for 'random' button. Picks an album-container, scrolls to it and then opens it
 
 	$("#random").click (event) ->
@@ -245,7 +184,7 @@ $(document).on "turbolinks:load", ->
 
 	albumSort = (string) ->
 		albumList = $("#splash-container")
-		albums = albumList.children(".album-container").get()
+		albums = albumList.children("li").get()
 		albumList.css("display", "none")
 		switch string
 			when "Title"
@@ -253,8 +192,8 @@ $(document).on "turbolinks:load", ->
 					albumList.attr("class", "title-sorted-down")
 				if albumList.hasClass("title-sorted-up") then albumList.attr("class", "title-sorted-down") else albumList.attr("class", "title-sorted-up")
 				albums.sort (a, b) -> 
-					compA = $(a).find("div h2").text().toUpperCase()
-					compB = $(b).find("div h2").text().toUpperCase()
+					compA = $(a).find(".text-size-wrapper h2").text().toUpperCase()
+					compB = $(b).find(".text-size-wrapper h2").text().toUpperCase()
 					if albumList.hasClass("title-sorted-up")
 						return (compA > compB) ? -1 : (compA < compB) ? 1 : 0
 					else
@@ -266,8 +205,8 @@ $(document).on "turbolinks:load", ->
 					albumList.attr("class", "artist-sorted-down")
 				if albumList.hasClass("artist-sorted-up") then albumList.attr("class", "artist-sorted-down") else albumList.attr("class", "artist-sorted-up")
 				albums.sort (a, b) ->
-					compA = $(a).find("div .artist-year-container .artist").text().toUpperCase()
-					compB = $(b).find("div .artist-year-container .artist").text().toUpperCase()
+					compA = $(a).find(".artist-year-container .artist").text().toUpperCase()
+					compB = $(b).find(".artist-year-container .artist").text().toUpperCase()
 					#console.log(compA + " and " + compB)
 					if albumList.hasClass("artist-sorted-up")
 						return (compA > compB) ? -1 : (compA < compB) ? 1 : 0
@@ -280,20 +219,33 @@ $(document).on "turbolinks:load", ->
 					albumList.attr("class", "year-sorted-down")
 				if albumList.hasClass("year-sorted-up") then albumList.attr("class", "year-sorted-down") else albumList.attr("class", "year-sorted-up")
 				albums.sort (a, b) -> 
-					compA = Number($(a).find("div .artist-year-container .year").text())
-					compB = Number($(b).find("div .artist-year-container .year").text())
+					compA = Number($(a).find(".artist-year-container .year").text())
+					compB = Number($(b).find(".artist-year-container .year").text())
 					if albumList.hasClass("year-sorted-up")
 						return (compA > compB) ? -1 : (compA < compB) ? 1 : 0
 					else
 						return (compA < compB) ? -1 : (compA > compB) ? 1 : 0						
 				$.each(albums, e = (idx, itm) -> albumList.append(itm))
 				break;
-			when "Placeholder1"
+			when "Flavor"
+				if !albumList.hasClass("flavor-sorted-up") && !albumList.hasClass("flavor-sorted-down")
+					albumList.attr("class", "flavor-sorted-down")
+				if albumList.hasClass("flavor-sorted-up") then albumList.attr("class", "flavor-sorted-down") else albumList.attr("class", "flavor-sorted-up")
+				albums.sort (a, b) ->
+					infoA = $(a).children(".info-container")
+					infoB = $(b).children(".info-container")
+					compA = $(infoA).find(".flavor-value").text().toUpperCase()
+					compB = $(infoB).find(".flavor-value").text().toUpperCase()
+					#console.log(compA + " and " + compB)
+					if albumList.hasClass("flavor-sorted-up")
+						return (compA > compB) ? -1 : (compA < compB) ? 1 : 0
+					else
+						return (compA < compB) ? -1 : (compA > compB) ? 1 : 0						
+				$.each(albums, e = (idx, itm) -> albumList.append(itm))
 				break;
-		toggleAlbum(sibling: undefined)
-		albumOpen = false
 		albumList.show("normal")
 		albumList.css("display", "flex")
+		toggleAlbum(sibling: undefined)
 
 	#Helper method for opening an info container. Call it as 'sibling: undefined' to reset all info containers.
 
@@ -303,6 +255,7 @@ $(document).on "turbolinks:load", ->
 		$(".info-wrapper").css("display", "none")
 		$(".info-container").css("display", "none")
 		$(".info-wrapper").css("height", "0")
+		console.log(sibling)
 		if sibling isnt undefined && !sibling.hasClass("is-open")
 			timeout = 0
 			timeout = 300 if albumOpen 
@@ -325,6 +278,7 @@ $(document).on "turbolinks:load", ->
 			,
 			timeout)
 		else 
+			console.log("closed")
 			albumOpen = false
 			$(".info-wrapper").removeClass("is-open")
 
