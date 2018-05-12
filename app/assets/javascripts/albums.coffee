@@ -92,7 +92,7 @@ $(document).on "turbolinks:load", ->
 		console.log(id)
 		container = $("#" + id)
 		$('#splash-container').animate({
-		scrollTop: container.offset().top
+		scrollTop: container.offset().top + 100
 		}, 500)
 		title = id
 		sibling = container.siblings("#" + title + "-info").find(".info-wrapper")
@@ -308,7 +308,7 @@ $(document).on "turbolinks:load", ->
 			timeout = 300 if albumOpen 
 			#console.log(timeout)
 			setTimeout( ->
-				offset = parent.offset().top + parent.parent().scrollTop() + 170
+				offset = parent.parent().offset().top + parent.parent().parent().scrollTop() + 170
 				#console.log("Album closed")
 				arrow.css("transform", "rotate(180deg)")
 				parent.css("height", "800px")
