@@ -4,15 +4,15 @@ $body-bg-color: #1b1b1b;
 #bg-container {
 	overflow: hidden;
 	width: 100%;
-	height: 1150px;
+	height: 100%;
 	position: absolute;
 	top: 0;
 	left: 0;
 	img {
 	position: absolute;
-	top: -100px;
+	top: 0;
 	left: 0;
-	width: 100%;
+	width: 2000px;
 	filter: blur(28px);
 	z-index: -1;
 	}
@@ -57,6 +57,7 @@ $body-bg-color: #1b1b1b;
 #about-text-container {
 	padding-bottom: 40px;
 	opacity: 1;
+	width: 40%;
 	p,b {
 		color: white;
 		opacity: 1;
@@ -69,6 +70,9 @@ $body-bg-color: #1b1b1b;
 	}
 	#purpose {
 		font-size: 17px;
-	}
-	width: 50%;
+	}	
+}
+
+.about-background {
+	position: relative;
 }

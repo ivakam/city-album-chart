@@ -193,7 +193,7 @@ $(document).on "turbolinks:load", ->
 							test = checkMatch(textVal, inputValues)
 							if test
 								conditionCount[conditionCount.findIndex((element) -> element == false)] = true
-								console.log(conditionCount)
+								#console.log(conditionCount)
 					#console.log(blackList)
 					if conditionCount.findIndex((element) -> element == false) != -1
 						#console.log("no match!")
