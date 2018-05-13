@@ -4550,3 +4550,2117 @@ romanization: "",
 duration: "4:43"
 },
 ])
+
+
+#New batch (Anri)
+
+
+CreateAlbumWithTracks({
+title: "Apricot Jam",
+romanization: "",
+romaji_artist: "Anri",
+japanese_artist: "杏里",
+year: "1978",
+description: "",
+coverlink: "apricotjam.jpg",
+flavor: "Soul/Funk"
+},
+[{
+title: "オリビアを?きながら",
+romanization: "",
+duration: "4:39"
+},
+{
+title: "ラプソディ?",
+romanization: "",
+duration: "4:00"
+},
+{
+title: "そぞろ寒",
+romanization: "",
+duration: "4:01"
+},
+{
+title: "西日うすれて",
+romanization: "",
+duration: "3:41"
+},
+{
+title: "So Long",
+romanization: "",
+duration: "3:20"
+},
+{
+title: "Flying 午前10時?",
+romanization: "",
+duration: "5:20"
+},
+{
+title: "中?人形",
+romanization: "",
+duration: "3:26"
+},
+{
+title: "キ?ワ?ドを探せ",
+romanization: "",
+duration: "3:12"
+},
+{
+title: "Blue City",
+romanization: "",
+duration: "3:37"
+},
+{
+title: "フェイド?アウト",
+romanization: "",
+duration: "4:24"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Feelin'",
+romanization: "",
+romaji_artist: "Anri",
+japanese_artist: "杏里",
+year: "1979",
+description: "",
+coverlink: "feelin.jpg",
+flavor: "Funk"
+},
+[{
+title: "コルトバの踊り子",
+romanization: "",
+duration: "3:40"
+},
+{
+title: "九月の砂",
+romanization: "",
+duration: "4:41"
+},
+{
+title: "ブルー・ムーン",
+romanization: "",
+duration: "3:39"
+},
+{
+title: "スリップアウェイ",
+romanization: "",
+duration: "4:26"
+},
+{
+title: "マホガニータウン",
+romanization: "",
+duration: "4:05"
+},
+{
+title: "地中海ドリーム",
+romanization: "",
+duration: "3:11"
+},
+{
+title: "モーニング・フライト",
+romanization: "",
+duration: "4:09"
+},
+{
+title: "悲しみは窓の向こう",
+romanization: "",
+duration: "2:54"
+},
+{
+title: "ときめき",
+romanization: "",
+duration: "3:47"
+},
+{
+title: "めぐり来る季節のように",
+romanization: "",
+duration: "3:57"
+},
+{
+title: "海辺から",
+romanization: "",
+duration: "4:20"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Heaven Beach",
+romanization: "",
+romaji_artist: "Anri",
+japanese_artist: "杏里",
+year: "1982",
+description: "",
+coverlink: "heavenbeach.jpg",
+flavor: "Funk"
+},
+[{
+title: "二番目のaffair",
+romanization: "",
+duration: "4:40"
+},
+{
+title: "Last Summer Whisper",
+romanization: "",
+duration: "4:59"
+},
+{
+title: "Lonely Driving",
+romanization: "",
+duration: "3:21"
+},
+{
+title: "Resolution",
+romanization: "",
+duration: "4:26"
+},
+{
+title: "Fly By Day",
+romanization: "",
+duration: "4:33"
+},
+{
+title: "Flashback Memories",
+romanization: "",
+duration: "4:07"
+},
+{
+title: "Honesty Man",
+romanization: "",
+duration: "4:08"
+},
+{
+title: "Memorial Story",
+romanization: "",
+duration: "4:04"
+},
+{
+title: "夏に背を向けて",
+romanization: "",
+duration: "4:22"
+},
+{
+title: "Heaven Beach",
+romanization: "",
+duration: "6:01"
+},
+{
+title: "Kaze No Naka De Loving You",
+romanization: "",
+duration: "4:16"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Bi・Ki・Ni",
+romanization: "",
+romaji_artist: "Anri",
+japanese_artist: "杏里",
+year: "1983",
+description: "",
+coverlink: "bikini.jpg",
+flavor: "Funk/Disco"
+},
+[{
+title: "Good Bye Boogie Dance",
+romanization: "",
+duration: "4:32"
+},
+{
+title: "Dancin’ Blue",
+romanization: "",
+duration: "3:15"
+},
+{
+title: "September Walkin’",
+romanization: "",
+duration: "3:51"
+},
+{
+title: "Lady Sunshine",
+romanization: "",
+duration: "3:42"
+},
+{
+title: "Yes I’m In Love",
+romanization: "",
+duration: "5:07"
+},
+{
+title: "Surf City",
+romanization: "",
+duration: "4:22"
+},
+{
+title: "Just Be Yourself",
+romanization: "",
+duration: "5:03"
+},
+{
+title: "Beach Boy In My Heart",
+romanization: "",
+duration: "4:05"
+},
+{
+title: "Summer Focus",
+romanization: "",
+duration: "3:16"
+},
+{
+title: "Affection",
+romanization: "",
+duration: "4:34"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Timely!!",
+romanization: "",
+romaji_artist: "Anri",
+japanese_artist: "杏里",
+year: "1983",
+description: "",
+coverlink: "timely.jpg",
+flavor: "Funk/Disco"
+},
+[{
+title: "CAT'S EYE",
+romanization: "",
+duration: "3:09"
+},
+{
+title: "WINDY SUMMER",
+romanization: "",
+duration: "4:06"
+},
+{
+title: "STAY BY ME",
+romanization: "",
+duration: "3:37"
+},
+{
+title: "A HOPE FROM SAD STREET",
+romanization: "",
+duration: "4:19"
+},
+{
+title: "YOU ARE NOT ALONE",
+romanization: "",
+duration: "4:03"
+},
+{
+title: "悲しみがとまらない",
+romanization: "",
+duration: "4:23"
+},
+{
+title: "SHYNESS BOY",
+romanization: "",
+duration: "3:16"
+},
+{
+title: "LOST LOVE IN THE RAIN",
+romanization: "",
+duration: "4:19"
+},
+{
+title: "DRIVING MY LOVE",
+romanization: "",
+duration: "4:51"
+},
+{
+title: "GOOD-NIGHT FOR YOU",
+romanization: "",
+duration: "5:20"
+},
+{
+title: "Remember Summer Days",
+romanization: "",
+duration: "4:55"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Coool",
+romanization: "",
+romaji_artist: "Anri",
+japanese_artist: "杏里",
+year: "1984",
+description: "",
+coverlink: "coool.jpg",
+flavor: "Disco/Ballad"
+},
+[{
+title: "Bring Me to the Dancenight? Gone with the Sadness",
+romanization: "",
+duration: "6:22"
+},
+{
+title: "ままにReflection",
+romanization: "",
+duration: "3:56"
+},
+{
+title: "I Can't ever Change Your Love for Me",
+romanization: "",
+duration: "4:35"
+},
+{
+title: "Silly City Girl",
+romanization: "",
+duration: "3:00"
+},
+{
+title: "Morning Highway",
+romanization: "",
+duration: "3:56"
+},
+{
+title: "Surprise of Summer",
+romanization: "",
+duration: "4:14"
+},
+{
+title: "Flashin' Night",
+romanization: "",
+duration: "3:41"
+},
+{
+title: "水銀燈",
+romanization: "",
+duration: "5:41"
+},
+{
+title: "He's My Music",
+romanization: "",
+duration: "3:13"
+},
+{
+title: "Maui",
+romanization: "",
+duration: "3:21"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Wave",
+romanization: "",
+romaji_artist: "Anri",
+japanese_artist: "杏里",
+year: "1985",
+description: "",
+coverlink: "wave.jpg",
+flavor: "Funk/Disco"
+},
+[{
+title: "City fiction",
+romanization: "",
+duration: "3:46"
+},
+{
+title: "夜明けのSoldier",
+romanization: "",
+duration: "4:41"
+},
+{
+title: "Into the Body",
+romanization: "",
+duration: "4:14"
+},
+{
+title: "Long Island Beach",
+romanization: "",
+duration: "4:13"
+},
+{
+title: "Wave",
+romanization: "",
+duration: "4:44"
+},
+{
+title: "Take It",
+romanization: "",
+duration: "4:20"
+},
+{
+title: "Loversnight",
+romanization: "",
+duration: "4:21"
+},
+{
+title: "16(Sixteen)Beat",
+romanization: "",
+duration: "4:43"
+},
+{
+title: "Oversea Call",
+romanization: "",
+duration: "4:22"
+},
+{
+title: "瞳は永远の香り",
+romanization: "",
+duration: "4:25"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "哀しみの孔雀",
+romanization: "Peacock of Sadness",
+romaji_artist: "Anri",
+japanese_artist: "杏里",
+year: "1981",
+description: "",
+coverlink: "哀しみの孔雀.jpg",
+flavor: "Ballad/Folk"
+},
+[{
+title: "異?の出?事",
+romanization: "",
+duration: "3:30"
+},
+{
+title: "エスプレッソで眠れない",
+romanization: "",
+duration: "2:53"
+},
+{
+title: "Face Face Face",
+romanization: "",
+duration: "3:37"
+},
+{
+title: "白いヨット",
+romanization: "",
+duration: "3:58"
+},
+{
+title: "セシルカット",
+romanization: "",
+duration: "2:38"
+},
+{
+title: "リビエラからの手紙",
+romanization: "",
+duration: "2:35"
+},
+{
+title: "ヘッドライト",
+romanization: "",
+duration: "4:09"
+},
+{
+title: "シルエット　オブロマンス",
+romanization: "",
+duration: "2:49"
+},
+{
+title: "Am I Afraid?",
+romanization: "",
+duration: "3:19"
+},
+{
+title: "いつの日か Happy End",
+romanization: "",
+duration: "3:20"
+},
+{
+title: "さよならは夜明けの夢に",
+romanization: "",
+duration: "3:30"
+},
+{
+title: "哀しみの孔雀",
+romanization: "",
+duration: "3:46"
+},
+])
+
+
+#New batch (Terao, Narumin, Kaoru, Takako, Makoto Matsushita)
+
+
+CreateAlbumWithTracks({
+title: "Reflections",
+romanization: "",
+romaji_artist: "Akira Terao",
+japanese_artist: "寺尾聰",
+year: "1981",
+description: "",
+coverlink: "reflections.jpg",
+flavor: "Rock"
+},
+[{
+title: "Habana Express",
+romanization: "",
+duration: "4:13"
+},
+{
+title: "渚のカンパリ・ソーダ",
+romanization: "",
+duration: "4:31"
+},
+{
+title: "喜望峰",
+romanization: "",
+duration: "4:11"
+},
+{
+title: "二季物語",
+romanization: "",
+duration: "8:07"
+},
+{
+title: "ルビーの指環",
+romanization: "",
+duration: "4:17"
+},
+{
+title: "Shadow City",
+romanization: "",
+duration: "4:23"
+},
+{
+title: "予期せぬ出来事",
+romanization: "",
+duration: "4:19"
+},
+{
+title: "ダイヤルM",
+romanization: "",
+duration: "3:48"
+},
+{
+title: "北ウィング",
+romanization: "",
+duration: "4:51"
+},
+{
+title: "出航 Sasurai",
+romanization: "",
+duration: "4:05"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Atmosphere",
+romanization: "",
+romaji_artist: "Akira Terao",
+japanese_artist: "寺尾聰",
+year: "1983",
+description: "",
+coverlink: "atmosphere.jpg",
+flavor: "Rock"
+},
+[{
+title: "飛行少年",
+romanization: "",
+duration: "2:32"
+},
+{
+title: "Long Distance Call",
+romanization: "",
+duration: "4:42"
+},
+{
+title: "砂の迷路",
+romanization: "",
+duration: "7:00"
+},
+{
+title: "まさか・Tokyo",
+romanization: "",
+duration: "4:08"
+},
+{
+title: "砂の迷路",
+romanization: "",
+duration: "7:00"
+},
+{
+title: "夏嵐",
+romanization: "",
+duration: "3:55"
+},
+{
+title: "今夜でピリオド",
+romanization: "",
+duration: "4:38"
+},
+{
+title: "回転扉",
+romanization: "",
+duration: "6:36"
+},
+{
+title: "終着駅",
+romanization: "",
+duration: "4:45"
+},
+{
+title: "Passing Summer",
+romanization: "",
+duration: "4:55"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Thru Traffic",
+romanization: "",
+romaji_artist: "Narumin & Etsu",
+japanese_artist: "東北新幹線",
+year: "1982",
+description: "",
+coverlink: "thrutraffic.jpg",
+flavor: "Funk"
+},
+[{
+title: "Summer Touches You",
+romanization: "",
+duration: "4:37"
+},
+{
+title: "Up And Down",
+romanization: "",
+duration: "4:40"
+},
+{
+title: "心のままに",
+romanization: "",
+duration: "3:52"
+},
+{
+title: "ストレンジ・ワイン",
+romanization: "",
+duration: "5:46"
+},
+{
+title: "September Vallentine",
+romanization: "",
+duration: "5:04"
+},
+{
+title: "月に寄りそって",
+romanization: "",
+duration: "5:20"
+},
+{
+title: "Cloudy",
+romanization: "",
+duration: "4:35"
+},
+{
+title: "Spell",
+romanization: "",
+duration: "4:35"
+},
+{
+title: "ラスト・メッセージ",
+romanization: "",
+duration: "4:36"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "First Light",
+romanization: "",
+romaji_artist: "Makoto Matsushita",
+japanese_artist: "松下誠",
+year: "1982",
+description: "",
+coverlink: "firstlight.jpg",
+flavor: "Jazz"
+},
+[{
+title: "First Light",
+romanization: "",
+duration: "4:31"
+},
+{
+title: "One Hot Love",
+romanization: "",
+duration: "4:18"
+},
+{
+title: "Resort For Blue",
+romanization: "",
+duration: "1:23"
+},
+{
+title: "September Rain",
+romanization: "",
+duration: "4:28"
+},
+{
+title: "Lazy Night",
+romanization: "",
+duration: "4:47"
+},
+{
+title: "This Is All I Have For You",
+romanization: "",
+duration: "5:05"
+},
+{
+title: "I Know",
+romanization: "",
+duration: "1:58"
+},
+{
+title: "Love Was Really Gone",
+romanization: "",
+duration: "5:46"
+},
+{
+title: "Sunset",
+romanization: "",
+duration: "8:15"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "The Pressures And The Pleasures",
+romanization: "",
+romaji_artist: "Makoto Matsushita",
+japanese_artist: "松下誠",
+year: "1982",
+description: "",
+coverlink: "thepressuresandthepleasures.jpg",
+flavor: "Jazz"
+},
+[{
+title: "The Pressures And The Pleasures",
+romanization: "",
+duration: "10:13"
+},
+{
+title: "Business Man (Part 1)",
+romanization: "",
+duration: "3:46"
+},
+{
+title: "The Bridge",
+romanization: "",
+duration: "3:20"
+},
+{
+title: "Business Man (Part 2)",
+romanization: "",
+duration: "3:06"
+},
+{
+title: "The Garden Of Walls",
+romanization: "",
+duration: "7:33"
+},
+{
+title: "Carnaval",
+romanization: "",
+duration: "5:20"
+},
+{
+title: "The Quiet Storm",
+romanization: "",
+duration: "2:06"
+},
+{
+title: "Morning Blue",
+romanization: "",
+duration: "6:15"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Quiet Skies",
+romanization: "",
+romaji_artist: "Makoto Matsushita",
+japanese_artist: "松下誠",
+year: "1983",
+description: "",
+coverlink: "quietskies.jpg",
+flavor: "Jazz"
+},
+[{
+title: "Sight of the Dawn",
+romanization: "",
+duration: "10:10"
+},
+{
+title: "Views from Fire Mountain",
+romanization: "",
+duration: "5:01"
+},
+{
+title: "Lucky Guy",
+romanization: "",
+duration: "6:24"
+},
+{
+title: "Going Home",
+romanization: "",
+duration: "7:32"
+},
+{
+title: "The Feather Heart",
+romanization: "",
+duration: "5:42"
+},
+{
+title: "Cage of Dreams",
+romanization: "",
+duration: "6:34"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Cologne",
+romanization: "",
+romaji_artist: "Kaoru Akimoto",
+japanese_artist: "秋元薫",
+year: "1986",
+description: "",
+coverlink: "cologne.jpg",
+flavor: "Ballad"
+},
+[{
+title: "Beginning",
+romanization: "",
+duration: "0:56"
+},
+{
+title: "ナルシスト",
+romanization: "",
+duration: "4:44"
+},
+{
+title: "Dress Down",
+romanization: "",
+duration: "4:32"
+},
+{
+title: "Two Call",
+romanization: "",
+duration: "4:05"
+},
+{
+title: "夜が終る時",
+romanization: "",
+duration: "5:20"
+},
+{
+title: "嘆きのPuzzle",
+romanization: "",
+duration: "3:45"
+},
+{
+title: "我がままなハイヒール",
+romanization: "",
+duration: "5:03"
+},
+{
+title: "今日はひとりきり",
+romanization: "",
+duration: "4:01"
+},
+{
+title: "Love Letter",
+romanization: "",
+duration: "4:20"
+},
+{
+title: "月夜（作詞",
+romanization: "",
+duration: "4:53"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "瞳に映して",
+romanization: "In Your Eyes",
+romaji_artist: "Kaoru Akimoto",
+japanese_artist: "秋元薫",
+year: "1991",
+description: "",
+coverlink: "瞳に映して.png",
+flavor: "Ballad"
+},
+[{
+title: "瞳に映して",
+romanization: "",
+duration: "4:40"
+},
+{
+title: "さよならの吐息~Hold me tight",
+romanization: "",
+duration: "6:36"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Love Trip",
+romanization: "",
+romaji_artist: "Takako Mamiya",
+japanese_artist: "間宮貴子",
+year: "1982",
+description: "",
+coverlink: "lovetrip.jpg",
+flavor: "Ballad"
+},
+[{
+title: "Love Trip",
+romanization: "",
+duration: "3:48"
+},
+{
+title: "チャイニーズ・レストラン",
+romanization: "",
+duration: "3:50"
+},
+{
+title: "真夜中のジョーク",
+romanization: "",
+duration: "4:52"
+},
+{
+title: "哀しみは夜の向こう",
+romanization: "",
+duration: "3:58"
+},
+{
+title: "All Or Nothing",
+romanization: "",
+duration: "4:08"
+},
+{
+title: "渚でダンス",
+romanization: "",
+duration: "4:16"
+},
+{
+title: "One More Night",
+romanization: "",
+duration: "3:52"
+},
+{
+title: "モーニング・フライト",
+romanization: "",
+duration: "4:07"
+},
+{
+title: "たそがれは銀箔の…",
+romanization: "",
+duration: "4:23"
+},
+{
+title: "What A Broken Heart Can Do",
+romanization: "",
+duration: "4:01"
+},
+])
+
+
+#New batch (Tatsu)
+
+
+CreateAlbumWithTracks({
+title: "Jody",
+romanization: "",
+romaji_artist: "L.A. Unit",
+japanese_artist: "",
+year: "1990",
+description: "",
+coverlink: "jody.jpg",
+flavor: "Cover/Tribute"
+},
+[{
+title: "悲しみのJODY ~She Was Crying~",
+romanization: "",
+duration: "7:09"
+},
+{
+title: "Get Back in Love",
+romanization: "",
+duration: "6:08"
+},
+{
+title: "クリスマス・イブ",
+romanization: "",
+duration: "5:37"
+},
+{
+title: "YOUR EYES",
+romanization: "",
+duration: "4:06"
+},
+{
+title: "愛を描いて ~Let's Kiss the Sun~",
+romanization: "",
+duration: "5:30"
+},
+{
+title: "Down Town",
+romanization: "",
+duration: "4:46"
+},
+{
+title: "Loveland, Island",
+romanization: "",
+duration: "5:34"
+},
+{
+title: "Ride on Time",
+romanization: "",
+duration: "5:37"
+},
+{
+title: "高気圧ガール",
+romanization: "",
+duration: "4:31"
+},
+{
+title: "潮騒 ~The Whispering Sea~",
+romanization: "",
+duration: "5:29"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Artisan",
+romanization: "",
+romaji_artist: "Tatsuro Yamashita",
+japanese_artist: "山下達郎",
+year: "1991",
+description: "",
+coverlink: "artisan.jpg",
+flavor: "Funk"
+},
+[{
+title: "アトムの子",
+romanization: "",
+duration: "4:26"
+},
+{
+title: "さよなら夏の日",
+romanization: "",
+duration: "4:35"
+},
+{
+title: "ターナーの汽罐車",
+romanization: "",
+duration: "4:33"
+},
+{
+title: "片想い",
+romanization: "",
+duration: "4:39"
+},
+{
+title: "Tokyo's a Lonely Town",
+romanization: "",
+duration: "2:40"
+},
+{
+title: "飛遊人 -Human-",
+romanization: "",
+duration: "1:48"
+},
+{
+title: "Splendor",
+romanization: "",
+duration: "5:24"
+},
+{
+title: "Mighty Smile (魔法の微笑)",
+romanization: "",
+duration: "3:13"
+},
+{
+title: '"Queen of Hype" Blues',
+romanization: "",
+duration: "5:14"
+},
+{
+title: "Endless Game",
+romanization: "",
+duration: "4:10"
+},
+{
+title: "Groovin'",
+romanization: "",
+duration: "3:20"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Cheer up! The summer",
+romanization: "",
+romaji_artist: "Tatsuro Yamashita",
+japanese_artist: "山下達郎",
+year: "2016",
+description: "",
+coverlink: "cheerupthesummer.jpg",
+flavor: "Single/Dreamy"
+},
+[{
+title: "CHEER UP! THE SUMMER",
+romanization: "",
+duration: "4:19"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Come Along 3",
+romanization: "",
+romaji_artist: "Tatsuro Yamashita",
+japanese_artist: "山下達郎",
+year: "2017",
+description: "",
+coverlink: "comealong3.jpg",
+flavor: "Funk/Compilation"
+},
+[{
+title: "Keoki la Molokai Kid 偉大なサーファー伝説?!",
+romanization: "",
+duration: "3:13"
+},
+{
+title: "Cheer Up! The Summer",
+romanization: "",
+duration: "4:11"
+},
+{
+title: "高気圧ガール",
+romanization: "",
+duration: "4:09"
+},
+{
+title: "悲しみのJODY (She Was Crying)",
+romanization: "",
+duration: "3:38"
+},
+{
+title: "踊ろよ、フィッシュ",
+romanization: "",
+duration: "5:12"
+},
+{
+title: "I Love You... (Part 1)",
+romanization: "",
+duration: "2:32"
+},
+{
+title: "さよなら夏の日",
+romanization: "",
+duration: "4:27"
+},
+{
+title: "ドーナツ・ソング",
+romanization: "",
+duration: "4:58"
+},
+{
+title: "僕らの夏の夢",
+romanization: "",
+duration: "4:58"
+},
+{
+title: "The Theme from Big Wave",
+romanization: "",
+duration: "3:22"
+},
+{
+title: "新・東京ラプソディー",
+romanization: "",
+duration: "5:06"
+},
+{
+title: "JUVENILEのテーマ~瞳の中のRAINBOW~",
+romanization: "",
+duration: "4:47"
+},
+{
+title: "Southbound #9",
+romanization: "",
+duration: "5:01"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Cozy",
+romanization: "",
+romaji_artist: "Tatsuro Yamashita",
+japanese_artist: "山下達郎",
+year: "1998",
+description: "",
+coverlink: "cozy.jpg",
+flavor: "Dreamy/Funk"
+},
+[{
+title: "氷のマニキュア",
+romanization: "",
+duration: "5:05"
+},
+{
+title: "ヘロン",
+romanization: "",
+duration: "4:42"
+},
+{
+title: "FRAGILE",
+romanization: "",
+duration: "5:28"
+},
+{
+title: "DONUT SONG",
+romanization: "",
+duration: "4:22"
+},
+{
+title: "月の光",
+romanization: "",
+duration: "5:35"
+},
+{
+title: "群青の炎 -Ultramarine Fire-",
+romanization: "",
+duration: "5:03"
+},
+{
+title: "Boomerang Baby",
+romanization: "",
+duration: "2:27"
+},
+{
+title: "夏のコラージュ",
+romanization: "",
+duration: "4:21"
+},
+{
+title: "LAI-LA -邂逅-",
+romanization: "",
+duration: "4:22"
+},
+{
+title: "セールスマンズ・ロンリネス",
+romanization: "",
+duration: "5:27"
+},
+{
+title: "Southbound #9",
+romanization: "",
+duration: "5:01"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "For You",
+romanization: "",
+romaji_artist: "Tatsuro Yamashita",
+japanese_artist: "山下達郎",
+year: "1984",
+description: "",
+coverlink: "foryou.jpg",
+flavor: "Funk/Dreamy"
+},
+[{
+title: "Sparkle",
+romanization: "",
+duration: "4:14"
+},
+{
+title: "Music Book",
+romanization: "",
+duration: "5:10"
+},
+{
+title: "Morning Glory",
+romanization: "",
+duration: "3:51"
+},
+{
+title: "Futari",
+romanization: "",
+duration: "6:07"
+},
+{
+title: "Loveland, Island",
+romanization: "",
+duration: "4:29"
+},
+{
+title: "Love Talkin' (Honey it's You)",
+romanization: "",
+duration: "6:07"
+},
+{
+title: "Hey Reporter!",
+romanization: "",
+duration: "5:33"
+},
+{
+title: "Your Eyes",
+romanization: "",
+duration: "3:31"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Melodies",
+romanization: "",
+romaji_artist: "Tatsuro Yamashita",
+japanese_artist: "山下達郎",
+year: "1986",
+description: "",
+coverlink: "melodies.jpg",
+flavor: "Funk/Dreamy"
+},
+[{
+title: "悲しみのJODY (She Was Crying)",
+romanization: "",
+duration: "3:53"
+},
+{
+title: "高気圧ガール",
+romanization: "",
+duration: "4:23"
+},
+{
+title: "夜翔 (Night-Fly)",
+romanization: "",
+duration: "4:26"
+},
+{
+title: "Guess I'm Dumb",
+romanization: "",
+duration: "3:15"
+},
+{
+title: "ひととき",
+romanization: "",
+duration: "4:03"
+},
+{
+title: "メリー・ゴー・ラウンド",
+romanization: "",
+duration: "6:22"
+},
+{
+title: "Blue Midnight",
+romanization: "",
+duration: "4:18"
+},
+{
+title: "あしおと",
+romanization: "",
+duration: "3:57"
+},
+{
+title: "黙想",
+romanization: "",
+duration: "1:33"
+},
+{
+title: "クリスマス・イブ",
+romanization: "",
+duration: "4:15"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "On the Street Corner 1",
+romanization: "",
+romaji_artist: "Tatsuro Yamashita",
+japanese_artist: "山下達郎",
+year: "1986",
+description: "",
+coverlink: "onthestreetcorner1.jpg",
+flavor: "Acappella"
+},
+[{
+title: "You Belong to Me",
+romanization: "",
+duration: "2:58"
+},
+{
+title: "Close Your Eyes",
+romanization: "",
+duration: "2:32"
+},
+{
+title: "Spanish Harlem",
+romanization: "",
+duration: "3:38"
+},
+{
+title: "Alone",
+romanization: "",
+duration: "2:47"
+},
+{
+title: "Most of All",
+romanization: "",
+duration: "3:25"
+},
+{
+title: "Remember Me Baby",
+romanization: "",
+duration: "3:00"
+},
+{
+title: "Blue Velvet",
+romanization: "",
+duration: "2:37"
+},
+{
+title: "Wind",
+romanization: "",
+duration: "2:13"
+},
+{
+title: "Drip Drop",
+romanization: "",
+duration: "3:18"
+},
+{
+title: "That's My Desire",
+romanization: "",
+duration: "3:47"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "On the Street Corner 2",
+romanization: "",
+romaji_artist: "Tatsuro Yamashita",
+japanese_artist: "山下達郎",
+year: "1986",
+description: "",
+coverlink: "onthestreetcorner2.jpg",
+flavor: "Acappella"
+},
+[{
+title: "Amapola",
+romanization: "",
+duration: "3:26"
+},
+{
+title: "Ten Commandments of Love",
+romanization: "",
+duration: "3:39"
+},
+{
+title: "So Much in Love",
+romanization: "",
+duration: "2:27"
+},
+{
+title: "Make It Easy on Yourself",
+romanization: "",
+duration: "2:40"
+},
+{
+title: "My Memories of You",
+romanization: "",
+duration: "3:18"
+},
+{
+title: "Chapel of Dreams",
+romanization: "",
+duration: "2:56"
+},
+{
+title: "You Make Me Feel Brand New",
+romanization: "",
+duration: "5:07"
+},
+{
+title: "I Only Have Eyes for You",
+romanization: "",
+duration: "3:35"
+},
+{
+title: "Silent Night",
+romanization: "",
+duration: "1:10"
+},
+{
+title: "White Christmas",
+romanization: "",
+duration: "2:26"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "On the Street Corner 3",
+romanization: "",
+romaji_artist: "Tatsuro Yamashita",
+japanese_artist: "山下達郎",
+year: "1999",
+description: "",
+coverlink: "onthestreetcorner3.jpg",
+flavor: "Acappella"
+},
+[{
+title: "Dedicated to the One I Love",
+romanization: "",
+duration: "2:24"
+},
+{
+title: "Stand by Me",
+romanization: "",
+duration: "3:11"
+},
+{
+title: "Gloria",
+romanization: "",
+duration: "2:45"
+},
+{
+title: "Angel",
+romanization: "",
+duration: "3:08"
+},
+{
+title: "Dream Girl",
+romanization: "",
+duration: "2:40"
+},
+{
+title: "Their Hearts were Full of Spring",
+romanization: "",
+duration: "2:29"
+},
+{
+title: "Don't Ask Me to be Lonely",
+romanization: "",
+duration: "2:24"
+},
+{
+title: "Love You So",
+romanization: "",
+duration: "3:30"
+},
+{
+title: "Love T.K.O.",
+romanization: "",
+duration: "5:04"
+},
+{
+title: "Why do Fools Fall in Love",
+romanization: "",
+duration: "1:51"
+},
+{
+title: "Heavenly Feather",
+romanization: "",
+duration: "2:45"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Pocket Music",
+romanization: "",
+romaji_artist: "Tatsuro Yamashita",
+japanese_artist: "山下達郎",
+year: "1986",
+description: "",
+coverlink: "pocketmusic.jpg",
+flavor: "Dreamy/Ballad"
+},
+[{
+title: "土曜日の恋人",
+romanization: "",
+duration: "3:01"
+},
+{
+title: "ポケット・ミュージック",
+romanization: "",
+duration: "5:22"
+},
+{
+title: "MERMAID",
+romanization: "",
+duration: "4:29"
+},
+{
+title: "十字路",
+romanization: "",
+duration: "3:46"
+},
+{
+title: "メロディー、君の為に",
+romanization: "",
+duration: "5:15"
+},
+{
+title: "The War Song",
+romanization: "",
+duration: "5:05"
+},
+{
+title: "シャンプー",
+romanization: "",
+duration: "4:14"
+},
+{
+title: "ムーンライト",
+romanization: "",
+duration: "3:00"
+},
+{
+title: "Lady Blue",
+romanization: "",
+duration: "4:04"
+},
+{
+title: "風の回廊",
+romanization: "",
+duration: "3:57"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Reborn",
+romanization: "",
+romaji_artist: "Tatsuro Yamashita",
+japanese_artist: "山下達郎",
+year: "2017",
+description: "",
+coverlink: "reborn.jpg",
+flavor: "Dreamy/Compilation"
+},
+[{
+title: "REBORN",
+romanization: "",
+duration: "6:11"
+},
+{
+title: "REBORN",
+romanization: "",
+duration: "5:33"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Season's Greetings",
+romanization: "",
+romaji_artist: "Tatsuro Yamashita",
+japanese_artist: "山下達郎",
+year: "1993",
+description: "",
+coverlink: "seasonsgreetings.jpg",
+flavor: "Christmas"
+},
+[{
+title: "Acappella Variation on a Theme by Gluck",
+romanization: "",
+duration: "0:51"
+},
+{
+title: "Bella Notte",
+romanization: "",
+duration: "3:51"
+},
+{
+title: "Be My Love",
+romanization: "",
+duration: "3:41"
+},
+{
+title: "Angels We Have Heard on High",
+romanization: "",
+duration: "1:01"
+},
+{
+title: "Smoke Gets in Your Eyes",
+romanization: "",
+duration: "3:09"
+},
+{
+title: "Silent Night",
+romanization: "",
+duration: "1:11"
+},
+{
+title: "My Gift to You",
+romanization: "",
+duration: "4:06"
+},
+{
+title: "It's All in the Game",
+romanization: "",
+duration: "3:24"
+},
+{
+title: "Just a Lonely Christmas",
+romanization: "",
+duration: "2:26"
+},
+{
+title: "Happy Holiday",
+romanization: "",
+duration: "2:21"
+},
+{
+title: "Blue Christmas",
+romanization: "",
+duration: "2:48"
+},
+{
+title: "White Christmas",
+romanization: "",
+duration: "2:24"
+},
+{
+title: "Christmas Eve (English Version)",
+romanization: "",
+duration: "4:15"
+},
+{
+title: "Have Yourself a Merry Little Christmas",
+romanization: "",
+duration: "2:49"
+},
+{
+title: "O Come All Ye Faithful",
+romanization: "",
+duration: "0:53"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Treasures",
+romanization: "",
+romaji_artist: "Tatsuro Yamashita",
+japanese_artist: "山下達郎",
+year: "1995",
+description: "",
+coverlink: "treasures.jpg",
+flavor: "Dreamy/Compilation"
+},
+[{
+title: "高気圧ガール",
+romanization: "",
+duration: "4:22"
+},
+{
+title: "スプリンクラー",
+romanization: "",
+duration: "4:31"
+},
+{
+title: "ゲット・バック・イン・ラブ",
+romanization: "",
+duration: "4:22"
+},
+{
+title: "風の回廊",
+romanization: "",
+duration: "3:59"
+},
+{
+title: "アトムの子",
+romanization: "",
+duration: "4:27"
+},
+{
+title: "エンドレス・ゲーム",
+romanization: "",
+duration: "4:10"
+},
+{
+title: "踊ろよ、フィッシュ",
+romanization: "",
+duration: "4:51"
+},
+{
+title: "ターナーの汽罐車",
+romanization: "",
+duration: "4:33"
+},
+{
+title: "土曜日の恋人",
+romanization: "",
+duration: "3:15"
+},
+{
+title: "ジャングル・スウィング",
+romanization: "",
+duration: "5:05"
+},
+{
+title: "世界の果てまで",
+romanization: "",
+duration: "5:07"
+},
+{
+title: "おやすみロージー",
+romanization: "",
+duration: "2:44"
+},
+{
+title: "クリスマス・イブ",
+romanization: "",
+duration: "4:15"
+},
+{
+title: "さよなら夏の日",
+romanization: "",
+duration: "4:38"
+},
+{
+title: "蒼氓",
+romanization: "",
+duration: "6:06"
+},
+{
+title: "パレード",
+romanization: "",
+duration: "3:59"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "僕の中の少年",
+romanization: "Boku no Naka no Shounen",
+romaji_artist: "Tatsuro Yamashita",
+japanese_artist: "山下達郎",
+year: "1988",
+description: "",
+coverlink: "僕の中の少年.jpg",
+flavor: "Dreamy"
+},
+[{
+title: "新・東京ラプソディー",
+romanization: "",
+duration: "4:21"
+},
+{
+title: "ゲット・バック・イン・ラブ",
+romanization: "",
+duration: "4:22"
+},
+{
+title: "ザ・ガール・イン・ホワイト",
+romanization: "",
+duration: "4:13"
+},
+{
+title: "寒い夏",
+romanization: "",
+duration: "3:33"
+},
+{
+title: "踊ろよ、フィッシュ",
+romanization: "",
+duration: "4:51"
+},
+{
+title: "ルミネッセンス",
+romanization: "",
+duration: "5:42"
+},
+{
+title: "マーマレイド・グッバイ",
+romanization: "",
+duration: "4:40"
+},
+{
+title: "蒼氓",
+romanization: "",
+duration: "5:59"
+},
+{
+title: "僕の中の少年",
+romanization: "",
+duration: "4:53"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "光と君へのレクイエム",
+romanization: "Hikari to Kimi e no Rekuiemu",
+romaji_artist: "Tatsuro Yamashita",
+japanese_artist: "山下達郎",
+year: "2013",
+description: "",
+coverlink: "光と君へのレクイエム.jpg",
+flavor: "Dreamy/Single"
+},
+[{
+title: "光と君へのレクイエム",
+romanization: "",
+duration: "3:45"
+},
+{
+title: "コンポジション",
+romanization: "",
+duration: "5:13"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Tatsuro Songs from L.A. 2",
+romanization: "",
+romaji_artist: "Various Artists",
+japanese_artist: "",
+year: "1991",
+description: "",
+coverlink: "tatsurosongsfromla2.jpg",
+flavor: "Cover/Tribute/English"
+},
+[{
+title: "Get Back in Love",
+romanization: "",
+duration: "4:27"
+},
+{
+title: "Ride on Time",
+romanization: "",
+duration: "4:34"
+},
+{
+title: "Merry Go Round",
+romanization: "",
+duration: "5:07"
+},
+{
+title: "Kokiatsu Girl ~高気圧ガール~",
+romanization: "",
+duration: "4:23"
+},
+{
+title: "Saturday Is for Lovers ~土曜日の恋人~",
+romanization: "",
+duration: "3:41"
+},
+{
+title: "The Two of Us ~Futari~",
+romanization: "",
+duration: "5:15"
+},
+{
+title: "Wonderful Afternoon ~素敵な午後は~",
+romanization: "",
+duration: "4:11"
+},
+{
+title: "Meditation ~黙想~",
+romanization: "",
+duration: "2:48"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Tatsuro Songs from L.A.",
+romanization: "",
+romaji_artist: "Various Artists",
+japanese_artist: "",
+year: "1990",
+description: "",
+coverlink: "tatsurosongsfromla.jpg",
+flavor: "Cover/Tribute/English"
+},
+[{
+title: "Christmas Eve",
+romanization: "",
+duration: "4:18"
+},
+{
+title: "Sparkle",
+romanization: "",
+duration: "4:37"
+},
+{
+title: "Touch Me Lightly",
+romanization: "",
+duration: "5:14"
+},
+{
+title: "Windy Lady",
+romanization: "",
+duration: "5:43"
+},
+{
+title: "Your Eyes",
+romanization: "",
+duration: "4:59"
+},
+{
+title: "The Whispering Sea ~潮騒~",
+romanization: "",
+duration: "4:58"
+},
+{
+title: "The Girl in White",
+romanization: "",
+duration: "3:47"
+},
+{
+title: "Lady Blue",
+romanization: "",
+duration: "4:49"
+},
+])
+
+CreateAlbumWithTracks({
+title: "Surf & Snow",
+romanization: "",
+romaji_artist: "Yumi Matsutoya",
+japanese_artist: "松任谷由実",
+year: "1985",
+description: "",
+coverlink: "surfsnow.jpg",
+flavor: "Ballad"
+},
+[{
+title: "彼から手をひいて",
+romanization: "",
+duration: "4:15"
+},
+{
+title: "灼けたアイドル",
+romanization: "",
+duration: "5:03"
+},
+{
+title: "人魚になりたい",
+romanization: "",
+duration: "4:41"
+},
+{
+title: "まぶしい草野球",
+romanization: "",
+duration: "3:38"
+},
+{
+title: "ワゴンに乗ってでかけよう",
+romanization: "",
+duration: "4:44"
+},
+{
+title: "恋人がサンタクロース",
+romanization: "",
+duration: "5:05"
+},
+{
+title: "シーズンオフの心には",
+romanization: "",
+duration: "3:16"
+},
+{
+title: "サーフ天国，スキー天国",
+romanization: "",
+duration: "4:51"
+},
+{
+title: "恋人と来ないで",
+romanization: "",
+duration: "4:26"
+},
+{
+title: "雪だより",
+romanization: "",
+duration: "4:18"
+},
+])

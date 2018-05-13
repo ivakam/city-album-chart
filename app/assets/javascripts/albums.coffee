@@ -14,7 +14,7 @@ $(document).on "turbolinks:load", ->
 
 	#Adjusts text size to make sure the titles fit within their containers
 
-	$(".text-size-wrapper h2, .album-text-container p").each -> 
+	$(".text-size-wrapper h2, .artist-year-container p").each -> 
 		fontSize = 20
 		padding = 0
 		while ($(this).width() > albumContainerWidth)
@@ -113,6 +113,8 @@ $(document).on "turbolinks:load", ->
 			search(e.target)
 		, 120)
 	)
+
+	#Method for searching
 
 	search = (input) -> 
 		toggleAlbum(sibling: undefined)
