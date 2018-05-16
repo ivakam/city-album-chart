@@ -27,6 +27,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 # To use controller variables as javascript variables
 gem 'gon'
+gem 'js_assets'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'

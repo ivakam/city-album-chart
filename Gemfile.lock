@@ -89,6 +89,9 @@ GEM
     jbuilder (2.7.0)
       activesupport (>= 4.2.0)
       multi_json (>= 1.2)
+    js_assets (0.1.2)
+      rails
+      sprockets (>= 3.0)
     loofah (2.2.2)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -199,6 +202,7 @@ DEPENDENCIES
   duktape
   gon
   jbuilder (~> 2.5)
+  js_assets
   puma (~> 3.11)
   rails (~> 5.2.0)
   sass-rails (~> 5.0)

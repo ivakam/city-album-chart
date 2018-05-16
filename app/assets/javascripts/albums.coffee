@@ -39,7 +39,7 @@ $(document).on "turbolinks:load", ->
 					<div class='text-size-wrapper'>
 						<h2>"+currentAlbum.title+"</h2>
 					</div>
-					<img src=''>
+					<img src='" + currentAlbum.coverlink + "'>
 					<div class='artist-year-container'>
 						<p class='artist'>"+currentAlbum.romaji_artist+"</p>
 						<p class='year'>"+currentAlbum.year+"</p>
@@ -49,7 +49,7 @@ $(document).on "turbolinks:load", ->
 			</div>
 			<div class='info-container offset' id='"+albumID+"-info'>
 				<div class='info-wrapper'>
-					<div class='info-background'>"+"<img src=''></div>
+					<div class='info-background'>"+"<img src='" + currentAlbum.coverlink + "'></div>
 					<div class='info-text-container'>
 						<div class='text-container'>
 							<div class='title-container'>
@@ -78,7 +78,7 @@ $(document).on "turbolinks:load", ->
 							<li><h3>Tracklist:</h3></li>
 						</ul>
 					</div>
-					<img src=''>
+					<img src='" + currentAlbum.coverlink + "'>
 				</div>
 			</div>
 		</li>"
@@ -93,12 +93,11 @@ $(document).on "turbolinks:load", ->
 						<p>" + track.title + "</p>
 						<i>" + track.romanization + "</i>
 					</div>
-					<p>" + track.duration + "</p>
+					<p class='duration'>" + track.duration + "</p>
 				</li>
 				"
 				)
 		addTrack(track, i) for track, i in albumTracks
-		#$("#" + albumID).parent().find("img").
 
 	displayAlbum(i) for i in [0...40]
 
