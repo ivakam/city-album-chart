@@ -4,13 +4,103 @@ $(document).on "turbolinks:load", ->
 	# $("#splash-container").show("normal")
 	# $("#splash-container").css("display", "flex")
 
+	#Populate localstorage object
+
+	populateAlbums = ->
+		jsonAlbums = JSON.stringify(gon.Albums)
+		jsonTracks = JSON.stringify(gon.Tracks)
+		localStorage.setItem("Albums", jsonAlbums)
+		localStorage.setItem("Tracks", jsonTracks)
+
+	if !localStorage.getItem("Albums") || !localStorage.getItem("Tracks")
+		populateAlbums()
+
 	#Global variable declaration
 
+	albums = JSON.parse(localStorage.getItem("Albums"))
+	tracks = JSON.parse(localStorage.getItem("Tracks"))
 	albumContainerWidth = $(".text-size-wrapper").width()
 	albumHeight = "327px"
 	albumOpen = false
 	blackList = []
 	delayTimer = null
+
+	console.log(albums)
+	console.log(tracks)
+
+	displayAlbum = (i) ->
+		currentAlbum = albums[i]
+		albumID = currentAlbum.id
+		albumTracks = []
+		albumLi = 
+		"<li>
+			<div class='album-container' id='"+currentAlbum.id+"'>
+				<div class='album-text-container'>
+					<div class='text-size-wrapper'>
+						<h2>"+currentAlbum.title+"</h2>
+					</div>
+					<img src=''>
+					<div class='artist-year-container'>
+						<p class='artist'>"+currentAlbum.romaji_artist+"</p>
+						<p class='year'>"+currentAlbum.year+"</p>
+					</div>
+				</div>
+				<div class='arrow-container'><span class='ion-chevron-down album-arrow'></span></div>
+			</div>
+			<div class='info-container offset' id='"+albumID+"-info'>
+				<div class='info-wrapper'>
+					<div class='info-background'>"+"<img src=''></div>
+					<div class='info-text-container'>
+						<div class='text-container'>
+							<div class='title-container'>
+								<h2>"+currentAlbum.title+"</h2>
+								<h3><i>"+currentAlbum.romanization+"</i></h3>
+							</div>
+							<div class='artist-container'>
+								<p class='label'>Artist:</p>
+								<p>"+currentAlbum.romaji_artist+"</p>
+								<p class='label'>"+currentAlbum.japanese_artist+"</p>
+							</div>
+							<div class='release-date'>
+								<p class='label'>Release date:</p>
+								<p>"+currentAlbum.year+"</p>
+							</div>
+							<div class='flavor'>
+								<p class='label'>Flavor:</p>
+								<p class='flavor-value'>"+currentAlbum.flavor+"</p>
+							</div>
+							<div class='description-container'>
+								<p class='label'>Description:</p>
+								<p class='description'>"+currentAlbum.description+"</p>
+							</div>
+						</div>
+						<ul class='tracklist-container'>
+							<li><h3>Tracklist:</h3></li>
+						</ul>
+					</div>
+					<img src=''>
+				</div>
+			</div>
+		</li>"
+		$("#splash-container").append(albumLi)
+		albumTracks.push(track) for track in tracks when track.album_id is albumID
+		addTrack = (track, i) -> 
+			$("#" + albumID + "-info").find(".tracklist-container").append(
+				"
+				<li class='track-container'>
+					<div class='track-title-container'>
+						<p>"+(i+1)+". &nbsp</p>
+						<p>" + track.title + "</p>
+						<i>" + track.romanization + "</i>
+					</div>
+					<p>" + track.duration + "</p>
+				</li>
+				"
+				)
+		addTrack(track, i) for track, i in albumTracks
+		#$("#" + albumID).parent().find("img").
+
+	displayAlbum(i) for i in [0...40]
 
 	#Adjusts text size to make sure the titles fit within their containers
 
@@ -266,7 +356,6 @@ $(document).on "turbolinks:load", ->
 		$(".info-wrapper").css("display", "none")
 		$(".info-container").css("display", "none")
 		$(".info-wrapper").css("height", "0")
-		console.log(sibling)
 		if sibling isnt undefined && !sibling.hasClass("is-open")
 			timeout = 0
 			timeout = 300 if albumOpen 
