@@ -1153,7 +1153,7 @@ duration: "3:28"
 ]
 )
 CreateAlbumWithTracks({
-title: "ENSEMBLE",
+title: "Ensemble",
 romanization: "",
 romaji_artist: "Taeko Ohnuki",
 japanese_artist: "大貫妙子",

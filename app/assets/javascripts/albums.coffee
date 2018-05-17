@@ -23,8 +23,65 @@ $(document).on "turbolinks:load", ->
 	albumOpen = false
 	delayTimer = null
 
-	console.log(albums)
-	console.log(tracks)
+	#Helper method for opening an info container. Call it as 'sibling: undefined' to reset all info containers.
+
+	toggleAlbum = (title, sibling, parent, arrow) ->
+		$(".album-arrow").css("transform", "rotate(0)")
+		$(".album-container").css("height", albumHeight)
+		$(".info-wrapper").css("display", "none")
+		$(".info-container").css("display", "none")
+		$(".info-wrapper").css("height", "0")
+		if sibling isnt undefined && !sibling.hasClass("is-open")
+			timeout = 0
+			timeout = 300 if albumOpen 
+			#console.log(timeout)
+			setTimeout( ->
+				offset = parent.parent().offset().top + parent.parent().parent().scrollTop() + 170
+				#console.log("Album closed")
+				arrow.css("transform", "rotate(180deg)")
+				parent.css("height", "800px")
+				sibling.css("display", "flex")
+				sibling.parent().css("display", "block")
+				sibling.css("height", "400px")
+				$(".offset").css("top", offset)
+				sibling.parent().addClass("offset")
+				$(".info-wrapper").attr("class", "info-wrapper")
+				sibling.addClass("is-open")
+				img = sibling.find("img").attr("src")
+				sibling.find(".info-background img").css("display", "block")
+				albumOpen = true
+			,
+			timeout)
+		else 
+			albumOpen = false
+			$(".info-wrapper").removeClass("is-open")
+		#console.log(albumOpen)
+
+	#Handler for viewing album-info.
+
+	arrowClick = (e) ->
+		title = e.parent().attr("id")
+		sibling = e.parent().siblings("#" + title + "-info").find(".info-wrapper")
+		parent = e.parent()
+		arrow = e.find(".album-arrow")
+		toggleAlbum(title, sibling, parent, arrow)
+
+	#Handler for image click-zoom
+
+	clickImage = (e) ->
+		opacity = $("#opaque")
+		img = $(".bigimage")
+		imgsrc = e.attr("src")
+		if !img.hasClass("enlargened")
+			img.addClass("enlargened")
+			img.attr("src", imgsrc)
+			#console.log(img.width())
+			offset = img.width() / 2
+			#console.log(offset)
+			$(".enlargened").css("left", ($(window).width() / 2) - offset)
+			$(".enlargened").css("top", ($(window).height() / 2) - offset)
+			opacity.css("background", "rgba(0, 0, 0, 0.6")
+			opacity.css("z-index", "4")
 
 	#Create an album
 
@@ -84,8 +141,8 @@ $(document).on "turbolinks:load", ->
 			</div>
 		</li>"
 		$("#splash-container").append(albumLi)
-		#$("#expandable-img").get()[0].addEventListener("click", clickImage($(this)))
-		#$(".arrow-container").get()[0].addEventListener("click", arrowClick($(this)))
+		$("#" + currentAlbum.id + "-info #expandable-img").get()[0].addEventListener("click",(e) -> clickImage($(this)))
+		$("#" + currentAlbum.id + " .arrow-container").get()[0].addEventListener("click", (e) -> arrowClick($(this)))
 		$("#splash-container").show(400)
 		albumTracks.push(track) for track in tracks when track.album_id is albumID
 		addTrack = (track, i) -> 
@@ -104,6 +161,8 @@ $(document).on "turbolinks:load", ->
 		addTrack(track, i) for track, i in albumTracks
 
 	displayAlbum(i) for i in [0...40]
+	#$("#expandable-img").get()[0].addEventListener("click", (e) -> clickImage($(this)))
+	#$(".arrow-container").get()[0].addEventListener("click", (e) -> arrowClick($(this)))
 
 	#Adjusts text size to make sure the titles fit within their containers
 
@@ -113,33 +172,6 @@ $(document).on "turbolinks:load", ->
 		while ($(this).width() > albumContainerWidth)
 			$(this).css("font-size", fontSize -= 0.5)
 			$(this).css("padding-top", padding += 0.5)
-
-	#Handler for viewing album-info.
-
-	arrowClick = (e) ->
-		title = $(this).parent().attr("id")
-		sibling = $(this).parent().siblings("#" + title + "-info").find(".info-wrapper")
-		parent = $(this).parent()
-		arrow = $(this).find(".album-arrow")
-		toggleAlbum(title, sibling, parent, arrow)
-
-
-	#Handler for image click-zoom
-
-	clickImage = (e) ->
-		opacity = $("#opaque")
-		img = $(".bigimage")
-		imgsrc = $(this).attr("src")
-		if !img.hasClass("enlargened")
-			img.addClass("enlargened")
-			img.attr("src", imgsrc)
-			#console.log(img.width())
-			offset = img.width() / 2
-			#console.log(offset)
-			$(".enlargened").css("left", ($(window).width() / 2) - offset)
-			$(".enlargened").css("top", ($(window).height() / 2) - offset)
-			opacity.css("background", "rgba(0, 0, 0, 0.6")
-			opacity.css("z-index", "4")
 
 	$("#album-total-count").text(albums.length)
 
@@ -250,7 +282,7 @@ $(document).on "turbolinks:load", ->
 			if $("#regex").hasClass("brightness")
 				compConditions.push(new RegExp(cond)) for cond in conditions
 				testSuccess = (regexCond) ->
-					console.log("checkmatch: true")
+					#console.log("checkmatch: true")
 					blackList.push(regexCond.source)
 					conditionCount[conditionCount.findIndex((element) -> element == false)] = true
 				testSuccess(regexCond) for regexCond in compConditions when regexCond.test(value) && blackList.find((element) -> element == regexCond.source) == undefined
@@ -260,7 +292,7 @@ $(document).on "turbolinks:load", ->
 				compConditions.push(escapeRegExp(cond).toUpperCase()) for cond in conditions
 				#console.log(compConditions)
 				testSuccess = (compCond) ->
-					console.log("checkmatch: true")
+					#console.log("checkmatch: true")
 					blackList.push(compCond)
 					conditionCount[conditionCount.findIndex((element) -> element == false)] = true
 				testSuccess(compCond) for compCond in compConditions when compValue.match(compCond) != null && blackList.find((element) -> element == compCondition) == undefined
@@ -341,37 +373,3 @@ $(document).on "turbolinks:load", ->
 		albumList.show("normal")
 		albumList.css("display", "flex")
 		toggleAlbum(sibling: undefined)
-
-	#Helper method for opening an info container. Call it as 'sibling: undefined' to reset all info containers.
-
-	toggleAlbum = (title, sibling, parent, arrow) ->
-		$(".album-arrow").css("transform", "rotate(0)")
-		$(".album-container").css("height", albumHeight)
-		$(".info-wrapper").css("display", "none")
-		$(".info-container").css("display", "none")
-		$(".info-wrapper").css("height", "0")
-		if sibling isnt undefined && !sibling.hasClass("is-open")
-			timeout = 0
-			timeout = 300 if albumOpen 
-			#console.log(timeout)
-			setTimeout( ->
-				offset = parent.parent().offset().top + parent.parent().parent().scrollTop() + 170
-				#console.log("Album closed")
-				arrow.css("transform", "rotate(180deg)")
-				parent.css("height", "800px")
-				sibling.css("display", "flex")
-				sibling.parent().css("display", "block")
-				sibling.css("height", "400px")
-				$(".offset").css("top", offset)
-				sibling.parent().addClass("offset")
-				$(".info-wrapper").attr("class", "info-wrapper")
-				sibling.addClass("is-open")
-				img = sibling.find("img").attr("src")
-				sibling.find(".info-background img").css("display", "block")
-				albumOpen = true
-			,
-			timeout)
-		else 
-			albumOpen = false
-			$(".info-wrapper").removeClass("is-open")
-		console.log(albumOpen)
