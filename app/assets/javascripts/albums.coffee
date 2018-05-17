@@ -12,8 +12,7 @@ $(document).on "turbolinks:load", ->
 		localStorage.setItem("Albums", jsonAlbums)
 		localStorage.setItem("Tracks", jsonTracks)
 
-	if !localStorage.getItem("Albums") || !localStorage.getItem("Tracks")
-		populateAlbums()
+	populateAlbums()
 
 	#Global variable declaration
 
@@ -22,13 +21,15 @@ $(document).on "turbolinks:load", ->
 	albumContainerWidth = $(".text-size-wrapper").width()
 	albumHeight = "327px"
 	albumOpen = false
-	blackList = []
 	delayTimer = null
 
 	console.log(albums)
 	console.log(tracks)
 
+	#Create an album
+
 	displayAlbum = (i) ->
+		$("#splash-container").toggle()
 		currentAlbum = albums[i]
 		albumID = currentAlbum.id
 		albumTracks = []
@@ -78,11 +79,14 @@ $(document).on "turbolinks:load", ->
 							<li><h3>Tracklist:</h3></li>
 						</ul>
 					</div>
-					<img src='" + currentAlbum.coverlink + "'>
+					<img id='expandable-img' src='" + currentAlbum.coverlink + "'>
 				</div>
 			</div>
 		</li>"
 		$("#splash-container").append(albumLi)
+		#$("#expandable-img").get()[0].addEventListener("click", clickImage($(this)))
+		#$(".arrow-container").get()[0].addEventListener("click", arrowClick($(this)))
+		$("#splash-container").show(400)
 		albumTracks.push(track) for track in tracks when track.album_id is albumID
 		addTrack = (track, i) -> 
 			$("#" + albumID + "-info").find(".tracklist-container").append(
@@ -110,7 +114,34 @@ $(document).on "turbolinks:load", ->
 			$(this).css("font-size", fontSize -= 0.5)
 			$(this).css("padding-top", padding += 0.5)
 
-	$("#album-total-count").text($("#splash-container").children().length)
+	#Handler for viewing album-info.
+
+	arrowClick = (e) ->
+		title = $(this).parent().attr("id")
+		sibling = $(this).parent().siblings("#" + title + "-info").find(".info-wrapper")
+		parent = $(this).parent()
+		arrow = $(this).find(".album-arrow")
+		toggleAlbum(title, sibling, parent, arrow)
+
+
+	#Handler for image click-zoom
+
+	clickImage = (e) ->
+		opacity = $("#opaque")
+		img = $(".bigimage")
+		imgsrc = $(this).attr("src")
+		if !img.hasClass("enlargened")
+			img.addClass("enlargened")
+			img.attr("src", imgsrc)
+			#console.log(img.width())
+			offset = img.width() / 2
+			#console.log(offset)
+			$(".enlargened").css("left", ($(window).width() / 2) - offset)
+			$(".enlargened").css("top", ($(window).height() / 2) - offset)
+			opacity.css("background", "rgba(0, 0, 0, 0.6")
+			opacity.css("z-index", "4")
+
+	$("#album-total-count").text(albums.length)
 
 	#Handler for 'random' button. Picks an album-container, scrolls to it and then opens it
 
@@ -131,23 +162,6 @@ $(document).on "turbolinks:load", ->
 		arrow = container.find(".album-arrow")
 		toggleAlbum(title, sibling, parent, arrow)
 		
-	#Handler for image click-zoom
-
-	$(".info-wrapper img").click ->
-		opacity = $("#opaque")
-		img = $(".bigimage")
-		imgsrc = $(this).attr("src")
-		if !img.hasClass("enlargened")
-			img.addClass("enlargened")
-			img.attr("src", imgsrc)
-			#console.log(img.width())
-			offset = img.width() / 2
-			#console.log(offset)
-			$(".enlargened").css("left", ($(window).width() / 2) - offset)
-			$(".enlargened").css("top", ($(window).height() / 2) - offset)
-			opacity.css("background", "rgba(0, 0, 0, 0.6")
-			opacity.css("z-index", "4")
-
 	#Handler for closing the zoom-mode for images
 
 	$("#opaque").click ->
@@ -155,15 +169,6 @@ $(document).on "turbolinks:load", ->
 		$(this).css("background", "rgba(0,0,0,0)")
 		$(".bigimage").attr("src", "")
 		$(this).css("z-index", "0")
-
-	#Handler for viewing album-info.
-
-	$(".arrow-container").click ->
-		title = $(this).parent().attr("id")
-		sibling = $(this).parent().siblings("#" + title + "-info").find(".info-wrapper")
-		parent = $(this).parent()
-		arrow = $(this).find(".album-arrow")
-		toggleAlbum(title, sibling, parent, arrow)
 
 	#Handler for clicking the 'sort' buttons
 
@@ -200,7 +205,7 @@ $(document).on "turbolinks:load", ->
 		clearTimeout(delayTimer)
 		delayTimer = setTimeout( ->
 			search(e.target)
-		, 120)
+		, 80)
 	)
 
 	#Method for searching
@@ -211,76 +216,66 @@ $(document).on "turbolinks:load", ->
 		inputValues = rawInput.split(/,/)
 		inputValues[i] = inputValues[i].trim() for i of inputValues
 		#console.log(inputValues)
-		albumContainer = $(".album-container")
 		if $(input).data("lastval") isnt rawInput
 			$(input).data("lastval", rawInput)
 			#console.log(inputVal)
-			container = $("#splash-container > li")
+			container = $("#splash-container")
+			container.empty()
 			if rawInput isnt ""
-				container.each -> 
-					blackList = []
-					conditionCount = []
-					conditionCount.push(false) for val in inputValues
-					text = $(this).find("p,h2")
-					text.each ->
-						albumContainer = $(this).closest(".album-container")
-						if !albumContainer.hasClass("album-container")
-							id = $(this).closest(".info-container").attr("id").replace("-info", "")
-							albumContainer = $("#" + id)
-						textVal = $(this).text()
-						if !$(this).hasClass("label") && blackList.findIndex((element) -> element == textVal) == -1
-							test = checkMatch(textVal, inputValues)
-							if test
-								conditionCount[conditionCount.findIndex((element) -> element == false)] = true
-								#console.log(conditionCount)
-					#console.log(blackList)
-					if conditionCount.findIndex((element) -> element == false) != -1
-						#console.log("no match!")
-						albumContainer.css("width", "0")
-						albumContainer.css("margin", "0")
-					if conditionCount.findIndex((element) -> element == false) == -1
-						#console.log("match!")
-						albumContainer.css("width", "200px")
-						albumContainer.css("margin", "8px")
+				doSearch = (album) ->
+					albumValues = []
+					albumValues.push(val) for val in Object.values(album) when typeof val isnt "number"
+					trackValues = []
+					trackValues.push(track.title, track.romanization) for track in tracks when track.album_id == album.id
+					matchValues = albumValues.concat(trackValues)
+					if checkMatch(matchValues, inputValues)
+						displayAlbum(album.id - 1)
+				doSearch(album) for album in albums
 			else
-				albumContainer.css("width", "200px")
-				albumContainer.css("margin", "8px")
+				displayAlbum(i) for i in [0...40]
+
 
 
 	#Helper method for checking if any 'conditions' match the selected text
 
-	checkMatch = (value, conditions) ->
+	checkMatch = (values, conditions) ->
 		#console.log("conditions",conditions)
 		#console.log("values:",value)
-		matchBool = false
-		match = (value, condition) ->
-			if !matchBool
-				if $("#regex").hasClass("brightness")
-					compCondition = new RegExp(condition)
-					#console.log(compCondition)
-					#console.log("blacklist check:",blackList.find((element) -> element == compCondition.source))
-					if compCondition.test(value) && blackList.find((element) -> element == compCondition.source) == undefined
-						#console.log("checkmatch: true")
-						blackList.push(compCondition.source)
-						matchBool = true
-				else
-					compValue = escapeRegExp(value).toUpperCase()
-					compCondition = escapeRegExp(condition).toUpperCase()
-					#console.log("value: " + compValue, "condition: " + compCondition)
-					if compValue.match(compCondition) != null && blackList.find((element) -> element == compCondition) == undefined
-						#console.log("checkmatch: true")
-						blackList.push(compCondition)
-						matchBool = true
-		match(value, cond) for cond in conditions
-		#console.log("matching...")
-		return matchBool
+		blackList = []
+		conditionCount = []
+		conditionCount.push(false) for val in conditions
+		match = (value, conditions) ->
+			#console.log("matching...")
+			compConditions = []
+			if $("#regex").hasClass("brightness")
+				compConditions.push(new RegExp(cond)) for cond in conditions
+				testSuccess = (regexCond) ->
+					console.log("checkmatch: true")
+					blackList.push(regexCond.source)
+					conditionCount[conditionCount.findIndex((element) -> element == false)] = true
+				testSuccess(regexCond) for regexCond in compConditions when regexCond.test(value) && blackList.find((element) -> element == regexCond.source) == undefined
+			else
+				compValue = escapeRegExp(value).toUpperCase()
+				#console.log(compValue)
+				compConditions.push(escapeRegExp(cond).toUpperCase()) for cond in conditions
+				#console.log(compConditions)
+				testSuccess = (compCond) ->
+					console.log("checkmatch: true")
+					blackList.push(compCond)
+					conditionCount[conditionCount.findIndex((element) -> element == false)] = true
+				testSuccess(compCond) for compCond in compConditions when compValue.match(compCond) != null && blackList.find((element) -> element == compCondition) == undefined
+		match(val, conditions) for val in values when !(conditionCount.find((element) -> element == false) == undefined)
+		if (conditionCount.find((element) -> element == false) == undefined)
+			return true
+		else
+			return false
 
 	#Helper method for escaping regex input
 
 	escapeRegExp = (string) ->
   		return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
 
-  	#Helper method for sorting albums
+  	#Method for sorting albums
 
 	albumSort = (string) ->
 		albumList = $("#splash-container")
@@ -377,7 +372,6 @@ $(document).on "turbolinks:load", ->
 			,
 			timeout)
 		else 
-			console.log("closed")
 			albumOpen = false
 			$(".info-wrapper").removeClass("is-open")
-
+		console.log(albumOpen)
