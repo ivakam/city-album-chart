@@ -5,7 +5,6 @@ $album-bg-color: #171717;
 $body-bg-color: #1b1b1b;
 
 body {
-	background: $body-bg-color;
 	padding: 0;
 	margin: 0;
 }
@@ -17,6 +16,62 @@ body {
 	overflow: auto;
 }
 
+#bg-opacity {
+	width: 100%;
+	height: 1227px;
+	background: $body-bg-color;
+	opacity: 0.8;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: -1;
+}
+
+#albums-bg-opacity {
+	opacity: 0.3;
+	background: $body-bg-color;
+	width: 100%;
+	height: 907px;
+	position: absolute;
+	top: 0;
+	left: 250px;
+	z-index: -1;
+}
+
+#sidebar-bg-opacity {
+	background: #2a2a2a;
+	opacity: 0.2;
+	width: 100%;
+	height: 907px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: -1;
+}
+
+#albums-bg-container {
+	width: 100%;
+	height: 1227px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	overflow: hidden;
+	z-index: -2;
+	img {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 2000px;
+		margin-top: -20%;
+		filter: blur(10px);
+	}
+	img:after {
+		content: "";
+		display: block;
+		padding-bottom: 100%;
+	}
+}
+
 #footer {
 	height: 100px;
 	width: 100%;
@@ -24,7 +79,6 @@ body {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	background: $body-bg-color;
 	border-top: 1px #414141 solid;
 	#link-list {
 		display: flex;
@@ -78,6 +132,7 @@ body {
 	flex-direction: column;
 	align-items: center;
 	padding-bottom: 20px;
+	border-bottom: 1px #414141 solid;
 	#logo-title {
 		display: flex;
 		flex-direction: column;
@@ -142,7 +197,7 @@ body {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	background: #2a2a2a;
+	position: relative;
 }
 
 #main-container {
@@ -151,6 +206,8 @@ body {
 	flex-direction: row;
 	justify-content: flex-start;
 	align-self: flex-start;
+	position: relative;
+	overflow-x: hidden;
 }
 
 .nav-list {
@@ -194,7 +251,6 @@ body {
 }
 
 #filters .title-wrapper {
-	background: #2a2a2a;
 	cursor: auto;
 }
 
@@ -258,28 +314,12 @@ body {
 	}
 }
 
-#show-filter {
-	border: none;
-	min-height: 30px;
-	.title-wrapper {
-		height: 30px;
-		a {
-			font-size: 13px;
-		}
-	}
-	.title-wrapper:hover {
-		cursor: pointer;
-		background: #4c4c4c;
-	}
-}
-
 #splash-container {
 	width: 100%;
 	padding-left: 10px;
 	display: flex;
 	position: relative;
 	flex-flow: row wrap;
-	background: $album-bg-color;
 	max-height: 100vh;
 	overflow-y: scroll;
 	overflow-x: hidden;
@@ -307,7 +347,6 @@ body {
 	justify-content: space-between;
 	width: 100%;
 	height: 306px;
-	background: $album-bg-color;
 	.text-size-wrapper {
 		display: flex;
 		width: 100%;
@@ -346,7 +385,6 @@ body {
 }
 
 .arrow-container {
-	background: $album-bg-color;
 	position: absolute;
 	top: 304px;
 	width: 100%;
