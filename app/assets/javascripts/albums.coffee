@@ -22,6 +22,7 @@ $(document).on "turbolinks:load", ->
 	albumHeight = "327px"
 	albumOpen = false
 	delayTimer = null
+	loadedAlbums = 40
 
 	#Helper method for opening an info container. Call it as 'sibling: undefined' to reset all info containers.
 
@@ -85,8 +86,8 @@ $(document).on "turbolinks:load", ->
 
 	#Create an album
 
-	displayAlbum = (i) ->
-		$("#splash-container").toggle()
+	displayAlbum = (i, refresh = true) ->
+		$("#splash-container").toggle() if refresh
 		currentAlbum = albums[i]
 		albumID = currentAlbum.id
 		albumTracks = []
@@ -143,7 +144,7 @@ $(document).on "turbolinks:load", ->
 		$("#splash-container").append(albumLi)
 		$("#" + currentAlbum.id + "-info #expandable-img").get()[0].addEventListener("click",(e) -> clickImage($(this)))
 		$("#" + currentAlbum.id + " .arrow-container").get()[0].addEventListener("click", (e) -> arrowClick($(this)))
-		$("#splash-container").show(400)
+		$("#splash-container").show(400) if refresh
 		albumTracks.push(track) for track in tracks when track.album_id is albumID
 		addTrack = (track, i) -> 
 			$("#" + albumID + "-info").find(".tracklist-container").append(
@@ -183,7 +184,7 @@ $(document).on "turbolinks:load", ->
 			ids.push($(this).attr("id"))
 		random = Math.floor(Math.random() * ids.length)
 		id = ids[random]
-		console.log(id)
+		#console.log(id)
 		container = $("#" + id)
 		$('#splash-container').animate({
 		scrollTop: container.offset().top + 100
@@ -243,6 +244,7 @@ $(document).on "turbolinks:load", ->
 	#Method for searching
 
 	search = (input) -> 
+		loadedAlbums = 40
 		toggleAlbum(sibling: undefined)
 		rawInput = $(input).val()
 		inputValues = rawInput.split(/,/)
@@ -261,9 +263,14 @@ $(document).on "turbolinks:load", ->
 					trackValues.push(track.title, track.romanization) for track in tracks when track.album_id == album.id
 					matchValues = albumValues.concat(trackValues)
 					if checkMatch(matchValues, inputValues)
-						displayAlbum(album.id - 1)
+						tempAlbums.push(album)
+				tempAlbums = []
 				doSearch(album) for album in albums
+				albums = tempAlbums
+				displayAlbum(i) for i in [0...albums.length]
 			else
+				albums = JSON.parse(localStorage.getItem("Albums"))
+				tracks = JSON.parse(localStorage.getItem("Tracks"))
 				displayAlbum(i) for i in [0...40]
 
 
@@ -373,3 +380,15 @@ $(document).on "turbolinks:load", ->
 		albumList.show("normal")
 		albumList.css("display", "flex")
 		toggleAlbum(sibling: undefined)
+
+	#Load an album
+
+
+
+	#Load more albums on scroll
+
+	$("#splash-container").scroll -> 
+		if $(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight
+			console.log("At bottom!")
+			displayAlbum(albumIndex, false) for albumIndex in [loadedAlbums...loadedAlbums + 40]
+			loadedAlbums += 40
