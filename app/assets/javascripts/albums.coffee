@@ -1,8 +1,6 @@
 $(document).on "turbolinks:load", ->
 
 	console.log("albums.coffee is running.")
-	# $("#splash-container").show("normal")
-	# $("#splash-container").css("display", "flex")
 
 	#Populate localstorage object
 
@@ -20,7 +18,6 @@ $(document).on "turbolinks:load", ->
 	masterTracks = JSON.parse(localStorage.getItem("Tracks"))
 	albums = masterAlbums
 	tracks = masterTracks
-	albumHeight = "327px"
 	albumOpen = false
 	delayTimer = null
 	loadedAlbums = 40
@@ -29,17 +26,15 @@ $(document).on "turbolinks:load", ->
 
 	toggleAlbum = (title, sibling, parent, arrow) ->
 		$(".album-arrow").css("transform", "rotate(0)")
-		$(".album-container").css("height", albumHeight)
+		$(".album-container").css("height", "327px")
 		$(".info-wrapper").css("display", "none")
 		$(".info-container").css("display", "none")
 		$(".info-wrapper").css("height", "0")
 		if sibling isnt undefined && !sibling.hasClass("is-open")
 			timeout = 0
 			timeout = 300 if albumOpen 
-			#console.log(timeout)
 			setTimeout( ->
 				offset = parent.parent().offset().top + parent.parent().parent().scrollTop() + 170
-				#console.log("Album closed")
 				arrow.css("transform", "rotate(180deg)")
 				parent.css("height", "800px")
 				sibling.css("display", "flex")
@@ -57,7 +52,6 @@ $(document).on "turbolinks:load", ->
 		else 
 			albumOpen = false
 			$(".info-wrapper").removeClass("is-open")
-		#console.log(albumOpen)
 
 	#Handler for viewing album-info.
 
@@ -77,9 +71,7 @@ $(document).on "turbolinks:load", ->
 		if !img.hasClass("enlargened")
 			img.addClass("enlargened")
 			img.attr("src", imgsrc)
-			#console.log(img.width())
 			offset = img.width() / 2
-			#console.log(offset)
 			$(".enlargened").css("left", ($(window).width() / 2) - offset)
 			$(".enlargened").css("top", ($(window).height() / 2) - offset)
 			opacity.css("background", "rgba(0, 0, 0, 0.6")
@@ -143,9 +135,18 @@ $(document).on "turbolinks:load", ->
 			</div>
 		</li>"
 		$("#splash-container").append(albumLi)
-		$("#" + currentAlbum.id + "-info #expandable-img").get()[0].addEventListener("click",(e) -> clickImage($(this)))
-		$("#" + currentAlbum.id + " .arrow-container").get()[0].addEventListener("click", (e) -> arrowClick($(this)))
-		$("#splash-container").show(400) if refresh
+		$("#" + albumID + "-info #expandable-img").get()[0].addEventListener("click",(e) -> clickImage($(this)))
+		$("#" + albumID + " .arrow-container").get()[0].addEventListener("click", (e) -> arrowClick($(this)))
+		if refresh
+			$("#splash-container").show(400, ->
+				$("#" + albumID + " .text-size-wrapper h2, #" + albumID + " .artist-year-container p").each ->
+					console.log($(this))
+					fontSize = 20
+					padding = 0
+					while $(this).width() > $(this).parent().width()
+						$(this).css("font-size", fontSize -= 0.5)
+						$(this).css("padding-top", padding += 1)
+			)
 		albumTracks.push(track) for track in tracks when track.album_id is albumID
 		addTrack = (track, i) -> 
 			$("#" + albumID + "-info").find(".tracklist-container").append(
@@ -165,14 +166,7 @@ $(document).on "turbolinks:load", ->
 
 		#Adjusts text size to make sure the titles fit within their containers
 
-		$("#" + currentAlbum.id + " .text-size-wrapper h2, #" + currentAlbum.id + " .artist-year-container p").each -> 
-			fontSize = 20
-			padding = 0
-			#console.log($(this).width())
-			#console.log($(this).parent().width())
-			while $(this).width() > $(this).parent().width()
-				$(this).css("font-size", fontSize -= 0.5)
-				$(this).css("padding-top", padding += 1)
+
 
 	displayAlbum(i) for i in [0...40]
 
@@ -186,10 +180,9 @@ $(document).on "turbolinks:load", ->
 			ids.push($(this).attr("id"))
 		random = Math.floor(Math.random() * ids.length)
 		id = ids[random]
-		#console.log(id)
 		container = $("#" + id)
 		$('#splash-container').animate({
-		scrollTop: container.offset().top + 100
+		scrollTop: container.offset().top
 		}, 500)
 		title = id
 		sibling = container.siblings("#" + title + "-info").find(".info-wrapper")
@@ -255,7 +248,6 @@ $(document).on "turbolinks:load", ->
 		tracks = masterTracks
 		if $(input).data("lastval") isnt rawInput
 			$(input).data("lastval", rawInput)
-			#console.log(inputVal)
 			$("#splash-container").empty()
 			if rawInput isnt ""
 				doSearch = (album) ->
@@ -278,28 +270,21 @@ $(document).on "turbolinks:load", ->
 	#Helper method for checking if any 'conditions' match the selected text
 
 	checkMatch = (values, conditions) ->
-		#console.log("conditions",conditions)
-		#console.log("values:",value)
 		blackList = []
 		conditionCount = []
 		conditionCount.push(false) for val in conditions
 		match = (value, conditions) ->
-			#console.log("matching...")
 			compConditions = []
 			if $("#regex").hasClass("brightness")
 				compConditions.push(new RegExp(cond)) for cond in conditions
 				testSuccess = (regexCond) ->
-					#console.log("checkmatch: true")
 					blackList.push(regexCond.source)
 					conditionCount[conditionCount.findIndex((element) -> element == false)] = true
 				testSuccess(regexCond) for regexCond in compConditions when regexCond.test(value) && blackList.find((element) -> element == regexCond.source) == undefined
 			else
 				compValue = escapeRegExp(value).toUpperCase()
-				#console.log(compValue)
 				compConditions.push(escapeRegExp(cond).toUpperCase()) for cond in conditions
-				#console.log(compConditions)
 				testSuccess = (compCond) ->
-					#console.log("checkmatch: true")
 					blackList.push(compCond)
 					conditionCount[conditionCount.findIndex((element) -> element == false)] = true
 				testSuccess(compCond) for compCond in compConditions when compValue.match(compCond) != null && blackList.find((element) -> element == compCondition) == undefined
