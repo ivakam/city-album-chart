@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css?family=Poppins|Roboto');
 @import url("https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css");
 
 $album-bg-color: #171717;
@@ -78,6 +78,22 @@ body {
 	flex-direction: column;
 	align-items: center;
 	padding-bottom: 20px;
+	#logo-title {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: space-around;
+		margin-bottom: 20px;
+		h1 {
+			font-family: "Poppins";
+			font-weight: bold;
+			font-size: 80px;
+			margin: 0;
+		}
+		h2 {
+			margin: 0;
+		}
+	}
 	#input {
 		position: relative;
 		width: 70%;
@@ -94,7 +110,7 @@ body {
 		}
 		.ion-android-search {
 			position: absolute;
-			top: 2px;
+			top: 1px;
 			right: 8px;
 			font-size: 30px;
 			color: #a7a7a7;
@@ -468,14 +484,10 @@ body {
 	}
 }
 
-h1, h2, h3, p, a, i {
+h2, h3, p, a, i {
 	font-family: "Roboto";
 	color: #e8e8e8;
 	text-decoration: none;
-}
-
-h1 {
-	margin: 50px 0 50px 0;
 }
 
 ul {
