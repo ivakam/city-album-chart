@@ -16,8 +16,10 @@ $(document).on "turbolinks:load", ->
 
 	#Global variable declaration
 
-	albums = JSON.parse(localStorage.getItem("Albums"))
-	tracks = JSON.parse(localStorage.getItem("Tracks"))
+	masterAlbums = JSON.parse(localStorage.getItem("Albums"))
+	masterTracks = JSON.parse(localStorage.getItem("Tracks"))
+	albums = masterAlbums
+	tracks = masterTracks
 	albumHeight = "327px"
 	albumOpen = false
 	delayTimer = null
@@ -159,6 +161,7 @@ $(document).on "turbolinks:load", ->
 				"
 				)
 		addTrack(track, i) for track, i in albumTracks
+		loadedAlbums++
 
 		#Adjusts text size to make sure the titles fit within their containers
 
@@ -169,11 +172,11 @@ $(document).on "turbolinks:load", ->
 			#console.log($(this).parent().width())
 			while $(this).width() > $(this).parent().width()
 				$(this).css("font-size", fontSize -= 0.5)
-				$(this).css("padding-top", padding += 1.25)
+				$(this).css("padding-top", padding += 1)
 
 	displayAlbum(i) for i in [0...40]
 
-	$("#album-total-count").text(albums.length)
+	$("#album-total-count").text(masterAlbums.length)
 
 	#Handler for 'random' button. Picks an album-container, scrolls to it and then opens it
 
@@ -237,7 +240,7 @@ $(document).on "turbolinks:load", ->
 		clearTimeout(delayTimer)
 		delayTimer = setTimeout( ->
 			search(e.target)
-		, 80)
+		, 100)
 	)
 
 	#Method for searching
@@ -248,13 +251,12 @@ $(document).on "turbolinks:load", ->
 		rawInput = $(input).val()
 		inputValues = rawInput.split(/,/)
 		inputValues[i] = inputValues[i].trim() for i of inputValues
-		albums = JSON.parse(localStorage.getItem("Albums"))
-		tracks = JSON.parse(localStorage.getItem("Tracks"))
+		albums = masterAlbums
+		tracks = masterTracks
 		if $(input).data("lastval") isnt rawInput
 			$(input).data("lastval", rawInput)
 			#console.log(inputVal)
-			container = $("#splash-container")
-			container.empty()
+			$("#splash-container").empty()
 			if rawInput isnt ""
 				doSearch = (album) ->
 					albumValues = []
@@ -335,44 +337,40 @@ $(document).on "turbolinks:load", ->
 				if !albumList.hasClass("artist-sorted-up") && !albumList.hasClass("artist-sorted-down")
 					albumList.attr("class", "artist-sorted-down")
 				if albumList.hasClass("artist-sorted-up") then albumList.attr("class", "artist-sorted-down") else albumList.attr("class", "artist-sorted-up")
-				albumsToSort.sort (a, b) ->
-					compA = $(a).find(".artist-year-container .artist").text().toUpperCase()
-					compB = $(b).find(".artist-year-container .artist").text().toUpperCase()
-					#console.log(compA + " and " + compB)
+				albums = albums.sort (a, b) -> 
+					compA = a.romaji_artist.toUpperCase()
+					compB = b.romaji_artist.toUpperCase()
 					if albumList.hasClass("artist-sorted-up")
-						return (compA > compB) ? -1 : (compA < compB) ? 1 : 0
+						return compA.localeCompare(compB)
 					else
-						return (compA < compB) ? -1 : (compA > compB) ? 1 : 0						
-				$.each(albumsToSort, e = (idx, itm) -> albumList.append(itm))
+						return compB.localeCompare(compA)
+				displayAlbum(i) for i in [0...loadedAlbums]
 				break;
 			when "Year"
 				if !albumList.hasClass("year-sorted-up") && !albumList.hasClass("year-sorted-down")
 					albumList.attr("class", "year-sorted-down")
 				if albumList.hasClass("year-sorted-up") then albumList.attr("class", "year-sorted-down") else albumList.attr("class", "year-sorted-up")
-				albumsToSort.sort (a, b) -> 
-					compA = Number($(a).find(".artist-year-container .year").text())
-					compB = Number($(b).find(".artist-year-container .year").text())
+				albums = albums.sort (a, b) -> 
+					compA = parseInt(a.year)
+					compB = parseInt(b.year)
 					if albumList.hasClass("year-sorted-up")
 						return (compA > compB) ? -1 : (compA < compB) ? 1 : 0
 					else
-						return (compA < compB) ? -1 : (compA > compB) ? 1 : 0						
-				$.each(albumsToSort, e = (idx, itm) -> albumList.append(itm))
+						return (compA < compB) ? -1 : (compA > compB) ? 1 : 0
+				displayAlbum(i) for i in [0...loadedAlbums]
 				break;
 			when "Flavor"
 				if !albumList.hasClass("flavor-sorted-up") && !albumList.hasClass("flavor-sorted-down")
 					albumList.attr("class", "flavor-sorted-down")
 				if albumList.hasClass("flavor-sorted-up") then albumList.attr("class", "flavor-sorted-down") else albumList.attr("class", "flavor-sorted-up")
-				albumsToSort.sort (a, b) ->
-					infoA = $(a).children(".info-container")
-					infoB = $(b).children(".info-container")
-					compA = $(infoA).find(".flavor-value").text().toUpperCase()
-					compB = $(infoB).find(".flavor-value").text().toUpperCase()
-					#console.log(compA + " and " + compB)
+				albums = albums.sort (a, b) -> 
+					compA = a.flavor.toUpperCase()
+					compB = b.flavor.toUpperCase()
 					if albumList.hasClass("flavor-sorted-up")
-						return (compA > compB) ? -1 : (compA < compB) ? 1 : 0
+						return compA.localeCompare(compB)
 					else
-						return (compA < compB) ? -1 : (compA > compB) ? 1 : 0						
-				$.each(albumsToSort, e = (idx, itm) -> albumList.append(itm))
+						return compB.localeCompare(compA)
+				displayAlbum(i) for i in [0...loadedAlbums]
 				break;
 		toggleAlbum(sibling: undefined)
 
@@ -380,6 +378,12 @@ $(document).on "turbolinks:load", ->
 
 	$("#splash-container").scroll -> 
 		if $(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight
-			console.log("At bottom!")
-			displayAlbum(albumIndex, false) for albumIndex in [loadedAlbums...loadedAlbums + 40]
-			loadedAlbums += 40
+			albumsToLoad = albums.length - loadedAlbums
+			if albumsToLoad >= 40
+				displayAlbum(albumIndex, false) for albumIndex in [loadedAlbums...loadedAlbums + 40]
+			else
+				if albumsToLoad < 40 && albumsToLoad > 0
+					displayAlbum(albumIndex, false) for albumIndex in [loadedAlbums...loadedAlbums + albumsToLoad]
+				else
+					console.log("No more albums to load!")
+
