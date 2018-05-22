@@ -18,7 +18,6 @@ $(document).on "turbolinks:load", ->
 
 	albums = JSON.parse(localStorage.getItem("Albums"))
 	tracks = JSON.parse(localStorage.getItem("Tracks"))
-	albumContainerWidth = $(".text-size-wrapper").width()
 	albumHeight = "327px"
 	albumOpen = false
 	delayTimer = null
@@ -93,7 +92,7 @@ $(document).on "turbolinks:load", ->
 		albumTracks = []
 		albumLi = 
 		"<li>
-			<div class='album-container' id='"+currentAlbum.id+"'>
+			<div class='album-container' id='"+albumID+"'>
 				<div class='album-text-container'>
 					<div class='text-size-wrapper'>
 						<h2>"+currentAlbum.title+"</h2>
@@ -161,18 +160,18 @@ $(document).on "turbolinks:load", ->
 				)
 		addTrack(track, i) for track, i in albumTracks
 
+		#Adjusts text size to make sure the titles fit within their containers
+
+		$("#" + currentAlbum.id + " .text-size-wrapper h2, #" + currentAlbum.id + " .artist-year-container p").each -> 
+			fontSize = 20
+			padding = 0
+			#console.log($(this).width())
+			#console.log($(this).parent().width())
+			while $(this).width() > $(this).parent().width()
+				$(this).css("font-size", fontSize -= 0.5)
+				$(this).css("padding-top", padding += 1.25)
+
 	displayAlbum(i) for i in [0...40]
-	#$("#expandable-img").get()[0].addEventListener("click", (e) -> clickImage($(this)))
-	#$(".arrow-container").get()[0].addEventListener("click", (e) -> arrowClick($(this)))
-
-	#Adjusts text size to make sure the titles fit within their containers
-
-	$(".text-size-wrapper h2, .artist-year-container p").each -> 
-		fontSize = 20
-		padding = 0
-		while ($(this).width() > albumContainerWidth)
-			$(this).css("font-size", fontSize -= 0.5)
-			$(this).css("padding-top", padding += 0.5)
 
 	$("#album-total-count").text(albums.length)
 
@@ -249,7 +248,8 @@ $(document).on "turbolinks:load", ->
 		rawInput = $(input).val()
 		inputValues = rawInput.split(/,/)
 		inputValues[i] = inputValues[i].trim() for i of inputValues
-		#console.log(inputValues)
+		albums = JSON.parse(localStorage.getItem("Albums"))
+		tracks = JSON.parse(localStorage.getItem("Tracks"))
 		if $(input).data("lastval") isnt rawInput
 			$(input).data("lastval", rawInput)
 			#console.log(inputVal)
@@ -269,8 +269,6 @@ $(document).on "turbolinks:load", ->
 				albums = tempAlbums
 				displayAlbum(i) for i in [0...albums.length]
 			else
-				albums = JSON.parse(localStorage.getItem("Albums"))
-				tracks = JSON.parse(localStorage.getItem("Tracks"))
 				displayAlbum(i) for i in [0...40]
 
 
@@ -377,10 +375,6 @@ $(document).on "turbolinks:load", ->
 				$.each(albumsToSort, e = (idx, itm) -> albumList.append(itm))
 				break;
 		toggleAlbum(sibling: undefined)
-
-	#Load an album
-
-
 
 	#Load more albums on scroll
 
