@@ -318,27 +318,26 @@ $(document).on "turbolinks:load", ->
 
 	albumSort = (string) ->
 		albumList = $("#splash-container")
-		albums = albumList.children("li").get()
-		albumList.css("display", "none")
+		$("#splash-container").empty()
 		switch string
 			when "Title"
 				if !albumList.hasClass("title-sorted-up") && !albumList.hasClass("title-sorted-down")
 					albumList.attr("class", "title-sorted-down")
 				if albumList.hasClass("title-sorted-up") then albumList.attr("class", "title-sorted-down") else albumList.attr("class", "title-sorted-up")
-				albums.sort (a, b) -> 
-					compA = $(a).find(".text-size-wrapper h2").text().toUpperCase()
-					compB = $(b).find(".text-size-wrapper h2").text().toUpperCase()
+				albums = albums.sort (a, b) -> 
+					compA = a.title.toUpperCase()
+					compB = b.title.toUpperCase()
 					if albumList.hasClass("title-sorted-up")
-						return (compA > compB) ? -1 : (compA < compB) ? 1 : 0
+						return compA.localeCompare(compB)
 					else
-						return (compA < compB) ? -1 : (compA > compB) ? 1 : 0						
-				$.each(albums, e = (idx, itm) -> albumList.append(itm))
+						return compB.localeCompare(compA)
+				displayAlbum(i) for i in [0...loadedAlbums]
 				break;
 			when "Artist"
 				if !albumList.hasClass("artist-sorted-up") && !albumList.hasClass("artist-sorted-down")
 					albumList.attr("class", "artist-sorted-down")
 				if albumList.hasClass("artist-sorted-up") then albumList.attr("class", "artist-sorted-down") else albumList.attr("class", "artist-sorted-up")
-				albums.sort (a, b) ->
+				albumsToSort.sort (a, b) ->
 					compA = $(a).find(".artist-year-container .artist").text().toUpperCase()
 					compB = $(b).find(".artist-year-container .artist").text().toUpperCase()
 					#console.log(compA + " and " + compB)
@@ -346,26 +345,26 @@ $(document).on "turbolinks:load", ->
 						return (compA > compB) ? -1 : (compA < compB) ? 1 : 0
 					else
 						return (compA < compB) ? -1 : (compA > compB) ? 1 : 0						
-				$.each(albums, e = (idx, itm) -> albumList.append(itm))
+				$.each(albumsToSort, e = (idx, itm) -> albumList.append(itm))
 				break;
 			when "Year"
 				if !albumList.hasClass("year-sorted-up") && !albumList.hasClass("year-sorted-down")
 					albumList.attr("class", "year-sorted-down")
 				if albumList.hasClass("year-sorted-up") then albumList.attr("class", "year-sorted-down") else albumList.attr("class", "year-sorted-up")
-				albums.sort (a, b) -> 
+				albumsToSort.sort (a, b) -> 
 					compA = Number($(a).find(".artist-year-container .year").text())
 					compB = Number($(b).find(".artist-year-container .year").text())
 					if albumList.hasClass("year-sorted-up")
 						return (compA > compB) ? -1 : (compA < compB) ? 1 : 0
 					else
 						return (compA < compB) ? -1 : (compA > compB) ? 1 : 0						
-				$.each(albums, e = (idx, itm) -> albumList.append(itm))
+				$.each(albumsToSort, e = (idx, itm) -> albumList.append(itm))
 				break;
 			when "Flavor"
 				if !albumList.hasClass("flavor-sorted-up") && !albumList.hasClass("flavor-sorted-down")
 					albumList.attr("class", "flavor-sorted-down")
 				if albumList.hasClass("flavor-sorted-up") then albumList.attr("class", "flavor-sorted-down") else albumList.attr("class", "flavor-sorted-up")
-				albums.sort (a, b) ->
+				albumsToSort.sort (a, b) ->
 					infoA = $(a).children(".info-container")
 					infoB = $(b).children(".info-container")
 					compA = $(infoA).find(".flavor-value").text().toUpperCase()
@@ -375,10 +374,8 @@ $(document).on "turbolinks:load", ->
 						return (compA > compB) ? -1 : (compA < compB) ? 1 : 0
 					else
 						return (compA < compB) ? -1 : (compA > compB) ? 1 : 0						
-				$.each(albums, e = (idx, itm) -> albumList.append(itm))
+				$.each(albumsToSort, e = (idx, itm) -> albumList.append(itm))
 				break;
-		albumList.show("normal")
-		albumList.css("display", "flex")
 		toggleAlbum(sibling: undefined)
 
 	#Load an album
