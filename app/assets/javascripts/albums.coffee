@@ -48,8 +48,8 @@ $(document).on "turbolinks:load", ->
 				sibling.find(".info-background img").css("display", "block")
 				trackContainer = sibling.find(".tracklist-container")
 				firstChild = trackContainer.children().first()
-				newWidth = trackContainer.position().left - firstChild.position().left
-				trackContainer.width(trackContainer.width() + newWidth)
+				newWidth = trackContainer.width() + firstChild.width()
+				trackContainer.width(newWidth + 15)
 				albumOpen = true
 			,
 			timeout)
@@ -173,7 +173,7 @@ $(document).on "turbolinks:load", ->
 				"
 				<li class='track-container'>
 					<div class='track-title-container'>
-						<p>"+(i+1)+". &nbsp</p>
+						<p>"+(i+1)+".</p>
 						<p>" + track.title + "</p>
 						<i>" + track.romanization + "</i>
 					</div>

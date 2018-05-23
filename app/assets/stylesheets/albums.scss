@@ -526,6 +526,10 @@ body {
 				justify-content: space-between;
 				margin-right: 15px;
 				margin-bottom: 8px;
+				min-height: 28px;
+				.track-title-container p:first-child {
+					margin-right: 5px;
+				}
 			div {
 				display: flex;
 				align-content: flex-end;
@@ -539,10 +543,6 @@ body {
 			}
 		}
 	}
-}
-
-div {
-	box-sizing: border-box;
 }
 
 h2, h3, p, a, i {
