@@ -19,7 +19,7 @@ $body-bg-color: #1b1b1b;
 
 #about-container {
 	width: 100%;
-	height: 907px;
+	height: 1000px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -31,6 +31,10 @@ $body-bg-color: #1b1b1b;
 		color: white;
 		text-decoration: underline;
 	}
+}
+
+#about-container::-webkit-scrollbar {
+	display: none;
 }
 
 #about-text-container {
