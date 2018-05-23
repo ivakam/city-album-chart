@@ -366,6 +366,8 @@ body {
 	p, h2 {
 		margin: 2px;
 		white-space: nowrap;
+		display: flex;
+		align-items: center;
 	}
 	img {
 		width: 200px;
@@ -441,6 +443,8 @@ body {
 	p, h2 {
 		font-size: 20px;
 		margin: 3px 0 3px 0;
+		display: flex;
+		align-items: center;
 	}
 	> * {
 		z-index: 3;

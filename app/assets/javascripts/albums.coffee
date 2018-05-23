@@ -142,6 +142,7 @@ $(document).on "turbolinks:load", ->
 				</div>
 			</div>
 		</li>"
+
 		$("#splash-container").append(albumLi)
 		$("#" + albumID + "-info #expandable-img").get()[0].addEventListener("click",(e) -> clickImage($(this)))
 		$("#" + albumID + " .arrow-container").get()[0].addEventListener("click", (e) -> arrowClick($(this)))
@@ -152,15 +153,21 @@ $(document).on "turbolinks:load", ->
 					padding = 0
 					while $(this).width() > $(this).parent().width()
 						$(this).css("font-size", fontSize -= 0.5)
-						$(this).css("padding-top", padding += 1)
+						padding = fontSize * 0.5
+						#$(this).css("padding-top", padding)
 			)
+
+		#Adjusts text size to make sure the titles fit within their containers
+
 		$("#" + albumID + " .text-size-wrapper h2, #" + albumID + " .artist-year-container p").each ->
 			fontSize = 20
-			padding = 0
 			while $(this).width() > $(this).parent().width()
 				$(this).css("font-size", fontSize -= 0.5)
-				$(this).css("padding-top", padding += 1)
+				padding = Math.pow(fontSize, -fontSize * 0.6)
+				$(this).css("padding-top", padding)
+
 		albumTracks.push(track) for track in tracks when track.album_id is albumID
+
 		addTrack = (track, i) -> 
 			$("#" + albumID + "-info").find(".tracklist-container").append(
 				"
@@ -174,12 +181,9 @@ $(document).on "turbolinks:load", ->
 				</li>
 				"
 				)
+
 		addTrack(track, i) for track, i in albumTracks
 		loadedAlbums++
-
-		#Adjusts text size to make sure the titles fit within their containers
-
-
 
 	displayAlbum(i) for i in [0...40]
 
