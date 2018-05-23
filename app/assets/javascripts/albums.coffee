@@ -30,9 +30,11 @@ $(document).on "turbolinks:load", ->
 		$(".info-wrapper").css("display", "none")
 		$(".info-container").css("display", "none")
 		$(".info-wrapper").css("height", "0")
+		$(".album-container").find("img").removeClass("image-border")
 		if sibling isnt undefined && !sibling.hasClass("is-open")
 			timeout = 0
-			timeout = 300 if albumOpen 
+			timeout = 300 if albumOpen
+			parent.find("img").addClass("image-border")
 			setTimeout( ->
 				offset = parent.parent().offset().top + parent.parent().parent().scrollTop() + 140
 				arrow.css("transform", "rotate(180deg)")
@@ -49,8 +51,6 @@ $(document).on "turbolinks:load", ->
 				trackContainer = sibling.find(".tracklist-container")
 				firstChild = trackContainer.children().first()
 				lastChild = trackContainer.children().last()
-				console.log(firstChild.width())
-				console.log(lastChild)
 				newWidth = lastChild.width() + firstChild.get()[0].clientWidth
 				trackContainer.width(newWidth + 30) if trackContainer.width() != newWidth
 				albumOpen = true
@@ -62,12 +62,13 @@ $(document).on "turbolinks:load", ->
 
 	#Handler for viewing album-info.
 
-	arrowClick = (e) ->
-		title = e.parent().attr("id")
-		sibling = e.parent().siblings("#" + title + "-info").find(".info-wrapper")
-		parent = e.parent()
-		arrow = e.find(".album-arrow")
+	albumClick = (e) ->
+		title = e.closest(".album-container").attr("id")
+		sibling = $("#" + title + "-info").find(".info-wrapper")
+		parent = $("#" + title)
+		arrow = parent.find(".album-arrow")
 		toggleAlbum(title, sibling, parent, arrow)
+
 
 	#Handler for image click-zoom
 
@@ -148,7 +149,8 @@ $(document).on "turbolinks:load", ->
 
 		$("#splash-container").append(albumLi)
 		$("#" + albumID + "-info .expandable-img").get()[0].addEventListener("click",(e) -> clickImage($(this)))
-		$("#" + albumID + " .arrow-container").get()[0].addEventListener("click", (e) -> arrowClick($(this)))
+		$("#" + albumID + " .arrow-container").get()[0].addEventListener("click", (e) -> albumClick($(this)))
+		$("#" + albumID + " img").get()[0].addEventListener("click", (e) -> albumClick($(this)))
 		if refresh
 			$("#splash-container").show(400, ->
 				$("#" + albumID + " .text-size-wrapper h2, #" + albumID + " .artist-year-container p").each ->
@@ -229,16 +231,6 @@ $(document).on "turbolinks:load", ->
 		$(this).find(".ion-chevron-down").toggleClass("rotated")
 		albumSort($(this).find("a").text())
 		return
-
-	#Handler for expanding the (currently empty) filter menu
-
-	$("#show-filter").click ->
-		if !$(".nav-list-container").hasClass("expanded")
-			$(".nav-list-container").addClass("expanded")
-			$(".nav-list-container").css("height", "250px")
-		else
-			$(".nav-list-container").removeClass("expanded")
-			$(".nav-list-container").css("height", "135px")
 
 	#Handler for toggling regex matching
 

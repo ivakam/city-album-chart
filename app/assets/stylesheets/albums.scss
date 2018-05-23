@@ -340,7 +340,7 @@ body {
 	position: relative;
 	transition: 0.3s;
 	margin: 8px;
-	width: 200px;
+	width: 204px;
 	height: 327px;
 }
 
@@ -371,9 +371,15 @@ body {
 		align-items: center;
 	}
 	img {
+		margin: 2px;
 		width: 200px;
 		max-height: 200px;
 		align-self: center;
+		cursor: pointer;
+		transition: 0.1s;
+	}
+	img:hover {
+		border: 1px #e3e3e3 solid;
 	}
 	img:after {
 	content: "";
@@ -579,4 +585,8 @@ ul {
 
 .brightness {
 	filter: brightness(150%);
+}
+
+.image-border {
+	border: 1px #e3e3e3 solid;
 }
