@@ -18,7 +18,7 @@ body {
 
 #bg-opacity {
 	width: 100%;
-	height: 1227px;
+	height: 1320px;
 	background: $body-bg-color;
 	opacity: 0.8;
 	position: absolute;
@@ -31,7 +31,7 @@ body {
 	opacity: 0.3;
 	background: $body-bg-color;
 	width: 100%;
-	height: 907px;
+	height: 1000px;
 	position: absolute;
 	top: 0;
 	left: 250px;
@@ -42,7 +42,7 @@ body {
 	background: #2a2a2a;
 	opacity: 0.2;
 	width: 100%;
-	height: 907px;
+	height: 1000px;
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -50,8 +50,10 @@ body {
 }
 
 #albums-bg-container {
+	display: flex;
+	flex-grow: 1;
 	width: 100%;
-	height: 1227px;
+	height: 1320px;
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -193,7 +195,7 @@ body {
 
 #sidebar {
 	min-width: 250px;
-	height: 100vh;
+	height: 1000px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -320,7 +322,7 @@ body {
 	display: flex;
 	position: relative;
 	flex-flow: row wrap;
-	height: 100vh;
+	height: 1000px;
 	overflow-y: scroll;
 	overflow-x: hidden;
 }
