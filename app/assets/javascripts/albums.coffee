@@ -241,41 +241,46 @@ $(document).on "turbolinks:load", ->
 
 	#Search listener
 
+	asyncSearch = (e) ->
+		await search(e)
+
 	$("#main-search").on("input", (e) ->
 		clearTimeout(delayTimer)
 		delayTimer = setTimeout( ->
-			search(e.target)
+			asyncSearch(e)
 		, 100)
 	)
 
 	#Method for searching
 
-	search = (input) -> 
-		loadedAlbums = 40
-		toggleAlbum(sibling: undefined)
-		rawInput = $(input).val()
-		inputValues = rawInput.split(/,/)
-		inputValues[i] = inputValues[i].trim() for i of inputValues
-		albums = masterAlbums
-		tracks = masterTracks
-		if $(input).data("lastval") isnt rawInput
-			$(input).data("lastval", rawInput)
-			$("#splash-container").empty()
-			if rawInput isnt ""
-				doSearch = (album) ->
-					albumValues = []
-					albumValues.push(val) for val in Object.values(album) when typeof val isnt "number"
-					trackValues = []
-					trackValues.push(track.title, track.romanization) for track in tracks when track.album_id == album.id
-					matchValues = albumValues.concat(trackValues)
-					if checkMatch(matchValues, inputValues)
-						tempAlbums.push(album)
-				tempAlbums = []
-				doSearch(album) for album in albums
-				albums = tempAlbums
-				displayAlbum(i) for i in [0...albums.length]
-			else
-				displayAlbum(i) for i in [0...40]
+	search = (input) ->
+		new Promise (resolve) ->
+			loadedAlbums = 40
+			toggleAlbum(sibling: undefined)
+			rawInput = $(input).val()
+			inputValues = rawInput.split(/,/)
+			inputValues[i] = inputValues[i].trim() for i of inputValues
+			albums = masterAlbums
+			tracks = masterTracks
+			if $(input).data("lastval") isnt rawInput
+				$(input).data("lastval", rawInput)
+				$("#splash-container").empty()
+				if rawInput isnt ""
+					doSearch = (album) ->
+						albumValues = []
+						albumValues.push(val) for val in Object.values(album) when typeof val isnt "number"
+						trackValues = []
+						trackValues.push(track.title, track.romanization) for track in tracks when track.album_id == album.id
+						matchValues = albumValues.concat(trackValues)
+						if checkMatch(matchValues, inputValues)
+							tempAlbums.push(album)
+					tempAlbums = []
+					doSearch(album) for album in albums
+					albums = tempAlbums
+					displayAlbum(i) for i in [0...albums.length]
+				else
+					displayAlbum(i) for i in [0...40]
+			resolve()
 
 
 
