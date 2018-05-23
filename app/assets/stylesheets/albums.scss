@@ -438,7 +438,7 @@ body {
 			padding-bottom: 100%;
 		}
 	}
-	img:hover {
+	.expandable-img:hover {
 		cursor: pointer;
 	}
 	p, h2 {
@@ -511,6 +511,7 @@ body {
 		.tracklist-wrapper {
 			display: flex;
 			flex-direction: column;
+			margin-left: 8px;
 		}
 		.tracklist-container {
 			margin-right: 10px;
@@ -518,10 +519,6 @@ body {
 			align-content: flex-end;
 			flex-flow: column wrap;
 			height: 308px;
-			h3 {
-				margin-top: 4px;
-				width: 100%;
-			}
 			li {
 				display: flex;
 				justify-content: space-between;

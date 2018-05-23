@@ -48,8 +48,11 @@ $(document).on "turbolinks:load", ->
 				sibling.find(".info-background img").css("display", "block")
 				trackContainer = sibling.find(".tracklist-container")
 				firstChild = trackContainer.children().first()
-				newWidth = trackContainer.width() + firstChild.width()
-				trackContainer.width(newWidth + 15)
+				lastChild = trackContainer.children().last()
+				console.log(firstChild.width())
+				console.log(lastChild)
+				newWidth = lastChild.width() + firstChild.get()[0].clientWidth
+				trackContainer.width(newWidth + 30) if trackContainer.width() != newWidth
 				albumOpen = true
 			,
 			timeout)
@@ -138,13 +141,13 @@ $(document).on "turbolinks:load", ->
 							</div>
 						</div>
 					</div>
-					<img id='expandable-img' src='" + currentAlbum.coverlink + "'>
+					<img class='expandable-img' src='" + currentAlbum.coverlink + "'>
 				</div>
 			</div>
 		</li>"
 
 		$("#splash-container").append(albumLi)
-		$("#" + albumID + "-info #expandable-img").get()[0].addEventListener("click",(e) -> clickImage($(this)))
+		$("#" + albumID + "-info .expandable-img").get()[0].addEventListener("click",(e) -> clickImage($(this)))
 		$("#" + albumID + " .arrow-container").get()[0].addEventListener("click", (e) -> arrowClick($(this)))
 		if refresh
 			$("#splash-container").show(400, ->
