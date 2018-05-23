@@ -34,7 +34,7 @@ $(document).on "turbolinks:load", ->
 			timeout = 0
 			timeout = 300 if albumOpen 
 			setTimeout( ->
-				offset = parent.parent().offset().top + parent.parent().parent().scrollTop() + 170
+				offset = parent.parent().offset().top + parent.parent().parent().scrollTop() + 140
 				arrow.css("transform", "rotate(180deg)")
 				parent.css("height", "800px")
 				sibling.css("display", "flex")
@@ -126,9 +126,13 @@ $(document).on "turbolinks:load", ->
 								<p class='description'>"+currentAlbum.description+"</p>
 							</div>
 						</div>
-						<ul class='tracklist-container'>
-							<li><h3>Tracklist:</h3></li>
-						</ul>
+						<div class='track-grow-wrapper'>
+							<div class='tracklist-wrapper'>
+								<h3>Tracklist:</h3>
+								<ul class='tracklist-container'>
+								</ul>
+							</div>
+						</div>
 					</div>
 					<img id='expandable-img' src='" + currentAlbum.coverlink + "'>
 				</div>
@@ -140,13 +144,18 @@ $(document).on "turbolinks:load", ->
 		if refresh
 			$("#splash-container").show(400, ->
 				$("#" + albumID + " .text-size-wrapper h2, #" + albumID + " .artist-year-container p").each ->
-					console.log($(this))
 					fontSize = 20
 					padding = 0
 					while $(this).width() > $(this).parent().width()
 						$(this).css("font-size", fontSize -= 0.5)
 						$(this).css("padding-top", padding += 1)
 			)
+		$("#" + albumID + " .text-size-wrapper h2, #" + albumID + " .artist-year-container p").each ->
+			fontSize = 20
+			padding = 0
+			while $(this).width() > $(this).parent().width()
+				$(this).css("font-size", fontSize -= 0.5)
+				$(this).css("padding-top", padding += 1)
 		albumTracks.push(track) for track in tracks when track.album_id is albumID
 		addTrack = (track, i) -> 
 			$("#" + albumID + "-info").find(".tracklist-container").append(
@@ -371,4 +380,3 @@ $(document).on "turbolinks:load", ->
 					displayAlbum(albumIndex, false) for albumIndex in [loadedAlbums...loadedAlbums + albumsToLoad]
 				else
 					console.log("No more albums to load!")
-

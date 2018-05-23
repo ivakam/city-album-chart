@@ -497,29 +497,46 @@ body {
 	.release-date {
 		margin-top: 15px;
 	}
-	.tracklist-container {
-		margin-right: 20px;
+	.track-grow-wrapper {
 		display: flex;
-		flex-flow: column wrap;
-		li {
+		flex-grow: 1;
+		justify-content: flex-end;
+		.tracklist-wrapper {
 			display: flex;
-			justify-content: space-between;
-			margin-right: 15px;
-			margin-bottom: 8px;
-			div {
-				display: flex;
-			}
+			flex-direction: column;
+		}
+		.tracklist-container {
+			margin-right: 10px;
+			display: flex;
+			align-content: flex-end;
+			flex-flow: column wrap;
+			height: 308px;
 			h3 {
 				margin-top: 4px;
+				width: 100%;
+			}
+			li {
+				display: flex;
+				justify-content: space-between;
+				margin-right: 15px;
+				margin-bottom: 8px;
+			div {
+				display: flex;
+				align-content: flex-end;
+			}
+			}
+			p, i {
+				font-size: 14px;
+			}
+			.duration {
+				padding-left: 20px;
 			}
 		}
-		p, i {
-			font-size: 14px;
-		}
-		.duration {
-			padding-left: 20px;
-		}
 	}
+}
+
+div {
+	box-sizing: border-box;
 }
 
 h2, h3, p, a, i {
