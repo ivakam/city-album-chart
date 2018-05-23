@@ -46,6 +46,10 @@ $(document).on "turbolinks:load", ->
 				sibling.addClass("is-open")
 				img = sibling.find("img").attr("src")
 				sibling.find(".info-background img").css("display", "block")
+				trackContainer = sibling.find(".tracklist-container")
+				firstChild = trackContainer.children().first()
+				newWidth = trackContainer.position().left - firstChild.position().left
+				trackContainer.width(trackContainer.width() + newWidth)
 				albumOpen = true
 			,
 			timeout)
