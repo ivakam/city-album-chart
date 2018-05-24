@@ -1,5 +1,7 @@
 $(document).on "turbolinks:load", ->
 
+	window.albumsNameSpace = {};
+
 	console.log("albums.coffee is running.")
 
 	#Populate localstorage object
@@ -190,6 +192,8 @@ $(document).on "turbolinks:load", ->
 		addTrack(track, i) for track, i in albumTracks
 		loadedAlbums++
 
+	window.albumsNameSpace.displayAlbum = displayAlbum
+
 	displayAlbum(i) for i in [0...40]
 
 	$("#album-total-count").text(masterAlbums.length)
@@ -239,25 +243,16 @@ $(document).on "turbolinks:load", ->
 		regex.toggleClass("brightness")
 		regex.toggleClass("gray")
 
-	#Search listener
-
-	asyncSearch = (e) ->
-		await search(e)
-
-	$("#main-search").on("input", (e) ->
-		clearTimeout(delayTimer)
-		delayTimer = setTimeout( ->
-			asyncSearch(e)
-		, 100)
-	)
-
 	#Method for searching
 
-	search = (input) ->
+	window.albumsNameSpace.search = (input) ->
+		#console.log("trying search")
 		new Promise (resolve) ->
 			loadedAlbums = 40
 			toggleAlbum(sibling: undefined)
+			#console.log(input)
 			rawInput = $(input).val()
+			#console.log("set value")
 			inputValues = rawInput.split(/,/)
 			inputValues[i] = inputValues[i].trim() for i of inputValues
 			albums = masterAlbums
@@ -277,12 +272,19 @@ $(document).on "turbolinks:load", ->
 					tempAlbums = []
 					doSearch(album) for album in albums
 					albums = tempAlbums
-					displayAlbum(i) for i in [0...albums.length]
+					asyncDisplayAlbum(i) for i in [0...albums.length]
 				else
-					displayAlbum(i) for i in [0...40]
-			resolve()
+					asyncDisplayAlbum(i) for i in [0...40]
+			resolve("resolved")
 
+	#Search listener
 
+	$("#main-search").on("input", (e) ->
+		clearTimeout(delayTimer)
+		#delayTimer = setTimeout( ->
+		asyncSearch(e)
+		#, 0)
+	)
 
 	#Helper method for checking if any 'conditions' match the selected text
 
