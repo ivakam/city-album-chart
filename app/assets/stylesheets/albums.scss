@@ -30,10 +30,11 @@ body {
 #albums-bg-opacity {
 	opacity: 0.3;
 	background: $body-bg-color;
-	width: 100%;
-	height: 100vh;
 	position: absolute;
 	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
 	z-index: -1;
 }
 
@@ -288,6 +289,7 @@ body {
 }
 
 #splash-container {
+	width: 98%;
 	display: flex;
 	position: relative;
 	flex-flow: row wrap;
@@ -375,7 +377,6 @@ body {
 }
 
 .offset {
-	top: 340px;
 	left: 0;
 	transition: 0.3s;
 }
@@ -413,8 +414,6 @@ body {
 	p, h2 {
 		font-size: 20px;
 		margin: 3px 0 3px 0;
-		display: flex;
-		align-items: center;
 	}
 	> * {
 		z-index: 3;
@@ -489,11 +488,19 @@ body {
 			flex-flow: column wrap;
 			height: 308px;
 			li {
+				width: 240px;
 				display: flex;
+				align-items: flex-start;
 				justify-content: space-between;
 				margin-right: 15px;
 				margin-bottom: 8px;
 				min-height: 28px;
+				.track-title-wrap {
+					display: flex;
+					flex-grow: 1;
+					align-items: flex-end;
+					flex-wrap: wrap;
+				}
 				.track-title-container p:first-child {
 					margin-right: 5px;
 				}

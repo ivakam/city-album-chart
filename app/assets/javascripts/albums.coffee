@@ -38,7 +38,7 @@ $(document).on "turbolinks:load", ->
 			timeout = 300 if albumOpen
 			parent.find("img").addClass("image-border")
 			setTimeout( ->
-				offset = parent.parent().offset().top + parent.parent().parent().scrollTop() + 140
+				offset = parent.offset().top + 95
 				arrow.css("transform", "rotate(180deg)")
 				parent.css("height", "800px")
 				sibling.css("display", "flex")
@@ -51,9 +51,7 @@ $(document).on "turbolinks:load", ->
 				img = sibling.find("img").attr("src")
 				sibling.find(".info-background img").css("display", "block")
 				trackContainer = sibling.find(".tracklist-container")
-				firstChild = trackContainer.children().first()
-				lastChild = trackContainer.children().last()
-				newWidth = lastChild.width() + firstChild.get()[0].clientWidth
+				newWidth = Math.ceil((trackContainer.children().length / 8)) * 240 + 5
 				trackContainer.width(newWidth + 30) if trackContainer.width() != newWidth
 				albumOpen = true
 			,
@@ -181,8 +179,10 @@ $(document).on "turbolinks:load", ->
 				<li class='track-container'>
 					<div class='track-title-container'>
 						<p>"+(i+1)+".</p>
-						<p>" + track.title + "</p>
-						<i>" + track.romanization + "</i>
+						<div class='track-title-wrap'>
+							<p>" + track.title + "</p>
+							<i>" + track.romanization + "</i>
+						</div>
 					</div>
 					<p class='duration'>" + track.duration + "</p>
 				</li>
@@ -195,6 +195,8 @@ $(document).on "turbolinks:load", ->
 	window.albumsNameSpace.displayAlbum = displayAlbum
 
 	displayAlbum(i) for i in [0...40]
+	
+	window.albumsNameSpace.albumTotalCount = masterAlbums.length
 
 	$("#album-total-count").text(masterAlbums.length)
 
@@ -381,12 +383,10 @@ $(document).on "turbolinks:load", ->
 	$(window).scroll -> 
 		if $(window).scrollTop() + $(window).height() >= $(document).height()
 			albumsToLoad = albums.length - loadedAlbums
-			console.log("To load", albumsToLoad)
-			console.log("Loaded", loadedAlbums)
 			if albumsToLoad >= 40
 				displayAlbum(albumIndex, false) for albumIndex in [loadedAlbums...loadedAlbums + 40]
 			else
 				if albumsToLoad < 40 && albumsToLoad > 0
 					displayAlbum(albumIndex, false) for albumIndex in [loadedAlbums...loadedAlbums + albumsToLoad]
-				else
-					console.log("No more albums to load!")
+				#else
+					#console.log("No more albums to load!")
