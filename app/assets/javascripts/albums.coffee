@@ -227,14 +227,12 @@ $(document).on "turbolinks:load", ->
 	#Handler for clicking the 'sort' buttons
 
 	$(".sort-btn").click ->
-		$("#sort-list li").removeClass("selected")
-		$(this).addClass("selected")
-		$("#sort-list li").each -> 
-			if !$(this).hasClass("selected")
+		clickedArrow = $(this).find("a").text()
+		$("#sort-list li").each ->
+			if $(this).find("a").text() != clickedArrow
 				$(this).find(".ion-chevron-down").removeClass("rotated")
 		$(this).find(".ion-chevron-down").toggleClass("rotated")
 		albumSort($(this).find("a").text())
-		return
 
 	#Handler for toggling regex matching
 
@@ -281,9 +279,9 @@ $(document).on "turbolinks:load", ->
 
 	$("#main-search").on("input", (e) ->
 		clearTimeout(delayTimer)
-		#delayTimer = setTimeout( ->
-		asyncSearch(e)
-		#, 0)
+		delayTimer = setTimeout( ->
+			asyncSearch(e)
+		, 450)
 	)
 
 	#Helper method for checking if any 'conditions' match the selected text

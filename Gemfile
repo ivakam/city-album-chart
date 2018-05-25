@@ -31,6 +31,7 @@ gem 'jbuilder', '~> 2.5'
 # To use controller variables as javascript variables
 gem 'gon'
 gem 'js_assets'
+gem 'jquery-rails'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'

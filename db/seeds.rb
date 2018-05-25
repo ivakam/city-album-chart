@@ -3556,7 +3556,7 @@ japanese_artist: "虹伝説",
 year: "1993",
 description: "",
 coverlink: "aquaplanet.jpg",
-flavor: "Aquaplanet"
+flavor: "Fusion"
 },
 [{
 title: "Prologue ~Why?~",
@@ -6436,7 +6436,7 @@ romanization: "",
 duration: "4:21"
 },
 {
-title: "ゲット・バック・イン・ラブ",
+title: "ゲット・バック・イン・ラ���",
 romanization: "",
 duration: "4:22"
 },
