@@ -22,7 +22,7 @@ $(document).on "turbolinks:load", ->
 	tracks = masterTracks
 	albumOpen = false
 	delayTimer = null
-	loadedAlbums = 40
+	loadedAlbums = 0
 
 	#Helper method for opening an info container. Call it as 'sibling: undefined' to reset all info containers.
 
@@ -378,9 +378,11 @@ $(document).on "turbolinks:load", ->
 
 	#Load more albums on scroll
 
-	$("#splash-container").scroll -> 
-		if $(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight
+	$(window).scroll -> 
+		if $(window).scrollTop() + $(window).height() >= $(document).height()
 			albumsToLoad = albums.length - loadedAlbums
+			console.log("To load", albumsToLoad)
+			console.log("Loaded", loadedAlbums)
 			if albumsToLoad >= 40
 				displayAlbum(albumIndex, false) for albumIndex in [loadedAlbums...loadedAlbums + 40]
 			else

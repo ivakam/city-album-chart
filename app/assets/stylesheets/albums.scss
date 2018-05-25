@@ -235,10 +235,6 @@ body {
 	}
 }
 
-#filters .title-wrapper {
-	cursor: auto;
-}
-
 .nav-arrow {
 	position: absolute;
 	color: #e8e8e8;
@@ -249,6 +245,15 @@ body {
 
 #filters {
 	display: flex;
+	align-items: center;
+	.title-wrapper {
+		cursor: default;
+		height: 23px;
+		border-left: 1px #414141 solid;
+	}
+	.title-wrapper:hover {
+		background: none;
+	}
 }
 
 #sort-list {
