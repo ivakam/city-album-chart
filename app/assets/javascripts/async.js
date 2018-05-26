@@ -4,6 +4,6 @@ asyncSearch = async function(e){
 	//console.log("tried async")
 }
 
-asyncDisplayAlbum = async function (i, refresh){
-	await albumsNameSpace.displayAlbum(i, refresh);
+asyncDisplayAlbum = async function (min, max, refresh){
+	await albumsNameSpace.displayAlbum(min, max, refresh);
 }

@@ -87,114 +87,114 @@ $(document).on "turbolinks:load", ->
 
 	#Create an album
 
-	displayAlbum = (i, refreshSplash = true) ->
+	displayAlbum = (min, max, refreshSplash = true) ->
 		$("#splash-container").toggle() if refreshSplash
-		currentAlbum = albums[i]
-		albumID = currentAlbum.id
-		albumTracks = []
-		albumLi = 
-		"<li>
-			<div class='album-container' id='"+albumID+"'>
-				<div class='album-text-container'>
-					<div class='text-size-wrapper'>
-						<h2>"+currentAlbum.title+"</h2>
-					</div>
-					<img src='" + currentAlbum.coverlink + "'>
-					<div class='artist-year-container'>
-						<p class='artist'>"+currentAlbum.romaji_artist+"</p>
-						<p class='year'>"+currentAlbum.year+"</p>
-					</div>
-				</div>
-				<div class='arrow-container'><span class='ion-chevron-down album-arrow'></span></div>
-			</div>
-			<div class='info-container offset' id='"+albumID+"-info'>
-				<div class='info-wrapper'>
-					<div class='info-background'>"+"<img src='" + currentAlbum.coverlink + "'></div>
-					<div class='info-text-container'>
-						<div class='text-container'>
-							<div class='title-container'>
-								<h2>"+currentAlbum.title+"</h2>
-								<h3><i>"+currentAlbum.romanization+"</i></h3>
-							</div>
-							<div class='artist-container'>
-								<p class='label'>Artist:</p>
-								<p>"+currentAlbum.romaji_artist+"</p>
-								<p class='label'>"+currentAlbum.japanese_artist+"</p>
-							</div>
-							<div class='release-date'>
-								<p class='label'>Release date:</p>
-								<p>"+currentAlbum.year+"</p>
-							</div>
-							<div class='flavor'>
-								<p class='label'>Flavor:</p>
-								<p class='flavor-value'>"+currentAlbum.flavor+"</p>
-							</div>
-							<div class='description-container'>
-								<p class='label'>Description:</p>
-								<p class='description'>"+currentAlbum.description+"</p>
-							</div>
+		createAlbum = (i) ->
+			currentAlbum = albums[i]
+			albumID = currentAlbum.id
+			albumTracks = []
+			albumLi = 
+			"<li>
+				<div class='album-container' id='"+albumID+"'>
+					<div class='album-text-container'>
+						<div class='text-size-wrapper'>
+							<h2>"+currentAlbum.title+"</h2>
 						</div>
-						<div class='track-grow-wrapper'>
-							<div class='tracklist-wrapper'>
-								<h3>Tracklist:</h3>
-								<ul class='tracklist-container'>
-								</ul>
-							</div>
+						<img src='" + currentAlbum.coverlink + "'>
+						<div class='artist-year-container'>
+							<p class='artist'>"+currentAlbum.romaji_artist+"</p>
+							<p class='year'>"+currentAlbum.year+"</p>
 						</div>
 					</div>
-					<img class='expandable-img' src='" + currentAlbum.coverlink + "'>
+					<div class='arrow-container'><span class='ion-chevron-down album-arrow'></span></div>
 				</div>
-			</div>
-		</li>"
-
-		$("#splash-container").append(albumLi)
-		$("#" + albumID + "-info .expandable-img").get()[0].addEventListener("click",(e) -> clickImage($(this)))
-		$("#" + albumID + " .arrow-container").get()[0].addEventListener("click", (e) -> albumClick($(this)))
-		$("#" + albumID + " img").get()[0].addEventListener("click", (e) -> albumClick($(this)))
+				<div class='info-container offset' id='"+albumID+"-info'>
+					<div class='info-wrapper'>
+						<div class='info-background'>"+"<img src='" + currentAlbum.coverlink + "'></div>
+						<div class='info-text-container'>
+							<div class='text-container'>
+								<div class='title-container'>
+									<h2>"+currentAlbum.title+"</h2>
+									<h3><i>"+currentAlbum.romanization+"</i></h3>
+								</div>
+								<div class='artist-container'>
+									<p class='label'>Artist:</p>
+									<p>"+currentAlbum.romaji_artist+"</p>
+									<p class='label'>"+currentAlbum.japanese_artist+"</p>
+								</div>
+								<div class='release-date'>
+									<p class='label'>Release date:</p>
+									<p>"+currentAlbum.year+"</p>
+								</div>
+								<div class='flavor'>
+									<p class='label'>Flavor:</p>
+									<p class='flavor-value'>"+currentAlbum.flavor+"</p>
+								</div>
+								<div class='description-container'>
+									<p class='label'>Description:</p>
+									<p class='description'>"+currentAlbum.description+"</p>
+								</div>
+							</div>
+							<div class='track-grow-wrapper'>
+								<div class='tracklist-wrapper'>
+									<h3>Tracklist:</h3>
+									<ul class='tracklist-container'>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<img class='expandable-img' src='" + currentAlbum.coverlink + "'>
+					</div>
+				</div>
+			</li>"
+	
+			$("#splash-container").append(albumLi)
+			$("#" + albumID + "-info .expandable-img").get()[0].addEventListener("click",(e) -> clickImage($(this)))
+			$("#" + albumID + " .arrow-container").get()[0].addEventListener("click", (e) -> albumClick($(this)))
+			$("#" + albumID + " img").get()[0].addEventListener("click", (e) -> albumClick($(this)))
+			
+			albumTracks.push(track) for track in tracks when track.album_id is albumID
+	
+			addTrack = (track, i) -> 
+				$("#" + albumID + "-info").find(".tracklist-container").append(
+					"
+					<li class='track-container'>
+						<div class='track-title-container'>
+							<p>"+(i+1)+".</p>
+							<div class='track-title-wrap'>
+								<p>" + track.title + "</p>
+								<i>" + track.romanization + "</i>
+							</div>
+						</div>
+						<p class='duration'>" + track.duration + "</p>
+					</li>
+					"
+					)
+	
+			addTrack(track, i) for track, i in albumTracks
+			loadedAlbums++
+			
+		createAlbum(i) for i in [min...max]
+		
+		#Adjusts text size to make sure the titles fit within their containers
+			
 		if refreshSplash
 			$("#splash-container").show(400, ->
-				$("#" + albumID + " .text-size-wrapper h2, #" + albumID + " .artist-year-container p").each ->
+				$(".text-size-wrapper h2, .artist-year-container p").each ->
 					fontSize = 20
-					padding = 0
 					while $(this).width() > $(this).parent().width()
 						$(this).css("font-size", fontSize -= 0.5)
-						padding = fontSize * 0.5
-						#$(this).css("padding-top", padding)
+						padding = Math.pow(fontSize, -fontSize * 0.6)
 			)
+			
+	
+		
 
-		#Adjusts text size to make sure the titles fit within their containers
 
-		$("#" + albumID + " .text-size-wrapper h2, #" + albumID + " .artist-year-container p").each ->
-			fontSize = 20
-			while $(this).width() > $(this).parent().width()
-				$(this).css("font-size", fontSize -= 0.5)
-				padding = Math.pow(fontSize, -fontSize * 0.6)
-				$(this).css("padding-top", padding)
-
-		albumTracks.push(track) for track in tracks when track.album_id is albumID
-
-		addTrack = (track, i) -> 
-			$("#" + albumID + "-info").find(".tracklist-container").append(
-				"
-				<li class='track-container'>
-					<div class='track-title-container'>
-						<p>"+(i+1)+".</p>
-						<div class='track-title-wrap'>
-							<p>" + track.title + "</p>
-							<i>" + track.romanization + "</i>
-						</div>
-					</div>
-					<p class='duration'>" + track.duration + "</p>
-				</li>
-				"
-				)
-
-		addTrack(track, i) for track, i in albumTracks
-		loadedAlbums++
 
 	window.albumsNameSpace.displayAlbum = displayAlbum
 
-	displayAlbum(i) for i in [0...40]
+	displayAlbum(0, 40)
 	
 	window.albumsNameSpace.albumTotalCount = masterAlbums.length
 
@@ -209,14 +209,17 @@ $(document).on "turbolinks:load", ->
 		random = Math.floor(Math.random() * ids.length)
 		id = ids[random]
 		container = $("#" + id)
-		$('#splash-container').animate({
-		scrollTop: container.offset().top
-		}, 500)
 		title = id
 		sibling = container.siblings("#" + title + "-info").find(".info-wrapper")
 		parent = container
 		arrow = container.find(".album-arrow")
 		toggleAlbum(title, sibling, parent, arrow)
+		if albumOpen then timer = 300 else timer = 0
+		setTimeout( ->
+			$(container).get()[0].scrollIntoView({behaviour: "smooth"})
+		, timer)
+
+		
 		
 	#Handler for closing the zoom-mode for images
 
@@ -272,9 +275,9 @@ $(document).on "turbolinks:load", ->
 					tempAlbums = []
 					doSearch(album) for album in albums
 					albums = tempAlbums
-					asyncDisplayAlbum(i) for i in [0...albums.length]
+					asyncDisplayAlbum(0, albums.length)
 				else
-					asyncDisplayAlbum(i) for i in [0...40]
+					asyncDisplayAlbum(0, 40)
 			resolve("resolved")
 
 	#Search listener
@@ -373,7 +376,7 @@ $(document).on "turbolinks:load", ->
 						return compB.localeCompare(compA)
 				break;
 		loadedAlbums = 0
-		displayAlbum(i) for i in [0...40]
+		displayAlbum(0, 40)
 		toggleAlbum(sibling: undefined)
 
 	#Load more albums on scroll
@@ -382,9 +385,9 @@ $(document).on "turbolinks:load", ->
 		if $(window).scrollTop() + $(window).height() >= $(document).height()
 			albumsToLoad = albums.length - loadedAlbums
 			if albumsToLoad >= 40
-				displayAlbum(albumIndex, false) for albumIndex in [loadedAlbums...loadedAlbums + 40]
+				displayAlbum(loadedAlbums, loadedAlbums + 40, false)
 			else
 				if albumsToLoad < 40 && albumsToLoad > 0
-					displayAlbum(albumIndex, false) for albumIndex in [loadedAlbums...loadedAlbums + albumsToLoad]
+					displayAlbum(loadedAlbums, loadedAlbums + albumsToLoad, false) for albumIndex in [loadedAlbums...loadedAlbums + albumsToLoad]
 				else
 					console.log("No more albums to load!")

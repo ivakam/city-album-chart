@@ -1,1 +1,1 @@
-	$("#album-total-count").text(window.albumsNameSpace.albumTotalCount)
+	#$("#album-total-count").text(window.albumsNameSpace.albumTotalCount)
