@@ -8837,3 +8837,1957 @@ romanization: "",
 duration: "5:13"
 },
 ])
+
+
+#New Batch (Casiopea)
+
+
+CreateAlbumWithTracks({
+title: "Casiopea",
+romanization: "",
+romaji_artist: "Casiopea",
+japanese_artist: "",
+year: "1979",
+description: "",
+coverlink: "casiopea.jpg",
+flavor: "Fusion"
+},
+[{
+title: "Time Limit",
+romanization: "",
+duration: "3:07"
+},
+{
+title: "Tears Of The Star",
+romanization: "",
+duration: "4:32"
+},
+{
+title: "Space Road",
+romanization: "",
+duration: "5:14"
+},
+{
+title: "Midnight Rendezvous",
+romanization: "",
+duration: "5:23"
+},
+{
+title: "Far Away",
+romanization: "",
+duration: "3:57"
+},
+{
+title: "Swallow",
+romanization: "",
+duration: "4:26"
+},
+{
+title: "Dream Hill",
+romanization: "",
+duration: "5:39"
+},
+{
+title: "Black Joke",
+romanization: "",
+duration: "4:17"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Super Flight",
+romanization: "",
+romaji_artist: "Casiopea",
+japanese_artist: "",
+year: "1979",
+description: "",
+coverlink: "superflight.jpg",
+flavor: "Fusion"
+},
+[{
+title: "Take Me",
+romanization: "",
+duration: "4:50"
+},
+{
+title: "Flying",
+romanization: "",
+duration: "4:51"
+},
+{
+title: "Dune",
+romanization: "",
+duration: "4:51"
+},
+{
+title: "Asayake",
+romanization: "",
+duration: "5:05"
+},
+{
+title: "I Love New York",
+romanization: "",
+duration: "4:08"
+},
+{
+title: "Sailing Alone",
+romanization: "",
+duration: "4:43"
+},
+{
+title: "Olion",
+romanization: "",
+duration: "3:20"
+},
+{
+title: "Magic Ray",
+romanization: "",
+duration: "4:43"
+},
+{
+title: "Mighty Mouse",
+romanization: "",
+duration: "3:08"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Make Up City",
+romanization: "",
+romaji_artist: "Casiopea",
+japanese_artist: "",
+year: "1980",
+description: "",
+coverlink: "makeupcity.jpg",
+flavor: "Fusion"
+},
+[{
+title: "Gypsy Wind",
+romanization: "",
+duration: "4:06"
+},
+{
+title: "Eyes Of Mind",
+romanization: "",
+duration: "5:54"
+},
+{
+title: "Reflections Of You",
+romanization: "",
+duration: "4:28"
+},
+{
+title: "Ripple Dance",
+romanization: "",
+duration: "4:57"
+},
+{
+title: "Life Game",
+romanization: "",
+duration: "4:59"
+},
+{
+title: "Make Up City",
+romanization: "",
+duration: "5:21"
+},
+{
+title: "Pastel Sea",
+romanization: "",
+duration: "4:09"
+},
+{
+title: "Twinkle Wing",
+romanization: "",
+duration: "5:17"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Cross Point",
+romanization: "",
+romaji_artist: "Casiopea",
+japanese_artist: "",
+year: "1981",
+description: "",
+coverlink: "crosspoint.jpg",
+flavor: "Fusion"
+},
+[{
+title: "Smile Again",
+romanization: "",
+duration: "4:02"
+},
+{
+title: "Swear",
+romanization: "",
+duration: "5:24"
+},
+{
+title: "A Sparkling Day",
+romanization: "",
+duration: "3:36"
+},
+{
+title: "Span Of A Dream",
+romanization: "",
+duration: "4:56"
+},
+{
+title: "Domino Line",
+romanization: "",
+duration: "3:27"
+},
+{
+title: "Galactic Funk",
+romanization: "",
+duration: "4:25"
+},
+{
+title: "Sunnyside Feelin'",
+romanization: "",
+duration: "4:16"
+},
+{
+title: "Any Moment (We'll Be One)",
+romanization: "",
+duration: "5:13"
+},
+{
+title: "Endless Vision",
+romanization: "",
+duration: "4:39"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Eyes Of The Mind",
+romanization: "",
+romaji_artist: "Casiopea",
+japanese_artist: "",
+year: "1981",
+description: "",
+coverlink: "eyesofthemind.jpg",
+flavor: "Fusion"
+},
+[{
+title: "Asayake (Sunrise)",
+romanization: "",
+duration: "3:51"
+},
+{
+title: "A Place In The Sun",
+romanization: "",
+duration: "4:39"
+},
+{
+title: "Take Me",
+romanization: "",
+duration: "4:15"
+},
+{
+title: "Lakai",
+romanization: "",
+duration: "4:10"
+},
+{
+title: "Eyes Of The Mind",
+romanization: "",
+duration: "4:42"
+},
+{
+title: "Black Joke",
+romanization: "",
+duration: "4:03"
+},
+{
+title: "La Costa (Intro)",
+romanization: "",
+duration: "0:22"
+},
+{
+title: "La Costa",
+romanization: "",
+duration: "3:47"
+},
+{
+title: "Magic Ray",
+romanization: "",
+duration: "4:51"
+},
+{
+title: "Space Road",
+romanization: "",
+duration: "4:47"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "4x4",
+romanization: "",
+romaji_artist: "Casiopea",
+japanese_artist: "",
+year: "1982",
+description: "",
+coverlink: "4x4.jpg",
+flavor: "Fusion"
+},
+[{
+title: "Mid-Manhattan",
+romanization: "",
+duration: "4:45"
+},
+{
+title: "Pavane",
+romanization: "",
+duration: "5:34"
+},
+{
+title: "Transatlantic",
+romanization: "",
+duration: "5:39"
+},
+{
+title: "Galactic Funk",
+romanization: "",
+duration: "6:10"
+},
+{
+title: "Kauai",
+romanization: "",
+duration: "3:56"
+},
+{
+title: "Chandelier",
+romanization: "",
+duration: "4:28"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Mint Jams",
+romanization: "",
+romaji_artist: "Casiopea",
+japanese_artist: "",
+year: "1982",
+description: "",
+coverlink: "mintjams.jpg",
+flavor: "Fusion/Compilation"
+},
+[{
+title: "Take Me",
+romanization: "",
+duration: "4:49"
+},
+{
+title: "Asayake",
+romanization: "",
+duration: "4:57"
+},
+{
+title: "Midnight Rendezvous",
+romanization: "",
+duration: "4:56"
+},
+{
+title: "Time Limit",
+romanization: "",
+duration: "2:37"
+},
+{
+title: "Domino Line",
+romanization: "",
+duration: "7:20"
+},
+{
+title: "Tears Of The Star",
+romanization: "",
+duration: "4:27"
+},
+{
+title: "Swear",
+romanization: "",
+duration: "6:46"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "JiveJive",
+romanization: "",
+romaji_artist: "Casiopea",
+japanese_artist: "",
+year: "1983",
+description: "",
+coverlink: "jivejive.jpg",
+flavor: "Fusion"
+},
+[{
+title: "Sweat It Out",
+romanization: "",
+duration: "4:15"
+},
+{
+title: "In The Pocket",
+romanization: "",
+duration: "3:43"
+},
+{
+title: "Right From The Heart",
+romanization: "",
+duration: "4:13"
+},
+{
+title: "Step Daughter",
+romanization: "",
+duration: "3:48"
+},
+{
+title: "Secret Chase",
+romanization: "",
+duration: "4:55"
+},
+{
+title: "FabbyDabby",
+romanization: "",
+duration: "3:56"
+},
+{
+title: "Living On A Feeling",
+romanization: "",
+duration: "4:25"
+},
+{
+title: "S-E",
+romanization: "",
+duration: "5:12"
+},
+{
+title: "What Can't Speak Can't Lie",
+romanization: "",
+duration: "3:51"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Photographs",
+romanization: "",
+romaji_artist: "Casiopea",
+japanese_artist: "",
+year: "1983",
+description: "",
+coverlink: "photographs.jpg",
+flavor: "Fusion"
+},
+[{
+title: "Looking Up",
+romanization: "",
+duration: "4:27"
+},
+{
+title: "Dazzling",
+romanization: "",
+duration: "4:17"
+},
+{
+title: "Long Term Memory",
+romanization: "",
+duration: "4:17"
+},
+{
+title: "Strasse",
+romanization: "",
+duration: "3:41"
+},
+{
+title: "Out Drive",
+romanization: "",
+duration: "3:40"
+},
+{
+title: "Misty Lady",
+romanization: "",
+duration: "3:43"
+},
+{
+title: "Love You Day By Day",
+romanization: "",
+duration: "4:04"
+},
+{
+title: "Spice Road",
+romanization: "",
+duration: "4:35"
+},
+{
+title: "Fruit Salad Sunday",
+romanization: "",
+duration: "3:54"
+},
+{
+title: "From Over The Sky",
+romanization: "",
+duration: "4:09"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Down Upbeat",
+romanization: "",
+romaji_artist: "Casiopea",
+japanese_artist: "",
+year: "1984",
+description: "",
+coverlink: "downupbeat.jpg",
+flavor: "Fusion"
+},
+[{
+title: "Zoom",
+romanization: "",
+duration: "3:16"
+},
+{
+title: "Down Upbeat",
+romanization: "",
+duration: "3:54"
+},
+{
+title: "The Continental Way",
+romanization: "",
+duration: "4:46"
+},
+{
+title: "Road Rhythm",
+romanization: "",
+duration: "3:00"
+},
+{
+title: "Froufrou",
+romanization: "",
+duration: "3:57"
+},
+{
+title: "Homestretch",
+romanization: "",
+duration: "3:47"
+},
+{
+title: "Night Storm",
+romanization: "",
+duration: "4:09"
+},
+{
+title: "Cookin' Up",
+romanization: "",
+duration: "3:32"
+},
+{
+title: "Twilight Solitude",
+romanization: "",
+duration: "4:25"
+},
+{
+title: "Air Fantasy",
+romanization: "",
+duration: "3:17"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "The Soundgraphy",
+romanization: "",
+romaji_artist: "Casiopea",
+japanese_artist: "",
+year: "1984",
+description: "",
+coverlink: "thesoundgraphy.jpg",
+flavor: "Fusion/Compilation"
+},
+[{
+title: "The Soundgraphy",
+romanization: "",
+duration: "3:41"
+},
+{
+title: "Gypsy Wind",
+romanization: "",
+duration: "4:05"
+},
+{
+title: "Eyes Of The Mind",
+romanization: "",
+duration: "4:42"
+},
+{
+title: "Sunnyside Feelin'",
+romanization: "",
+duration: "4:11"
+},
+{
+title: "Asayake",
+romanization: "",
+duration: "4:57"
+},
+{
+title: "Mid-Manhattan",
+romanization: "",
+duration: "4:37"
+},
+{
+title: "Looking Up",
+romanization: "",
+duration: "4:24"
+},
+{
+title: "Misty Lady",
+romanization: "",
+duration: "3:41"
+},
+{
+title: "What Can't Speak Can't Lie",
+romanization: "",
+duration: "3:48"
+},
+{
+title: "Fabbydabby",
+romanization: "",
+duration: "3:53"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Landing To Summer",
+romanization: "",
+romaji_artist: "Casiopea",
+japanese_artist: "",
+year: "1986",
+description: "",
+coverlink: "landingtosummer.jpg",
+flavor: "Fusion"
+},
+[{
+title: "Halle",
+romanization: "",
+duration: "3:39"
+},
+{
+title: "Sunnyside Feelin'",
+romanization: "",
+duration: "4:14"
+},
+{
+title: "Lakai",
+romanization: "",
+duration: "4:13"
+},
+{
+title: "Touch The Rainbow",
+romanization: "",
+duration: "4:07"
+},
+{
+title: "Marine Blue",
+romanization: "",
+duration: "4:13"
+},
+{
+title: "Road Rhythm",
+romanization: "",
+duration: "3:04"
+},
+{
+title: "Pastel Sea",
+romanization: "",
+duration: "4:12"
+},
+{
+title: "The Continental Way",
+romanization: "",
+duration: "4:49"
+},
+{
+title: "The Soundgraphy",
+romanization: "",
+duration: "3:44"
+},
+{
+title: "Homestretch",
+romanization: "",
+duration: "3:50"
+},
+{
+title: "Long Term Memory",
+romanization: "",
+duration: "4:17"
+},
+{
+title: "A Sparkling Day",
+romanization: "",
+duration: "3:38"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Sun Sun",
+romanization: "",
+romaji_artist: "Casiopea",
+japanese_artist: "",
+year: "1986",
+description: "",
+coverlink: "sunsun.jpg",
+flavor: "Fusion"
+},
+[{
+title: "After Glow",
+romanization: "",
+duration: "3:18"
+},
+{
+title: "Coast To Coast",
+romanization: "",
+duration: "4:05"
+},
+{
+title: "Conjunction",
+romanization: "",
+duration: "1:39"
+},
+{
+title: "Departure",
+romanization: "",
+duration: "3:05"
+},
+{
+title: "Keepers",
+romanization: "",
+duration: "3:16"
+},
+{
+title: "Lunar Shade",
+romanization: "",
+duration: "4:15"
+},
+{
+title: "Mi Senora",
+romanization: "",
+duration: "3:22"
+},
+{
+title: "Mr. Unique",
+romanization: "",
+duration: "4:06"
+},
+{
+title: "Planetoid Mother Earth",
+romanization: "",
+duration: "5:14"
+},
+{
+title: "Samba Mania",
+romanization: "",
+duration: "3:12"
+},
+{
+title: "Someone's Love",
+romanization: "",
+duration: "3:45"
+},
+{
+title: "Somethings Wrong (Change It)",
+romanization: "",
+duration: "4:31"
+},
+{
+title: "Sun",
+romanization: "",
+duration: "4:03"
+},
+{
+title: "Transformation 1",
+romanization: "",
+duration: "3:23"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Platinum",
+romanization: "",
+romaji_artist: "Casiopea",
+japanese_artist: "",
+year: "1987",
+description: "",
+coverlink: "platinum.jpg",
+flavor: "Fusion"
+},
+[{
+title: "Access",
+romanization: "",
+duration: "3:48"
+},
+{
+title: "Akasha",
+romanization: "",
+duration: "4:03"
+},
+{
+title: "Magnetic Vibrations",
+romanization: "",
+duration: "4:20"
+},
+{
+title: "Mee Espere",
+romanization: "",
+duration: "3:16"
+},
+{
+title: "Doo-Loo-Doo",
+romanization: "",
+duration: "3:51"
+},
+{
+title: "Get Back To That Good Thing",
+romanization: "",
+duration: "4:00"
+},
+{
+title: "Princess Moon",
+romanization: "",
+duration: "4:20"
+},
+{
+title: "Sunset Rhapsody",
+romanization: "",
+duration: "3:19"
+},
+{
+title: "Believe In Yourself",
+romanization: "",
+duration: "4:30"
+},
+{
+title: "'Sunka'",
+romanization: "",
+duration: "4:30"
+},
+{
+title: "Bridge Over Trouble Water",
+romanization: "",
+duration: "4:05"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Euphony",
+romanization: "",
+romaji_artist: "Casiopea",
+japanese_artist: "",
+year: "1988",
+description: "",
+coverlink: "euphony.jpg",
+flavor: "Fusion"
+},
+[{
+title: "The Wind From The Sun",
+romanization: "",
+duration: "4:14"
+},
+{
+title: "Shadow Man",
+romanization: "",
+duration: "4:08"
+},
+{
+title: "Super Sonic Movement",
+romanization: "",
+duration: "3:56"
+},
+{
+title: "Old Times",
+romanization: "",
+duration: "3:45"
+},
+{
+title: "Bayside Express",
+romanization: "",
+duration: "4:55"
+},
+{
+title: "Sentimental Avenue",
+romanization: "",
+duration: "3:26"
+},
+{
+title: "Solid Swing",
+romanization: "",
+duration: "1:59"
+},
+{
+title: "Hacker",
+romanization: "",
+duration: "3:26"
+},
+{
+title: "Pure Green",
+romanization: "",
+duration: "4:12"
+},
+{
+title: "Red Zone",
+romanization: "",
+duration: "3:08"
+},
+{
+title: "Shallow Dreams",
+romanization: "",
+duration: "3:58"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "the Last Members",
+romanization: "",
+romaji_artist: "Casiopea",
+japanese_artist: "",
+year: "1990",
+description: "",
+coverlink: "thelastmembers.jpg",
+flavor: "Fusion"
+},
+[{
+title: "Bayside Express",
+romanization: "",
+duration: "4:53"
+},
+{
+title: "Do-Loo-Doo?",
+romanization: "",
+duration: "4:04"
+},
+{
+title: "Taiyo-Fu",
+romanization: "",
+duration: "4:12"
+},
+{
+title: "Solid Swing",
+romanization: "",
+duration: "1:59"
+},
+{
+title: "Pure Green",
+romanization: "",
+duration: "4:10"
+},
+{
+title: "Sunset Rhapsody",
+romanization: "",
+duration: "3:19"
+},
+{
+title: "Bridge Over Troubled Water",
+romanization: "",
+duration: "4:10"
+},
+{
+title: "Me Espere",
+romanization: "",
+duration: "3:18"
+},
+{
+title: "Red Zone(L)",
+romanization: "",
+duration: "4:20"
+},
+{
+title: "Sentimental",
+romanization: "",
+duration: "3:24"
+},
+{
+title: "Access",
+romanization: "",
+duration: "4:24"
+},
+{
+title: "Shadow Man",
+romanization: "",
+duration: "4:06"
+},
+{
+title: "Super Sonic Movement",
+romanization: "",
+duration: "6:37"
+},
+{
+title: "Magnetic Vibration",
+romanization: "",
+duration: "4:23"
+},
+{
+title: "Sunca",
+romanization: "",
+duration: "4:35"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "The Party",
+romanization: "",
+romaji_artist: "Casiopea",
+japanese_artist: "",
+year: "1990",
+description: "",
+coverlink: "theparty.jpg",
+flavor: "Fusion"
+},
+[{
+title: "Cyber Zone",
+romanization: "",
+duration: "3:52"
+},
+{
+title: "The Blue flame",
+romanization: "",
+duration: "4:07"
+},
+{
+title: "Illusion",
+romanization: "",
+duration: "4:01"
+},
+{
+title: "Nostalgia",
+romanization: "",
+duration: "4:39"
+},
+{
+title: "Flush Up",
+romanization: "",
+duration: "4:16"
+},
+{
+title: "Stormy Hearts",
+romanization: "",
+duration: "2:59"
+},
+{
+title: "The Eyewitness",
+romanization: "",
+duration: "4:23"
+},
+{
+title: "Romancing",
+romanization: "",
+duration: "3:35"
+},
+{
+title: "Tokimeki",
+romanization: "",
+duration: "4:16"
+},
+{
+title: "Golden Island",
+romanization: "",
+duration: "4:20"
+},
+{
+title: "The Party Night",
+romanization: "",
+duration: "3:36"
+},
+{
+title: "Dai Sekai",
+romanization: "",
+duration: "4:29"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Full Colors",
+romanization: "",
+romaji_artist: "Casiopea",
+japanese_artist: "",
+year: "1991",
+description: "",
+coverlink: "fullcolors.jpg",
+flavor: "Fusion"
+},
+[{
+title: "Akappachi-ism",
+romanization: "",
+duration: "3:20"
+},
+{
+title: "Fightman",
+romanization: "",
+duration: "3:17"
+},
+{
+title: "Final Chance",
+romanization: "",
+duration: "3:23"
+},
+{
+title: "Navigators",
+romanization: "",
+duration: "3:49"
+},
+{
+title: "Once in a Blue Moon",
+romanization: "",
+duration: "3:37"
+},
+{
+title: "Passionate Voltage",
+romanization: "",
+duration: "2:46"
+},
+{
+title: "Private Sunday",
+romanization: "",
+duration: "3:55"
+},
+{
+title: "Purple Hours",
+romanization: "",
+duration: "3:59"
+},
+{
+title: "Search My Heart",
+romanization: "",
+duration: "4:40"
+},
+{
+title: "Street of Dreams",
+romanization: "",
+duration: "4:21"
+},
+{
+title: "The Sky",
+romanization: "",
+duration: "4:03"
+},
+{
+title: "Top Wind",
+romanization: "",
+duration: "4:11"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Active",
+romanization: "",
+romaji_artist: "Casiopea",
+japanese_artist: "",
+year: "1992",
+description: "",
+coverlink: "active.jpg",
+flavor: "Fusion"
+},
+[{
+title: "New History",
+romanization: "",
+duration: "4:35"
+},
+{
+title: "Messengers",
+romanization: "",
+duration: "3:18"
+},
+{
+title: "Camel Road",
+romanization: "",
+duration: "3:39"
+},
+{
+title: "Eccentric Games",
+romanization: "",
+duration: "4:54"
+},
+{
+title: "Time Stream",
+romanization: "",
+duration: "3:45"
+},
+{
+title: "Momento Memorial",
+romanization: "",
+duration: "3:33"
+},
+{
+title: "Yomoshiki",
+romanization: "",
+duration: "3:54"
+},
+{
+title: "Point X",
+romanization: "",
+duration: "4:10"
+},
+{
+title: "Door Of Truth",
+romanization: "",
+duration: "5:19"
+},
+{
+title: "Through The Highway",
+romanization: "",
+duration: "3:44"
+},
+{
+title: "Back To The Nature",
+romanization: "",
+duration: "4:12"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Answers",
+romanization: "",
+romaji_artist: "Casiopea",
+japanese_artist: "",
+year: "1994",
+description: "",
+coverlink: "answers.jpg",
+flavor: "Fusion"
+},
+[{
+title: "Set Sail",
+romanization: "",
+duration: "4:24"
+},
+{
+title: "Fortunate Breeze",
+romanization: "",
+duration: "5:24"
+},
+{
+title: "Take Courage",
+romanization: "",
+duration: "4:26"
+},
+{
+title: "Living Things",
+romanization: "",
+duration: "4:27"
+},
+{
+title: "Previous Matters",
+romanization: "",
+duration: "3:51"
+},
+{
+title: "Warning",
+romanization: "",
+duration: "3:51"
+},
+{
+title: "Dynamic Road",
+romanization: "",
+duration: "3:54"
+},
+{
+title: "Surf's Up",
+romanization: "",
+duration: "4:39"
+},
+{
+title: "Pal",
+romanization: "",
+duration: "4:07"
+},
+{
+title: "Cool Rain",
+romanization: "",
+duration: "5:39"
+},
+{
+title: "Mr. Dungeon",
+romanization: "",
+duration: "4:33"
+},
+{
+title: "A Fine Day",
+romanization: "",
+duration: "4:32"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Hearty Notes",
+romanization: "",
+romaji_artist: "Casiopea",
+japanese_artist: "",
+year: "1994",
+description: "",
+coverlink: "heartynotes.jpg",
+flavor: "Fusion"
+},
+[{
+title: "Sweet Vision",
+romanization: "",
+duration: "4:42"
+},
+{
+title: "Dazzling",
+romanization: "",
+duration: "4:20"
+},
+{
+title: "Justice",
+romanization: "",
+duration: "4:09"
+},
+{
+title: "Pleasure",
+romanization: "",
+duration: "3:33"
+},
+{
+title: "Believe Again",
+romanization: "",
+duration: "3:48"
+},
+{
+title: "Distance To Paradise",
+romanization: "",
+duration: "4:26"
+},
+{
+title: "Sombrero",
+romanization: "",
+duration: "3:49"
+},
+{
+title: "So Long",
+romanization: "",
+duration: "5:20"
+},
+{
+title: "Magic Ray",
+romanization: "",
+duration: "4:17"
+},
+{
+title: "Shinning Voyage",
+romanization: "",
+duration: "3:47"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Freshness",
+romanization: "",
+romaji_artist: "Casiopea",
+japanese_artist: "",
+year: "1995",
+description: "",
+coverlink: "freshness.jpg",
+flavor: "Fusion"
+},
+[{
+title: "Hello There",
+romanization: "",
+duration: "5:08"
+},
+{
+title: "Keep Ahead",
+romanization: "",
+duration: "4:43"
+},
+{
+title: "Hard Boiled",
+romanization: "",
+duration: "4:12"
+},
+{
+title: "Juicy Jam",
+romanization: "",
+duration: "5:54"
+},
+{
+title: "Intensive Way",
+romanization: "",
+duration: "4:35"
+},
+{
+title: "Heat Haze",
+romanization: "",
+duration: "4:13"
+},
+{
+title: "Ihilani",
+romanization: "",
+duration: "3:45"
+},
+{
+title: "Star Carousel",
+romanization: "",
+duration: "4:00"
+},
+{
+title: "Coastal Dreaming",
+romanization: "",
+duration: "3:52"
+},
+{
+title: "Loop Of Magic",
+romanization: "",
+duration: "3:53"
+},
+{
+title: "Sleek Passage",
+romanization: "",
+duration: "4:18"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Work In",
+romanization: "",
+romaji_artist: "Casiopea",
+japanese_artist: "",
+year: "1995",
+description: "",
+coverlink: "workin.jpg",
+flavor: "Fusion"
+},
+[{
+title: "Black Joke",
+romanization: "",
+duration: "4:18"
+},
+{
+title: "Asayake",
+romanization: "",
+duration: "5:06"
+},
+{
+title: "I Love N.Y.",
+romanization: "",
+duration: "4:08"
+},
+{
+title: "Swear",
+romanization: "",
+duration: "5:23"
+},
+{
+title: "Swear",
+romanization: "",
+duration: "5:23"
+},
+{
+title: "Looking Up",
+romanization: "",
+duration: "4:26"
+},
+{
+title: "Step Daughter",
+romanization: "",
+duration: "3:47"
+},
+{
+title: "The Soundgraphy",
+romanization: "",
+duration: "3:45"
+},
+{
+title: "Down Upbeat",
+romanization: "",
+duration: "3:57"
+},
+{
+title: "Touch The Rainbow",
+romanization: "",
+duration: "2:28"
+},
+{
+title: "After School",
+romanization: "",
+duration: "3:34"
+},
+{
+title: "Something's Wrong",
+romanization: "",
+duration: "4:32"
+},
+{
+title: "Glory",
+romanization: "",
+duration: "4:05"
+},
+{
+title: "Set Sail",
+romanization: "",
+duration: "4:21"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Light and Shadows",
+romanization: "",
+romaji_artist: "Casiopea",
+japanese_artist: "",
+year: "1997",
+description: "",
+coverlink: "lightandshadows.jpg",
+flavor: "Fusion"
+},
+[{
+title: "Golden Waves",
+romanization: "",
+duration: "5:23"
+},
+{
+title: "Forbidden Fruits",
+romanization: "",
+duration: "4:36"
+},
+{
+title: "Chain Reaction",
+romanization: "",
+duration: "4:01"
+},
+{
+title: "Missing Days",
+romanization: "",
+duration: "5:36"
+},
+{
+title: "Speeded Age",
+romanization: "",
+duration: "4:44"
+},
+{
+title: "The Tease",
+romanization: "",
+duration: "4:45"
+},
+{
+title: "Don't Leave Me Alone",
+romanization: "",
+duration: "5:23"
+},
+{
+title: "Movin'",
+romanization: "",
+duration: "5:32"
+},
+{
+title: "The Smile of Tender",
+romanization: "",
+duration: "5:47"
+},
+{
+title: "Riddle",
+romanization: "",
+duration: "4:17"
+},
+{
+title: "A Dressy Morning",
+romanization: "",
+duration: "4:28"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Be",
+romanization: "",
+romaji_artist: "Casiopea",
+japanese_artist: "",
+year: "1999",
+description: "",
+coverlink: "be.jpg",
+flavor: "Fusion"
+},
+[{
+title: "Dream Maker",
+romanization: "",
+duration: "5:44"
+},
+{
+title: "Purple Bird",
+romanization: "",
+duration: "4:48"
+},
+{
+title: "Hole Heartedly",
+romanization: "",
+duration: "4:34"
+},
+{
+title: "Treasure",
+romanization: "",
+duration: "5:15"
+},
+{
+title: "Yours Lovingly",
+romanization: "",
+duration: "4:18"
+},
+{
+title: "All The Time",
+romanization: "",
+duration: "4:59"
+},
+{
+title: "Third Possiblity",
+romanization: "",
+duration: "4:44"
+},
+{
+title: "Final Matter",
+romanization: "",
+duration: "3:39"
+},
+{
+title: "Night Breeze",
+romanization: "",
+duration: "5:13"
+},
+{
+title: "Day Of Selection",
+romanization: "",
+duration: "4:12"
+},
+{
+title: "Let It Rain",
+romanization: "",
+duration: "5:22"
+},
+{
+title: "Inner Child",
+romanization: "",
+duration: "6:08"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Bitter Sweet",
+romanization: "",
+romaji_artist: "Casiopea",
+japanese_artist: "",
+year: "2000",
+description: "",
+coverlink: "bittersweet.jpg",
+flavor: "Fusion"
+},
+[{
+title: "Go On!",
+romanization: "",
+duration: "4:21"
+},
+{
+title: "Pick Up the Good One",
+romanization: "",
+duration: "4:18"
+},
+{
+title: "Acid Rain",
+romanization: "",
+duration: "5:11"
+},
+{
+title: "Rouge",
+romanization: "",
+duration: "4:23"
+},
+{
+title: "Hard Worker",
+romanization: "",
+duration: "4:04"
+},
+{
+title: "Sentimental Things",
+romanization: "",
+duration: "4:56"
+},
+{
+title: "Give Me Your Love",
+romanization: "",
+duration: "4:40"
+},
+{
+title: "Side Walk",
+romanization: "",
+duration: "3:49"
+},
+{
+title: "It's a Long Story",
+romanization: "",
+duration: "4:52"
+},
+{
+title: "Tight Line",
+romanization: "",
+duration: "3:41"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Marble",
+romanization: "",
+romaji_artist: "Casiopea",
+japanese_artist: "",
+year: "2005",
+description: "",
+coverlink: "marble.jpg",
+flavor: "Fusion"
+},
+[{
+title: "Universe",
+romanization: "",
+duration: "25:08"
+},
+{
+title: "Southern Breeze",
+romanization: "",
+duration: "4:22"
+},
+{
+title: "Mawari-Michi",
+romanization: "",
+duration: "4:38"
+},
+{
+title: "Reminiscence",
+romanization: "",
+duration: "5:41"
+},
+{
+title: "When You Grow Up",
+romanization: "",
+duration: "3:47"
+},
+{
+title: "Blessing",
+romanization: "",
+duration: "4:37"
+},
+{
+title: "Japanese Title",
+romanization: "",
+duration: "4:33"
+},
+{
+title: "Spread",
+romanization: "",
+duration: "4:11"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Gentle & Mellow",
+romanization: "",
+romaji_artist: "Casiopea",
+japanese_artist: "",
+year: "2006",
+description: "",
+coverlink: "gentlemellow.jpg",
+flavor: "Fusion/Compilation"
+},
+[{
+title: "Tokyo Sunset",
+romanization: "",
+duration: "5:25"
+},
+{
+title: "Supremely",
+romanization: "",
+duration: "4:52"
+},
+{
+title: "May Fly",
+romanization: "",
+duration: "3:49"
+},
+{
+title: "Liquid Eyes",
+romanization: "",
+duration: "4:37"
+},
+{
+title: "Give Me Your Love",
+romanization: "",
+duration: "4:38"
+},
+{
+title: "Rouge",
+romanization: "",
+duration: "4:20"
+},
+{
+title: "Southern Breeze",
+romanization: "",
+duration: "4:21"
+},
+{
+title: "Wa Su Re Mo No",
+romanization: "",
+duration: "4:24"
+},
+{
+title: "It's A Long Story",
+romanization: "",
+duration: "4:49"
+},
+{
+title: "Will You Love Me Tomorrow",
+romanization: "",
+duration: "5:17"
+},
+{
+title: "When  You Grow Up",
+romanization: "",
+duration: "3:44"
+},
+{
+title: "Cry With Terra",
+romanization: "",
+duration: "5:13"
+},
+{
+title: "My Native Place",
+romanization: "",
+duration: "3:44"
+},
+{
+title: "Life Long Serenade",
+romanization: "",
+duration: "6:03"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Groove & Passion",
+romanization: "",
+romaji_artist: "Casiopea",
+japanese_artist: "",
+year: "2006",
+description: "",
+coverlink: "groovepassion.jpg",
+flavor: "Fusion/Compilation"
+},
+[{
+title: "Asayake",
+romanization: "",
+duration: "5:38"
+},
+{
+title: "Good Luck!",
+romanization: "",
+duration: "4:36"
+},
+{
+title: "Dazzling",
+romanization: "",
+duration: "4:05"
+},
+{
+title: "Tokimeki",
+romanization: "",
+duration: "4:26"
+},
+{
+title: "Sprinter",
+romanization: "",
+duration: "5:25"
+},
+{
+title: "Looking Up",
+romanization: "",
+duration: "4:37"
+},
+{
+title: "Fightman",
+romanization: "",
+duration: "5:55"
+},
+{
+title: "Halle",
+romanization: "",
+duration: "3:39"
+},
+{
+title: "Akappachi-Ism",
+romanization: "",
+duration: "3:09"
+},
+{
+title: "Domino Line",
+romanization: "",
+duration: "4:43"
+},
+{
+title: "Mid-Manhattan",
+romanization: "",
+duration: "4:02"
+},
+{
+title: "Universe",
+romanization: "",
+duration: "24:16"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Signal",
+romanization: "",
+romaji_artist: "Casiopea",
+japanese_artist: "",
+year: "2006",
+description: "",
+coverlink: "signal.jpg",
+flavor: "Fusion"
+},
+[{
+title: "Awaken",
+romanization: "",
+duration: "6:09"
+},
+{
+title: "Mist",
+romanization: "",
+duration: "5:11"
+},
+{
+title: "Kokoro-Ck",
+romanization: "",
+duration: "4:35"
+},
+{
+title: "Will",
+romanization: "",
+duration: "5:19"
+},
+{
+title: "Escalation",
+romanization: "",
+duration: "4:42"
+},
+{
+title: "Asobi",
+romanization: "",
+duration: "4:20"
+},
+{
+title: "Life",
+romanization: "",
+duration: "6:09"
+},
+{
+title: "Pity",
+romanization: "",
+duration: "3:57"
+},
+{
+title: "Ardent",
+romanization: "",
+duration: "3:44"
+},
+{
+title: "Past",
+romanization: "",
+duration: "11:47"
+},
+])
