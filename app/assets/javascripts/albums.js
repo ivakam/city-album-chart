@@ -430,18 +430,17 @@
       });
     };
     return $(window).scroll(function() {
-      var albumIndex, albumsToLoad, j, ref, ref1, results;
+      var albumsToLoad;
       if ($(window).scrollTop() + $(window).height() >= $(document).height()) {
         albumsToLoad = albums.length - loadedAlbums;
         if (albumsToLoad >= 40) {
           return displayAlbum(loadedAlbums, loadedAlbums + 40, false);
         } else {
           if (albumsToLoad < 40 && albumsToLoad > 0) {
-            results = [];
-            for (albumIndex = j = ref = loadedAlbums, ref1 = loadedAlbums + albumsToLoad; ref <= ref1 ? j < ref1 : j > ref1; albumIndex = ref <= ref1 ? ++j : --j) {
-              results.push(displayAlbum(loadedAlbums, loadedAlbums + albumsToLoad, false));
-            }
-            return results;
+            console.log(albums.length);
+            console.log(loadedAlbums);
+            console.log(albumsToLoad);
+            return displayAlbum(loadedAlbums, loadedAlbums + albumsToLoad, false);
           } else {
             return console.log("No more albums to load!");
           }
