@@ -260,7 +260,7 @@
       clearTimeout(delayTimer);
       return delayTimer = setTimeout(function() {
         return asyncSearch(e);
-      }, 450);
+      }, 200);
     });
     checkMatch = function(values, conditions) {
       var blackList, conditionCount, j, k, len, len1, match, val;

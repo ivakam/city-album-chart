@@ -920,7 +920,7 @@ romanization: "",
 duration: "4:12"
 },
 {
-title: "BERIMBAU DO BEM",
+title: "Berimbau do Bem",
 romanization: "",
 duration: "5:23"
 },
@@ -960,7 +960,7 @@ romanization: "",
 duration: "5:16"
 },
 {
-title: "SAMBA DO MAR",
+title: "Samba do Mar",
 romanization: "",
 duration: "4:51"
 },
@@ -2931,7 +2931,7 @@ japanese_artist: "虹伝説",
 year: "1978",
 description: "",
 coverlink: "brasilianskies.jpg",
-flavor: "Fusion/Samba"
+flavor: "Fusion/Latin"
 },
 [{
 title: "Beleza Pula",
@@ -2983,7 +2983,7 @@ japanese_artist: "虹伝説",
 year: "1979",
 description: "",
 coverlink: "allofme.jpg",
-flavor: "Fusion/Samba/Compilation"
+flavor: "Fusion/Latin/Compilation"
 },
 [{
 title: "Oh! Tengo Suerte",
@@ -8407,5 +8407,433 @@ duration: "6:10"
 title: "Oshi-Tao-Shitai",
 romanization: "",
 duration: "14:09"
+},
+])
+
+
+#New batch (Meiko)
+
+
+CreateAlbumWithTracks({
+title: "Coconuts House",
+romanization: "",
+romaji_artist: "Meiko Nakahara",
+japanese_artist: "中原めいこ",
+year: "1982",
+description: "",
+coverlink: "coconutshouse.jpg",
+flavor: "Funk/Latin"
+},
+[{
+title: "今夜だけDance Dance Dance",
+romanization: "Konya Dake Dance Dance Dance",
+duration: "3:53"
+},
+{
+title: "Sunset Freeway",
+romanization: "",
+duration: "3:40"
+},
+{
+title: "バカンス",
+romanization: "Vacance",
+duration: "3:31"
+},
+{
+title: "涙のスロー・ダンス",
+romanization: "Namida no Slow Dance",
+duration: "5:03"
+},
+{
+title: "恋はサンバにのせて・・・",
+romanization: "Koi wa Samba ni Nosete...",
+duration: "4:24"
+},
+{
+title: "タイムリミット",
+romanization: "Time Limit",
+duration: "3:52"
+},
+{
+title: "Gemini",
+romanization: "",
+duration: "4:18"
+},
+{
+title: "ほんのちょっぴりOld Man",
+romanization: "Honno Choppiri Old Man",
+duration: "3:58"
+},
+{
+title: "City Night",
+romanization: "",
+duration: "3:53"
+},
+{
+title: "Come Back To Me",
+romanization: "",
+duration: "4:26"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Friday Magic",
+romanization: "",
+romaji_artist: "Meiko Nakahara",
+japanese_artist: "中原めいこ",
+year: "1982",
+description: "",
+coverlink: "fridaymagic.jpg",
+flavor: "Funk"
+},
+[{
+title: "Fantasy",
+romanization: "",
+duration: "4:24"
+},
+{
+title: "ジゴロ",
+romanization: "",
+duration: "4:16"
+},
+{
+title: "ココナッツの片想い",
+romanization: "",
+duration: "3:14"
+},
+{
+title: "パールのマニキュア",
+romanization: "",
+duration: "4:05"
+},
+{
+title: "Go Away",
+romanization: "",
+duration: "4:19"
+},
+{
+title: "Friday Magic",
+romanization: "",
+duration: "3:29"
+},
+{
+title: "恋の余韻",
+romanization: "",
+duration: "4:08"
+},
+{
+title: "ステキなじゃじゃ馬ならし",
+romanization: "",
+duration: "3:20"
+},
+{
+title: "ダイヤルまわして…",
+romanization: "",
+duration: "4:16"
+},
+{
+title: "2時までのシンデレラ",
+romanization: "",
+duration: "4:32"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Mint",
+romanization: "",
+romaji_artist: "Meiko Nakahara",
+japanese_artist: "中原めいこ",
+year: "1983",
+description: "",
+coverlink: "mint.jpg",
+flavor: "Funk/Ballad"
+},
+[{
+title: "渚のDaydream",
+romanization: "Nagisa no Daydream",
+duration: "3:45"
+},
+{
+title: "ふたりのRainy Day",
+romanization: "Futari no Rainy Day",
+duration: "4:47"
+},
+{
+title: "眠り姫",
+romanization: "Nemuri Hime",
+duration: "5:04"
+},
+{
+title: "ケンカのあとの口づけ",
+romanization: "Kenka no Ato no Kuchizuke",
+duration: "4:36"
+},
+{
+title: "恋のバースデイ",
+romanization: "Koi no Birthday",
+duration: "4:03"
+},
+{
+title: "月夜に気をつけて！",
+romanization: "Tsukiyo ni Ki o Tsukete!",
+duration: "3:55"
+},
+{
+title: "Sexy Dandy",
+romanization: "",
+duration: "4:28"
+},
+{
+title: "ジャグラー",
+romanization: "Jaguraa",
+duration: "4:31"
+},
+{
+title: "アナタの魔法にかかりそう...",
+romanization: "Anata no Mahou ni Kakari Sou...",
+duration: "3:34"
+},
+{
+title: "ペパーミントの朝",
+romanization: "Peppermint no Asa",
+duration: "3:28"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "ロートスの果実",
+romanization: "Rōtosu no kajitsu",
+romaji_artist: "Meiko Nakahara",
+japanese_artist: "中原めいこ",
+year: "1984",
+description: "",
+coverlink: "ロートスの果実.jpg",
+flavor: "Funk/Latin"
+},
+[{
+title: "魔法のカーペット",
+romanization: "",
+duration: "3:48"
+},
+{
+title: "ロートスの果実 ー夢楽樹ー",
+romanization: "",
+duration: "3:56"
+},
+{
+title: "エモーション",
+romanization: "",
+duration: "3:32"
+},
+{
+title: "I Miss My Valentine",
+romanization: "",
+duration: "4:40"
+},
+{
+title: "メランコリー Tea Time",
+romanization: "",
+duration: "3:34"
+},
+{
+title: "君たち キウイ・パパイア・マンゴーだね。",
+romanization: "",
+duration: "3:13"
+},
+{
+title: "こんな気分じゃ帰れない",
+romanization: "",
+duration: "3:39"
+},
+{
+title: "スコーピオン",
+romanization: "",
+duration: "4:11"
+},
+{
+title: "気まぐれ Bad Boy",
+romanization: "",
+duration: "4:02"
+},
+{
+title: "Cloudy な午後",
+romanization: "",
+duration: "4:36"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Chaki Chaki Club",
+romanization: "",
+romaji_artist: "Meiko Nakahara",
+japanese_artist: "中原めいこ",
+year: "1985",
+description: "",
+coverlink: "chakichakiclub.jpg",
+flavor: "Funk/Ballad"
+},
+[{
+title: "宇宙恋愛（スペース・ファンタジー）",
+romanization: "",
+duration: "3:21"
+},
+{
+title: "やきもちやき ルンバ・ボーイ",
+romanization: "",
+duration: "3:20"
+},
+{
+title: "Kiss In The Morning Light",
+romanization: "",
+duration: "4:06"
+},
+{
+title: "サンバでも踊ろう",
+romanization: "",
+duration: "4:08"
+},
+{
+title: "ホットラインは内線424",
+romanization: "",
+duration: "3:26"
+},
+{
+title: "夜は Musical",
+romanization: "",
+duration: "4:37"
+},
+{
+title: "ルナルナ・Tiki Tiki",
+romanization: "",
+duration: "2:55"
+},
+{
+title: "恋の秘訣",
+romanization: "",
+duration: "3:15"
+},
+{
+title: "ハートエイク",
+romanization: "",
+duration: "3:15"
+},
+{
+title: "フレンチ・バニラ",
+romanization: "",
+duration: "3:48"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Moods",
+romanization: "",
+romaji_artist: "Meiko Nakahara",
+japanese_artist: "中原めいこ",
+year: "1986",
+description: "",
+coverlink: "moods.jpg",
+flavor: "Funk/Ballad"
+},
+[{
+title: "Gimme，Gimme Motions",
+romanization: "",
+duration: "4:39"
+},
+{
+title: "極楽鳥のテーマ",
+romanization: "",
+duration: "5:16"
+},
+{
+title: "So Shine",
+romanization: "",
+duration: "4:47"
+},
+{
+title: "We Were In L.A.",
+romanization: "",
+duration: "5:12"
+},
+{
+title: "Number 1",
+romanization: "",
+duration: "4:09"
+},
+{
+title: "こわれたピアノ",
+romanization: "",
+duration: "4:18"
+},
+{
+title: "Lonely Woman",
+romanization: "",
+duration: "4:03"
+},
+{
+title: "ロ・ロ・ロ・ロシアン・ルーレット",
+romanization: "",
+duration: "4:26"
+},
+{
+title: "New York でサルサ",
+romanization: "",
+duration: "4:56"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Puzzle",
+romanization: "",
+romaji_artist: "Meiko Nakahara",
+japanese_artist: "中原めいこ",
+year: "1987",
+description: "",
+coverlink: "puzzle.jpg",
+flavor: "Funk/Ballad"
+},
+[{
+title: "The Overture - Merry Train",
+romanization: "",
+duration: "3:24"
+},
+{
+title: "Studio 54",
+romanization: "",
+duration: "4:11"
+},
+{
+title: "Tokyo Game",
+romanization: "",
+duration: "4:04"
+},
+{
+title: "Puzzle",
+romanization: "",
+duration: "4:05"
+},
+{
+title: "Unbalance-zone",
+romanization: "",
+duration: "3:42"
+},
+{
+title: "Hallelujah・Anyway",
+romanization: "",
+duration: "3:54"
+},
+{
+title: "マスカレード(仮面舞踏会)",
+romanization: "",
+duration: "4:23"
+},
+{
+title: "カーニバル",
+romanization: "",
+duration: "4:41"
+},
+{
+title: "Happy birthday, Love for you",
+romanization: "",
+duration: "5:13"
 },
 ])

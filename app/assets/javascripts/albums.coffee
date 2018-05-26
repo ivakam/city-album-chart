@@ -287,7 +287,7 @@ $(document).on "turbolinks:load", ->
 		clearTimeout(delayTimer)
 		delayTimer = setTimeout( ->
 			asyncSearch(e)
-		, 450)
+		, 200)
 	)
 
 	#Helper method for checking if any 'conditions' match the selected text

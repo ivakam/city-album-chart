@@ -235,6 +235,7 @@ body {
   #main-container #splash-container {
     width: 98%;
     display: flex;
+    min-height: 80vh;
     position: relative;
     flex-flow: row wrap;
     overflow-x: hidden;
