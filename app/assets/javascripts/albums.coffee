@@ -51,7 +51,7 @@ $(document).on "turbolinks:load", ->
 				img = sibling.find("img").attr("src")
 				sibling.find(".info-background img").css("display", "block")
 				trackContainer = sibling.find(".tracklist-container")
-				newWidth = Math.ceil((trackContainer.children().length / 8)) * 240 + 5
+				newWidth = Math.ceil((trackContainer.children().length / 8)) * 235 + 5
 				trackContainer.width(newWidth + 30) if trackContainer.width() != newWidth
 				albumOpen = true
 			,

@@ -2188,6 +2188,7 @@ duration: "3:52"
 },
 ]
 )
+
 CreateAlbumWithTracks({
 title: "Flapper",
 romanization: "",
@@ -2250,6 +2251,372 @@ duration: "5:04"
 },
 ]
 )
+CreateAlbumWithTracks({
+title: "Minako",
+romanization: "",
+romaji_artist: "Minako Yoshida",
+japanese_artist: "吉田美奈子",
+year: "1975",
+description: "",
+coverlink: "minako.jpg",
+flavor: "Funk"
+},
+[{
+title: "移りゆくすべてに",
+romanization: "Utsuriyuku Subete Ni",
+duration: "8:03"
+},
+{
+title: "レインボー・シー・ライン",
+romanization: "Rainbow Sea Line",
+duration: "4:01"
+},
+{
+title: "住みなれた部屋で",
+romanization: "Suminareta Heya De",
+duration: "4:45"
+},
+{
+title: "わたし",
+romanization: "Watashi",
+duration: "3:22"
+},
+{
+title: "夢を追って",
+romanization: "Yume O Otte",
+duration: "6:04"
+},
+{
+title: "チャイニーズ・スープ",
+romanization: "Chinese Soup",
+duration: "2:35"
+},
+{
+title: "パラダイスへ",
+romanization: "Paradise E",
+duration: "2:52"
+},
+{
+title: "時の中へ",
+romanization: "Toki No Naka E",
+duration: "5:38"
+},
+{
+title: "ろっかばいまいべいびい",
+romanization: "Rock-A-Bye My Baby",
+duration: "5:28"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Minako II",
+romanization: "",
+romaji_artist: "Minako Yoshida",
+japanese_artist: "吉田美奈子",
+year: "1975",
+description: "",
+coverlink: "minakoii.jpg",
+flavor: "Funk"
+},
+[{
+title: "Once You Get Started",
+romanization: "",
+duration: "1:48"
+},
+{
+title: "外はみんな",
+romanization: "",
+duration: "1:47"
+},
+{
+title: "扉の冬",
+romanization: "",
+duration: "1:22"
+},
+{
+title: "かびん",
+romanization: "",
+duration: "1:36"
+},
+{
+title: "ふうらい坊",
+romanization: "",
+duration: "1:14"
+},
+{
+title: "明日天気になれ",
+romanization: "",
+duration: "1:52"
+},
+{
+title: "週末",
+romanization: "",
+duration: "3:11"
+},
+{
+title: "Apple Knocker",
+romanization: "",
+duration: "4:57"
+},
+{
+title: "Good Morning Heartache",
+romanization: "",
+duration: "3:16"
+},
+{
+title: "The Way We Are",
+romanization: "",
+duration: "3:42"
+},
+{
+title: "Precious Lord, Take My Hand/Yo",
+romanization: "",
+duration: "4:52"
+},
+{
+title: "Ain't No Mountain High Enough",
+romanization: "",
+duration: "7:20"
+},
+{
+title: "Someone To Watch Over Me",
+romanization: "",
+duration: "2:31"
+},
+{
+title: "Apple Knocker",
+romanization: "",
+duration: "1:38"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Twilight Zone",
+romanization: "",
+romaji_artist: "Minako Yoshida",
+japanese_artist: "吉田美奈子",
+year: "1977",
+description: "",
+coverlink: "twilightzone.jpg",
+flavor: "Funk"
+},
+[{
+title: "Twilight Zone 'Overture'",
+romanization: "",
+duration: "1:42"
+},
+{
+title: "恋 - Love",
+romanization: "",
+duration: "8:03"
+},
+{
+title: "駆けてきたたそがれ - Runner",
+romanization: "",
+duration: "4:20"
+},
+{
+title: "Melody",
+romanization: "",
+duration: "6:11"
+},
+{
+title: "恋は流星 - Shooting Star Of Love",
+romanization: "",
+duration: "6:46"
+},
+{
+title: "Uptown",
+romanization: "",
+duration: "3:52"
+},
+{
+title: "Raspberry Slope",
+romanization: "",
+duration: "3:27"
+},
+{
+title: "さよなら - Say Just Good-By",
+romanization: "",
+duration: "6:21"
+},
+{
+title: "Twilight Zone",
+romanization: "",
+duration: "7:44"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Let's Do It",
+romanization: "",
+romaji_artist: "Minako Yoshida",
+japanese_artist: "吉田美奈子",
+year: "1978",
+description: "",
+coverlink: "letsdoit.jpg",
+flavor: "Funk"
+},
+[{
+title: "愛は思うまま",
+romanization: "",
+duration: "4:52"
+},
+{
+title: "恋の手ほどき",
+romanization: "",
+duration: "4:10"
+},
+{
+title: "時よ",
+romanization: "",
+duration: "3:35"
+},
+{
+title: "海",
+romanization: "",
+duration: "3:58"
+},
+{
+title: "アイッド・ラーザー・リーヴ・ホワイル・アイム・イン・ラヴ",
+romanization: "",
+duration: "3:05"
+},
+{
+title: "愛の炎",
+romanization: "",
+duration: "4:07"
+},
+{
+title: "猫",
+romanization: "",
+duration: "4:48"
+},
+{
+title: "雲のゆくえに",
+romanization: "",
+duration: "4:51"
+},
+{
+title: "影になりたい",
+romanization: "",
+duration: "5:12"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Minako Favorites",
+romanization: "",
+romaji_artist: "Minako Yoshida",
+japanese_artist: "吉田美奈子",
+year: "1978",
+description: "",
+coverlink: "minakofavorites.jpg",
+flavor: "Funk"
+},
+[{
+title: "移りゆくすべてに",
+romanization: "",
+duration: "8:05"
+},
+{
+title: "愛は彼方",
+romanization: "",
+duration: "4:07"
+},
+{
+title: "夢で逢えたら",
+romanization: "",
+duration: "3:51"
+},
+{
+title: "駆けてきたたそがれ",
+romanization: "",
+duration: "4:19"
+},
+{
+title: "永遠に",
+romanization: "",
+duration: "5:00"
+},
+{
+title: "トワイライト・ゾーン",
+romanization: "",
+duration: "7:45"
+},
+{
+title: "レインボー・シー・ライン",
+romanization: "",
+duration: "3:59"
+},
+{
+title: "恋は流星",
+romanization: "",
+duration: "6:46"
+},
+{
+title: "ラズベリー・スロープ",
+romanization: "",
+duration: "3:25"
+},
+{
+title: "ラスト・ステップ",
+romanization: "",
+duration: "2:49"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Monsters In Town",
+romanization: "",
+romaji_artist: "Minako Yoshida",
+japanese_artist: "吉田美奈子",
+year: "1981",
+description: "",
+coverlink: "monstersintown.jpg",
+flavor: "Funk"
+},
+[{
+title: "Town",
+romanization: "",
+duration: "6:19"
+},
+{
+title: "Lovin' You",
+romanization: "",
+duration: "5:58"
+},
+{
+title: "Nights In Her Eyes",
+romanization: "",
+duration: "1:26"
+},
+{
+title: "Black Eye Lady",
+romanization: "",
+duration: "5:18"
+},
+{
+title: "Monster Stomp",
+romanization: "",
+duration: "5:17"
+},
+{
+title: "Knock Knock",
+romanization: "",
+duration: "4:59"
+},
+{
+title: "Moment Of Twilight",
+romanization: "",
+duration: "5:43"
+},
+{
+title: "Back In Town",
+romanization: "",
+duration: "3:05"
+},
+])
 CreateAlbumWithTracks({
 title: "Monochrome",
 romanization: "",
@@ -2362,7 +2729,7 @@ japanese_artist: "吉田美奈子",
 year: "1986",
 description: "",
 coverlink: "bells.jpg",
-flavor: "Funk"
+flavor: "Funk/Ballad"
 },
 [{
 title: "Wind",
