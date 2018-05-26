@@ -87,8 +87,8 @@ $(document).on "turbolinks:load", ->
 
 	#Create an album
 
-	displayAlbum = (i, refresh = true) ->
-		$("#splash-container").toggle() if refresh
+	displayAlbum = (i, refreshSplash = true) ->
+		$("#splash-container").toggle() if refreshSplash
 		currentAlbum = albums[i]
 		albumID = currentAlbum.id
 		albumTracks = []
@@ -151,7 +151,7 @@ $(document).on "turbolinks:load", ->
 		$("#" + albumID + "-info .expandable-img").get()[0].addEventListener("click",(e) -> clickImage($(this)))
 		$("#" + albumID + " .arrow-container").get()[0].addEventListener("click", (e) -> albumClick($(this)))
 		$("#" + albumID + " img").get()[0].addEventListener("click", (e) -> albumClick($(this)))
-		if refresh
+		if refreshSplash
 			$("#splash-container").show(400, ->
 				$("#" + albumID + " .text-size-wrapper h2, #" + albumID + " .artist-year-container p").each ->
 					fontSize = 20
@@ -322,7 +322,7 @@ $(document).on "turbolinks:load", ->
 
 	albumSort = (string) ->
 		albumList = $("#splash-container")
-		$("#splash-container").empty()
+		albumList.empty()
 		switch string
 			when "Title"
 				if !albumList.hasClass("title-sorted-up") && !albumList.hasClass("title-sorted-down")
@@ -335,7 +335,6 @@ $(document).on "turbolinks:load", ->
 						return compA.localeCompare(compB)
 					else
 						return compB.localeCompare(compA)
-				displayAlbum(i) for i in [0...loadedAlbums]
 				break;
 			when "Artist"
 				if !albumList.hasClass("artist-sorted-up") && !albumList.hasClass("artist-sorted-down")
@@ -348,7 +347,6 @@ $(document).on "turbolinks:load", ->
 						return compA.localeCompare(compB)
 					else
 						return compB.localeCompare(compA)
-				displayAlbum(i) for i in [0...loadedAlbums]
 				break;
 			when "Year"
 				if !albumList.hasClass("year-sorted-up") && !albumList.hasClass("year-sorted-down")
@@ -358,10 +356,9 @@ $(document).on "turbolinks:load", ->
 					compA = parseInt(a.year)
 					compB = parseInt(b.year)
 					if albumList.hasClass("year-sorted-up")
-						return (compA > compB) ? -1 : (compA < compB) ? 1 : 0
+						return (compA - compB)
 					else
-						return (compA < compB) ? -1 : (compA > compB) ? 1 : 0
-				displayAlbum(i) for i in [0...loadedAlbums]
+						return (compB - compA)
 				break;
 			when "Flavor"
 				if !albumList.hasClass("flavor-sorted-up") && !albumList.hasClass("flavor-sorted-down")
@@ -374,8 +371,9 @@ $(document).on "turbolinks:load", ->
 						return compA.localeCompare(compB)
 					else
 						return compB.localeCompare(compA)
-				displayAlbum(i) for i in [0...loadedAlbums]
 				break;
+		loadedAlbums = 0
+		displayAlbum(i) for i in [0...40]
 		toggleAlbum(sibling: undefined)
 
 	#Load more albums on scroll
@@ -388,5 +386,5 @@ $(document).on "turbolinks:load", ->
 			else
 				if albumsToLoad < 40 && albumsToLoad > 0
 					displayAlbum(albumIndex, false) for albumIndex in [loadedAlbums...loadedAlbums + albumsToLoad]
-				#else
-					#console.log("No more albums to load!")
+				else
+					console.log("No more albums to load!")
