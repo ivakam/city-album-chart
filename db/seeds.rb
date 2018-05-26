@@ -7031,3 +7031,1381 @@ romanization: "",
 duration: "4:18"
 },
 ])
+
+
+#New batch of Toshiki
+
+
+CreateAlbumWithTracks({
+title: "Sea Breeze",
+romanization: "",
+romaji_artist: "Toshiki Kadomatsu",
+japanese_artist: "角松敏生",
+year: "1981",
+description: "",
+coverlink: "seabreeze.jpg",
+flavor: "Funk"
+},
+[{
+title: "Dancing Shower",
+romanization: "",
+duration: "4:44"
+},
+{
+title: "Elena",
+romanization: "",
+duration: "5:22"
+},
+{
+title: "Summer Babe",
+romanization: "",
+duration: "6:14"
+},
+{
+title: "Surf Break",
+romanization: "",
+duration: "5:11"
+},
+{
+title: "Yokohama Twilight Time",
+romanization: "",
+duration: "5:14"
+},
+{
+title: "City Nights",
+romanization: "",
+duration: "4:50"
+},
+{
+title: "Still, I'm In Love With You",
+romanization: "",
+duration: "6:23"
+},
+{
+title: "Wave",
+romanization: "",
+duration: "6:22"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Weekend Fly To The Sun",
+romanization: "",
+romaji_artist: "Toshiki Kadomatsu",
+japanese_artist: "角松敏生",
+year: "1982",
+description: "",
+coverlink: "weekendflytothesun.jpg",
+flavor: "Funk"
+},
+[{
+title: "Office Lady",
+romanization: "",
+duration: "5:14"
+},
+{
+title: "Rush Hour",
+romanization: "",
+duration: "5:34"
+},
+{
+title: "Brunch",
+romanization: "",
+duration: "4:34"
+},
+{
+title: "Space Scraper",
+romanization: "",
+duration: "5:24"
+},
+{
+title: "Friday To Sunday",
+romanization: "",
+duration: "6:47"
+},
+{
+title: "Crescent Aventure",
+romanization: "",
+duration: "6:23"
+},
+{
+title: "I'll Never Let You Go",
+romanization: "",
+duration: "4:55"
+},
+{
+title: "4 A.M.",
+romanization: "",
+duration: "4:12"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "On The City Shore",
+romanization: "",
+romaji_artist: "Toshiki Kadomatsu",
+japanese_artist: "角松敏生",
+year: "1983",
+description: "",
+coverlink: "onthecityshore.jpg",
+flavor: "Funk"
+},
+[{
+title: "Off Shore",
+romanization: "",
+duration: "5:13"
+},
+{
+title: "Summer Emotions",
+romanization: "",
+duration: "3:26"
+},
+{
+title: "Ryoko !!",
+romanization: "",
+duration: "0:26"
+},
+{
+title: "Beach's Widow",
+romanization: "",
+duration: "4:49"
+},
+{
+title: "Take You To The Sky High",
+romanization: "",
+duration: "3:56"
+},
+{
+title: "Take Me Far Away",
+romanization: "",
+duration: "4:38"
+},
+{
+title: "Anklet",
+romanization: "",
+duration: "4:07"
+},
+{
+title: "Dreamin' Walkin'",
+romanization: "",
+duration: "4:35"
+},
+{
+title: "Let Me Say ...",
+romanization: "",
+duration: "6:12"
+},
+{
+title: "Say ... Good Night",
+romanization: "",
+duration: "1:07"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "After 5 Crash",
+romanization: "",
+romaji_artist: "Toshiki Kadomatsu",
+japanese_artist: "角松敏生",
+year: "1984",
+description: "",
+coverlink: "after5crash.jpg",
+flavor: "Funk"
+},
+[{
+title: "If You...",
+romanization: "",
+duration: "4:49"
+},
+{
+title: "Midnight Girl",
+romanization: "",
+duration: "4:29"
+},
+{
+title: "Airport Lady",
+romanization: "",
+duration: "4:19"
+},
+{
+title: "Maybe It's Love Affair",
+romanization: "",
+duration: "3:41"
+},
+{
+title: "Will You Wait For Me",
+romanization: "",
+duration: "4:12"
+},
+{
+title: "After 5 Crash",
+romanization: "",
+duration: "3:43"
+},
+{
+title: "Step Into The Light",
+romanization: "",
+duration: "3:26"
+},
+{
+title: "Never Touch Again",
+romanization: "",
+duration: "4:16"
+},
+{
+title: "I Need You",
+romanization: "",
+duration: "4:37"
+},
+{
+title: "Heart Dancing",
+romanization: "",
+duration: "3:32"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Summer Time Romance",
+romanization: "",
+romaji_artist: "Toshiki Kadomatsu",
+japanese_artist: "角松敏生",
+year: "1984",
+description: "",
+coverlink: "summertimeromance.jpg",
+flavor: "Funk"
+},
+[{
+title: "Off Shore",
+romanization: "",
+duration: "5:00"
+},
+{
+title: "Summer Emotion",
+romanization: "",
+duration: "2:55"
+},
+{
+title: "Office Lady - Ryoko!!",
+romanization: "",
+duration: "4:34"
+},
+{
+title: "Window On The Shore (Beach's Widow)",
+romanization: "",
+duration: "4:27"
+},
+{
+title: "It's Hard To Say Good-Bye (Sayonara Wa Ai No Kotoba)",
+romanization: "",
+duration: "5:26"
+},
+{
+title: "Prelude",
+romanization: "",
+duration: "1:44"
+},
+{
+title: "Friday To Sunday",
+romanization: "",
+duration: "3:26"
+},
+{
+title: "Step Into The Light",
+romanization: "",
+duration: "2:28"
+},
+{
+title: "Do You Wanna Dance",
+romanization: "",
+duration: "4:37"
+},
+{
+title: "Space Scraper",
+romanization: "",
+duration: "5:08"
+},
+{
+title: "Take You To The Sky High",
+romanization: "",
+duration: "3:21"
+},
+{
+title: "Let Me Say...",
+romanization: "",
+duration: "5:56"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Gold Digger",
+romanization: "",
+romaji_artist: "Toshiki Kadomatsu",
+japanese_artist: "角松敏生",
+year: "1985",
+description: "",
+coverlink: "golddigger.jpg",
+flavor: "Funk"
+},
+[{
+title: "I Can't Stop The Night",
+romanization: "",
+duration: "4:30"
+},
+{
+title: "Springin' Night",
+romanization: "",
+duration: "4:01"
+},
+{
+title: "Move Your Hips All Night Long",
+romanization: "",
+duration: "3:49"
+},
+{
+title: "Secret Lover",
+romanization: "",
+duration: "3:51"
+},
+{
+title: "Melody For You",
+romanization: "",
+duration: "4:02"
+},
+{
+title: "Tokyo Tower",
+romanization: "",
+duration: "5:10"
+},
+{
+title: "Prajna (Violence In The Subway)",
+romanization: "",
+duration: "0:49"
+},
+{
+title: "Mermaid Princess",
+romanization: "",
+duration: "4:36"
+},
+{
+title: "It's Too Late",
+romanization: "",
+duration: "6:28"
+},
+{
+title: "No End Summer",
+romanization: "",
+duration: "3:21"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Touch And Go",
+romanization: "",
+romaji_artist: "Toshiki Kadomatsu",
+japanese_artist: "角松敏生",
+year: "1986",
+description: "",
+coverlink: "touchandgo.jpg",
+flavor: "Funk"
+},
+[{
+title: "Overture ~take Off Melody",
+romanization: "",
+duration: "6:04"
+},
+{
+title: "Lucky Lady Feel So Good",
+romanization: "",
+duration: "4:31"
+},
+{
+title: "Take It Away",
+romanization: "",
+duration: "4:41"
+},
+{
+title: "August Rain ~it's Our Pure Hearts~",
+romanization: "",
+duration: "4:56"
+},
+{
+title: "Pile Driver",
+romanization: "",
+duration: "4:29"
+},
+{
+title: "1975",
+romanization: "",
+duration: "4:03"
+},
+{
+title: "Good-Bye Love",
+romanization: "",
+duration: "5:26"
+},
+{
+title: "The Best Of Love",
+romanization: "",
+duration: "4:27"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Sea Is A Lady",
+romanization: "",
+romaji_artist: "Toshiki Kadomatsu",
+japanese_artist: "角松敏生",
+year: "1987",
+description: "",
+coverlink: "seaisalady.jpg",
+flavor: "Funk"
+},
+[{
+title: "Way To The Shore 'Eri'",
+romanization: "",
+duration: "1:07"
+},
+{
+title: "Sea Line 'Rie'",
+romanization: "",
+duration: "4:19"
+},
+{
+title: "Night Sight Of Port Island 'Midori'",
+romanization: "",
+duration: "5:28"
+},
+{
+title: "Sea Song 'Naomi'",
+romanization: "",
+duration: "1:09"
+},
+{
+title: "Sunset Of Micro Beach 'Satoko'",
+romanization: "",
+duration: "4:37"
+},
+{
+title: "Oshi-Tao-Shitai 'Kaori Aso'(Memories Of Dusseldorf)",
+romanization: "",
+duration: "6:16"
+},
+{
+title: "52nd Street 'Akiko'",
+romanization: "",
+duration: "5:55"
+},
+{
+title: "The Bass Battle 'Chako'",
+romanization: "",
+duration: "1:10"
+},
+{
+title: "Midsummer Drivin' 'Reiko'",
+romanization: "",
+duration: "5:12"
+},
+{
+title: "Lovin' You 'Sawako'",
+romanization: "",
+duration: "2:55"
+},
+{
+title: "Sea Song (Reprise)",
+romanization: "",
+duration: "2:05"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Before The Daylight",
+romanization: "",
+romaji_artist: "Toshiki Kadomatsu",
+japanese_artist: "角松敏生",
+year: "1988",
+description: "",
+coverlink: "beforethedaylight.jpg",
+flavor: "Funk"
+},
+[{
+title: "I Can Give You My Love",
+romanization: "",
+duration: "5:11"
+},
+{
+title: "Lost My Heart In The Dark",
+romanization: "",
+duration: "4:57"
+},
+{
+title: "Thinking Of You",
+romanization: "",
+duration: "4:18"
+},
+{
+title: "Get Your Feelin'",
+romanization: "",
+duration: "5:23"
+},
+{
+title: "Can't You See",
+romanization: "",
+duration: "5:15"
+},
+{
+title: "Remember You",
+romanization: "",
+duration: "5:26"
+},
+{
+title: "Lady In The Night",
+romanization: "",
+duration: "4:36"
+},
+{
+title: "I'd Like To Be Your Fantasy",
+romanization: "",
+duration: "5:50"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Reasons For Thousand Lovers",
+romanization: "",
+romaji_artist: "Toshiki Kadomatsu",
+japanese_artist: "角松敏生",
+year: "1989",
+description: "",
+coverlink: "reasonsforthousandlovers.jpg",
+flavor: "Funk"
+},
+[{
+title: "飴色の街",
+romanization: "",
+duration: "5:31"
+},
+{
+title: "Ratirahasha ~ Time For Kari",
+romanization: "",
+duration: "6:08"
+},
+{
+title: "Knock My Door",
+romanization: "",
+duration: "5:38"
+},
+{
+title: "Cinderella",
+romanization: "",
+duration: "6:10"
+},
+{
+title: "Polar",
+romanization: "",
+duration: "4:15"
+},
+{
+title: "Okinawa",
+romanization: "",
+duration: "7:02"
+},
+{
+title: "Reason...",
+romanization: "",
+duration: "4:23"
+},
+{
+title: "End Of The Night",
+romanization: "",
+duration: "5:07"
+},
+{
+title: "Moonlight Tokyo Bay",
+romanization: "",
+duration: "5:58"
+},
+{
+title: "New Year's Eve",
+romanization: "",
+duration: "5:39"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Legacy Of You",
+romanization: "",
+romaji_artist: "Toshiki Kadomatsu",
+japanese_artist: "角松敏生",
+year: "1990",
+description: "",
+coverlink: "legacyofyou.jpg",
+flavor: "Funk"
+},
+[{
+title: "Premonition Of Summer",
+romanization: "",
+duration: "9:37"
+},
+{
+title: "Sayuri",
+romanization: "",
+duration: "6:37"
+},
+{
+title: "At Canal St Club",
+romanization: "",
+duration: "7:19"
+},
+{
+title: "Yuriko",
+romanization: "",
+duration: "5:48"
+},
+{
+title: "Mystical Night Love (Chisato's Dream)",
+romanization: "",
+duration: "5:38"
+},
+{
+title: "Tsugaru",
+romanization: "",
+duration: "9:05"
+},
+{
+title: "Stress",
+romanization: "",
+duration: "6:17"
+},
+{
+title: "Twilight River",
+romanization: "",
+duration: "6:23"
+},
+{
+title: "Daylight Of Alamoana",
+romanization: "",
+duration: "2:03"
+},
+{
+title: "Nh-Ca's Struttin' (Crossing At Airport)(Sanae)",
+romanization: "",
+duration: "6:15"
+},
+{
+title: "Parasail (At Ramda Beach)",
+romanization: "",
+duration: "6:45"
+},
+{
+title: "Sato",
+romanization: "",
+duration: "3:55"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "All Is Vanity",
+romanization: "",
+romaji_artist: "Toshiki Kadomatsu",
+japanese_artist: "角松敏生",
+year: "1991",
+description: "",
+coverlink: "allisvanity.jpg",
+flavor: "Funk"
+},
+[{
+title: "夜離れ ~you're Leaving My Heart",
+romanization: "",
+duration: "6:18"
+},
+{
+title: "夏回歸 ~summer Days",
+romanization: "",
+duration: "6:12"
+},
+{
+title: "海 ~the Sea",
+romanization: "",
+duration: "5:21"
+},
+{
+title: "この驛から... ~station",
+romanization: "",
+duration: "5:16"
+},
+{
+title: "ただ一度だけ ~if Only Once",
+romanization: "",
+duration: "5:03"
+},
+{
+title: "All Is Vanity",
+romanization: "",
+duration: "6:58"
+},
+{
+title: "Up Town Girl",
+romanization: "",
+duration: "4:22"
+},
+{
+title: "Distance",
+romanization: "",
+duration: "6:08"
+},
+{
+title: "彷徨 ~stray At Night",
+romanization: "",
+duration: "5:19"
+},
+{
+title: "What Is Woman",
+romanization: "",
+duration: "7:13"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "あるがままに",
+romanization: "Aru ga Mama ni",
+romaji_artist: "Toshiki Kadomatsu",
+japanese_artist: "角松敏生",
+year: "1992",
+description: "",
+coverlink: "あるがままに.jpg",
+flavor: "Funk"
+},
+[{
+title: "さよならなんて絶對言わない",
+romanization: "",
+duration: "4:53"
+},
+{
+title: "夜をこえて",
+romanization: "",
+duration: "5:23"
+},
+{
+title: "モノレ-ル",
+romanization: "",
+duration: "4:54"
+},
+{
+title: "香港街燈",
+romanization: "",
+duration: "6:14"
+},
+{
+title: "せめて無事な夜を",
+romanization: "",
+duration: "4:52"
+},
+{
+title: "君がやりたかったscuba Diving",
+romanization: "",
+duration: "7:30"
+},
+{
+title: "君を二度とはなさない",
+romanization: "",
+duration: "5:33"
+},
+{
+title: "あるがままに",
+romanization: "",
+duration: "5:07"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "君をこえる日",
+romanization: "Kimiwokoeruhi",
+romaji_artist: "Toshiki Kadomatsu",
+japanese_artist: "角松敏生",
+year: "1992",
+description: "",
+coverlink: "君をこえる日.jpg",
+flavor: "Funk"
+},
+[{
+title: "君をこえる日",
+romanization: "",
+duration: "5:48"
+},
+{
+title: "Port Of Your Heart, Sail Of My Life",
+romanization: "",
+duration: "6:11"
+},
+{
+title: "時の挽歌",
+romanization: "",
+duration: "6:46"
+},
+{
+title: "泣かないでだっくん",
+romanization: "",
+duration: "4:04"
+},
+{
+title: "君たちへ… ~bonとyukariのballad~",
+romanization: "",
+duration: "4:46"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Time Tunnel",
+romanization: "",
+romaji_artist: "Toshiki Kadomatsu",
+japanese_artist: "角松敏生",
+year: "1999",
+description: "",
+coverlink: "timetunnel.jpg",
+flavor: "Funk"
+},
+[{
+title: "Time Tunnel",
+romanization: "",
+duration: "2:35"
+},
+{
+title: "Lunafairymiena",
+romanization: "",
+duration: "4:37"
+},
+{
+title: "Shibuya",
+romanization: "",
+duration: "4:57"
+},
+{
+title: "--い",
+romanization: "",
+duration: "5:05"
+},
+{
+title: "Rendezvous",
+romanization: "",
+duration: "4:57"
+},
+{
+title: "Alright",
+romanization: "",
+duration: "5:02"
+},
+{
+title: "時計",
+romanization: "",
+duration: "6:20"
+},
+{
+title: "何もない夜",
+romanization: "",
+duration: "5:16"
+},
+{
+title: "風のあやぐ (Duet With Satoru Shimoji)",
+romanization: "",
+duration: "5:38"
+},
+{
+title: "崩壞の前日",
+romanization: "",
+duration: "6:54"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "存在の証明",
+romanization: "Sonzainoshōmei",
+romaji_artist: "Toshiki Kadomatsu",
+japanese_artist: "角松敏生",
+year: "2000",
+description: "",
+coverlink: "存在の証明.jpg",
+flavor: "Funk"
+},
+[{
+title: "生足の駝鳥",
+romanization: "",
+duration: "3:41"
+},
+{
+title: "夏休み",
+romanization: "",
+duration: "4:27"
+},
+{
+title: "愛と修羅",
+romanization: "",
+duration: "4:06"
+},
+{
+title: "煩悩 Rolling Stone",
+romanization: "",
+duration: "5:05"
+},
+{
+title: "浜辺の歌",
+romanization: "",
+duration: "2:58"
+},
+{
+title: "10月の愚者",
+romanization: "",
+duration: "4:57"
+},
+{
+title: "Hope All Goes Well",
+romanization: "",
+duration: "5:35"
+},
+{
+title: "Hold On To Love～nothing I Can Do For Love",
+romanization: "",
+duration: "4:59"
+},
+{
+title: "痴漢電車",
+romanization: "",
+duration: "3:53"
+},
+{
+title: "週末",
+romanization: "",
+duration: "4:34"
+},
+{
+title: "Flow Of Love",
+romanization: "",
+duration: "6:01"
+},
+{
+title: "存在への不安と欲望の十二ヶ月",
+romanization: "",
+duration: "6:40"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Incarnatio",
+romanization: "",
+romaji_artist: "Toshiki Kadomatsu",
+japanese_artist: "角松敏生",
+year: "2002",
+description: "",
+coverlink: "incarnatio.jpg",
+flavor: "Funk"
+},
+[{
+title: "Inasa",
+romanization: "",
+duration: "1:26"
+},
+{
+title: "Izumo",
+romanization: "",
+duration: "4:01"
+},
+{
+title: "Prelude #1",
+romanization: "",
+duration: "1:34"
+},
+{
+title: "風車",
+romanization: "",
+duration: "4:35"
+},
+{
+title: "Dawn",
+romanization: "",
+duration: "5:04"
+},
+{
+title: "マレビトの浜 -Let’s Find Out-",
+romanization: "",
+duration: "5:30"
+},
+{
+title: "常世へ続く川",
+romanization: "",
+duration: "6:29"
+},
+{
+title: "アマヌサの海",
+romanization: "",
+duration: "6:17"
+},
+{
+title: "Aijin",
+romanization: "",
+duration: "5:40"
+},
+{
+title: "Ways",
+romanization: "",
+duration: "4:11"
+},
+{
+title: "Gazer",
+romanization: "",
+duration: "5:21"
+},
+{
+title: "Prelude #2",
+romanization: "",
+duration: "1:45"
+},
+{
+title: "八月踊りの島",
+romanization: "",
+duration: "5:45"
+},
+{
+title: "鎮魂の夜",
+romanization: "",
+duration: "4:55"
+},
+{
+title: "太陽と海と月",
+romanization: "",
+duration: "4:53"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Summer 4 Rhythm",
+romanization: "",
+romaji_artist: "Toshiki Kadomatsu",
+japanese_artist: "角松敏生",
+year: "2003",
+description: "",
+coverlink: "summer4rhythm.jpg",
+flavor: "Funk"
+},
+[{
+title: "Beams",
+romanization: "",
+duration: "5:02"
+},
+{
+title: "All'n All",
+romanization: "",
+duration: "4:49"
+},
+{
+title: "真夜中の太陽",
+romanization: "",
+duration: "4:41"
+},
+{
+title: "珊瑚の風",
+romanization: "",
+duration: "3:27"
+},
+{
+title: "波をこえて ～over The Wave～",
+romanization: "",
+duration: "5:02"
+},
+{
+title: "Make It Higher",
+romanization: "",
+duration: "4:10"
+},
+{
+title: "主張#1",
+romanization: "",
+duration: "4:40"
+},
+{
+title: "Yu-Nagi",
+romanization: "",
+duration: "5:34"
+},
+{
+title: "桃色の雲",
+romanization: "",
+duration: "5:34"
+},
+{
+title: "Gratitude",
+romanization: "",
+duration: "5:53"
+},
+{
+title: "君のためにできること",
+romanization: "",
+duration: "5:53"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "No Turns",
+romanization: "",
+romaji_artist: "Toshiki Kadomatsu",
+japanese_artist: "角松敏生",
+year: "2009",
+description: "",
+coverlink: "noturns.jpg",
+flavor: "Funk"
+},
+[{
+title: "Reminiscing",
+romanization: "",
+duration: "5:25"
+},
+{
+title: "もっと",
+romanization: "",
+duration: "5:13"
+},
+{
+title: "木洩れ陽",
+romanization: "",
+duration: "4:00"
+},
+{
+title: "What Do You Think",
+romanization: "",
+duration: "4:45"
+},
+{
+title: "Love Junky",
+romanization: "",
+duration: "5:31"
+},
+{
+title: "美しいつながり",
+romanization: "",
+duration: "4:17"
+},
+{
+title: "You Can Go Your Own Way",
+romanization: "",
+duration: "4:46"
+},
+{
+title: "Pansy",
+romanization: "",
+duration: "5:07"
+},
+{
+title: "Falling In Love",
+romanization: "",
+duration: "5:07"
+},
+{
+title: "鏡の中の二人",
+romanization: "",
+duration: "5:28"
+},
+{
+title: "Cat Walk",
+romanization: "",
+duration: "4:53"
+},
+{
+title: "夜の蟬",
+romanization: "",
+duration: "4:41"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Citylights Dandy",
+romanization: "",
+romaji_artist: "Toshiki Kadomatsu",
+japanese_artist: "角松敏生",
+year: "2010",
+description: "",
+coverlink: "citylightsdandy.jpg",
+flavor: "Funk"
+},
+[{
+title: "Dandy...In The Citylights",
+romanization: "",
+duration: "2:02"
+},
+{
+title: "Hot Lazy Night",
+romanization: "",
+duration: "5:20"
+},
+{
+title: "Fly By Night",
+romanization: "",
+duration: "3:37"
+},
+{
+title: "134",
+romanization: "",
+duration: "5:18"
+},
+{
+title: "La Carnaval",
+romanization: "",
+duration: "4:18"
+},
+{
+title: "Twilight Moody Blues",
+romanization: "",
+duration: "4:10"
+},
+{
+title: "Mrs. Moonlight",
+romanization: "",
+duration: "6:12"
+},
+{
+title: "Friend",
+romanization: "",
+duration: "5:19"
+},
+{
+title: "Funky Go-Kohn",
+romanization: "",
+duration: "6:26"
+},
+{
+title: "Hamabe Days 浜辺days",
+romanization: "",
+duration: "3:48"
+},
+{
+title: "See You Again",
+romanization: "",
+duration: "4:40"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Rebirth 1 ～Re-Make Best～",
+romanization: "",
+romaji_artist: "Toshiki Kadomatsu",
+japanese_artist: "角松敏生",
+year: "2012",
+description: "",
+coverlink: "rebirth1remakebest.jpg",
+flavor: "Funk/Compilation"
+},
+[{
+title: "Do You Wanna Dance",
+romanization: "",
+duration: "6:10"
+},
+{
+title: "Tokyo Tower",
+romanization: "",
+duration: "5:41"
+},
+{
+title: "Girl In The Box ～ 22時までの君は…",
+romanization: "",
+duration: "6:40"
+},
+{
+title: "Rush Hour",
+romanization: "",
+duration: "6:25"
+},
+{
+title: "A Widow On The Shore",
+romanization: "",
+duration: "6:39"
+},
+{
+title: "Summer Emotions",
+romanization: "",
+duration: "4:38"
+},
+{
+title: "Wave",
+romanization: "",
+duration: "6:44"
+},
+{
+title: "No End Summer",
+romanization: "",
+duration: "4:55"
+},
+{
+title: "After 5 Crash",
+romanization: "",
+duration: "6:42"
+},
+{
+title: "あるがままに",
+romanization: "",
+duration: "6:44"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Sea Is A Lady 2017",
+romanization: "",
+romaji_artist: "Toshiki Kadomatsu",
+japanese_artist: "角松敏生",
+year: "2017",
+description: "",
+coverlink: "seaisalady2017.jpg",
+flavor: "Funk/Remake"
+},
+[{
+title: "Way To The Shore",
+romanization: "",
+duration: "1:12"
+},
+{
+title: "Sea Line",
+romanization: "",
+duration: "4:49"
+},
+{
+title: "Night Sight Of Port Island",
+romanization: "",
+duration: "5:51"
+},
+{
+title: "Sunset Of Micro Beach",
+romanization: "",
+duration: "5:22"
+},
+{
+title: "Ryoko!",
+romanization: "",
+duration: "2:13"
+},
+{
+title: "Summer Babe",
+romanization: "",
+duration: "5:37"
+},
+{
+title: "52Nd Street",
+romanization: "",
+duration: "6:12"
+},
+{
+title: "Midsummer Drivin'",
+romanization: "",
+duration: "5:25"
+},
+{
+title: "Lovin' You",
+romanization: "",
+duration: "3:17"
+},
+{
+title: "Evening Skyline",
+romanization: "",
+duration: "6:10"
+},
+{
+title: "Oshi-Tao-Shitai",
+romanization: "",
+duration: "14:09"
+},
+])

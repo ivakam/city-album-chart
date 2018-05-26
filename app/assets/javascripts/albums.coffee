@@ -186,11 +186,12 @@ $(document).on "turbolinks:load", ->
 						$(this).css("font-size", fontSize -= 0.5)
 						padding = Math.pow(fontSize, -fontSize * 0.6)
 			)
-			
-	
-		
-
-
+		else
+			$(".text-size-wrapper h2, .artist-year-container p").each ->
+				fontSize = 20
+				while $(this).width() > $(this).parent().width()
+					$(this).css("font-size", fontSize -= 0.5)
+					padding = Math.pow(fontSize, -fontSize * 0.6)
 
 	window.albumsNameSpace.displayAlbum = displayAlbum
 

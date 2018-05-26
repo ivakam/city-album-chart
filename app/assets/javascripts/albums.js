@@ -137,6 +137,17 @@
             return results;
           });
         });
+      } else {
+        return $(".text-size-wrapper h2, .artist-year-container p").each(function() {
+          var fontSize, padding, results;
+          fontSize = 20;
+          results = [];
+          while ($(this).width() > $(this).parent().width()) {
+            $(this).css("font-size", fontSize -= 0.5);
+            results.push(padding = Math.pow(fontSize, -fontSize * 0.6));
+          }
+          return results;
+        });
       }
     };
     window.albumsNameSpace.displayAlbum = displayAlbum;
