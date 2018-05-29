@@ -1,0 +1,131 @@
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root         1  0.0  0.0  77984  9268 ?        Ss   May26   0:03 /sbin/init
+root         2  0.0  0.0      0     0 ?        S    May26   0:00 [kthreadd]
+root         4  0.0  0.0      0     0 ?        I<   May26   0:00 [kworker/0:0H]
+root         6  0.0  0.0      0     0 ?        I<   May26   0:00 [mm_percpu_wq]
+root         7  0.0  0.0      0     0 ?        S    May26   0:00 [ksoftirqd/0]
+root         8  0.0  0.0      0     0 ?        I    May26   0:47 [rcu_sched]
+root         9  0.0  0.0      0     0 ?        I    May26   0:00 [rcu_bh]
+root        10  0.0  0.0      0     0 ?        S    May26   0:00 [migration/0]
+root        11  0.0  0.0      0     0 ?        S    May26   0:00 [watchdog/0]
+root        12  0.0  0.0      0     0 ?        S    May26   0:00 [cpuhp/0]
+root        13  0.0  0.0      0     0 ?        S    May26   0:00 [cpuhp/1]
+root        14  0.0  0.0      0     0 ?        S    May26   0:00 [watchdog/1]
+root        15  0.0  0.0      0     0 ?        S    May26   0:00 [migration/1]
+root        16  0.0  0.0      0     0 ?        S    May26   0:00 [ksoftirqd/1]
+root        18  0.0  0.0      0     0 ?        I<   May26   0:00 [kworker/1:0H]
+root        19  0.0  0.0      0     0 ?        S    May26   0:00 [cpuhp/2]
+root        20  0.0  0.0      0     0 ?        S    May26   0:00 [watchdog/2]
+root        21  0.0  0.0      0     0 ?        S    May26   0:00 [migration/2]
+root        22  0.0  0.0      0     0 ?        S    May26   0:00 [ksoftirqd/2]
+root        24  0.0  0.0      0     0 ?        I<   May26   0:00 [kworker/2:0H]
+root        25  0.0  0.0      0     0 ?        S    May26   0:00 [cpuhp/3]
+root        26  0.0  0.0      0     0 ?        S    May26   0:00 [watchdog/3]
+root        27  0.0  0.0      0     0 ?        S    May26   0:00 [migration/3]
+root        28  0.0  0.0      0     0 ?        S    May26   0:00 [ksoftirqd/3]
+root        30  0.0  0.0      0     0 ?        I<   May26   0:00 [kworker/3:0H]
+root        31  0.0  0.0      0     0 ?        S    May26   0:00 [kdevtmpfs]
+root        32  0.0  0.0      0     0 ?        I<   May26   0:00 [netns]
+root        33  0.0  0.0      0     0 ?        S    May26   0:00 [rcu_tasks_kthre]
+root        34  0.0  0.0      0     0 ?        S    May26   0:00 [kauditd]
+root        38  0.0  0.0      0     0 ?        S    May26   0:00 [khungtaskd]
+root        39  0.0  0.0      0     0 ?        S    May26   0:00 [oom_reaper]
+root        40  0.0  0.0      0     0 ?        I<   May26   0:00 [writeback]
+root        41  0.0  0.0      0     0 ?        S    May26   0:00 [kcompactd0]
+root        42  0.0  0.0      0     0 ?        SN   May26   0:00 [ksmd]
+root        43  0.0  0.0      0     0 ?        SN   May26   0:00 [khugepaged]
+root        44  0.0  0.0      0     0 ?        I<   May26   0:00 [crypto]
+root        45  0.0  0.0      0     0 ?        I<   May26   0:00 [kintegrityd]
+root        46  0.0  0.0      0     0 ?        I<   May26   0:00 [kblockd]
+root        49  0.0  0.0      0     0 ?        I<   May26   0:00 [ata_sff]
+root        50  0.0  0.0      0     0 ?        I<   May26   0:00 [md]
+root        51  0.0  0.0      0     0 ?        I<   May26   0:00 [edac-poller]
+root        52  0.0  0.0      0     0 ?        I<   May26   0:00 [devfreq_wq]
+root        53  0.0  0.0      0     0 ?        I<   May26   0:00 [watchdogd]
+root        56  0.0  0.0      0     0 ?        S    May26   0:00 [kswapd0]
+root        57  0.0  0.0      0     0 ?        S    May26   0:00 [ecryptfs-kthrea]
+root        99  0.0  0.0      0     0 ?        I<   May26   0:00 [kthrotld]
+root       100  0.0  0.0      0     0 ?        I<   May26   0:00 [acpi_thermal_pm]
+root       105  0.0  0.0      0     0 ?        I<   May26   0:00 [ipv6_addrconf]
+root       114  0.0  0.0      0     0 ?        I<   May26   0:00 [kstrp]
+root       132  0.0  0.0      0     0 ?        I<   May26   0:00 [charger_manager]
+root       210  0.0  0.0      0     0 ?        S    May26   0:00 [scsi_eh_0]
+root       211  0.0  0.0      0     0 ?        I<   May26   0:00 [scsi_tmf_0]
+root       212  0.0  0.0      0     0 ?        S    May26   0:00 [scsi_eh_1]
+root       213  0.0  0.0      0     0 ?        I<   May26   0:00 [scsi_tmf_1]
+root       214  0.0  0.0      0     0 ?        S    May26   0:00 [scsi_eh_2]
+root       215  0.0  0.0      0     0 ?        I<   May26   0:00 [scsi_tmf_2]
+root       216  0.0  0.0      0     0 ?        S    May26   0:00 [scsi_eh_3]
+root       217  0.0  0.0      0     0 ?        I<   May26   0:00 [scsi_tmf_3]
+root       218  0.0  0.0      0     0 ?        S    May26   0:00 [scsi_eh_4]
+root       219  0.0  0.0      0     0 ?        I<   May26   0:00 [scsi_tmf_4]
+root       220  0.0  0.0      0     0 ?        S    May26   0:00 [scsi_eh_5]
+root       221  0.0  0.0      0     0 ?        I<   May26   0:00 [scsi_tmf_5]
+root       225  0.0  0.0      0     0 ?        I<   May26   0:00 [kworker/u9:0]
+root       226  0.0  0.0      0     0 ?        S    May26   0:00 [i915/signal:0]
+root       227  0.0  0.0      0     0 ?        S    May26   0:00 [i915/signal:1]
+root       228  0.0  0.0      0     0 ?        S    May26   0:00 [i915/signal:2]
+root       229  0.0  0.0      0     0 ?        S    May26   0:00 [i915/signal:4]
+root       231  0.0  0.0      0     0 ?        I<   May26   0:00 [ttm_swap]
+root       233  0.0  0.0      0     0 ?        I<   May26   0:00 [kworker/1:1H]
+root       286  0.0  0.0      0     0 ?        I<   May26   0:00 [raid5wq]
+root       328  0.0  0.0      0     0 ?        S    May26   0:01 [jbd2/sda2-8]
+root       329  0.0  0.0      0     0 ?        I<   May26   0:00 [ext4-rsv-conver]
+root       340  0.0  0.0      0     0 ?        I<   May26   0:01 [kworker/3:1H]
+root       385  0.0  0.0      0     0 ?        I<   May26   0:00 [kworker/2:1H]
+root       397  0.0  0.1 103184 19516 ?        S<s  May26   0:01 /lib/systemd/systemd-journald
+root       402  0.0  0.0      0     0 ?        I<   May26   0:00 [iscsi_eh]
+root       404  0.0  0.0      0     0 ?        I<   May26   0:00 [ib-comp-wq]
+root       405  0.0  0.0      0     0 ?        I<   May26   0:00 [ib_mcast]
+root       406  0.0  0.0      0     0 ?        I<   May26   0:00 [ib_nl_sa_wq]
+root       407  0.0  0.0      0     0 ?        I<   May26   0:00 [rdma_cm]
+root       416  0.0  0.0  47164  6140 ?        Ss   May26   0:01 /lib/systemd/systemd-udevd
+root       421  0.0  0.0  97708  1880 ?        Ss   May26   0:00 /sbin/lvmetad -f
+root       464  0.0  0.0      0     0 ?        I<   May26   0:00 [kworker/0:1H]
+root       466  0.0  0.0      0     0 ?        S    May26   0:00 [irq/35-mei_me]
+systemd+   652  0.0  0.0 141908  3152 ?        Ssl  May26   0:00 /lib/systemd/systemd-timesyncd
+systemd+   718  0.0  0.0  80132  5968 ?        Ss   May26   0:00 /lib/systemd/systemd-networkd
+systemd+   722  0.0  0.0  70736  6328 ?        Ss   May26   0:00 /lib/systemd/systemd-resolved
+root       832  0.0  0.0  25376   288 ?        Ss   May26   0:04 /sbin/iscsid
+root       838  0.0  0.0  25880  5260 ?        S<Ls May26   0:00 /sbin/iscsid
+syslog     848  0.0  0.0 267268  5636 ?        Ssl  May26   0:01 /usr/sbin/rsyslogd -n
+root       851  0.0  0.0 286432  7084 ?        Ssl  May26   0:03 /usr/lib/accountsservice/accounts-daemon
+daemon     855  0.0  0.0  28332  2556 ?        Ss   May26   0:00 /usr/sbin/atd -f
+message+   857  0.0  0.0  50520  5032 ?        Ss   May26   0:00 /usr/bin/dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only
+root       901  0.0  0.0  70692  6272 ?        Ss   May26   0:00 /lib/systemd/systemd-logind
+root       919  0.0  0.1 169216 17088 ?        Ssl  May26   0:00 /usr/bin/python3 /usr/bin/networkd-dispatcher
+root       925  0.0  0.0 235932  2368 ?        Ssl  May26   0:01 /usr/bin/lxcfs /var/lib/lxcfs/
+root       937  0.0  0.0  30104  3208 ?        Ss   May26   0:00 /usr/sbin/cron -f
+root       946  0.0  0.0 178660  9464 ?        Ssl  May26   0:17 /usr/sbin/thermald --no-daemon --dbus-enable
+root       976  0.0  0.0 110476  3536 ?        Ssl  May26   0:14 /usr/sbin/irqbalance --foreground
+root      1044  0.0  0.0 288888  6432 ?        Ssl  May26   0:00 /usr/lib/policykit-1/polkitd --no-debug
+root      1422  0.0  0.0      0     0 ?        I    09:54   0:00 [kworker/2:0]
+root      1452  0.0  0.0      0     0 ?        S<   May26   0:00 [loop0]
+root      1507  0.0  0.0      0     0 ?        I    May26   0:03 [kworker/0:5]
+root      1724  0.0  0.0      0     0 ?        I    14:01   0:00 [kworker/3:0]
+root      1818  0.0  0.0      0     0 ?        I    14:55   0:00 [kworker/0:0]
+root      1831  0.0  0.0 107984  7384 ?        Ss   15:47   0:00 sshd: ivar [priv]
+ivar      1833  0.0  0.0  76616  7008 ?        Ss   15:47   0:00 /lib/systemd/systemd --user
+ivar      1834  0.0  0.0 111968  2664 ?        S    15:47   0:00 (sd-pam)
+ivar      1946  0.0  0.0 107984  3576 ?        S    15:47   0:00 sshd: ivar@pts/0
+ivar      1947  0.0  0.0  25804  9640 pts/0    Ss   15:47   0:00 -bash
+root      2079  0.0  0.0      0     0 ?        I    16:34   0:00 [kworker/u8:2]
+root      2080  0.0  0.0      0     0 ?        I    16:40   0:00 [kworker/u8:1]
+ivar      2100  0.0  0.3 449952 56456 ?        Sl   16:49   0:00 puma 3.11.4 (tcp://localhost:3000) [/]
+root      2107  0.0  0.0      0     0 ?        I    16:50   0:00 [kworker/u8:0]
+ivar      2114  0.0  0.0  38372  3656 pts/0    R+   16:52   0:00 ps aux
+ivar      2115  0.0  0.0   8556   936 pts/0    S+   16:52   0:00 less
+root     23470  0.0  0.0      0     0 ?        S<   May26   0:00 [loop1]
+root     23508  0.0  0.1 702700 26008 ?        Ssl  May26   0:14 /usr/lib/snapd/snapd
+root     23974  0.0  0.0      0     0 ?        I    May27   0:05 [kworker/2:1]
+root     25966  0.0  0.0      0     0 ?        I    May27   0:04 [kworker/1:0]
+root     28678  0.0  0.0      0     0 ?        I    May27   0:02 [kworker/3:3]
+root     28683  0.0  0.0  44752  2828 ?        Ss   May27   0:00 /sbin/wpa_supplicant -u -s -O /run/wpa_supplicant
+avahi    29317  0.0  0.0  47276  3784 ?        Ss   May27   0:05 avahi-daemon: running [pb-server.local]
+avahi    29318  0.0  0.0  47076   344 ?        S    May27   0:00 avahi-daemon: chroot helper
+root     29401  0.0  0.0 427252  9092 ?        Ssl  May27   0:00 /usr/sbin/ModemManager
+root     29919  0.0  0.0  72296  6488 ?        Ss   May26   0:00 /usr/sbin/sshd -D
+root     29968  0.1  0.0 1459316 15424 ?       Sl   May27   3:30 /opt/teamviewer/tv_bin/teamviewerd -d
+root     30056  0.0  0.0  14888  2000 tty2     Ss+  May27   0:00 /sbin/agetty -o -p -- \u --noclear tty2 linux
+root     30063  0.0  0.0  14888  1916 tty1     Ss+  May27   0:00 /sbin/agetty -o -p -- \u --noclear tty1 linux
+root     32373  0.0  0.0      0     0 ?        I    May28   0:00 [kworker/1:1]
