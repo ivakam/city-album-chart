@@ -32,6 +32,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'gon'
 gem 'js_assets'
 gem 'jquery-rails'
+gem 'rack'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
