@@ -1,0 +1,9 @@
+=> Booting Puma
+=> Rails 5.2.0 application starting in production 
+=> Run `rails server -h` for more startup options
+Puma starting in single mode...
+* Version 3.11.4 (ruby 2.4.4-p296), codename: Love Song
+* Min threads: 5, max threads: 5
+* Environment: production
+* Listening on tcp://0.0.0.0:3000
+Use Ctrl-C to stop
