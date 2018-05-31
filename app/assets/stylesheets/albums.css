@@ -315,7 +315,7 @@ body {
     background: #232323;
     border-top: 1px #8c8c8c solid;
     border-bottom: 1px #8c8c8c solid;
-    transition: 0.3s;
+    transition: height 0.3s;
     overflow: hidden;
     position: relative; }
     .info-container .info-wrapper img {
@@ -449,7 +449,6 @@ ul {
   border: 1px #e3e3e3 solid; }
 
 .offset {
-  left: 0;
-  transition: 0.3s; }
+  left: 0; }
 
 /*# sourceMappingURL=albums.css.map */

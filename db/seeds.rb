@@ -4303,27 +4303,27 @@ coverlink: "timely.jpg",
 flavor: "Funk/Disco"
 },
 [{
-title: "CAT'S EYE",
+title: "Cat's Eye",
 romanization: "",
 duration: "3:09"
 },
 {
-title: "WINDY SUMMER",
+title: "Windy Summer",
 romanization: "",
 duration: "4:06"
 },
 {
-title: "STAY BY ME",
+title: "Stay By Me",
 romanization: "",
 duration: "3:37"
 },
 {
-title: "A HOPE FROM SAD STREET",
+title: "A Hope From Sad Street",
 romanization: "",
 duration: "4:19"
 },
 {
-title: "YOU ARE NOT ALONE",
+title: "You Are Not Alone",
 romanization: "",
 duration: "4:03"
 },
@@ -4333,22 +4333,22 @@ romanization: "",
 duration: "4:23"
 },
 {
-title: "SHYNESS BOY",
+title: "Shyness Boy",
 romanization: "",
 duration: "3:16"
 },
 {
-title: "LOST LOVE IN THE RAIN",
+title: "Lost Love in the Rain",
 romanization: "",
 duration: "4:19"
 },
 {
-title: "DRIVING MY LOVE",
+title: "Driving My Love",
 romanization: "",
 duration: "4:51"
 },
 {
-title: "GOOD-NIGHT FOR YOU",
+title: "Good-night for You",
 romanization: "",
 duration: "5:20"
 },

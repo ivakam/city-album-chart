@@ -21,6 +21,7 @@
     loadedAlbums = 0;
     toggleAlbum = function(title, sibling, parent, arrow) {
       var timeout;
+      console.log(albumOpen);
       $(".album-arrow").css("transform", "rotate(0)");
       $(".album-container").css("height", "327px");
       $(".info-wrapper").css("display", "none");
@@ -437,6 +438,9 @@
           return displayAlbum(loadedAlbums, loadedAlbums + 40, false);
         } else {
           if (albumsToLoad < 40 && albumsToLoad > 0) {
+            console.log(albums.length);
+            console.log(loadedAlbums);
+            console.log(albumsToLoad);
             return displayAlbum(loadedAlbums, loadedAlbums + albumsToLoad, false);
           } else {
             return console.log("No more albums to load!");

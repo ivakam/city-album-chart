@@ -1,6 +1,6 @@
 $(document).on "turbolinks:load", ->
 
-	window.albumsNameSpace = {};
+	window.albumsNameSpace = {}
 
 	console.log("albums.coffee is running.")
 
@@ -18,6 +18,7 @@ $(document).on "turbolinks:load", ->
 
 	masterAlbums = JSON.parse(localStorage.getItem("Albums"))
 	masterTracks = JSON.parse(localStorage.getItem("Tracks"))
+	#console.log(masterAlbums)
 	albums = masterAlbums
 	tracks = masterTracks
 	albumOpen = false
@@ -27,6 +28,7 @@ $(document).on "turbolinks:load", ->
 	#Helper method for opening an info container. Call it as 'sibling: undefined' to reset all info containers.
 
 	toggleAlbum = (title, sibling, parent, arrow) ->
+		console.log(albumOpen)
 		$(".album-arrow").css("transform", "rotate(0)")
 		$(".album-container").css("height", "327px")
 		$(".info-wrapper").css("display", "none")
@@ -389,6 +391,9 @@ $(document).on "turbolinks:load", ->
 				displayAlbum(loadedAlbums, loadedAlbums + 40, false)
 			else
 				if albumsToLoad < 40 && albumsToLoad > 0
+					console.log(albums.length)
+					console.log(loadedAlbums)
+					console.log(albumsToLoad)
 					displayAlbum(loadedAlbums, loadedAlbums + albumsToLoad, false)
 				else
 					console.log("No more albums to load!")

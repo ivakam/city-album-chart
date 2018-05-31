@@ -383,7 +383,7 @@ body {
 		background: #232323;
 		border-top: 1px #8c8c8c solid;
 		border-bottom: 1px #8c8c8c solid;
-		transition: 0.3s;
+		transition: height 0.3s;
 		overflow: hidden;
 		position: relative;
 		img {
@@ -554,5 +554,4 @@ ul {
 
 .offset {
 	left: 0;
-	transition: 0.3s;
 }
