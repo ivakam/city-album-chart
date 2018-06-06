@@ -2,7 +2,7 @@ $(document).on "turbolinks:load", ->
 
 	window.albumsNameSpace = {}
 
-	console.log("albums.coffee is running.")
+	#console.log("albums.coffee is running.")
 
 	#Populate localstorage object
 
@@ -394,9 +394,6 @@ $(document).on "turbolinks:load", ->
 				displayAlbum(loadedAlbums, loadedAlbums + 40, false)
 			else
 				if albumsToLoad < 40 && albumsToLoad > 0
-					console.log(albums.length)
-					console.log(loadedAlbums)
-					console.log(albumsToLoad)
 					displayAlbum(loadedAlbums, loadedAlbums + albumsToLoad, false)
 				else
-					console.log("No more albums to load!")
+					#console.log("No more albums to load!")

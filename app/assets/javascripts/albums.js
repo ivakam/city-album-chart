@@ -3,7 +3,6 @@
   $(document).on("turbolinks:load", function() {
     var albumClick, albumOpen, albumSort, albums, checkMatch, clickImage, delayTimer, displayAlbum, escapeRegExp, loadedAlbums, masterAlbums, masterTracks, populateAlbums, toggleAlbum, tracks;
     window.albumsNameSpace = {};
-    console.log("albums.coffee is running.");
     populateAlbums = function() {
       var jsonAlbums, jsonTracks;
       jsonAlbums = JSON.stringify(gon.Albums);
@@ -441,12 +440,9 @@
           return displayAlbum(loadedAlbums, loadedAlbums + 40, false);
         } else {
           if (albumsToLoad < 40 && albumsToLoad > 0) {
-            console.log(albums.length);
-            console.log(loadedAlbums);
-            console.log(albumsToLoad);
             return displayAlbum(loadedAlbums, loadedAlbums + albumsToLoad, false);
           } else {
-            return console.log("No more albums to load!");
+
           }
         }
       }
