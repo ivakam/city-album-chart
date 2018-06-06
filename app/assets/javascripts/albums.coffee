@@ -28,7 +28,7 @@ $(document).on "turbolinks:load", ->
 	#Helper method for opening an info container. Call it as 'sibling: undefined' to reset all info containers.
 
 	toggleAlbum = (title, sibling, parent, arrow) ->
-		console.log(albumOpen)
+		#console.log(albumOpen)
 		$(".album-arrow").css("transform", "rotate(0)")
 		$(".album-container").css("height", "327px")
 		$(".info-wrapper").css("display", "none")
@@ -379,8 +379,11 @@ $(document).on "turbolinks:load", ->
 						return compB.localeCompare(compA)
 				break;
 		loadedAlbums = 0
-		displayAlbum(0, 40)
 		toggleAlbum(sibling: undefined)
+		if albums.length >= 40
+			displayAlbum(0, 40)
+		else
+			displayAlbum(0, albums.length)
 
 	#Load more albums on scroll
 

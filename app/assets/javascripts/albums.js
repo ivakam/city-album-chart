@@ -21,7 +21,6 @@
     loadedAlbums = 0;
     toggleAlbum = function(title, sibling, parent, arrow) {
       var timeout;
-      console.log(albumOpen);
       $(".album-arrow").css("transform", "rotate(0)");
       $(".album-container").css("height", "327px");
       $(".info-wrapper").css("display", "none");
@@ -425,10 +424,14 @@
           break;
       }
       loadedAlbums = 0;
-      displayAlbum(0, 40);
-      return toggleAlbum({
+      toggleAlbum({
         sibling: void 0
       });
+      if (albums.length >= 40) {
+        return displayAlbum(0, 40);
+      } else {
+        return displayAlbum(0, albums.length);
+      }
     };
     return $(window).scroll(function() {
       var albumsToLoad;

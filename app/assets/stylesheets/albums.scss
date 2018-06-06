@@ -129,6 +129,7 @@ body {
 		align-items: center;
 		justify-content: space-around;
 		margin-bottom: 20px;
+		position: relative;
 		h1 {
 			font-family: "Poppins";
 			font-weight: bold;
@@ -137,6 +138,12 @@ body {
 		}
 		h2 {
 			margin: 0;
+		}
+		#beta-title {
+			position: absolute;
+			top: 28px;
+			right: -20px;
+			transform: rotate(45deg);
 		}
 	}
 	#input {
