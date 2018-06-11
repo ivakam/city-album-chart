@@ -124,9 +124,9 @@ body {
     width: 70%; }
     #search-title #input #regex {
       position: absolute;
-      top: 2px;
-      left: -35px;
-      width: 30px;
+      top: 4px;
+      left: -30px;
+      width: 25px;
       transition: 0.1s; }
     #search-title #input #regex:hover {
       cursor: pointer;
