@@ -437,7 +437,7 @@ ul {
   position: fixed;
   height: 110vh;
   width: 110vw;
-  transition: 0.2s;
+  transition: 0.1s;
   z-index: -2; }
 
 .enlargened {
@@ -456,5 +456,38 @@ ul {
 
 .offset {
   left: 0; }
+
+.tooltip .tooltiptext {
+  display: flex;
+  visibility: hidden;
+  background: #2a2a2a;
+  min-width: 200px;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  z-index: 8;
+  top: 125%;
+  left: -20%;
+  opacity: 0;
+  transition: opacity 0.3s;
+  transition-delay: 0.5s;
+  font-size: 11px;
+  padding: 6px;
+  border-radius: 6px;
+  border: 1px #414141 solid; }
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent #2a2a2a transparent; }
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+  transition-delay: 0; }
 
 /*# sourceMappingURL=albums.css.map */

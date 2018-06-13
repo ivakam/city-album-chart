@@ -2,9 +2,13 @@ def CreateAlbumWithTracks(albumParam, tracks = [])
 	currentAlbum = Album.create(albumParam)
 	currentAlbum.save
 	tempQuality = 0
+	trackDurationCount = 0
 	hasTracks = (tracks == []) ? false : true
 	Track.create(tracks).each do | t |
 		t.album = currentAlbum
+		if t.duration.present?
+			trackDurationCount += 1
+		end
 		t.save
 	end
 	if currentAlbum.description.present?
@@ -18,6 +22,12 @@ def CreateAlbumWithTracks(albumParam, tracks = [])
 	end
 	if hasTracks
 		tempQuality += 30
+	end
+	if trackDurationCount == tracks.length
+		tempQuality += 5
+	end
+	if currentAlbum.coverlink.present?
+		tempQuality += 10
 	end
 	currentAlbum.quality = tempQuality
 	currentAlbum.save
