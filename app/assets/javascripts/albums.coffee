@@ -19,6 +19,10 @@ $(document).on "turbolinks:load", ->
 	masterAlbums = JSON.parse(localStorage.getItem("Albums"))
 	masterTracks = JSON.parse(localStorage.getItem("Tracks"))
 	#console.log(masterAlbums)
+	masterAlbums = masterAlbums.sort (a, b) ->
+		compA = parseInt(a.quality)
+		compB = parseInt(b.quality)
+		return (compB - compA)
 	albums = masterAlbums
 	tracks = masterTracks
 	albumOpen = false
@@ -378,6 +382,19 @@ $(document).on "turbolinks:load", ->
 					else
 						return compB.localeCompare(compA)
 				break;
+			when "Quality"
+				if !albumList.hasClass("quality-sorted-up") && !albumList.hasClass("quality-sorted-down")
+					albumList.attr("class", "quality-sorted-down")
+				if albumList.hasClass("quality-sorted-up") then albumList.attr("class", "quality-sorted-down") else albumList.attr("class", "quality-sorted-up")
+				albums = albums.sort (a, b) -> 
+					compA = parseInt(a.quality)
+					compB = parseInt(b.quality)
+					if albumList.hasClass("quality-sorted-up")
+						return (compA - compB)
+					else
+						return (compB - compA)
+				break;
+				
 		loadedAlbums = 0
 		toggleAlbum(sibling: undefined)
 		if albums.length >= 40

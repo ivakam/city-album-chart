@@ -13,6 +13,12 @@
     populateAlbums();
     masterAlbums = JSON.parse(localStorage.getItem("Albums"));
     masterTracks = JSON.parse(localStorage.getItem("Tracks"));
+    masterAlbums = masterAlbums.sort(function(a, b) {
+      var compA, compB;
+      compA = parseInt(a.quality);
+      compB = parseInt(b.quality);
+      return compB - compA;
+    });
     albums = masterAlbums;
     tracks = masterTracks;
     albumOpen = false;
@@ -418,6 +424,26 @@
               return compA.localeCompare(compB);
             } else {
               return compB.localeCompare(compA);
+            }
+          });
+          break;
+        case "Quality":
+          if (!albumList.hasClass("quality-sorted-up") && !albumList.hasClass("quality-sorted-down")) {
+            albumList.attr("class", "quality-sorted-down");
+          }
+          if (albumList.hasClass("quality-sorted-up")) {
+            albumList.attr("class", "quality-sorted-down");
+          } else {
+            albumList.attr("class", "quality-sorted-up");
+          }
+          albums = albums.sort(function(a, b) {
+            var compA, compB;
+            compA = parseInt(a.quality);
+            compB = parseInt(b.quality);
+            if (albumList.hasClass("quality-sorted-up")) {
+              return compA - compB;
+            } else {
+              return compB - compA;
             }
           });
           break;

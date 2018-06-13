@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_12_213002) do
+ActiveRecord::Schema.define(version: 2018_06_13_204318) do
 
   create_table "albums", force: :cascade do |t|
     t.string "title"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 2018_05_12_213002) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "flavor"
+    t.integer "quality"
   end
 
   create_table "tracks", force: :cascade do |t|
