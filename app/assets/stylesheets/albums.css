@@ -467,7 +467,7 @@ ul {
   position: absolute;
   z-index: 8;
   top: 125%;
-  left: -20%;
+  left: -80%;
   opacity: 0;
   transition: opacity 0.3s;
   transition-delay: 0.5s;
