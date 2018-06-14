@@ -239,12 +239,12 @@ $(document).on "turbolinks:load", ->
 	#Handler for clicking the 'sort' buttons
 
 	$(".sort-btn").click ->
-		clickedArrow = $(this).find("a").text()
+		clickedArrow = $(this).children("a").text()
 		$("#sort-list li").each ->
-			if $(this).find("a").text() != clickedArrow
+			if $(this).children("a").text() != clickedArrow
 				$(this).find(".ion-chevron-down").removeClass("rotated")
 		$(this).find(".ion-chevron-down").toggleClass("rotated")
-		albumSort($(this).find("a").text())
+		albumSort($(this).children("a").text())
 
 	#Handler for toggling regex matching
 

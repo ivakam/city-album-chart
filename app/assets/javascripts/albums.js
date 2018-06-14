@@ -192,14 +192,14 @@
     });
     $(".sort-btn").click(function() {
       var clickedArrow;
-      clickedArrow = $(this).find("a").text();
+      clickedArrow = $(this).children("a").text();
       $("#sort-list li").each(function() {
-        if ($(this).find("a").text() !== clickedArrow) {
+        if ($(this).children("a").text() !== clickedArrow) {
           return $(this).find(".ion-chevron-down").removeClass("rotated");
         }
       });
       $(this).find(".ion-chevron-down").toggleClass("rotated");
-      return albumSort($(this).find("a").text());
+      return albumSort($(this).children("a").text());
     });
     $("#regex").click(function() {
       var regex;
