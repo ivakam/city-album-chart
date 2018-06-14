@@ -10005,3 +10005,1427 @@ romanization: "Paradise",
 duration: "3:48"
 },
 ])
+
+
+# New batch (Hiromi Iwasaki)
+
+
+CreateAlbumWithTracks({
+title: "あおぞら",
+romanization: "Aozora",
+romaji_artist: "Hiromi Iwasaki",
+japanese_artist: "岩崎宏美",
+year: "1975",
+description: "Hiromi's debut album.",
+coverlink: "あおぞら.jpg",
+flavor: "Disco, Idol"
+},
+[{
+title: "ロマンス",
+romanization: "Romance",
+duration: "3:21"
+},
+{
+title: "はだしの散歩",
+romanization: "Hadashi no Sanpo",
+duration: "3:26"
+},
+{
+title: "ささやき",
+romanization: "Sasayaki",
+duration: "3:36"
+},
+{
+title: "私たち",
+romanization: "Watashitachi",
+duration: "3:36"
+},
+{
+title: "二重唱",
+romanization: "Nijūshō",
+duration: "3:01"
+},
+{
+title: "空を駈ける恋",
+romanization: "Sora o Kakeru Koi",
+duration: "3:11"
+},
+{
+title: "愛をこめて",
+romanization: "Ai o Komete",
+duration: "2:38"
+},
+{
+title: "涙のペア・ルック",
+romanization: "Namida no Pair Look",
+duration: "3:34"
+},
+{
+title: "月見草",
+romanization: "Tsukimisō",
+duration: "3:16"
+},
+{
+title: "美しいあなた",
+romanization: "Utsukushī Anata",
+duration: "2:52"
+},
+{
+title: "この広い空の下",
+romanization: "Kono Hiroi Sora no Shita",
+duration: "3:35"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "ファンタジー",
+romanization: "Fantasy",
+romaji_artist: "Hiromi Iwasaki",
+japanese_artist: "岩崎宏美",
+year: "1976",
+description: "",
+coverlink: "ファンタジー.jpg",
+flavor: "Disco, Idol"
+},
+[{
+title: "パピヨン",
+romanization: "Papillon",
+duration: "3:58"
+},
+{
+title: "キャンパス・ガール",
+romanization: "Campus Girl",
+duration: "3:16"
+},
+{
+title: "ファンタジー",
+romanization: "Fantasy",
+duration: "3:01"
+},
+{
+title: "愛よ、おやすみ",
+romanization: "Ai yo, oyasumi",
+duration: "2:48"
+},
+{
+title: "感傷的",
+romanization: "Kanshoudeki",
+duration: "3:15"
+},
+{
+title: "おしゃれな感情",
+romanization: "Osharena Kanjō",
+duration: "3:49"
+},
+{
+title: "ひとりぼっちの部屋",
+romanization: "Hitori Botchi no Heya",
+duration: "3:42"
+},
+{
+title: "グッド・ナイト",
+romanization: "Good Night",
+duration: "5:11"
+},
+{
+title: "月のしずくで",
+romanization: "Tsukinoshizuku de",
+duration: "3:39"
+},
+{
+title: "センチメンタル",
+romanization: "Sentimental",
+duration: "3:26"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "飛行船",
+romanization: "Hikōsen",
+romaji_artist: "Hiromi Iwasaki",
+japanese_artist: "岩崎宏美",
+year: "1976",
+description: "",
+coverlink: "飛行船.jpg",
+flavor: "Disco, Idol"
+},
+[{
+title: "未来",
+romanization: "Mirai",
+duration: "3:18"
+},
+{
+title: "地平線の彼方",
+romanization: "Chiheisen no Kanata",
+duration: "3:49"
+},
+{
+title: "サマー・グラフィティ",
+romanization: "Summer Graffiti",
+duration: "3:03"
+},
+{
+title: "ワンウェイ・ラブ",
+romanization: "One Way Love",
+duration: "4:00"
+},
+{
+title: "夏からのメッセージ",
+romanization: "Natsu kara no Message",
+duration: "3:56"
+},
+{
+title: "ケン待っててあげる",
+romanization: "Ken Mattete Ageru",
+duration: "3:36"
+},
+{
+title: "霧の日の出来事",
+romanization: "Kiri no hi no Dekigoto",
+duration: "4:04"
+},
+{
+title: "さよならがビショビショ",
+romanization: "Sayonara ga Bishobisho",
+duration: "3:34"
+},
+{
+title: "美しい夏",
+romanization: "Utsukushī Natsu",
+duration: "4:35"
+},
+{
+title: "愛の飛行船",
+romanization: "Ai no Hikōsen",
+duration: "4:42"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "ウィズ・ベスト・フレンズ",
+romanization: "With Best Friends",
+romaji_artist: "Hiromi Iwasaki",
+japanese_artist: "岩崎宏美",
+year: "1977",
+description: "",
+coverlink: "ウィズベストフレンズ.jpg",
+flavor: "Disco, Idol"
+},
+[{
+title: "悲恋白書",
+romanization: "Hirenhakusho",
+duration: "3:10"
+},
+{
+title: "砂の慕情",
+romanization: "Suna no Bojō",
+duration: "3:39"
+},
+{
+title: "メランコリー日記",
+romanization: "Melancholy Diary",
+duration: "3:24"
+},
+{
+title: "わたしの1095日",
+romanization: "Watashi no 1095-nichi",
+duration: "3:27"
+},
+{
+title: "平行線",
+romanization: "Heikōsen",
+duration: "3:54"
+},
+{
+title: "学生街の四季",
+romanization: "Gakusei-gai no Shiki",
+duration: "3:56"
+},
+{
+title: "パパにそむいて",
+romanization: "Papa ni Somuite",
+duration: "4:01"
+},
+{
+title: "コンサート",
+romanization: "Concert",
+duration: "3:24"
+},
+{
+title: "花のことづけ",
+romanization: "Hana no Koto Dzuke",
+duration: "3:44"
+},
+{
+title: "想い出の樹の下で",
+romanization: "Omoidenokinoshitade",
+duration: "3:36"
+},
+{
+title: "愛をどうぞ",
+romanization: "Ai o dōzo",
+duration: "3:38"
+},
+{
+title: "さよならそして自由へ",
+romanization: "Sayonara Soshite Jiyū e",
+duration: "3:56"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "思秋期から......男と女",
+romanization: "Shishūki Kara... Otome",
+romaji_artist: "Hiromi Iwasaki",
+japanese_artist: "岩崎宏美",
+year: "1977",
+description: "",
+coverlink: "思秋期から男と女.jpg",
+flavor: "Disco, Idol"
+},
+[{
+title: "思秋期",
+romanization: "Shishuuki",
+duration: "4:19"
+},
+{
+title: "ランボルギーニが消えて",
+romanization: "Lamborghini Ni Ga Kite",
+duration: "5:05"
+},
+{
+title: "男と女",
+romanization: "Otoko To Onna",
+duration: "3:36"
+},
+{
+title: "恋夏期",
+romanization: "Koi Kaki",
+duration: "4:01"
+},
+{
+title: "個人指導",
+romanization: "Kojin Shidou",
+duration: "2:49"
+},
+{
+title: "煙草の匂いがする",
+romanization: "Tabako No Ni Oi Gasaru",
+duration: "3:39"
+},
+{
+title: "メランコリー・ジュース",
+romanization: "Melancholy Juice",
+duration: "3:13"
+},
+{
+title: "幸福号出帆",
+romanization: "Koufuku Go Shuppan",
+duration: "3:31"
+},
+{
+title: "チェイス",
+romanization: "Chase",
+duration: "3:28"
+},
+{
+title: "ピアノ弾きが泣かせた",
+romanization: "Piano Hiki Ga Naka Seta",
+duration: "4:05"
+},
+{
+title: "ウエルカム・ホテル",
+romanization: "Welcome Hotel",
+duration: "4:04"
+},
+{
+title: "Boo Boo",
+romanization: "",
+duration: "3:50"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "パンドラの小箱",
+romanization: "Pandora no Kobako",
+romaji_artist: "Hiromi Iwasaki",
+japanese_artist: "岩崎宏美",
+year: "1978",
+description: "",
+coverlink: "パンドラの小箱.jpg",
+flavor: "Disco, Idol"
+},
+[{
+title: "媚薬",
+romanization: "",
+duration: "4:11"
+},
+{
+title: "パンドラの小箱",
+romanization: "",
+duration: "4:27"
+},
+{
+title: "コントラスト",
+romanization: "",
+duration: "3:18"
+},
+{
+title: "パンドラの小箱（バリエーション）",
+romanization: "",
+duration: "0:19"
+},
+{
+title: "ピラミッド",
+romanization: "",
+duration: "3:57"
+},
+{
+title: "カンバセーション",
+romanization: "",
+duration: "5:14"
+},
+{
+title: "シンデレラ・ハネムーン",
+romanization: "",
+duration: "4:01"
+},
+{
+title: "想い出は９月ゆき",
+romanization: "",
+duration: "3:58"
+},
+{
+title: "ミスター・パズル",
+romanization: "",
+duration: "3:33"
+},
+{
+title: "L",
+romanization: "",
+duration: "3:08"
+},
+{
+title: "南南西の風の中で",
+romanization: "",
+duration: "3:47"
+},
+{
+title: "パンドラの小箱（リプライズ）",
+romanization: "",
+duration: "0:37"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "二十才前・・・",
+romanization: "Nijuusai mae",
+romaji_artist: "Hiromi Iwasaki",
+japanese_artist: "岩崎宏美",
+year: "1978",
+description: "",
+coverlink: "二十才前.jpg",
+flavor: "Disco, Idol"
+},
+[{
+title: "二十才前",
+romanization: "",
+duration: "3:55"
+},
+{
+title: "クエッション・マーク",
+romanization: "",
+duration: "3:32"
+},
+{
+title: "熱帯魚",
+romanization: "",
+duration: "3:27"
+},
+{
+title: "夏のたまり場",
+romanization: "",
+duration: "3:14"
+},
+{
+title: "ニッカ・ボッカ",
+romanization: "",
+duration: "3:18"
+},
+{
+title: "ザ・マン",
+romanization: "",
+duration: "4:01"
+},
+{
+title: "何かが起こりそうな朝",
+romanization: "",
+duration: "4:32"
+},
+{
+title: "季節のかほり",
+romanization: "",
+duration: "2:39"
+},
+{
+title: "つめたい抱擁",
+romanization: "",
+duration: "3:41"
+},
+{
+title: "ヴェニスの花嫁",
+romanization: "",
+duration: "4:02"
+},
+{
+title: "暁",
+romanization: "",
+duration: "3:53"
+},
+{
+title: "今様つづり",
+romanization: "",
+duration: "3:54"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "恋人たち",
+romanization: "Koibito-tachi",
+romaji_artist: "Hiromi Iwasaki",
+japanese_artist: "岩崎宏美",
+year: "1979",
+description: "",
+coverlink: "恋人たち.jpg",
+flavor: "Disco, Idol"
+},
+[{
+title: "恋人たち",
+romanization: "Koibito-tachi",
+duration: "3:59"
+},
+{
+title: "白いバラ",
+romanization: "",
+duration: "4:11"
+},
+{
+title: "シェルブールの雨傘",
+romanization: "",
+duration: "3:15"
+},
+{
+title: "ラ・ボエーム",
+romanization: "",
+duration: "3:13"
+},
+{
+title: "黒いオルフェ",
+romanization: "",
+duration: "3:02"
+},
+{
+title: "この想いをあなただけに",
+romanization: "",
+duration: "3:15"
+},
+{
+title: "行かないで",
+romanization: "",
+duration: "3:53"
+},
+{
+title: "禁じられた遊び",
+romanization: "",
+duration: "2:52"
+},
+{
+title: "マイ・ラブ",
+romanization: "",
+duration: "3:43"
+},
+{
+title: "白い恋人たち",
+romanization: "",
+duration: "2:53"
+},
+{
+title: "思い出さないで",
+romanization: "",
+duration: "4:19"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Wish",
+romanization: "",
+romaji_artist: "Hiromi Iwasaki",
+japanese_artist: "岩崎宏美",
+year: "1980",
+description: "",
+coverlink: "wish.jpg",
+flavor: "Disco, Idol"
+},
+[{
+title: "Wishes",
+romanization: "",
+duration: "1:15"
+},
+{
+title: "五線紙のカウボーイ",
+romanization: "Gosenshi no kaubōi",
+duration: "4:01"
+},
+{
+title: "Sympathy",
+romanization: "",
+duration: "4:18"
+},
+{
+title: "Street Dancer",
+romanization: "",
+duration: "5:11"
+},
+{
+title: "Kiss Again",
+romanization: "",
+duration: "5:13"
+},
+{
+title: "Half Moon",
+romanization: "",
+duration: "4:25"
+},
+{
+title: "女優",
+romanization: "Joyū",
+duration: "4:25"
+},
+{
+title: "Rose",
+romanization: "",
+duration: "4:23"
+},
+{
+title: "処女航海",
+romanization: "Shojo kōkai",
+duration: "4:27"
+},
+{
+title: "夕凪海岸",
+romanization: "Yūnagi kaigan",
+duration: "4:35"
+},
+{
+title: "最後の旅",
+romanization: "Saigo no tabi",
+duration: "4:04"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "すみれ色の涙から・・",
+romanization: "Sumireirononamida kara",
+romaji_artist: "Hiromi Iwasaki",
+japanese_artist: "岩崎宏美",
+year: "1981",
+description: "",
+coverlink: "すみれ色の涙から.jpg",
+flavor: "Disco, Idol"
+},
+[{
+title: "すみれ色の涙",
+romanization: "Sumireirononamida",
+duration: "2:55"
+},
+{
+title: "卒業写真",
+romanization: "Sotsugyō Shashin",
+duration: "4:16"
+},
+{
+title: "サルビアの花",
+romanization: "Sarubia no Hana",
+duration: "4:37"
+},
+{
+title: "20才のめぐり逢い",
+romanization: "20-Sai no Meguri Ai",
+duration: "4:08"
+},
+{
+title: "吟遊詩人の唄(One Man Band)",
+romanization: "Gin'yūshijin no Uta (One Man Band)",
+duration: "3:42"
+},
+{
+title: "さよならをするために",
+romanization: "Sayonara o Suru Tame Ni",
+duration: "3:10"
+},
+{
+title: "街の灯り",
+romanization: "Machi no Akari",
+duration: "4:06"
+},
+{
+title: "少しは私に愛を下さい",
+romanization: "Sukoshi wa Watashi ni Ai o Kudasai",
+duration: "3:58"
+},
+{
+title: "ともしび",
+romanization: "To Moshi Bi",
+duration: "3:53"
+},
+{
+title: "夢で逢えたら",
+romanization: "Yumedeaetara",
+duration: "3:37"
+},
+{
+title: "空に星があるように",
+romanization: "Soranihoshigāruyōni",
+duration: "3:40"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "夕暮れから…ひとり",
+romanization: "Yūgure kara… Hitori",
+romaji_artist: "Hiromi Iwasaki",
+japanese_artist: "岩崎宏美",
+year: "1982",
+description: "",
+coverlink: "夕暮れからひとり.jpg",
+flavor: "Disco, Idol"
+},
+[{
+title: "檸檬",
+romanization: "Remon",
+duration: "3:15"
+},
+{
+title: "飛ばして, Taxi",
+romanization: "Tobashite, Taxi",
+duration: "4:09"
+},
+{
+title: "恋は戦争",
+romanization: "Koihasensō",
+duration: "4:03"
+},
+{
+title: "夜明けのない朝",
+romanization: "Yoake no Nai Asa",
+duration: "3:47"
+},
+{
+title: "Single man",
+romanization: "",
+duration: "4:53"
+},
+{
+title: "China reef",
+romanization: "",
+duration: "3:29"
+},
+{
+title: "エトランゼ",
+romanization: "Etoranze",
+duration: "4:36"
+},
+{
+title: "52階のオフ・ステージ",
+romanization: "52-Kai no Off-stage",
+duration: "4:33"
+},
+{
+title: "ハートブレイク・トワイライト",
+romanization: "Heartbreak Twilight",
+duration: "4:15"
+},
+{
+title: "聖母たちのララバイ",
+romanization: "Seibo-tachi no Lullaby",
+duration: "4:28"
+},
+{
+title: "れんげ草の恋",
+romanization: "Rengesōnokoi",
+duration: "4:06"
+},
+{
+title: "悲しみのほとり",
+romanization: "Kanashimi no Hotori",
+duration: "3:59"
+},
+{
+title: "影絵（シルエット）",
+romanization: "Kagee (Silhouette)",
+duration: "3:52"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "私・的・空・間",
+romanization: "",
+romaji_artist: "Hiromi Iwasaki",
+japanese_artist: "岩崎宏美",
+year: "1983",
+description: "",
+coverlink: "私的空間.jpg",
+flavor: "Disco, Idol"
+},
+[{
+title: "真珠のピリオド",
+romanization: "Shinju no Period",
+duration: "3:51"
+},
+{
+title: "無口なヴィーナス",
+romanization: "Mukuchina Venus",
+duration: "4:14"
+},
+{
+title: "二人の午後に",
+romanization: "Futari no Gogo Ni",
+duration: "4:18"
+},
+{
+title: "テンペスト",
+romanization: "Tempest",
+duration: "4:10"
+},
+{
+title: "わたしに戻るとき",
+romanization: "Watashi ni Modoru Toki",
+duration: "3:30"
+},
+{
+title: "素敵な気持ち",
+romanization: "Sutekinakimochi",
+duration: "3:59"
+},
+{
+title: "ことづけ",
+romanization: "Kotodzuke",
+duration: "4:14"
+},
+{
+title: "Morning Breeze",
+romanization: "",
+duration: "4:32"
+},
+{
+title: "生きがい",
+romanization: "Ikigai",
+duration: "4:40"
+},
+{
+title: "日暮れのマティーニ",
+romanization: "Higure no Mattini",
+duration: "5:09"
+},
+{
+title: "Waiting",
+romanization: "",
+duration: "3:40"
+},
+{
+title: "夜明けの天使たち",
+romanization: "Yoake no Tenshi-tachi",
+duration: "2:53"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Me Too",
+romanization: "",
+romaji_artist: "Hiromi Iwasaki",
+japanese_artist: "岩崎宏美",
+year: "1988",
+description: "",
+coverlink: "metoo.jpg",
+flavor: "Disco, Idol"
+},
+[{
+title: "Dance With A Loneliness",
+romanization: "",
+duration: "4:43"
+},
+{
+title: "私らしく",
+romanization: "Watashirashiku",
+duration: "4:31"
+},
+{
+title: "Southern Wind",
+romanization: "",
+duration: "4:36"
+},
+{
+title: "Interval",
+romanization: "",
+duration: "4:35"
+},
+{
+title: "I Miss You So Long（さよならもいいね）",
+romanization: "I Miss You So Long (Sayonara mo ī ne)",
+duration: "5:28"
+},
+{
+title: "聞こえてくるラプソディー",
+romanization: "Kikoete Kuru Rhapsody",
+duration: "5:04"
+},
+{
+title: "最初広いbedに座った",
+romanization: "Saisho Hiroi Bed ni Suwatta",
+duration: "5:21"
+},
+{
+title: "あなたのいらだちと私の理由",
+romanization: "Anata no Iradachi to Watashi no Riyū",
+duration: "4:33"
+},
+{
+title: "唐突",
+romanization: "Tōtotsu",
+duration: "3:53"
+},
+{
+title: "さよなら夏のリサ",
+romanization: "Sayonara Natsu no Lisa",
+duration: "5:34"
+},
+{
+title: "未成年",
+romanization: "Miseinen",
+duration: "4:22"
+},
+{
+title: "透きとおった時間",
+romanization: "Sukitōtta Jikan",
+duration: "4:23"
+},
+{
+title: "夢見るように愛したい",
+romanization: "Yumemiru yō ni Aishitai",
+duration: "4:08"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "ゆりかごのうたいわさきひろみあいしょうかしゅう",
+romanization: "Yurikago no Uta Iwasaki Hiromi Aishouka Shuu",
+romaji_artist: "Hiromi Iwasaki",
+japanese_artist: "岩崎宏美",
+year: "1991",
+description: "",
+coverlink: "ゆりかごのうたいわさきひろみあいしょうかしゅう.jpg",
+flavor: "Disco, Idol"
+},
+[{
+title: "Akatonbo",
+romanization: "",
+duration: "3:45"
+},
+{
+title: "Nanatsu No Ko",
+romanization: "",
+duration: "3:53"
+},
+{
+title: "Ryoshuu",
+romanization: "",
+duration: "4:21"
+},
+{
+title: "Hanayome Ningyou",
+romanization: "",
+duration: "2:43"
+},
+{
+title: "Shikararete",
+romanization: "",
+duration: "3:28"
+},
+{
+title: "Yashi No Jitsu",
+romanization: "",
+duration: "5:28"
+},
+{
+title: "Chiisai Aki Mitsuketa",
+romanization: "",
+duration: "3:36"
+},
+{
+title: "Fuyu No Yoru",
+romanization: "",
+duration: "2:42"
+},
+{
+title: "Kaasan No Uta",
+romanization: "",
+duration: "3:32"
+},
+{
+title: "Yuki No Furu Machi Wo",
+romanization: "",
+duration: "3:25"
+},
+{
+title: "Pechika",
+romanization: "",
+duration: "3:23"
+},
+{
+title: "Fuyu Keshiki",
+romanization: "",
+duration: "4:51"
+},
+{
+title: "Chuugoku Chihou No Komori Uta",
+romanization: "",
+duration: "4:13"
+},
+{
+title: "Hana",
+romanization: "",
+duration: "3:26"
+},
+{
+title: "Sakura Sakura",
+romanization: "",
+duration: "3:25"
+},
+{
+title: "Shussen",
+romanization: "",
+duration: "3:52"
+},
+{
+title: "Yuri Kago No Uta",
+romanization: "",
+duration: "4:34"
+},
+{
+title: "Haruno Uta",
+romanization: "",
+duration: "4:06"
+},
+{
+title: "Hamabe No Uta",
+romanization: "",
+duration: "3:58"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "My Gratitude -Kansha-",
+romanization: "",
+romaji_artist: "Hiromi Iwasaki",
+japanese_artist: "岩崎宏美",
+year: "1995",
+description: "",
+coverlink: "mygratitudekansha.jpg",
+flavor: "Disco, Idol"
+},
+[{
+title: "Mouichido",
+romanization: "",
+duration: "5:07"
+},
+{
+title: "Waiting",
+romanization: "",
+duration: "3:31"
+},
+{
+title: "When I Fall In Love",
+romanization: "",
+duration: "3:29"
+},
+{
+title: "Soba Ni Oite",
+romanization: "",
+duration: "4:30"
+},
+{
+title: "Sumireiro No Namida",
+romanization: "",
+duration: "3:08"
+},
+{
+title: "Gratitude",
+romanization: "",
+duration: "4:30"
+},
+{
+title: "Wishes",
+romanization: "",
+duration: "2:59"
+},
+{
+title: "One Day In Your Life",
+romanization: "",
+duration: "4:41"
+},
+{
+title: "Shishuuki",
+romanization: "",
+duration: "4:48"
+},
+{
+title: "Seibo Tachi No Lullaby",
+romanization: "",
+duration: "4:37"
+},
+{
+title: "Someone To Watch Over Me",
+romanization: "",
+duration: "5:56"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Shower Of Love",
+romanization: "",
+romaji_artist: "Hiromi Iwasaki",
+japanese_artist: "岩崎宏美",
+year: "1997",
+description: "",
+coverlink: "showeroflove.jpg",
+flavor: "Disco, Idol"
+},
+[{
+title: "愛がいっぱい",
+romanization: "Aigaippai",
+duration: "5:15"
+},
+{
+title: "そっと愛して",
+romanization: "Sotto Aishite",
+duration: "5:51"
+},
+{
+title: "(I Look) In Your Eyes",
+romanization: "",
+duration: "4:53"
+},
+{
+title: "時の向こうがわ",
+romanization: "Toki no Mukō ga wa",
+duration: "5:49"
+},
+{
+title: "Pain",
+romanization: "",
+duration: "3:54"
+},
+{
+title: "Rain 〜告白",
+romanization: "Rain 〜 kokuhaku",
+duration: "4:17"
+},
+{
+title: "笑顔を見せて",
+romanization: "Egaowomisete",
+duration: "5:18"
+},
+{
+title: "最後の愛で",
+romanization: "Saigo no Ai de",
+duration: "5:28"
+},
+{
+title: "たったひとつだけ",
+romanization: "Tatta Hitotsu Dake",
+duration: "4:42"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Never Again ~許さない~",
+romanization: "Never Again ~Yurusanai~",
+romaji_artist: "Hiromi Iwasaki",
+japanese_artist: "岩崎宏美",
+year: "1999",
+description: "",
+coverlink: "neveragain許さない.jpg",
+flavor: "Disco, Idol"
+},
+[{
+title: "あなたへ",
+romanization: "Anata He",
+duration: "4:27"
+},
+{
+title: "素敵な気持ち",
+romanization: "Suteki Na Kimochi",
+duration: "5:08"
+},
+{
+title: "Sympathy",
+romanization: "",
+duration: "4:18"
+},
+{
+title: "わたしの1095日",
+romanization: "Watashi No Senkyuujuugo Nichi",
+duration: "4:06"
+},
+{
+title: "想い出の樹の下で",
+romanization: "Omoide No Ki No Shita De",
+duration: "4:21"
+},
+{
+title: "女優",
+romanization: "Joy",
+duration: "5:08"
+},
+{
+title: "春おぼろ",
+romanization: "Haru Oboro",
+duration: "4:07"
+},
+{
+title: "月見草",
+romanization: "Tsukimisou",
+duration: "3:47"
+},
+{
+title: "許さない",
+romanization: "Yurusanai",
+duration: "5:00"
+},
+{
+title: "日暮れのマティーニ",
+romanization: "Higure No Martini",
+duration: "5:33"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Dear Friends IV",
+romanization: "",
+romaji_artist: "Hiromi Iwasaki",
+japanese_artist: "岩崎宏美",
+year: "2008",
+description: "",
+coverlink: "dearfriendsiv.jpg",
+flavor: "Disco, Idol"
+},
+[{
+title: "明日",
+romanization: "Ashita",
+duration: "4:34"
+},
+{
+title: "糸",
+romanization: "Ito",
+duration: "4:34"
+},
+{
+title: "夢で逢えたら",
+romanization: "Yume de Aetara",
+duration: "3:56"
+},
+{
+title: "別れの予感",
+romanization: "Wakare no Yokan",
+duration: "4:12"
+},
+{
+title: "上を向いて歩こう",
+romanization: "Uewomuitearukō",
+duration: "4:30"
+},
+{
+title: "千の風になって",
+romanization: "Sen no Kaze ni Natte",
+duration: "5:12"
+},
+{
+title: "飾りじゃないのよ涙は",
+romanization: "Kazari janai no yonamidaha",
+duration: "5:20"
+},
+{
+title: "会いたい",
+romanization: "Aitai",
+duration: "4:48"
+},
+{
+title: "フィーリング",
+romanization: "Feeling",
+duration: "3:50"
+},
+{
+title: "Pride",
+romanization: "",
+duration: "6:39"
+},
+{
+title: "人生の贈り物 ～他に望むものはない～",
+romanization: "Jinsei no Okurimono ~ Hoka ni Nozomu Mono Wanai ~",
+duration: "8:02"
+},
+{
+title: "思秋期",
+romanization: "",
+duration: "5:41"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Full Circle",
+romanization: "",
+romaji_artist: "Hiromi Iwasaki",
+japanese_artist: "岩崎宏美",
+year: "2010",
+description: "",
+coverlink: "fullcircle.jpg",
+flavor: "Disco, Idol"
+},
+[{
+title: "Full Circle",
+romanization: "",
+duration: "2:52"
+},
+{
+title: "Birth",
+romanization: "",
+duration: "6:04"
+},
+{
+title: "時間(とき)の早さに",
+romanization: "Jikan (Toki) no Haya-sa ni",
+duration: "5:49"
+},
+{
+title: "(Interlude)ロマンス",
+romanization: "(Interlude) Romance",
+duration: "0:56"
+},
+{
+title: "Never be the Same",
+romanization: "",
+duration: "5:46"
+},
+{
+title: "朝が来るまで",
+romanization: "Asagakurumade",
+duration: "5:39"
+},
+{
+title: "Dream On",
+romanization: "",
+duration: "5:09"
+},
+{
+title: "潮風がつぶやいて",
+romanization: "Shiokaze ga tsubuyaite",
+duration: "5:19"
+},
+{
+title: "(Interlude)想い出の樹の下で",
+romanization: "(Interlude) Omoidenokinoshitade",
+duration: "1:51"
+},
+{
+title: "Extraordinary",
+romanization: "",
+duration: "5:01"
+},
+{
+title: "Back Together Again",
+romanization: "",
+duration: "5:23"
+},
+{
+title: "One Day, Some Way",
+romanization: "",
+duration: "5:48"
+},
+{
+title: "窓",
+romanization: "Mado",
+duration: "5:17"
+},
+{
+title: "Full Circle",
+romanization: "",
+duration: "2:46"
+},
+{
+title: "舞踏会",
+romanization: "Budōkai",
+duration: "4:39"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Love",
+romanization: "",
+romaji_artist: "Hiromi Iwasaki",
+japanese_artist: "岩崎宏美",
+year: "2013",
+description: "",
+coverlink: "love (hiromi).jpg",
+flavor: "Disco, Idol"
+},
+[{
+title: "タペストリー",
+romanization: "Tapestry",
+duration: "5:54"
+},
+{
+title: "抱きしめてよ、ミラクル",
+romanization: "Dakishimete yo, Miracle",
+duration: "3:49"
+},
+{
+title: "Love",
+romanization: "",
+duration: "4:39"
+},
+{
+title: "プロポーズのとき",
+romanization: "Puropōzu no Toki",
+duration: "4:50"
+},
+{
+title: "時の針",
+romanization: "Toki no Hari",
+duration: "5:56"
+},
+{
+title: "ベリー",
+romanization: "Berry",
+duration: "3:53"
+},
+{
+title: "明日、笑顔で",
+romanization: "Ashita, Egao de",
+duration: "5:03"
+},
+{
+title: "糸遊(かげろう)",
+romanization: "Shiyū (kagerō)",
+duration: "3:18"
+},
+{
+title: "ケセラ~愛のためのいくつかの法則~",
+romanization: "Quecera ~ Ai no Tame no Ikutsu ka no Hōsoku ~",
+duration: "4:26"
+},
+{
+title: "あなたにだから",
+romanization: "Anata ni Dakara",
+duration: "5:31"
+},
+])
