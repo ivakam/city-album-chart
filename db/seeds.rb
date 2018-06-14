@@ -41,7 +41,7 @@ japanese_artist: "山下達郎",
 year: "1984",
 description: "Big Wave is Tatsuro Yamashita's soundtrack to the 1984 movie of the same name.",
 coverlink: "bigwave.jpg",
-flavor: "Dreamy/Ballad"
+flavor: "Dreamy, Ballad"
 },
 [{
 title: "The Theme from Big Wave",
@@ -112,7 +112,7 @@ japanese_artist: "大貫妙子",
 year: "1976",
 description: "",
 coverlink: "greyskies.jpg",
-flavor: "Soul/Jazz"
+flavor: "Soul, Jazz"
 },
 [{
 title: "時の始まり",
@@ -251,7 +251,7 @@ japanese_artist: "大貫妙子",
 year: "1980",
 description: "",
 coverlink: "romantique.jpg",
-flavor: "Electronic/Euro"
+flavor: "Electronic, Euro"
 },
 [{
 title: "Carnaval",
@@ -318,7 +318,7 @@ japanese_artist: "大貫妙子",
 year: "1978",
 description: "",
 coverlink: "mignonne.jpg",
-flavor: "Funk/Ballad"
+flavor: "Funk, Ballad"
 },
 [{
 title: "じゃじゃ馬娘",
@@ -380,7 +380,7 @@ japanese_artist: "大貫妙子",
 year: "1982",
 description: "",
 coverlink: "cliche.jpg",
-flavor: "Electronic/Euro"
+flavor: "Electronic, Euro"
 },
 [{
 title: "黒のクレール",
@@ -442,7 +442,7 @@ japanese_artist: "大貫妙子",
 year: "1981",
 description: "",
 coverlink: "aventure.jpg",
-flavor: "Electronic/Euro"
+flavor: "Electronic, Euro"
 },
 [{
 title: "恋人達の明日",
@@ -640,7 +640,7 @@ romanization: "",
 duration: "3:44"
 },
 {
-title: "ノスタルジア・オブ・アイランド～パート1:バード・ウィンド/パート2:ウォーキング・オン・ザ・ビーチ",
+title: "ノスタルジア・オブ・アイランド～パート1:バード・ウィンド, パート2:ウォーキング・オン・ザ・ビーチ",
 romanization: "",
 duration: "9:36"
 },
@@ -890,7 +890,7 @@ japanese_artist: "",
 year: "1975",
 description: "",
 coverlink: "songs.jpg",
-flavor: "Jazz/Rock"
+flavor: "Jazz, Rock"
 },
 [{
 title: "Ｓｈｏｗ",
@@ -957,7 +957,7 @@ japanese_artist: "佐藤博",
 year: "1976",
 description: "",
 coverlink: "supermarket.jpg",
-flavor: "Folk/Rock"
+flavor: "Folk, Rock"
 },
 [{
 title: "私の彼氏は200歳",
@@ -1019,7 +1019,7 @@ japanese_artist: "佐藤博",
 year: "1977",
 description: "",
 coverlink: "time.jpg",
-flavor: "Funk/Jazz"
+flavor: "Funk, Jazz"
 },
 [{
 title: "タイム",
@@ -1277,7 +1277,7 @@ japanese_artist: "吉田美奈子",
 year: "1973",
 description: "",
 coverlink: "扉の冬.jpg",
-flavor: "Soul/Ballad"
+flavor: "Soul, Ballad"
 },
 [{
 title: "外はみんな...",
@@ -1335,7 +1335,7 @@ japanese_artist: "吉田美奈子",
 year: "1976",
 description: "",
 coverlink: "flapper.jpg",
-flavor: "Funk/Soul"
+flavor: "Funk, Soul"
 },
 [{
 title: "愛は彼方",
@@ -1507,7 +1507,7 @@ romanization: "",
 duration: "3:42"
 },
 {
-title: "Precious Lord, Take My Hand/Yo",
+title: "Precious Lord, Take My Hand, Yo",
 romanization: "",
 duration: "4:52"
 },
@@ -1763,7 +1763,7 @@ japanese_artist: "吉田美奈子",
 year: "1980",
 description: "",
 coverlink: "monochrome.jpg",
-flavor: "Funk/Soul"
+flavor: "Funk, Soul"
 },
 [{
 title: "Tornado",
@@ -1867,7 +1867,7 @@ japanese_artist: "吉田美奈子",
 year: "1986",
 description: "",
 coverlink: "bells.jpg",
-flavor: "Funk/Ballad"
+flavor: "Funk, Ballad"
 },
 [{
 title: "Wind",
@@ -2069,7 +2069,7 @@ japanese_artist: "虹伝説",
 year: "1978",
 description: "",
 coverlink: "brasilianskies.jpg",
-flavor: "Fusion/Latin"
+flavor: "Fusion, Latin"
 },
 [{
 title: "Beleza Pula",
@@ -2121,7 +2121,7 @@ japanese_artist: "虹伝説",
 year: "1979",
 description: "",
 coverlink: "allofme.jpg",
-flavor: "Fusion/Latin/Compilation"
+flavor: "Fusion, Latin, Compilation"
 },
 [{
 title: "Oh! Tengo Suerte",
@@ -2441,7 +2441,7 @@ japanese_artist: "虹伝説",
 year: "1982",
 description: "",
 coverlink: "oceanbreeze.jpg",
-flavor: "Fusion/Compilation"
+flavor: "Fusion, Compilation"
 },
 [{
 title: "Medley",
@@ -2902,7 +2902,7 @@ japanese_artist: "虹伝説",
 year: "1989",
 description: "",
 coverlink: "thepartysjustbegun.jpg",
-flavor: "Fusion/Compilation"
+flavor: "Fusion, Compilation"
 },
 [{
 title: "Prologue (City Is A Jungle)",
@@ -2994,7 +2994,7 @@ japanese_artist: "虹伝説",
 year: "1991",
 description: "",
 coverlink: "onenightgig.jpg",
-flavor: "Fusion/Live"
+flavor: "Fusion, Live"
 },
 [{
 title: "Shake it",
@@ -3210,7 +3210,7 @@ japanese_artist: "虹伝説",
 year: "2001",
 description: "",
 coverlink: "themanwiththeguitar.jpg",
-flavor: "Fusion/Compilation"
+flavor: "Fusion, Compilation"
 },
 [{
 title: "Shake It",
@@ -3262,7 +3262,7 @@ japanese_artist: "虹伝説",
 year: "2004",
 description: "",
 coverlink: "thebrilliantbest.jpg",
-flavor: "Fusion/Compilation"
+flavor: "Fusion, Compilation"
 },
 [{
 title: "Blue Lagoon",
@@ -4068,7 +4068,7 @@ japanese_artist: "杏里",
 year: "1978",
 description: "",
 coverlink: "apricotjam.jpg",
-flavor: "Soul/Funk"
+flavor: "Soul, Funk"
 },
 [{
 title: "オリビアを?きながら",
@@ -4264,7 +4264,7 @@ japanese_artist: "杏里",
 year: "1983",
 description: "",
 coverlink: "bikini.jpg",
-flavor: "Funk/Disco"
+flavor: "Funk, Disco"
 },
 [{
 title: "Good Bye Boogie Dance",
@@ -4326,7 +4326,7 @@ japanese_artist: "杏里",
 year: "1983",
 description: "",
 coverlink: "timely.jpg",
-flavor: "Funk/Disco"
+flavor: "Funk, Disco"
 },
 [{
 title: "Cat's Eye",
@@ -4393,7 +4393,7 @@ japanese_artist: "杏里",
 year: "1984",
 description: "",
 coverlink: "coool.jpg",
-flavor: "Disco/Ballad"
+flavor: "Disco, Ballad"
 },
 [{
 title: "Bring Me to the Dancenight? Gone with the Sadness",
@@ -4455,7 +4455,7 @@ japanese_artist: "杏里",
 year: "1985",
 description: "",
 coverlink: "wave.jpg",
-flavor: "Funk/Disco"
+flavor: "Funk, Disco"
 },
 [{
 title: "City fiction",
@@ -4517,7 +4517,7 @@ japanese_artist: "杏里",
 year: "1981",
 description: "",
 coverlink: "哀しみの孔雀.jpg",
-flavor: "Ballad/Folk"
+flavor: "Ballad, Folk"
 },
 [{
 title: "異?の出?事",
@@ -5075,7 +5075,7 @@ japanese_artist: "",
 year: "1990",
 description: "",
 coverlink: "jody.jpg",
-flavor: "Cover/Tribute"
+flavor: "Cover, Tribute"
 },
 [{
 title: "悲しみのJODY ~She Was Crying~",
@@ -5204,7 +5204,7 @@ japanese_artist: "山下達郎",
 year: "2016",
 description: "",
 coverlink: "cheerupthesummer.jpg",
-flavor: "Single/Dreamy"
+flavor: "Single, Dreamy"
 },
 [{
 title: "CHEER UP! THE SUMMER",
@@ -5221,7 +5221,7 @@ japanese_artist: "山下達郎",
 year: "2017",
 description: "",
 coverlink: "comealong3.jpg",
-flavor: "Funk/Compilation"
+flavor: "Funk, Compilation"
 },
 [{
 title: "Keoki la Molokai Kid 偉大なサーファー伝説?!",
@@ -5298,7 +5298,7 @@ japanese_artist: "山下達郎",
 year: "1998",
 description: "",
 coverlink: "cozy.jpg",
-flavor: "Dreamy/Funk"
+flavor: "Dreamy, Funk"
 },
 [{
 title: "氷のマニキュア",
@@ -5365,7 +5365,7 @@ japanese_artist: "山下達郎",
 year: "1984",
 description: "",
 coverlink: "foryou.jpg",
-flavor: "Funk/Dreamy"
+flavor: "Funk, Dreamy"
 },
 [{
 title: "Sparkle",
@@ -5417,7 +5417,7 @@ japanese_artist: "山下達郎",
 year: "1986",
 description: "",
 coverlink: "melodies.jpg",
-flavor: "Funk/Dreamy"
+flavor: "Funk, Dreamy"
 },
 [{
 title: "悲しみのJODY (She Was Crying)",
@@ -5670,7 +5670,7 @@ japanese_artist: "山下達郎",
 year: "1986",
 description: "",
 coverlink: "pocketmusic.jpg",
-flavor: "Dreamy/Ballad"
+flavor: "Dreamy, Ballad"
 },
 [{
 title: "土曜日の恋人",
@@ -5732,7 +5732,7 @@ japanese_artist: "山下達郎",
 year: "2017",
 description: "",
 coverlink: "reborn.jpg",
-flavor: "Dreamy/Compilation"
+flavor: "Dreamy, Compilation"
 },
 [{
 title: "REBORN",
@@ -5841,7 +5841,7 @@ japanese_artist: "山下達郎",
 year: "1995",
 description: "",
 coverlink: "treasures.jpg",
-flavor: "Dreamy/Compilation"
+flavor: "Dreamy, Compilation"
 },
 [{
 title: "高気圧ガール",
@@ -5990,7 +5990,7 @@ japanese_artist: "山下達郎",
 year: "2013",
 description: "",
 coverlink: "光と君へのレクイエム.jpg",
-flavor: "Dreamy/Single"
+flavor: "Dreamy, Single"
 },
 [{
 title: "光と君へのレクイエム",
@@ -6012,7 +6012,7 @@ japanese_artist: "",
 year: "1991",
 description: "",
 coverlink: "tatsurosongsfromla2.jpg",
-flavor: "Cover/Tribute/English"
+flavor: "Cover, Tribute, English"
 },
 [{
 title: "Get Back in Love",
@@ -6064,7 +6064,7 @@ japanese_artist: "",
 year: "1990",
 description: "",
 coverlink: "tatsurosongsfromla.jpg",
-flavor: "Cover/Tribute/English"
+flavor: "Cover, Tribute, English"
 },
 [{
 title: "Christmas Eve",
@@ -7427,7 +7427,7 @@ japanese_artist: "角松敏生",
 year: "2012",
 description: "",
 coverlink: "rebirth1remakebest.jpg",
-flavor: "Funk/Compilation"
+flavor: "Funk, Compilation"
 },
 [{
 title: "Do You Wanna Dance",
@@ -7489,7 +7489,7 @@ japanese_artist: "角松敏生",
 year: "2017",
 description: "",
 coverlink: "seaisalady2017.jpg",
-flavor: "Funk/Remake"
+flavor: "Funk, Remake"
 },
 [{
 title: "Way To The Shore",
@@ -7560,7 +7560,7 @@ japanese_artist: "中原めいこ",
 year: "1982",
 description: "",
 coverlink: "coconutshouse.jpg",
-flavor: "Funk/Latin"
+flavor: "Funk, Latin"
 },
 [{
 title: "今夜だけDance Dance Dance",
@@ -7684,7 +7684,7 @@ japanese_artist: "中原めいこ",
 year: "1983",
 description: "",
 coverlink: "mint.jpg",
-flavor: "Funk/Ballad"
+flavor: "Funk, Ballad"
 },
 [{
 title: "渚のDaydream",
@@ -7746,7 +7746,7 @@ japanese_artist: "中原めいこ",
 year: "1984",
 description: "",
 coverlink: "ロートスの果実.jpg",
-flavor: "Funk/Latin"
+flavor: "Funk, Latin"
 },
 [{
 title: "魔法のカーペット",
@@ -7808,7 +7808,7 @@ japanese_artist: "中原めいこ",
 year: "1985",
 description: "",
 coverlink: "chakichakiclub.jpg",
-flavor: "Funk/Ballad"
+flavor: "Funk, Ballad"
 },
 [{
 title: "宇宙恋愛（スペース・ファンタジー）",
@@ -7870,7 +7870,7 @@ japanese_artist: "中原めいこ",
 year: "1986",
 description: "",
 coverlink: "moods.jpg",
-flavor: "Funk/Ballad"
+flavor: "Funk, Ballad"
 },
 [{
 title: "Gimme，Gimme Motions",
@@ -7927,7 +7927,7 @@ japanese_artist: "中原めいこ",
 year: "1987",
 description: "",
 coverlink: "puzzle.jpg",
-flavor: "Funk/Ballad"
+flavor: "Funk, Ballad"
 },
 [{
 title: "The Overture - Merry Train",
@@ -8310,7 +8310,7 @@ japanese_artist: "",
 year: "1982",
 description: "",
 coverlink: "mintjams.jpg",
-flavor: "Fusion/Compilation"
+flavor: "Fusion, Compilation"
 },
 [{
 title: "Take Me",
@@ -8538,7 +8538,7 @@ japanese_artist: "",
 year: "1984",
 description: "",
 coverlink: "thesoundgraphy.jpg",
-flavor: "Fusion/Compilation"
+flavor: "Fusion, Compilation"
 },
 [{
 title: "The Soundgraphy",
@@ -9722,7 +9722,7 @@ japanese_artist: "",
 year: "2006",
 description: "",
 coverlink: "gentlemellow.jpg",
-flavor: "Fusion/Compilation"
+flavor: "Fusion, Compilation"
 },
 [{
 title: "Tokyo Sunset",
@@ -9804,7 +9804,7 @@ japanese_artist: "",
 year: "2006",
 description: "",
 coverlink: "groovepassion.jpg",
-flavor: "Fusion/Compilation"
+flavor: "Fusion, Compilation"
 },
 [{
 title: "Asayake",
@@ -9927,5 +9927,81 @@ duration: "3:44"
 title: "Past",
 romanization: "",
 duration: "11:47"
+},
+])
+
+
+# New batch (Mioko Yamaguchi)
+
+
+CreateAlbumWithTracks({
+title: "夢飛行",
+romanization: "Yume Hiko",
+romaji_artist: "Mioko Yamaguchi",
+japanese_artist: "山口美央子",
+year: "1980",
+description: "Debut LP of Yamaguchi Mioko's brief solo career.",
+coverlink: "夢飛行.jpg",
+flavor: "Techno Kayo, Electronic"
+},
+[{
+title: "アラビアン・ラプソディ",
+romanization: "Arabian Rhapsody",
+duration: "3:05"
+},
+{
+title: "東京Lover",
+romanization: "Tokyo Lover",
+duration: "3:54"
+},
+{
+title: "陽だまりの中で",
+romanization: "Hidamari No Naka De",
+duration: "3:12"
+},
+{
+title: "A Dream OF Eu",
+romanization: "",
+duration: "1:09"
+},
+{
+title: "お祭り",
+romanization: "Omatsuri",
+duration: "4:38"
+},
+{
+title: "いつかゆられて遠い国",
+romanization: "Itsuka Yurarete Toi Kuni",
+duration: "3:04"
+},
+{
+title: "A Dream of Mio",
+romanization: "",
+duration: "0:28"
+},
+{
+title: "夢飛行",
+romanization: "Yume Hiko",
+duration: "3:38"
+},
+{
+title: "ある夜の出来事",
+romanization: "Aru Yo No Dekigoto",
+duration: "3:18"
+},
+{
+title: "恋のエアプレイ",
+romanization: "Koi No Air Play",
+duration: "3:29"
+},
+{
+title: "ワルツ（流舞）",
+romanization: "Waltz",
+duration: "6:18"
+},
+{
+title: "パラダイス",
+romanization: "Paradise",
+duration: "3:48"
 },
 ])

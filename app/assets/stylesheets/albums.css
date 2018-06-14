@@ -406,9 +406,8 @@ body {
           min-height: 28px; }
           .info-container .info-wrapper .track-grow-wrapper .tracklist-container li .track-title-wrap {
             display: flex;
-            flex-grow: 1;
-            align-items: center;
-            flex-wrap: wrap; }
+            flex-direction: column;
+            flex-grow: 1; }
           .info-container .info-wrapper .track-grow-wrapper .tracklist-container li .track-title-container p:first-child {
             margin-right: 5px; }
           .info-container .info-wrapper .track-grow-wrapper .tracklist-container li div {

@@ -493,9 +493,8 @@ body {
 					min-height: 28px;
 					.track-title-wrap {
 						display: flex;
+						flex-direction: column;
 						flex-grow: 1;
-						align-items: center;
-						flex-wrap: wrap;
 					}
 					.track-title-container p:first-child {
 						margin-right: 5px;
