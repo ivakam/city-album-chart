@@ -1,0 +1,90 @@
+#submit-container {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    #submit-opacity {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background: #171717;
+        opacity: 0.7;
+        z-index: -2;
+    }
+    form {
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+        input, textarea {
+            background: #171717;
+            resize: none;
+            width: 100%;
+            border: 1px transparent solid;
+            overflow-y: scroll;
+            border: 1px #686868 solid;
+        }
+        input[type=text] {
+            font-family: "Roboto";
+            color: #e3e3e3;
+            font-size: 20px;
+            padding: 2px;
+        }
+        input:focus, textarea:focus {
+            border: 1px blue solid;
+        }
+        #input-container {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            .form-divider {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                textarea {
+                    height: 120px;
+                    padding: 5px;
+                }
+                #tracklist-submit textarea {
+                    height: 230px;
+                }
+                textarea::placeholder {
+                  color: #e3e3e3;  
+                }
+                p {
+                    margin: 15px 0 5px 0;
+                }
+                .submit-btn input {
+                    font-family: "Roboto";
+                    font-size: 20px;
+                    cursor: pointer;
+                    border: none;
+                    background: none;
+                    color: #e3e3e3;
+                }
+            }
+        }
+        #save-container {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            margin: 40px 0 40px 0;
+            input {
+                width: 25%;
+                background: #171717;
+                border: 1px #414141 solid;
+                border-radius: 5px;
+                font-family: "Roboto";
+                font-size: 25px;
+                color: #e3e3e3;
+                cursor: pointer;
+                padding: 5px 0 5px 0;
+                transition: border-bottom 0.2s;
+            }
+            #save-btn:hover {
+                border-bottom: 1px #e3e3e3 solid;
+            }
+        }
+    }
+}

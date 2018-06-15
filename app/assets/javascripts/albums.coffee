@@ -7,8 +7,9 @@ $(document).on "turbolinks:load", ->
 	#Populate localstorage object
 
 	populateAlbums = ->
-		jsonAlbums = JSON.stringify(gon.Albums)
-		jsonTracks = JSON.stringify(gon.Tracks)
+		if typeof gon != "undefined"
+			jsonAlbums = JSON.stringify(gon.Albums)
+			jsonTracks = JSON.stringify(gon.Tracks)
 		localStorage.setItem("Albums", jsonAlbums)
 		localStorage.setItem("Tracks", jsonTracks)
 

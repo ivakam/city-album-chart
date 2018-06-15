@@ -5,8 +5,10 @@
     window.albumsNameSpace = {};
     populateAlbums = function() {
       var jsonAlbums, jsonTracks;
-      jsonAlbums = JSON.stringify(gon.Albums);
-      jsonTracks = JSON.stringify(gon.Tracks);
+      if (typeof gon !== "undefined") {
+        jsonAlbums = JSON.stringify(gon.Albums);
+        jsonTracks = JSON.stringify(gon.Tracks);
+      }
       localStorage.setItem("Albums", jsonAlbums);
       return localStorage.setItem("Tracks", jsonTracks);
     };

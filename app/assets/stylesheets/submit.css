@@ -1,0 +1,76 @@
+#submit-container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center; }
+  #submit-container #submit-opacity {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: #171717;
+    opacity: 0.7;
+    z-index: -2; }
+  #submit-container form {
+    display: flex;
+    flex-direction: column;
+    width: 50%; }
+    #submit-container form input, #submit-container form textarea {
+      background: #171717;
+      resize: none;
+      width: 100%;
+      border: 1px transparent solid;
+      overflow-y: scroll;
+      border: 1px #686868 solid; }
+    #submit-container form input[type=text] {
+      font-family: "Roboto";
+      color: #e3e3e3;
+      font-size: 20px;
+      padding: 2px; }
+    #submit-container form input:focus, #submit-container form textarea:focus {
+      border: 1px blue solid; }
+    #submit-container form #input-container {
+      display: flex;
+      justify-content: space-around;
+      width: 100%; }
+      #submit-container form #input-container .form-divider {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around; }
+        #submit-container form #input-container .form-divider textarea {
+          height: 120px;
+          padding: 5px; }
+        #submit-container form #input-container .form-divider #tracklist-submit textarea {
+          height: 230px; }
+        #submit-container form #input-container .form-divider textarea::placeholder {
+          color: #e3e3e3; }
+        #submit-container form #input-container .form-divider p {
+          margin: 15px 0 5px 0; }
+        #submit-container form #input-container .form-divider .submit-btn input {
+          font-family: "Roboto";
+          font-size: 20px;
+          cursor: pointer;
+          border: none;
+          background: none;
+          color: #e3e3e3; }
+    #submit-container form #save-container {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      margin: 40px 0 40px 0; }
+      #submit-container form #save-container input {
+        width: 25%;
+        background: #171717;
+        border: 1px #414141 solid;
+        border-radius: 5px;
+        font-family: "Roboto";
+        font-size: 25px;
+        color: #e3e3e3;
+        cursor: pointer;
+        padding: 5px 0 5px 0;
+        transition: border-bottom 0.2s; }
+      #submit-container form #save-container #save-btn:hover {
+        border-bottom: 1px #e3e3e3 solid; }
+
+/*# sourceMappingURL=submit.css.map */

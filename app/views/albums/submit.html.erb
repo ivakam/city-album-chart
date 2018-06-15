@@ -1,0 +1,97 @@
+<% @title="Submit"%>
+<div id="wrapper">
+	<div id="bg-opacity"></div>
+	<div id="albums-bg-container"><%= image_tag "variety.jpg" %></div>
+	<div id="search-title">
+  		<div id="logo-title">
+  			<a href="/albums/index"><h1>varieti.es</h1></a>
+  			<a href="/albums/index" id="beta-title">BETA!</a>
+  			<h2>City Pop Album Archive</h2>
+  		</div>
+  		<div id="input">
+  	</div>
+	</div>
+ 	<div id="main-container">
+    	<nav id="sidebar">
+      		<ul class="nav-list">
+        		<li class="nav-btn"><div class="title-wrapper"><%= link_to "Home", albums_index_path %></div></li>
+        		<li class="nav-btn"><div class="title-wrapper"><%= link_to "Submit", albums_submit_path %></div></li>
+        		<li class="nav-btn"><div class="title-wrapper"><%= link_to "About / FAQ", about_index_path %></div></li>
+      		</ul>
+    	</nav>
+    	<div id="submit-container">
+    	    <div id="submit-opacity"></div>
+            <%= form_with scope: :album, html: { multipart: true }, url: albums_path, local: true do |form| %>
+                <div id="input-container">
+                    <div class="form-divider">
+                        <div class="form-field">
+                            <p><%= form.label :title %>*</p>
+                            <%= form.text_field :title, required: true, placeholder: "ライドオンタイム" %>
+                        </div>
+                        <div class="form-field">
+                            <p><%= form.label :romanization %></p>
+                            <%= form.text_field :romanization, placeholder: "Ride on Time" %>
+                        </div>
+                        <div class="form-field">
+                            <p><%= form.label :japanese_artist %></p>
+                            <%= form.text_field :japanese_artist, placeholder: "山下達郎" %>
+                        </div>
+                        <div class="form-field">
+                            <p><%= form.label :romaji_artist %>*</p>
+                            <%= form.text_field :romaji_artist, required: true, placeholder: "Tatsuro Yamashita" %>
+                        </div>
+                        <div class="form-field">
+                            <p><%= form.label :year %></p>
+                            <%= form.text_field :year, placeholder: "1980" %>
+                        </div>
+                        <div class="form-field">
+                            <p><%= form.label :flavor %></p>
+                            <%= form.text_field :flavor, placeholder: "Funk" %>
+                        </div>
+                        <i>*Required Fields.</i>
+                    </div>
+                    <div class="form-divider">
+                        <div class="form-field">
+                            <p><%= form.label :description %> (Not a review)</p>
+                            <%= form.text_area :description, placeholder: "Ride on Time is the fifth studio album by Japanese singer-songwriter Tatsuro Yamashita, released in September 1980.\n\nRide on Time has been most well known by its title track. It was used on the television commercial for Maxell's audio cassette starring Yamashita, and released as a single in May 1980." %>
+                        </div>
+                        <div id="tracklist-submit">
+                            <p><%= form.label :"Tracklist" %> (Don't write track numbers! Just keep them in order.)</p>
+                            <%= form.text_area :temp_tracklist, placeholder: "\"<Track title>\", \"<Romanization>\", <Track duration>\n\n" +
+                            "\"いつか\", \"Someday\", 5:46\n" +
+                            "\"空想\", \"Daydream\", 4:27\n" +
+                            "\"サイレントスクリーマー\", \"Silent Screamer\", 5:27\n" +
+                            "\"ライドオンタイム\", \"Ride On Time\", 5:51\n" +
+                            "\"夏の扉\", \"The Door Into Summer\", 4:39\n" +
+                            "\"私のシュガーベイブ\", \"My Sugar Babe\", 4:09\n" +
+                            "\"雨の日\", \"Rainy Day\", 5:16\n" +
+                            "\"雲\", \"Clouds\", 5:37\n" +
+                            "\"キス・グッドナイト\", \"Kissing Goodnight\", 1:34" %>
+                        </div>
+                        <div class="form-field submit-btn">
+                            <p><%= form.label :"Album Cover (jpg or jpeg. Max 500Kb. Preferably under 100Kb.)" %></p>
+                            <%= form.file_field :image %>
+                        </div>
+                    </div>
+                </div>
+                <div id="save-container" class="submit-btn">
+                    <%= form.submit "Submit", id: "save-btn" %>
+                </div>
+            <% end %>
+    	</div>
+	</div>
+	<div id="footer">
+		<ul id="link-list">
+			<li><a href="https://GitHub.com/ivakam/city-album-chart">GitHub</a></li>
+			<li><a href="mailto:ivar.kamsvag@gmail.com">Email</a></li>
+			<li><a href="https://discord.gg/zTdcFxB">City pop Discord server</a></li>
+			<li><a href="https://docs.google.com/spreadsheets/d/1s4-pxu3Ul5D6ynGAw7fQo63910dRBcGClVRX92zTMig/edit?usp=sharing">Submission spreadsheet</a></li>
+			<li><a href="https://i.imgur.com/nTfQAky.png">Album chart</a></li>
+			<li><a href="https://docs.google.com/spreadsheets/d/1UumcUXF3QvJgoQ3j8SsAnPtdbarhFD_wTmguK0RuZbs/edit?usp=sharing">My personal spreadsheet</a></li>
+		</ul>
+		<div id="disclaimers">
+			<p>Site currently hosting </p><p id="album-total-count"></p><p id="total-count-left">albums on Rails 5.2 framework with SQLite database</p>
+			<p>Thanks to the people behind <a href="https://ionicons.com/">ionicons</a> for providing amazing assets for free.</p>
+		</div>
+	</div>
+</div>
