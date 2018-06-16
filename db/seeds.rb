@@ -11429,3 +11429,524 @@ romanization: "Anata ni Dakara",
 duration: "5:31"
 },
 ])
+
+
+# New batch (Yoshimi Iwasaki)
+
+
+CreateAlbumWithTracks({
+title: "Ring-a-Ding",
+romanization: "",
+romaji_artist: "Yoshimi Iwasaki",
+japanese_artist: "岩崎良美",
+year: "1980",
+description: "Yoshimi Iwasaki's debut album.",
+coverlink: "ringading.jpg",
+flavor: "Disco, Idol"
+},
+[{
+title: "恋するローレライ",
+romanization: "Koisuru Lorelei",
+duration: "4:23"
+},
+{
+title: "涼風",
+romanization: "Suzukaze",
+duration: "4:45"
+},
+{
+title: "学生たちの森",
+romanization: "Gakusei-tachi no Mori",
+duration: "4:25"
+},
+{
+title: "夏のたより",
+romanization: "Natsu no Tayori",
+duration: "4:41"
+},
+{
+title: "Ring-a-Ding",
+romanization: "",
+duration: "4:03"
+},
+{
+title: "私の名はアリス",
+romanization: "Watashi no na wa Arisu",
+duration: "3:48"
+},
+{
+title: "赤と黒",
+romanization: "Aka to Kuro",
+duration: "4:31"
+},
+{
+title: "モーニング コール",
+romanization: "Morning Call",
+duration: "4:24"
+},
+{
+title: "赤いアンブレラ",
+romanization: "Akai Umbrella",
+duration: "4:10"
+},
+{
+title: "ウキウキWalkin'",
+romanization: "Ukiuki Walkin'",
+duration: "4:32"
+},
+{
+title: "旅立つ少女",
+romanization: "Tabidatsu Shōjo",
+duration: "3:44"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Saisons",
+romanization: "",
+romaji_artist: "Yoshimi Iwasaki",
+japanese_artist: "岩崎良美",
+year: "1980",
+description: "",
+coverlink: "saisons.jpg",
+flavor: "Disco, Idol"
+},
+[{
+title: "Waiting For You",
+romanization: "",
+duration: "4:50"
+},
+{
+title: "小雨模様",
+romanization: "Ko Amamoyō",
+duration: "3:33"
+},
+{
+title: "クライマックス",
+romanization: "Climax",
+duration: "4:10"
+},
+{
+title: "愛情物語",
+romanization: "Aijō Monogatari",
+duration: "4:10"
+},
+{
+title: "あなた色のマノン",
+romanization: "Anatairo no Manon",
+duration: "3:40"
+},
+{
+title: "ためらい",
+romanization: "Tamerai",
+duration: "3:45"
+},
+{
+title: "揺れて純愛",
+romanization: "Yurete Jun'ai",
+duration: "4:12"
+},
+{
+title: "春一番を待ちわびて",
+romanization: "Haruichiban o Machiwabite",
+duration: "3:33"
+},
+{
+title: "田園交響楽",
+romanization: "Den'enkōkyōgaku",
+duration: "3:21"
+},
+{
+title: "You Love Me, I love You",
+romanization: "",
+duration: "5:00"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Weather Report",
+romanization: "",
+romaji_artist: "Yoshimi Iwasaki",
+japanese_artist: "岩崎良美",
+year: "1981",
+description: "",
+coverlink: "weatherreport.jpg",
+flavor: "Disco, Idol"
+},
+[{
+title: "Good-day Sunshine",
+romanization: "",
+duration: "4:34"
+},
+{
+title: "I Think So",
+romanization: "",
+duration: "3:38"
+},
+{
+title: "L.A. Woman",
+romanization: "",
+duration: "3:16"
+},
+{
+title: "City ポルカ",
+romanization: "City Polka",
+duration: "5:20"
+},
+{
+title: "今夜は私 Rich な気分",
+romanization: "Kon'ya wa Watashi Rich na Kibun",
+duration: "4:47"
+},
+{
+title: "Baby Love",
+romanization: "",
+duration: "3:44"
+},
+{
+title: "四季",
+romanization: "Shiki",
+duration: "4:49"
+},
+{
+title: "東海岸 イーストコースト",
+romanization: "Higashikaigan East Coast",
+duration: "3:31"
+},
+{
+title: "夏をひとりじめ",
+romanization: "Natsu o Hitoriji me",
+duration: "2:41"
+},
+{
+title: "アビ・ルージュの息づかいで",
+romanization: "Avi Rouge no Ikidzukai de",
+duration: "3:55"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Cécile",
+romanization: "",
+romaji_artist: "Yoshimi Iwasaki",
+japanese_artist: "岩崎良美",
+year: "1982",
+description: "",
+coverlink: "cécile.jpg",
+flavor: "Disco, Idol"
+},
+[{
+title: "Vacance",
+romanization: "",
+duration: "3:59"
+},
+{
+title: "愛してモナムール",
+romanization: "Ai Shite Mona Mull",
+duration: "3:23"
+},
+{
+title: "カメリアの花咲く丘",
+romanization: "Camellia no Hanasaku Oka",
+duration: "3:39"
+},
+{
+title: "想い出Rainbow",
+romanization: "Omoide Rainbow",
+duration: "4:59"
+},
+{
+title: "そしてフィナーレ",
+romanization: "Soshite Finale",
+duration: "4:20"
+},
+{
+title: "どきどき旅行",
+romanization: "Dokidoki Ryokō",
+duration: "3:31"
+},
+{
+title: "初めてのミント・カクテル",
+romanization: "Hajimete no Mint Cocktail",
+duration: "3:45"
+},
+{
+title: "雨の停車場",
+romanization: "Ame no Teishaba",
+duration: "2:57"
+},
+{
+title: "私の恋は印象派",
+romanization: "Watashi no Koi wa Inshōha",
+duration: "3:38"
+},
+{
+title: "Telefonade",
+romanization: "",
+duration: "5:44"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Save Me",
+romanization: "",
+romaji_artist: "Yoshimi Iwasaki",
+japanese_artist: "岩崎良美",
+year: "1983",
+description: "",
+coverlink: "saveme.jpg",
+flavor: "Disco, Idol"
+},
+[{
+title: "Save Me…お願い",
+romanization: "Save Me... Onegai",
+duration: "4:10"
+},
+{
+title: "未来愛",
+romanization: "Mirai Ai",
+duration: "3:17"
+},
+{
+title: "おしゃれにKiss Me",
+romanization: "Oshare ni Kiss Me",
+duration: "3:21"
+},
+{
+title: "Stardust",
+romanization: "",
+duration: "4:10"
+},
+{
+title: "ブルーナイト セレナーデ",
+romanization: "Blue Night Serenade",
+duration: "4:25"
+},
+{
+title: "真夜中のファンタジー",
+romanization: "Mayonaka no Fantasy",
+duration: "3:28"
+},
+{
+title: "恋人達の予感",
+romanization: "Koibito-tachi no Yokan",
+duration: "3:30"
+},
+{
+title: "気分はモノクローム",
+romanization: "Kibun wa Monochrome",
+duration: "3:11"
+},
+{
+title: "月の浜辺",
+romanization: "Tsuki no Hamabe",
+duration: "3:20"
+},
+{
+title: "レイン",
+romanization: "Rain",
+duration: "3:36"
+},
+{
+title: "Sugar Days",
+romanization: "",
+duration: "4:16"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "唇に夢の跡",
+romanization: "Kuchibiru ni Yume no Ato",
+romaji_artist: "Yoshimi Iwasaki",
+japanese_artist: "岩崎良美",
+year: "1983",
+description: "",
+coverlink: "唇に夢の跡.jpg",
+flavor: "Disco, Idol"
+},
+[{
+title: "恋ほど素敵なショーはない",
+romanization: "Koi ho to Sutekina Show Wanai",
+duration: "3:35"
+},
+{
+title: "気まぐれな時間",
+romanization: "Ki Makurena Jikan",
+duration: "3:27"
+},
+{
+title: "Who!",
+romanization: "",
+duration: "3:13"
+},
+{
+title: "優しい関係",
+romanization: "Yasashī Kankei",
+duration: "4:03"
+},
+{
+title: "唇に夢の跡",
+romanization: "Kuchibiru ni Yume no Ato",
+duration: "4:17"
+},
+{
+title: "クリスマスまで待てない",
+romanization: "Christmas Mate Matenai",
+duration: "3:37"
+},
+{
+title: "冷たい妖精",
+romanization: "Tsumetai Yōsei",
+duration: "3:03"
+},
+{
+title: "朝陽のプリズム",
+romanization: "Asahi no Prism",
+duration: "3:18"
+},
+{
+title: "まぶしい恋",
+romanization: "Ma fu Shī Koi",
+duration: "3:04"
+},
+{
+title: "時さえ色あせるほどに",
+romanization: "Toki Sae Iroaseru ho to ni",
+duration: "3:37"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Wardrobe",
+romanization: "",
+romaji_artist: "Yoshimi Iwasaki",
+japanese_artist: "岩崎良美",
+year: "1984",
+description: "",
+coverlink: "wardrobe.jpg",
+flavor: "Disco, Idol"
+},
+[{
+title: "くちびるからサスペンス",
+romanization: "Kuchibiru Kara Suspense",
+duration: "4:18"
+},
+{
+title: "What's Love?",
+romanization: "",
+duration: "4:58"
+},
+{
+title: "10月のフォト・メール",
+romanization: "10 Tsuki no foto mail",
+duration: "5:05"
+},
+{
+title: "ヒールとスタジャン",
+romanization: "Heel to Sutajan",
+duration: "3:15"
+},
+{
+title: "Fire",
+romanization: "",
+duration: "3:34"
+},
+{
+title: "Congratulations",
+romanization: "",
+duration: "4:59"
+},
+{
+title: "愛はどこに行ったの Please Answer The Phone",
+romanization: "Ai wa Doko ni Itta no Please Answer The Phone",
+duration: "4:11"
+},
+{
+title: "コーラス・ワーク",
+romanization: "Chorus Work",
+duration: "4:16"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Half Time",
+romanization: "",
+romaji_artist: "Yoshimi Iwasaki",
+japanese_artist: "岩崎良美",
+year: "1985",
+description: "",
+coverlink: "halftime.jpg",
+flavor: "Disco, Idol"
+},
+[{
+title: "タッチ",
+romanization: "Touch",
+duration: "3:12"
+},
+{
+title: "思い出ハーフタイム",
+romanization: "Omoide Half Time",
+duration: "3:20"
+},
+{
+title: "微笑みでさようなら",
+romanization: "Hohoemide Sayōnara",
+duration: "4:05"
+},
+{
+title: "砂に埋めたダイアリー",
+romanization: "Suna ni Umeta Diary",
+duration: "4:00"
+},
+{
+title: "スーパーラジオ1960",
+romanization: "Super Radio 1960",
+duration: "4:37"
+},
+{
+title: "3年目のロードショー",
+romanization: "3-Nen-me no Road Show",
+duration: "3:23"
+},
+{
+title: "センチメンタル逃避行",
+romanization: "Sentimental Tōhikō",
+duration: "4:09"
+},
+{
+title: "君がいなければ",
+romanization: "Kimi ga Inakereba",
+duration: "4:29"
+},
+{
+title: "コメント (Half Time)",
+romanization: "Comment (Half Time)",
+duration: "1:23"
+},
+{
+title: "愛がひとりぼっち",
+romanization: "Aigahitoribotchi",
+duration: "3:58"
+},
+{
+title: "青春",
+romanization: "Seishun",
+duration: "3:49"
+},
+{
+title: "星のシルエット",
+romanization: "Hoshi no Silhouette",
+duration: "4:05"
+},
+{
+title: "風のメッセージ",
+romanization: "",
+duration: "3:16"
+},
+{
+title: "好きになるなら",
+romanization: "",
+duration: "5:05"
+},
+])
+
