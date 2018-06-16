@@ -274,7 +274,7 @@ $(document).on "turbolinks:load", ->
 					if rawInput isnt ""
 						doSearch = (album) ->
 							albumValues = []
-							albumValues.push(val) for val in Object.values(album) when typeof val isnt "number"
+							albumValues.push(val) for val in Object.values(album) when typeof val isnt "number" and typeof val isnt "object"
 							trackValues = []
 							trackValues.push(track.title, track.romanization) for track in tracks when track.album_id == album.id
 							matchValues = albumValues.concat(trackValues)
@@ -327,10 +327,10 @@ $(document).on "turbolinks:load", ->
 		#Helper method for escaping regex input
 	
 		escapeRegExp = (string) ->
-	  		return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
-	
-	  	#Method for sorting albums
-	
+			return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+
+		#Method for sorting albums
+	  	
 		albumSort = (string) ->
 			albumList = $("#splash-container")
 			albumList.empty()

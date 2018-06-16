@@ -28,6 +28,8 @@
     #submit-wrapper #submit-container form {
       width: 55%;
       overflow-x: hidden; }
+      #submit-wrapper #submit-container form #album_image {
+        overflow: visible; }
       #submit-wrapper #submit-container form input, #submit-wrapper #submit-container form textarea {
         background: #171717;
         resize: none;
@@ -73,7 +75,8 @@
           color: #e3e3e3;
           cursor: pointer;
           padding: 5px 0 5px 0;
-          transition: border-bottom 0.2s; }
+          transition: border-bottom 0.2s;
+          overflow: visible; }
         #submit-wrapper #submit-container form .save-container #save-btn:hover {
           border-bottom: 1px #e3e3e3 solid; }
       #submit-wrapper #submit-container form #form-container {

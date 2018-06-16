@@ -234,7 +234,7 @@
                 ref = Object.values(album);
                 for (j = 0, len = ref.length; j < len; j++) {
                   val = ref[j];
-                  if (typeof val !== "number") {
+                  if (typeof val !== "number" && typeof val !== "object") {
                     albumValues.push(val);
                   }
                 }
