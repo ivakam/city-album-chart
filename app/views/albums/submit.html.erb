@@ -94,14 +94,17 @@
                     <br>
                     Finally, all submissions are manually looked over by me. I want this archive to stay high-quality. No amount of code will overcome that, unfortunately. Thanks for your contribution.</p>
         	    </div>
-                <%= form_with scope: :album, html: { multipart: true }, url: albums_path, local: true do |form| %>
+                <%= form_with scope: :album, html: { multipart: true }, url: albums_path, remote: true do |form| %>
                     <div id="form-container">
                         <div id="input-container">
                             <div class="form-divider" id="left-divider">
                                 <i class="hint">Have a scraper output to submit instead? <a class="hint-click">Click here.</a></i>
                                 <div class="form-field">
                                     <p><%= form.label :title %>*</p>
-                                    <%= form.text_field :title, placeholder: "ライドオンタイム" %>
+                                    <%= form.text_field :title, id: "title-field", placeholder: "ライドオンタイム" %>
+                                    <div class="error-msg-container">
+                                        <p class="error-msg">Field must be filled out!</p>
+                                    </div>
                                 </div>
                                 <div class="form-field">
                                     <p><%= form.label :romanization %></p>
@@ -113,7 +116,10 @@
                                 </div>
                                 <div class="form-field">
                                     <p><%= form.label :romaji_artist %>*</p>
-                                    <%= form.text_field :romaji_artist, placeholder: "Tatsuro Yamashita" %>
+                                    <%= form.text_field :romaji_artist, id: "romaji-artist-field", placeholder: "Tatsuro Yamashita" %>
+                                    <div class="error-msg-container">
+                                        <p class="error-msg">Field must be filled out!</p>
+                                    </div>
                                 </div>
                                 <div class="form-field">
                                     <p><%= form.label :year %></p>
@@ -148,20 +154,26 @@
                                     <%= form.file_field :image %>
                                 </div>
                                 <div class="save-container" class="submit-btn">
-                                    <%= form.submit "Submit", id: "save-btn" %>
+                                    <div class="submit-msg-container">
+                                        <p>Submitted!</p>
+                                    </div>
+                                    <%= form.submit "Submit", class: "save-btn" %>
                                 </div>
                             </div>
                         </div>
                         <div class="form-field" id="scraper-input">
                             <i class="hint"><a class="hint-click">Take me back!</a></i>
-                            <p><%= form.label :scraper %> (Paste your output here)</p>
+                            <p><%= form.label :scraper %> (paste your output here)</p>
                             <%= form.text_area :scraper, id: "scraper-textarea", placeholder: "Paste scraper output here." %>
                             <div class="form-field submit-btn">
                                 <p><%= form.label :"Album Cover (jpg or jpeg. Max 500Kb. Preferably under 100Kb.)" %></p>
                                 <%= form.file_field :image %>
                             </div>
                             <div class="save-container" class="submit-btn">
-                                <%= form.submit "Submit", id: "save-btn" %>
+                                <div class="submit-msg-container">
+                                    <p>Submitted!</p>
+                                </div>
+                                <%= form.submit "Submit", class: "save-btn" %>
                             </div>
                         </div>
                     </div>

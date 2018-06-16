@@ -37,7 +37,6 @@
                 background: #171717;
                 resize: none;
                 width: 100%;
-                border: 1px transparent solid;
                 overflow-y: scroll;
                 border: 1px #686868 solid;
             }
@@ -60,6 +59,37 @@
                 border: none;
                 background: none;
                 color: #e3e3e3;
+            }
+            .save-container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+                .submit-msg-container {
+                    height: 0;
+                    margin-bottom: 10px;
+                    transition: height 0.1s;
+                    overflow-y: hidden;
+                    p {
+                        margin: 0;
+                        font-size: 25px;
+                    }
+                }
+                input {
+                    width: 60%;
+                    background: #171717;
+                    border: 1px #414141 solid;
+                    border-radius: 5px;
+                    font-family: "Roboto";
+                    font-size: 25px;
+                    color: #e3e3e3;
+                    cursor: pointer;
+                    padding: 5px 0 5px 0;
+                    transition: border-bottom 0.2s;
+                }
+                #save-btn:hover {
+                    border-bottom: 1px #e3e3e3 solid;
+                }
             }
             #form-container {
                 width: 100%;
@@ -86,34 +116,21 @@
                     }
                     #left-divider {
                         margin-top: 23px;
-                        input {
+                        .form-field {
                             margin-bottom: 15px;
+                        }
+                        .error-msg-container {
+                            height: 0;
+                            transition: height 0.2s;
+                            font-size: 13px;
+                            overflow-y: hidden;
+                            font-style: italic;
                         }
                     }
                     #right-divider {
                         margin-top: 20px;
                         .form-field {
                             margin: 10px 0 30px 0;
-                        }
-                        .save-container {
-                            display: flex;
-                            justify-content: center;
-                            width: 100%;
-                            input {
-                                width: 60%;
-                                background: #171717;
-                                border: 1px #414141 solid;
-                                border-radius: 5px;
-                                font-family: "Roboto";
-                                font-size: 25px;
-                                color: #e3e3e3;
-                                cursor: pointer;
-                                padding: 5px 0 5px 0;
-                                transition: border-bottom 0.2s;
-                            }
-                            #save-btn:hover {
-                                border-bottom: 1px #e3e3e3 solid;
-                            }
                         }
                     }
                 }
@@ -133,30 +150,8 @@
                         color: #e3e3e3;
                         overflow-y: scroll;
                     }
-                    .save-container {
-                        display: flex;
-                        justify-content: center;
-                        width: 100%;
-                        margin: 40px 0 40px 0;
-                        input {
-                            width: 25%;
-                            background: #171717;
-                            border: 1px #414141 solid;
-                            border-radius: 5px;
-                            font-family: "Roboto";
-                            font-size: 25px;
-                            color: #e3e3e3;
-                            cursor: pointer;
-                            padding: 5px 0 5px 0;
-                            transition: border-bottom 0.2s;
-                        }
-                        #save-btn:hover {
-                            border-bottom: 1px #e3e3e3 solid;
-                        }
-                    }
                 }
             }
-            
         }
     }
 }

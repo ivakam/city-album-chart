@@ -14,7 +14,10 @@ class AlbumsController < ApplicationController
 	def create
 		@album = Album.new(params[:album].to_unsafe_hash)
 		if @album.scraper != ""
-			artistStr = @album.image.file.filename
+			artistStr = "noImg"
+			unless @album.image.file == nil
+				artistStr = @album.image.file.filename
+			end
 			File.open("uploads/" + artistStr + "-scraper.txt", "w") do |f|
 				f.write(@album.scraper)
 			end
