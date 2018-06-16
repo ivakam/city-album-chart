@@ -163,12 +163,8 @@
                         </div>
                         <div class="form-field" id="scraper-input">
                             <i class="hint"><a class="hint-click">Take me back!</a></i>
-                            <p><%= form.label :scraper %> (paste your output here)</p>
+                            <p><%= form.label :scraper %> (paste your output here). Images go in a separate folder to me directly (see links in footer).</p>
                             <%= form.text_area :scraper, id: "scraper-textarea", placeholder: "Paste scraper output here." %>
-                            <div class="form-field submit-btn">
-                                <p><%= form.label :"Album Cover (jpg or jpeg. Max 500Kb. Preferably under 100Kb.)" %></p>
-                                <%= form.file_field :image %>
-                            </div>
                             <div class="save-container" class="submit-btn">
                                 <div class="submit-msg-container">
                                     <p>Submitted!</p>
