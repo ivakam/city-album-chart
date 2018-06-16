@@ -5,7 +5,6 @@ class AlbumsController < ApplicationController
 	def index
 		@albums = Album.all
 		@albums.each { | a | a.coverlink = ActionController::Base.helpers.image_url(a.coverlink)}
-		puts @albums.first.coverlink
 		@tracks = Track.all
 		gon.Albums = @albums
 		gon.Tracks = @tracks
@@ -13,7 +12,7 @@ class AlbumsController < ApplicationController
 	def submit
 	end
 	def create
-		@album = Album.create(params[:album].to_unsafe_hash)
+		@album = Album.new(params[:album].to_unsafe_hash)
 		if @album.scraper != ""
 			artistStr = @album.image.file.filename
 			File.open("uploads/" + artistStr + "-scraper.txt", "w") do |f|
