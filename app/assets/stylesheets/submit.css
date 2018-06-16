@@ -1,9 +1,13 @@
-#submit-container {
+#submit-wrapper {
   position: relative;
   width: 100%;
   display: flex;
-  justify-content: center; }
-  #submit-container #submit-opacity {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+  #submit-wrapper h2 {
+    margin: 10px; }
+  #submit-wrapper #submit-opacity {
     position: absolute;
     top: 0;
     left: 0;
@@ -12,65 +16,104 @@
     background: #171717;
     opacity: 0.7;
     z-index: -2; }
-  #submit-container form {
-    display: flex;
-    flex-direction: column;
-    width: 50%; }
-    #submit-container form input, #submit-container form textarea {
-      background: #171717;
-      resize: none;
-      width: 100%;
-      border: 1px transparent solid;
-      overflow-y: scroll;
-      border: 1px #686868 solid; }
-    #submit-container form input[type=text] {
-      font-family: "Roboto";
-      color: #e3e3e3;
-      font-size: 20px;
-      padding: 2px; }
-    #submit-container form input:focus, #submit-container form textarea:focus {
-      border: 1px blue solid; }
-    #submit-container form #input-container {
+  #submit-wrapper #submit-container {
+    display: flex; }
+    #submit-wrapper #submit-container #submit-instructions {
+      width: 45%;
+      padding-left: 20px; }
+      #submit-wrapper #submit-container #submit-instructions h2 {
+        margin: 0; }
+      #submit-wrapper #submit-container #submit-instructions p {
+        font-size: 16px; }
+    #submit-wrapper #submit-container form {
       display: flex;
-      justify-content: space-around;
-      width: 100%; }
-      #submit-container form #input-container .form-divider {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around; }
-        #submit-container form #input-container .form-divider textarea {
-          height: 120px;
-          padding: 5px; }
-        #submit-container form #input-container .form-divider #tracklist-submit textarea {
-          height: 230px; }
-        #submit-container form #input-container .form-divider textarea::placeholder {
-          color: #e3e3e3; }
-        #submit-container form #input-container .form-divider p {
-          margin: 15px 0 5px 0; }
-        #submit-container form #input-container .form-divider .submit-btn input {
-          font-family: "Roboto";
-          font-size: 20px;
-          cursor: pointer;
-          border: none;
-          background: none;
-          color: #e3e3e3; }
-    #submit-container form #save-container {
-      display: flex;
-      justify-content: center;
-      width: 100%;
-      margin: 40px 0 40px 0; }
-      #submit-container form #save-container input {
-        width: 25%;
+      flex-direction: column;
+      width: 55%;
+      overflow-x: hidden; }
+      #submit-wrapper #submit-container form input, #submit-wrapper #submit-container form textarea {
         background: #171717;
-        border: 1px #414141 solid;
-        border-radius: 5px;
+        resize: none;
+        width: 100%;
+        border: 1px transparent solid;
+        overflow-y: scroll;
+        border: 1px #686868 solid; }
+      #submit-wrapper #submit-container form input[type=text] {
         font-family: "Roboto";
-        font-size: 25px;
         color: #e3e3e3;
+        font-size: 20px;
+        padding: 2px; }
+      #submit-wrapper #submit-container form textarea::placeholder {
+        color: #e3e3e3; }
+      #submit-wrapper #submit-container form input:focus, #submit-wrapper #submit-container form textarea:focus {
+        border: 1px blue solid; }
+      #submit-wrapper #submit-container form .submit-btn input {
+        font-family: "Roboto";
+        font-size: 20px;
         cursor: pointer;
-        padding: 5px 0 5px 0;
-        transition: border-bottom 0.2s; }
-      #submit-container form #save-container #save-btn:hover {
-        border-bottom: 1px #e3e3e3 solid; }
+        border: none;
+        background: none;
+        color: #e3e3e3; }
+      #submit-wrapper #submit-container form #form-container {
+        width: 100%;
+        display: flex; }
+        #submit-wrapper #submit-container form #form-container #input-container {
+          display: flex;
+          justify-content: space-around;
+          min-width: 100%;
+          transition: margin 0.3s; }
+          #submit-wrapper #submit-container form #form-container #input-container .form-divider {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around; }
+            #submit-wrapper #submit-container form #form-container #input-container .form-divider textarea {
+              height: 120px;
+              padding: 5px;
+              color: #e3e3e3; }
+            #submit-wrapper #submit-container form #form-container #input-container .form-divider #tracklist-submit textarea {
+              height: 230px; }
+            #submit-wrapper #submit-container form #form-container #input-container .form-divider p {
+              margin: 15px 0 5px 0; }
+        #submit-wrapper #submit-container form #form-container #scraper-input {
+          min-width: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: center; }
+          #submit-wrapper #submit-container form #form-container #scraper-input .hint {
+            align-self: flex-start;
+            padding: 23px 0 0 25px; }
+          #submit-wrapper #submit-container form #form-container #scraper-input #scraper-textarea {
+            width: 60%;
+            height: 700px;
+            padding: 5px;
+            color: #e3e3e3;
+            overflow-y: scroll; }
+      #submit-wrapper #submit-container form #save-container {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        margin: 40px 0 40px 0; }
+        #submit-wrapper #submit-container form #save-container input {
+          width: 25%;
+          background: #171717;
+          border: 1px #414141 solid;
+          border-radius: 5px;
+          font-family: "Roboto";
+          font-size: 25px;
+          color: #e3e3e3;
+          cursor: pointer;
+          padding: 5px 0 5px 0;
+          transition: border-bottom 0.2s; }
+        #submit-wrapper #submit-container form #save-container #save-btn:hover {
+          border-bottom: 1px #e3e3e3 solid; }
+
+.hint {
+  font-size: 12px;
+  margin: 0; }
+  .hint .hint-click {
+    cursor: pointer;
+    text-decoration: underline; }
+
+.left-margin {
+  margin-left: -100%; }
 
 /*# sourceMappingURL=submit.css.map */
