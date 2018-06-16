@@ -11950,3 +11950,63 @@ duration: "5:05"
 },
 ])
 
+
+# Nirvana
+
+
+CreateAlbumWithTracks({
+title: 'Nirvana',
+romanization: '',
+romaji_artist: 'Mioko Yamaguchi',
+japanese_artist: '山口美央子',
+year: '1981',
+description: 'The 1981 follow-up to Mioko Yamaguchi\'s  \'Yume Hiko.\'',
+coverlink: 'Nirvana.jpg',
+flavor: 'Techno Kayo, Electronic'},
+[
+{
+title: "いつも宝物",
+romanization: "Itsumo Takaramono",
+duration: "4:23"
+},
+{
+title: "コードCの気分",
+romanization: "Chord C no Kibun",
+duration: "4:35"
+},
+{
+title: "チャンキー・ツアー",
+romanization: "Chunky Tour",
+duration: "3:13"
+},
+{
+title: "Lonely Dreamer",
+romanization: "",
+duration: "4:27"
+},
+{
+title: "可愛い女と呼ばないで",
+romanization: "Kawaii Onna to Yobanai de",
+duration: "3:03"
+},
+{
+title: "Nirvana",
+romanization: "",
+duration: "4:36"
+},
+{
+title: "Telephone Game",
+romanization: "",
+duration: "3:41"
+},
+{
+title: "風に抱かれて",
+romanization: "Kaze ni Idakarete",
+duration: "3:43"
+},
+{
+title: "秋波",
+romanization: "Shuuha",
+duration: "5:34"
+},
+])

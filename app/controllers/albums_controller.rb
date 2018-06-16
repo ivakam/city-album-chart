@@ -30,13 +30,13 @@ class AlbumsController < ApplicationController
 					trackString << "{\n" +
 					"title: " + matchArr[0] + "\",\n" +
 					"romanization: " + matchArr[1] + "\",\n" + 
-					"duration: " + matchArr[2] + "\n" +
+					"duration: \"" + matchArr[2] + "\"\n" +
 					"},\n"
 				end
 				if matchArr.length == 2
 					trackString << "{\n" +
 					"title: " + matchArr[0] + "\",\n" + 
-					"duration: " + matchArr[1] + "\n" + 
+					"duration: \"" + matchArr[1] + "\"\n" + 
 					"},\n"
 				end
 				if matchArr.length == 1
@@ -45,6 +45,7 @@ class AlbumsController < ApplicationController
 					"},\n"
 				end
 			end
+			trackString << "\n])"
 			albumString = 
 				"CreateAlbumWithTracks({\n" +
 				"title: \'" + @album.title + "\',\n" +

@@ -4,7 +4,7 @@ romanization: '',
 romaji_artist: 'Mioko Yamaguchi',
 japanese_artist: '山口美央子',
 year: '1981',
-description: 'The 1981 follow-up to Mioko Yamaguchi's 'Yume Hiko.'',
+description: 'The 1981 follow-up to Mioko Yamaguchi's  \'Yume Hiko.\'',
 coverlink: 'Nirvana.jpg',
 flavor: 'Techno Kayo, Electronic'},
 [
