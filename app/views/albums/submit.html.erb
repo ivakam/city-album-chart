@@ -84,7 +84,7 @@
                     <br>
                     <br>
                     If you have a large library of files that you want to submit all at once, 
-                    there is a scraper tool developed exactly for this purpose. It <a class="link" href="goo.gl/5nLzQx">can be found here.</a>
+                    there is a scraper tool developed exactly for this purpose. <a class="link" href="http://goo.gl/5nLzQx">It can be found here.</a>
                     The scraper will output a .vms file that can be opened in any text editor (preferably a sophisticated one like N++, or even better, 
                     Sublime). This file will contain an easily readable list of your albums and the belonging tracks. (note: the program will 
                     first ask for the location of your files, and then for the desired output location and name. The windows look similar. It's 
@@ -97,7 +97,7 @@
                 <%= form_with scope: :album, html: { multipart: true }, url: albums_path, local: true do |form| %>
                     <div id="form-container">
                         <div id="input-container">
-                            <div class="form-divider">
+                            <div class="form-divider" id="left-divider">
                                 <i class="hint">Have a scraper output to submit instead? <a class="hint-click">Click here.</a></i>
                                 <div class="form-field">
                                     <p><%= form.label :title %>*</p>
@@ -125,7 +125,7 @@
                                 </div>
                                 <i>*Required Fields.</i>
                             </div>
-                            <div class="form-divider">
+                            <div class="form-divider" id="right-divider">
                                 <div class="form-field">
                                     <p><%= form.label :description %> (Not a review)</p>
                                     <%= form.text_area :description, placeholder: "Ride on Time is the fifth studio album by Japanese singer-songwriter Tatsuro Yamashita, released in September 1980.\n\nRide on Time has been most well known by its title track. It was used on the television commercial for Maxell's audio cassette starring Yamashita, and released as a single in May 1980." %>
@@ -147,6 +147,9 @@
                                     <p><%= form.label :"Album Cover (jpg or jpeg. Max 500Kb. Preferably under 100Kb.)" %></p>
                                     <%= form.file_field :image %>
                                 </div>
+                                <div class="save-container" class="submit-btn">
+                                    <%= form.submit "Submit", id: "save-btn" %>
+                                </div>
                             </div>
                         </div>
                         <div class="form-field" id="scraper-input">
@@ -157,10 +160,10 @@
                                 <p><%= form.label :"Album Cover (jpg or jpeg. Max 500Kb. Preferably under 100Kb.)" %></p>
                                 <%= form.file_field :image %>
                             </div>
+                            <div class="save-container" class="submit-btn">
+                                <%= form.submit "Submit", id: "save-btn" %>
+                            </div>
                         </div>
-                    </div>
-                    <div id="save-container" class="submit-btn">
-                        <%= form.submit "Submit", id: "save-btn" %>
                     </div>
                 <% end %>
             </div>
