@@ -84,6 +84,8 @@ GEM
     execjs (2.7.0)
     ffi (1.9.25)
     ffi (1.9.25-x64-mingw32)
+    font-ionicons-rails (2.0.1.5)
+      railties (>= 3.2, < 6.0)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     gon (6.2.0)
@@ -222,6 +224,7 @@ DEPENDENCIES
   coffee-script!
   coffee-script-source (~> 1.12.2)
   duktape
+  font-ionicons-rails
   gon
   jbuilder (~> 2.5)
   jquery-rails
