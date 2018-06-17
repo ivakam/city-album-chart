@@ -7,7 +7,6 @@ $(document).on "turbolinks:load", ->
         $(".save-btn").click ->
             $("#title-field, #romaji-artist-field").each ->
                 if $(this).val() == "" && $("#scraper-textarea").val() == ""
-                    console.log("error")
                     $(this).next(".error-msg-container").css("height", "30px")
                     $(this).css("border", "1px red solid")
                     $("#scraper-textarea").css("border", "1px red solid")

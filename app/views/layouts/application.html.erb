@@ -4,7 +4,8 @@
     <title><%= @title %> - varieti.es</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css?family=Poppins|Roboto" rel="stylesheet"> 
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= favicon_link_tag %>
     <%= include_gon %>
@@ -12,5 +13,6 @@
 
   <body class="<%= controller_name %> <%= action_name %>">
     <%= yield %>
+    <script src="https://unpkg.com/ionicons@4.2.0/dist/ionicons.js"></script>
   </body>
 </html>
