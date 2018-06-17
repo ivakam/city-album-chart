@@ -36,6 +36,7 @@ gem 'rack'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'font-ionicons-rails'
+gem 'meta-tags'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
