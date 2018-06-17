@@ -12010,3 +12010,984 @@ romanization: "Shuuha",
 duration: "5:34"
 },
 ])
+
+
+# Yuming
+
+
+CreateAlbumWithTracks({
+title: "Hikou-ki Gumo",
+romanization: "",
+romaji_artist: "松任谷 由実 (Yumi Matsutoya)",
+japanese_artist: "",
+year: "1973",
+description: "Yumi Matsutoya's debut under her birthname 'Yumi Arai'",
+coverlink: "hikoukigumo.jpg",
+flavor: "Folk, Rock"
+},
+[{
+title: "ひこうき雲",
+romanization: "Hikōkigumo",
+duration: "3:24"
+},
+{
+title: "曇り空",
+romanization: "Kumorizora",
+duration: "3:00"
+},
+{
+title: "恋のスーパーパラシューター",
+romanization: "Koi no Super Parachute",
+duration: "2:53"
+},
+{
+title: "空と海の輝きに向けて",
+romanization: "Sora to Uminokagayaki ni Mukete",
+duration: "4:15"
+},
+{
+title: "きっと言える",
+romanization: "Kittoieru",
+duration: "2:54"
+},
+{
+title: "ベルベット・イースター",
+romanization: "Velvet Easter",
+duration: "3:44"
+},
+{
+title: "紙ヒコーキ",
+romanization: "Kami Kikōki",
+duration: "2:44"
+},
+{
+title: "雨の街を",
+romanization: "Ame no Machi o",
+duration: "4:18"
+},
+{
+title: "返事はいらない",
+romanization: "Henjihairanai",
+duration: "2:52"
+},
+{
+title: "そのまま",
+romanization: "Sonomama",
+duration: "3:16"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Cobalt Hour",
+romanization: "",
+romaji_artist: "松任谷 由実 (Yumi Matsutoya)",
+japanese_artist: "",
+year: "1975",
+description: "",
+coverlink: "cobalthour.jpg",
+flavor: "Folk, Rock"
+},
+[{
+title: "Cobalt Hour",
+romanization: "",
+duration: "3:33"
+},
+{
+title: "卒業写真",
+romanization: "Sotsugyō Shashin",
+duration: "4:11"
+},
+{
+title: "花紀行",
+romanization: "Hana Kikō",
+duration: "2:48"
+},
+{
+title: "何もきかないで",
+romanization: "Nani mo Kikanaide",
+duration: "3:11"
+},
+{
+title: "ルージュの伝言",
+romanization: "Rougue\'s no Dengon",
+duration: "3:03"
+},
+{
+title: "航海日誌",
+romanization: "Kōkai Nisshi",
+duration: "4:48"
+},
+{
+title: "Chinese Soup",
+romanization: "",
+duration: "3:22"
+},
+{
+title: "少しだけ片想い",
+romanization: "Sukoshidake Kataomoi",
+duration: "3:17"
+},
+{
+title: "雨のステイション",
+romanization: "Ame no Station",
+duration: "5:13"
+},
+{
+title: "アフリカへ行きたい",
+romanization: "Africa e Ikitai",
+duration: "3:10"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "14番目の月",
+romanization: "14-Banme no Tsuki",
+romaji_artist: "松任谷 由実 (Yumi Matsutoya)",
+japanese_artist: "",
+year: "1976",
+description: "",
+coverlink: "14番目の月.jpg",
+flavor: "Folk, Rock"
+},
+[{
+title: "さざ波",
+romanization: "Sazanami",
+duration: "4:37"
+},
+{
+title: "14番目の月",
+romanization: "14-Banme no Tsuki",
+duration: "3:27"
+},
+{
+title: "さみしさのゆくえ",
+romanization: "Samishi-sa no Yukue",
+duration: "5:24"
+},
+{
+title: "朝陽の中で微笑んで",
+romanization: "Asahinonakadehohoende",
+duration: "5:23"
+},
+{
+title: "中央フリーウェイ",
+romanization: "Chūō Freeway",
+duration: "3:44"
+},
+{
+title: "何もなかったように",
+romanization: "Nani mo Nakatta yō ni",
+duration: "5:07"
+},
+{
+title: "天気雨",
+romanization: "Tenki Ame",
+duration: "3:06"
+},
+{
+title: "避暑地の出来事",
+romanization: "Hishochinodekigoto",
+duration: "2:40"
+},
+{
+title: "Good luck and Good bye",
+romanization: "",
+duration: "3:45"
+},
+{
+title: "晩夏(ひとりの季節)",
+romanization: "Banka (Hitori no Kisetsu)",
+duration: "3:17"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "紅雀",
+romanization: "Benisuzume",
+romaji_artist: "松任谷 由実 (Yumi Matsutoya)",
+japanese_artist: "",
+year: "1978",
+description: "",
+coverlink: "紅雀.jpg",
+flavor: "Folk, Latin"
+},
+[{
+title: "9月には帰らない",
+romanization: "9 Tsuki ni wa Kaeranai",
+duration: "4:54"
+},
+{
+title: " ハルジョオン・ヒメジョオン",
+romanization: "Halongjon · Himejoon",
+duration: "3:57"
+},
+{
+title: "私なしでも",
+romanization: "Watashi Nashi Demo",
+duration: "3:16"
+},
+{
+title: "地中海の感傷",
+romanization: "Chichūkai no Kanshō",
+duration: "3:51"
+},
+{
+title: "紅雀",
+romanization: "Benisuzume",
+duration: "3:32"
+},
+{
+title: "罪と罰",
+romanization: "Tsumitobachi",
+duration: "4:26"
+},
+{
+title: "出さない手紙",
+romanization: "Dasanai Tegami",
+duration: "4:12"
+},
+{
+title: "白い朝まで",
+romanization: "Shiroi Asamade",
+duration: "3:17"
+},
+{
+title: "Laundry Gateの想い出",
+romanization: "Laundry Gate no Omoide",
+duration: "5:30"
+},
+{
+title: "残されたもの",
+romanization: "Nokosa Reta Mono",
+duration: "3:35"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "流線形'80",
+romanization: "Ryūsenkei' 80",
+romaji_artist: "松任谷 由実 (Yumi Matsutoya)",
+japanese_artist: "",
+year: "1978",
+description: "",
+coverlink: "流線形80.jpg",
+flavor: "Rock, Soul"
+},
+[{
+title: "ロッヂで待つクリスマス",
+romanization: "Lodge de Matsu Christmas",
+duration: "4:05"
+},
+{
+title: "埠頭を渡る風",
+romanization: "Futōwowatarukaze",
+duration: "4:39"
+},
+{
+title: "真冬のサーファー",
+romanization: "Mafuyu no Surfer",
+duration: "3:42"
+},
+{
+title: "静かなまぼろし",
+romanization: "Shizukanamaboroshi",
+duration: "3:45"
+},
+{
+title: "魔法のくすり",
+romanization: "Mahō no Kusuri",
+duration: "3:58"
+},
+{
+title: "キャサリン",
+romanization: "Catherine",
+duration: "4:23"
+},
+{
+title: "Corvett1954",
+romanization: "",
+duration: "3:57"
+},
+{
+title: "入江の午後３時",
+romanization: "Irie no Gogo 3-ji",
+duration: "3:50"
+},
+{
+title: "かんらん車",
+romanization: "Kan ran-sha",
+duration: "5:45"
+},
+{
+title: "12階のこいびと",
+romanization: "12-Kai no Koi Bito",
+duration: "4:44"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "悲しいほどお天気",
+romanization: "Kanashīhodōtenki",
+romaji_artist: "松任谷 由実 (Yumi Matsutoya)",
+japanese_artist: "",
+year: "1979",
+description: "",
+coverlink: "悲しいほどお天気.jpg",
+flavor: "Soul"
+},
+[{
+title: "ジャコビニ彗星の日",
+romanization: "Jakobini Suisei no Hi",
+duration: "4:01"
+},
+{
+title: "影になって",
+romanization: "Kage ni Natte",
+duration: "5:31"
+},
+{
+title: "緑の町に舞い降りて",
+romanization: "Midori no Machi ni Maiorite",
+duration: "4:40"
+},
+{
+title: "Destiny",
+romanization: "",
+duration: "4:39"
+},
+{
+title: "丘の上の光",
+romanization: "Oka no Ue no Hikari",
+duration: "6:05"
+},
+{
+title: "悲しいほどお天気",
+romanization: "Kanashīhodōtenki",
+duration: "4:52"
+},
+{
+title: "気ままな朝帰り",
+romanization: "Kimamana asagaeri",
+duration: "3:19"
+},
+{
+title: "水平線にグレナディン",
+romanization: "Suihei-sen ni Gurenadin",
+duration: "4:34"
+},
+{
+title: "さまよいの果て波は寄せる",
+romanization: "Samayoi no Hate-ha wa Yoseru",
+duration: "6:26"
+},
+]
+)
+CreateAlbumWithTracks({
+title: " 時のないホテル",
+romanization: "Kanashīhodōtenki",
+romaji_artist: "松任谷 由実 (Yumi Matsutoya)",
+japanese_artist: "",
+year: "1980",
+description: "",
+coverlink: "時のないホテル.jpg",
+flavor: "Rock, Ballad"
+},
+[{
+title: "セシルの週末",
+romanization: "Seshiru no shūmatsu",
+duration: "5:23"
+},
+{
+title: "時のないホテル",
+romanization: "Tokinonaihoteru",
+duration: "4:11"
+},
+{
+title: "Miss Lonely",
+romanization: "",
+duration: "4:24"
+},
+{
+title: "雨に消えたジョガー",
+romanization: "Ame ni Kieta Jogger",
+duration: "4:57"
+},
+{
+title: "ためらい",
+romanization: "Tamerai",
+duration: "3:42"
+},
+{
+title: "よそゆき顔で",
+romanization: "Yoso Yuki Kao de",
+duration: "4:26"
+},
+{
+title: "5cmの向う岸",
+romanization: "5 cm no Mukōgishi",
+duration: "6:19"
+},
+{
+title: "コンパートメント",
+romanization: "Compartment",
+duration: "7:14"
+},
+{
+title: "水の影",
+romanization: "Mizu no Kage",
+duration: "4:01"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Pearl Pierce",
+romanization: "",
+romaji_artist: "松任谷 由実 (Yumi Matsutoya)",
+japanese_artist: "",
+year: "1982",
+description: "",
+coverlink: "pearlpierce.jpg",
+flavor: "Soul"
+},
+[{
+title: "ようこそ輝く時間へ",
+romanization: "Yōkoso Kagayaku Jikan e",
+duration: "4:39"
+},
+{
+title: "真珠のピアス",
+romanization: "Shinju no Piasu",
+duration: "5:41"
+},
+{
+title: "ランチタイムが終わる頃",
+romanization: "Lunchtime ga Owaru Koro",
+duration: "3:59"
+},
+{
+title: "フォーカス",
+romanization: "Focus",
+duration: "5:13"
+},
+{
+title: "夕涼み",
+romanization: "Yūsuzumi",
+duration: "4:27"
+},
+{
+title: "私のロンサム・タウン",
+romanization: "Watashi no Romance Town",
+duration: "4:06"
+},
+{
+title: "Dang Dang",
+romanization: "",
+duration: "5:28"
+},
+{
+title: "昔の彼に会うのなら",
+romanization: "Mukashi no Kare ni Au Nonara",
+duration: "3:39"
+},
+{
+title: "消息",
+romanization: "Shōsoku",
+duration: "4:23"
+},
+{
+title: "忘れないでね",
+romanization: "Wasurenaidene",
+duration: "4:17"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Reincarnation",
+romanization: "",
+romaji_artist: "松任谷 由実 (Yumi Matsutoya)",
+japanese_artist: "",
+year: "1983",
+description: "",
+coverlink: "reincarnation.jpg",
+flavor: "Funk, Rock"
+},
+[{
+title: "Reincarnation",
+romanization: "",
+duration: "5:41"
+},
+{
+title: "オールマイティー",
+romanization: "Allmighty",
+duration: "4:23"
+},
+{
+title: "Night Walker",
+romanization: "",
+duration: "5:04"
+},
+{
+title: "星空の誘惑",
+romanization: "Hoshizora no Yūwaku",
+duration: "4:48"
+},
+{
+title: "川景色",
+romanization: "Kawa Keshiki",
+duration: "3:33"
+},
+{
+title: "Esper",
+romanization: "",
+duration: "4:11"
+},
+{
+title: "心のまま",
+romanization: "Kokoro no Mama",
+duration: "4:43"
+},
+{
+title: "ずっとそばに",
+romanization: "Zutto Soba ni",
+duration: "4:25"
+},
+{
+title: "ハートはもうつぶやかない",
+romanization: "Hāto wa mō Tsubuyakanai",
+duration: "4:57"
+},
+{
+title: "経る時",
+romanization: "Heru Toki",
+duration: "4:15"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Voyager",
+romanization: "",
+romaji_artist: "松任谷 由実 (Yumi Matsutoya)",
+japanese_artist: "",
+year: "1983",
+description: "",
+coverlink: "voyager.jpg",
+flavor: "Funk"
+},
+[{
+title: "ガールフレンズ",
+romanization: "Girlfriends",
+duration: "4:00"
+},
+{
+title: "結婚ルーレット",
+romanization: "Kekkon Roulette",
+duration: "4:18"
+},
+{
+title: "ダンデライオン ?遅咲きのたんぽぽ",
+romanization: "Dandelion? Osozaki no Tanpopo",
+duration: "4:21"
+},
+{
+title: "青い船で",
+romanization: "Aoi Fune de",
+duration: "4:26"
+},
+{
+title: "不思議な体験",
+romanization: "Fushigina Taiken",
+duration: "5:25"
+},
+{
+title: "ハートブレイク",
+romanization: "Heartbreak",
+duration: "4:06"
+},
+{
+title: "Typhoon",
+romanization: "",
+duration: "4:49"
+},
+{
+title: "Tropic of Capricorn",
+romanization: "",
+duration: "4:35"
+},
+{
+title: "私を忘れる頃",
+romanization: "Watashi o Wasureru Koro",
+duration: "4:57"
+},
+{
+title: "時をかける少女",
+romanization: "Tokiwokakerushōjo",
+duration: "3:39"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "No Side",
+romanization: "",
+romaji_artist: "松任谷 由実 (Yumi Matsutoya)",
+japanese_artist: "",
+year: "1984",
+description: "",
+coverlink: "noside.jpg",
+flavor: "Funk, Ballad"
+},
+[{
+title: "Salaam Mousson Salaam Afrique",
+romanization: "",
+duration: "5:35"
+},
+{
+title: "ノーサイド",
+romanization: "Northside",
+duration: "4:45"
+},
+{
+title: "Downtown Boy",
+romanization: "",
+duration: "4:03"
+},
+{
+title: "Blizzard",
+romanization: "",
+duration: "4:34"
+},
+{
+title: "一緒に暮らそう",
+romanization: "Isshonikurasō",
+duration: "3:29"
+},
+{
+title: "破れた恋の繕(なお)し方教えます",
+romanization: "Yabureta Koi no zen (Nao) Shi-kata Oshiemasu",
+duration: "4:39"
+},
+{
+title: "午前4時の電話",
+romanization: "Gozen 4-ji no Denwa",
+duration: "4:08"
+},
+{
+title: "木枯らしのダイアリー",
+romanization: "Kogarashi no Diary",
+duration: "5:06"
+},
+{
+title: "Shangrilaをめざせ",
+romanization: "Shangrila o Mezase",
+duration: "4:23"
+},
+{
+title: "ノーサイド・夏~空耳のホイッスル",
+romanization: "Northside Natsu ~ Soramimi no Hoissuru",
+duration: "4:19"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "DA・DI・DA",
+romanization: "",
+romaji_artist: "松任谷 由実 (Yumi Matsutoya)",
+japanese_artist: "",
+year: "1985",
+description: "",
+coverlink: "dadida.jpg",
+flavor: "Funk"
+},
+[{
+title: "もう愛は始まらない",
+romanization: "Mō Ai wa Hajimaranai",
+duration: "4:46"
+},
+{
+title: "2人のストリート",
+romanization: "2-Ri no Street",
+duration: "4:46"
+},
+{
+title: "Babylon",
+romanization: "",
+duration: "4:20"
+},
+{
+title: "Sugar Townはさよならの町",
+romanization: "Sugar Town wa Sayonara no Machi",
+duration: "5:33"
+},
+{
+title: "メトロポリスの片隅で",
+romanization: "Metropolis no Katasumi de",
+duration: "4:16"
+},
+{
+title: "月夜のロケット花火",
+romanization: "Tsukiyo no Rocket Hanabi",
+duration: "4:48"
+},
+{
+title: "シンデレラ・エクスプレス",
+romanization: "Cinderella Express",
+duration: "3:47"
+},
+{
+title: "青春のリグレット",
+romanization: "Seishun no Regret",
+duration: "3:55"
+},
+{
+title: "たとえあなたが去って行っても",
+romanization: "Tatoe Anata ga Satte Itte mo",
+duration: "3:48"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Alarm à la Mode",
+romanization: "",
+romaji_artist: "松任谷 由実 (Yumi Matsutoya)",
+japanese_artist: "",
+year: "1986",
+description: "",
+coverlink: "alarmàlamode.jpg",
+flavor: "Funk, Ballad"
+},
+[{
+title: "Holiday in Acapulco",
+romanization: "",
+duration: "4:33"
+},
+{
+title: "ジェラシーと云う名の悪夢",
+romanization: "Jealousy to Iu na no Akumu",
+duration: "4:30"
+},
+{
+title: "パジャマにレインコート",
+romanization: "Pajamas ni Raincoat",
+duration: "4:23"
+},
+{
+title: "白い服、白い靴",
+romanization: "Shiroi Fuku, Shiroi Kutsu",
+duration: "3:46"
+},
+{
+title: "土曜日は大キライ",
+romanization: "Doyōbi wa Dai Kirai",
+duration: "3:22"
+},
+{
+title: "ホライズンを追いかけて~L’aventure au desert",
+romanization: "Horizon o Oikakete ~ L’aventure au Desert",
+duration: "4:02"
+},
+{
+title: "Autumn Park",
+romanization: "",
+duration: "5:00"
+},
+{
+title: "20 minutes",
+romanization: "",
+duration: "3:27"
+},
+{
+title: "3-Dのクリスマスカード",
+romanization: "3-D no Christmas Card",
+duration: "3:32"
+},
+{
+title: "さよならハリケーン",
+romanization: "Sayonara Hurricane",
+duration: "4:28"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "ダイアモンドダストが消えぬまに",
+romanization: "Diamond Dust Gakienumani",
+romaji_artist: "松任谷 由実 (Yumi Matsutoya)",
+japanese_artist: "",
+year: "1987",
+description: "",
+coverlink: "ダイアモンドダストが消えぬまに.jpg",
+flavor: "Funk, Ballad"
+},
+[{
+title: "月曜日のロボット",
+romanization: "Getsuyōbi no Robot",
+duration: "4:31"
+},
+{
+title: "Diamond Dust Gakienumani",
+romanization: "",
+duration: "4:38"
+},
+{
+title: "思い出に間にあいたくて",
+romanization: "Omoide ni Maniaitakute",
+duration: "4:04"
+},
+{
+title: "Sweet Dream",
+romanization: "",
+duration: "4:03"
+},
+{
+title: "Tuxedo Rain",
+romanization: "",
+duration: "4:32"
+},
+{
+title: "Saturday Night Zombies",
+romanization: "",
+duration: "4:15"
+},
+{
+title: "続 ガールフレンズ",
+romanization: "Zoku Girlfriends",
+duration: "3:54"
+},
+{
+title: "ダイアモンドの街角",
+romanization: "Daiamondo no Machikado",
+duration: "4:38"
+},
+{
+title: "Late Summer Lake",
+romanization: "",
+duration: "4:22"
+},
+{
+title: "霧雨で見えない",
+romanization: "Kirisame de Mienai",
+duration: "5:02"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Delight Slight Light Kiss",
+romanization: "",
+romaji_artist: "松任谷 由実 (Yumi Matsutoya)",
+japanese_artist: "",
+year: "1988",
+description: "",
+coverlink: "delightslightlightkiss.jpg",
+flavor: "Funk"
+},
+[{
+title: "リフレインが叫んでる",
+romanization: "Refrain ga Sakenderu",
+duration: "4:22"
+},
+{
+title: "Nobody Else",
+romanization: "",
+duration: "3:20"
+},
+{
+title: "ふってあげる",
+romanization: "Futte Ageru",
+duration: "4:55"
+},
+{
+title: "誕生日おめでとう",
+romanization: "Tanjōbi Omedetō",
+duration: "4:59"
+},
+{
+title: "Home Townへようこそ",
+romanization: "Hōmutaun e Yōkoso",
+duration: "3:50"
+},
+{
+title: "とこしえにGood Night(夜明けの色)",
+romanization: "Tokoshie ni Good Night (Yoake no Iro)",
+duration: "3:45"
+},
+{
+title: "恋はNo-return",
+romanization: "Koi wa No Return",
+duration: "3:33"
+},
+{
+title: "幸せはあなたへの復讐",
+romanization: "Shiawase wa Anata e no Fukushū",
+duration: "4:19"
+},
+{
+title: "吹雪の中を",
+romanization: "Fubuki no Naka o",
+duration: "4:13"
+},
+{
+title: "September Blue Moon",
+romanization: "",
+duration: "4:22"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "天国のドア",
+romanization: "Tengokunodoa",
+romaji_artist: "松任谷 由実 (Yumi Matsutoya)",
+japanese_artist: "",
+year: "1990",
+description: "",
+coverlink: "天国のドア.jpg",
+flavor: "Funk"
+},
+[{
+title: "ミス・ブロードキャスト",
+romanization: "Miss Broadcast",
+duration: "4:53"
+},
+{
+title: "時はかげろう",
+romanization: "Toki wa Kagerō",
+duration: "4:57"
+},
+{
+title: "A(エース)はここにある",
+romanization: "A (Ace) wa Koko ni Aru",
+duration: "4:28"
+},
+{
+title: "満月のフォーチュン",
+romanization: "Mangetsu no Fortune",
+duration: "4:42"
+},
+{
+title: "グローリー・バードランド",
+romanization: "Glory Birdland",
+duration: "4:50"
+},
+{
+title: "ホタルと流れ星",
+romanization: "Hotarutonagareboshi",
+duration: "4:12"
+},
+{
+title: "マン・イン・ザ・ムーン",
+romanization: "Man in the Moon",
+duration: "4:31"
+},
+{
+title: "残暑",
+romanization: "Zansho",
+duration: "4:14"
+},
+{
+title: "天国のドア",
+romanization: "Tengokunodoa",
+duration: "3:58"
+},
+{
+title: "セイヴ・アワ・シップ",
+romanization: "Save Our Ship",
+duration: "6:24"
+},
+])
