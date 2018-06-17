@@ -41,7 +41,7 @@ body {
 #albums-bg-container {
 	display: flex;
 	width: 100%;
-	height: 110vh;
+	height: 100vh;
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -50,9 +50,11 @@ body {
 	img {
 		position: fixed;
 		top: 0;
-		left: 0;
-		width: 2000px;
-		margin-top: -20%;
+		left: -8vw;
+		min-width: 120vmax;
+		margin-top: -20vmax;
+		opacity: 0;
+		transition: opacity 2s;
 		filter: blur(10px);
 	}
 	img:after {
