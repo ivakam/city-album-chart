@@ -14,39 +14,43 @@
 	</div>
 	<div id="search-title">
 		<div id="logo-title">
-  		<a href="/albums/index"><h1>varieti.es</h1></a>
-  		<a href="/albums/index" id="beta-title">BETA!</a>
-  		<h2>City Pop Album Archive</h2>
-  	</div>
-  	<div id="input">
-  		<img alt="" id="regex" class="gray" src="https://upload.wikimedia.org/wikipedia/commons/6/63/OOjs_UI_icon_regular-expression-progressive.svg">
-  		<input type="text" id="main-search" name="search" placeholder=" Search for an artist, album, flavor..."><span class="ion-android-search"></span>
-  	</div>
+			<a href="/albums/index"><h1>varieti.es</h1></a>
+			<a href="/albums/index" id="beta-title">BETA!</a>
+			<h2>City Pop Album Archive</h2>
+		</div>
+		<div id="input">
+			<img alt="" id="regex" class="gray" src="https://upload.wikimedia.org/wikipedia/commons/6/63/OOjs_UI_icon_regular-expression-progressive.svg">
+			<input type="text" id="main-search" name="search" placeholder=" Search for an artist, album, flavor..."><span class="ion-android-search"></span>
+			</div>
 	</div>
   <div id="main-container">
     <nav id="sidebar">
-      <ul class="nav-list">
-        <li class="nav-btn"><div class="title-wrapper"><%= link_to "Home", albums_index_path %></div></li>
-        <li class="nav-btn"><div class="title-wrapper"><%= link_to "Submit", albums_submit_path %></div></li>
-        <li class="nav-btn"><div class="title-wrapper"><%= link_to "About / FAQ", about_index_path %></div></li>
-        <li class="nav-btn" id="filters">
-        	<div class="title-wrapper">
-        		<a class="btn-title" id="filter">Sort by:</a>
-        	</div>
-        		<ul id="sort-list">
-        			<li class="sort-btn tooltip"><a>Title</a><span class="tooltiptext"><a>Sort by title, A-Z/Z-A.</a></span><span class="ion-chevron-down"></span></li>
-        			<li class="sort-btn tooltip"><a>Artist</a><span class="tooltiptext"><a>Sort by artist, A-Z/Z-A.</a></span><span class="ion-chevron-down"></span></li>
-        			<li class="sort-btn tooltip"><a>Year</a><span class="tooltiptext"><a>Sort by year, ascending/descending.</a></span><span class="ion-chevron-down"></span></li>
-        			<li class="sort-btn tooltip"><a>Flavor</a><span class="tooltiptext"><a>Sort by flavor, A-Z/Z-A.</a></span><span class="ion-chevron-down"></span></li>
-        			<li class="sort-btn tooltip"><a>Quality</a><span class="tooltiptext"><a>Sort by quality, ascending/descending (checks a number of criteria including presence of tracklist, cover, description, etc. to determine how well fleshed out the entry is - Descending is the default sort).</a></span><span class="ion-chevron-down"></span></li>
-        		</ul>
-        </li>
-        <li class="nav-btn" id="random"><div class="title-wrapper"><a class="btn-title">Random</a></div></li>
+      <ul id="nav-list">
+				<li>
+					<div class="nav-btn"><div class="title-wrapper"><%= link_to "Home", albums_index_path %></div></div>
+					<div class="nav-btn"><div class="title-wrapper"><%= link_to "Submit", albums_submit_path %></div></div>
+					<div class="nav-btn"><div class="title-wrapper"><%= link_to "About / FAQ", about_index_path %></div></div>
+				</li>
+				<li>
+	        <div class="nav-btn" id="filters">
+	        	<div class="title-wrapper">
+	        		<a class="btn-title" id="filter">Sort by:</a>
+	        	</div>
+	        		<ul id="sort-list">
+	        			<li class="sort-btn tooltip"><a>Title</a><span class="tooltiptext"><a>Sort by title, A-Z/Z-A.</a></span><span class="ion-chevron-down"></span></li>
+	        			<li class="sort-btn tooltip"><a>Artist</a><span class="tooltiptext"><a>Sort by artist, A-Z/Z-A.</a></span><span class="ion-chevron-down"></span></li>
+	        			<li class="sort-btn tooltip"><a>Year</a><span class="tooltiptext"><a>Sort by year, ascending/descending.</a></span><span class="ion-chevron-down"></span></li>
+	        			<li class="sort-btn tooltip"><a>Flavor</a><span class="tooltiptext"><a>Sort by flavor, A-Z/Z-A.</a></span><span class="ion-chevron-down"></span></li>
+	        			<li class="sort-btn tooltip"><a>Quality</a><span class="tooltiptext"><a>Sort by quality, ascending/descending (checks a number of criteria including presence of tracklist, cover, description, etc. to determine how well fleshed out the entry is - Descending is the default sort).</a></span><span class="ion-chevron-down"></span></li>
+	        		</ul>
+	        </div>
+	        <div class="nav-btn" id="random"><div class="title-wrapper"><a class="btn-title">Random</a></div></div>
+				</li>
       </ul>
     </nav>
     <div id="albums-bg-opacity"></div>
- 		<ul id="splash-container">
-  	</ul>
+		<ul id="splash-container">
+		</ul>
 	</div>
 	<div id="footer">
 		<ul id="link-list">
