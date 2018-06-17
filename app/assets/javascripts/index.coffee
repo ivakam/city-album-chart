@@ -57,9 +57,6 @@ $(document).on "turbolinks:load", ->
 					sibling.addClass("is-open")
 					img = sibling.find("img").attr("src")
 					sibling.find(".info-background img").css("display", "block")
-					trackContainer = sibling.find(".tracklist-container")
-					newWidth = Math.ceil((trackContainer.children().length / 8)) * 235 + 5
-					trackContainer.width(newWidth + 30) if trackContainer.width() != newWidth
 					albumOpen = true
 				,
 				timeout)
@@ -125,7 +122,6 @@ $(document).on "turbolinks:load", ->
 										<h3><i>"+currentAlbum.romanization+"</i></h3>
 									</div>
 									<div class='artist-container'>
-										<p class='label'>Artist:</p>
 										<p>"+currentAlbum.romaji_artist+"</p>
 										<p class='label'>"+currentAlbum.japanese_artist+"</p>
 									</div>
@@ -148,9 +144,9 @@ $(document).on "turbolinks:load", ->
 										<ul class='tracklist-container'>
 										</ul>
 									</div>
+									<img class='expandable-img' src='" + currentAlbum.coverlink + "'>
 								</div>
 							</div>
-							<img class='expandable-img' src='" + currentAlbum.coverlink + "'>
 						</div>
 					</div>
 				</li>"
