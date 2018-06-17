@@ -1,6 +1,6 @@
 $(document).on "turbolinks:load", ->
     backgrounds = $("#albums-bg-container").children()
-    chosenAlbum = 1
+    chosenAlbum = 0
     backgrounds.first().css("opacity", "1")
     window.setInterval( ->
         if chosenAlbum < backgrounds.length
