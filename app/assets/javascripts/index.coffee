@@ -33,7 +33,6 @@ $(document).on "turbolinks:load", ->
 		#Helper method for opening an info container. Call it as 'sibling: undefined' to reset all info containers.
 	
 		toggleAlbum = (title, sibling, parent, arrow) ->
-			#console.log(albumOpen)
 			$(".album-arrow").css("transform", "rotate(0)")
 			$(".album-container").css("height", "327px")
 			$(".info-wrapper").css("display", "none")

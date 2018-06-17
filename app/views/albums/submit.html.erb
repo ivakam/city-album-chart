@@ -21,11 +21,14 @@
 	</div>
  	<div id="main-container">
     	<nav id="sidebar">
-      		<ul class="nav-list">
-        		<li class="nav-btn"><div class="title-wrapper"><%= link_to "Home", albums_index_path %></div></li>
-        		<li class="nav-btn"><div class="title-wrapper"><%= link_to "Submit", albums_submit_path %></div></li>
-        		<li class="nav-btn"><div class="title-wrapper"><%= link_to "About / FAQ", about_index_path %></div></li>
+      		<ul id="nav-list">
+      			<li>
+            		<div class="nav-btn"><div class="title-wrapper"><%= link_to "Home", albums_index_path %></div></div>
+            		<div class="nav-btn"><div class="title-wrapper"><%= link_to "Submit", albums_submit_path %></div></div>
+            		<div class="nav-btn"><div class="title-wrapper"><%= link_to "About / FAQ", about_index_path %></div></div>
+      			</li>
       		</ul>
+
     	</nav>
     	<div id="submit-wrapper">
     	    <div id="submit-opacity"></div>
