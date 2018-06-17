@@ -17,8 +17,7 @@ body {
   opacity: 0.8;
   position: fixed;
   top: 0;
-  left: 0;
-  z-index: -1; }
+  left: 0; }
 
 #albums-bg-opacity {
   opacity: 0.3;
@@ -59,7 +58,8 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-top: 1px #414141 solid; }
+  border-top: 1px #414141 solid;
+  z-index: 5; }
   #footer #link-list {
     display: flex;
     flex-flow: row;
@@ -70,7 +70,7 @@ body {
       #footer #link-list li a {
         text-decoration: underline;
         font-size: 12px;
-        color: #a7a7a7;
+        color: #a4a4a4;
         transition: 0.1s; }
       #footer #link-list li a:hover {
         cursor: pointer;

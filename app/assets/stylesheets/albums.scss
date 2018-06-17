@@ -24,7 +24,6 @@ body {
 	position: fixed;
 	top: 0;
 	left: 0;
-	z-index: -1;
 }
 
 #albums-bg-opacity {
@@ -71,6 +70,7 @@ body {
 	justify-content: center;
 	align-items: center;
 	border-top: 1px #414141 solid;
+	z-index: 5;
 	#link-list {
 		display: flex;
 		flex-flow: row;
@@ -81,7 +81,7 @@ body {
 			a {
 				text-decoration: underline;
 				font-size: 12px;
-				color: #a7a7a7;
+				color: #a4a4a4;
 				transition: 0.1s;
 			}
 			a:hover {
