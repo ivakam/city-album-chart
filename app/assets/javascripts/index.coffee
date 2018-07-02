@@ -274,8 +274,15 @@ $(document).on "turbolinks:load", ->
 					$("#splash-container").empty()
 					if rawInput isnt ""
 						doSearch = (album) ->
-							albumValues = []
-							albumValues.push(val) for val in Object.values(album) when typeof val isnt "number" and typeof val isnt "object"
+							albumValues = [
+								album.title,
+								album.romanization,
+								album.romaji_artist,
+								album.japanese_artist,
+								album.year,
+								album.description,
+								album.flavor
+								]
 							trackValues = []
 							trackValues.push(track.title, track.romanization) for track in tracks when track.album_id == album.id
 							matchValues = albumValues.concat(trackValues)
@@ -295,7 +302,7 @@ $(document).on "turbolinks:load", ->
 			clearTimeout(delayTimer)
 			delayTimer = setTimeout( ->
 				asyncSearch(e)
-			, 200)
+			, 150)
 		)
 	
 		#Helper method for checking if any 'conditions' match the selected text
