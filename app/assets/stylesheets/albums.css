@@ -392,8 +392,6 @@ body {
         justify-content: space-between;
         align-items: center;
         flex-grow: 1; }
-        .info-container .info-wrapper .info-text-container .track-grow-wrapper .expandable-img {
-          height: 300px; }
         .info-container .info-wrapper .info-text-container .track-grow-wrapper .expandable-img:hover {
           cursor: pointer; }
         .info-container .info-wrapper .info-text-container .track-grow-wrapper .tracklist-wrapper {
