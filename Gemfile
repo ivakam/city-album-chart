@@ -35,7 +35,6 @@ gem 'jquery-rails'
 gem 'rack'
 gem 'carrierwave'
 gem 'mini_magick'
-gem 'font-ionicons-rails'
 gem 'meta-tags'
 
 # Use ActiveStorage variant

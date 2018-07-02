@@ -109,7 +109,7 @@ $(document).on "turbolinks:load", ->
 								<p class='year'>"+currentAlbum.year+"</p>
 							</div>
 						</div>
-						<div class='arrow-container'><span class='ion-chevron-down album-arrow'></span></div>
+						<div class='arrow-container'><ion-icon name='ios-arrow-down' class='album-arrow'></ion-icon></div>
 					</div>
 					<div class='info-container offset' id='"+albumID+"-info'>
 						<div class='info-wrapper'>

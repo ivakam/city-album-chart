@@ -137,6 +137,36 @@
                         .form-field {
                             margin: 10px 0 30px 0;
                         }
+                        #tracklist-submit {
+                            .tracklist-label-text {
+                                display: flex;
+                                flex-wrap: wrap;
+                                align-items: center;
+                                p {
+                                    margin: 0 0 4px 0;
+                                }
+                                .tooltip {
+                                    display: flex;
+                                    align-items: center;
+                                    position: relative;
+                                    ion-icon {
+                                        font-size: 20px;
+                                        margin: 0 0 4px 8px;
+                                        color: #e3e3e3;
+                                    }
+                                    .tooltiptext {
+                                        top: -150%;
+                                        left: -1250%;
+                                        min-width: 370px;
+                                    }
+                                    .tooltiptext:after {
+                                        border-color: #2a2a2a transparent transparent transparent;
+                                        bottom: -43%;
+                                        left: 96%;
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
                 #scraper-input {
