@@ -4602,22 +4602,22 @@ duration: "4:13"
 },
 {
 title: "渚のカンパリ・ソーダ",
-romanization: "",
+romanization: "Nagisa No Campari Soda",
 duration: "4:31"
 },
 {
 title: "喜望峰",
-romanization: "",
+romanization: "Kiboho",
 duration: "4:11"
 },
 {
 title: "二季物語",
-romanization: "",
+romanization: "Niki monogatari",
 duration: "8:07"
 },
 {
 title: "ルビーの指環",
-romanization: "",
+romanization: "Ruby No Yubiwa",
 duration: "4:17"
 },
 {
@@ -4627,22 +4627,22 @@ duration: "4:23"
 },
 {
 title: "予期せぬ出来事",
-romanization: "",
+romanization: "Yokisenu Dekigoto",
 duration: "4:19"
 },
 {
 title: "ダイヤルM",
-romanization: "",
+romanization: "Dial M",
 duration: "3:48"
 },
 {
 title: "北ウィング",
-romanization: "",
+romanization: "Kita Wing",
 duration: "4:51"
 },
 {
-title: "出航 Sasurai",
-romanization: "",
+title: "出航",
+romanization: "Sasurai",
 duration: "4:05"
 },
 ]
@@ -5362,7 +5362,7 @@ title: "For You",
 romanization: "",
 romaji_artist: "Tatsuro Yamashita",
 japanese_artist: "山下達郎",
-year: "1984",
+year: "1982",
 description: "",
 coverlink: "foryou.jpg",
 flavor: "Funk, Dreamy"
@@ -6596,7 +6596,7 @@ japanese_artist: "角松敏生",
 year: "1987",
 description: "",
 coverlink: "seaisalady.jpg",
-flavor: "Funk"
+flavor: "Funk, Fusion"
 },
 [{
 title: "Way To The Shore 'Eri'",
@@ -13003,7 +13003,7 @@ romaji_artist: 'Bread & Butter',
 japanese_artist: 'ブレッド&バター',
 year: '1973',
 description: 'Recorded in London with major British influence, it\'s the second album by Bread & Butter for 1973 featuring Stevie Wonder.',
-coverlink: 'Images.jpg',
+coverlink: 'images.jpg',
 flavor: 'Folk, Quirky, Lounge'},
 [
 {
