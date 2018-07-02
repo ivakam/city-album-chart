@@ -45,7 +45,7 @@
                     There is an ok placeholder image if you really can't find a scan, 
                     but please do try to include one. I have set a goal of 600px minimum for width, but I know just as well as anyone that good scans 
                     sometimes just don't exist. If this is the case, a lower resolution is acceptable. Don't use this as an excuse though, 
-                    it only hurts the community in the long run. Name each image file in the same way as the coverlink: entry in the album. 
+                    it only hurts the community in the long run. Name each image file in the same way as the "coverlink:" entry in the scraper output. 
                     This means that "Light'n Up" becomes "lightnup.jpg" and "An Insatiable High" becomes "aninsatiablehigh.jpg". 
                     You can just dump them all in a zip folder and send it along with the output file.
                     <br>
@@ -148,7 +148,13 @@
                                     <%= form.text_area :description, placeholder: "Ride on Time is the fifth studio album by Japanese singer-songwriter Tatsuro Yamashita, released in September 1980.\n\nRide on Time has been most well known by its title track. It was used on the television commercial for Maxell's audio cassette starring Yamashita, and released as a single in May 1980." %>
                                 </div>
                                 <div id="tracklist-submit">
-                                    <p><%= form.label :"Tracklist" %> (Don't write track numbers! Just keep them in order.)</p>
+                                    <div class="tracklist-label-text">
+                                        <p><%= form.label :"Tracklist" %> (Don't write track numbers! Just keep them in order.)</p>
+                                        <div class="tooltip"><span class="tooltiptext">
+                                            <a>Template in the form of "&ltTrack title&gt", "&ltRomanization&gt", &ltTrack Duration&gt.</a>
+                                            </span><ion-icon name="help-circle-outline"></ion-icon>
+                                        </div>
+                                    </div>
                                     <%= form.text_area :temp_tracklist, placeholder: "\"<Track title>\", \"<Romanization>\", <Track duration>\n\n" +
                                     "\"いつか\", \"Someday\", 5:46\n" +
                                     "\"空想\", \"Daydream\", 4:27\n" +

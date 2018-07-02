@@ -44,19 +44,22 @@ $(document).on "turbolinks:load", ->
 				timeout = 300 if albumOpen
 				parent.find("img").addClass("image-border")
 				setTimeout( ->
-					offset = parent.offset().top + 95
-					arrow.css("transform", "rotate(180deg)")
-					parent.css("height", "800px")
-					sibling.css("display", "flex")
 					sibling.parent().css("display", "block")
-					sibling.css("height", "400px")
-					$(".offset").css("top", offset)
 					sibling.parent().addClass("offset")
-					$(".info-wrapper").attr("class", "info-wrapper")
-					sibling.addClass("is-open")
-					img = sibling.find("img").attr("src")
-					sibling.find(".info-background img").css("display", "block")
+					sibling.css("display", "flex")
 					albumOpen = true
+					setTimeout( ->
+						offset = parent.offset().top + 95
+						arrow.css("transform", "rotate(180deg)")
+						parent.css("height", "800px")
+						sibling.css("height", "400px")
+						$(".offset").css("top", offset)
+						$(".info-wrapper").attr("class", "info-wrapper")
+						sibling.addClass("is-open")
+						img = sibling.find("img").attr("src")
+						sibling.find(".info-background img").css("display", "block")
+					,
+					1)
 				,
 				timeout)
 			else 
@@ -109,7 +112,7 @@ $(document).on "turbolinks:load", ->
 								<p class='year'>"+currentAlbum.year+"</p>
 							</div>
 						</div>
-						<div class='arrow-container'><span class='ion-chevron-down album-arrow'></span></div>
+						<div class='arrow-container'><ion-icon name='ios-arrow-down' class='album-arrow'></ion-icon></div>
 					</div>
 					<div class='info-container offset' id='"+albumID+"-info'>
 						<div class='info-wrapper'>
@@ -239,7 +242,7 @@ $(document).on "turbolinks:load", ->
 			$("#sort-list li").each ->
 				if $(this).children("a").text() != clickedArrow
 					$(this).find(".ion-chevron-down").removeClass("rotated")
-			$(this).find(".ion-chevron-down").toggleClass("rotated")
+			$(this).find("ion-icon").toggleClass("rotated")
 			albumSort($(this).children("a").text())
 	
 		#Handler for toggling regex matching

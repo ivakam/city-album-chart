@@ -4602,22 +4602,22 @@ duration: "4:13"
 },
 {
 title: "渚のカンパリ・ソーダ",
-romanization: "",
+romanization: "Nagisa No Campari Soda",
 duration: "4:31"
 },
 {
 title: "喜望峰",
-romanization: "",
+romanization: "Kiboho",
 duration: "4:11"
 },
 {
 title: "二季物語",
-romanization: "",
+romanization: "Niki monogatari",
 duration: "8:07"
 },
 {
 title: "ルビーの指環",
-romanization: "",
+romanization: "Ruby No Yubiwa",
 duration: "4:17"
 },
 {
@@ -4627,22 +4627,22 @@ duration: "4:23"
 },
 {
 title: "予期せぬ出来事",
-romanization: "",
+romanization: "Yokisenu Dekigoto",
 duration: "4:19"
 },
 {
 title: "ダイヤルM",
-romanization: "",
+romanization: "Dial M",
 duration: "3:48"
 },
 {
 title: "北ウィング",
-romanization: "",
+romanization: "Kita Wing",
 duration: "4:51"
 },
 {
-title: "出航 Sasurai",
-romanization: "",
+title: "出航",
+romanization: "Sasurai",
 duration: "4:05"
 },
 ]
@@ -5362,7 +5362,7 @@ title: "For You",
 romanization: "",
 romaji_artist: "Tatsuro Yamashita",
 japanese_artist: "山下達郎",
-year: "1984",
+year: "1982",
 description: "",
 coverlink: "foryou.jpg",
 flavor: "Funk, Dreamy"
@@ -6596,7 +6596,7 @@ japanese_artist: "角松敏生",
 year: "1987",
 description: "",
 coverlink: "seaisalady.jpg",
-flavor: "Funk"
+flavor: "Funk, Fusion"
 },
 [{
 title: "Way To The Shore 'Eri'",
@@ -12989,5 +12989,81 @@ duration: "3:58"
 title: "セイヴ・アワ・シップ",
 romanization: "Save Our Ship",
 duration: "6:24"
+},
+])
+
+
+#Images by Bread&Butter
+
+
+CreateAlbumWithTracks({
+title: 'Images',
+romanization: '',
+romaji_artist: 'Bread & Butter',
+japanese_artist: 'ブレッド&バター',
+year: '1973',
+description: 'Recorded in London with major British influence, it\'s the second album by Bread & Butter for 1973 featuring Stevie Wonder.',
+coverlink: 'images.jpg',
+flavor: 'Folk, Quirky, Lounge'},
+[
+{
+title: "風",
+romanization: "Kaze",
+duration: "3:24"
+},
+{
+title: "屋根の上",
+romanization: "Yane no ue",
+duration: "3:05"
+},
+{
+title: "二日酔いに",
+romanization: "Futsukayoi ni",
+duration: "2:40"
+},
+{
+title: "老人と犬",
+romanization: "Rōjin to inu",
+duration: "4:32"
+},
+{
+title: "おもかげ",
+romanization: "O mo kage",
+duration: "4:11"
+},
+{
+title: "時もゆっくり",
+romanization: "Toki mo yukkuri",
+duration: "2:59"
+},
+{
+title: "花の土曜日",
+romanization: "Hana no doyōbi",
+duration: "2:48"
+},
+{
+title: "#405",
+romanization: "",
+duration: "4:26"
+},
+{
+title: "コンペイトー",
+romanization: "Konpeitō",
+duration: "3:36"
+},
+{
+title: "遠い昔",
+romanization: "Tōi mukashi",
+duration: "4:18"
+},
+{
+title: "誰が好きなの",
+romanization: "Dare ga sukina no",
+duration: "3:08"
+},
+{
+title: "名前を忘れた女",
+romanization: "Namae o wasureta onna",
+duration: "3:31"
 },
 ])
