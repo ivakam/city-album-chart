@@ -33,15 +33,18 @@ $(document).on "turbolinks:load", ->
 		#Helper method for opening an info container. Call it as 'sibling: undefined' to reset all info containers.
 	
 		toggleAlbum = (title, sibling, parent, arrow) ->
+			timeout = 0
+			timeout = 300 if albumOpen
 			$(".album-arrow").css("transform", "rotate(0)")
 			$(".album-container").css("height", "327px")
-			$(".info-wrapper").css("display", "none")
-			$(".info-container").css("display", "none")
 			$(".info-wrapper").css("height", "0")
 			$(".album-container").find("img").removeClass("image-border")
+			setTimeout( ->
+				$(".info-wrapper").css("display", "none")
+				$(".info-container").css("display", "none")
+			,
+			timeout)
 			if sibling isnt undefined && !sibling.hasClass("is-open")
-				timeout = 0
-				timeout = 300 if albumOpen
 				parent.find("img").addClass("image-border")
 				setTimeout( ->
 					sibling.parent().css("display", "block")
@@ -271,8 +274,15 @@ $(document).on "turbolinks:load", ->
 					$("#splash-container").empty()
 					if rawInput isnt ""
 						doSearch = (album) ->
-							albumValues = []
-							albumValues.push(val) for val in Object.values(album) when typeof val isnt "number" and typeof val isnt "object"
+							albumValues = [
+								album.title,
+								album.romanization,
+								album.romaji_artist,
+								album.japanese_artist,
+								album.year,
+								album.description,
+								album.flavor
+								]
 							trackValues = []
 							trackValues.push(track.title, track.romanization) for track in tracks when track.album_id == album.id
 							matchValues = albumValues.concat(trackValues)
@@ -292,7 +302,7 @@ $(document).on "turbolinks:load", ->
 			clearTimeout(delayTimer)
 			delayTimer = setTimeout( ->
 				asyncSearch(e)
-			, 200)
+			, 150)
 		)
 	
 		#Helper method for checking if any 'conditions' match the selected text
