@@ -35,17 +35,23 @@ class AlbumsController < ApplicationController
 				end
 				if matchArr.length == 2
 					trackString << "{\n" +
-					"title: " + matchArr[0] + "\",\n" + 
-					"duration: \"" + matchArr[1] + "\"\n" + 
+					"title: " + matchArr[0] + "\",\n" +
+					"romanization: " + "\"" + "\",\n" + 
+					"duration: \"" + matchArr[1] + "\"\n" +
 					"},\n"
 				end
 				if matchArr.length == 1
 					trackString << "{\n"
-					"title: " + matchArr[0] + "\n" + 
+					"title: " + matchArr[0] + "\",\n" +
+					"romanization: \"\",\n" + 
+					"duration: \"\"\n" +
 					"},\n"
 				end
 			end
-			trackString << "\n])"
+			trackString << "])"
+			coverString = @album.title.downcase
+			coverString = coverString.gsub(/\s+|\W|\_/, "")
+			coverString = coverString + ".jpg"
 			albumString = 
 				"CreateAlbumWithTracks({\n" +
 				"title: \'" + @album.title + "\',\n" +
@@ -54,7 +60,7 @@ class AlbumsController < ApplicationController
 				"japanese_artist: \'" + @album.japanese_artist + "\',\n" +
 				"year: \'" + @album.year + "\',\n" +
 				"description: \'" + @album.description + "\',\n" +
-				"coverlink: \'" + @album.title + ".jpg\',\n" +
+				"coverlink: \'" + coverString + "\',\n" +
 				"flavor: \'" + @album.flavor + "\'},\n" + trackString
 			if @album.valid?	
 				File.open("uploads/" + @album.title + ".txt", "w") do |f|
