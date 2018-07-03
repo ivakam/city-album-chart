@@ -244,7 +244,7 @@ $(document).on "turbolinks:load", ->
 			clickedArrow = $(this).children("a").text()
 			$("#sort-list li").each ->
 				if $(this).children("a").text() != clickedArrow
-					$(this).find(".ion-chevron-down").removeClass("rotated")
+					$(this).find("ion-icon").removeClass("rotated")
 			$(this).find("ion-icon").toggleClass("rotated")
 			albumSort($(this).children("a").text())
 	

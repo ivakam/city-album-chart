@@ -197,7 +197,7 @@
         clickedArrow = $(this).children("a").text();
         $("#sort-list li").each(function() {
           if ($(this).children("a").text() !== clickedArrow) {
-            return $(this).find(".ion-chevron-down").removeClass("rotated");
+            return $(this).find("ion-icon").removeClass("rotated");
           }
         });
         $(this).find("ion-icon").toggleClass("rotated");
