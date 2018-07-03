@@ -52,15 +52,18 @@ $(document).on "turbolinks:load", ->
 					sibling.css("display", "flex")
 					albumOpen = true
 					setTimeout( ->
-						offset = parent.offset().top + 95
-						arrow.css("transform", "rotate(180deg)")
-						parent.css("height", "800px")
-						sibling.css("height", "400px")
+						offset = parent.offset().top + 85
 						$(".offset").css("top", offset)
 						$(".info-wrapper").attr("class", "info-wrapper")
 						sibling.addClass("is-open")
 						img = sibling.find("img").attr("src")
 						sibling.find(".info-background img").css("display", "block")
+						arrow.css("transform", "rotate(180deg)")
+						parent.css("height", "780px")
+						setTimeout( ->
+							sibling.css("height", "400px")
+						,
+						70)
 					,
 					1)
 				,

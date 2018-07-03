@@ -1,40 +1,0 @@
-CreateAlbumWithTracks({
-title: 'Mirror of My Mind',
-romanization: '',
-romaji_artist: 'Ryo Kawasaki',
-japanese_artist: '川崎燎',
-year: '1979',
-description: 'Mirror of my Mind marks Ryo's 8th release and brings an interesting jazz-guitar sound to the city pop landscape. It features Radha Shottom on vocals.',
-coverlink: 'Mirror of My Mind.jpg',
-flavor: 'Jazz, Soul'},
-[
-{
-title: "In & Out of Love",
-duration: "6:43"
-},
-{
-title: "Trinkets and Things",
-duration: "6:51"
-},
-{
-title: "Little One",
-duration: "4:53"
-},
-{
-title: "Dreams for Radha (Pt. 1-3)",
-duration: "7:51"
-},
-{
-title: "Braziliana",
-duration: "4:05"
-},
-{
-title: "Winter's Here",
-duration: "4:09"
-},
-{
-title: "I've Found the Way of Love",
-duration: "7:00"
-},
-
-])
