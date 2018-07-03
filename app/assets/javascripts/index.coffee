@@ -60,10 +60,7 @@ $(document).on "turbolinks:load", ->
 						sibling.find(".info-background img").css("display", "block")
 						arrow.css("transform", "rotate(180deg)")
 						parent.css("height", "780px")
-						setTimeout( ->
-							sibling.css("height", "400px")
-						,
-						70)
+						sibling.css("height", "400px")
 					,
 					1)
 				,
