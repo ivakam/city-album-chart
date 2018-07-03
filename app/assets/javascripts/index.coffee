@@ -242,11 +242,14 @@ $(document).on "turbolinks:load", ->
 	
 		$(".sort-btn").click ->
 			clickedArrow = $(this).children("a").text()
+			console.log("test 1")
 			$("#sort-list li").each ->
 				if $(this).children("a").text() != clickedArrow
+					console.log("test 2")
 					$(this).find("ion-icon").removeClass("rotated")
 			$(this).find("ion-icon").toggleClass("rotated")
 			albumSort($(this).children("a").text())
+			console.log("test 3")
 	
 		#Handler for toggling regex matching
 	
