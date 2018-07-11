@@ -13118,3 +13118,580 @@ romanization: "",
 duration: "7:00"
 },
 ])
+
+
+# New batch - Akiko Yano
+
+
+CreateAlbumWithTracks({
+title: "Japanese Girl",
+romanization: "",
+romaji_artist: "矢野顕子 (Akiko Yano)",
+japanese_artist: "",
+year: "1976",
+description: "Akiko Yano's debut album brings a wonderful fusion of traditional Japanese folk and contemporary western funk/soul.",
+coverlink: "japanesegirl.jpg",
+flavor: "Folk, Soul, Funk"
+},
+[{
+title: "気球にのって",
+romanization: "Kikyū ni Notte",
+duration: "6:37"
+},
+{
+title: "クマ",
+romanization: "Kuma",
+duration: "4:00"
+},
+{
+title: "電話線",
+romanization: "Denwa-sen",
+duration: "2:56"
+},
+{
+title: "津軽ツアー",
+romanization: "Tsugaru Tsuā",
+duration: "2:11"
+},
+{
+title: "ふなまち唄Partii",
+romanization: "Funa Machi-uta - Part II",
+duration: "5:52"
+},
+{
+title: "大いなる椎の木",
+romanization: "Ōinaru Shīnoki",
+duration: "3:20"
+},
+{
+title: "へこりぷたぁ",
+romanization: "E Kori Puta a",
+duration: "3:56"
+},
+{
+title: "風太",
+romanization: "Fūta",
+duration: "1:51"
+},
+{
+title: "丘を越えて",
+romanization: "Okawokoete",
+duration: "3:14"
+},
+{
+title: "ふなまち唄part I",
+romanization: "Funa Machi-uta - Part I",
+duration: "3:54"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "いろはにこんぺいとう",
+romanization: "Iroha ni Konpeitō",
+romaji_artist: "矢野顕子 (Akiko Yano)",
+japanese_artist: "",
+year: "1977",
+description: "Iroha ni Konpeitō departs from Akiko's folkier sound in place of a jazzier sound featuring playful vocals and a more prominent focus on melody.",
+coverlink: "いろはにこんぺいとう.jpg",
+flavor: "Funk, Soul, Jazz"
+},
+[{
+title: "Kawaji",
+romanization: "",
+duration: "0:57"
+},
+{
+title: "いろはにこんぺいとう",
+romanization: "Iroha ni Konpeitō",
+duration: "3:02"
+},
+{
+title: "待ちくたびれて",
+romanization: "Machikutabirete",
+duration: "3:50"
+},
+{
+title: "ほうろう",
+romanization: "Hōrō",
+duration: "4:12"
+},
+{
+title: "行け　柳田",
+romanization: "Ike Yanagida",
+duration: "5:00"
+},
+{
+title: "相合傘",
+romanization: "Ai Ai-gassa",
+duration: "3:45"
+},
+{
+title: "ぽつん",
+romanization: "Potsun",
+duration: "2:04"
+},
+{
+title: "昨日はもう",
+romanization: "Kinō wa Mō",
+duration: "4:36"
+},
+{
+title: "家路",
+romanization: "Ieji",
+duration: "3:30"
+},
+{
+title: "やませ（東風）",
+romanization: "Yama se (Kochi)",
+duration: "4:07"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "ト・キ・メ・キ",
+romanization: "To・Ki・Me・Ki",
+romaji_artist: "矢野顕子 (Akiko Yano)",
+japanese_artist: "",
+year: "1978",
+description: "Tokimeki has Akiko return to her folkier roots, boasting a more traditional Japanese aesthetic and incorporating more folk elements.",
+coverlink: "トキメキ.jpg",
+flavor: "Folk, Jazz, Experimental"
+},
+[{
+title: "こどもたち",
+romanization: "Kodomo-tachi",
+duration: "3:43"
+},
+{
+title: "カタルン　カララン",
+romanization: "Catalun Carcarin",
+duration: "4:09"
+},
+{
+title: "ウオーサオー",
+romanization: "Uōsaō",
+duration: "3:01"
+},
+{
+title: "Two On The Stage",
+romanization: "",
+duration: "4:33"
+},
+{
+title: "大きな石",
+romanization: "Ōkina Ishi",
+duration: "4:12"
+},
+{
+title: "アンダンテ・カンタービレ",
+romanization: "Andante Cantabile",
+duration: "3:22"
+},
+{
+title: "やめるわけにゃいかないわ",
+romanization: "Yameru Wake Nya Ikanai wa",
+duration: "3:47"
+},
+{
+title: "ヨ・ロ・コ・ビ",
+romanization: "Yo・Ro・Ko・Bi",
+duration: "3:05"
+},
+{
+title: "ト・キ・メ・キ",
+romanization: "To・Ki・Me・Ki",
+duration: "5:52"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "ただいま。",
+romanization: "Tadaima.",
+romaji_artist: "矢野顕子 (Akiko Yano)",
+japanese_artist: "",
+year: "1981",
+description: "Tadaima presents a drastic change in sound for Akiko - Ditching the acoustic funk sound in favor of a very experimental electronic sound.",
+coverlink: "ただいま.jpg",
+flavor: "Acid, Jazz, Experimental, Electronic"
+},
+[{
+title: "ただいま。",
+romanization: "Tadaima.",
+duration: "4:01"
+},
+{
+title: "いつか王子様が",
+romanization: "Itsukaōjisamaga",
+duration: "5:03"
+},
+{
+title: "Vet",
+romanization: "",
+duration: "2:24"
+},
+{
+title: "Ashkenazy Who?",
+romanization: "",
+duration: "3:24"
+},
+{
+title: "いらないもん",
+romanization: "Iranai Mon",
+duration: "2:45"
+},
+{
+title: "たいようのおなら・おとうさん・おとうさん・ぼくがおとなになったら・せんせい・おかあさんのおひげ・もし一億円あったら・いぬ・ぼくはなきみそ",
+romanization: "Taiyō no onara otōsan otōsan boku ga otona ni nattara sensei okāsan no o hi-ge moshi ichiokuen attara inu boku wa naki miso",
+duration: "9:32"
+},
+{
+title: "I Sing",
+romanization: "",
+duration: "4:02"
+},
+{
+title: "春咲小紅",
+romanization: "Harusakikobeni",
+duration: "3:34"
+},
+{
+title: "Rose Garden",
+romanization: "",
+duration: "3:30"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "愛がなくちゃね",
+romanization: "Ai ga Nakuchane",
+romaji_artist: "矢野顕子 (Akiko Yano)",
+japanese_artist: "",
+year: "1982",
+description: "",
+coverlink: "愛がなくちゃね.jpg",
+flavor: "Funk, Jazz"
+},
+[{
+title: "愛がなくちゃね",
+romanization: "Ai ga Nakuchane",
+duration: "4:53"
+},
+{
+title: "悲しくてやりきれない",
+romanization: "Kanashikuteyarikirenai",
+duration: "4:01"
+},
+{
+title: "What's Got In Your Eyes?",
+romanization: "",
+duration: "4:06"
+},
+{
+title: "おいしい生活",
+romanization: "Oishī Seikatsu",
+duration: "1:14"
+},
+{
+title: "みちでバッタリ",
+romanization: "Michi de Battery",
+duration: "2:14"
+},
+{
+title: "女たちよ男たちよ",
+romanization: "On'na-tachi yo Otoko-tachi yo",
+duration: "4:06"
+},
+{
+title: "あいするひとよ",
+romanization: "Aisuru Hito Yo",
+duration: "4:27"
+},
+{
+title: "Sleep On My Baby",
+romanization: "",
+duration: "3:58"
+},
+{
+title: "Another Wedding Song",
+romanization: "",
+duration: "2:39"
+},
+{
+title: "どんなときも どんなときも どんなときも",
+romanization: "Don'na toki mo don'na toki mo don'na toki mo",
+duration: "3:56"
+},
+{
+title: "Good Night",
+romanization: "",
+duration: "1:28"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "オーエス オーエス",
+romanization: "Ōesu Ōesu",
+romaji_artist: "矢野顕子 (Akiko Yano)",
+japanese_artist: "",
+year: "1984",
+description: "",
+coverlink: "オーエスオーエス.jpg",
+flavor: "Jazz, Electronic"
+},
+[{
+title: "おもちゃのチャチャチャ",
+romanization: "Omochanochachacha",
+duration: "4:32"
+},
+{
+title: "Hi,hi,hi",
+romanization: "",
+duration: "4:22"
+},
+{
+title: "きょうのわたくし",
+romanization: "Kyō no Watakushi",
+duration: "3:25"
+},
+{
+title: "Highland",
+romanization: "",
+duration: "4:34"
+},
+{
+title: "Simon Smith And The Amazing Dancing Bear",
+romanization: "",
+duration: "2:54"
+},
+{
+title: "ラーメンたべたい",
+romanization: "Rāmen Tabetai",
+duration: "6:00"
+},
+{
+title: "素顔",
+romanization: "Sugao",
+duration: "3:27"
+},
+{
+title: "終りの季節",
+romanization: "Owari no Kisetsu",
+duration: "3:53"
+},
+{
+title: "Greenfields",
+romanization: "",
+duration: "5:00"
+},
+{
+title: "Assembly",
+romanization: "",
+duration: "6:19"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "ごはんができたよ",
+romanization: "Gohan ga Dekita yo",
+romaji_artist: "矢野顕子 (Akiko Yano)",
+japanese_artist: "",
+year: "1986",
+description: "",
+coverlink: "ごはんができたよ.jpg",
+flavor: "Jazz, Electronic"
+},
+[{
+title: "Hitotsudake",
+romanization: "",
+duration: "5:12"
+},
+{
+title: "Les Petit Bon Bon",
+romanization: "",
+duration: "6:17"
+},
+{
+title: "Coloured Water",
+romanization: "",
+duration: "4:41"
+},
+{
+title: "Zaikungtong Shonen",
+romanization: "",
+duration: "6:26"
+},
+{
+title: "High Time",
+romanization: "",
+duration: "5:16"
+},
+{
+title: "Dogs Awaiting...",
+romanization: "",
+duration: "7:35"
+},
+{
+title: "Tong Poo",
+romanization: "",
+duration: "4:23"
+},
+{
+title: "Aoi Sanmyaku",
+romanization: "",
+duration: "4:05"
+},
+{
+title: "Genkotsuyama No Onigirisama",
+romanization: "",
+duration: "8:35"
+},
+{
+title: "Gokigen Wanisan",
+romanization: "",
+duration: "3:02"
+},
+{
+title: "Mata Aone",
+romanization: "",
+duration: "4:10"
+},
+{
+title: "Te Wa Tsutaeru → Tetsudaeru",
+romanization: "",
+duration: "4:19"
+},
+{
+title: "Gohan Ga Dekitayo",
+romanization: "",
+duration: "5:31"
+},
+{
+title: "You're The One",
+romanization: "",
+duration: "4:23"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "峠のわが家",
+romanization: "Tōge no Wagaya",
+romaji_artist: "矢野顕子 (Akiko Yano)",
+japanese_artist: "",
+year: "1986",
+description: "",
+coverlink: "峠のわが家.jpg",
+flavor: "Synth, Funk"
+},
+[{
+title: "The Girl Of Integrity",
+romanization: "",
+duration: "4:31"
+},
+{
+title: "David",
+romanization: "",
+duration: "4:19"
+},
+{
+title: "ちいさい秋みつけた",
+romanization: "Chīsai Aki Mitsuketa",
+duration: "4:30"
+},
+{
+title: "一分間",
+romanization: "Ichi-funkan",
+duration: "2:36"
+},
+{
+title: "おてちょ。(Drop Me A Line)",
+romanization: "Ote Cho. (Drop Me A Line)",
+duration: "4:36"
+},
+{
+title: "海と少年",
+romanization: "Umi to Shōnen",
+duration: "3:44"
+},
+{
+title: "夏の終り",
+romanization: "Natsu no Owari",
+duration: "4:20"
+},
+{
+title: "そこのアイロンに告ぐ",
+romanization: "Soko no Airon ni Tsugu",
+duration: "4:07"
+},
+{
+title: "Home Sweet Home",
+romanization: "",
+duration: "6:15"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Granola",
+romanization: "",
+romaji_artist: "矢野顕子 (Akiko Yano)",
+japanese_artist: "",
+year: "1987",
+description: "",
+coverlink: "granola.jpg",
+flavor: "Synth, Funk"
+},
+[{
+title: "わたしたち",
+romanization: "Watashi-tachi",
+duration: "5:14"
+},
+{
+title: "風をあつめて",
+romanization: "Kaze wo Atsumete",
+duration: "5:24"
+},
+{
+title: "やがて一人",
+romanization: "Yagate Hitori",
+duration: "4:55"
+},
+{
+title: "Un Jour",
+romanization: "",
+duration: "4:57"
+},
+{
+title: "無風状態",
+romanization: "Mufū Jōtai",
+duration: "2:29"
+},
+{
+title: "花のように",
+romanization: "Hana no Yōni",
+duration: "5:00"
+},
+{
+title: "ふりむけばカエル",
+romanization: "Furimukebakaeru",
+duration: "4:04"
+},
+{
+title: "Levee Break",
+romanization: "",
+duration: "4:55"
+},
+{
+title: "Roselein Auf Der Heiden",
+romanization: "",
+duration: "3:05"
+},
+{
+title: "自転車でおいで",
+romanization: "Jitensha de Oide",
+duration: "4:27"
+},
+{
+title: "おおきいあい",
+romanization: "Ōkī Ai",
+duration: "4:33"
+},
+])
