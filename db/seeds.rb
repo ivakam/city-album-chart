@@ -12077,6 +12077,69 @@ duration: "3:16"
 },
 ]
 )
+
+CreateAlbumWithTracks({
+title: "Misslim",
+romanization: "",
+romaji_artist: "Yumi Matsutoya",
+japanese_artist: "松任谷 由実",
+year: "1974",
+description: "",
+coverlink: "misslim.jpg",
+flavor: "Rock, Funk, Boogie"
+},
+[{
+title: "生まれた街で",
+romanization: "Umareta Machi de",
+duration: "3:48"
+},
+{
+title: "瞳を閉じて",
+romanization: "Hitomi wo Tojite",
+duration: "3:10"
+},
+{
+title: "やさしさに包まれたなら",
+romanization: "Yasashisa ni Tsutsumareta Nara",
+duration: "3:12"
+},
+{
+title: "海を見ていた午後",
+romanization: "Umi wo Mite Itagogo",
+duration: "4:06"
+},
+{
+title: "12月の雨",
+romanization: "12 Tsuki no Ame",
+duration: "3:10"
+},
+{
+title: "あなただけのもの",
+romanization: "Anata Dake no Mono",
+duration: "4:04"
+},
+{
+title: "魔法の鏡",
+romanization: "Mahō no Kagami",
+duration: "3:14"
+},
+{
+title: "たぶんあなたはむかえに来ない",
+romanization: "Tabun Anata wa Mukae ni Konai",
+duration: "4:33"
+},
+{
+title: "私のフランソワーズ",
+romanization: "Watashi no Francoise",
+duration: "5:11"
+},
+{
+title: "旅立つ秋",
+romanization: "Tabidatsuaki",
+duration: "3:07"
+},
+])
+
 CreateAlbumWithTracks({
 title: "Cobalt Hour",
 romanization: "",
@@ -13126,8 +13189,8 @@ duration: "7:00"
 CreateAlbumWithTracks({
 title: "Japanese Girl",
 romanization: "",
-romaji_artist: "矢野顕子 (Akiko Yano)",
-japanese_artist: "",
+romaji_artist: "Akiko Yano",
+japanese_artist: "矢野顕子",
 year: "1976",
 description: "Akiko Yano's debut album brings a wonderful fusion of traditional Japanese folk and contemporary western funk/soul.",
 coverlink: "japanesegirl.jpg",
@@ -13188,8 +13251,8 @@ duration: "3:54"
 CreateAlbumWithTracks({
 title: "いろはにこんぺいとう",
 romanization: "Iroha ni Konpeitō",
-romaji_artist: "矢野顕子 (Akiko Yano)",
-japanese_artist: "",
+romaji_artist: "Akiko Yano",
+japanese_artist: "矢野顕子",
 year: "1977",
 description: "Iroha ni Konpeitō departs from Akiko's folkier sound in place of a jazzier sound featuring playful vocals and a more prominent focus on melody.",
 coverlink: "いろはにこんぺいとう.jpg",
@@ -13250,8 +13313,8 @@ duration: "4:07"
 CreateAlbumWithTracks({
 title: "ト・キ・メ・キ",
 romanization: "To・Ki・Me・Ki",
-romaji_artist: "矢野顕子 (Akiko Yano)",
-japanese_artist: "",
+romaji_artist: "Akiko Yano",
+japanese_artist: "矢野顕子",
 year: "1978",
 description: "Tokimeki has Akiko return to her folkier roots, boasting a more traditional Japanese aesthetic and incorporating more folk elements.",
 coverlink: "トキメキ.jpg",
@@ -13307,8 +13370,8 @@ duration: "5:52"
 CreateAlbumWithTracks({
 title: "ただいま。",
 romanization: "Tadaima.",
-romaji_artist: "矢野顕子 (Akiko Yano)",
-japanese_artist: "",
+romaji_artist: "Akiko Yano",
+japanese_artist: "矢野顕子",
 year: "1981",
 description: "Tadaima presents a drastic change in sound for Akiko - Ditching the acoustic funk sound in favor of a very experimental electronic sound.",
 coverlink: "ただいま.jpg",
@@ -13364,8 +13427,8 @@ duration: "3:30"
 CreateAlbumWithTracks({
 title: "愛がなくちゃね",
 romanization: "Ai ga Nakuchane",
-romaji_artist: "矢野顕子 (Akiko Yano)",
-japanese_artist: "",
+romaji_artist: "Akiko Yano",
+japanese_artist: "矢野顕子",
 year: "1982",
 description: "",
 coverlink: "愛がなくちゃね.jpg",
@@ -13431,8 +13494,8 @@ duration: "1:28"
 CreateAlbumWithTracks({
 title: "オーエス オーエス",
 romanization: "Ōesu Ōesu",
-romaji_artist: "矢野顕子 (Akiko Yano)",
-japanese_artist: "",
+romaji_artist: "Akiko Yano",
+japanese_artist: "矢野顕子",
 year: "1984",
 description: "",
 coverlink: "オーエスオーエス.jpg",
@@ -13493,8 +13556,8 @@ duration: "6:19"
 CreateAlbumWithTracks({
 title: "ごはんができたよ",
 romanization: "Gohan ga Dekita yo",
-romaji_artist: "矢野顕子 (Akiko Yano)",
-japanese_artist: "",
+romaji_artist: "Akiko Yano",
+japanese_artist: "矢野顕子",
 year: "1986",
 description: "",
 coverlink: "ごはんができたよ.jpg",
@@ -13575,8 +13638,8 @@ duration: "4:23"
 CreateAlbumWithTracks({
 title: "峠のわが家",
 romanization: "Tōge no Wagaya",
-romaji_artist: "矢野顕子 (Akiko Yano)",
-japanese_artist: "",
+romaji_artist: "Akiko Yano",
+japanese_artist: "矢野顕子",
 year: "1986",
 description: "",
 coverlink: "峠のわが家.jpg",
@@ -13632,8 +13695,8 @@ duration: "6:15"
 CreateAlbumWithTracks({
 title: "Granola",
 romanization: "",
-romaji_artist: "矢野顕子 (Akiko Yano)",
-japanese_artist: "",
+romaji_artist: "Akiko Yano",
+japanese_artist: "矢野顕子",
 year: "1987",
 description: "",
 coverlink: "granola.jpg",
