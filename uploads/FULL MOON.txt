@@ -1,6 +1,6 @@
 CreateAlbumWithTracks({
-title: 'FULL MOON',
-romanization: 'Full Moon',
+title: 'Full Moon',
+romanization: '',
 romaji_artist: 'Junko Yagami',
 japanese_artist: '八神純子',
 year: '1983',
@@ -9,53 +9,62 @@ coverlink: 'fullmoon.jpg',
 flavor: 'Funk, Soul'},
 [
 {
-title: "FOLLOW ME",
-romanization: "Follow Me",
-duration: "4:06"
+title: "Follow Me",
+romanization: "",
+duration: "4:06
+"
 },
 {
-title: "NATURALLY",
-romanization: "Naturally",
-duration: "4:44"
+title: "Naturally",
+romanization: "",
+duration: "4:44
+"
 },
 {
-title: "黄昏のBAY CITY",
+title: "黄昏のBay City",
 romanization: "Twilight's BAY CITY",
-duration: "4:41"
+duration: "4:41
+"
 },
 {
 title: "陽だまりのあなた",
 romanization: "You are the Sunny Lot",
-duration: "2:41"
+duration: "2:41
+"
 },
 {
 title: "抱きしめてあげる",
 romanization: "I Will Hold You",
-duration: "4:21"
+duration: "4:21
+"
 },
 {
 title: "綿雪&銀紙星 (コットン・スノーにペイパー・スター)",
 romanization: "Cotton Snow & Silver Paper Star (Paper Star on Cotton · Snow)",
-duration: "5:15"
+duration: "5:15
+"
 },
 {
-title: "NO!",
-romanization: "No!",
-duration: "3:20"
+title: "No!",
+romanization: "",
+duration: "3:20
+"
 },
 {
 title: "ハートブレイクホテルで朝食を",
 romanization: "Breakfast at Heartbreak Hotel",
-duration: "4:20"
+duration: "4:20
+"
 },
 {
-title: "FULL MOON",
-romanization: "Full Moon",
-duration: "4:35"
+title: "Full Moon",
+romanization: "",
+duration: "4:35
+"
 },
 {
-title: "TWO NOTES SAMBA ",
-romanization: "Two Notes Samba",
+title: "Two Notes Samba",
+romanization: "",
 duration: "5:03"
 },
 ])
