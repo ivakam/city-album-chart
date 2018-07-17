@@ -1,61 +1,0 @@
-CreateAlbumWithTracks({
-title: 'COMMUNICATION',
-romanization: 'Communication',
-romaji_artist: 'Junko Yagami',
-japanese_artist: '八神純子',
-year: '1985',
-description: 'Communication is the eighth studio album by Japanese singer-songwriter Junko Yagami, released in February 1985.',
-coverlink: 'communication.jpg',
-flavor: 'Funk, Soul'},
-[
-{
-title: "Imagination",
-romanization: "",
-duration: "4:10"
-},
-{
-title: "Cheater",
-romanization: "",
-duration: "3:40"
-},
-{
-title: "Communication",
-romanization: "",
-duration: "5:02"
-},
-{
-title: "1984 (西暦2000年に向けて)," "1984 (Seireki 2000-nen ni mukete)",
-romanization: "",
-duration: "5:23"
-},
-{
-title: "Miss D.J.",
-romanization: "",
-duration: "4:47"
-},
-{
-title: "カシミヤのほほえみ",
-romanization: "Kashimiya no hohoemi",
-duration: "4:43"
-},
-{
-title: "ジョハナスバーグ",
-romanization: "Johanasubāgu",
-duration: "5:11"
-},
-{
-title: "どんな手段使っても",
-romanization: "Don'na shudan tsukatte mo",
-duration: "4:03"
-},
-{
-title: "Believing",
-romanization: "",
-duration: "4:15"
-},
-{
-title: "Reaching Out",
-romanization: "",
-duration: "5:22"
-},
-])
