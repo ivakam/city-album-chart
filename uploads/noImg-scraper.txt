@@ -1,0 +1,428 @@
+CreateAlbumWithTracks({
+title: "HEART to HEART",
+romanization: "",
+romaji_artist: "Rajie",
+japanese_artist: "",
+year: "1977",
+description: "",
+coverlink: "hearttoheart.jpg",
+flavor: "Disco"
+},
+[{
+title: "Hold me tight",
+romanization: "",
+duration: "3:54"
+},
+{
+title: "Shizukana Hitomi",
+romanization: "",
+duration: "3:24"
+},
+{
+title: "It's me・・・It's you",
+romanization: "",
+duration: "4:48"
+},
+{
+title: "Sarasara no Machi",
+romanization: "",
+duration: "3:43"
+},
+{
+title: "Ai wa Tabun",
+romanization: "",
+duration: "2:53"
+},
+{
+title: "The Tokyo Taste",
+romanization: "",
+duration: "3:47"
+},
+{
+title: "Sutekina Feeling",
+romanization: "",
+duration: "4:30"
+},
+{
+title: "Kibun wo Dashite Mouichido",
+romanization: "",
+duration: "4:23"
+},
+{
+title: "Airport",
+romanization: "",
+duration: "1:59"
+},
+{
+title: "Heart to Heart",
+romanization: "",
+duration: "4:47"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Acoustic Moon",
+romanization: "",
+romaji_artist: "Rajie",
+japanese_artist: "",
+year: "1981",
+description: "",
+coverlink: "acousticmoon.jpg",
+flavor: "Bossa Nova"
+},
+[{
+title: "Rosy Blue",
+romanization: "",
+duration: "3:39"
+},
+{
+title: "Shion",
+romanization: "",
+duration: "3:44"
+},
+{
+title: "Acoustic Moon",
+romanization: "",
+duration: "1:13"
+},
+{
+title: "Stormy Night",
+romanization: "",
+duration: "5:11"
+},
+{
+title: "Black Moon",
+romanization: "",
+duration: "4:12"
+},
+{
+title: "Bara no Glass",
+romanization: "",
+duration: "5:28"
+},
+{
+title: "Do You Wanna Dance",
+romanization: "",
+duration: "3:41"
+},
+{
+title: "Paradise Wine",
+romanization: "",
+duration: "4:05"
+},
+{
+title: "Memory Through",
+romanization: "",
+duration: "5:37"
+},
+{
+title: "Puzzle Noon",
+romanization: "",
+duration: "4:36"
+},
+{
+title: "Lyra no Nichiyoubi",
+romanization: "",
+duration: "4:56"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Relief",
+romanization: "",
+romaji_artist: "Rajie",
+japanese_artist: "",
+year: "1984",
+description: "",
+coverlink: "relief.jpg",
+flavor: "Funk"
+},
+[{
+title: "Sesowa",
+romanization: "",
+duration: "4:52"
+},
+{
+title: "Puli Bali ― Puli Bali",
+romanization: "",
+duration: "4:41"
+},
+{
+title: "Inshōha",
+romanization: "",
+duration: "5:00"
+},
+{
+title: "Celister no Bōmei",
+romanization: "",
+duration: "4:33"
+},
+{
+title: "Goodbye Transfer",
+romanization: "",
+duration: "4:17"
+},
+{
+title: "8 Tsuki no Memoirs",
+romanization: "",
+duration: "4:52"
+},
+{
+title: "Mick e no Resistance",
+romanization: "",
+duration: "4:34"
+},
+{
+title: "Ruri-iro no Koibito-tachi",
+romanization: "",
+duration: "4:12"
+},
+{
+title: "Double Moon",
+romanization: "",
+duration: "4:39"
+},
+{
+title: "MAMAMIYA―Uchū Kara no Okurimono―",
+romanization: "",
+duration: "3:53"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Espresso",
+romanization: "",
+romaji_artist: "Rajie",
+japanese_artist: "",
+year: "1985",
+description: "",
+coverlink: "espresso.jpg",
+flavor: "Synthpop, New Wave"
+},
+[{
+title: "Kanashimi no Elephant",
+romanization: "",
+duration: "4:41"
+},
+{
+title: "Mangekyou",
+romanization: "",
+duration: "4:17"
+},
+{
+title: "Espresso",
+romanization: "",
+duration: "4:34"
+},
+{
+title: "Mizu no Kyoku",
+romanization: "",
+duration: "3:50"
+},
+{
+title: "Magic Flower",
+romanization: "",
+duration: "4:27"
+},
+{
+title: "Misshitsu",
+romanization: "",
+duration: "3:33"
+},
+{
+title: "Yumeiro Densetsu",
+romanization: "",
+duration: "3:37"
+},
+{
+title: "Hikari to Kage",
+romanization: "",
+duration: "3:50"
+},
+{
+title: "Gozen 5-Ji no Mermaid",
+romanization: "",
+duration: "4:46"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Love Heart",
+romanization: "",
+romaji_artist: "Rajie",
+japanese_artist: "",
+year: "1978",
+description: "",
+coverlink: "loveheart.jpg",
+flavor: "Disco"
+},
+[{
+title: "Tea for One",
+romanization: "",
+duration: "3:23"
+},
+{
+title: "Kaze ni Yosete",
+romanization: "",
+duration: "2:43"
+},
+{
+title: "Cool Down",
+romanization: "",
+duration: "4:46"
+},
+{
+title: "Love Heart",
+romanization: "",
+duration: "4:16"
+},
+{
+title: "Fuyu no Shouzou",
+romanization: "",
+duration: "4:52"
+},
+{
+title: "Tabidachi",
+romanization: "",
+duration: "3:45"
+},
+{
+title: "Yasashii Kankei",
+romanization: "",
+duration: "4:17"
+},
+{
+title: "Last Chance",
+romanization: "",
+duration: "5:24"
+},
+{
+title: "Just in the Rain",
+romanization: "",
+duration: "5:07"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Quatre",
+romanization: "",
+romaji_artist: "Rajie",
+japanese_artist: "",
+year: "1979",
+description: "",
+coverlink: "quatre.jpg",
+flavor: "Disco, Synthpop"
+},
+[{
+title: "Quatre",
+romanization: "",
+duration: "3:49"
+},
+{
+title: "Tokimeki Mahou",
+romanization: "",
+duration: "3:59"
+},
+{
+title: "Concert",
+romanization: "",
+duration: "3:59"
+},
+{
+title: "Watashi wa Suteki",
+romanization: "",
+duration: "4:31"
+},
+{
+title: "Kaze no Michi",
+romanization: "",
+duration: "4:10"
+},
+{
+title: "Hoshi ni Notte",
+romanization: "",
+duration: "4:33"
+},
+{
+title: "Christmas",
+romanization: "",
+duration: "3:42"
+},
+{
+title: "Tsuki no Hikari",
+romanization: "",
+duration: "4:15"
+},
+{
+title: "Ichimai no Photograph",
+romanization: "",
+duration: "3:35"
+},
+{
+title: "Kirin no iru Fuukei",
+romanization: "",
+duration: "2:42"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Mahiru no Hodou",
+romanization: "",
+romaji_artist: "Rajie",
+japanese_artist: "",
+year: "1980",
+description: "",
+coverlink: "mahirunohodou.jpg",
+flavor: "Synthpop, Funk"
+},
+[{
+title: "Last Scene",
+romanization: "",
+duration: "4:46"
+},
+{
+title: "Mahiru no Hodou",
+romanization: "",
+duration: "4:00"
+},
+{
+title: "Kiri no Heya",
+romanization: "",
+duration: "3:48"
+},
+{
+title: "Itsuwari no Hitomi",
+romanization: "",
+duration: "3:14"
+},
+{
+title: "Apartment",
+romanization: "",
+duration: "4:31"
+},
+{
+title: "Radio to Futari",
+romanization: "",
+duration: "4:11"
+},
+{
+title: "Yojirean Twist",
+romanization: "",
+duration: "3:01"
+},
+{
+title: "Midori no Koe",
+romanization: "",
+duration: "4:25"
+},
+{
+title: "Aki no Arashi",
+romanization: "",
+duration: "4:30"
+},
+{
+title: "Boukyaku",
+romanization: "",
+duration: "4:05"
+},
+])
