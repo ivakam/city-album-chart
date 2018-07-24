@@ -63,7 +63,6 @@ $(document).on "turbolinks:load", ->
 						q: album + " " + artist + " full album"
 						type: "video"
 						maxResults: "5"
-					console.log("Params: ", params)
 					success = (result) ->
 						setItem = (i, item) ->
 							searchResults[i] = item.id.videoId
