@@ -77,11 +77,14 @@ $(document).on "turbolinks:load", ->
 							$(iframe).attr("src", "https://www.youtube.com/embed/" + searchResults[i.toString()])
 						console.log(sliderItems)
 						setSourceVideo(i, iframe) for iframe, i in sliderItems
+					error = (result) ->
+						console.log("Failed to fetch YouTube data: ", result)
 					$.ajax(
 						dataType: "json"
 						url: url
 						data: params
 						success: success
+						error: error
 					)
 				setTimeout( ->
 					sibling.parent().css("display", "block")
