@@ -96,7 +96,7 @@ $(document).on "turbolinks:load", ->
 						sibling.find(".info-background img").css("display", "block")
 						arrow.css("transform", "rotate(180deg)")
 						parent.css("height", "820px")
-						sibling.css("height", "440px")
+						sibling.css("height", "475px")
 					,
 					1)
 				,
@@ -180,14 +180,22 @@ $(document).on "turbolinks:load", ->
 									</div>
 								</div>
 								<div class='track-grow-wrapper'>
-									<div class='tracklist-wrapper'>
-										<h3>Tracklist:</h3>
-										<ul class='tracklist-container'>
-										</ul>
+									<div class='link-image-container'>" +
+										#<ul class='info-link-list'>
+										#	<li><img class='video-stream-img' src='https://png.icons8.com/metro/1600/cinema-.png'></img></li>
+										#</ul>
+										"<img class='expandable-img' src='" + currentAlbum.coverlink + "'>
 									</div>
+									<div class='info-divider'></div>
 									<div class='stream-slider-container'>
 										<ion-icon name='ios-arrow-back' class='stream-arrow stream-arrow-left'></ion-icon>
 										<ion-icon name='ios-arrow-forward' class='stream-arrow stream-arrow-right'></ion-icon>
+                                        <div class='tooltip'>
+                                        	<span class='tooltiptext'>
+                                            	<a>The videos in the box are the top 5 search results on YouTube for this album.</a>
+                                            </span>
+                                            <ion-icon class='info-help-icon' name='help-circle-outline'></ion-icon>
+                                        </div>
 										<div class='video-slider'>
 											<iframe src=''>
 											</iframe>
@@ -201,12 +209,12 @@ $(document).on "turbolinks:load", ->
 											</iframe>
 										</div>
 									</div>
-									<div class='link-image-container'>" +
-										#<ul class='info-link-list'>
-										#	<li><img class='video-stream-img' src='https://png.icons8.com/metro/1600/cinema-.png'></img></li>
-										#</ul>
-										"<img class='expandable-img' src='" + currentAlbum.coverlink + "'>
-									</div
+									<div class='info-divider'></div>
+									<div class='tracklist-wrapper'>
+										<h3>Tracklist:</h3>
+										<ul class='tracklist-container'>
+										</ul>
+									</div>
 								</div>
 							</div>
 						</div>
