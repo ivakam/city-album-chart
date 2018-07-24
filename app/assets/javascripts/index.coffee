@@ -24,8 +24,8 @@ $(document).on "turbolinks:load", ->
 			masterAlbums[album.id] = album
 		assignKey(album) for album in rawAlbums
 		albums = []
-		albums.push(masterAlbums[i]) for album, i in Object.values(masterAlbums)
-		albums = albums.sort (a, b) ->
+		albums.push(masterAlbums[i+1]) for album, i in Object.values(masterAlbums)
+		sortedAlbums = albums.sort (a, b) ->
 			compA = parseInt(a.quality)
 			compB = parseInt(b.quality)
 			return (compB - compA)
@@ -130,7 +130,7 @@ $(document).on "turbolinks:load", ->
 		displayAlbum = (min, max, refreshSplash = true) ->
 			$("#splash-container").toggle() if refreshSplash
 			createAlbum = (i) ->
-				currentAlbum = albums[i]
+				currentAlbum = sortedAlbums[i]
 				albumID = currentAlbum.id
 				albumTracks = []
 				albumLi = 
@@ -259,7 +259,7 @@ $(document).on "turbolinks:load", ->
 		
 		window.albumsNameSpace.albumTotalCount = masterAlbums.length
 	
-		$("#album-total-count").text(masterAlbums.length)
+		$("#album-total-count").text(albums.length)
 	
 		#Handler for 'random' button. Picks an album-container, scrolls to it and then opens it
 	
@@ -294,15 +294,12 @@ $(document).on "turbolinks:load", ->
 	
 		$(".sort-btn").click ->
 			clickedArrow = $(this).children("a").text()
-			console.log("test 1")
 			$("#sort-list li").each ->
 				if $(this).children("a").text() != clickedArrow
-					console.log("test 2")
 					$(this).find("ion-icon").removeClass("rotated")
 			$(this).find("ion-icon").toggleClass("rotated")
 			albumSort($(this).children("a").text())
-			console.log("test 3")
-	
+
 		#Handler for toggling regex matching
 	
 		$("#regex").click ->
@@ -313,16 +310,13 @@ $(document).on "turbolinks:load", ->
 		#Method for searching
 	
 		window.albumsNameSpace.search = (input) ->
-			#console.log("trying search")
 			new Promise (resolve) ->
 				loadedAlbums = 40
 				toggleAlbum(sibling: undefined)
-				#console.log(input)
 				rawInput = $(input).val()
-				#console.log("set value")
 				inputValues = rawInput.split(/,/)
 				inputValues[i] = inputValues[i].trim() for i of inputValues
-				albums = sortedAlbums
+				sortedAlbums = albums
 				tracks = masterTracks
 				if $(input).data("lastval") isnt rawInput
 					$(input).data("lastval", rawInput)
@@ -344,9 +338,9 @@ $(document).on "turbolinks:load", ->
 							if checkMatch(matchValues, inputValues)
 								tempAlbums.push(album)
 						tempAlbums = []
-						doSearch(album) for album in albums
-						albums = tempAlbums
-						asyncDisplayAlbum(0, albums.length)
+						doSearch(sortedAlbums[album.id-1]) for album in sortedAlbums
+						sortedAlbums = tempAlbums
+						asyncDisplayAlbum(0, sortedAlbums.length)
 					else
 						asyncDisplayAlbum(0, 40)
 				resolve("resolved")
@@ -402,7 +396,7 @@ $(document).on "turbolinks:load", ->
 					if !albumList.hasClass("title-sorted-up") && !albumList.hasClass("title-sorted-down")
 						albumList.attr("class", "title-sorted-down")
 					if albumList.hasClass("title-sorted-up") then albumList.attr("class", "title-sorted-down") else albumList.attr("class", "title-sorted-up")
-					albums = albums.sort (a, b) -> 
+					sortedAlbums = albums.sort (a, b) -> 
 						compA = a.title.toUpperCase()
 						compB = b.title.toUpperCase()
 						if albumList.hasClass("title-sorted-up")
@@ -414,7 +408,7 @@ $(document).on "turbolinks:load", ->
 					if !albumList.hasClass("artist-sorted-up") && !albumList.hasClass("artist-sorted-down")
 						albumList.attr("class", "artist-sorted-down")
 					if albumList.hasClass("artist-sorted-up") then albumList.attr("class", "artist-sorted-down") else albumList.attr("class", "artist-sorted-up")
-					albums = albums.sort (a, b) -> 
+					sortedAlbums = albums.sort (a, b) -> 
 						compA = a.romaji_artist.toUpperCase()
 						compB = b.romaji_artist.toUpperCase()
 						if albumList.hasClass("artist-sorted-up")
@@ -426,7 +420,7 @@ $(document).on "turbolinks:load", ->
 					if !albumList.hasClass("year-sorted-up") && !albumList.hasClass("year-sorted-down")
 						albumList.attr("class", "year-sorted-down")
 					if albumList.hasClass("year-sorted-up") then albumList.attr("class", "year-sorted-down") else albumList.attr("class", "year-sorted-up")
-					albums = albums.sort (a, b) -> 
+					sortedAlbums = albums.sort (a, b) -> 
 						compA = parseInt(a.year)
 						compB = parseInt(b.year)
 						if albumList.hasClass("year-sorted-up")
@@ -438,7 +432,7 @@ $(document).on "turbolinks:load", ->
 					if !albumList.hasClass("flavor-sorted-up") && !albumList.hasClass("flavor-sorted-down")
 						albumList.attr("class", "flavor-sorted-down")
 					if albumList.hasClass("flavor-sorted-up") then albumList.attr("class", "flavor-sorted-down") else albumList.attr("class", "flavor-sorted-up")
-					albums = albums.sort (a, b) -> 
+					sortedAlbums = albums.sort (a, b) -> 
 						compA = a.flavor.toUpperCase()
 						compB = b.flavor.toUpperCase()
 						if albumList.hasClass("flavor-sorted-up")
@@ -450,7 +444,7 @@ $(document).on "turbolinks:load", ->
 					if !albumList.hasClass("quality-sorted-up") && !albumList.hasClass("quality-sorted-down")
 						albumList.attr("class", "quality-sorted-down")
 					if albumList.hasClass("quality-sorted-up") then albumList.attr("class", "quality-sorted-down") else albumList.attr("class", "quality-sorted-up")
-					albums = albums.sort (a, b) -> 
+					sortedAlbums = albums.sort (a, b) -> 
 						compA = parseInt(a.quality)
 						compB = parseInt(b.quality)
 						if albumList.hasClass("quality-sorted-up")
@@ -461,7 +455,7 @@ $(document).on "turbolinks:load", ->
 					
 			loadedAlbums = 0
 			toggleAlbum(sibling: undefined)
-			if albums.length >= 40
+			if sortedAlbums.length >= 40
 				displayAlbum(0, 40)
 			else
 				displayAlbum(0, albums.length)
@@ -470,7 +464,7 @@ $(document).on "turbolinks:load", ->
 		
 		$(window).scroll -> 
 			if $(window).scrollTop() + $(window).height() >= $(document).height()
-				albumsToLoad = albums.length - loadedAlbums
+				albumsToLoad = sortedAlbums.length - loadedAlbums
 				if albumsToLoad >= 40
 					displayAlbum(loadedAlbums, loadedAlbums + 40, false)
 				else
@@ -483,7 +477,7 @@ $(document).on "turbolinks:load", ->
 		
 		$(".video-stream-img").click ->
 			openedAlbum = $(this).closest(".info-container")
-			albumID = albums[parseInt(openedAlbum.prev(".album-container").attr("id")) - 1]
+			albumID = sortedAlbums[parseInt(openedAlbum.prev(".album-container").attr("id")) - 1]
 			album = albumID.title
 			artist = albumID.romaji_artist
 			url = "https://www.googleapis.com/youtube/v3/search"
