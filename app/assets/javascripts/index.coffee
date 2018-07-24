@@ -57,18 +57,23 @@ $(document).on "turbolinks:load", ->
 					artist = albumID.romaji_artist
 					url = "https://www.googleapis.com/youtube/v3/search"
 					searchResults = {}
+					#console.log("Artist + album: ", artist, album)
 					params =
 						part: 'snippet'
 						key: ytAPIkey
-						q: album + artist + "full album"
+						q: album + " " + artist + " full album"
 						type: "video"
 						maxResults: "5"
+					#.log("Params: ", params)
 					success = (result) ->
 						setItem = (i, item) ->
+							#console.log("i + item: ", i, item)
 							searchResults[i] = item.id.videoId
 						setItem(i, item) for item, i in result.items
 						sliderItems = sibling.find(".video-slider").find("iframe")
 						setSourceVideo = (i, iframe) ->
+							#console.log("searchResults: ", searchResults)
+							#console.log("video ID: ", searchResults[i.toString()])
 							$(iframe).attr("src", "https://www.youtube.com/embed/" + searchResults[i.toString()])
 						setSourceVideo(i, iframe) for iframe, i in sliderItems
 					$.ajax(
