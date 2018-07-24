@@ -75,6 +75,7 @@ $(document).on "turbolinks:load", ->
 							console.log("searchResults: ", searchResults)
 							console.log("video ID: ", searchResults[i.toString()])
 							$(iframe).attr("src", "https://www.youtube.com/embed/" + searchResults[i.toString()])
+						console.log(sliderItems)
 						setSourceVideo(i, iframe) for iframe, i in sliderItems
 					$.ajax(
 						dataType: "json"
