@@ -450,16 +450,19 @@ body {
 				.artist-container {
 					display: flex;
 					flex-direction: column;
+					flex-shrink: 0;
 				}
 				.title-container {
 					display: flex;
 					flex-direction: column;
 					justify-content: center;
+					flex-shrink: 0;
 					h2 {
 						font-size: 30px;
 					}
 				}
 				.description-container {
+					flex-shrink: 2;
 					.label {
 						margin-bottom: 10px
 					}
