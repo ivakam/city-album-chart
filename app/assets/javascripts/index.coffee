@@ -1,6 +1,7 @@
 $(document).on "turbolinks:load", ->
 	if $("body").hasClass("albums index")
 		window.albumsNameSpace = {}
+		ytAPIkey = "AIzaSyAA9tEp3x9uIC60zQfLds8ZlNrwRCBwc5Q"
 	
 		#console.log("albums.coffee is running.")
 	
@@ -16,15 +17,19 @@ $(document).on "turbolinks:load", ->
 		populateAlbums()
 	
 		#Global variable declaration
-	
-		masterAlbums = JSON.parse(localStorage.getItem("Albums"))
-		masterTracks = JSON.parse(localStorage.getItem("Tracks"))
-		#console.log(masterAlbums)
-		masterAlbums = masterAlbums.sort (a, b) ->
+		
+		rawAlbums = JSON.parse(localStorage.getItem("Albums"))
+		masterAlbums = {}
+		assignKey = (album) ->
+			masterAlbums[album.id] = album
+		assignKey(album) for album in rawAlbums
+		albums = []
+		albums.push(masterAlbums[i]) for album, i in Object.values(masterAlbums)
+		albums = albums.sort (a, b) ->
 			compA = parseInt(a.quality)
 			compB = parseInt(b.quality)
 			return (compB - compA)
-		albums = masterAlbums
+		masterTracks = JSON.parse(localStorage.getItem("Tracks"))
 		tracks = masterTracks
 		albumOpen = false
 		delayTimer = null
@@ -46,6 +51,32 @@ $(document).on "turbolinks:load", ->
 			timeout)
 			if sibling isnt undefined && !sibling.hasClass("is-open")
 				parent.find("img").addClass("image-border")
+				if sibling.find(".video-slider").find("iframe:first-child").attr("src") == ''
+					albumID = masterAlbums[parseInt(title)]
+					album = albumID.title
+					artist = albumID.romaji_artist
+					url = "https://www.googleapis.com/youtube/v3/search"
+					searchResults = {}
+					params =
+						part: 'snippet'
+						key: ytAPIkey
+						q: album + artist + "full album"
+						type: "video"
+						maxResults: "5"
+					success = (result) ->
+						setItem = (i, item) ->
+							searchResults[i] = item.id.videoId
+						setItem(i, item) for item, i in result.items
+						sliderItems = sibling.find(".video-slider").find("iframe")
+						setSourceVideo = (i, iframe) ->
+							$(iframe).attr("src", "https://www.youtube.com/embed/" + searchResults[i.toString()])
+						setSourceVideo(i, iframe) for iframe, i in sliderItems
+					$.ajax(
+						dataType: "json"
+						url: url
+						data: params
+						success: success
+					)
 				setTimeout( ->
 					sibling.parent().css("display", "block")
 					sibling.parent().addClass("offset")
@@ -59,8 +90,8 @@ $(document).on "turbolinks:load", ->
 						img = sibling.find("img").attr("src")
 						sibling.find(".info-background img").css("display", "block")
 						arrow.css("transform", "rotate(180deg)")
-						parent.css("height", "780px")
-						sibling.css("height", "400px")
+						parent.css("height", "820px")
+						sibling.css("height", "440px")
 					,
 					1)
 				,
@@ -149,13 +180,34 @@ $(document).on "turbolinks:load", ->
 										<ul class='tracklist-container'>
 										</ul>
 									</div>
-									<img class='expandable-img' src='" + currentAlbum.coverlink + "'>
+									<div class='stream-slider-container'>
+										<ion-icon name='ios-arrow-back' class='stream-arrow stream-arrow-left'></ion-icon>
+										<ion-icon name='ios-arrow-forward' class='stream-arrow stream-arrow-right'></ion-icon>
+										<div class='video-slider'>
+											<iframe src=''>
+											</iframe>
+											<iframe src=''>
+											</iframe>
+											<iframe src=''>
+											</iframe>
+											<iframe src=''>
+											</iframe>
+											<iframe src=''>
+											</iframe>
+										</div>
+									</div>
+									<div class='link-image-container'>" +
+										#<ul class='info-link-list'>
+										#	<li><img class='video-stream-img' src='https://png.icons8.com/metro/1600/cinema-.png'></img></li>
+										#</ul>
+										"<img class='expandable-img' src='" + currentAlbum.coverlink + "'>
+									</div
 								</div>
 							</div>
 						</div>
 					</div>
 				</li>"
-		
+				
 				$("#splash-container").append(albumLi)
 				$("#" + albumID + "-info .expandable-img").get()[0].addEventListener("click",(e) -> clickImage($(this)))
 				$("#" + albumID + " .arrow-container").get()[0].addEventListener("click", (e) -> albumClick($(this)))
@@ -270,7 +322,7 @@ $(document).on "turbolinks:load", ->
 				#console.log("set value")
 				inputValues = rawInput.split(/,/)
 				inputValues[i] = inputValues[i].trim() for i of inputValues
-				albums = masterAlbums
+				albums = sortedAlbums
 				tracks = masterTracks
 				if $(input).data("lastval") isnt rawInput
 					$(input).data("lastval", rawInput)
@@ -413,9 +465,9 @@ $(document).on "turbolinks:load", ->
 				displayAlbum(0, 40)
 			else
 				displayAlbum(0, albums.length)
-	
+				
 		#Load more albums on scroll
-	
+		
 		$(window).scroll -> 
 			if $(window).scrollTop() + $(window).height() >= $(document).height()
 				albumsToLoad = albums.length - loadedAlbums
@@ -426,3 +478,50 @@ $(document).on "turbolinks:load", ->
 						displayAlbum(loadedAlbums, loadedAlbums + albumsToLoad, false)
 					else
 						#console.log("No more albums to load!")
+						
+		#Handler for clicking YT link
+		
+		$(".video-stream-img").click ->
+			openedAlbum = $(this).closest(".info-container")
+			albumID = albums[parseInt(openedAlbum.prev(".album-container").attr("id")) - 1]
+			album = albumID.title
+			artist = albumID.romaji_artist
+			url = "https://www.googleapis.com/youtube/v3/search"
+			searchResults = {}
+			params =
+				part: 'snippet'
+				key: ytAPIkey
+				q: album + artist
+				type: "video"
+				maxResults: "5"
+			success = (result) ->
+				setItem = (i, item) ->
+					searchResults[i] = item.id.videoId
+				setItem(i, item) for item, i in result.items
+				sliderItems = openedAlbum.find(".video-slider").find("iframe")
+				setSourceVideo = (i, iframe) ->
+					$(iframe).attr("src", "https://www.youtube.com/embed/" + searchResults[i.toString()])
+				setSourceVideo(i, iframe) for iframe, i in sliderItems
+			$.ajax(
+				dataType: "json"
+				url: url
+				data: params
+				success: success
+			)
+			
+		#Handlers for stream slider buttons
+		
+		$(".stream-arrow").click ->
+			rightArrow = $(this).hasClass("stream-arrow-right") ? true : false
+			firstChild = $(this).siblings(".video-slider").children("iframe:first-child")
+			if Number.isInteger(parseInt(firstChild.css("margin-left")) / 600)
+				if rightArrow
+					if parseInt(firstChild.css("margin-left")) > -2400
+						firstChild.css("margin-left", (parseInt(firstChild.css("margin-left")) - 600).toString() + "px")
+					else
+						firstChild.css("margin-left", "0")
+				else
+					if parseInt(firstChild.css("margin-left")) < 0
+						firstChild.css("margin-left", (parseInt(firstChild.css("margin-left")) + 600).toString() + "px")
+					else
+						firstChild.css("margin-left", "-2400px")

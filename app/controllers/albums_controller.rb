@@ -9,8 +9,6 @@ class AlbumsController < ApplicationController
 		gon.Albums = @albums
 		gon.Tracks = @tracks
 	end
-	def submit
-	end
 	def create
 		@album = Album.new(params[:album].to_unsafe_hash)
 		if @album.scraper != ""

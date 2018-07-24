@@ -36,6 +36,7 @@ gem 'rack'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'meta-tags'
+gem 'rest-client'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
