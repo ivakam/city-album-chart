@@ -1,0 +1,56 @@
+CreateAlbumWithTracks({
+title: "Tatsuro Covers from Coast",
+romanization: "",
+romaji_artist: "The Nexus",
+japanese_artist: "",
+year: "1990",
+description: "",
+coverlink: "tatsurocoversfromcoast.jpg",
+flavor: ""
+},
+[{
+title: "Bomber",
+romanization: "",
+duration: "5:40"
+},
+{
+title: "Your Eyes",
+romanization: "",
+duration: "3:47"
+},
+{
+title: "Christmas Eve",
+romanization: "",
+duration: "4:56"
+},
+{
+title: "Shampoo",
+romanization: "",
+duration: "3:43"
+},
+{
+title: "Let's Kiss the Sun",
+romanization: "",
+duration: "4:47"
+},
+{
+title: "Hey Reporter",
+romanization: "",
+duration: "6:07"
+},
+{
+title: "Two of Us (Futari)",
+romanization: "",
+duration: "5:07"
+},
+{
+title: "War Song",
+romanization: "",
+duration: "5:09"
+},
+{
+title: "Morning Glory",
+romanization: "",
+duration: "4:53"
+},
+])
