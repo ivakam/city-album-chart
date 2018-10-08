@@ -41,9 +41,13 @@ $(document).on "turbolinks:load", ->
 		toggleAlbum = (title, sibling, parent, arrow) ->
 			timeout = 0
 			timeout = 300 if albumOpen
+			vinylClicked = false
 			$(".album-arrow").css("transform", "rotate(0)")
 			$(".album-container").css("height", "327px")
 			$(".info-wrapper").css("height", "0")
+			$(".info-wrapper").css("border-top", "none")
+			$(".info-wrapper").css("border-bottom", "none")
+			$(".info-wrapper").css("padding", "0 15px 0 15px")
 			$(".album-container").find("img").removeClass("image-border")
 			$('iframe').each ->
 				this.contentWindow.postMessage('{"event":"command","func":"stopVideo","args":""}', '*')
@@ -73,6 +77,9 @@ $(document).on "turbolinks:load", ->
 						arrow.css("transform", "rotate(180deg)")
 						parent.css("height", "820px")
 						sibling.css("height", "475px")
+						sibling.css("border-top", "1px #8c8c8c solid")
+						sibling.css("border-bottom", "1px #8c8c8c solid")
+						sibling.css("padding", "15px 15px 15px 15px")
 					,
 					1)
 				,
@@ -89,8 +96,93 @@ $(document).on "turbolinks:load", ->
 			parent = $("#" + title)
 			arrow = parent.find(".album-arrow")
 			toggleAlbum(title, sibling, parent, arrow)
-	
-	
+			
+		#Handler for expanding the YT viewbox
+		
+		vinylClick = (e) ->
+			vinylClicked = true
+			container = e.parent()
+			video = e.siblings(".stream-slider-container")
+			e.css("right", "100%")
+			e.css("transform", "rotate(-180deg)")
+			container.css("min-width", "1045px")
+			container.css("max-width", "1045px")
+			video.css("margin-right", "45px")
+			setTimeout( ->
+				if video.find(".video-slider").find("iframe:first-child").attr("src") == ''
+					title = container.closest(".info-container").siblings(".album-container").attr("id")
+					albumID = masterAlbums[parseInt(title)]
+					album = albumID.title
+					artist = albumID.romaji_artist
+					url = "https://www.googleapis.com/youtube/v3/search"
+					searchResults = {}
+					params =
+						part: 'snippet'
+						key: ytAPIkey
+						q: album + " " + artist + " full album"
+						type: "video"
+						maxResults: "5"
+					success = (result) ->
+						setItem = (i, item) ->
+							searchResults[i] = item.id.videoId
+						setItem(i, item) for item, i in result.items
+						sliderItems = video.find(".video-slider").find("iframe")
+						setSourceVideo = (i, iframe) ->
+							$(iframe).attr("src", "https://www.youtube.com/embed/" + searchResults[i.toString()] + "?enablejsapi=1&version=3&playerapiid=ytplayer")
+						setSourceVideo(i, iframe) for iframe, i in sliderItems
+					error = (result) ->
+						console.log("Failed to fetch YouTube data: ", result)
+					$.ajax(
+						dataType: "json"
+						url: url
+						data: params
+						success: success
+						error: error
+					)
+			,
+			300)
+			
+		#Handler for closing YT interface
+			
+		streamCloseClick = (e) ->
+			vinylClicked = false
+			container = e.parent().parent()
+			video = e.parent()
+			vinyl = container.children(".vinyl-icon")
+			vinyl.css("right", "0")
+			vinyl.css("transform", "rotate(0deg)")
+			container.css("min-width", "390px")
+			container.css("max-width", "390px")
+			video.css("margin-right", "625px")
+			container.find("iframe").each ->
+				this.contentWindow.postMessage('{"event":"command","func":"stopVideo","args":""}', '*')
+				
+		#Handlers for stream slider buttons
+		
+		streamArrowClick = (e) ->
+			rightArrow = e.hasClass("stream-arrow-right") ? true : false
+			firstChild = e.siblings(".video-slider").children("iframe:first-child")
+			if Number.isInteger(parseInt(firstChild.css("margin-left")) / 600)
+				if rightArrow
+					if parseInt(firstChild.css("margin-left")) > -2400
+						firstChild.css("margin-left", (parseInt(firstChild.css("margin-left")) - 600).toString() + "px")
+					else
+						firstChild.css("margin-left", "0")
+				else
+					if parseInt(firstChild.css("margin-left")) < 0
+						firstChild.css("margin-left", (parseInt(firstChild.css("margin-left")) + 600).toString() + "px")
+					else
+						firstChild.css("margin-left", "-2400px")
+						
+		vinylHoverOn = (e) ->
+			if !vinylClicked
+				e.parent().css("min-width", "590px")
+				e.parent().css("max-width", "590px")
+		vinylHoverOff = (e) ->
+			if !vinylClicked
+				e.parent().css("min-width", "390px")
+				e.parent().css("max-width", "390px")
+			
 		#Handler for image click-zoom
 	
 		clickImage = (e) ->
@@ -110,6 +202,7 @@ $(document).on "turbolinks:load", ->
 	
 		displayAlbum = (min, max, refreshSplash = true) ->
 			$("#splash-container").toggle() if refreshSplash
+			vinylClicked = false
 			createAlbum = (i) ->
 				currentAlbum = sortedAlbums[i]
 				albumID = currentAlbum.id
@@ -191,6 +284,11 @@ $(document).on "turbolinks:load", ->
 				
 				$("#splash-container").append(albumLi)
 				$("#" + albumID + "-info .expandable-img").get()[0].addEventListener("click", (e) -> clickImage($(this)))
+				$("#" + albumID + "-info .vinyl-icon").get()[0].addEventListener("click", (e) -> vinylClick($(this)))
+				$("#" + albumID + "-info .vinyl-icon").get()[0].addEventListener("mouseover", (e) -> vinylHoverOn($(this)))
+				$("#" + albumID + "-info .vinyl-icon").get()[0].addEventListener("mouseout", (e) -> vinylHoverOff($(this)))
+				$("#" + albumID + "-info .stream-close").get()[0].addEventListener("click", (e) -> streamCloseClick($(this)))
+				$("#" + albumID + "-info .stream-arrow").get()[0].addEventListener("click", (e) -> streamArrowClick($(this)))
 				$("#" + albumID + " .arrow-container").get()[0].addEventListener("click", (e) -> albumClick($(this)))
 				$("#" + albumID + " img").get()[0].addEventListener("click", (e) -> albumClick($(this)))
 				
@@ -453,85 +551,3 @@ $(document).on "turbolinks:load", ->
 						displayAlbum(loadedAlbums, loadedAlbums + albumsToLoad, false)
 					else
 						#console.log("No more albums to load!")
-						
-		#Handlers for stream slider buttons
-		
-		$(".stream-arrow").click ->
-			rightArrow = $(this).hasClass("stream-arrow-right") ? true : false
-			firstChild = $(this).siblings(".video-slider").children("iframe:first-child")
-			if Number.isInteger(parseInt(firstChild.css("margin-left")) / 600)
-				if rightArrow
-					if parseInt(firstChild.css("margin-left")) > -2400
-						firstChild.css("margin-left", (parseInt(firstChild.css("margin-left")) - 600).toString() + "px")
-					else
-						firstChild.css("margin-left", "0")
-				else
-					if parseInt(firstChild.css("margin-left")) < 0
-						firstChild.css("margin-left", (parseInt(firstChild.css("margin-left")) + 600).toString() + "px")
-					else
-						firstChild.css("margin-left", "-2400px")
-						
-		$(".vinyl-icon").hover( ->
-			if !vinylClicked
-				$(this).parent().css("min-width", "590px")
-				$(this).parent().css("max-width", "590px")
-		, ->
-			if !vinylClicked
-				$(this).parent().css("min-width", "390px")
-				$(this).parent().css("max-width", "390px")
-		)
-		
-		$(".vinyl-icon").click ->
-			vinylClicked = true
-			container = $(this).parent()
-			video = $(this).siblings(".stream-slider-container")
-			$(this).css("right", "100%")
-			$(this).css("transform", "rotate(-180deg)")
-			container.css("min-width", "1045px")
-			container.css("max-width", "1045px")
-			video.css("margin-right", "45px")
-			setTimeout( ->
-				if video.find(".video-slider").find("iframe:first-child").attr("src") == ''
-					title = container.closest(".info-container").siblings(".album-container").attr("id")
-					albumID = masterAlbums[parseInt(title)]
-					album = albumID.title
-					artist = albumID.romaji_artist
-					url = "https://www.googleapis.com/youtube/v3/search"
-					searchResults = {}
-					params =
-						part: 'snippet'
-						key: ytAPIkey
-						q: album + " " + artist + " full album"
-						type: "video"
-						maxResults: "5"
-					success = (result) ->
-						setItem = (i, item) ->
-							searchResults[i] = item.id.videoId
-						setItem(i, item) for item, i in result.items
-						sliderItems = video.find(".video-slider").find("iframe")
-						setSourceVideo = (i, iframe) ->
-							$(iframe).attr("src", "https://www.youtube.com/embed/" + searchResults[i.toString()] + "?enablejsapi=1&version=3&playerapiid=ytplayer")
-						setSourceVideo(i, iframe) for iframe, i in sliderItems
-					error = (result) ->
-						console.log("Failed to fetch YouTube data: ", result)
-					$.ajax(
-						dataType: "json"
-						url: url
-						data: params
-						success: success
-						error: error
-					)
-			,
-			300)
-		$(".stream-close").click ->
-			vinylClicked = false
-			container = $(this).parent().parent()
-			video = $(this).parent()
-			vinyl = container.children(".vinyl-icon")
-			vinyl.css("right", "0")
-			vinyl.css("transform", "rotate(0deg)")
-			container.css("min-width", "390px")
-			container.css("max-width", "390px")
-			video.css("margin-right", "625px")
-			container.find("iframe").each ->
-				this.contentWindow.postMessage('{"event":"command","func":"stopVideo","args":""}', '*')
