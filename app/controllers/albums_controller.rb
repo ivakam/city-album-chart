@@ -62,7 +62,7 @@ class AlbumsController < ApplicationController
 				"flavor: \'" + @album.flavor + "\'},\n" + trackString
 			if @album.valid?	
 				File.open("uploads/" + @album.title + ".txt", "w") do |f|
-					f.write(albumString)
+					f << albumString
 				end
 			end
 		end
