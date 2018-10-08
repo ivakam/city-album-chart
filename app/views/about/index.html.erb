@@ -1,72 +1,57 @@
 <% title "About" %>
 <% description "varieti.es is an open source archive for city pop. Browse your favorite city pop albums in an accessible way!" %>
-<div id="wrapper">
-	<%= image_tag "varietiescropped.png", id: "alt-img" %>
-	<div id="bg-opacity"></div>
-	<div id="albums-bg-container">
-		<%= image_tag "sunshower.jpg" %>
-		<%= image_tag "niagaratrianglevol1.jpg" %>
-		<%= image_tag "pacific.jpg" %>
-		<%= image_tag "love.jpg" %>
-		<%= image_tag "allofme.jpg" %>
-	</div>
-	<div id="search-title">
-  		<div id="logo-title">
-  			<a href="/albums/index"><h1>varieti.es</h1></a>
-  			<a href="/albums/index" id="beta-title">BETA!</a>
-  			<h2>City Pop Album Archive</h2>
-  		</div>
-  		<div id="input">
+<%= image_tag "varietiescropped.png", id: "alt-img" %>
+<div id="bg-opacity"></div>
+<div id="albums-bg-container">
+	<%= image_tag "sunshower.jpg" %>
+	<%= image_tag "niagaratrianglevol1.jpg" %>
+	<%= image_tag "pacific.jpg" %>
+	<%= image_tag "love.jpg" %>
+	<%= image_tag "allofme.jpg" %>
+</div>
+<div id="search-title">
+  	<div id="logo-title">
+  		<a href="/albums/index"><h1>varieti.es</h1></a>
+  		<a href="/albums/index" id="beta-title">BETA!</a>
+  		<h2>City Pop Album Archive</h2>
   	</div>
-	</div>
- 	<div id="main-container">
- 		<div id="main-opacity"></div>
-    	<nav id="sidebar">
-      		<ul id="nav-list">
-      			<li>
-	        		<div class="nav-btn"><div class="title-wrapper"><%= link_to "Home", albums_index_path %></div></div>
-	        		<div class="nav-btn"><div class="title-wrapper"><%= link_to "Submit", albums_submit_path %></div></div>
-	        		<div class="nav-btn"><div class="title-wrapper"><%= link_to "About / FAQ", about_index_path %></div></div>
-      			</li>
-      		</ul>
-    	</nav>
-    	<div id="about-container">
-    		<h2>About</h2>
-    		<div id="about-text-container">
-	    		<p id="purpose">This site is meant as a community-driven repository for city pop albums. It was developed by me (PorousBoat) and is open source (repo can be found at the bottom of the page). Right now it's still in development, so expect features like user submission to be implemented at some point down the line.</p>
-	    		<h3>FAQ:</h3>
-	    		<p><b>Can I stream/download music from here?</b></p>
-	    		<p>Short answer: Maybe <br> Long answer: This is a legal issue. Hosting the music would be infringing on copyright, and linking to various torrent (or other) sites I won't mention is not allowed for obvious reasons. There is, however, a system in place for finding YouTube links to albums.</p>
-	    		<p><b>Why can't I sort by popularity? Why are there no ratings?</b></p>
-	    		<p>I, as the creator and curator of the page, believe that the best music is the music you discover yourself. By providing a visually appealing interface combined with powerful search tools, this site gives you everything you need to discover albums you can grow to love. If you, despite this, feel like you want to know the "essentials", there are links to a chart, to a spreadsheet that I personally keep for tracking albums, and to the city pop Discord server in the footer of the page.</p>
-	    		<p><b>What does "flavor" mean?</b></p>
-	    		<p>"Flavor" is a term I coined to put a proper musical descriptor on albums. Think of it as a kind of "sub-genre". For instance, you could say that "Songs" is jazz-flavored city pop while "A Long Vacation" is rock-flavored city pop.</p>
-	    		<p><b>Artist/Album X isn't city pop! It's <i>similar derivative genre</i> !</b></p>
-	    		<p>City pop is inherently a really bad descriptor of music. I could go on for days about what the name really entails, but for now we've decided to keep the definition broad to fill the archive. Unless something is blatantly not city pop, it will be accepted. If you strongly disagree with an album on here, email me at the address provided at the bottom of the page, ping me in the city pop Discord, or file an issue on GitHub.</p>
-	    		<p><b>Why isn't X artist on here? They're so popular!</b></p>
-	    		<p>The only thing on this site is what people have contributed. If you think something should be on here, submit it!</p>
-	    		<p><b>This info on album X is wrong! Fix it!</b></p>
-	    		<p>Those of us who curate submissions try to be as vigilant as possible, but we are human, and sometimes something slips through. If you spot an issue or error, either email me, ping me in the city pop Discord server, or submit an issue on GitHub. I will get on it as soon as possible.</p>
-	    		<p><b>I want to help out! How can I?</b></p>
-	    		<p>You can help in many different ways, even if you have no experience with programming. Something as simple as submitting albums is a huge help for everyone involved. If you, however, do know web dev pertaining to Ruby/Rails, fork the GitHub repo and get to work. I'll gladly answer any questions.</p>
-	    		<p><b>Do you take donations?</b></p>
-	    		<p>While running the site is not free, and I have put a lot of blood, sweat, and tears into making this project a reality, I can't bring myself to take your money for something I'm doing just for fun. If you want to help, please look at the previous answer.</p>
-	    		<p><b>The site is broken on mobile/my small(er than most) monitor/when I resize the window!</b></p>
-	    		<p>Yup. Right now the site has not been developed with mobile in mind, because to me browsing an archive on a phone seems like a bit of a bad idea not matter how you do it. I might do something about that at some point.<br>I will, however, make some adjustments in the future to accommodate smaller monitors, so stay tuned for that!</p>
-	    	</div>
-	    </div>
-	</div>
-	<div id="footer">
-		<ul id="link-list">
-			<li><a href="https://GitHub.com/ivakam/city-album-chart">GitHub</a></li>
-			<li><a href="mailto:ivar.kamsvag@gmail.com">Email</a></li>
-			<li><a href="https://discord.gg/ejewttb">City pop Discord server</a></li>
-			<li><a href="https://i.imgur.com/nTfQAky.png">Album chart</a></li>
-			<li><a href="https://docs.google.com/spreadsheets/d/1UumcUXF3QvJgoQ3j8SsAnPtdbarhFD_wTmguK0RuZbs/edit?usp=sharing">My personal spreadsheet</a></li>
-		</ul>
-		<div id="disclaimers">
-			<p>Site currently hosting </p><p id="album-total-count"></p><p id="total-count-left">albums on Rails 5.2 framework with SQLite database</p>
-			<p>Thanks to the people behind <a href="https://ionicons.com/">ionicons</a> for providing amazing assets for free.</p>
-		</div>
-	</div>
+  	<div id="input">
+  </div>
+</div>
+ <div id="main-container">
+ 	<div id="main-opacity"></div>
+	<nav id="sidebar">
+  		<ul id="nav-list">
+  			<li>
+        		<div class="nav-btn"><div class="title-wrapper"><%= link_to "Home", albums_index_path %></div></div>
+        		<div class="nav-btn"><div class="title-wrapper"><%= link_to "Submit", albums_submit_path %></div></div>
+        		<div class="nav-btn"><div class="title-wrapper"><%= link_to "About / FAQ", about_index_path %></div></div>
+  			</li>
+  		</ul>
+	</nav>
+	<div id="about-container">
+		<h2>About</h2>
+		<div id="about-text-container">
+    		<p id="purpose">This site is meant as a community-driven repository for city pop albums. It was developed by me (PorousBoat) and is open source (repo can be found at the bottom of the page). Right now it's still in development, so expect features like user submission to be implemented at some point down the line.</p>
+    		<h3>FAQ:</h3>
+    		<p><b>Can I stream/download music from here?</b></p>
+    		<p>Short answer: Maybe <br> Long answer: This is a legal issue. Hosting the music would be infringing on copyright, and linking to various torrent (or other) sites I won't mention is not allowed for obvious reasons. There is, however, a system in place for finding YouTube links to albums.</p>
+    		<p><b>Why can't I sort by popularity? Why are there no ratings?</b></p>
+    		<p>I, as the creator and curator of the page, believe that the best music is the music you discover yourself. By providing a visually appealing interface combined with powerful search tools, this site gives you everything you need to discover albums you can grow to love. If you, despite this, feel like you want to know the "essentials", there are links to a chart, to a spreadsheet that I personally keep for tracking albums, and to the city pop Discord server in the footer of the page.</p>
+    		<p><b>What does "flavor" mean?</b></p>
+    		<p>"Flavor" is a term I coined to put a proper musical descriptor on albums. Think of it as a kind of "sub-genre". For instance, you could say that "Songs" is jazz-flavored city pop while "A Long Vacation" is rock-flavored city pop.</p>
+    		<p><b>Artist/Album X isn't city pop! It's <i>similar derivative genre</i> !</b></p>
+    		<p>City pop is inherently a really bad descriptor of music. I could go on for days about what the name really entails, but for now we've decided to keep the definition broad to fill the archive. Unless something is blatantly not city pop, it will be accepted. If you strongly disagree with an album on here, email me at the address provided at the bottom of the page, ping me in the city pop Discord, or file an issue on GitHub.</p>
+    		<p><b>Why isn't X artist on here? They're so popular!</b></p>
+    		<p>The only thing on this site is what people have contributed. If you think something should be on here, submit it!</p>
+    		<p><b>This info on album X is wrong! Fix it!</b></p>
+    		<p>Those of us who curate submissions try to be as vigilant as possible, but we are human, and sometimes something slips through. If you spot an issue or error, either email me, ping me in the city pop Discord server, or submit an issue on GitHub. I will get on it as soon as possible.</p>
+    		<p><b>I want to help out! How can I?</b></p>
+    		<p>You can help in many different ways, even if you have no experience with programming. Something as simple as submitting albums is a huge help for everyone involved. If you, however, do know web dev pertaining to Ruby/Rails, fork the GitHub repo and get to work. I'll gladly answer any questions.</p>
+    		<p><b>Do you take donations?</b></p>
+    		<p>While running the site is not free, and I have put a lot of blood, sweat, and tears into making this project a reality, I can't bring myself to take your money for something I'm doing just for fun. If you want to help, please look at the previous answer.</p>
+    		<p><b>The site is broken on mobile/my small(er than most) monitor/when I resize the window!</b></p>
+    		<p>Yup. Right now the site has not been developed with mobile in mind, because to me browsing an archive on a phone seems like a bit of a bad idea not matter how you do it. I might do something about that at some point.<br>I will, however, make some adjustments in the future to accommodate smaller monitors, so stay tuned for that!</p>
+    	</div>
+    </div>
 </div>

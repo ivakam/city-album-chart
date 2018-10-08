@@ -34,6 +34,7 @@ $(document).on "turbolinks:load", ->
 		albumOpen = false
 		delayTimer = null
 		loadedAlbums = 0
+		vinylClicked = false
 	
 		#Helper method for opening an info container. Call it as 'sibling: undefined' to reset all info containers.
 	
@@ -45,8 +46,7 @@ $(document).on "turbolinks:load", ->
 			$(".info-wrapper").css("height", "0")
 			$(".album-container").find("img").removeClass("image-border")
 			$('iframe').each ->
-				src = $(this).attr("src")
-				$(this).attr("src", src)
+				this.contentWindow.postMessage('{"event":"command","func":"stopVideo","args":""}', '*')
 			setTimeout( ->
 				$(".info-wrapper").css("display", "none")
 				$(".info-container").css("display", "none")
@@ -54,35 +54,6 @@ $(document).on "turbolinks:load", ->
 			timeout)
 			if sibling isnt undefined && !sibling.hasClass("is-open")
 				parent.find("img").addClass("image-border")
-				if sibling.find(".video-slider").find("iframe:first-child").attr("src") == ''
-					albumID = masterAlbums[parseInt(title)]
-					album = albumID.title
-					artist = albumID.romaji_artist
-					url = "https://www.googleapis.com/youtube/v3/search"
-					searchResults = {}
-					params =
-						part: 'snippet'
-						key: ytAPIkey
-						q: album + " " + artist + " full album"
-						type: "video"
-						maxResults: "5"
-					success = (result) ->
-						setItem = (i, item) ->
-							searchResults[i] = item.id.videoId
-						setItem(i, item) for item, i in result.items
-						sliderItems = sibling.find(".video-slider").find("iframe")
-						setSourceVideo = (i, iframe) ->
-							$(iframe).attr("src", "https://www.youtube.com/embed/" + searchResults[i.toString()])
-						setSourceVideo(i, iframe) for iframe, i in sliderItems
-					error = (result) ->
-						console.log("Failed to fetch YouTube data: ", result)
-					$.ajax(
-						dataType: "json"
-						url: url
-						data: params
-						success: success
-						error: error
-					)
 				setTimeout( ->
 					sibling.parent().css("display", "block")
 					sibling.parent().addClass("offset")
@@ -94,6 +65,10 @@ $(document).on "turbolinks:load", ->
 						$(".info-wrapper").attr("class", "info-wrapper")
 						sibling.addClass("is-open")
 						img = sibling.find("img").attr("src")
+						expandImg = sibling.find(".expandable-img")
+						if expandImg.height() < expandImg.width()
+							sibling.find(".vinyl-icon").css("width", expandImg.height())
+							sibling.find(".vinyl-icon").css("height", expandImg.height())
 						sibling.find(".info-background img").css("display", "block")
 						arrow.css("transform", "rotate(180deg)")
 						parent.css("height", "820px")
@@ -182,32 +157,24 @@ $(document).on "turbolinks:load", ->
 								</div>
 								<div class='track-grow-wrapper'>
 									<div class='link-image-container'>" +
-										#<ul class='info-link-list'>
-										#	<li><img class='video-stream-img' src='https://png.icons8.com/metro/1600/cinema-.png'></img></li>
-										#</ul>
 										"<img class='expandable-img' src='" + currentAlbum.coverlink + "'>
-									</div>
-									<div class='info-divider'></div>
-									<div class='stream-slider-container'>
-										<ion-icon name='ios-arrow-back' class='stream-arrow stream-arrow-left'></ion-icon>
-										<ion-icon name='ios-arrow-forward' class='stream-arrow stream-arrow-right'></ion-icon>
-                                        <div class='tooltip'>
-                                        	<span class='tooltiptext'>
-                                            	<a>The videos in the box are the top 5 search results on YouTube for this album.</a>
-                                            </span>
-                                            <ion-icon class='info-help-icon' name='help-circle-outline'></ion-icon>
-                                        </div>
-										<div class='video-slider'>
-											<iframe src=''>
-											</iframe>
-											<iframe src=''>
-											</iframe>
-											<iframe src=''>
-											</iframe>
-											<iframe src=''>
-											</iframe>
-											<iframe src=''>
-											</iframe>
+										<img class='vinyl-icon' src='https://upload.wikimedia.org/wikipedia/commons/7/75/Vinyl_record.svg'>
+										<div class='stream-slider-container'>
+											<ion-icon name='ios-close' class='stream-close'></ion-icon>
+											<ion-icon name='ios-arrow-back' class='stream-arrow stream-arrow-left'></ion-icon>
+											<ion-icon name='ios-arrow-forward' class='stream-arrow stream-arrow-right'></ion-icon>
+											<div class='video-slider'>
+												<iframe src='' allowfullscreen='true' allowscriptaccess='always' frameborder='0'>
+												</iframe>
+												<iframe src='' allowfullscreen='true' allowscriptaccess='always' frameborder='0'>
+												</iframe>
+												<iframe src='' allowfullscreen='true' allowscriptaccess='always' frameborder='0'>
+												</iframe>
+												<iframe src='' allowfullscreen='true' allowscriptaccess='always' frameborder='0'>
+												</iframe>
+												<iframe src='' allowfullscreen='true' allowscriptaccess='always' frameborder='0'>
+												</iframe>
+											</div>
 										</div>
 									</div>
 									<div class='info-divider'></div>
@@ -223,7 +190,7 @@ $(document).on "turbolinks:load", ->
 				</li>"
 				
 				$("#splash-container").append(albumLi)
-				$("#" + albumID + "-info .expandable-img").get()[0].addEventListener("click",(e) -> clickImage($(this)))
+				$("#" + albumID + "-info .expandable-img").get()[0].addEventListener("click", (e) -> clickImage($(this)))
 				$("#" + albumID + " .arrow-container").get()[0].addEventListener("click", (e) -> albumClick($(this)))
 				$("#" + albumID + " img").get()[0].addEventListener("click", (e) -> albumClick($(this)))
 				
@@ -487,36 +454,6 @@ $(document).on "turbolinks:load", ->
 					else
 						#console.log("No more albums to load!")
 						
-		#Handler for clicking YT link
-		
-		$(".video-stream-img").click ->
-			openedAlbum = $(this).closest(".info-container")
-			albumID = sortedAlbums[parseInt(openedAlbum.prev(".album-container").attr("id")) - 1]
-			album = albumID.title
-			artist = albumID.romaji_artist
-			url = "https://www.googleapis.com/youtube/v3/search"
-			searchResults = {}
-			params =
-				part: 'snippet'
-				key: ytAPIkey
-				q: album + artist
-				type: "video"
-				maxResults: "5"
-			success = (result) ->
-				setItem = (i, item) ->
-					searchResults[i] = item.id.videoId
-				setItem(i, item) for item, i in result.items
-				sliderItems = openedAlbum.find(".video-slider").find("iframe")
-				setSourceVideo = (i, iframe) ->
-					$(iframe).attr("src", "https://www.youtube.com/embed/" + searchResults[i.toString()])
-				setSourceVideo(i, iframe) for iframe, i in sliderItems
-			$.ajax(
-				dataType: "json"
-				url: url
-				data: params
-				success: success
-			)
-			
 		#Handlers for stream slider buttons
 		
 		$(".stream-arrow").click ->
@@ -533,3 +470,68 @@ $(document).on "turbolinks:load", ->
 						firstChild.css("margin-left", (parseInt(firstChild.css("margin-left")) + 600).toString() + "px")
 					else
 						firstChild.css("margin-left", "-2400px")
+						
+		$(".vinyl-icon").hover( ->
+			if !vinylClicked
+				$(this).parent().css("min-width", "590px")
+				$(this).parent().css("max-width", "590px")
+		, ->
+			if !vinylClicked
+				$(this).parent().css("min-width", "390px")
+				$(this).parent().css("max-width", "390px")
+		)
+		
+		$(".vinyl-icon").click ->
+			vinylClicked = true
+			container = $(this).parent()
+			video = $(this).siblings(".stream-slider-container")
+			$(this).css("right", "100%")
+			$(this).css("transform", "rotate(-180deg)")
+			container.css("min-width", "1045px")
+			container.css("max-width", "1045px")
+			video.css("margin-right", "45px")
+			setTimeout( ->
+				if video.find(".video-slider").find("iframe:first-child").attr("src") == ''
+					title = container.closest(".info-container").siblings(".album-container").attr("id")
+					albumID = masterAlbums[parseInt(title)]
+					album = albumID.title
+					artist = albumID.romaji_artist
+					url = "https://www.googleapis.com/youtube/v3/search"
+					searchResults = {}
+					params =
+						part: 'snippet'
+						key: ytAPIkey
+						q: album + " " + artist + " full album"
+						type: "video"
+						maxResults: "5"
+					success = (result) ->
+						setItem = (i, item) ->
+							searchResults[i] = item.id.videoId
+						setItem(i, item) for item, i in result.items
+						sliderItems = video.find(".video-slider").find("iframe")
+						setSourceVideo = (i, iframe) ->
+							$(iframe).attr("src", "https://www.youtube.com/embed/" + searchResults[i.toString()] + "?enablejsapi=1&version=3&playerapiid=ytplayer")
+						setSourceVideo(i, iframe) for iframe, i in sliderItems
+					error = (result) ->
+						console.log("Failed to fetch YouTube data: ", result)
+					$.ajax(
+						dataType: "json"
+						url: url
+						data: params
+						success: success
+						error: error
+					)
+			,
+			300)
+		$(".stream-close").click ->
+			vinylClicked = false
+			container = $(this).parent().parent()
+			video = $(this).parent()
+			vinyl = container.children(".vinyl-icon")
+			vinyl.css("right", "0")
+			vinyl.css("transform", "rotate(0deg)")
+			container.css("min-width", "390px")
+			container.css("max-width", "390px")
+			video.css("margin-right", "625px")
+			container.find("iframe").each ->
+				this.contentWindow.postMessage('{"event":"command","func":"stopVideo","args":""}', '*')
