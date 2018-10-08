@@ -44,6 +44,9 @@ $(document).on "turbolinks:load", ->
 			$(".album-container").css("height", "327px")
 			$(".info-wrapper").css("height", "0")
 			$(".album-container").find("img").removeClass("image-border")
+			$('iframe').each ->
+				src = $(this).attr("src")
+				$(this).attr("src", src)
 			setTimeout( ->
 				$(".info-wrapper").css("display", "none")
 				$(".info-container").css("display", "none")
