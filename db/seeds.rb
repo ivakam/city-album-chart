@@ -1,15 +1,22 @@
 def CreateAlbumWithTracks(albumParam, tracks = [])
-	currentAlbum = Album.create(albumParam)
-	currentAlbum.save
+	currentAlbum = Album.new(albumParam)
+	coverName = currentAlbum.title.downcase.gsub(/[^[\u3000-\u303F][\u3040-\u309F][\u30A0-\u30FF][\uFF00-\uFFEF][\u4E00-\u9FAF][\u2605-\u2606][\u2190-\u2195]\u203B\p{L}\d]/, '')
+	coverPath = Dir.glob(Rails.root.join("app/assets/images/#{coverName}.*")).first
+	p "Album Title: " + currentAlbum.title
+	p "Cover name: " + coverName
+	p "Cover path: " + coverPath 
+	currentAlbum.cover.attach(io: File.open(coverPath), filename: coverPath[/(#{coverName})\..+$/, 0], content_type: 'image/jpg')
+	currentAlbum.cover.attach(io: File.open(Rails.root.join("app/assets/images/missingcover.jpg")), filename: "missingcover.jpg", content_type: 'image/jpg')
+	currentAlbum.coverlink = currentAlbum.rails_blob_url(currentAlbum.cover)
+	currentAlbum.thumbnail = currentAlbum.rails_representation_url(currentAlbum.cover.variant(resize: "200x200"))
 	tempQuality = 0
 	trackDurationCount = 0
 	hasTracks = (tracks == []) ? false : true
-	Track.create(tracks).each do | t |
-		t.album = currentAlbum
-		if t.duration.present?
+	currentAlbum.tracks = tracks.map { | t | Track.new(t)}
+	tracks.each do | t |
+		if t["duration"].present?
 			trackDurationCount += 1
 		end
-		t.save
 	end
 	if currentAlbum.description.present?
 		tempQuality += 5
@@ -31,6 +38,7 @@ def CreateAlbumWithTracks(albumParam, tracks = [])
 	end
 	currentAlbum.quality = tempQuality
 	currentAlbum.save
+	p "Success!"
 end
 
 CreateAlbumWithTracks({
@@ -40,7 +48,6 @@ romaji_artist: "Tatsuro Yamashita",
 japanese_artist: "山下達郎",
 year: "1984",
 description: "Big Wave is Tatsuro Yamashita's soundtrack to the 1984 movie of the same name.",
-coverlink: "bigwave.jpg",
 flavor: "Dreamy, Ballad"
 },
 [{
@@ -111,7 +118,6 @@ romaji_artist: "Taeko Ohnuki",
 japanese_artist: "大貫妙子",
 year: "1976",
 description: "",
-coverlink: "greyskies.jpg",
 flavor: "Soul, Jazz"
 },
 [{
@@ -172,9 +178,7 @@ romanization: "",
 romaji_artist: "Taeko Ohnuki",
 japanese_artist: "大貫妙子",
 year: "1977",
-description: "",
-coverlink: "sunshower.jpg",
-flavor: "Jazz"
+description: "",flavor: "Jazz"
 },
 [{
 title: "Summer Connection",
@@ -250,7 +254,6 @@ romaji_artist: "Taeko Ohnuki",
 japanese_artist: "大貫妙子",
 year: "1980",
 description: "",
-coverlink: "romantique.jpg",
 flavor: "Electronic, Euro"
 },
 [{
@@ -317,7 +320,6 @@ romaji_artist: "Taeko Ohnuki",
 japanese_artist: "大貫妙子",
 year: "1978",
 description: "",
-coverlink: "mignonne.jpg",
 flavor: "Funk, Ballad"
 },
 [{
@@ -379,7 +381,6 @@ romaji_artist: "Taeko Ohnuki",
 japanese_artist: "大貫妙子",
 year: "1982",
 description: "",
-coverlink: "cliche.jpg",
 flavor: "Electronic, Euro"
 },
 [{
@@ -441,7 +442,6 @@ romaji_artist: "Taeko Ohnuki",
 japanese_artist: "大貫妙子",
 year: "1981",
 description: "",
-coverlink: "aventure.jpg",
 flavor: "Electronic, Euro"
 },
 [{
@@ -503,7 +503,6 @@ romaji_artist: "Various Artists",
 japanese_artist: "",
 year: "2013",
 description: "",
-coverlink: "大貫妙子トリビュート・アルバム.jpg",
 flavor: "Tribute"
 },
 [{
@@ -626,7 +625,6 @@ romaji_artist: "Haruomi Hosono, Shigeru Suzuki & Tatsuro Yamashita",
 japanese_artist: "",
 year: "1978",
 description: "",
-coverlink: "pacific.jpg",
 flavor: "Jazz"
 },
 [{
@@ -678,7 +676,6 @@ romaji_artist: "Niagara Triangle",
 japanese_artist: "",
 year: "1976",
 description: "",
-coverlink: "niagaratrianglevol1.jpg",
 flavor: "Rock"
 },
 [{
@@ -745,7 +742,6 @@ romaji_artist: "Niagara Triangle",
 japanese_artist: "",
 year: "1991",
 description: "",
-coverlink: "niagaratrianglevol2.jpg",
 flavor: "Rock"
 },
 [{
@@ -827,7 +823,6 @@ romaji_artist: "So Nice",
 japanese_artist: "",
 year: "1979",
 description: "",
-coverlink: "love.jpg",
 flavor: "Jazz"
 },
 [{
@@ -889,7 +884,6 @@ romaji_artist: "Sugar Babe",
 japanese_artist: "",
 year: "1975",
 description: "",
-coverlink: "songs.jpg",
 flavor: "Jazz, Rock"
 },
 [{
@@ -956,7 +950,6 @@ romaji_artist: "Hiroshi Sato",
 japanese_artist: "佐藤博",
 year: "1976",
 description: "",
-coverlink: "supermarket.jpg",
 flavor: "Folk, Rock"
 },
 [{
@@ -1018,7 +1011,6 @@ romaji_artist: "Hiroshi Sato",
 japanese_artist: "佐藤博",
 year: "1977",
 description: "",
-coverlink: "time.jpg",
 flavor: "Funk, Jazz"
 },
 [{
@@ -1095,7 +1087,6 @@ romaji_artist: "Hiroshi Sato",
 japanese_artist: "佐藤博",
 year: "1979",
 description: "",
-coverlink: "orient.jpg",
 flavor: "Electronic"
 },
 [{
@@ -1147,7 +1138,6 @@ romaji_artist: "Hiroshi Sato",
 japanese_artist: "佐藤博",
 year: "1982",
 description: "",
-coverlink: "awakening.jpg",
 flavor: "Synth"
 },
 [{
@@ -1209,7 +1199,6 @@ romaji_artist: "Hiroshi Sato",
 japanese_artist: "佐藤博",
 year: "1985",
 description: "",
-coverlink: "thisboy.jpg",
 flavor: "Synth"
 },
 [{
@@ -1276,7 +1265,6 @@ romaji_artist: "Minako Yoshida",
 japanese_artist: "吉田美奈子",
 year: "1973",
 description: "",
-coverlink: "扉の冬.jpg",
 flavor: "Soul, Ballad"
 },
 [{
@@ -1334,7 +1322,6 @@ romaji_artist: "Minako Yoshida",
 japanese_artist: "吉田美奈子",
 year: "1976",
 description: "",
-coverlink: "flapper.jpg",
 flavor: "Funk, Soul"
 },
 [{
@@ -1396,7 +1383,6 @@ romaji_artist: "Minako Yoshida",
 japanese_artist: "吉田美奈子",
 year: "1975",
 description: "",
-coverlink: "minako.jpg",
 flavor: "Funk"
 },
 [{
@@ -1453,7 +1439,6 @@ romaji_artist: "Minako Yoshida",
 japanese_artist: "吉田美奈子",
 year: "1975",
 description: "",
-coverlink: "minakoii.jpg",
 flavor: "Funk"
 },
 [{
@@ -1535,7 +1520,6 @@ romaji_artist: "Minako Yoshida",
 japanese_artist: "吉田美奈子",
 year: "1977",
 description: "",
-coverlink: "twilightzone.jpg",
 flavor: "Funk"
 },
 [{
@@ -1592,7 +1576,6 @@ romaji_artist: "Minako Yoshida",
 japanese_artist: "吉田美奈子",
 year: "1978",
 description: "",
-coverlink: "letsdoit.jpg",
 flavor: "Funk"
 },
 [{
@@ -1649,7 +1632,6 @@ romaji_artist: "Minako Yoshida",
 japanese_artist: "吉田美奈子",
 year: "1978",
 description: "",
-coverlink: "minakofavorites.jpg",
 flavor: "Funk"
 },
 [{
@@ -1711,7 +1693,6 @@ romaji_artist: "Minako Yoshida",
 japanese_artist: "吉田美奈子",
 year: "1981",
 description: "",
-coverlink: "monstersintown.jpg",
 flavor: "Funk"
 },
 [{
@@ -1762,7 +1743,6 @@ romaji_artist: "Minako Yoshida",
 japanese_artist: "吉田美奈子",
 year: "1980",
 description: "",
-coverlink: "monochrome.jpg",
 flavor: "Funk, Soul"
 },
 [{
@@ -1814,7 +1794,6 @@ romaji_artist: "Minako Yoshida",
 japanese_artist: "吉田美奈子",
 year: "1982",
 description: "",
-coverlink: "lightnup.jpg",
 flavor: "Funk"
 },
 [{
@@ -1866,7 +1845,6 @@ romaji_artist: "Minako Yoshida",
 japanese_artist: "吉田美奈子",
 year: "1986",
 description: "",
-coverlink: "bells.jpg",
 flavor: "Funk, Ballad"
 },
 [{
@@ -1917,7 +1895,6 @@ romaji_artist: "Masayoshi Takanaka",
 japanese_artist: "虹伝説",
 year: "1976",
 description: "",
-coverlink: "seychelles.jpg",
 flavor: "Fusion"
 },
 [{
@@ -1969,7 +1946,6 @@ romaji_artist: "Masayoshi Takanaka",
 japanese_artist: "虹伝説",
 year: "1977",
 description: "",
-coverlink: "aninsatiablehigh.jpg",
 flavor: "Fusion"
 },
 [{
@@ -2016,7 +1992,6 @@ romaji_artist: "Masayoshi Takanaka",
 japanese_artist: "虹伝説",
 year: "1977",
 description: "",
-coverlink: "takanaka.jpg",
 flavor: "Fusion"
 },
 [{
@@ -2068,7 +2043,6 @@ romaji_artist: "Masayoshi Takanaka",
 japanese_artist: "虹伝説",
 year: "1978",
 description: "",
-coverlink: "brasilianskies.jpg",
 flavor: "Fusion, Latin"
 },
 [{
@@ -2120,7 +2094,6 @@ romaji_artist: "Masayoshi Takanaka",
 japanese_artist: "虹伝説",
 year: "1979",
 description: "",
-coverlink: "allofme.jpg",
 flavor: "Fusion, Latin, Compilation"
 },
 [{
@@ -2202,7 +2175,6 @@ romaji_artist: "Masayoshi Takanaka",
 japanese_artist: "虹伝説",
 year: "1979",
 description: "",
-coverlink: "baccochachame.jpg",
 flavor: "Rock"
 },
 [{
@@ -2254,7 +2226,6 @@ romaji_artist: "Masayoshi Takanaka",
 japanese_artist: "虹伝説",
 year: "1979",
 description: "",
-coverlink: "jollyjive.jpg",
 flavor: "Fusion"
 },
 [{
@@ -2306,7 +2277,6 @@ romaji_artist: "Masayoshi Takanaka",
 japanese_artist: "虹伝説",
 year: "1980",
 description: "",
-coverlink: "alone.jpg",
 flavor: "Fusion"
 },
 [{
@@ -2358,7 +2328,6 @@ romaji_artist: "Masayoshi Takanaka",
 japanese_artist: "虹伝説",
 year: "1981",
 description: "",
-coverlink: "therainbowgoblins.jpg",
 flavor: "Fusion"
 },
 [{
@@ -2440,7 +2409,6 @@ romaji_artist: "Masayoshi Takanaka",
 japanese_artist: "虹伝説",
 year: "1982",
 description: "",
-coverlink: "oceanbreeze.jpg",
 flavor: "Fusion, Compilation"
 },
 [{
@@ -2487,7 +2455,6 @@ romaji_artist: "Masayoshi Takanaka",
 japanese_artist: "虹伝説",
 year: "1983",
 description: "",
-coverlink: "canising.jpg",
 flavor: "Fusion"
 },
 [{
@@ -2549,7 +2516,6 @@ romaji_artist: "Masayoshi Takanaka",
 japanese_artist: "虹伝説",
 year: "1983",
 description: "",
-coverlink: "saudade.jpg",
 flavor: "Fusion"
 },
 [{
@@ -2606,7 +2572,6 @@ romaji_artist: "Masayoshi Takanaka",
 japanese_artist: "虹伝説",
 year: "1983",
 description: "",
-coverlink: "夏全開.jpg",
 flavor: "Fusion"
 },
 [{
@@ -2668,7 +2633,6 @@ romaji_artist: "Masayoshi Takanaka",
 japanese_artist: "虹伝説",
 year: "1985",
 description: "",
-coverlink: "traumatic.jpg",
 flavor: "Fusion"
 },
 [{
@@ -2725,7 +2689,6 @@ romaji_artist: "Masayoshi Takanaka",
 japanese_artist: "虹伝説",
 year: "1986",
 description: "",
-coverlink: "junglejane.jpg",
 flavor: "Fusion"
 },
 [{
@@ -2782,7 +2745,6 @@ romaji_artist: "Masayoshi Takanaka",
 japanese_artist: "虹伝説",
 year: "1988",
 description: "",
-coverlink: "hotpepper.jpg",
 flavor: "Fusion"
 },
 [{
@@ -2839,7 +2801,6 @@ romaji_artist: "Masayoshi Takanaka",
 japanese_artist: "虹伝説",
 year: "1989",
 description: "",
-coverlink: "gaps.jpg",
 flavor: "Fusion"
 },
 [{
@@ -2901,7 +2862,6 @@ romaji_artist: "Masayoshi Takanaka",
 japanese_artist: "虹伝説",
 year: "1989",
 description: "",
-coverlink: "thepartysjustbegun.jpg",
 flavor: "Fusion, Compilation"
 },
 [{
@@ -2993,7 +2953,6 @@ romaji_artist: "Masayoshi Takanaka",
 japanese_artist: "虹伝説",
 year: "1991",
 description: "",
-coverlink: "onenightgig.jpg",
 flavor: "Fusion, Live"
 },
 [{
@@ -3060,7 +3019,6 @@ romaji_artist: "Masayoshi Takanaka",
 japanese_artist: "虹伝説",
 year: "1993",
 description: "",
-coverlink: "aquaplanet.jpg",
 flavor: "Fusion"
 },
 [{
@@ -3132,7 +3090,6 @@ romaji_artist: "Masayoshi Takanaka",
 japanese_artist: "虹伝説",
 year: "1993",
 description: "",
-coverlink: "thelover.jpg",
 flavor: "Fusion"
 },
 [{
@@ -3209,7 +3166,6 @@ romaji_artist: "Masayoshi Takanaka",
 japanese_artist: "虹伝説",
 year: "2001",
 description: "",
-coverlink: "themanwiththeguitar.jpg",
 flavor: "Fusion, Compilation"
 },
 [{
@@ -3261,7 +3217,6 @@ romaji_artist: "Masayoshi Takanaka",
 japanese_artist: "虹伝説",
 year: "2004",
 description: "",
-coverlink: "thebrilliantbest.jpg",
 flavor: "Fusion, Compilation"
 },
 [{
@@ -3348,7 +3303,6 @@ romaji_artist: "Masayoshi Takanaka",
 japanese_artist: "虹伝説",
 year: "2009",
 description: "",
-coverlink: "natsudo.jpg",
 flavor: "Fusion"
 },
 [{
@@ -3405,7 +3359,6 @@ romaji_artist: "Masayoshi Takanaka",
 japanese_artist: "虹伝説",
 year: "2010",
 description: "",
-coverlink: "karuizawadaydream.jpg",
 flavor: "Fusion"
 },
 [{
@@ -3471,7 +3424,6 @@ romaji_artist: "Mariya Takeuchi",
 japanese_artist: "竹内まりや",
 year: "1980",
 description: "",
-coverlink: "lovesongs.jpg",
 flavor: "Ballad"
 },
 [{
@@ -3538,7 +3490,6 @@ romaji_artist: "Mariya Takeuchi",
 japanese_artist: "竹内まりや",
 year: "1980",
 description: "",
-coverlink: "missm.jpg",
 flavor: "Soul"
 },
 [{
@@ -3595,7 +3546,6 @@ romaji_artist: "Mariya Takeuchi",
 japanese_artist: "竹内まりや",
 year: "1984",
 description: "",
-coverlink: "variety.jpg",
 flavor: "Ballad"
 },
 [{
@@ -3668,7 +3618,6 @@ romaji_artist: "Mariya Takeuchi",
 japanese_artist: "竹内まりや",
 year: "1987",
 description: "",
-coverlink: "request.jpg",
 flavor: "Ballad"
 },
 [{
@@ -3730,7 +3679,6 @@ romaji_artist: "Mariya Takeuchi",
 japanese_artist: "竹内まりや",
 year: "1992",
 description: "",
-coverlink: "quietlife.jpg",
 flavor: "Ballad"
 },
 [{
@@ -3802,7 +3750,6 @@ romaji_artist: "Mariya Takeuchi",
 japanese_artist: "竹内まりや",
 year: "2001",
 description: "",
-coverlink: "bonappetit.jpg",
 flavor: "Ballad"
 },
 [{
@@ -3874,7 +3821,6 @@ romaji_artist: "Mariya Takeuchi",
 japanese_artist: "竹内まりや",
 year: "2007",
 description: "",
-coverlink: "denim.jpg",
 flavor: "Ballad"
 },
 [{
@@ -3976,7 +3922,6 @@ romaji_artist: "Mariya Takeuchi",
 japanese_artist: "竹内まりや",
 year: "2014",
 description: "",
-coverlink: "trad.jpg",
 flavor: "Ballad"
 },
 [{
@@ -4067,7 +4012,6 @@ romaji_artist: "Anri",
 japanese_artist: "杏里",
 year: "1978",
 description: "",
-coverlink: "apricotjam.jpg",
 flavor: "Soul, Funk"
 },
 [{
@@ -4129,7 +4073,6 @@ romaji_artist: "Anri",
 japanese_artist: "杏里",
 year: "1979",
 description: "",
-coverlink: "feelin.jpg",
 flavor: "Funk"
 },
 [{
@@ -4196,7 +4139,6 @@ romaji_artist: "Anri",
 japanese_artist: "杏里",
 year: "1982",
 description: "",
-coverlink: "heavenbeach.jpg",
 flavor: "Funk"
 },
 [{
@@ -4263,7 +4205,6 @@ romaji_artist: "Anri",
 japanese_artist: "杏里",
 year: "1983",
 description: "",
-coverlink: "bikini.jpg",
 flavor: "Funk, Disco"
 },
 [{
@@ -4325,7 +4266,6 @@ romaji_artist: "Anri",
 japanese_artist: "杏里",
 year: "1983",
 description: "",
-coverlink: "timely.jpg",
 flavor: "Funk, Disco"
 },
 [{
@@ -4392,7 +4332,6 @@ romaji_artist: "Anri",
 japanese_artist: "杏里",
 year: "1984",
 description: "",
-coverlink: "coool.jpg",
 flavor: "Disco, Ballad"
 },
 [{
@@ -4454,7 +4393,6 @@ romaji_artist: "Anri",
 japanese_artist: "杏里",
 year: "1985",
 description: "",
-coverlink: "wave.jpg",
 flavor: "Funk, Disco"
 },
 [{
@@ -4516,7 +4454,6 @@ romaji_artist: "Anri",
 japanese_artist: "杏里",
 year: "1981",
 description: "",
-coverlink: "哀しみの孔雀.jpg",
 flavor: "Ballad, Folk"
 },
 [{
@@ -4592,7 +4529,6 @@ romaji_artist: "Akira Terao",
 japanese_artist: "寺尾聰",
 year: "1981",
 description: "",
-coverlink: "reflections.jpg",
 flavor: "Rock"
 },
 [{
@@ -4654,7 +4590,6 @@ romaji_artist: "Akira Terao",
 japanese_artist: "寺尾聰",
 year: "1983",
 description: "",
-coverlink: "atmosphere.jpg",
 flavor: "Rock"
 },
 [{
@@ -4716,7 +4651,6 @@ romaji_artist: "Narumin & Etsu",
 japanese_artist: "東北新幹線",
 year: "1982",
 description: "",
-coverlink: "thrutraffic.jpg",
 flavor: "Funk"
 },
 [{
@@ -4773,7 +4707,6 @@ romaji_artist: "Makoto Matsushita",
 japanese_artist: "松下誠",
 year: "1982",
 description: "",
-coverlink: "firstlight.jpg",
 flavor: "Jazz"
 },
 [{
@@ -4830,7 +4763,6 @@ romaji_artist: "Makoto Matsushita",
 japanese_artist: "松下誠",
 year: "1982",
 description: "",
-coverlink: "thepressuresandthepleasures.jpg",
 flavor: "Jazz"
 },
 [{
@@ -4882,7 +4814,6 @@ romaji_artist: "Makoto Matsushita",
 japanese_artist: "松下誠",
 year: "1983",
 description: "",
-coverlink: "quietskies.jpg",
 flavor: "Jazz"
 },
 [{
@@ -4924,7 +4855,6 @@ romaji_artist: "Kaoru Akimoto",
 japanese_artist: "秋元薫",
 year: "1986",
 description: "",
-coverlink: "cologne.jpg",
 flavor: "Ballad"
 },
 [{
@@ -4986,7 +4916,6 @@ romaji_artist: "Kaoru Akimoto",
 japanese_artist: "秋元薫",
 year: "1991",
 description: "",
-coverlink: "瞳に映して.png",
 flavor: "Ballad"
 },
 [{
@@ -5008,7 +4937,6 @@ romaji_artist: "Takako Mamiya",
 japanese_artist: "間宮貴子",
 year: "1982",
 description: "",
-coverlink: "lovetrip.jpg",
 flavor: "Ballad"
 },
 [{
@@ -5074,7 +5002,6 @@ romaji_artist: "L.A. Unit",
 japanese_artist: "",
 year: "1990",
 description: "",
-coverlink: "jody.jpg",
 flavor: "Cover, Tribute"
 },
 [{
@@ -5136,7 +5063,6 @@ romaji_artist: "Tatsuro Yamashita",
 japanese_artist: "山下達郎",
 year: "1991",
 description: "",
-coverlink: "artisan.jpg",
 flavor: "Funk"
 },
 [{
@@ -5203,7 +5129,6 @@ romaji_artist: "Tatsuro Yamashita",
 japanese_artist: "山下達郎",
 year: "2016",
 description: "",
-coverlink: "cheerupthesummer.jpg",
 flavor: "Single, Dreamy"
 },
 [{
@@ -5220,7 +5145,6 @@ romaji_artist: "Tatsuro Yamashita",
 japanese_artist: "山下達郎",
 year: "2017",
 description: "",
-coverlink: "comealong3.jpg",
 flavor: "Funk, Compilation"
 },
 [{
@@ -5297,7 +5221,6 @@ romaji_artist: "Tatsuro Yamashita",
 japanese_artist: "山下達郎",
 year: "1998",
 description: "",
-coverlink: "cozy.jpg",
 flavor: "Dreamy, Funk"
 },
 [{
@@ -5364,7 +5287,6 @@ romaji_artist: "Tatsuro Yamashita",
 japanese_artist: "山下達郎",
 year: "1982",
 description: "",
-coverlink: "foryou.jpg",
 flavor: "Funk, Dreamy"
 },
 [{
@@ -5416,7 +5338,6 @@ romaji_artist: "Tatsuro Yamashita",
 japanese_artist: "山下達郎",
 year: "1986",
 description: "",
-coverlink: "melodies.jpg",
 flavor: "Funk, Dreamy"
 },
 [{
@@ -5478,7 +5399,6 @@ romaji_artist: "Tatsuro Yamashita",
 japanese_artist: "山下達郎",
 year: "1986",
 description: "",
-coverlink: "onthestreetcorner1.jpg",
 flavor: "Acappella"
 },
 [{
@@ -5540,7 +5460,6 @@ romaji_artist: "Tatsuro Yamashita",
 japanese_artist: "山下達郎",
 year: "1986",
 description: "",
-coverlink: "onthestreetcorner2.jpg",
 flavor: "Acappella"
 },
 [{
@@ -5602,7 +5521,6 @@ romaji_artist: "Tatsuro Yamashita",
 japanese_artist: "山下達郎",
 year: "1999",
 description: "",
-coverlink: "onthestreetcorner3.jpg",
 flavor: "Acappella"
 },
 [{
@@ -5669,7 +5587,6 @@ romaji_artist: "Tatsuro Yamashita",
 japanese_artist: "山下達郎",
 year: "1986",
 description: "",
-coverlink: "pocketmusic.jpg",
 flavor: "Dreamy, Ballad"
 },
 [{
@@ -5731,7 +5648,6 @@ romaji_artist: "Tatsuro Yamashita",
 japanese_artist: "山下達郎",
 year: "2017",
 description: "",
-coverlink: "reborn.jpg",
 flavor: "Dreamy, Compilation"
 },
 [{
@@ -5753,7 +5669,6 @@ romaji_artist: "Tatsuro Yamashita",
 japanese_artist: "山下達郎",
 year: "1993",
 description: "",
-coverlink: "seasonsgreetings.jpg",
 flavor: "Christmas"
 },
 [{
@@ -5840,7 +5755,6 @@ romaji_artist: "Tatsuro Yamashita",
 japanese_artist: "山下達郎",
 year: "1995",
 description: "",
-coverlink: "treasures.jpg",
 flavor: "Dreamy, Compilation"
 },
 [{
@@ -5932,7 +5846,6 @@ romaji_artist: "Tatsuro Yamashita",
 japanese_artist: "山下達郎",
 year: "1988",
 description: "",
-coverlink: "僕の中の少年.jpg",
 flavor: "Dreamy"
 },
 [{
@@ -5989,7 +5902,6 @@ romaji_artist: "Tatsuro Yamashita",
 japanese_artist: "山下達郎",
 year: "2013",
 description: "",
-coverlink: "光と君へのレクイエム.jpg",
 flavor: "Dreamy, Single"
 },
 [{
@@ -6011,7 +5923,6 @@ romaji_artist: "Various Artists",
 japanese_artist: "",
 year: "1991",
 description: "",
-coverlink: "tatsurosongsfromla2.jpg",
 flavor: "Cover, Tribute, English"
 },
 [{
@@ -6063,7 +5974,6 @@ romaji_artist: "Various Artists",
 japanese_artist: "",
 year: "1990",
 description: "",
-coverlink: "tatsurosongsfromla.jpg",
 flavor: "Cover, Tribute, English"
 },
 [{
@@ -6115,7 +6025,6 @@ romaji_artist: "Yumi Matsutoya",
 japanese_artist: "松任谷由実",
 year: "1985",
 description: "",
-coverlink: "surfsnow.jpg",
 flavor: "Ballad"
 },
 [{
@@ -6181,7 +6090,6 @@ romaji_artist: "Toshiki Kadomatsu",
 japanese_artist: "角松敏生",
 year: "1981",
 description: "",
-coverlink: "seabreeze.jpg",
 flavor: "Funk"
 },
 [{
@@ -6233,7 +6141,6 @@ romaji_artist: "Toshiki Kadomatsu",
 japanese_artist: "角松敏生",
 year: "1982",
 description: "",
-coverlink: "weekendflytothesun.jpg",
 flavor: "Funk"
 },
 [{
@@ -6285,7 +6192,6 @@ romaji_artist: "Toshiki Kadomatsu",
 japanese_artist: "角松敏生",
 year: "1983",
 description: "",
-coverlink: "onthecityshore.jpg",
 flavor: "Funk"
 },
 [{
@@ -6347,7 +6253,6 @@ romaji_artist: "Toshiki Kadomatsu",
 japanese_artist: "角松敏生",
 year: "1984",
 description: "",
-coverlink: "after5crash.jpg",
 flavor: "Funk"
 },
 [{
@@ -6409,7 +6314,6 @@ romaji_artist: "Toshiki Kadomatsu",
 japanese_artist: "角松敏生",
 year: "1984",
 description: "",
-coverlink: "summertimeromance.jpg",
 flavor: "Funk"
 },
 [{
@@ -6481,7 +6385,6 @@ romaji_artist: "Toshiki Kadomatsu",
 japanese_artist: "角松敏生",
 year: "1985",
 description: "",
-coverlink: "golddigger.jpg",
 flavor: "Funk"
 },
 [{
@@ -6543,7 +6446,6 @@ romaji_artist: "Toshiki Kadomatsu",
 japanese_artist: "角松敏生",
 year: "1986",
 description: "",
-coverlink: "touchandgo.jpg",
 flavor: "Funk"
 },
 [{
@@ -6595,7 +6497,6 @@ romaji_artist: "Toshiki Kadomatsu",
 japanese_artist: "角松敏生",
 year: "1987",
 description: "",
-coverlink: "seaisalady.jpg",
 flavor: "Funk, Fusion"
 },
 [{
@@ -6662,7 +6563,6 @@ romaji_artist: "Toshiki Kadomatsu",
 japanese_artist: "角松敏生",
 year: "1988",
 description: "",
-coverlink: "beforethedaylight.jpg",
 flavor: "Funk"
 },
 [{
@@ -6714,7 +6614,6 @@ romaji_artist: "Toshiki Kadomatsu",
 japanese_artist: "角松敏生",
 year: "1989",
 description: "",
-coverlink: "reasonsforthousandlovers.jpg",
 flavor: "Funk"
 },
 [{
@@ -6776,7 +6675,6 @@ romaji_artist: "Toshiki Kadomatsu",
 japanese_artist: "角松敏生",
 year: "1990",
 description: "",
-coverlink: "legacyofyou.jpg",
 flavor: "Funk"
 },
 [{
@@ -6848,7 +6746,6 @@ romaji_artist: "Toshiki Kadomatsu",
 japanese_artist: "角松敏生",
 year: "1991",
 description: "",
-coverlink: "allisvanity.jpg",
 flavor: "Funk"
 },
 [{
@@ -6910,7 +6807,6 @@ romaji_artist: "Toshiki Kadomatsu",
 japanese_artist: "角松敏生",
 year: "1992",
 description: "",
-coverlink: "あるがままに.jpg",
 flavor: "Funk"
 },
 [{
@@ -6962,7 +6858,6 @@ romaji_artist: "Toshiki Kadomatsu",
 japanese_artist: "角松敏生",
 year: "1992",
 description: "",
-coverlink: "君をこえる日.jpg",
 flavor: "Funk"
 },
 [{
@@ -6999,7 +6894,6 @@ romaji_artist: "Toshiki Kadomatsu",
 japanese_artist: "角松敏生",
 year: "1999",
 description: "",
-coverlink: "timetunnel.jpg",
 flavor: "Funk"
 },
 [{
@@ -7061,7 +6955,6 @@ romaji_artist: "Toshiki Kadomatsu",
 japanese_artist: "角松敏生",
 year: "2000",
 description: "",
-coverlink: "存在の証明.jpg",
 flavor: "Funk"
 },
 [{
@@ -7133,7 +7026,6 @@ romaji_artist: "Toshiki Kadomatsu",
 japanese_artist: "角松敏生",
 year: "2002",
 description: "",
-coverlink: "incarnatio.jpg",
 flavor: "Funk"
 },
 [{
@@ -7220,7 +7112,6 @@ romaji_artist: "Toshiki Kadomatsu",
 japanese_artist: "角松敏生",
 year: "2003",
 description: "",
-coverlink: "summer4rhythm.jpg",
 flavor: "Funk"
 },
 [{
@@ -7287,7 +7178,6 @@ romaji_artist: "Toshiki Kadomatsu",
 japanese_artist: "角松敏生",
 year: "2009",
 description: "",
-coverlink: "noturns.jpg",
 flavor: "Funk"
 },
 [{
@@ -7359,7 +7249,6 @@ romaji_artist: "Toshiki Kadomatsu",
 japanese_artist: "角松敏生",
 year: "2010",
 description: "",
-coverlink: "citylightsdandy.jpg",
 flavor: "Funk"
 },
 [{
@@ -7426,7 +7315,6 @@ romaji_artist: "Toshiki Kadomatsu",
 japanese_artist: "角松敏生",
 year: "2012",
 description: "",
-coverlink: "rebirth1remakebest.jpg",
 flavor: "Funk, Compilation"
 },
 [{
@@ -7488,7 +7376,6 @@ romaji_artist: "Toshiki Kadomatsu",
 japanese_artist: "角松敏生",
 year: "2017",
 description: "",
-coverlink: "seaisalady2017.jpg",
 flavor: "Funk, Remake"
 },
 [{
@@ -7559,7 +7446,6 @@ romaji_artist: "Meiko Nakahara",
 japanese_artist: "中原めいこ",
 year: "1982",
 description: "",
-coverlink: "coconutshouse.jpg",
 flavor: "Funk, Latin"
 },
 [{
@@ -7621,7 +7507,6 @@ romaji_artist: "Meiko Nakahara",
 japanese_artist: "中原めいこ",
 year: "1982",
 description: "",
-coverlink: "fridaymagic.jpg",
 flavor: "Funk"
 },
 [{
@@ -7683,7 +7568,6 @@ romaji_artist: "Meiko Nakahara",
 japanese_artist: "中原めいこ",
 year: "1983",
 description: "",
-coverlink: "mint.jpg",
 flavor: "Funk, Ballad"
 },
 [{
@@ -7745,7 +7629,6 @@ romaji_artist: "Meiko Nakahara",
 japanese_artist: "中原めいこ",
 year: "1984",
 description: "",
-coverlink: "ロートスの果実.jpg",
 flavor: "Funk, Latin"
 },
 [{
@@ -7807,7 +7690,6 @@ romaji_artist: "Meiko Nakahara",
 japanese_artist: "中原めいこ",
 year: "1985",
 description: "",
-coverlink: "chakichakiclub.jpg",
 flavor: "Funk, Ballad"
 },
 [{
@@ -7869,7 +7751,6 @@ romaji_artist: "Meiko Nakahara",
 japanese_artist: "中原めいこ",
 year: "1986",
 description: "",
-coverlink: "moods.jpg",
 flavor: "Funk, Ballad"
 },
 [{
@@ -7926,7 +7807,6 @@ romaji_artist: "Meiko Nakahara",
 japanese_artist: "中原めいこ",
 year: "1987",
 description: "",
-coverlink: "puzzle.jpg",
 flavor: "Funk, Ballad"
 },
 [{
@@ -7987,7 +7867,6 @@ romaji_artist: "Casiopea",
 japanese_artist: "",
 year: "1979",
 description: "",
-coverlink: "casiopea.jpg",
 flavor: "Fusion"
 },
 [{
@@ -8039,7 +7918,6 @@ romaji_artist: "Casiopea",
 japanese_artist: "",
 year: "1979",
 description: "",
-coverlink: "superflight.jpg",
 flavor: "Fusion"
 },
 [{
@@ -8096,7 +7974,6 @@ romaji_artist: "Casiopea",
 japanese_artist: "",
 year: "1980",
 description: "",
-coverlink: "makeupcity.jpg",
 flavor: "Fusion"
 },
 [{
@@ -8148,7 +8025,6 @@ romaji_artist: "Casiopea",
 japanese_artist: "",
 year: "1981",
 description: "",
-coverlink: "crosspoint.jpg",
 flavor: "Fusion"
 },
 [{
@@ -8205,7 +8081,6 @@ romaji_artist: "Casiopea",
 japanese_artist: "",
 year: "1981",
 description: "",
-coverlink: "eyesofthemind.jpg",
 flavor: "Fusion"
 },
 [{
@@ -8267,7 +8142,6 @@ romaji_artist: "Casiopea",
 japanese_artist: "",
 year: "1982",
 description: "",
-coverlink: "4x4.jpg",
 flavor: "Fusion"
 },
 [{
@@ -8309,7 +8183,6 @@ romaji_artist: "Casiopea",
 japanese_artist: "",
 year: "1982",
 description: "",
-coverlink: "mintjams.jpg",
 flavor: "Fusion, Compilation"
 },
 [{
@@ -8356,7 +8229,6 @@ romaji_artist: "Casiopea",
 japanese_artist: "",
 year: "1983",
 description: "",
-coverlink: "jivejive.jpg",
 flavor: "Fusion"
 },
 [{
@@ -8413,7 +8285,6 @@ romaji_artist: "Casiopea",
 japanese_artist: "",
 year: "1983",
 description: "",
-coverlink: "photographs.jpg",
 flavor: "Fusion"
 },
 [{
@@ -8475,7 +8346,6 @@ romaji_artist: "Casiopea",
 japanese_artist: "",
 year: "1984",
 description: "",
-coverlink: "downupbeat.jpg",
 flavor: "Fusion"
 },
 [{
@@ -8537,7 +8407,6 @@ romaji_artist: "Casiopea",
 japanese_artist: "",
 year: "1984",
 description: "",
-coverlink: "thesoundgraphy.jpg",
 flavor: "Fusion, Compilation"
 },
 [{
@@ -8599,7 +8468,6 @@ romaji_artist: "Casiopea",
 japanese_artist: "",
 year: "1986",
 description: "",
-coverlink: "landingtosummer.jpg",
 flavor: "Fusion"
 },
 [{
@@ -8671,7 +8539,6 @@ romaji_artist: "Casiopea",
 japanese_artist: "",
 year: "1986",
 description: "",
-coverlink: "sunsun.jpg",
 flavor: "Fusion"
 },
 [{
@@ -8753,7 +8620,6 @@ romaji_artist: "Casiopea",
 japanese_artist: "",
 year: "1987",
 description: "",
-coverlink: "platinum.jpg",
 flavor: "Fusion"
 },
 [{
@@ -8820,7 +8686,6 @@ romaji_artist: "Casiopea",
 japanese_artist: "",
 year: "1988",
 description: "",
-coverlink: "euphony.jpg",
 flavor: "Fusion"
 },
 [{
@@ -8887,7 +8752,6 @@ romaji_artist: "Casiopea",
 japanese_artist: "",
 year: "1990",
 description: "",
-coverlink: "thelastmembers.jpg",
 flavor: "Fusion"
 },
 [{
@@ -8974,7 +8838,6 @@ romaji_artist: "Casiopea",
 japanese_artist: "",
 year: "1990",
 description: "",
-coverlink: "theparty.jpg",
 flavor: "Fusion"
 },
 [{
@@ -9046,7 +8909,6 @@ romaji_artist: "Casiopea",
 japanese_artist: "",
 year: "1991",
 description: "",
-coverlink: "fullcolors.jpg",
 flavor: "Fusion"
 },
 [{
@@ -9118,7 +8980,6 @@ romaji_artist: "Casiopea",
 japanese_artist: "",
 year: "1992",
 description: "",
-coverlink: "active.jpg",
 flavor: "Fusion"
 },
 [{
@@ -9185,7 +9046,6 @@ romaji_artist: "Casiopea",
 japanese_artist: "",
 year: "1994",
 description: "",
-coverlink: "answers.jpg",
 flavor: "Fusion"
 },
 [{
@@ -9257,7 +9117,6 @@ romaji_artist: "Casiopea",
 japanese_artist: "",
 year: "1994",
 description: "",
-coverlink: "heartynotes.jpg",
 flavor: "Fusion"
 },
 [{
@@ -9319,7 +9178,6 @@ romaji_artist: "Casiopea",
 japanese_artist: "",
 year: "1995",
 description: "",
-coverlink: "freshness.jpg",
 flavor: "Fusion"
 },
 [{
@@ -9386,7 +9244,6 @@ romaji_artist: "Casiopea",
 japanese_artist: "",
 year: "1995",
 description: "",
-coverlink: "workin.jpg",
 flavor: "Fusion"
 },
 [{
@@ -9468,7 +9325,6 @@ romaji_artist: "Casiopea",
 japanese_artist: "",
 year: "1997",
 description: "",
-coverlink: "lightandshadows.jpg",
 flavor: "Fusion"
 },
 [{
@@ -9535,7 +9391,6 @@ romaji_artist: "Casiopea",
 japanese_artist: "",
 year: "1999",
 description: "",
-coverlink: "be.jpg",
 flavor: "Fusion"
 },
 [{
@@ -9607,7 +9462,6 @@ romaji_artist: "Casiopea",
 japanese_artist: "",
 year: "2000",
 description: "",
-coverlink: "bittersweet.jpg",
 flavor: "Fusion"
 },
 [{
@@ -9669,7 +9523,6 @@ romaji_artist: "Casiopea",
 japanese_artist: "",
 year: "2005",
 description: "",
-coverlink: "marble.jpg",
 flavor: "Fusion"
 },
 [{
@@ -9721,7 +9574,6 @@ romaji_artist: "Casiopea",
 japanese_artist: "",
 year: "2006",
 description: "",
-coverlink: "gentlemellow.jpg",
 flavor: "Fusion, Compilation"
 },
 [{
@@ -9803,7 +9655,6 @@ romaji_artist: "Casiopea",
 japanese_artist: "",
 year: "2006",
 description: "",
-coverlink: "groovepassion.jpg",
 flavor: "Fusion, Compilation"
 },
 [{
@@ -9875,7 +9726,6 @@ romaji_artist: "Casiopea",
 japanese_artist: "",
 year: "2006",
 description: "",
-coverlink: "signal.jpg",
 flavor: "Fusion"
 },
 [{
@@ -9941,7 +9791,6 @@ romaji_artist: "Mioko Yamaguchi",
 japanese_artist: "山口美央子",
 year: "1980",
 description: "Debut LP of Yamaguchi Mioko's brief solo career.",
-coverlink: "夢飛行.jpg",
 flavor: "Techno Kayo, Electronic"
 },
 [{
@@ -10017,7 +9866,6 @@ romaji_artist: "Hiromi Iwasaki",
 japanese_artist: "岩崎宏美",
 year: "1975",
 description: "Hiromi's debut album.",
-coverlink: "あおぞら.jpg",
 flavor: "Disco, Idol"
 },
 [{
@@ -10084,7 +9932,6 @@ romaji_artist: "Hiromi Iwasaki",
 japanese_artist: "岩崎宏美",
 year: "1976",
 description: "",
-coverlink: "ファンタジー.jpg",
 flavor: "Disco, Idol"
 },
 [{
@@ -10146,7 +9993,6 @@ romaji_artist: "Hiromi Iwasaki",
 japanese_artist: "岩崎宏美",
 year: "1976",
 description: "",
-coverlink: "飛行船.jpg",
 flavor: "Disco, Idol"
 },
 [{
@@ -10208,7 +10054,6 @@ romaji_artist: "Hiromi Iwasaki",
 japanese_artist: "岩崎宏美",
 year: "1977",
 description: "",
-coverlink: "ウィズベストフレンズ.jpg",
 flavor: "Disco, Idol"
 },
 [{
@@ -10280,7 +10125,6 @@ romaji_artist: "Hiromi Iwasaki",
 japanese_artist: "岩崎宏美",
 year: "1977",
 description: "",
-coverlink: "思秋期から男と女.jpg",
 flavor: "Disco, Idol"
 },
 [{
@@ -10352,7 +10196,6 @@ romaji_artist: "Hiromi Iwasaki",
 japanese_artist: "岩崎宏美",
 year: "1978",
 description: "",
-coverlink: "パンドラの小箱.jpg",
 flavor: "Disco, Idol"
 },
 [{
@@ -10424,7 +10267,6 @@ romaji_artist: "Hiromi Iwasaki",
 japanese_artist: "岩崎宏美",
 year: "1978",
 description: "",
-coverlink: "二十才前.jpg",
 flavor: "Disco, Idol"
 },
 [{
@@ -10496,7 +10338,6 @@ romaji_artist: "Hiromi Iwasaki",
 japanese_artist: "岩崎宏美",
 year: "1979",
 description: "",
-coverlink: "恋人たち.jpg",
 flavor: "Disco, Idol"
 },
 [{
@@ -10563,7 +10404,6 @@ romaji_artist: "Hiromi Iwasaki",
 japanese_artist: "岩崎宏美",
 year: "1980",
 description: "",
-coverlink: "wish.jpg",
 flavor: "Disco, Idol"
 },
 [{
@@ -10630,7 +10470,6 @@ romaji_artist: "Hiromi Iwasaki",
 japanese_artist: "岩崎宏美",
 year: "1981",
 description: "",
-coverlink: "すみれ色の涙から.jpg",
 flavor: "Disco, Idol"
 },
 [{
@@ -10697,7 +10536,6 @@ romaji_artist: "Hiromi Iwasaki",
 japanese_artist: "岩崎宏美",
 year: "1982",
 description: "",
-coverlink: "夕暮れからひとり.jpg",
 flavor: "Disco, Idol"
 },
 [{
@@ -10774,7 +10612,6 @@ romaji_artist: "Hiromi Iwasaki",
 japanese_artist: "岩崎宏美",
 year: "1983",
 description: "",
-coverlink: "私的空間.jpg",
 flavor: "Disco, Idol"
 },
 [{
@@ -10846,7 +10683,6 @@ romaji_artist: "Hiromi Iwasaki",
 japanese_artist: "岩崎宏美",
 year: "1988",
 description: "",
-coverlink: "metoo.jpg",
 flavor: "Disco, Idol"
 },
 [{
@@ -10923,7 +10759,6 @@ romaji_artist: "Hiromi Iwasaki",
 japanese_artist: "岩崎宏美",
 year: "1991",
 description: "",
-coverlink: "ゆりかごのうたいわさきひろみあいしょうかしゅう.jpg",
 flavor: "Disco, Idol"
 },
 [{
@@ -11030,7 +10865,6 @@ romaji_artist: "Hiromi Iwasaki",
 japanese_artist: "岩崎宏美",
 year: "1995",
 description: "",
-coverlink: "mygratitudekansha.jpg",
 flavor: "Disco, Idol"
 },
 [{
@@ -11097,7 +10931,6 @@ romaji_artist: "Hiromi Iwasaki",
 japanese_artist: "岩崎宏美",
 year: "1997",
 description: "",
-coverlink: "showeroflove.jpg",
 flavor: "Disco, Idol"
 },
 [{
@@ -11154,7 +10987,6 @@ romaji_artist: "Hiromi Iwasaki",
 japanese_artist: "岩崎宏美",
 year: "1999",
 description: "",
-coverlink: "neveragain許さない.jpg",
 flavor: "Disco, Idol"
 },
 [{
@@ -11216,7 +11048,6 @@ romaji_artist: "Hiromi Iwasaki",
 japanese_artist: "岩崎宏美",
 year: "2008",
 description: "",
-coverlink: "dearfriendsiv.jpg",
 flavor: "Disco, Idol"
 },
 [{
@@ -11288,7 +11119,6 @@ romaji_artist: "Hiromi Iwasaki",
 japanese_artist: "岩崎宏美",
 year: "2010",
 description: "",
-coverlink: "fullcircle.jpg",
 flavor: "Disco, Idol"
 },
 [{
@@ -11375,7 +11205,6 @@ romaji_artist: "Hiromi Iwasaki",
 japanese_artist: "岩崎宏美",
 year: "2013",
 description: "",
-coverlink: "love (hiromi).jpg",
 flavor: "Disco, Idol"
 },
 [{
@@ -11441,7 +11270,6 @@ romaji_artist: "Yoshimi Iwasaki",
 japanese_artist: "岩崎良美",
 year: "1980",
 description: "Yoshimi Iwasaki's debut album.",
-coverlink: "ringading.jpg",
 flavor: "Disco, Idol"
 },
 [{
@@ -11508,7 +11336,6 @@ romaji_artist: "Yoshimi Iwasaki",
 japanese_artist: "岩崎良美",
 year: "1980",
 description: "",
-coverlink: "saisons.jpg",
 flavor: "Disco, Idol"
 },
 [{
@@ -11570,7 +11397,6 @@ romaji_artist: "Yoshimi Iwasaki",
 japanese_artist: "岩崎良美",
 year: "1981",
 description: "",
-coverlink: "weatherreport.jpg",
 flavor: "Disco, Idol"
 },
 [{
@@ -11632,7 +11458,6 @@ romaji_artist: "Yoshimi Iwasaki",
 japanese_artist: "岩崎良美",
 year: "1982",
 description: "",
-coverlink: "cécile.jpg",
 flavor: "Disco, Idol"
 },
 [{
@@ -11694,7 +11519,6 @@ romaji_artist: "Yoshimi Iwasaki",
 japanese_artist: "岩崎良美",
 year: "1983",
 description: "",
-coverlink: "saveme.jpg",
 flavor: "Disco, Idol"
 },
 [{
@@ -11761,7 +11585,6 @@ romaji_artist: "Yoshimi Iwasaki",
 japanese_artist: "岩崎良美",
 year: "1983",
 description: "",
-coverlink: "唇に夢の跡.jpg",
 flavor: "Disco, Idol"
 },
 [{
@@ -11823,7 +11646,6 @@ romaji_artist: "Yoshimi Iwasaki",
 japanese_artist: "岩崎良美",
 year: "1984",
 description: "",
-coverlink: "wardrobe.jpg",
 flavor: "Disco, Idol"
 },
 [{
@@ -11875,7 +11697,6 @@ romaji_artist: "Yoshimi Iwasaki",
 japanese_artist: "岩崎良美",
 year: "1985",
 description: "",
-coverlink: "halftime.jpg",
 flavor: "Disco, Idol"
 },
 [{
@@ -11961,10 +11782,9 @@ romaji_artist: 'Mioko Yamaguchi',
 japanese_artist: '山口美央子',
 year: '1981',
 description: 'The 1981 follow-up to Mioko Yamaguchi\'s  \'Yume Hiko.\'',
-coverlink: 'Nirvana.jpg',
-flavor: 'Techno Kayo, Electronic'},
-[
-{
+flavor: 'Techno Kayo, Electronic'
+},
+[{
 title: "いつも宝物",
 romanization: "Itsumo Takaramono",
 duration: "4:23"
@@ -12022,7 +11842,6 @@ romaji_artist: "Yumi Matsutoya",
 japanese_artist: "松任谷 由実",
 year: "1973",
 description: "Yumi Matsutoya's debut under her birthname 'Yumi Arai'",
-coverlink: "hikoukigumo.jpg",
 flavor: "Folk, Rock"
 },
 [{
@@ -12085,7 +11904,6 @@ romaji_artist: "Yumi Matsutoya",
 japanese_artist: "松任谷 由実",
 year: "1974",
 description: "",
-coverlink: "misslim.jpg",
 flavor: "Rock, Funk, Boogie"
 },
 [{
@@ -12147,7 +11965,6 @@ romaji_artist: "Yumi Matsutoya",
 japanese_artist: "松任谷 由実",
 year: "1975",
 description: "",
-coverlink: "cobalthour.jpg",
 flavor: "Folk, Rock"
 },
 [{
@@ -12209,7 +12026,6 @@ romaji_artist: "Yumi Matsutoya",
 japanese_artist: "松任谷 由実",
 year: "1976",
 description: "",
-coverlink: "14番目の月.jpg",
 flavor: "Folk, Rock"
 },
 [{
@@ -12271,7 +12087,6 @@ romaji_artist: "Yumi Matsutoya",
 japanese_artist: "松任谷 由実",
 year: "1978",
 description: "",
-coverlink: "紅雀.jpg",
 flavor: "Folk, Latin"
 },
 [{
@@ -12333,7 +12148,6 @@ romaji_artist: "Yumi Matsutoya",
 japanese_artist: "松任谷 由実",
 year: "1978",
 description: "",
-coverlink: "流線形80.jpg",
 flavor: "Rock, Soul"
 },
 [{
@@ -12395,7 +12209,6 @@ romaji_artist: "Yumi Matsutoya",
 japanese_artist: "松任谷 由実",
 year: "1979",
 description: "",
-coverlink: "悲しいほどお天気.jpg",
 flavor: "Soul"
 },
 [{
@@ -12452,7 +12265,6 @@ romaji_artist: "Yumi Matsutoya",
 japanese_artist: "松任谷 由実",
 year: "1980",
 description: "",
-coverlink: "時のないホテル.jpg",
 flavor: "Rock, Ballad"
 },
 [{
@@ -12509,7 +12321,6 @@ romaji_artist: "Yumi Matsutoya",
 japanese_artist: "松任谷 由実",
 year: "1982",
 description: "",
-coverlink: "pearlpierce.jpg",
 flavor: "Soul"
 },
 [{
@@ -12571,7 +12382,6 @@ romaji_artist: "Yumi Matsutoya",
 japanese_artist: "松任谷 由実",
 year: "1983",
 description: "",
-coverlink: "reincarnation.jpg",
 flavor: "Funk, Rock"
 },
 [{
@@ -12633,7 +12443,6 @@ romaji_artist: "Yumi Matsutoya",
 japanese_artist: "松任谷 由実",
 year: "1983",
 description: "",
-coverlink: "voyager.jpg",
 flavor: "Funk"
 },
 [{
@@ -12695,7 +12504,6 @@ romaji_artist: "Yumi Matsutoya",
 japanese_artist: "松任谷 由実",
 year: "1984",
 description: "",
-coverlink: "noside.jpg",
 flavor: "Funk, Ballad"
 },
 [{
@@ -12757,7 +12565,6 @@ romaji_artist: "Yumi Matsutoya",
 japanese_artist: "松任谷 由実",
 year: "1985",
 description: "",
-coverlink: "dadida.jpg",
 flavor: "Funk"
 },
 [{
@@ -12814,7 +12621,6 @@ romaji_artist: "Yumi Matsutoya",
 japanese_artist: "松任谷 由実",
 year: "1986",
 description: "",
-coverlink: "alarmàlamode.jpg",
 flavor: "Funk, Ballad"
 },
 [{
@@ -12876,7 +12682,6 @@ romaji_artist: "Yumi Matsutoya",
 japanese_artist: "松任谷 由実",
 year: "1987",
 description: "",
-coverlink: "ダイアモンドダストが消えぬまに.jpg",
 flavor: "Funk, Ballad"
 },
 [{
@@ -12938,7 +12743,6 @@ romaji_artist: "Yumi Matsutoya",
 japanese_artist: "松任谷 由実",
 year: "1988",
 description: "",
-coverlink: "delightslightlightkiss.jpg",
 flavor: "Funk"
 },
 [{
@@ -13000,7 +12804,6 @@ romaji_artist: "Yumi Matsutoya",
 japanese_artist: "松任谷 由実",
 year: "1990",
 description: "",
-coverlink: "天国のドア.jpg",
 flavor: "Funk"
 },
 [{
@@ -13066,10 +12869,9 @@ romaji_artist: 'Bread & Butter',
 japanese_artist: 'ブレッド&バター',
 year: '1973',
 description: 'Recorded in London with major British influence, it\'s the second album by Bread & Butter for 1973 featuring Stevie Wonder.',
-coverlink: 'images.jpg',
-flavor: 'Folk, Quirky, Lounge'},
-[
-{
+flavor: 'Folk, Quirky, Lounge'
+},
+[{
 title: "風",
 romanization: "Kaze",
 duration: "3:24"
@@ -13142,10 +12944,9 @@ romaji_artist: 'Ryo Kawasaki',
 japanese_artist: '川崎燎',
 year: '1979',
 description: 'Mirror of my Mind marks Ryo\'s 8th release and brings an interesting jazz-guitar sound to the city pop landscape. It features Radha Shottom on vocals.',
-coverlink: 'mirrorofmymind.jpg',
-flavor: 'Jazz, Soul'},
-[
-{
+flavor: 'Jazz, Soul'
+},
+[{
 title: "In & Out of Love",
 romanization: "",
 duration: "6:43"
@@ -13193,7 +12994,6 @@ romaji_artist: "Akiko Yano",
 japanese_artist: "矢野顕子",
 year: "1976",
 description: "Akiko Yano's debut album brings a wonderful fusion of traditional Japanese folk and contemporary western funk/soul.",
-coverlink: "japanesegirl.jpg",
 flavor: "Folk, Soul, Funk"
 },
 [{
@@ -13255,7 +13055,6 @@ romaji_artist: "Akiko Yano",
 japanese_artist: "矢野顕子",
 year: "1977",
 description: "Iroha ni Konpeitō departs from Akiko's folkier sound in place of a jazzier sound featuring playful vocals and a more prominent focus on melody.",
-coverlink: "いろはにこんぺいとう.jpg",
 flavor: "Funk, Soul, Jazz"
 },
 [{
@@ -13317,7 +13116,6 @@ romaji_artist: "Akiko Yano",
 japanese_artist: "矢野顕子",
 year: "1978",
 description: "Tokimeki has Akiko return to her folkier roots, boasting a more traditional Japanese aesthetic and incorporating more folk elements.",
-coverlink: "トキメキ.jpg",
 flavor: "Folk, Jazz, Experimental"
 },
 [{
@@ -13374,7 +13172,6 @@ romaji_artist: "Akiko Yano",
 japanese_artist: "矢野顕子",
 year: "1981",
 description: "Tadaima presents a drastic change in sound for Akiko - Ditching the acoustic funk sound in favor of a very experimental electronic sound.",
-coverlink: "ただいま.jpg",
 flavor: "Acid, Jazz, Experimental, Electronic"
 },
 [{
@@ -13431,7 +13228,6 @@ romaji_artist: "Akiko Yano",
 japanese_artist: "矢野顕子",
 year: "1982",
 description: "",
-coverlink: "愛がなくちゃね.jpg",
 flavor: "Funk, Jazz"
 },
 [{
@@ -13498,7 +13294,6 @@ romaji_artist: "Akiko Yano",
 japanese_artist: "矢野顕子",
 year: "1984",
 description: "",
-coverlink: "オーエスオーエス.jpg",
 flavor: "Jazz, Electronic"
 },
 [{
@@ -13560,7 +13355,6 @@ romaji_artist: "Akiko Yano",
 japanese_artist: "矢野顕子",
 year: "1986",
 description: "",
-coverlink: "ごはんができたよ.jpg",
 flavor: "Jazz, Electronic"
 },
 [{
@@ -13642,7 +13436,6 @@ romaji_artist: "Akiko Yano",
 japanese_artist: "矢野顕子",
 year: "1986",
 description: "",
-coverlink: "峠のわが家.jpg",
 flavor: "Synth, Funk"
 },
 [{
@@ -13699,7 +13492,6 @@ romaji_artist: "Akiko Yano",
 japanese_artist: "矢野顕子",
 year: "1987",
 description: "",
-coverlink: "granola.jpg",
 flavor: "Synth, Funk"
 },
 [{
@@ -13770,10 +13562,9 @@ romaji_artist: 'Junko Yagami',
 japanese_artist: '八神純子',
 year: '1983',
 description: 'Full Moon is the seventh studio album by Japanese singer-songwriter Junko Yagami, released in December 1983.',
-coverlink: 'fullmoon.jpg',
-flavor: 'Funk, Soul'},
-[
-{
+flavor: 'Funk, Soul'
+},
+[{
 title: "Follow Me",
 romanization: "",
 duration: "4:06"
@@ -13832,10 +13623,9 @@ romaji_artist: 'Junko Yagami',
 japanese_artist: '八神純子',
 year: '1985',
 description: 'Communication is the eighth studio album by Japanese singer-songwriter Junko Yagami, released in February 1985.',
-coverlink: 'communication.jpg',
-flavor: 'Funk, Soul'},
-[
-{
+flavor: 'Funk, Soul'
+},
+[{
 title: "Imagination",
 romanization: "",
 duration: "4:10
@@ -13907,7 +13697,6 @@ romaji_artist: "Rajie",
 japanese_artist: "",
 year: "1977",
 description: "",
-coverlink: "hearttoheart.jpg",
 flavor: "Disco"
 },
 [{
@@ -13969,7 +13758,6 @@ romaji_artist: "Rajie",
 japanese_artist: "",
 year: "1981",
 description: "",
-coverlink: "acousticmoon.jpg",
 flavor: "Bossa Nova"
 },
 [{
@@ -14036,7 +13824,6 @@ romaji_artist: "Rajie",
 japanese_artist: "",
 year: "1984",
 description: "",
-coverlink: "relief.jpg",
 flavor: "Funk"
 },
 [{
@@ -14098,7 +13885,6 @@ romaji_artist: "Rajie",
 japanese_artist: "",
 year: "1985",
 description: "",
-coverlink: "espresso.jpg",
 flavor: "Synthpop, New Wave"
 },
 [{
@@ -14155,7 +13941,6 @@ romaji_artist: "Rajie",
 japanese_artist: "",
 year: "1978",
 description: "",
-coverlink: "loveheart.jpg",
 flavor: "Disco"
 },
 [{
@@ -14212,7 +13997,6 @@ romaji_artist: "Rajie",
 japanese_artist: "",
 year: "1979",
 description: "",
-coverlink: "quatre.jpg",
 flavor: "Disco, Synthpop"
 },
 [{
@@ -14274,7 +14058,6 @@ romaji_artist: "Rajie",
 japanese_artist: "",
 year: "1980",
 description: "",
-coverlink: "mahirunohodou.jpg",
 flavor: "Synthpop, Funk"
 },
 [{

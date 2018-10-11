@@ -1,5 +1,8 @@
 class Album < ApplicationRecord
+	include Rails.application.routes.url_helpers
+
 	has_many :tracks, dependent: :destroy
+	has_one_attached :cover
 	mount_uploader :image, ImageUploader
 	validate :form_presence
 	validates_processing_of :image

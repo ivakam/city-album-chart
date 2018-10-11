@@ -2,12 +2,77 @@ class AlbumsController < ApplicationController
 	def contains_cjk?
 		!!(self =~ /\p{Han}|\p{Katakana}|\p{Hiragana}|\p{Hangul}/)
 	end
-	def index
+	def tPop(albums, params)
+		albumIDs = ""
+		albums.each do | album |
+			albumIDs << "'#{album["id"].to_s}', "
+		end
+		albumIDs = albumIDs.gsub(/,\s+$/, '')
+		tracks = Track.find_by_sql("SELECT * FROM tracks WHERE album_id IN (#{albumIDs})")
+		albumResult = []
+		albums.each_with_index do | album, index |
+			albumWithTracks = {}
+			album.attributes.each_pair do | key, value |
+				albumWithTracks[key] = value
+			end
+			tempTracks = []
+			tracks.each do | track |
+				if track["album_id"] == album["id"]
+					tempTracks.push(track)
+				end
+			end
+			albumWithTracks["tracklist"] = tempTracks
+			albumResult[index] = albumWithTracks
+		end
+		if params[:total_count] == "true"
+			albumResult << @@totalAlbums
+		end
+		render :json => albumResult
+		return
+	end
+	def show
+	end
+	def fetch
 		@albums = Album.all
-		@albums.each { | a | a.coverlink = ActionController::Base.helpers.image_url(a.coverlink)}
-		@tracks = Track.all
-		gon.Albums = @albums
-		gon.Tracks = @tracks
+		@@totalAlbums = @albums.count
+		if params.to_unsafe_hash.size === 2
+			@albums = tPop(@albums, params)
+			return
+		end
+		if params[:q] == nil
+			params.each do | key, value |
+				if key == "title" || key == "romaji_artist" || key == "japanese_artist" || key == "year" || key == "flavor"
+					@albums = Album.where("#{key} LIKE ?", '%' + value + '%')
+				end
+			end
+		else
+			@albums = Album.where("title LIKE ? OR romaji_artist LIKE ? OR japanese_artist LIKE ? OR flavor LIKE ? OR year LIKE ? OR description LIKE ?", '%' + params[:q] + '%', '%' + params[:q] + '%', '%' + params[:q] + '%', '%' + params[:q] + '%', '%' + params[:q] + '%', '%' + params[:q] + '%')
+			if params[:q_track]
+				tempAlbums = Album.joins(:tracks).where('tracks.title LIKE ? OR tracks.romanization LIKE ?', "%#{params[:q]}%", "%#{params[:q]}%")
+				albums = @albums + tempAlbums
+				@albums = Album.where(id: albums.map(&:id))
+			end
+		end
+		if params[:sort] != nil
+			params[:sort].downcase!
+		end
+		if params[:sort] == "asc" || params[:sort] == "desc"
+			if params[:sort] == "asc"
+				@albums = @albums.order(Arel.sql(params[:sort_type].downcase))
+			end
+			if params[:sort] == "desc"
+				@albums = @albums.order(Arel.sql(params[:sort_type].downcase)).reverse_order
+			end
+		else
+			@albums = @albums.order(:quality).reverse_order
+		end
+		if params[:limit]
+			@albums = @albums.limit(params[:limit])
+		end
+		if params[:offset]
+			@albums = @albums.offset(params[:offset])
+		end
+		@albums = tPop(@albums, params)
 	end
 	def create
 		@album = Album.new(params[:album].to_unsafe_hash)
@@ -66,5 +131,9 @@ class AlbumsController < ApplicationController
 				end
 			end
 		end
+	end
+	
+	private def album_params
+		params.permit(:image, :coverlink, :temp_tracklist, :thumbnail, :title, :romaji_artist, :japanese_artist, :flavor, :year, :q, :offset, :limit, :sort, :sort_type, :q_track, :total_count)
 	end
 end

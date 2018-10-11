@@ -29,7 +29,6 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 # To use controller variables as javascript variables
-gem 'gon'
 gem 'js_assets'
 gem 'jquery-rails'
 gem 'rack'

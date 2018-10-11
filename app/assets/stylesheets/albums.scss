@@ -138,17 +138,6 @@ body {
 	#input {
 		position: relative;
 		width: 70%;
-		#regex {
-			position: absolute;
-			top: 4px;
-			left: -30px;
-			width: 25px;
-			transition: 0.1s;
-		}
-		#regex:hover {
-			cursor: pointer;
-			filter: brightness(150%);
-		}
 		ion-icon {
 			position: absolute;
 			top: 2px;
@@ -295,6 +284,12 @@ body {
 		left: 0;
 		right: 0;
 		z-index: -1;
+	}
+	.spinner {
+		max-width: 60px;
+		margin: 80px;
+		opacity: 0.8;
+		z-index: 10;
 	}
 	#splash-container {
 		display: flex;

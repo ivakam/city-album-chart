@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
-  get 'about/index'
-  get 'albums/index'
+  get 'about', to: 'about#show'
+  get 'albums', to: 'albums#show'
   get 'albums/submit'
+  get 'albums/fetch', to: 'albums#fetch'
   
   resources :albums
   
-  root 'albums#index'
+  root 'albums#show'
 end
