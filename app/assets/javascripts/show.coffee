@@ -49,7 +49,7 @@ $(document).on "turbolinks:load", ->
 					albumID = albums.get(title)
 					album = albumID.title
 					artist = albumID.romaji_artist
-					url = "https://www.googleapis.com/youtube/v3/search"
+					url = "http://www.googleapis.com/youtube/v3/search"
 					searchResults = {}
 					params =
 						part: 'snippet'
@@ -63,7 +63,7 @@ $(document).on "turbolinks:load", ->
 						setItem(i, item) for item, i in result.items
 						sliderItems = video.find(".video-slider").find("iframe")
 						setSourceVideo = (i, iframe) ->
-							$(iframe).attr("src", "https://www.youtube.com/embed/" + searchResults[i.toString()] + "?enablejsapi=1&version=3&playerapiid=ytplayer")
+							$(iframe).attr("src", "http://www.youtube.com/embed/" + searchResults[i.toString()] + "?enablejsapi=1&version=3&playerapiid=ytplayer")
 						setSourceVideo(i, iframe) for iframe, i in sliderItems
 					error = (result) ->
 						console.log("Failed to fetch YouTube data: ", result)
@@ -209,7 +209,7 @@ $(document).on "turbolinks:load", ->
 								<div class='track-grow-wrapper'>
 									<div class='link-image-container'>" +
 										"<img class='expandable-img' src=''>
-										<img class='vinyl-icon hidden' src='https://upload.wikimedia.org/wikipedia/commons/7/75/Vinyl_record.svg'>
+										<img class='vinyl-icon hidden' src='http://upload.wikimedia.org/wikipedia/commons/7/75/Vinyl_record.svg'>
 										<div class='stream-slider-container'>
 											<ion-icon name='ios-close' class='stream-close'></ion-icon>
 											<ion-icon name='ios-arrow-back' class='stream-arrow stream-arrow-left'></ion-icon>
@@ -280,7 +280,7 @@ $(document).on "turbolinks:load", ->
 		
 		if !sessionStorage.getItem("Albums")
 			$(".spinner").removeClass("hidden")
-			jsonAlbums = fetch("https://varieti.es/albums/fetch/?limit=40&total_count=true")
+			jsonAlbums = fetch("http://varieti.es/albums/fetch/?limit=40&total_count=true")
 			.then (response) ->
 				return response.json()
 			.catch (error) ->
@@ -409,7 +409,7 @@ $(document).on "turbolinks:load", ->
 			input = input.target.value
 			$("#splash-container").empty()
 			$(".spinner").removeClass("hidden")
-			jsonAlbums = fetch("https://varieti.es/albums/fetch/?q=#{input}&limit=40")
+			jsonAlbums = fetch("http://varieti.es/albums/fetch/?q=#{input}&limit=40")
 			.then (response) ->
 				return response.json()
 			.catch (error) ->
@@ -446,7 +446,8 @@ $(document).on "turbolinks:load", ->
 			$("#splash-container").empty()
 			$(".spinner").removeClass("hidden")
 			dirStr = if dir then "asc" else "desc"
-			fetch("https://varieti.es/albums/fetch/?#{searchQ()}sort=#{dirStr}&sort_type=#{string}&limit=40")
+			console.log("http://varieti.es/albums/fetch/?#{searchQ()}sort=#{dirStr}&sort_type=#{string}&limit=40")
+			fetch("http://varieti.es/albums/fetch/?#{searchQ()}sort=#{dirStr}&sort_type=#{string}&limit=40")
 			.then (response) ->
 				return response.json()
 			.catch (error) ->
@@ -478,7 +479,7 @@ $(document).on "turbolinks:load", ->
 				else if albums.size + 40 > totalCount - 1
 					offset = totalCount - (totalCount - albums.size)
 				qStr = $("#main-search").val()
-				fetch("https://varieti.es/albums/fetch/?#{searchQ()}limit=40&offset=#{offset}")
+				fetch("http://varieti.es/albums/fetch/?#{searchQ()}limit=40&offset=#{offset}")
 				.then (response) ->
 					return response.json()
 				.catch (error) ->
