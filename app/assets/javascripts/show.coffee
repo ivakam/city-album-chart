@@ -8,15 +8,18 @@ $(document).on "turbolinks:load", ->
 		albumOpen = false
 		delayTimer = null
 		vinylClicked = false
-		titleReplaceRegex = /[\s\'\"\.\(\)]/g
+		titleReplaceRegex = /[\s\'\"\.\(\)\!\#\%\&\\\*]/g
 		window.albumsNameSpace = {}
 		ytAPIkey = "AIzaSyAA9tEp3x9uIC60zQfLds8ZlNrwRCBwc5Q"
 		totalCount = 0
 		albums = null
+		$("#main-search").val("")
 		
 		#console.log("albums.coffee is running.")
 		
 		sortAlbums = (arr) ->
+			if arr[0] == "Out of albums to render!"
+				return new Map()
 			popTemp = (a, i, arr) ->
 				tempAlbums.set(a.title.replace(titleReplaceRegex, ""), arr[i])
 			tempAlbums = new Map()
@@ -426,6 +429,7 @@ $(document).on "turbolinks:load", ->
 		#Search listener
 		
 		$("#main-search").on("input", (e) ->
+			searched = true
 			clearTimeout(delayTimer)
 			delayTimer = setTimeout( ->
 				search(e)
@@ -478,7 +482,6 @@ $(document).on "turbolinks:load", ->
 					return
 				else if albums.size + 40 > totalCount - 1
 					offset = totalCount - (totalCount - albums.size)
-				qStr = $("#main-search").val()
 				fetch("#{host}#{searchQ()}limit=40&offset=#{offset}")
 				.then (response) ->
 					return response.json()

@@ -185,10 +185,9 @@ body {
 		li {
 			display: flex;
 			flex-grow: 1;
-			justify-content: space-around;
 			.nav-btn {
 				min-height: 40px;
-				flex-grow: 1;
+				flex-grow: 0.4;
 				display: flex;
 				align-items: center;
 				justify-content: center;
@@ -227,6 +226,7 @@ body {
 					cursor: default;
 					height: 23px;
 					border-left: 1px #414141 solid;
+					flex-shrink: 4;
 				}
 			}
 	

@@ -3,6 +3,11 @@ class AlbumsController < ApplicationController
 		!!(self =~ /\p{Han}|\p{Katakana}|\p{Hiragana}|\p{Hangul}/)
 	end
 	def tPop(albums, params)
+		p albums.any?
+		if !albums.any?
+			render :json => ["Out of albums to render!"]
+			return
+		end
 		albumIDs = ""
 		albums.each do | album |
 			albumIDs << "'#{album["id"].to_s}', "
