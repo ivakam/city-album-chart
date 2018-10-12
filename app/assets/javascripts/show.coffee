@@ -3,6 +3,8 @@ $(document).on "turbolinks:load", ->
 		
 		#Global variable declaration
 		
+		#host = "https://album-chart-ivakam.c9users.io/albums/fetch?"
+		host = "http://varieti.es/albums/fetch?"
 		albumOpen = false
 		delayTimer = null
 		vinylClicked = false
@@ -209,7 +211,7 @@ $(document).on "turbolinks:load", ->
 								<div class='track-grow-wrapper'>
 									<div class='link-image-container'>" +
 										"<img class='expandable-img' src=''>
-										<img class='vinyl-icon hidden' src='http://upload.wikimedia.org/wikipedia/commons/7/75/Vinyl_record.svg'>
+										<img class='vinyl-icon hidden' src='https://upload.wikimedia.org/wikipedia/commons/7/75/Vinyl_record.svg'>
 										<div class='stream-slider-container'>
 											<ion-icon name='ios-close' class='stream-close'></ion-icon>
 											<ion-icon name='ios-arrow-back' class='stream-arrow stream-arrow-left'></ion-icon>
@@ -280,11 +282,11 @@ $(document).on "turbolinks:load", ->
 		
 		if !sessionStorage.getItem("Albums")
 			$(".spinner").removeClass("hidden")
-			jsonAlbums = fetch("http://varieti.es/albums/fetch/?limit=40&total_count=true")
+			jsonAlbums = fetch("#{host}limit=40&total_count=true")
 			.then (response) ->
 				return response.json()
 			.catch (error) ->
-				console.log("Error fetching from database!")
+				console.log("Error fetching from database! Error:\n" + error)
 				return
 			.then (json) ->
 				sessionStorage.setItem("Albums", JSON.stringify(json))
@@ -409,11 +411,11 @@ $(document).on "turbolinks:load", ->
 			input = input.target.value
 			$("#splash-container").empty()
 			$(".spinner").removeClass("hidden")
-			jsonAlbums = fetch("http://varieti.es/albums/fetch/?q=#{input}&limit=40")
+			jsonAlbums = fetch("#{host}q=#{input}&limit=40")
 			.then (response) ->
 				return response.json()
 			.catch (error) ->
-				console.log("Error fetching from database!")
+				console.log("Error fetching from database! Error:\n" + error)
 				return
 			.then (json) ->
 				albums = sortAlbums(json)
@@ -446,20 +448,19 @@ $(document).on "turbolinks:load", ->
 			$("#splash-container").empty()
 			$(".spinner").removeClass("hidden")
 			dirStr = if dir then "asc" else "desc"
-			console.log("http://varieti.es/albums/fetch/?#{searchQ()}sort=#{dirStr}&sort_type=#{string}&limit=40")
-			fetch("http://varieti.es/albums/fetch/?#{searchQ()}sort=#{dirStr}&sort_type=#{string}&limit=40")
+			fetch("#{host}#{searchQ()}sort=#{dirStr}&sort_type=#{string}&limit=40")
 			.then (response) ->
 				return response.json()
 			.catch (error) ->
-				console.log("Error fetching from database!")
+				console.log("Error fetching from database! Error:\n" + error)
 				return
 			.then (json) ->
-				console.log(albums)
+				#console.log(albums)
 				albums = sortAlbums(json)
-				console.log(albums)
+				#console.log(albums)
 				toggleAlbum(sibling: undefined)
 				displayAlbum()
-				console.log(albums)
+				#console.log(albums)
 			.then ->
 				$(".spinner").addClass("hidden")
 		
@@ -472,18 +473,17 @@ $(document).on "turbolinks:load", ->
 		
 		$(window).scroll -> 
 			if $(window).scrollTop() + $(window).height() >= $(document).height() and $(document).height() > $(window).height()
-				console.log(albums)
 				offset = albums.size
 				if albums.size >= totalCount - 1
 					return
 				else if albums.size + 40 > totalCount - 1
 					offset = totalCount - (totalCount - albums.size)
 				qStr = $("#main-search").val()
-				fetch("http://varieti.es/albums/fetch/?#{searchQ()}limit=40&offset=#{offset}")
+				fetch("#{host}#{searchQ()}limit=40&offset=#{offset}")
 				.then (response) ->
 					return response.json()
 				.catch (error) ->
-					console.log("Error fetching from database!")
+					console.log("Error fetching from database! Error:\n" + error)
 					return
 				.then (json) ->
 					concatMaps(albums, sortAlbums(json))
