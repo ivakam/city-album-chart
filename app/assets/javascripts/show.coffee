@@ -46,7 +46,7 @@ $(document).on "turbolinks:load", ->
 			setTimeout( ->
 				if video.find(".video-slider").find("iframe:first-child").attr("src") == ''
 					title = container.closest(".info-container").siblings(".album-container").attr("id")
-					albumID = masterAlbums[parseInt(title)]
+					albumID = albums.get(title)
 					album = albumID.title
 					artist = albumID.romaji_artist
 					url = "https://www.googleapis.com/youtube/v3/search"
