@@ -6,6 +6,7 @@ $(document).on "turbolinks:load", ->
 		albumOpen = false
 		delayTimer = null
 		vinylClicked = false
+		titleReplaceRegex = /[\s\'\"\.\(\)]/g
 		window.albumsNameSpace = {}
 		ytAPIkey = "AIzaSyAA9tEp3x9uIC60zQfLds8ZlNrwRCBwc5Q"
 		totalCount = 0
@@ -15,7 +16,7 @@ $(document).on "turbolinks:load", ->
 		
 		sortAlbums = (arr) ->
 			popTemp = (a, i, arr) ->
-				tempAlbums.set(a.title.replace(/[\s\'\"\.\(\)]/g, ""), arr[i])
+				tempAlbums.set(a.title.replace(titleReplaceRegex, ""), arr[i])
 			tempAlbums = new Map()
 			popTemp(a, i, arr) for a, i in arr
 			return tempAlbums
@@ -24,7 +25,7 @@ $(document).on "turbolinks:load", ->
 		
 		albumClick = (e) ->
 			e = $(e.target)
-			title = e.parent().find(".text-size-wrapper h2").text().replace(/[\s+\'\"\.\(\)]/g, "")
+			title = e.parent().find(".text-size-wrapper h2").text().replace(titleReplaceRegex, "")
 			sibling = $("##{title}-info").find(".info-wrapper")
 			parent = $("##{title}")
 			arrow = parent.find(".album-arrow")
@@ -163,7 +164,7 @@ $(document).on "turbolinks:load", ->
 					"
 				trackListStr = ""
 				trackListStr += addTrack(track, i) for track, i in album.tracklist
-				id = album.title.replace(/[\s+\'\"\.\(\)]/g, "")
+				id = album.title.replace(titleReplaceRegex, "")
 				albumLi +=
 				"<li>
 					<div class='album-container' id='"+id+"'>
@@ -279,7 +280,7 @@ $(document).on "turbolinks:load", ->
 		
 		if !sessionStorage.getItem("Albums")
 			$(".spinner").removeClass("hidden")
-			jsonAlbums = fetch("https://album-chart-ivakam.c9users.io/albums/fetch/?limit=40&total_count=true")
+			jsonAlbums = fetch("http://varieti.es/albums/fetch/?limit=40&total_count=true")
 			.then (response) ->
 				return response.json()
 			.catch (error) ->
@@ -408,7 +409,7 @@ $(document).on "turbolinks:load", ->
 			input = input.target.value
 			$("#splash-container").empty()
 			$(".spinner").removeClass("hidden")
-			jsonAlbums = fetch("https://album-chart-ivakam.c9users.io/albums/fetch/?q=#{input}&limit=40")
+			jsonAlbums = fetch("http://varieti.es/albums/fetch/?q=#{input}&limit=40")
 			.then (response) ->
 				return response.json()
 			.catch (error) ->
@@ -445,7 +446,7 @@ $(document).on "turbolinks:load", ->
 			$("#splash-container").empty()
 			$(".spinner").removeClass("hidden")
 			dirStr = if dir then "asc" else "desc"
-			fetch("https://album-chart-ivakam.c9users.io/albums/fetch/?#{searchQ()}sort=#{dirStr}&sort_type=#{string}&limit=40")
+			fetch("http://varieti.es/albums/fetch/?#{searchQ()}sort=#{dirStr}&sort_type=#{string}&limit=40")
 			.then (response) ->
 				return response.json()
 			.catch (error) ->
@@ -477,7 +478,7 @@ $(document).on "turbolinks:load", ->
 				else if albums.size + 40 > totalCount - 1
 					offset = totalCount - (totalCount - albums.size)
 				qStr = $("#main-search").val()
-				fetch("https://album-chart-ivakam.c9users.io/albums/fetch/?#{searchQ()}limit=40&offset=#{offset}")
+				fetch("http://varieti.es/albums/fetch/?#{searchQ()}limit=40&offset=#{offset}")
 				.then (response) ->
 					return response.json()
 				.catch (error) ->
