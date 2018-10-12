@@ -435,7 +435,7 @@ $(document).on "turbolinks:load", ->
 		searchQ = () ->
 			qStr = $("#main-search").val()
 			if qStr != ""
-				qStr = "q=#{qstr}&"
+				qStr = "q=#{qStr}&"
 			else
 				qStr = ""
 			return qStr
