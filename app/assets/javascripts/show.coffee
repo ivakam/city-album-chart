@@ -49,7 +49,7 @@ $(document).on "turbolinks:load", ->
 					albumID = albums.get(title)
 					album = albumID.title
 					artist = albumID.romaji_artist
-					url = "http://www.googleapis.com/youtube/v3/search"
+					url = "https://www.googleapis.com/youtube/v3/search"
 					searchResults = {}
 					params =
 						part: 'snippet'
@@ -63,7 +63,7 @@ $(document).on "turbolinks:load", ->
 						setItem(i, item) for item, i in result.items
 						sliderItems = video.find(".video-slider").find("iframe")
 						setSourceVideo = (i, iframe) ->
-							$(iframe).attr("src", "http://www.youtube.com/embed/" + searchResults[i.toString()] + "?enablejsapi=1&version=3&playerapiid=ytplayer")
+							$(iframe).attr("src", "https://www.youtube.com/embed/" + searchResults[i.toString()] + "?enablejsapi=1&version=3&playerapiid=ytplayer")
 						setSourceVideo(i, iframe) for iframe, i in sliderItems
 					error = (result) ->
 						console.log("Failed to fetch YouTube data: ", result)
