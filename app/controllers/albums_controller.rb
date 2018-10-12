@@ -3,7 +3,6 @@ class AlbumsController < ApplicationController
 		!!(self =~ /\p{Han}|\p{Katakana}|\p{Hiragana}|\p{Hangul}/)
 	end
 	def tPop(albums, params)
-		p albums.any?
 		if !albums.any?
 			render :json => ["Out of albums to render!"]
 			return
@@ -62,11 +61,15 @@ class AlbumsController < ApplicationController
 			params[:sort].downcase!
 		end
 		if params[:sort] == "asc" || params[:sort] == "desc"
+			sortType = params[:sort_type].downcase
+			if sortType == "artist"
+				sortType = "romaji_artist"
+			end
 			if params[:sort] == "asc"
-				@albums = @albums.order(Arel.sql(params[:sort_type].downcase))
+				@albums = @albums.order(Arel.sql(sortType))
 			end
 			if params[:sort] == "desc"
-				@albums = @albums.order(Arel.sql(params[:sort_type].downcase)).reverse_order
+				@albums = @albums.order(Arel.sql(sortType)).reverse_order
 			end
 		else
 			@albums = @albums.order(:quality).reverse_order
