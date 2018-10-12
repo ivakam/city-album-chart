@@ -5,8 +5,7 @@ def CreateAlbumWithTracks(albumParam, tracks = [])
 	p "Album Title: " + currentAlbum.title
 	p "Cover name: " + coverName
 	p "Cover path: " + coverPath 
-	currentAlbum.cover.attach(io: File.open(coverPath), filename: coverPath[/(#{coverName})\..+$/, 0], content_type: 'image/jpg')
-	currentAlbum.cover.attach(io: File.open(Rails.root.join("app/assets/images/missingcover.jpg")), filename: "missingcover.jpg", content_type: 'image/jpg')
+	currentAlbum.cover.attach(io: File.open(coverPath), filename: coverPath[/(#{coverName})\..+$/, 0])
 	currentAlbum.coverlink = currentAlbum.rails_blob_url(currentAlbum.cover)
 	currentAlbum.thumbnail = currentAlbum.rails_representation_url(currentAlbum.cover.variant(resize: "200x200"))
 	tempQuality = 0

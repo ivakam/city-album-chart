@@ -15,7 +15,7 @@ $(document).on "turbolinks:load", ->
 		
 		sortAlbums = (arr) ->
 			popTemp = (a, i, arr) ->
-				tempAlbums.set(a.title, arr[i])
+				tempAlbums.set(a.title.replace(/[\s\'\"\.\(\)]/g, ""), arr[i])
 			tempAlbums = new Map()
 			popTemp(a, i, arr) for a, i in arr
 			return tempAlbums
@@ -24,9 +24,9 @@ $(document).on "turbolinks:load", ->
 		
 		albumClick = (e) ->
 			e = $(e.target)
-			title = e.parent().find(".text-size-wrapper h2").text()
-			sibling = $("#" + title.replace(" ", "") + "-info").find(".info-wrapper")
-			parent = $("#" + title.replace(" ", ""))
+			title = e.parent().find(".text-size-wrapper h2").text().replace(/[\s+\'\"\.\(\)]/g, "")
+			sibling = $("##{title}-info").find(".info-wrapper")
+			parent = $("##{title}")
 			arrow = parent.find(".album-arrow")
 			toggleAlbum(title, sibling, parent, arrow)
 		
@@ -163,9 +163,10 @@ $(document).on "turbolinks:load", ->
 					"
 				trackListStr = ""
 				trackListStr += addTrack(track, i) for track, i in album.tracklist
+				id = album.title.replace(/[\s+\'\"\.\(\)]/g, "")
 				albumLi +=
 				"<li>
-					<div class='album-container' id='"+album.title.replace(" ", "")+"'>
+					<div class='album-container' id='"+id+"'>
 						<div class='album-text-container'>
 							<div class='text-size-wrapper'>
 								<h2>"+album.title+"</h2>
@@ -178,7 +179,7 @@ $(document).on "turbolinks:load", ->
 						</div>
 						<div class='arrow-container'><ion-icon name='ios-arrow-down' class='album-arrow'></ion-icon></div>
 					</div>
-					<div class='info-container offset' id='"+album.title.replace(" ", "")+"-info'>
+					<div class='info-container offset' id='"+id+"-info'>
 						<div class='info-wrapper'>
 							<div class='info-background'>"+"<img src='" + album.thumbnail + "'></div>
 							<div class='info-text-container'>
@@ -207,7 +208,7 @@ $(document).on "turbolinks:load", ->
 								<div class='track-grow-wrapper'>
 									<div class='link-image-container'>" +
 										"<img class='expandable-img' src=''>
-										<img class='vinyl-icon' src='https://upload.wikimedia.org/wikipedia/commons/7/75/Vinyl_record.svg'>
+										<img class='vinyl-icon hidden' src='https://upload.wikimedia.org/wikipedia/commons/7/75/Vinyl_record.svg'>
 										<div class='stream-slider-container'>
 											<ion-icon name='ios-close' class='stream-close'></ion-icon>
 											<ion-icon name='ios-arrow-back' class='stream-arrow stream-arrow-left'></ion-icon>
@@ -336,9 +337,6 @@ $(document).on "turbolinks:load", ->
 						expandImg = sibling.find(".expandable-img")
 						if expandImg.attr("src") == ""
 							expandImg.attr("src", albums.get(title).coverlink)
-							if expandImg.height() < expandImg.width()
-								sibling.find(".vinyl-icon").css("width", expandImg.height())
-								sibling.find(".vinyl-icon").css("height", expandImg.height())
 						sibling.find(".info-background img").css("display", "block")
 						arrow.css("transform", "rotate(180deg)")
 						parent.css("height", "820px")
@@ -346,6 +344,13 @@ $(document).on "turbolinks:load", ->
 						sibling.css("border-top", "1px #8c8c8c solid")
 						sibling.css("border-bottom", "1px #8c8c8c solid")
 						sibling.css("padding", "15px 15px 15px 15px")
+						#if expandImg.get()[0].complete && expandImg.get()[0].naturalHeight != 0
+						$(expandImg).on('load', ->
+							sibling.find(".vinyl-icon").removeClass("hidden")
+							if expandImg.height() < expandImg.width()
+								sibling.find(".vinyl-icon").css("width", expandImg.height())
+								sibling.find(".vinyl-icon").css("height", expandImg.height())
+						)
 					,
 					1)
 				,
