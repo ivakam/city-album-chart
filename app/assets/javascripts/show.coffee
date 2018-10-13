@@ -3,8 +3,8 @@ $(document).on "turbolinks:load", ->
 		
 		#Global variable declaration
 		
-		#host = "https://album-chart-ivakam.c9users.io/albums/fetch?"
-		host = "http://varieti.es/albums/fetch?"
+		host = "https://album-chart-ivakam.c9users.io/albums/fetch?"
+		#host = "http://varieti.es/albums/fetch?"
 		albumOpen = false
 		delayTimer = null
 		vinylClicked = false
@@ -283,33 +283,26 @@ $(document).on "turbolinks:load", ->
 		
 		#Session storage population
 		
-		if !sessionStorage.getItem("Albums")
-			$(".spinner").removeClass("hidden")
-			jsonAlbums = fetch("#{host}limit=40&total_count=true")
-			.then (response) ->
-				return response.json()
-			.catch (error) ->
-				console.log("Error fetching from database! Error:\n" + error)
-				return
-			.then (json) ->
-				sessionStorage.setItem("Albums", JSON.stringify(json))
-				totalCount = json[json.length - 1]
-				json.pop()
-				albums = sortAlbums(json)
-			.then ->
-				displayAlbum()
-			.then ->
-				$(".spinner").addClass("hidden")
-		else
-			tempAlbums = JSON.parse(sessionStorage.getItem("Albums"))
-			totalCount = tempAlbums[tempAlbums.length - 1]
-			tempAlbums.pop()
-			albums = sortAlbums(tempAlbums)
+		$(".spinner").removeClass("hidden")
+		jsonAlbums = fetch("#{host}limit=40&total_count=true")
+		.then (response) ->
+			return response.json()
+		.catch (error) ->
+			console.log("Error fetching from database! Error:\n" + error)
+			return
+		.then (json) ->
+			totalCount = json[json.length - 1]
+			json.pop()
+			albums = sortAlbums(json)
+		.then ->
 			displayAlbum()
+		.then ->
 			$(".spinner").addClass("hidden")
-			
+			window.albumsNameSpace.albumTotalCount = totalCount
+			$("#album-total-count").text(totalCount)
+		
 		#Helper method for opening an info container. Call it as 'sibling: undefined' to reset all info containers.
-			
+		
 		toggleAlbum = (title, sibling, parent, arrow) ->
 			timeout = 0
 			timeout = 300 if albumOpen
@@ -364,10 +357,6 @@ $(document).on "turbolinks:load", ->
 			else 
 				albumOpen = false
 				$(".info-wrapper").removeClass("is-open")
-						
-		window.albumsNameSpace.albumTotalCount = totalCount
-		
-		$("#album-total-count").text(totalCount)
 		
 		#Handler for 'random' button. Picks an album-container, scrolls to it and then opens it
 		
@@ -387,18 +376,18 @@ $(document).on "turbolinks:load", ->
 			setTimeout( ->
 				$(container).get()[0].scrollIntoView({behaviour: "smooth"})
 			, timer)
-			
-			
+		
+		
 		#Handler for closing the zoom-mode for images
-			
+		
 		$("#opaque").click ->
 			$("img").removeClass("enlargened")
 			$(this).css("background", "rgba(0,0,0,0)")
 			$(".bigimage").attr("src", "")
 			$(this).css("z-index", "0")
-	
+		
 		#Handler for clicking the 'sort' buttons
-	
+		
 		$(".sort-btn").click ->
 			clickedArrow = $(this).children("a").text()
 			$("#sort-list li").each ->

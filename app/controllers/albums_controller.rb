@@ -50,7 +50,7 @@ class AlbumsController < ApplicationController
 				end
 			end
 		else
-			@albums = Album.where("title LIKE ? OR romaji_artist LIKE ? OR japanese_artist LIKE ? OR flavor LIKE ? OR year LIKE ? OR description LIKE ?", '%' + params[:q] + '%', '%' + params[:q] + '%', '%' + params[:q] + '%', '%' + params[:q] + '%', '%' + params[:q] + '%', '%' + params[:q] + '%')
+			@albums = Album.where("title LIKE ? OR romanization LIKE ? OR romaji_artist LIKE ? OR japanese_artist LIKE ? OR flavor LIKE ? OR year LIKE ? OR description LIKE ?", '%' + params[:q] + '%', '%' + params[:q] + '%','%' + params[:q] + '%', '%' + params[:q] + '%', '%' + params[:q] + '%', '%' + params[:q] + '%', '%' + params[:q] + '%')
 			if params[:q_track]
 				tempAlbums = Album.joins(:tracks).where('tracks.title LIKE ? OR tracks.romanization LIKE ?', "%#{params[:q]}%", "%#{params[:q]}%")
 				albums = @albums + tempAlbums
