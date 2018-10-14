@@ -14258,7 +14258,7 @@ title: "Ride on Time",
 romanization: "",
 romaji_artist: "Tatsuro Yamashita",
 japanese_artist: "山下達郎",
-year: "1990",
+year: "1980",
 description: "",
 flavor: "Funk"
 },

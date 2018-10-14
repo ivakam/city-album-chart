@@ -3,8 +3,8 @@ $(document).on "turbolinks:load", ->
 		
 		#Global variable declaration
 		
-		#host = "https://album-chart-ivakam.c9users.io/albums/fetch?"
-		host = "http://varieti.es/albums/fetch?"
+		host = "https://album-chart-ivakam.c9users.io/albums/fetch?"
+		#host = "http://varieti.es/albums/fetch?"
 		albumOpen = false
 		delayTimer = null
 		vinylClicked = false
@@ -440,7 +440,9 @@ $(document).on "turbolinks:load", ->
 		albumSort = (string, dir) ->
 			$("#splash-container").empty()
 			$(".spinner").removeClass("hidden")
+			$("#splash-container").removeClass()
 			dirStr = if dir then "asc" else "desc"
+			$("#splash-container").addClass("sorted-#{string}-#{dirStr}")
 			fetch("#{host}#{searchQ()}sort=#{dirStr}&sort_type=#{string}&limit=40")
 			.then (response) ->
 				return response.json()
@@ -471,7 +473,12 @@ $(document).on "turbolinks:load", ->
 					return
 				else if albums.size + 40 > totalCount - 1
 					offset = totalCount - (totalCount - albums.size)
-				fetch("#{host}#{searchQ()}limit=40&offset=#{offset}")
+				sortStr = $("#splash-container").attr("class").split(/-/)
+				if sortStr.length > 0
+					fetchStr = "#{host}#{searchQ()}limit=40&offset=#{offset}&sort=#{sortStr[2]}&sort_type=#{sortStr[1]}"
+				else
+					fetchStr = "#{host}#{searchQ()}limit=40&offset=#{offset}"
+				fetch(fetchStr)
 				.then (response) ->
 					return response.json()
 				.catch (error) ->
