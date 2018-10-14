@@ -18642,3 +18642,1298 @@ romanization: "",
 duration: "3:43"
 },
 ])
+CreateAlbumWithTracks({
+title: "Aqua City",
+romanization: "",
+romaji_artist: "Sugiyama Kiyotaka & The Omega Tribe",
+japanese_artist: "杉山清貴&オメガトライブ",
+year: "1984",
+description: "",
+flavor: "Disco, Boogie"
+},
+[{
+title: "Summer Suspicion",
+romanization: "",
+duration: "4:34"
+},
+{
+title: "Paddling to You",
+romanization: "",
+duration: "3:19"
+},
+{
+title: "Mindnight Down Town",
+romanization: "",
+duration: "5:05"
+},
+{
+title: "Light Morning",
+romanization: "",
+duration: "4:24"
+},
+{
+title: "Umikaze Tsushin",
+romanization: "",
+duration: "4:36"
+},
+{
+title: "Transit in Summer",
+romanization: "",
+duration: "4:19"
+},
+{
+title: "Trade Wind",
+romanization: "",
+duration: "5:47"
+},
+{
+title: "Sexy Halation",
+romanization: "",
+duration: "4:33"
+},
+{
+title: "Alone Again",
+romanization: "",
+duration: "5:06"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Just Call Me Penny",
+romanization: "",
+romaji_artist: "Hitomi Tohyama",
+japanese_artist: "当山ひとみ",
+year: "1981",
+description: "",
+flavor: "Synth"
+},
+[{
+title: "ドア越しのgood Song (So Many Times)",
+romanization: "Doa Goshi no Good Song (So Many Times)",
+duration: "4:20"
+},
+{
+title: "My Guy (Cafe Sign)",
+romanization: "",
+duration: "4:23"
+},
+{
+title: "Image Change",
+romanization: "",
+duration: "4:10"
+},
+{
+title: "Rainy Driver",
+romanization: "",
+duration: "4:32"
+},
+{
+title: "Station",
+romanization: "",
+duration: "3:31"
+},
+{
+title: "Baby, Baby, Baby",
+romanization: "",
+duration: "4:15"
+},
+{
+title: "Midnight Express",
+romanization: "",
+duration: "4:05"
+},
+{
+title: "Sfo-Oakland (サンフランシスコからオークランドへ)",
+romanization: "Sfo-Oakland (San Francisco Kara Auckland e)",
+duration: "3:37"
+},
+{
+title: "Instant Polaroid",
+romanization: "",
+duration: "4:09"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Heart Full of L.A. Mind",
+romanization: "",
+romaji_artist: " Hitomi Tohyama",
+japanese_artist: "当山ひとみ",
+year: "1982",
+description: "",
+flavor: "Synth, Funk"
+},
+[{
+title: "Another Day, Another Love",
+romanization: "",
+duration: "4:22"
+},
+{
+title: "Office Date",
+romanization: "",
+duration: "4:14"
+},
+{
+title: "今のままでいて",
+romanization: "Ima no Mama de i Te",
+duration: "4:19"
+},
+{
+title: "サボテンの花",
+romanization: "Saboten no Hana",
+duration: "4:42"
+},
+{
+title: "Air Mail",
+romanization: "",
+duration: "4:17"
+},
+{
+title: "シンフォニー",
+romanization: "Symphony",
+duration: "4:07"
+},
+{
+title: "Don't Stop the Music",
+romanization: "",
+duration: "3:43"
+},
+{
+title: "Isn't It Magic",
+romanization: "",
+duration: "4:12"
+},
+{
+title: "Call Me",
+romanization: "",
+duration: "3:46"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Next Door",
+romanization: "",
+romaji_artist: "Hitomi Tohyama",
+japanese_artist: "当山ひとみ",
+year: "1983",
+description: "",
+flavor: "Synth"
+},
+[{
+title: "エキゾチック横顔",
+romanization: "Ekizochikku Yokogao",
+duration: "4:34"
+},
+{
+title: "サングラスを外して",
+romanization: "Sunglasses wo Hazushi Te",
+duration: "3:51"
+},
+{
+title: "Teardrops Romance",
+romanization: "",
+duration: "3:56"
+},
+{
+title: "グッバイ～シャープに抱いて",
+romanization: "Goodbye ～Sharp ni Dai Te",
+duration: "4:09"
+},
+{
+title: "Kiss the Yesterday",
+romanization: "",
+duration: "3:57"
+},
+{
+title: "Love Is the Competition",
+romanization: "",
+duration: "3:51"
+},
+{
+title: "High-Heel Dancer",
+romanization: "",
+duration: "3:42"
+},
+{
+title: "Mystery Driver",
+romanization: "",
+duration: "4:27"
+},
+{
+title: "愛を奪って",
+romanization: "Ai wo Te",
+duration: "4:10"
+},
+{
+title: "Our Lovely Days",
+romanization: "",
+duration: "4:25"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Sexy Robot",
+romanization: "",
+romaji_artist: "Hitomi Tohyama",
+japanese_artist: "当山ひとみ",
+year: "1983",
+description: "",
+flavor: "Synth"
+},
+[{
+title: "Sexy Robot",
+romanization: "",
+duration: "4:02"
+},
+{
+title: "Wanna Kiss",
+romanization: "",
+duration: "4:33"
+},
+{
+title: "Tuxedo Connection",
+romanization: "",
+duration: "3:23"
+},
+{
+title: "Let's Talk in Bed",
+romanization: "",
+duration: "3:50"
+},
+{
+title: "We Are in the Dark",
+romanization: "",
+duration: "3:50"
+},
+{
+title: "Behind You",
+romanization: "",
+duration: "3:29"
+},
+{
+title: "Try to Say",
+romanization: "",
+duration: "3:51"
+},
+{
+title: "Cathy",
+romanization: "",
+duration: "5:44"
+},
+{
+title: "Slow Love",
+romanization: "",
+duration: "4:40"
+},
+{
+title: "Be Mine",
+romanization: "",
+duration: "4:31"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Hello Me",
+romanization: "",
+romaji_artist: "Hitomi Tohyama",
+japanese_artist: "当山ひとみ",
+year: "1986",
+description: "",
+flavor: "Synth"
+},
+[{
+title: "Anytime Anyplace",
+romanization: "",
+duration: "5:13"
+},
+{
+title: "Brand-New Day",
+romanization: "",
+duration: "4:58"
+},
+{
+title: "木もれ陽の降る季節",
+romanization: "Ki More hi no Furu Kisetsu",
+duration: "5:03"
+},
+{
+title: "銀河の片隅で",
+romanization: "Ginga no Katasumi De",
+duration: "5:10"
+},
+{
+title: "まつ毛の先のBoyish",
+romanization: "Matsuge no Saki no Boyish",
+duration: "3:30"
+},
+{
+title: "Maybe Someday (行き先は教えない)",
+romanization: "Maybe Someday (Yukisaki wa Oshie Nai)",
+duration: "4:47"
+},
+{
+title: "Shine on Lady",
+romanization: "",
+duration: "4:32"
+},
+{
+title: "星空のscreen",
+romanization: "Hoshizora no Screen",
+duration: "5:09"
+},
+{
+title: "Hello Me",
+romanization: "",
+duration: "3:47"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Style",
+romanization: "",
+romaji_artist: "Keiko Kimura",
+japanese_artist: "木村恵子",
+year: "1988",
+description: "",
+flavor: "Synth"
+},
+[{
+title: "Good Morning",
+romanization: "",
+duration: "4:52"
+},
+{
+title: "泉に誘って",
+romanization: "Izumi ni Te",
+duration: "4:30"
+},
+{
+title: "電話しないで",
+romanization: "電話shi Nai De",
+duration: "5:12"
+},
+{
+title: "シンジラレネーション",
+romanization: "Shinjiranation",
+duration: "3:34"
+},
+{
+title: "水の都",
+romanization: "Mizu no To",
+duration: "4:42"
+},
+{
+title: "コルトレーンで愛して",
+romanization: "Coltrane de Aishi Te",
+duration: "5:34"
+},
+{
+title: "Do You Remember Me",
+romanization: "",
+duration: "3:57"
+},
+{
+title: "黒いマニキュア",
+romanization: "Kuroi Manicure",
+duration: "6:00"
+},
+{
+title: "Good-Bye Eggman",
+romanization: "",
+duration: "4:53"
+},
+{
+title: "シャレード'88",
+romanization: "Charade'88",
+duration: "3:26"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Ambiva",
+romanization: "",
+romaji_artist: "Keiko Kimura",
+japanese_artist: "木村恵子",
+year: "1989",
+description: "",
+flavor: "Synth"
+},
+[{
+title: "夏のアンテナ",
+romanization: "Natsu no Antenna",
+duration: "4:34"
+},
+{
+title: "Bye Bye Visconti",
+romanization: "",
+duration: "4:07"
+},
+{
+title: "N.Y.からモーニングコール",
+romanization: "N.Y. Kara Morning Call",
+duration: "3:20"
+},
+{
+title: "モノクロームの太陽",
+romanization: "Monochrome no Taiyo-",
+duration: "5:30"
+},
+{
+title: "甘い復讐",
+romanization: "Amai Fukushu",
+duration: "4:39"
+},
+{
+title: "体重計とアンブレラ(Long Version)",
+romanization: "Taiju-Kei to Umbrella (Long Version)",
+duration: "4:50"
+},
+{
+title: "水曜日の贅沢",
+romanization: "Suiyo-Bi no Zeitaku",
+duration: "5:48"
+},
+{
+title: "バナナフィッシュにうってつけの日",
+romanization: "Banana Fish ni Uttetsuke no Hi",
+duration: "4:05"
+},
+{
+title: "サイドシートの彼",
+romanization: "Side Seat no Kare",
+duration: "4:03"
+},
+{
+title: "ある微笑",
+romanization: "Aru Bishō",
+duration: "3:49"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Green Water",
+romanization: "",
+romaji_artist: "Kunio Muramatsu",
+japanese_artist: "村松邦男",
+year: "1983",
+description: "",
+flavor: "Synth, Boogie"
+},
+[{
+title: "The Party",
+romanization: "",
+duration: "4:55"
+},
+{
+title: "僕のガールズ",
+romanization: "Boku no Girls",
+duration: "4:26"
+},
+{
+title: "フェアリー",
+romanization: "Fairy-",
+duration: "4:59"
+},
+{
+title: "ジェラシー",
+romanization: "Jealousy",
+duration: "4:50"
+},
+{
+title: "天国色の夢 (Heaven Color's Dream)",
+romanization: "Tengoku Shoku no Yume (Heaven Color's Dream)",
+duration: "3:46"
+},
+{
+title: "アフターケア",
+romanization: "Aftercare",
+duration: "4:51"
+},
+{
+title: "うたたね",
+romanization: "Utata Ne",
+duration: "4:15"
+},
+{
+title: "Katharina",
+romanization: "",
+duration: "4:29"
+},
+{
+title: "Midnight Desire",
+romanization: "",
+duration: "4:06"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "美代子・リバージュ",
+romanization: "Miyoko Rivage",
+romaji_artist: "Miyoko Nagao",
+japanese_artist: "永尾美代子",
+year: "1981",
+description: "",
+flavor: "Ballad"
+},
+[{
+title: "涙を珊瑚色",
+romanization: "Namida wo Sango Shoku",
+duration: "4:45"
+},
+{
+title: "芦屋セーリング・スポット",
+romanization: "Ashiya Sailing Spot",
+duration: "3:51"
+},
+{
+title: "もう海には帰らない",
+romanization: "Mo- Umi ni wa Kaera Nai",
+duration: "4:31"
+},
+{
+title: "雨のボートハウス",
+romanization: "Ame no Boat House",
+duration: "3:39"
+},
+{
+title: "Sea Wind",
+romanization: "",
+duration: "4:56"
+},
+{
+title: "さよならトリコロール",
+romanization: "Sayonara Tricolore",
+duration: "4:12"
+},
+{
+title: "恋舟",
+romanization: "Koi Fune",
+duration: "5:21"
+},
+{
+title: "Friday Night",
+romanization: "",
+duration: "4:07"
+},
+{
+title: "さ・よ・な・ら",
+romanization: "Sa yo na ra",
+duration: "3:52"
+},
+{
+title: "Night View Hill",
+romanization: "",
+duration: "4:56"
+},
+{
+title: "ブルーのタオル",
+romanization: "Blue no Towel",
+duration: "3:53"
+},
+{
+title: "ボンジュール恋",
+romanization: "Bonjour Koi",
+duration: "3:40"
+},
+{
+title: "渚にて",
+romanization: "Nagisa Nite",
+duration: "3:43"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Dream in the Street",
+romanization: "",
+romaji_artist: "Noriyo Ikeda",
+japanese_artist: "池田典代",
+year: "1980",
+description: "",
+flavor: "Latin, Soul"
+},
+[{
+title: "アディオス",
+romanization: "Adios",
+duration: "4:02"
+},
+{
+title: "Dream in the Street",
+romanization: "",
+duration: "4:58"
+},
+{
+title: "サマーオレンジの恋",
+romanization: "Summer Orange no Koi",
+duration: "4:23"
+},
+{
+title: "冷たい雨",
+romanization: "Tsumetai Ame",
+duration: "2:58"
+},
+{
+title: "Love Is Like a Party",
+romanization: "",
+duration: "4:29"
+},
+{
+title: "My Prayer",
+romanization: "",
+duration: "3:36"
+},
+{
+title: "愛のかけら",
+romanization: "Ai no Kake Ra",
+duration: "4:51"
+},
+{
+title: "恋のジャイロ",
+romanization: "Koi no Gyro",
+duration: "3:29"
+},
+{
+title: "Sunday Morning",
+romanization: "",
+duration: "3:12"
+},
+{
+title: "たたずんだ街角",
+romanization: "Tatazun da Machikado",
+duration: "4:12"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "ティーンズ・ロマンス",
+romanization: "Teen's Romance",
+romaji_artist: "Yoko Oginome",
+japanese_artist: "荻野目洋子",
+year: "1984",
+description: "",
+flavor: "Synth"
+},
+[{
+title: "未来航海 - Sailing",
+romanization: "Mirai Kōkai - Sailing",
+duration: "3:15"
+},
+{
+title: "サファイア色のプレリュード",
+romanization: "Sapphire Shoku no Prelude",
+duration: "2:44"
+},
+{
+title: "夏の微笑",
+romanization: "Natsu no Bishō",
+duration: "5:01"
+},
+{
+title: "十月物語",
+romanization: "Ju-Gatsu Monogatari",
+duration: "3:49"
+},
+{
+title: "悲しみプレゼント",
+romanization: "Kanashimi Present",
+duration: "3:53"
+},
+{
+title: "さよならから始まる物語",
+romanization: "Sayonara Kara Hajimaru Monogatari",
+duration: "3:18"
+},
+{
+title: "星空夜曲（プラネット・ノクターン）",
+romanization: "Hoshizora Yakyoku (Planet Nocturne)",
+duration: "4:18"
+},
+{
+title: "流星少女",
+romanization: "Ryu-Sei Sho-Jo",
+duration: "4:06"
+},
+{
+title: "虹色シンドローム",
+romanization: "Niji Shoku Syndrome",
+duration: "3:46"
+},
+{
+title: "ティーンズ・ロマンス",
+romanization: "Teen's Romance",
+duration: "3:43"
+}
+]
+)
+CreateAlbumWithTracks({
+title: "Freesia No Ame",
+romanization: "",
+romaji_artist: "Yoko Oginome",
+japanese_artist: "荻野目洋子",
+year: "1985",
+description: "",
+flavor: "Synth"
+},
+[{
+title: "Irie Ni Kaeru Yotto No You Ni",
+romanization: "",
+duration: "4:58"
+},
+{
+title: "Freesia No Ame",
+romanization: "",
+duration: "3:39"
+},
+{
+title: "Mukouseki Romance",
+romanization: "",
+duration: "3:20"
+},
+{
+title: "Omoide No Juke Box",
+romanization: "",
+duration: "4:21"
+},
+{
+title: "My Catherine",
+romanization: "",
+duration: "3:46"
+},
+{
+title: "B-No Uwasa",
+romanization: "",
+duration: "3:43"
+},
+{
+title: "Kare to Kanojo to Hikoukigumo",
+romanization: "",
+duration: "3:53"
+},
+{
+title: "Poinsettia No Omoi",
+romanization: "",
+duration: "3:50"
+},
+{
+title: "Ame to Jasmine",
+romanization: "",
+duration: "3:41"
+},
+{
+title: "Ame No Memory",
+romanization: "",
+duration: "5:16"
+},
+{
+title: "December Memory",
+romanization: "",
+duration: "4:19"
+},
+{
+title: "Tasogare Angel",
+romanization: "",
+duration: "3:59"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Kaigara Terrace",
+romanization: "",
+romaji_artist: "Yoko Oginome",
+japanese_artist: "荻野目洋子",
+year: "1985",
+description: "",
+flavor: "Synth"
+},
+[{
+title: "Koishite Caribbean",
+romanization: "",
+duration: "3:51"
+},
+{
+title: "Cecile Wa Toshigoro",
+romanization: "",
+duration: "3:14"
+},
+{
+title: "Aishuu Caravan",
+romanization: "",
+duration: "3:41"
+},
+{
+title: "Yuuhi No Gondola",
+romanization: "",
+duration: "4:18"
+},
+{
+title: "2b No Enpitsu",
+romanization: "",
+duration: "4:08"
+},
+{
+title: "Kokoro No Mama Ni ~I'm Just a Lady~",
+romanization: "",
+duration: "4:20"
+},
+{
+title: "9-Gatsu No Tokai",
+romanization: "",
+duration: "4:22"
+},
+{
+title: "Kaigara Terrace",
+romanization: "",
+duration: "3:37"
+},
+{
+title: "Heart No Present",
+romanization: "",
+duration: "4:46"
+},
+{
+title: "Joanna",
+romanization: "",
+duration: "3:42"
+},
+{
+title: "Ai No Time Capsule",
+romanization: "",
+duration: "2:56"
+},
+{
+title: "Sweet Vacation",
+romanization: "",
+duration: "3:19"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Heartbeat Express",
+romanization: "",
+romaji_artist: "Yoko Oginome",
+japanese_artist: "荻野目洋子",
+year: "1986",
+description: "",
+flavor: "Synth"
+},
+[{
+title: "Dance Beat Wa Yoake Made",
+romanization: "",
+duration: "3:41"
+},
+{
+title: "Pandora No Namida",
+romanization: "",
+duration: "4:03"
+},
+{
+title: "Rain -Natsu Wo Tsuresaru Ame-",
+romanization: "",
+duration: "3:53"
+},
+{
+title: "Velvet No Itazura",
+romanization: "",
+duration: "4:12"
+},
+{
+title: "Hito Natsu Dake No Tenshi",
+romanization: "",
+duration: "4:56"
+},
+{
+title: "After My Heart Beats",
+romanization: "",
+duration: "4:51"
+},
+{
+title: "Romantic Odyssey",
+romanization: "",
+duration: "4:12"
+},
+{
+title: "Dance Beat Wa Yoake Made 'In Sevilla'",
+romanization: "",
+duration: "4:01"
+},
+{
+title: "I Love You Wo Ienai Mama Ni",
+romanization: "",
+duration: "5:11"
+},
+{
+title: "Skyway Wo Mitsumete",
+romanization: "",
+duration: "5:23"
+},
+{
+title: "Yogoreta Kutsu No Initial",
+romanization: "",
+duration: "4:21"
+},
+{
+title: "Omoide Ni Wa Hayasugiru",
+romanization: "",
+duration: "3:46"
+},
+{
+title: "Main Theme",
+romanization: "",
+duration: "3:51"
+},
+{
+title: "Rock My Love",
+romanization: "",
+duration: "4:33"
+},
+{
+title: "More More Shiawase",
+romanization: "",
+duration: "4:57"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Non-Stopper",
+romanization: "",
+romaji_artist: "Yoko Oginome",
+japanese_artist: "荻野目洋子",
+year: "1986",
+description: "",
+flavor: "Synth, Compilation"
+},
+[{
+title: "Dancing Hero (Eat You Up) ''modern Version''",
+romanization: "",
+duration: "4:04"
+},
+{
+title: "Dance Beat Wa Yoake Made",
+romanization: "",
+duration: "3:38"
+},
+{
+title: "Flamingo in Paradise ''dance-Mix''",
+romanization: "",
+duration: "3:58"
+},
+{
+title: "Venus",
+romanization: "",
+duration: "3:38"
+},
+{
+title: "Melting Point",
+romanization: "",
+duration: "3:51"
+},
+{
+title: "Roppongi Junjoha",
+romanization: "",
+duration: "3:28"
+},
+{
+title: "D2d",
+romanization: "",
+duration: "4:18"
+},
+{
+title: "Non-Stop Dancer",
+romanization: "",
+duration: "4:29"
+},
+{
+title: "Cha-Cha-Cha",
+romanization: "",
+duration: "3:36"
+},
+{
+title: "Hitomi Ni I Love You",
+romanization: "",
+duration: "3:55"
+}
+]
+)
+CreateAlbumWithTracks({
+title: "Raspberry No Kaze",
+romanization: "",
+romaji_artist: "Yoko Oginome",
+japanese_artist: "荻野目洋子",
+year: "1986",
+description: "",
+flavor: "Synth"
+},
+[{
+title: " Namida Wa Speed Yurasukara",
+romanization: "",
+duration: "4:01"
+},
+{
+title: "Flamingo in Paradise",
+romanization: "",
+duration: "3:56"
+},
+{
+title: "1.2.3, Let Me Dance",
+romanization: "",
+duration: "3:43"
+},
+{
+title: "Tasogare No Neighborhood",
+romanization: "",
+duration: "3:21"
+},
+{
+title: "Slope Ni Tenki Ame",
+romanization: "",
+duration: "4:22"
+},
+{
+title: "Lazy Dance",
+romanization: "",
+duration: "4:32"
+},
+{
+title: "Beach Boys Wo Tomenaide",
+romanization: "",
+duration: "3:50"
+},
+{
+title: "Namida Shika Mienai",
+romanization: "",
+duration: "4:21"
+},
+{
+title: "Mayonaka No Stranger",
+romanization: "",
+duration: "3:51"
+},
+{
+title: "Natsu No Stage Light",
+romanization: "",
+duration: "4:47"
+},
+{
+title: "Dancing Hero (Eat You Up)",
+romanization: "",
+duration: "3:49"
+},
+{
+title: "Zenmaiji Kake No Suiyoubi",
+romanization: "",
+duration: "4:10"
+},
+{
+title: "Flamingo in Paradise",
+romanization: "",
+duration: "3:55"
+}
+]
+)
+CreateAlbumWithTracks({
+title: "246 Connection",
+romanization: "",
+romaji_artist: "Yoko Oginome",
+japanese_artist: "荻野目洋子",
+year: "1987",
+description: "",
+flavor: "Synth"
+},
+[{
+title: "246 Planet Girls",
+romanization: "",
+duration: "4:39"
+},
+{
+title: "Kita Aoyama 3 Choume 4 Banchi",
+romanization: "",
+duration: "4:19"
+},
+{
+title: "Zoku Roppongi Junjoha",
+romanization: "",
+duration: "3:54"
+},
+{
+title: "Killer Doori Wa Mai-Nichi Ga Party",
+romanization: "",
+duration: "4:40"
+},
+{
+title: "Babylon a Go Go",
+romanization: "",
+duration: "3:34"
+},
+{
+title: "Kanashiki Hair Pin Circus",
+romanization: "",
+duration: "4:00"
+},
+{
+title: "Karuizawa Connection",
+romanization: "",
+duration: "3:46"
+},
+{
+title: "Shonen Saigo No Natsu",
+romanization: "",
+duration: "4:10"
+},
+{
+title: "Hishochi No Natsu",
+romanization: "",
+duration: "4:24"
+},
+{
+title: "Wangan Taiyou Zoku",
+romanization: "",
+duration: "3:41"
+},
+{
+title: "Koyuki No Resort",
+romanization: "",
+duration: "4:23"
+},
+{
+title: "Sayonara No Kajitsu-Tachi",
+romanization: "",
+duration: "3:46"
+},
+{
+title: "Loft Side Graffiti",
+romanization: "",
+duration: "4:10"
+},
+{
+title: "Kitakaze No Carol",
+romanization: "",
+duration: "3:57"
+},
+{
+title: "Getsuyoubi No Marina",
+romanization: "",
+duration: "4:20"
+},
+{
+title: "Kitakaze No Carol -On Christmas Day-",
+romanization: "",
+duration: "3:32"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "CD-Rider",
+romanization: "",
+romaji_artist: "Yoko Oginome",
+japanese_artist: "荻野目洋子",
+year: "1988",
+description: "",
+flavor: "Synth"
+},
+[{
+title: "Dear 〜コバルトの彼方へ〜",
+romanization: "Dear ~Cobalt no Kanata e~",
+duration: "4:54"
+},
+{
+title: "パームトゥリー・キャンドル",
+romanization: "Palm Tree Candle",
+duration: "3:41"
+},
+{
+title: "Superstition",
+romanization: "",
+duration: "3:47"
+},
+{
+title: "ペルシャン・ローズ",
+romanization: "Persian Rose",
+duration: "3:57"
+},
+{
+title: "朝の街",
+romanization: "Asa no Machi",
+duration: "3:53"
+},
+{
+title: "Eye Spy the Night",
+romanization: "",
+duration: "4:00"
+},
+{
+title: "アフター5はパラダイス",
+romanization: "After 5 wa Paradaise",
+duration: "4:37"
+},
+{
+title: "素敵にFade Away",
+romanization: "Suteki ni Fade Away",
+duration: "3:52"
+},
+{
+title: "銀色のペーパームーン",
+romanization: "Giniro no Paper Moon",
+duration: "4:31"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "ヴァージ・オブ・ラヴ",
+romanization: "Verge of Love",
+romaji_artist: "Yoko Oginome",
+japanese_artist: "荻野目洋子",
+year: "1989",
+description: "",
+flavor: "Synth"
+},
+[{
+title: "ジス・クッド・ビー・ザ・ナイト",
+romanization: "This Could Be The Night",
+duration: "4:07"
+},
+{
+title: "サムシング・アバウト・ユー",
+romanization: "Something About You",
+duration: "4:37"
+},
+{
+title: "パッセージ・オブ・タイム",
+romanization: "Passage of Time",
+duration: "4:52"
+},
+{
+title: "ウィッケッド",
+romanization: "Wicked",
+duration: "5:08"
+},
+{
+title: "ヴァージ・オブ・ラヴ",
+romanization: "Verge of Love",
+duration: "6:55"
+},
+{
+title: "ポストカード・フロム・パリ",
+romanization: "Postcard from Paris",
+duration: "5:51"
+},
+{
+title: "スゥーピン・イン",
+romanization: "Suu Ping Inn",
+duration: "5:20"
+},
+{
+title: "イズ・イット・トゥルー",
+romanization: "Is It True",
+duration: "5:15"
+},
+{
+title: "ディジー、ディジー、ディジー",
+romanization: "Dizzy, Dizzy, Dizzy",
+duration: "4:39"
+},
+{
+title: "ユー・テイク・イット・オール・アウェイ",
+romanization: "You Take It All Away",
+duration: "5:05"
+},
+])
+
