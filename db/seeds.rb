@@ -6,10 +6,12 @@ def CreateAlbumWithTracks(albumParam, tracks = [])
 	p "Cover name: " + coverName
 	if coverPath == nil
 		coverPath = Rails.root.join("app/assets/images/missingcover.jpg")
-		p "Could not find cover for #{currentAlbum.title}"
+		currentAlbum.cover.attach(io: File.open(coverPath), filename: "missingcover.jpg")
+		p "ERROR: Could not find cover for #{currentAlbum.title}"
+	else
+		currentAlbum.cover.attach(io: File.open(coverPath), filename: coverPath[/(#{coverName})\..+$/, 0])
 	end
 	#p "Cover path: " + coverPath 
-	currentAlbum.cover.attach(io: File.open(coverPath), filename: coverPath[/(#{coverName})\..+$/, 0])
 	currentAlbum.coverlink = currentAlbum.rails_blob_url(currentAlbum.cover)
 	currentAlbum.thumbnail = currentAlbum.rails_representation_url(currentAlbum.cover.variant(resize: "200x200"))
 	tempQuality = 0
@@ -17496,5 +17498,1147 @@ duration: "4:42"
 title: "明日に向かって振り返れ",
 romanization: "Ashita ni Mukatte Furikaere",
 duration: "1:39"
+},
+])
+CreateAlbumWithTracks({
+title: "月姫",
+romanization: "Tsukihime",
+romaji_artist: "Mioko Yamaguchi",
+japanese_artist: "山口美央子",
+year: "1983",
+description: "",
+flavor: "Techno, Synth"
+},
+[{
+title: "夕顔～あはれ",
+romanization: "Yu-Gao ～aware",
+duration: "4:36"
+},
+{
+title: "夏",
+romanization: "Natsu",
+duration: "4:50"
+},
+{
+title: "沈みゆく",
+romanization: "Shizumi Yuku",
+duration: "2:42"
+},
+{
+title: "鏡",
+romanization: "Kagami",
+duration: "5:37"
+},
+{
+title: "白日夢",
+romanization: "Hakujitsu Yume",
+duration: "6:07"
+},
+{
+title: "月姫 (Moon-Light Princess)",
+romanization: "Tsukihime (Moon-Light Princess)",
+duration: "3:44"
+},
+{
+title: "さても天晴 夢桜",
+romanization: "Sate mo Ten Hare Yume Sakura",
+duration: "3:51"
+},
+{
+title: "恋は春感",
+romanization: "Koi wa Haru Kan",
+duration: "3:39"
+},
+])
+CreateAlbumWithTracks({
+title: "浮遊空間",
+romanization: "Fuyū kūkan",
+romaji_artist: "Tomoko Aran",
+japanese_artist: "亜蘭知子",
+year: "1983",
+description: "",
+flavor: "Synth, Funk"
+},
+[{
+title: "Body to Body",
+romanization: "",
+duration: "4:06"
+},
+{
+title: "Lonely Night",
+romanization: "",
+duration: "2:25"
+},
+{
+title: "I'm in Love",
+romanization: "",
+duration: "5:53"
+},
+{
+title: "ジ・レ・ン・マ",
+romanization: "Dilemma",
+duration: "3:33"
+},
+{
+title: "Midnight Pretenders",
+romanization: "",
+duration: "5:45"
+},
+{
+title: "ひと夏のタペストリー",
+romanization: "Hito Natsu no Tapestry",
+duration: "4:29"
+},
+{
+title: "Hannya",
+romanization: "",
+duration: "5:30"
+},
+{
+title: "しゃくなyesterday",
+romanization: "Shaku na Yesterday",
+duration: "5:01"
+},
+{
+title: "Baby, Don't You Cry Anymore",
+romanization: "",
+duration: "5:25"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "More Relax",
+romanization: "",
+romaji_artist: "Tomoko Aran",
+japanese_artist: "亜蘭知子",
+year: "1984",
+description: "",
+flavor: "Synth, Funk"
+},
+[{
+title: "Drive to Love (愛の海へ)",
+romanization: "Drive to Love (Ai no Umi e)",
+duration: "3:57"
+},
+{
+title: "Slow Nights",
+romanization: "",
+duration: "3:43"
+},
+{
+title: "Relax",
+romanization: "",
+duration: "3:59"
+},
+{
+title: "I Can't Say Good-Bye",
+romanization: "",
+duration: "4:05"
+},
+{
+title: "E☆spy (エ・ス・パ・イ)",
+romanization: "E☆spy (España)",
+duration: "3:54"
+},
+{
+title: "Waterless Pool (水のないプール)",
+romanization: "Waterless Pool (Sui no Nai Pool)",
+duration: "4:21"
+},
+{
+title: "もう一度south Wind",
+romanization: "Mo-Ichido South Wind",
+duration: "3:28"
+},
+{
+title: "裸足のサロメ",
+romanization: "Hadashi no Salome",
+duration: "3:43"
+},
+{
+title: "13月の奇跡",
+romanization: "13-tsuki no Kiseki",
+duration: "3:20"
+},
+{
+title: "Privacy",
+romanization: "",
+duration: "4:03"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "思い出は美しすぎて",
+romanization: "Omoide wa Utsukushi Sugi Te",
+romaji_artist: "Junko Yagami",
+japanese_artist: "八神純子",
+year: "1978",
+description: "",
+flavor: "Funk"
+},
+[{
+title: "雨の日のひとりごと",
+romanization: "Ame no hi no Hitori Goto",
+duration: "3:48"
+},
+{
+title: "時の流れに",
+romanization: "Toki no Nagare Ni",
+duration: "3:42"
+},
+{
+title: "思い出の部屋より",
+romanization: "Omoide no Heya Yori",
+duration: "4:22"
+},
+{
+title: "思い出は美しすぎて",
+romanization: "Omoide wa Utsukushi Sugi Te",
+duration: "3:19"
+},
+{
+title: "追慕",
+romanization: "Tsuibo",
+duration: "3:18"
+},
+{
+title: "気まぐれでいいの",
+romanization: "Kimagure de ii No",
+duration: "4:40"
+},
+{
+title: "せいたかあわだち草",
+romanization: "Sei ta ka Awadachi Kusa",
+duration: "2:52"
+},
+{
+title: "窓辺",
+romanization: "Madobe",
+duration: "4:44"
+},
+{
+title: "もう忘れましょう",
+romanization: "Mo Wasure Masho U",
+duration: "4:34"
+},
+{
+title: "さよならの言葉",
+romanization: "Sayonara no Kotoba",
+duration: "4:18"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "素顔の私",
+romanization: "Sugao no Watashi",
+romaji_artist: "Junko Yagami",
+japanese_artist: "八神純子",
+year: "1979",
+description: "",
+flavor: "Funk"
+},
+[{
+title: "バースデイ・ソング",
+romanization: "Birthday Song",
+duration: "3:26"
+},
+{
+title: "明日に向かって行け",
+romanization: "Ashita ni te Ike",
+duration: "4:50"
+},
+{
+title: "揺れる気持",
+romanization: "Yureru Kimochi",
+duration: "4:13"
+},
+{
+title: "みずいろの雨",
+romanization: "Mi Zui ro no Ame",
+duration: "3:28"
+},
+{
+title: "夜間飛行",
+romanization: "Yakan Hikō",
+duration: "6:23"
+},
+{
+title: "アダムとイブ",
+romanization: "Adam and Eve",
+duration: "3:24"
+},
+{
+title: "そっと後から",
+romanization: "Sotto go Kara",
+duration: "4:09"
+},
+{
+title: "ハロー・アンド・グッドバイ",
+romanization: "Hello and Goodbye",
+duration: "3:22"
+},
+{
+title: "渚",
+romanization: "Nagisa",
+duration: "3:46"
+},
+{
+title: "Dawn",
+romanization: "",
+duration: "7:45"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Mr.メトロポリス",
+romanization: "Mr. Metropolis",
+romaji_artist: "Junko Yagami",
+japanese_artist: "八神純子",
+year: "1980",
+description: "",
+flavor: "Funk"
+},
+[{
+title: "Mr. メトロポリス",
+romanization: "Mr. Metropolis",
+duration: "5:56"
+},
+{
+title: "小さな頃",
+romanization: "Chi-Sana Koro",
+duration: "1:53"
+},
+{
+title: "Deja Vu",
+romanization: "",
+duration: "4:55"
+},
+{
+title: "ポーラスター",
+romanization: "Polar Star",
+duration: "4:10"
+},
+{
+title: "グッパイ美しい日々",
+romanization: "Goodbye Utsukushii Hibi",
+duration: "4:39"
+},
+{
+title: "ワンダフル・シティ",
+romanization: "Wonderful City",
+duration: "4:09"
+},
+{
+title: "冬",
+romanization: "Fuyu",
+duration: "3:45"
+},
+{
+title: "サンディエゴ サンセット",
+romanization: "San Diego Sunset",
+duration: "4:11"
+},
+{
+title: "シルエット",
+romanization: "Silhouette",
+duration: "5:10"
+},
+{
+title: "Another Day, Another Me",
+romanization: "",
+duration: "6:06"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "夢みる頃を過ぎても",
+romanization: "Yumemiru Koro wo Sugi te Mo",
+romaji_artist: "Junko Yagami",
+japanese_artist: "八神純子",
+year: "1982",
+description: "",
+flavor: "Funk"
+},
+[{
+title: "夢みる頃を過ぎても",
+romanization: "Yumemiru Koro wo Sugi te Mo",
+duration: "4:39"
+},
+{
+title: "シークレット・ラブ",
+romanization: "Secret Love",
+duration: "4:55"
+},
+{
+title: "白い花束",
+romanization: "Shiroi Hanataba",
+duration: "4:23"
+},
+{
+title: "金曜日の夜",
+romanization: "Kinyo-Bi no Yoru",
+duration: "4:01"
+},
+{
+title: "一年前の恋人",
+romanization: "Ichi-nen Mae no Koibito",
+duration: "4:24"
+},
+{
+title: "ナイス・メモリーズ",
+romanization: "Nice Memories",
+duration: "5:45"
+},
+{
+title: "B・g・m",
+romanization: "",
+duration: "2:43"
+},
+{
+title: "I'm a Woman",
+romanization: "",
+duration: "4:15"
+},
+{
+title: "Fly Away",
+romanization: "",
+duration: "4:44"
+},
+{
+title: "二人だけ",
+romanization: "Futaridake",
+duration: "5:03"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "I Wanna Make a Hit Wit-Choo",
+romanization: "",
+romaji_artist: "Junko Yagami",
+japanese_artist: "八神純子",
+year: "1983",
+description: "",
+flavor: "Funk"
+},
+[{
+title: "I Wanna Make a Hit Wit-Choo",
+romanization: "",
+duration: "3:54"
+},
+{
+title: "He's My Kind",
+romanization: "",
+duration: "3:30"
+},
+{
+title: "Manhattan",
+romanization: "",
+duration: "3:30"
+},
+{
+title: "Hey Kid",
+romanization: "",
+duration: "3:08"
+},
+{
+title: "Don't Wanna Be Lonely",
+romanization: "",
+duration: "3:51"
+},
+{
+title: "Broadway Kisses",
+romanization: "",
+duration: "3:17"
+},
+{
+title: "It's Always Been You",
+romanization: "",
+duration: "3:40"
+},
+{
+title: "The Heart",
+romanization: "",
+duration: "3:15"
+},
+{
+title: "We're Gonna Make It After All",
+romanization: "",
+duration: "3:34"
+},
+{
+title: "You'll Take the Best of Me",
+romanization: "",
+duration: "3:56"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "純",
+romanization: "Jun",
+romaji_artist: "Junko Yagami",
+japanese_artist: "八神純子",
+year: "1985",
+description: "",
+flavor: "Funk"
+},
+[{
+title: "ベイビースターの悲劇",
+romanization: "Baby Star no Higeki",
+duration: "3:30"
+},
+{
+title: "邪魔しないで",
+romanization: "Jama Shi Nai De",
+duration: "3:28"
+},
+{
+title: "不倫ラブ",
+romanization: "Furin Love",
+duration: "5:03"
+},
+{
+title: "リーチ・アウト・イン・ザ・ナイト",
+romanization: "Reach Out in The Night",
+duration: "5:27"
+},
+{
+title: "危険なエモーション",
+romanization: "Kiken na Emotion",
+duration: "3:59"
+},
+{
+title: "オペレーター",
+romanization: "Operator",
+duration: "5:25"
+},
+{
+title: "セーラーの旅立ち",
+romanization: "Sailor no Tabidachi",
+duration: "5:28"
+},
+{
+title: "摩天楼のハリケーン",
+romanization: "Matenro- no Hurricane",
+duration: "3:41"
+},
+{
+title: "素敵ダウンタウン ジミー",
+romanization: "Suteki Downtown Jimmy",
+duration: "5:41"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "ヤガマニア",
+romanization: "Yagamania",
+romaji_artist: "Junko Yagami",
+japanese_artist: "八神純子",
+year: "1986",
+description: "",
+flavor: "Funk"
+},
+[{
+title: "ルーザー",
+romanization: "Loser",
+duration: "4:20"
+},
+{
+title: "ダイナマイト ラブ",
+romanization: "Dynamite Love",
+duration: "4:14"
+},
+{
+title: "Fun City",
+romanization: "",
+duration: "4:33"
+},
+{
+title: "消えたサイゴンの娘",
+romanization: "Kie ta Saigon no Musume",
+duration: "6:06"
+},
+{
+title: "哀愁パラダイス",
+romanization: "Aishu- Paradise",
+duration: "3:58"
+},
+{
+title: "ボクサー",
+romanization: "Boxer",
+duration: "5:04"
+},
+{
+title: "Chameleon",
+romanization: "",
+duration: "4:10"
+},
+{
+title: "Kiniro No Surprise",
+romanization: "",
+duration: "4:29"
+},
+{
+title: "Cosmos No Yoru (Seireki 2000 Nen Ni Mukute Party)",
+romanization: "",
+duration: "5:20"
+},
+{
+title: "Brother & Sister",
+romanization: "",
+duration: "4:11"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Mellow Cafe",
+romanization: "",
+romaji_artist: "Junko Yagami",
+japanese_artist: "八神純子",
+year: "1992",
+description: "",
+flavor: "Funk"
+},
+[{
+title: "Paradise",
+romanization: "",
+duration: "5:21"
+},
+{
+title: "Mellow Cafe",
+romanization: "",
+duration: "5:13"
+},
+{
+title: "Sympathy",
+romanization: "",
+duration: "4:38"
+},
+{
+title: "鳳仙花",
+romanization: "Ho-Senka",
+duration: "4:58"
+},
+{
+title: "Bluebird",
+romanization: "",
+duration: "3:39"
+},
+{
+title: "Eurasian",
+romanization: "",
+duration: "4:57"
+},
+{
+title: "If You Ever",
+romanization: "",
+duration: "4:47"
+},
+{
+title: "Love Light",
+romanization: "",
+duration: "4:46"
+},
+{
+title: "さよなら夏の光",
+romanization: "Sayonara Natsu no Hikari",
+duration: "4:54"
+},
+{
+title: "Love in the Key of 'G'",
+romanization: "",
+duration: "4:30"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Lonely Girl",
+romanization: "",
+romaji_artist: "Junko Yagami",
+japanese_artist: "八神純子",
+year: "2003",
+description: "",
+flavor: "Funk"
+},
+[{
+title: "Lonely Girl",
+romanization: "",
+duration: "4:40"
+},
+{
+title: "夜空のイヤリング",
+romanization: "Yozora no Earrings",
+duration: "4:02"
+},
+{
+title: "鼓動のララバイ",
+romanization: "Kodō no Lullaby",
+duration: "4:24"
+},
+{
+title: "Touch You, Tonight",
+romanization: "",
+duration: "4:12"
+},
+{
+title: "燃えつきるまで",
+romanization: "Moetsukiru Made",
+duration: "4:58"
+},
+{
+title: "And I Love You",
+romanization: "",
+duration: "3:44"
+},
+{
+title: "ジェラス",
+romanization: "Jealousy",
+duration: "3:59"
+},
+{
+title: "ラブ・シュプリーム~至上の愛~",
+romanization: "Love Supreme ~Shijo- no Ai~",
+duration: "4:13"
+},
+{
+title: "You & I",
+romanization: "",
+duration: "3:25"
+},
+{
+title: "Falling for You",
+romanization: "",
+duration: "4:20"
+},
+{
+title: "その胸にもう一度",
+romanization: "Sono Mune ni Mo-Ichido",
+duration: "4:53"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "ほうろう",
+romanization: "Houro",
+romaji_artist: "Chu Kosaka",
+japanese_artist: "小坂忠",
+year: "1975",
+description: "",
+flavor: "Soul, Funk"
+},
+[{
+title: "ほうろう",
+romanization: "Houro",
+duration: "2:53"
+},
+{
+title: "機関車",
+romanization: "Kikan Sha",
+duration: "3:48"
+},
+{
+title: "ボン・ボヤージ波止場",
+romanization: "Bon Boyage Hatoba",
+duration: "4:33"
+},
+{
+title: "氷雨月のスケッチ",
+romanization: "Hisame Tsuki no Sketch",
+duration: "4:03"
+},
+{
+title: "ゆうがたラブ",
+romanization: "Yuu Gata Rabu",
+duration: "4:21"
+},
+{
+title: "しらけちまうぜ",
+romanization: "Shirake Chimau Ze",
+duration: "3:08"
+},
+{
+title: "流星都市",
+romanization: "Ryu-Sei Toshi",
+duration: "3:56"
+},
+{
+title: "つるべ糸",
+romanization: "Tsuru be Ito",
+duration: "3:12"
+},
+{
+title: "ふうらい坊",
+romanization: "Fu- Rai Bo-",
+duration: "4:36"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Orange Sky - Endless Summer",
+romanization: "",
+romaji_artist: "Izumi Kobayashi",
+japanese_artist: "小林泉美",
+year: "1978",
+description: "",
+flavor: "Fusion, Latin"
+},
+[{
+title: "サンタモニカの夜明け",
+romanization: "Santa Monica no Yoake",
+duration: "1:24"
+},
+{
+title: "夕ぐれ時の恋人たち",
+romanization: "Yu-Gure ji no Koibito Tachi",
+duration: "5:42"
+},
+{
+title: "オレンジ・ビーチ",
+romanization: "Orange Beach",
+duration: "5:48"
+},
+{
+title: "マイ・ビーチ・サンバ",
+romanization: "My Beach Samba",
+duration: "4:25"
+},
+{
+title: "海を見にいく",
+romanization: "Umi wo mi ni Iku",
+duration: "6:32"
+},
+{
+title: "コーヒー",
+romanization: "Coffee",
+duration: "4:02"
+},
+{
+title: "フルーツ・パフェ One Note Samba",
+romanization: "Fruit Parfait One Note Samba",
+duration: "3:56"
+},
+{
+title: "そよそよ",
+romanization: "Soyosoyo",
+duration: "3:55"
+},
+{
+title: "ハロー・ハロー・ハロー",
+romanization: "Hello Hello Hello",
+duration: "5:38"
+},
+{
+title: "サンタモニカの夜明け",
+romanization: "Santa Monika no Yoake",
+duration: "3:15"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Sea Flight",
+romanization: "",
+romaji_artist: "Izumi Kobayashi",
+japanese_artist: "小林泉美",
+year: "1978",
+description: "",
+flavor: "Fusion, Latin"
+},
+[{
+title: "Concrete Wave",
+romanization: "",
+duration: "2:37"
+},
+{
+title: "Angel Sky",
+romanization: "",
+duration: "4:56"
+},
+{
+title: "Naze",
+romanization: "",
+duration: "5:12"
+},
+{
+title: "Summer Wine",
+romanization: "",
+duration: "4:15"
+},
+{
+title: "Whisper of Shell",
+romanization: "",
+duration: "4:59"
+},
+{
+title: "Sea Flight",
+romanization: "",
+duration: "4:51"
+},
+{
+title: "Carnival",
+romanization: "",
+duration: "5:34"
+},
+{
+title: "It's Raining",
+romanization: "",
+duration: "5:25"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "落葉のメロディー",
+romanization: "Rakuyō no Melody",
+romaji_artist: "Asami Kobayashi",
+japanese_artist: "小林麻美",
+year: "1973",
+description: "",
+flavor: "Idol"
+},
+[{
+title: "落葉のメロディー",
+romanization: "Rakuyō no Melody",
+duration: "3:19"
+},
+{
+title: "恋のレッスン",
+romanization: "Koi no Lesson",
+duration: "2:55"
+},
+{
+title: "恋はそよ風",
+romanization: "Koi wa Soyokaze",
+duration: "2:19"
+},
+{
+title: "あふれる愛に",
+romanization: "Afureru ai Ni",
+duration: "3:14"
+},
+{
+title: "チョット・マッテ・クダサイ",
+romanization: "Chotto Matte Kudasai",
+duration: "2:59"
+},
+{
+title: "女の子は淋しくても",
+romanization: "Onnanoko wa Sabishiku te Mo",
+duration: "2:25"
+},
+{
+title: "初恋のメロディー",
+romanization: "Hatsukoi no Melody",
+duration: "3:29"
+},
+{
+title: "夢見るシャンソン人形",
+romanization: "Yumemiru Shanson Ningyo-",
+duration: "2:41"
+},
+{
+title: "可愛いベイビー",
+romanization: "Kawaii Baby",
+duration: "2:35"
+},
+{
+title: "砂に消えた恋",
+romanization: "Suna ni Kie ta Koi",
+duration: "2:14"
+},
+{
+title: "さよならのブルース",
+romanization: "Sayonara no Blues",
+duration: "3:05"
+},
+{
+title: "海辺の白い家",
+romanization: "Umibe no Shiroi Ie",
+duration: "2:49"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "20才の愛",
+romanization: "20sai no Ai",
+romaji_artist: "Asami Kobayashi",
+japanese_artist: "小林麻美",
+year: "1974",
+description: "",
+flavor: "Idol"
+},
+[{
+title: "ある事情",
+romanization: "Aru Jijo-",
+duration: "3:12"
+},
+{
+title: "ぶどう色の経験",
+romanization: "Budo-Iro no Keiken",
+duration: "3:46"
+},
+{
+title: "あなたは恋の旅人",
+romanization: "Anata wa Koi no Tabibito",
+duration: "3:19"
+},
+{
+title: "夢でいいから",
+romanization: "Yume de ii Kara",
+duration: "3:13"
+},
+{
+title: "イヴの横顔",
+romanization: "Eve no Yokogao",
+duration: "4:07"
+},
+{
+title: "あなたのネクタイ",
+romanization: "Anata no Nekutai",
+duration: "2:54"
+},
+{
+title: "メドレー",
+romanization: "Medley",
+duration: "5:45"
+},
+{
+title: "あなたのことでいっぱい",
+romanization: "Anata no Koto de Ippai",
+duration: "2:52"
+},
+{
+title: "雨だれ",
+romanization: "Amadare",
+duration: "3:10"
+},
+{
+title: "小さな旅",
+romanization: "Chi-Sana Tabi",
+duration: "3:42"
+},
+{
+title: "青春が終る日",
+romanization: "Seishun ga Owaru Hi",
+duration: "3:16"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Cryptgraph～愛の暗号～",
+romanization: "Cryptgraph ～Ai no Ango- ～",
+romaji_artist: "Asami Kobayashi",
+japanese_artist: "小林麻美",
+year: "1984",
+description: "",
+flavor: "Techno"
+},
+[{
+title: "月影のパラノイア",
+romanization: "Tsukikage no Paranoia",
+duration: "4:16"
+},
+{
+title: "微熱",
+romanization: "Binetsu",
+duration: "4:40"
+},
+{
+title: "Typhoon",
+romanization: "",
+duration: "4:17"
+},
+{
+title: "グランプリの夏",
+romanization: "Grand Prix no Natsu",
+duration: "4:22"
+},
+{
+title: "Transit",
+romanization: "",
+duration: "3:30"
+},
+{
+title: "Sugar Shuffle",
+romanization: "",
+duration: "4:08"
+},
+{
+title: "恋なんてかんたん",
+romanization: "Koi Nante Kantan",
+duration: "3:57"
+},
+{
+title: "アネモネ",
+romanization: "Anemone",
+duration: "3:55"
+},
+{
+title: "雨音はショパンの調べ",
+romanization: "Ame on wa Shopan no Shirabe",
+duration: "4:30"
+},
+{
+title: "Lolita Go Home",
+romanization: "",
+duration: "3:46"
+},
+]
+)
+CreateAlbumWithTracks({
+title: "Grey",
+romanization: "",
+romaji_artist: "Asami Kobayashi",
+japanese_artist: "小林麻美",
+year: "1987",
+description: "",
+flavor: "Techno"
+},
+[{
+title: "Erotique",
+romanization: "",
+duration: "4:14"
+},
+{
+title: "愛のプロフェッサー",
+romanization: "Ai no Professor",
+duration: "3:54"
+},
+{
+title: "移りゆく心",
+romanization: "Utsuri Yuku Kokoro",
+duration: "4:00"
+},
+{
+title: "夜の響きを聞いている",
+romanization: "Yoru no Hibiki wo Kii te Iru",
+duration: "4:41"
+},
+{
+title: "昼の三日月",
+romanization: "Hiru no Mikazuki",
+duration: "5:44"
+},
+{
+title: "I Miss You",
+romanization: "",
+duration: "5:19"
+},
+{
+title: "飯倉グラフィティー",
+romanization: "I-Kura Graffiti",
+duration: "3:59"
+},
+{
+title: "ルームサービス",
+romanization: "Room Service",
+duration: "4:40"
+},
+{
+title: "遠くからHappy Birthday",
+romanization: "To-Ku Kara Happy Birthday",
+duration: "4:57"
+},
+{
+title: "Grey",
+romanization: "",
+duration: "3:43"
 },
 ])
