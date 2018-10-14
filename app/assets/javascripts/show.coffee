@@ -3,8 +3,8 @@ $(document).on "turbolinks:load", ->
 		
 		#Global variable declaration
 		
-		host = "https://album-chart-ivakam.c9users.io/albums/fetch?"
-		#host = "http://varieti.es/albums/fetch?"
+		#host = "https://album-chart-ivakam.c9users.io/albums/fetch?"
+		host = "http://varieti.es/albums/fetch?"
 		albumOpen = false
 		delayTimer = null
 		vinylClicked = false
