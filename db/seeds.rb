@@ -14119,8 +14119,8 @@ duration: "4:05"
 CreateAlbumWithTracks({
 title: "Come Along",
 romanization: "",
-romaji_artist: "山下達郎",
-japanese_artist: "Tatsuro Yamashita",
+romaji_artist: "Tatsuro Yamashita",
+japanese_artist: "山下達郎",
 year: "1997",
 description: "",
 flavor: "Funk, Compilation"
@@ -14190,8 +14190,8 @@ duration: "4:16"
 CreateAlbumWithTracks({
 title: "Come Along II",
 romanization: "",
-romaji_artist: "山下達郎",
-japanese_artist: "Tatsuro Yamashita",
+romaji_artist: "Tatsuro Yamashita",
+japanese_artist: "山下達郎",
 year: "1997",
 description: "",
 flavor: "Funk, Compilation"
@@ -14256,8 +14256,8 @@ duration: "3:14"
 CreateAlbumWithTracks({
 title: "Ride on Time",
 romanization: "",
-romaji_artist: "山下達郎",
-japanese_artist: "Tatsuro Yamashita",
+romaji_artist: "Tatsuro Yamashita",
+japanese_artist: "山下達郎",
 year: "1990",
 description: "",
 flavor: "Funk"
@@ -15563,8 +15563,8 @@ duration: "5:05"
 CreateAlbumWithTracks({
 title: "Quiet Storm",
 romanization: "",
-romaji_artist: "和田加奈子",
-japanese_artist: "Kanako Wada",
+romaji_artist: "Kanako Wada",
+japanese_artist: "和田加奈子",
 year: "1987",
 description: "",
 flavor: "Synth, Disco"
@@ -18757,7 +18757,7 @@ duration: "4:09"
 CreateAlbumWithTracks({
 title: "Heart Full of L.A. Mind",
 romanization: "",
-romaji_artist: " Hitomi Tohyama",
+romaji_artist: "Hitomi Tohyama",
 japanese_artist: "当山ひとみ",
 year: "1982",
 description: "",
