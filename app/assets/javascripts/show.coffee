@@ -3,8 +3,8 @@ $(document).on "turbolinks:load", ->
 		
 		#Global variable declaration
 		
-		#host = "https://album-chart-ivakam.c9users.io/albums/fetch?"
-		host = "http://varieti.es/albums/fetch?"
+		host = "https://album-chart-ivakam.c9users.io/albums/fetch?"
+		#host = "http://varieti.es/albums/fetch?"
 		albumOpen = false
 		delayTimer = null
 		vinylClicked = false
@@ -473,7 +473,8 @@ $(document).on "turbolinks:load", ->
 					return
 				else if albums.size + 40 > totalCount - 1
 					offset = totalCount - (totalCount - albums.size)
-				sortStr = $("#splash-container").attr("class").split(/-/)
+				sortClass = if $("#splash-container").attr("class") is undefined then "" else $("#splash-container").attr("class")
+				sortStr = sortClass.split(/-/)
 				if sortStr.length > 0
 					fetchStr = "#{host}#{searchQ()}limit=40&offset=#{offset}&sort=#{sortStr[2]}&sort_type=#{sortStr[1]}"
 				else
