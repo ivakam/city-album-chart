@@ -377,7 +377,6 @@ $(document).on "turbolinks:load", ->
 				$(container).get()[0].scrollIntoView({behaviour: "smooth"})
 			, timer)
 		
-		
 		#Handler for closing the zoom-mode for images
 		
 		$("#opaque").click ->
