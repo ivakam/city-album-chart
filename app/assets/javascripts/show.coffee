@@ -30,7 +30,7 @@ $(document).on "turbolinks:load", ->
 		
 		albumClick = (e) ->
 			e = $(e.target)
-			title = e.parent().find(".text-size-wrapper h2").text().replace(titleReplaceRegex, "")
+			title = e.closest(".album-container").find(".text-size-wrapper h2").text().replace(titleReplaceRegex, "")
 			sibling = $("##{title}-info").find(".info-wrapper")
 			parent = $("##{title}")
 			arrow = parent.find(".album-arrow")
@@ -298,8 +298,8 @@ $(document).on "turbolinks:load", ->
 			displayAlbum()
 		.then ->
 			$(".spinner").addClass("hidden")
-			window.albumsNameSpace.albumTotalCount = totalCount
-			$("#album-total-count").text(totalCount)
+			sessionStorage.setItem('albumCount', totalCount)
+			$("#album-total-count").text(sessionStorage.getItem('albumCount'))
 		
 		#Helper method for opening an info container. Call it as 'sibling: undefined' to reset all info containers.
 		
@@ -402,7 +402,7 @@ $(document).on "turbolinks:load", ->
 			input = input.target.value
 			$("#splash-container").empty()
 			$(".spinner").removeClass("hidden")
-			jsonAlbums = fetch("#{host}q=#{input}&limit=40")
+			jsonAlbums = fetch("#{host}q=#{input}&q_track=true&limit=40")
 			.then (response) ->
 				return response.json()
 			.catch (error) ->

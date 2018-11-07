@@ -89,9 +89,11 @@ body {
 		display: flex;
 		margin-top: 10px;
 		p {
-			margin-left: 15px;
 			color: #808080;
 			font-size: 9px;
+		}
+		p:last-child {
+			margin-left: 15px;
 		}
 		a {
 			text-decoration: underline;
