@@ -1,35 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <%= display_meta_tags site: 'varieti.es' %>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <link href="https://fonts.googleapis.com/css?family=Poppins|Roboto" rel="stylesheet"> 
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= favicon_link_tag %>
-  </head>
+	<head>
+		<script src="https://cdn.polyfill.io/v2/polyfill.js?features=fetch,Promise"></script>
+		<%= display_meta_tags site: 'varieti.es' %>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<%= csrf_meta_tags %>
+		<%= csp_meta_tag %>
+		<%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+		<link href="https://fonts.googleapis.com/css?family=Poppins|Roboto" rel="stylesheet"> 
+		<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+		<%= favicon_link_tag %>
+	</head>
 
-  <body class="<%= controller_name %> <%= action_name %>">
-    <div id="wrapper">
-      <%= yield %>
-      <div id="footer">
-        <ul id="link-list">
-          <li><a href="https://github.com/ivakam/city-album-chart">GitHub</a></li>
-          <li><a href="mailto:ivar.kamsvag@gmail.com">Email</a></li>
-          <li><a href="https://discord.gg/ejewttb">City pop Discord server</a></li>
-          <li><a href="https://github.com/IHeartGaming/varieties-metadata-scanner/releases">Data scraper</a></li>
-          <li><a href="https://docs.google.com/spreadsheets/d/1UumcUXF3QvJgoQ3j8SsAnPtdbarhFD_wTmguK0RuZbs/edit?usp=sharing">My personal spreadsheet</a></li>
-        </ul>
-        <div id="disclaimers">
-          <p>Site currently hosting </p><p id="album-total-count"></p><p id="total-count-left">albums</p>
-          <p>Thanks to the people behind <a href="https://ionicons.com/">ionicons</a> for providing amazing assets for free.</p>
-        </div>
-      </div>
-    </div>
-      <script src="https://unpkg.com/ionicons@4.2.4/dist/ionicons.js"></script>
-  </body>
+	<body class="<%= controller_name %> <%= action_name %>">
+		<div id="wrapper">
+			<%= yield %>
+			<div id="footer">
+				<ul id="link-list">
+					<li><a href="https://github.com/ivakam/city-album-chart">GitHub</a></li>
+					<li><a href="mailto:ivar.kamsvag@gmail.com">Email</a></li>
+					<li><a href="https://discord.gg/ejewttb">City pop Discord server</a></li>
+					<li><a href="https://github.com/IHeartGaming/varieties-metadata-scanner/releases">Data scraper</a></li>
+					<li><a href="https://docs.google.com/spreadsheets/d/1UumcUXF3QvJgoQ3j8SsAnPtdbarhFD_wTmguK0RuZbs/edit?usp=sharing">My personal spreadsheet</a></li>
+				</ul>
+				<div id="disclaimers">
+					<p>Site currently hosting </p><p id="album-total-count"></p><p id="total-count-left">albums</p>
+					<p>Thanks to the people behind <a href="https://ionicons.com/">ionicons</a> for providing amazing assets for free.</p>
+				</div>
+			</div>
+		</div>
+		<script src="https://unpkg.com/ionicons@4.2.4/dist/ionicons.js"></script>
+	</body>
 </html>

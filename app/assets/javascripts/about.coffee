@@ -1,2 +1,2 @@
-$(document).on "turbolinks:load", ->
-    $("#album-total-count").text(sessionStorage.getItem('albumCount'))
+$(document).on 'turbolinks:load', ->
+    $('#album-total-count').text(sessionStorage.getItem('albumCount'))
