@@ -112,6 +112,7 @@
                 Finally, all submissions are manually looked over by me. I want this archive to stay high-quality. No amount of code will overcome that, unfortunately. Thanks for your contribution.</p>
     	    </div>
             <%= form_with scope: :album, html: { multipart: true }, url: albums_path, remote: true do |form| %>
+                <input type="hidden" name="form_type" value="submit">
                 <div id="form-container">
                     <div id="input-container">
                         <div class="form-divider" id="left-divider">

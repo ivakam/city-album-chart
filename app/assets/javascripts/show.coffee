@@ -3,8 +3,8 @@ $(document).on 'turbolinks:load', ->
 		
 		#Global variable declaration
 		
-		secretFile = JSON.parse('secrets.json')
-		host = secretFile['host']
+		host = 'https://album-chart-ivakam.c9users.io/albums/fetch?'
+		#host = 'http://varieti.es/albums/fetch?'
 		albumOpen = false
 		delayTimer = null
 		vinylClicked = false
@@ -241,6 +241,61 @@ $(document).on 'turbolinks:load', ->
 										</ul>
 									</div>
 								</div>
+							</div>
+							<div class='edit-form-container'>
+								<form enctype='multipart/form-data' action='/albums' accept-charset='UTF-8' data-remote='true' method='post'>
+									<div class='field-container'>
+										<div class='form-field'>
+											<p><label for='album_title'>Title*</label></p>
+											<input placeholder='ロートスの果実' value='#{album.title.replace("'", '&#39;')}' type='text' name='album[title]'>
+										</div>
+										<div class='form-field'>
+											<p><label for='album_romanization'>Romanization</label></p>
+											<input placeholder='Lotus no Kajitsu' value='#{album.romanization.replace("'", '&#39;')}' type='text' name='album[romanization]'>
+										</div>
+										<div class='form-field'>
+											<p><label for='album_japanese_artist'>Japanese artist</label></p>
+											<input placeholder='中原めいこ' value='#{album.japanese_artist.replace("'", '&#39;')}' type='text' name='album[japanese_artist]'>
+										</div>
+										<div class='form-field'>
+											<p><label for='album_romaji_artist'>Romaji artist*</label></p>
+											<input placeholder='Meiko Nakahara' value='#{album.romaji_artist.replace("'", '&#39;')}' type='text' name='album[romaji_artist]'>
+										</div>
+										<div class='form-field'>
+											<p><label for='album_year'>Year</label></p>
+											<input placeholder='1984' value='#{album.year.replace("'", '&#39;')}' type='text' name='album[year]'>
+										</div>
+										<div class='form-field'>
+											<p><label for='album_flavor'>Flavor</label></p>
+											<input placeholder='Funk, Idol' value='#{album.flavor.replace("'", '&#39;')}' type='text' name='album[flavor]'>
+										</div>
+										<div class='form-field'>
+											<p><label for='album_description'>Description</label></p>
+											<textarea placeholder='Meiko Nakahara&#39;s 4th studio album brings the hard synths and slappy basslines.' value='#{album.description.replace("'", '&#39;')}' type='text' name='album[description]'></textarea>
+										</div>
+										<div class='tracklist-submit'>
+											<div class='tracklist-label-text'>
+												<p><label for='album_tracklist'>Tracklist (Don't write track numbers! Just keep them in order.)</label></p>
+												<div class='tooltip'><span class='tooltiptext'>
+													<a>Template in the form of \"&ltTrack title&gt\", \"&ltRomanization&gt\", &ltTrack Duration&gt.</a>
+													</span><ion-icon name=\"help-circle-outline\"></ion-icon>
+												</div>
+											</div>
+											<textarea placeholder='\"<Track title>\", \"<Romanization>\", <Track duration>\n\n
+											\"いつか\", \"Someday\", 5:46\n
+											\"空想\", \"Daydream\", 4:27\n
+											\"サイレントスクリーマー\", \"Silent Screamer\", 5:27\n
+											\"ライドオンタイム\", \"Ride On Time\", 5:51\n
+											\"夏の扉\", \"The Door Into Summer\", 4:39\n
+											\"私のシュガーベイブ\", \"My Sugar Babe\", 4:09\n
+											\"雨の日\", \"Rainy Day\", 5:16\n
+											\"雲\", \"Clouds\", 5:37\n
+											\"キス・グッドナイト\", \"Kissing Goodnight\", 1:34' 
+											name='album[tracklist]'></textarea>
+										</div>
+										<input type='submit' name='commit' value='Save changes' data-disable-with='Save changes'>
+									</div>
+								</form>
 							</div>
 						</div>
 					</div>

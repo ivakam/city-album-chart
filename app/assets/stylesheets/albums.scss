@@ -599,6 +599,14 @@ body {
 				}
 			}
 		}
+		.edit-form-container {
+			width: 100%;
+			display: flex;
+			.field-container {
+				display: flex;
+				flex-flow: column wrap;
+			}
+		}
 	}
 }
 
