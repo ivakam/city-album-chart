@@ -116,6 +116,16 @@ $(document).on 'turbolinks:load', ->
 					else
 						firstChild.css('margin-left', '-2400px')
 		
+		#Handlers for clicking the edit buttons
+		
+		editButtonClick = (e) ->
+			e = $(e.target)
+			parent = e.closest('.info-wrapper').find('.info-text-container')
+			if (parseInt(parent.css('margin-top')) > -10)
+				parent.css('margin-top', '-475px')
+			else
+				parent.css('margin-top', '0')
+		
 		#Handler for vinyl icon hover
 		
 		vinylHoverOn = (e) ->
@@ -210,6 +220,7 @@ $(document).on 'turbolinks:load', ->
 										<p class='label'>Description:</p>
 										<p class='description'>"+album.description+"</p>
 									</div>
+									<ion-icon name='create' class='edit-icon'></ion-icon>
 								</div>
 								<div class='track-grow-wrapper'>
 									<div class='link-image-container'>" +
@@ -296,6 +307,7 @@ $(document).on 'turbolinks:load', ->
 										<input type='submit' name='commit' value='Save changes' data-disable-with='Save changes'>
 									</div>
 								</form>
+								<ion-icon name='ios-close' class='close-icon'></ion-icon>
 							</div>
 						</div>
 					</div>
@@ -318,6 +330,8 @@ $(document).on 'turbolinks:load', ->
 			addEventListener('.stream-arrow', 'click', streamArrowClick)
 			addEventListener('.arrow-container', 'click', albumClick)
 			addEventListener('.album-container img', 'click', albumClick)
+			addEventListener('.edit-icon', 'click', editButtonClick)
+			addEventListener('.close-icon', 'click', editButtonClick)
 			
 			#Adjusts text size to make sure the titles fit within their containers
 				

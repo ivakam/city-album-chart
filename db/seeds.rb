@@ -3864,7 +3864,7 @@ romanization: "",
 duration: "4:58"
 },
 {
-title: "ラスト・デイト",
+title: "ラス���・デイト",
 romanization: "",
 duration: "4:37"
 },
@@ -5894,7 +5894,7 @@ romanization: "",
 duration: "5:59"
 },
 {
-title: "僕の中の少年",
+title: "僕の中���少年",
 romanization: "",
 duration: "4:53"
 },
@@ -6815,7 +6815,7 @@ description: "",
 flavor: "Funk"
 },
 [{
-title: "さよならなんて絶對言わない",
+title: "さよ���らなんて絶對言わない",
 romanization: "",
 duration: "4:53"
 },
@@ -11664,7 +11664,7 @@ romanization: "",
 duration: "4:58"
 },
 {
-title: "10月のフォト・メール",
+title: "10月���フォト・メール",
 romanization: "10 Tsuki no foto mail",
 duration: "5:05"
 },
