@@ -10,6 +10,10 @@ Rails.application.routes.draw do
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
 
+  get 'create-account', to: 'users#new'
+  post 'create-account', to: 'users#create'
+
+
   get 'panel', to: 'users#show'
   
   resources :albums
