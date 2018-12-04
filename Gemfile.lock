@@ -232,10 +232,7 @@ PLATFORMS
   x64-mingw32
 
 DEPENDENCIES
-<<<<<<< HEAD
-=======
   bcrypt
->>>>>>> f8ebf3a45b68cfab4b6892c8aae0d1affb06a9fa
   bootsnap (>= 1.1.0)
   byebug
   capybara (>= 2.15, < 4.0)
