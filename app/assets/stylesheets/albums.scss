@@ -391,6 +391,27 @@ body {
 		overflow: hidden;
 		position: relative;
 		transition: 0.3s;
+		.ion {
+			font-size: 24px;
+			color: #ffffff;
+			opacity: 0.6;
+			position: absolute;
+			transition: 0.3s;
+			top: 15px;
+			right: 25px;
+			z-index: 4;
+		}
+		.ion:hover {
+			cursor: pointer;
+			opacity: 0.9;
+		}
+		.close-icon {
+			font-size: 40px;
+			opacity: 0;
+			display: none;
+			top: 7px;
+			right: 17px;
+		}
 		img::after {
 			content: "";
 			display: block;
@@ -469,20 +490,6 @@ body {
 					.description {
 						font-size: 15px
 					}
-				}
-				.edit-icon {
-					font-size: 24px;
-					color: #ffffff;
-					opacity: 0.6;
-					position: absolute;
-					transition: 0.3s;
-					top: 0;
-					right: 15px;
-					top: calc(50% - 20px);
-				}
-				.edit-icon:hover {
-					cursor: pointer;
-					opacity: 0.9;
 				}
 			}
 			.info-divider {
@@ -639,20 +646,15 @@ body {
 			.field-container {
 				display: flex;
 				flex-flow: column wrap;
+				justify-content: space-between;
+				.input-field-container, .textarea-field-container {
+					display: flex;
+					flex-direction: column;
+					margin-right: 45px;
+				}
 			}
-			.close-icon {
-				font-size: 40px;
-				color: #ffffff;
-				opacity: 0.6;
-				position: absolute;
-				transition: 0.3s;
-				top: 0;
-				right: 15px;
-				top: 0;
-			}
-			.close-icon:hover {
-				cursor: pointer;
-				opacity: 0.9;
+			form {
+				display: flex;
 			}
 		}
 	}

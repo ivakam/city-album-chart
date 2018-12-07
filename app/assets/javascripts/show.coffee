@@ -3,7 +3,7 @@ $(document).on 'turbolinks:load', ->
 		
 		#Global variable declaration
 		
-		host = window.location.href + 'albums/fetch?'
+		host = window.location.href.replace(/\/albums.+$/, '') + '/albums/fetch?'
 		albumOpen = false
 		delayTimer = null
 		vinylClicked = false
@@ -120,6 +120,11 @@ $(document).on 'turbolinks:load', ->
 		editButtonClick = (e) ->
 			e = $(e.target)
 			parent = e.closest('.info-wrapper').find('.info-text-container')
+			e.parent().find('.ion').each ->
+				 $(this).css('opacity', '0.6')
+				 $(this).css('display', 'block')
+			e.css('opacity', 0)
+			e.css('display', 'none')
 			if (parseInt(parent.css('margin-top')) > -10)
 				parent.css('margin-top', '-475px')
 			else
@@ -196,6 +201,8 @@ $(document).on 'turbolinks:load', ->
 					</div>
 					<div class='info-container offset' id='"+id+"-info'>
 						<div class='info-wrapper'>
+							<ion-icon name='create' class='ion edit-icon'></ion-icon>
+							<ion-icon name='ios-close' class='ion close-icon'></ion-icon>
 							<div class='info-background'>"+"<img src='" + album.thumbnail + "'></div>
 							<div class='info-text-container'>
 								<div class='text-container'>
@@ -219,7 +226,6 @@ $(document).on 'turbolinks:load', ->
 										<p class='label'>Description:</p>
 										<p class='description'>"+album.description+"</p>
 									</div>
-									<ion-icon name='create' class='edit-icon'></ion-icon>
 								</div>
 								<div class='track-grow-wrapper'>
 									<div class='link-image-container'>" +
@@ -230,7 +236,6 @@ $(document).on 'turbolinks:load', ->
 											<ion-icon name='ios-arrow-back' class='stream-arrow stream-arrow-left'></ion-icon>
 											<ion-icon name='ios-arrow-forward' class='stream-arrow stream-arrow-right'></ion-icon>
 											<div class='video-slider'>
-												<iframe src='' allowfullscreen='true' allowscriptaccess='always' frameborder='0'>
 												</iframe>
 												<iframe src='' allowfullscreen='true' allowscriptaccess='always' frameborder='0'>
 												</iframe>
@@ -255,58 +260,61 @@ $(document).on 'turbolinks:load', ->
 							<div class='edit-form-container'>
 								<form enctype='multipart/form-data' action='/albums' accept-charset='UTF-8' data-remote='true' method='post'>
 									<div class='field-container'>
-										<div class='form-field'>
-											<p><label for='album_title'>Title*</label></p>
-											<input placeholder='ロートスの果実' value='#{album.title.replace("'", '&#39;')}' type='text' name='album[title]'>
-										</div>
-										<div class='form-field'>
-											<p><label for='album_romanization'>Romanization</label></p>
-											<input placeholder='Lotus no Kajitsu' value='#{album.romanization.replace("'", '&#39;')}' type='text' name='album[romanization]'>
-										</div>
-										<div class='form-field'>
-											<p><label for='album_japanese_artist'>Japanese artist</label></p>
-											<input placeholder='中原めいこ' value='#{album.japanese_artist.replace("'", '&#39;')}' type='text' name='album[japanese_artist]'>
-										</div>
-										<div class='form-field'>
-											<p><label for='album_romaji_artist'>Romaji artist*</label></p>
-											<input placeholder='Meiko Nakahara' value='#{album.romaji_artist.replace("'", '&#39;')}' type='text' name='album[romaji_artist]'>
-										</div>
-										<div class='form-field'>
-											<p><label for='album_year'>Year</label></p>
-											<input placeholder='1984' value='#{album.year.replace("'", '&#39;')}' type='text' name='album[year]'>
-										</div>
-										<div class='form-field'>
-											<p><label for='album_flavor'>Flavor</label></p>
-											<input placeholder='Funk, Idol' value='#{album.flavor.replace("'", '&#39;')}' type='text' name='album[flavor]'>
-										</div>
-										<div class='form-field'>
-											<p><label for='album_description'>Description</label></p>
-											<textarea placeholder='Meiko Nakahara&#39;s 4th studio album brings the hard synths and slappy basslines.' value='#{album.description.replace("'", '&#39;')}' type='text' name='album[description]'></textarea>
-										</div>
-										<div class='tracklist-submit'>
-											<div class='tracklist-label-text'>
-												<p><label for='album_tracklist'>Tracklist (Don't write track numbers! Just keep them in order.)</label></p>
-												<div class='tooltip'><span class='tooltiptext'>
-													<a>Template in the form of \"&ltTrack title&gt\", \"&ltRomanization&gt\", &ltTrack Duration&gt.</a>
-													</span><ion-icon name=\"help-circle-outline\"></ion-icon>
-												</div>
+										<div class='input-field-container'>
+											<div class='form-field'>
+												<p><label for='album_title'>Title*</label></p>
+												<input placeholder='ロートスの果実' value='#{album.title.replace("'", '&#39;')}' type='text' name='album[title]'>
 											</div>
-											<textarea placeholder='\"<Track title>\", \"<Romanization>\", <Track duration>\n\n
-											\"いつか\", \"Someday\", 5:46\n
-											\"空想\", \"Daydream\", 4:27\n
-											\"サイレントスクリーマー\", \"Silent Screamer\", 5:27\n
-											\"ライドオンタイム\", \"Ride On Time\", 5:51\n
-											\"夏の扉\", \"The Door Into Summer\", 4:39\n
-											\"私のシュガーベイブ\", \"My Sugar Babe\", 4:09\n
-											\"雨の日\", \"Rainy Day\", 5:16\n
-											\"雲\", \"Clouds\", 5:37\n
-											\"キス・グッドナイト\", \"Kissing Goodnight\", 1:34' 
-											name='album[tracklist]'></textarea>
+											<div class='form-field'>
+												<p><label for='album_romanization'>Romanization</label></p>
+												<input placeholder='Lotus no Kajitsu' value='#{album.romanization.replace("'", '&#39;')}' type='text' name='album[romanization]'>
+											</div>
+											<div class='form-field'>
+												<p><label for='album_japanese_artist'>Japanese artist</label></p>
+												<input placeholder='中原めいこ' value='#{album.japanese_artist.replace("'", '&#39;')}' type='text' name='album[japanese_artist]'>
+											</div>
+											<div class='form-field'>
+												<p><label for='album_romaji_artist'>Romaji artist*</label></p>
+												<input placeholder='Meiko Nakahara' value='#{album.romaji_artist.replace("'", '&#39;')}' type='text' name='album[romaji_artist]'>
+											</div>
+											<div class='form-field'>
+												<p><label for='album_year'>Year</label></p>
+												<input placeholder='1984' value='#{album.year.replace("'", '&#39;')}' type='text' name='album[year]'>
+											</div>
+											<div class='form-field'>
+												<p><label for='album_flavor'>Flavor</label></p>
+												<input placeholder='Funk, Idol' value='#{album.flavor.replace("'", '&#39;')}' type='text' name='album[flavor]'>
+											</div>
 										</div>
-										<input type='submit' name='commit' value='Save changes' data-disable-with='Save changes'>
+										<div class='textarea-field-container'>
+											<div class='form-field'>
+												<p><label for='album_description'>Description</label></p>
+												<textarea placeholder='Meiko Nakahara&#39;s 4th studio album brings the hard synths and slappy basslines.' value='#{album.description.replace("'", '&#39;')}' type='text' name='album[description]'></textarea>
+											</div>
+											<div class='tracklist-submit'>
+												<div class='tracklist-label-text'>
+													<p><label for='album_tracklist'>Tracklist (Don't write track numbers! Just keep them in order.)</label></p>
+													<div class='tooltip'><span class='tooltiptext'>
+														<a>Template in the form of \"&ltTrack title&gt\", \"&ltRomanization&gt\", &ltTrack Duration&gt.</a>
+														</span><ion-icon name=\"help-circle-outline\"></ion-icon>
+													</div>
+												</div>
+												<textarea placeholder='\"<Track title>\", \"<Romanization>\", <Track duration>\n\n
+												\"いつか\", \"Someday\", 5:46\n
+												\"空想\", \"Daydream\", 4:27\n
+												\"サイレントスクリーマー\", \"Silent Screamer\", 5:27\n
+												\"ライドオンタイム\", \"Ride On Time\", 5:51\n
+												\"夏の扉\", \"The Door Into Summer\", 4:39\n
+												\"私のシュガーベイブ\", \"My Sugar Babe\", 4:09\n
+												\"雨の日\", \"Rainy Day\", 5:16\n
+												\"雲\", \"Clouds\", 5:37\n
+												\"キス・グッドナイト\", \"Kissing Goodnight\", 1:34' 
+												name='album[tracklist]'></textarea>
+											</div>
+											<input type='submit' name='commit' value='Save changes' data-disable-with='Save changes'>
+										</div>
 									</div>
 								</form>
-								<ion-icon name='ios-close' class='close-icon'></ion-icon>
 							</div>
 						</div>
 					</div>
