@@ -643,18 +643,65 @@ body {
 			display: flex;
 			margin-top: 8px;
 			position: relative;
+			input, textarea {
+				background: #171717;
+				padding: 4px;
+				border: 1px #686868 solid;
+			}
+			input[type=text], textarea[type=text] {
+				font-family: 'Roboto';
+				color: #e3e3e3;
+				font-size: 18px;
+			}
 			.field-container {
 				display: flex;
-				flex-flow: column wrap;
 				justify-content: space-between;
-				.input-field-container, .textarea-field-container {
+				align-items: center;
+				> input {
+					padding: 8px;
+					color: #e3e3e3;
+				}
+				.input-field-container, .description-field {
 					display: flex;
 					flex-direction: column;
 					margin-right: 45px;
+					width: 400px;
+					height: 100%;
+					justify-content: space-between;
+				}
+				.input-field-container {
+					width: 200px;
+					margin-left: 8px;
+				}
+				.tracklist-submit {
+				height: 449px;
+				overflow-y: scroll;
+				margin-right: 45px;
+					.tracklist-edit-container {
+						display: flex;
+						flex-direction: column;
+						.track-input-container {
+							display: flex;
+							margin-bottom: 5px;
+							input {
+								max-width: 175px;
+								margin-right: 8px;
+							}
+							.track-duration {
+								max-width: 50px;
+							}
+						}
+					}
 				}
 			}
 			form {
 				display: flex;
+			}
+			textarea {
+				width: 100%;
+				padding: 4px;
+				height: 150px;
+				flex-grow: 2;
 			}
 		}
 	}

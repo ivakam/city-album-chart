@@ -3,7 +3,7 @@ $(document).on 'turbolinks:load', ->
 		
 		#Global variable declaration
 		
-		host = window.location.href.replace(/\/albums.+$/, '') + '/albums/fetch?'
+		host = window.location.href.replace(/\/albums.+$|\/albums$/, '') + '/albums/fetch?'
 		albumOpen = false
 		delayTimer = null
 		vinylClicked = false
@@ -184,6 +184,14 @@ $(document).on 'turbolinks:load', ->
 				trackListStr = ''
 				trackListStr += addTrack(track, i) for track, i in album.tracklist
 				id = album.title.replace(titleReplaceRegex, '')
+				editTrackStr = ''
+				generateEditTrackStr = (track) ->
+					editTrackStr += "<div class='track-input-container'>
+									<input placeholder='' value='" + track.title + "' type='text'>
+									<input placeholder='' value='" + track.romanization + "' type='text'>
+									<input class='track-duration' placeholder='' value='" + track.duration + "' type='text'>
+									</div>"
+				generateEditTrackStr(track) for track in album.tracklist
 				albumLi +=
 				"<li>
 					<div class='album-container' id='"+id+"'>
@@ -286,33 +294,23 @@ $(document).on 'turbolinks:load', ->
 												<input placeholder='Funk, Idol' value='#{album.flavor.replace("'", '&#39;')}' type='text' name='album[flavor]'>
 											</div>
 										</div>
-										<div class='textarea-field-container'>
-											<div class='form-field'>
-												<p><label for='album_description'>Description</label></p>
-												<textarea placeholder='Meiko Nakahara&#39;s 4th studio album brings the hard synths and slappy basslines.' value='#{album.description.replace("'", '&#39;')}' type='text' name='album[description]'></textarea>
-											</div>
-											<div class='tracklist-submit'>
-												<div class='tracklist-label-text'>
-													<p><label for='album_tracklist'>Tracklist (Don't write track numbers! Just keep them in order.)</label></p>
-													<div class='tooltip'><span class='tooltiptext'>
-														<a>Template in the form of \"&ltTrack title&gt\", \"&ltRomanization&gt\", &ltTrack Duration&gt.</a>
-														</span><ion-icon name=\"help-circle-outline\"></ion-icon>
-													</div>
-												</div>
-												<textarea placeholder='\"<Track title>\", \"<Romanization>\", <Track duration>\n\n
-												\"いつか\", \"Someday\", 5:46\n
-												\"空想\", \"Daydream\", 4:27\n
-												\"サイレントスクリーマー\", \"Silent Screamer\", 5:27\n
-												\"ライドオンタイム\", \"Ride On Time\", 5:51\n
-												\"夏の扉\", \"The Door Into Summer\", 4:39\n
-												\"私のシュガーベイブ\", \"My Sugar Babe\", 4:09\n
-												\"雨の日\", \"Rainy Day\", 5:16\n
-												\"雲\", \"Clouds\", 5:37\n
-												\"キス・グッドナイト\", \"Kissing Goodnight\", 1:34' 
-												name='album[tracklist]'></textarea>
-											</div>
-											<input type='submit' name='commit' value='Save changes' data-disable-with='Save changes'>
+										<div class='form-field description-field'>
+											<p><label for='album_description'>Description</label></p>
+											<textarea placeholder='Meiko Nakahara&#39;s 4th studio album brings the hard synths and slappy basslines.' type='text' name='album[description]'>#{album.description.replace("'", '&#39;')}</textarea>
 										</div>
+										<div class='tracklist-submit'>
+											<div class='tracklist-label-text'>
+												<p><label for='album_tracklist'>Tracklist</label></p>
+												<div class='tooltip'><span class='tooltiptext'>
+													<a>Template in the form of \"&ltTrack title&gt\", \"&ltRomanization&gt\", &ltTrack Duration&gt.</a>
+												</div>
+											</div>
+											<div class='tracklist-edit-container'>
+												#{editTrackStr}
+												<input name='tracklist' hidden>
+											</div>
+										</div>
+										<input type='submit' name='commit' value='Save changes' data-disable-with='Save changes'>
 									</div>
 								</form>
 							</div>
