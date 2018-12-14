@@ -140,6 +140,10 @@ class AlbumsController < ApplicationController
 			end
 		end
 	end
+
+    def report
+      "yeet"
+    end
 	
 	private def album_params
 		params.permit(:image, :coverlink, :temp_tracklist, :thumbnail, :title, :romaji_artist, :japanese_artist, :flavor, :year, :q, :offset, :limit, :sort, :sort_type, :q_track, :total_count)

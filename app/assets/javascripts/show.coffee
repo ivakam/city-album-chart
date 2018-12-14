@@ -155,7 +155,16 @@ $(document).on "turbolinks:load", ->
 		# Handler for sending the report
 		sendReportClick = (e) ->
 			e = $(e.target)
-			console.log("click")
+			$.post("/albums/report", {
+				album: e.parent().parent().find("h2").text,
+				reason: e.siblings(".report-reason").value,
+				comment: e.siblings(".report-comment").value,
+				user: "someone"
+			},
+			(data, status) ->
+				alert("Data: " + data + "\nStatus: " + status)
+			)
+
 
 		#Create an album
 		
@@ -254,14 +263,14 @@ $(document).on "turbolinks:load", ->
 								</div>
 								<div class='report-form report-form-hidden'>
 									<button class='report-button'>Report</button>
-									<select class='report-hidden'>
+									<select class='report-reason'>
 										<option value='spam'>Spam</option>
 										<option value='incorrect'>Incorrect metadata</option>
 										<option value='sexual'>Sexual content</option>
 										<option value='offensive'>Offensive content</option>
 										<option value='other'>other</option>
 									</select>
-									<input class='report-hidden' type='text' placeholder='comment'>
+									<input class='report-comment' type='text' placeholder='comment'>
 									<button class='send-report-button'>send</button>
 								</div>
 							</div>
