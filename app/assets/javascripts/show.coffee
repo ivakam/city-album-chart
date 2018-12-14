@@ -126,9 +126,29 @@ $(document).on 'turbolinks:load', ->
 			e.css('opacity', 0)
 			e.css('display', 'none')
 			if (parseInt(parent.css('margin-top')) > -10)
-				parent.css('margin-top', '-475px')
+				parent.css('margin-top', -1 * parent.height())
 			else
 				parent.css('margin-top', '0')
+		
+		#Handler for deleting tracks
+		
+		deleteTrackClick = (e) ->
+			e = $(e.target)
+			e.parent().remove()
+		
+		#Handler for adding track
+		
+		addTrackClick = (e) ->
+			e = $(e.target)
+			$("<div class='track-input-container'>
+			<input placeholder='Title' type='text'>
+			<input placeholder='Romanization' type='text'>
+			<input class='track-duration' placeholder='M:S' type='text'>
+			<ion-icon name='ios-close' class='track-delete-btn'></ion-icon>
+			</div>").insertBefore($(this))
+			e.parent().find('.track-delete-btn').each ->
+				$(this).get()[0].removeEventListener('click', deleteTrackClick)
+				$(this).get()[0].addEventListener('click', deleteTrackClick)
 		
 		#Handler for vinyl icon hover
 		
@@ -187,11 +207,13 @@ $(document).on 'turbolinks:load', ->
 				editTrackStr = ''
 				generateEditTrackStr = (track) ->
 					editTrackStr += "<div class='track-input-container'>
-									<input placeholder='' value='" + track.title + "' type='text'>
-									<input placeholder='' value='" + track.romanization + "' type='text'>
-									<input class='track-duration' placeholder='' value='" + track.duration + "' type='text'>
+									<input placeholder='Title' value='" + track.title + "' type='text'>
+									<input placeholder='Romanization' value='" + track.romanization + "' type='text'>
+									<input class='track-duration' placeholder='M:S' value='" + track.duration + "' type='text'>
+									<ion-icon name='ios-close' class='track-delete-btn'></ion-icon>
 									</div>"
 				generateEditTrackStr(track) for track in album.tracklist
+				editTrackStr += "<ion-icon name='ios-add-circle' class='track-add-btn'></ion-icon>"
 				albumLi +=
 				"<li>
 					<div class='album-container' id='"+id+"'>
@@ -337,6 +359,8 @@ $(document).on 'turbolinks:load', ->
 			addEventListener('.album-container img', 'click', albumClick)
 			addEventListener('.edit-icon', 'click', editButtonClick)
 			addEventListener('.close-icon', 'click', editButtonClick)
+			addEventListener('.track-add-btn', 'click', addTrackClick)
+			addEventListener('.track-delete-btn', 'click', deleteTrackClick)
 			
 			#Adjusts text size to make sure the titles fit within their containers
 				

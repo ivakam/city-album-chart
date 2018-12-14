@@ -451,6 +451,7 @@ body {
 			display: flex;
 			flex-direction: column;
 			width: 100%;
+			height: 460px;
 			justify-content: space-between;
 			flex-shrink: 0;
 			transition: 0.3s;
@@ -641,7 +642,8 @@ body {
 		.edit-form-container {
 			width: 100%;
 			display: flex;
-			margin-top: 8px;
+			flex-shrink: 0;
+			overflow: hidden;
 			position: relative;
 			input, textarea {
 				background: #171717;
@@ -660,6 +662,7 @@ body {
 				> input {
 					padding: 8px;
 					color: #e3e3e3;
+					align-self: flex-end;
 				}
 				.input-field-container, .description-field {
 					display: flex;
@@ -676,13 +679,34 @@ body {
 				.tracklist-submit {
 				height: 449px;
 				overflow-y: scroll;
-				margin-right: 45px;
+				margin-right: 8px;
 					.tracklist-edit-container {
 						display: flex;
 						flex-direction: column;
+						align-items: center;
+						.track-add-btn {
+							font-size: 40px;
+							color: #171717;
+							transition: 0.2s;
+						}
+						.track-add-btn:hover {
+							cursor: pointer;
+							color: #e3e3e3;
+						}
 						.track-input-container {
 							display: flex;
 							margin-bottom: 5px;
+							align-items: center;
+							.track-delete-btn {
+								font-size: 32px;
+								color: #e3e3e3;
+								opacity: 0.8;
+								margin-right: 8px;
+							}
+							.track-delete-btn:hover {
+								opacity: 1;
+								cursor: pointer;
+							}
 							input {
 								max-width: 175px;
 								margin-right: 8px;
