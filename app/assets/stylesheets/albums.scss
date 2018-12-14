@@ -663,6 +663,15 @@ body {
 					padding: 8px;
 					color: #e3e3e3;
 					align-self: flex-end;
+					font-family: 'Roboto';
+					font-size: 20px;
+					border-radius: 3px;
+					border: 1.3px #e3e3e3 solid;
+					transition: 0.2s;
+				}
+				> input:hover {
+					cursor: pointer;
+					border: 1.3px white solid;
 				}
 				.input-field-container, .description-field {
 					display: flex;
@@ -715,6 +724,9 @@ body {
 							.duration {
 								max-width: 50px;
 							}
+						}
+						.track-input-container:nth-of-type(even) input {
+							background: #2a2a2a;
 						}
 					}
 				}

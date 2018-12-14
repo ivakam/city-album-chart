@@ -1,3 +1,5 @@
+require 'json'
+
 class AlbumsController < ApplicationController
 	def contains_cjk?
 		!!(self =~ /\p{Han}|\p{Katakana}|\p{Hiragana}|\p{Hangul}/)
@@ -140,8 +142,42 @@ class AlbumsController < ApplicationController
 			end
 		end
 	end
+	def update
+		paramAlbum = params[:album]
+		paramTracks = JSON.parse(params[:tracklist])
+		p paramAlbum
+		@album = Album.find_by(title: paramAlbum[:title_old], romaji_artist: paramAlbum[:romaji_artist_old])
+		@album.update(
+			title: paramAlbum[:title],
+			romanization: paramAlbum[:romanization],
+			japanese_artist: paramAlbum[:japanese_artist],
+			romaji_artist: paramAlbum[:romaji_artist],
+			year: paramAlbum[:year],
+			flavor: paramAlbum[:flavor],
+			description: paramAlbum[:description]
+		)
+		deleteList = params[:delete_list].split(/\+\+\+/)
+		deleteList.each do | track |
+			toBeNuked = Track.find_by(album_id: @album.id, title: track)
+			toBeNuked.destroy
+		end
+		paramTracks.each do | track |
+			realTrack = Track.find_by(album_id: @album.id, title: track['title_old'])
+			if realTrack.nil?
+				tempTrack = Track.new(title: track['title'], romanization: track['romanization'], duration: track['duration'])
+				tempTrack.album = @album
+				tempTrack.save
+			else
+				realTrack.update(
+					title: track['title'],
+					romanization: track['romanization'],
+					duration: track['duration']
+				)
+			end
+		end
+	end
 	
 	private def album_params
-		params.permit(:image, :coverlink, :temp_tracklist, :thumbnail, :title, :romaji_artist, :japanese_artist, :flavor, :year, :q, :offset, :limit, :sort, :sort_type, :q_track, :total_count)
+		params.permit(:delete_list, :description, :description_old, :tracklist, :romanization, :romanization_old, :duration, :duration_old, :image, :coverlink, :temp_tracklist, :thumbnail, :title, :title_old, :romaji_artist, :romaji_artist_old, :japanese_artist, :japanese_artist_old, :flavor, :flavor_old, :year, :year_old, :q, :offset, :limit, :sort, :sort_type, :q_track, :total_count)
 	end
 end

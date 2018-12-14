@@ -134,8 +134,14 @@ $(document).on 'turbolinks:load', ->
 		
 		deleteTrackClick = (e) ->
 			e = $(e.target)
+			deleteInput = e.closest('.field-container').find('.delete-list')
+			toBeNuked = e.siblings('.title_old').val()
+			if toBeNuked != ''
+				if deleteInput.val() == ''
+					deleteInput.attr('value', e.siblings('.title_old').val())
+				else
+					deleteInput.attr('value', deleteInput.val() + '+++' + toBeNuked)
 			e.parent().remove()
-			
 		
 		#Handler for adding track
 		
@@ -164,7 +170,8 @@ $(document).on 'turbolinks:load', ->
 					rawTracks[index][$(this).attr('class')] = $(this).val()
 			)
 			serializedTracks = JSON.stringify(rawTracks)
-			e.next().attr('value', serializedTracks)
+			e.next('.tracklist').attr('value', serializedTracks)
+			location.reload()
 		
 		#Handler for vinyl icon hover
 		
@@ -223,9 +230,12 @@ $(document).on 'turbolinks:load', ->
 				editTrackStr = ''
 				generateEditTrackStr = (track) ->
 					editTrackStr += "<div class='track-input-container'>
-									<input class='title' placeholder='Title' value='" + track.title + "' type='text'>
-									<input class='romanization' placeholder='Romanization' value='" + track.romanization + "' type='text'>
+									<input class='title' placeholder='Title' value='" + track.title.replace("'", '&#39;') + "' type='text'>
+									<input class='title_old' value='" + track.title.replace("'", '&#39;') + "' type='text' hidden>
+									<input class='romanization' placeholder='Romanization' value='" + track.romanization.replace("'", '&#39;') + "' type='text' >
+									<input class='romanization_old' value='" + track.romanization.replace("'", '&#39;') + "' type='text' hidden>
 									<input class='duration' placeholder='M:S' value='" + track.duration + "' type='text'>
+									<input class='duration_old' value='" + track.duration + "' type='text' hidden>
 									<ion-icon name='ios-close' class='track-delete-btn'></ion-icon>
 									</div>"
 				generateEditTrackStr(track) for track in album.tracklist
@@ -304,37 +314,44 @@ $(document).on 'turbolinks:load', ->
 								</div>
 							</div>
 							<div class='edit-form-container'>
-								<form enctype='multipart/form-data' action='/albums' accept-charset='UTF-8' data-remote='true' method='post'>
+								<form enctype='multipart/form-data' action='/albums/update' accept-charset='UTF-8' data-remote='true' method='post'>
 									<div class='field-container'>
 										<div class='input-field-container'>
 											<div class='form-field'>
 												<p><label for='album_title'>Title*</label></p>
 												<input placeholder='ロートスの果実' value='#{album.title.replace("'", '&#39;')}' type='text' name='album[title]'>
+												<input value='#{album.title.replace("'", '&#39;')}' type='text' name='album[title_old]' hidden>
 											</div>
 											<div class='form-field'>
 												<p><label for='album_romanization'>Romanization</label></p>
 												<input placeholder='Lotus no Kajitsu' value='#{album.romanization.replace("'", '&#39;')}' type='text' name='album[romanization]'>
+												<input value='#{album.romanization.replace("'", '&#39;')}' type='text' name='album[romanization_old]' hidden>
 											</div>
 											<div class='form-field'>
 												<p><label for='album_japanese_artist'>Japanese artist</label></p>
 												<input placeholder='中原めいこ' value='#{album.japanese_artist.replace("'", '&#39;')}' type='text' name='album[japanese_artist]'>
+												<input value='#{album.japanese_artist.replace("'", '&#39;')}' type='text' name='album[japanese_artist_old]' hidden>
 											</div>
 											<div class='form-field'>
 												<p><label for='album_romaji_artist'>Romaji artist*</label></p>
 												<input placeholder='Meiko Nakahara' value='#{album.romaji_artist.replace("'", '&#39;')}' type='text' name='album[romaji_artist]'>
+												<input value='#{album.romaji_artist.replace("'", '&#39;')}' type='text' name='album[romaji_artist_old]' hidden>
 											</div>
 											<div class='form-field'>
 												<p><label for='album_year'>Year</label></p>
 												<input placeholder='1984' value='#{album.year.replace("'", '&#39;')}' type='text' name='album[year]'>
+												<input value='#{album.year.replace("'", '&#39;')}' type='text' name='album[year_old]' hidden>
 											</div>
 											<div class='form-field'>
 												<p><label for='album_flavor'>Flavor</label></p>
 												<input placeholder='Funk, Idol' value='#{album.flavor.replace("'", '&#39;')}' type='text' name='album[flavor]'>
+												<input value='#{album.flavor.replace("'", '&#39;')}' type='text' name='album[flavor_old]' hidden>
 											</div>
 										</div>
 										<div class='form-field description-field'>
 											<p><label for='album_description'>Description</label></p>
 											<textarea placeholder='Meiko Nakahara&#39;s 4th studio album brings the hard synths and slappy basslines.' type='text' name='album[description]'>#{album.description.replace("'", '&#39;')}</textarea>
+											<input value='#{album.description.replace("'", '&#39;')}' type=text' name='album[description_old]' hidden>
 										</div>
 										<div class='tracklist-submit'>
 											<div class='tracklist-label-text'>
@@ -348,7 +365,8 @@ $(document).on 'turbolinks:load', ->
 											</div>
 										</div>
 										<input class='edit-submit-btn' type='submit' name='commit' value='Save changes' data-disable-with='Save changes'>
-										<input name='tracklist' value='' hidden>
+										<input class='tracklist' name='tracklist' value='' hidden>
+										<input class='delete-list' name='delete_list' value='' hidden>
 									</div>
 								</form>
 							</div>
@@ -473,7 +491,7 @@ $(document).on 'turbolinks:load', ->
 				albumOpen = false
 				$('.info-wrapper').removeClass('is-open')
 		
-		#Handler for 'random' button. Picks an album-container, scrolls to it and then opens it
+		#Handler for 'random' button. Picks an album-container, scrolls to it, and then opens it
 		
 		$('#random').click (event) ->
 			ids = []
