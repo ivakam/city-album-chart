@@ -477,7 +477,8 @@ body {
 			.track-grow-wrapper {
 				display: flex;
 				align-items: center;
-				height: 410px;
+				//height: 410px;
+				margin-top: 20px;
 				.link-image-container {
 					display: flex;
 					align-items: center;
@@ -596,6 +597,18 @@ body {
 							padding-left: 10px;
 						}
 					}
+				}
+			}
+			.report-form {
+				display: flex;
+				flex-direction: row;
+				input, select, .send-report-button {
+					display: block;
+				}
+			}
+			.report-form-hidden {
+				input, select, .send-report-button {
+					display: none !important;
 				}
 			}
 		}

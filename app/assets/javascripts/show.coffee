@@ -146,7 +146,17 @@ $(document).on "turbolinks:load", ->
 				$(".enlargened").css("top", ($(window).height() / 2) - offset)
 				opacity.css("background", "rgba(0, 0, 0, 0.6")
 				opacity.css("z-index", "4")
+
+		# Handler for report button
+		reportClick = (e) ->
+			e = $(e.target)
+			e.parent().toggleClass("report-form-hidden")
 		
+		# Handler for sending the report
+		sendReportClick = (e) ->
+			e = $(e.target)
+			console.log("click")
+
 		#Create an album
 		
 		displayAlbum = (refreshSplash = true) ->
@@ -155,7 +165,7 @@ $(document).on "turbolinks:load", ->
 			albumLi = ""
 			createAlbum = (album) ->
 				album.loaded = true
-				addTrack = (track, i) -> 
+				addTrack = (track, i) ->
 					return "
 					<li class='track-container'>
 						<div class='track-title-container'>
@@ -242,6 +252,18 @@ $(document).on "turbolinks:load", ->
 										</ul>
 									</div>
 								</div>
+								<div class='report-form report-form-hidden'>
+									<button class='report-button'>Report</button>
+									<select class='report-hidden'>
+										<option value='spam'>Spam</option>
+										<option value='incorrect'>Incorrect metadata</option>
+										<option value='sexual'>Sexual content</option>
+										<option value='offensive'>Offensive content</option>
+										<option value='other'>other</option>
+									</select>
+									<input class='report-hidden' type='text' placeholder='comment'>
+									<button class='send-report-button'>send</button>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -264,6 +286,8 @@ $(document).on "turbolinks:load", ->
 			addEventListener(".stream-arrow", "click", streamArrowClick)
 			addEventListener(".arrow-container", "click", albumClick)
 			addEventListener(".album-container img", "click", albumClick)
+			addEventListener(".report-button", "click", reportClick)
+			addEventListener(".send-report-button", "click", sendReportClick)
 			
 			#Adjusts text size to make sure the titles fit within their containers
 				
@@ -358,7 +382,7 @@ $(document).on "turbolinks:load", ->
 			else 
 				albumOpen = false
 				$(".info-wrapper").removeClass("is-open")
-		
+
 		#Handler for 'random' button. Picks an album-container, scrolls to it and then opens it
 		
 		$("#random").click (event) ->
