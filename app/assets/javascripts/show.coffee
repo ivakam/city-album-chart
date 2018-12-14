@@ -135,20 +135,36 @@ $(document).on 'turbolinks:load', ->
 		deleteTrackClick = (e) ->
 			e = $(e.target)
 			e.parent().remove()
+			
 		
 		#Handler for adding track
 		
 		addTrackClick = (e) ->
 			e = $(e.target)
 			$("<div class='track-input-container'>
-			<input placeholder='Title' type='text'>
-			<input placeholder='Romanization' type='text'>
-			<input class='track-duration' placeholder='M:S' type='text'>
+			<input class='title' placeholder='Title' type='text'>
+			<input class='romanization' placeholder='Romanization' type='text'>
+			<input class='duration' placeholder='M:S' type='text'>
 			<ion-icon name='ios-close' class='track-delete-btn'></ion-icon>
 			</div>").insertBefore($(this))
 			e.parent().find('.track-delete-btn').each ->
 				$(this).get()[0].removeEventListener('click', deleteTrackClick)
 				$(this).get()[0].addEventListener('click', deleteTrackClick)
+		
+		#Handler for serializing tracklist and adding it to hidden input
+		
+		editSubmitClick = (e) ->
+			e = $(e.target)
+			rawTracks = []
+			tracklist = e.parent().find('.tracklist-submit .tracklist-edit-container .track-input-container')
+			tracklist.each((index, element) ->
+				currentTrack = index
+				rawTracks[index] = {}
+				$(element).find('input').each ->
+					rawTracks[index][$(this).attr('class')] = $(this).val()
+			)
+			serializedTracks = JSON.stringify(rawTracks)
+			e.next().attr('value', serializedTracks)
 		
 		#Handler for vinyl icon hover
 		
@@ -207,9 +223,9 @@ $(document).on 'turbolinks:load', ->
 				editTrackStr = ''
 				generateEditTrackStr = (track) ->
 					editTrackStr += "<div class='track-input-container'>
-									<input placeholder='Title' value='" + track.title + "' type='text'>
-									<input placeholder='Romanization' value='" + track.romanization + "' type='text'>
-									<input class='track-duration' placeholder='M:S' value='" + track.duration + "' type='text'>
+									<input class='title' placeholder='Title' value='" + track.title + "' type='text'>
+									<input class='romanization' placeholder='Romanization' value='" + track.romanization + "' type='text'>
+									<input class='duration' placeholder='M:S' value='" + track.duration + "' type='text'>
 									<ion-icon name='ios-close' class='track-delete-btn'></ion-icon>
 									</div>"
 				generateEditTrackStr(track) for track in album.tracklist
@@ -329,10 +345,10 @@ $(document).on 'turbolinks:load', ->
 											</div>
 											<div class='tracklist-edit-container'>
 												#{editTrackStr}
-												<input name='tracklist' hidden>
 											</div>
 										</div>
-										<input type='submit' name='commit' value='Save changes' data-disable-with='Save changes'>
+										<input class='edit-submit-btn' type='submit' name='commit' value='Save changes' data-disable-with='Save changes'>
+										<input name='tracklist' value='' hidden>
 									</div>
 								</form>
 							</div>
@@ -361,6 +377,7 @@ $(document).on 'turbolinks:load', ->
 			addEventListener('.close-icon', 'click', editButtonClick)
 			addEventListener('.track-add-btn', 'click', addTrackClick)
 			addEventListener('.track-delete-btn', 'click', deleteTrackClick)
+			addEventListener('.edit-submit-btn', 'click', editSubmitClick)
 			
 			#Adjusts text size to make sure the titles fit within their containers
 				

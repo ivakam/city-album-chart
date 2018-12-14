@@ -402,8 +402,8 @@ body {
 			z-index: 4;
 		}
 		.ion:hover {
-			cursor: pointer;
-			opacity: 0.9;
+			cursor: pointer !important;
+			opacity: 0.9 !important;
 		}
 		.close-icon {
 			font-size: 40px;
@@ -677,9 +677,9 @@ body {
 					margin-left: 8px;
 				}
 				.tracklist-submit {
-				height: 449px;
-				overflow-y: scroll;
-				margin-right: 8px;
+					height: 449px;
+					overflow-y: scroll;
+					margin-right: 8px;
 					.tracklist-edit-container {
 						display: flex;
 						flex-direction: column;
@@ -702,6 +702,7 @@ body {
 								color: #e3e3e3;
 								opacity: 0.8;
 								margin-right: 8px;
+								transition: 0.2s;
 							}
 							.track-delete-btn:hover {
 								opacity: 1;
@@ -711,7 +712,7 @@ body {
 								max-width: 175px;
 								margin-right: 8px;
 							}
-							.track-duration {
+							.duration {
 								max-width: 50px;
 							}
 						}
