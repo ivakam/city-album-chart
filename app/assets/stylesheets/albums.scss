@@ -706,6 +706,34 @@ body {
 							display: flex;
 							margin-bottom: 5px;
 							align-items: center;
+							.draggable-area {
+								width: 15px;
+								height: 30px;
+								background: #171717;
+								border-top: 1px #686868 solid;
+								border-left: 1px #686868 solid;
+								border-bottom: 1px #686868 solid;
+								position: relative;
+								&:hover {
+									cursor: grab;
+									cursor: -webkit-grab;
+									cursor: -moz-grab;
+								}
+								&:before {
+									content: '.';
+									position: absolute;
+									left: 2px;
+									top: -10px;
+									font-size: 20px;
+									line-height: 20px;
+									color: #686868;
+									text-shadow: 5px 9px #686868,
+												0 9px #686868,
+												5px 0px #686868,
+												5px 18px,
+												0 18px;
+								}
+							}
 							.track-delete-btn {
 								font-size: 32px;
 								color: #e3e3e3;
@@ -719,14 +747,26 @@ body {
 							}
 							input {
 								max-width: 175px;
-								margin-right: 8px;
+								&:nth-of-type(3n+0) {
+									background: #2a2a2a;
+								}
+							}
+							&:nth-of-type(even) input, &:nth-of-type(even) .draggable-area {
+								background: #2a2a2a;
+								&:nth-of-type(3n+0) {
+									background: #171717;
+								}
+							}
+							.title, .duration, .romanization {
+								border-top: 1px #686868 solid;
+								border-right: none;
+								border-bottom: 1px #686868 solid;
+								border-left: none;
 							}
 							.duration {
 								max-width: 50px;
+								border-right: 1px #686868 solid;
 							}
-						}
-						.track-input-container:nth-of-type(even) input {
-							background: #2a2a2a;
 						}
 					}
 				}

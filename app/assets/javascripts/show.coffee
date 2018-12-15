@@ -148,14 +148,22 @@ $(document).on 'turbolinks:load', ->
 		addTrackClick = (e) ->
 			e = $(e.target)
 			$("<div class='track-input-container'>
+			<span class='draggable-area'></span>
 			<input class='title' placeholder='Title' type='text'>
+			<input hidden>
 			<input class='romanization' placeholder='Romanization' type='text'>
+			<input hidden>
 			<input class='duration' placeholder='M:S' type='text'>
+			<input hidden>
 			<ion-icon name='ios-close' class='track-delete-btn'></ion-icon>
 			</div>").insertBefore($(this))
 			e.parent().find('.track-delete-btn').each ->
 				$(this).get()[0].removeEventListener('click', deleteTrackClick)
 				$(this).get()[0].addEventListener('click', deleteTrackClick)
+			$('.track-input-container').arrangeable({
+				dragSelector: '.draggable-area'
+				})
+
 		
 		#Handler for serializing tracklist and adding it to hidden input
 		
@@ -230,6 +238,7 @@ $(document).on 'turbolinks:load', ->
 				editTrackStr = ''
 				generateEditTrackStr = (track) ->
 					editTrackStr += "<div class='track-input-container'>
+									<span class='draggable-area'></span>
 									<input class='title' placeholder='Title' value='" + track.title.replace("'", '&#39;') + "' type='text'>
 									<input class='title_old' value='" + track.title.replace("'", '&#39;') + "' type='text' hidden>
 									<input class='romanization' placeholder='Romanization' value='" + track.romanization.replace("'", '&#39;') + "' type='text' >
@@ -396,6 +405,10 @@ $(document).on 'turbolinks:load', ->
 			addEventListener('.track-add-btn', 'click', addTrackClick)
 			addEventListener('.track-delete-btn', 'click', deleteTrackClick)
 			addEventListener('.edit-submit-btn', 'click', editSubmitClick)
+			
+			$('.track-input-container').arrangeable({
+				dragSelector: '.draggable-area'
+				})
 			
 			#Adjusts text size to make sure the titles fit within their containers
 				
