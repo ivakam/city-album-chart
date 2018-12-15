@@ -15,6 +15,8 @@ class AlbumsController < ApplicationController
 		end
 		albumIDs = albumIDs.gsub(/,\s+$/, '')
 		tracks = Track.find_by_sql("SELECT * FROM tracks WHERE album_id IN (#{albumIDs})")
+		tracks = tracks.sort_by(&:order)
+		p tracks
 		albumResult = []
 		albums.each_with_index do | album, index |
 			albumWithTracks = {}
@@ -161,17 +163,19 @@ class AlbumsController < ApplicationController
 			toBeNuked = Track.find_by(album_id: @album.id, title: track)
 			toBeNuked.destroy
 		end
-		paramTracks.each do | track |
+		paramTracks.each_with_index do | track, i |
+			track['order'] = i + 1
 			realTrack = Track.find_by(album_id: @album.id, title: track['title_old'])
 			if realTrack.nil?
-				tempTrack = Track.new(title: track['title'], romanization: track['romanization'], duration: track['duration'])
+				tempTrack = Track.new(title: track['title'], romanization: track['romanization'], duration: track['duration'], order: track['order'])
 				tempTrack.album = @album
 				tempTrack.save
 			else
 				realTrack.update(
 					title: track['title'],
 					romanization: track['romanization'],
-					duration: track['duration']
+					duration: track['duration'],
+					order: track['order']
 				)
 			end
 		end

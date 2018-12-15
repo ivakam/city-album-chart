@@ -179,7 +179,7 @@ $(document).on 'turbolinks:load', ->
 			)
 			serializedTracks = JSON.stringify(rawTracks)
 			e.next('.tracklist').attr('value', serializedTracks)
-			location.reload()
+			#location.reload()
 		
 		#Handler for vinyl icon hover
 		

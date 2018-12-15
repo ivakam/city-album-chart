@@ -16,6 +16,9 @@ def CreateAlbumWithTracks(albumParam, tracks = [])
 	currentAlbum.thumbnail = currentAlbum.rails_representation_url(currentAlbum.cover.variant(resize: "200x200"))
 	tempQuality = 0
 	trackDurationCount = 0
+	tracks.each_with_index do | t, i |
+		t['order'] = i + 1
+	end
 	hasTracks = (tracks == []) ? false : true
 	currentAlbum.tracks = tracks.map { | t | Track.new(t)}
 	tracks.each do | t |
