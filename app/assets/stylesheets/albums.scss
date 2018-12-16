@@ -504,6 +504,8 @@ body {
 				align-items: center;
 				height: 410px;
 				position: relative;
+				//height: 410px;
+				//margin-top: 20px;
 				.link-image-container {
 					display: flex;
 					align-items: center;
@@ -623,7 +625,21 @@ body {
 						}
 					}
 				}
+
+				.report-form {
+					display: flex;
+					flex-direction: row;
+					input, select, .send-report-button {
+						display: block;
+					}
+				}
+				.report-form-hidden {
+					input, select, .send-report-button {
+						display: none !important;
+					}
+				}
 			}
+
 			.scroll-arrow-up, .scroll-arrow-down {
 				font-size: 40px;
 				color: #ffffff;

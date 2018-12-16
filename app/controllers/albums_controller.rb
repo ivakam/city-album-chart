@@ -144,6 +144,7 @@ class AlbumsController < ApplicationController
 			end
 		end
 	end
+
 	def update
 		paramAlbum = params[:album]
 		paramTracks = JSON.parse(params[:tracklist])

@@ -121,8 +121,8 @@ $(document).on 'turbolinks:load', ->
 			e = $(e.target)
 			parent = e.closest('.info-wrapper').find('.info-text-container')
 			e.parent().find('.ion').each ->
-				 $(this).css('opacity', '0.6')
-				 $(this).css('display', 'block')
+				$(this).css('opacity', '0.6')
+				$(this).css('display', 'block')
 			e.css('opacity', 0)
 			e.css('display', 'none')
 			if (parseInt(parent.css('margin-top')) > -10)
@@ -210,7 +210,27 @@ $(document).on 'turbolinks:load', ->
 				$('.enlargened').css('top', ($(window).height() / 2) - offset)
 				opacity.css('background', 'rgba(0, 0, 0, 0.6')
 				opacity.css('z-index', '4')
+
+		# Handler for report button
+		reportClick = (e) ->
+			e = $(e.target)
+			e.parent().toggleClass('report-form-hidden')
 		
+		# Handler for sending the report
+		sendReportClick = (e) ->
+			e = $(e.target)
+			$.post('/reports/create', {
+				report: {
+					album: e.closest('.info-text-container').find('.text-container .title-container h2').html(),
+					reason: e.parent().find('.report-reason').val(),
+					comment: e.parent().find('.report-comment').val()
+				}
+			},
+			(data, status) ->
+				alert('Report sent!')
+			)
+
+
 		#Create an album
 		
 		displayAlbum = (refreshSplash = true) ->
@@ -219,7 +239,7 @@ $(document).on 'turbolinks:load', ->
 			albumLi = ''
 			createAlbum = (album) ->
 				album.loaded = true
-				addTrack = (track, i) -> 
+				addTrack = (track, i) ->
 					return "
 					<li class='track-container'>
 						<div class='track-title-container'>
@@ -321,6 +341,18 @@ $(document).on 'turbolinks:load', ->
 										</ul>
 									</div>
 								</div>
+								<div class='report-form report-form-hidden'>
+									<button class='report-button'>Report</button>
+									<select class='report-reason'>
+										<option value='spam'>Spam</option>
+										<option value='incorrect'>Incorrect metadata</option>
+										<option value='sexual'>Sexual content</option>
+										<option value='offensive'>Offensive content</option>
+										<option value='other'>other</option>
+									</select>
+									<input class='report-comment' type='text' placeholder='comment'>
+									<button class='send-report-button'>send</button>
+								</div>
 							</div>
 							<div class='edit-form-container'>
 								<form enctype='multipart/form-data' action='/albums/update' accept-charset='UTF-8' data-remote='true' method='post'>
@@ -405,6 +437,8 @@ $(document).on 'turbolinks:load', ->
 			addEventListener('.track-add-btn', 'click', addTrackClick)
 			addEventListener('.track-delete-btn', 'click', deleteTrackClick)
 			addEventListener('.edit-submit-btn', 'click', editSubmitClick)
+			addEventListener(".report-button", "click", reportClick)
+			addEventListener(".send-report-button", "click", sendReportClick)
 			
 			$('.track-input-container').arrangeable({
 				dragSelector: '.draggable-area'
@@ -500,7 +534,7 @@ $(document).on 'turbolinks:load', ->
 					1)
 				,
 				timeout)
-			else 
+			else
 				albumOpen = false
 				$('.info-wrapper').removeClass('is-open')
 		
@@ -611,7 +645,7 @@ $(document).on 'turbolinks:load', ->
 				map.set(key, value)
 			)
 		
-		$(window).scroll -> 
+		$(window).scroll ->
 			if $(window).scrollTop() + $(window).height() >= $(document).height() and $(document).height() > $(window).height()
 				offset = albums.size
 				if albums.size >= totalCount - 1
