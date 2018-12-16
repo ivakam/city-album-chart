@@ -155,14 +155,15 @@ $(document).on "turbolinks:load", ->
 		# Handler for sending the report
 		sendReportClick = (e) ->
 			e = $(e.target)
-			$.post("/albums/report", {
-				album: e.parent().parent().find("h2").text,
-				reason: e.siblings(".report-reason").value,
-				comment: e.siblings(".report-comment").value,
-				user: "someone"
+			$.post("/reports/create", {
+				report: {
+					album: e.closest('.info-text-container').find('.text-container .title-container h2').html(),
+					reason: e.parent().find(".report-reason").val(),
+					comment: e.parent().find(".report-comment").val()
+				}
 			},
 			(data, status) ->
-				alert("Data: " + data + "\nStatus: " + status)
+				alert("Report sent!")
 			)
 
 
@@ -388,7 +389,7 @@ $(document).on "turbolinks:load", ->
 					1)
 				,
 				timeout)
-			else 
+			else
 				albumOpen = false
 				$(".info-wrapper").removeClass("is-open")
 
@@ -499,7 +500,7 @@ $(document).on "turbolinks:load", ->
 				map.set(key, value)
 			)
 		
-		$(window).scroll -> 
+		$(window).scroll ->
 			if $(window).scrollTop() + $(window).height() >= $(document).height() and $(document).height() > $(window).height()
 				offset = albums.size
 				if albums.size >= totalCount - 1

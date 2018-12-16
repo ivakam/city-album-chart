@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get 'users/new'
-  get 'sessions/new'
   get 'about', to: 'about#show'
   get 'albums', to: 'albums#show'
   get 'albums/submit'
@@ -14,6 +12,7 @@ Rails.application.routes.draw do
   get 'create-account', to: 'users#new'
   post 'create-account', to: 'users#create'
 
+  post 'reports/create'
 
   get 'panel', to: 'users#show'
   
