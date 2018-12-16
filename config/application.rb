@@ -10,7 +10,7 @@ module Albumchart
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
-    hostFile = File.read(File.expand_path('~/workspace/host_path.json'))
+    hostFile = File.read(File.expand_path(Rails.root + 'host_path.json'))
     config.action_mailer.default_url_options = { host: JSON.parse(hostFile)['path'] }
     Rails.application.routes.default_url_options[:host] = JSON.parse(hostFile)['path']
     # Settings in config/environments/* take precedence over those specified here.
