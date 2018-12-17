@@ -37,7 +37,6 @@ gem 'mini_magick'
 gem 'meta-tags'
 gem 'rest-client'
 gem 'bcrypt'
-gem 'gon'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
