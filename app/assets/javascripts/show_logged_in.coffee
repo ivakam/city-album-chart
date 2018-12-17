@@ -115,8 +115,74 @@ $(document).on 'turbolinks:load', ->
 					else
 						firstChild.css('margin-left', '-2400px')
 		
-		#Handler for vinyl icon hover
+		#Handlers for clicking the edit buttons
+		
+		editButtonClick = (e) ->
+			e = $(e.target)
+			parent = e.closest('.info-wrapper').find('.info-text-container')
+			e.parent().find('.ion').each ->
+				$(this).css('opacity', '0.6')
+				$(this).css('display', 'block')
+			e.css('opacity', 0)
+			e.css('display', 'none')
+			if (parseInt(parent.css('margin-top')) > -10)
+				parent.css('margin-top', -1 * parent.height())
+			else
+				parent.css('margin-top', '0')
+		
+		#Handler for deleting tracks
+		
+		deleteTrackClick = (e) ->
+			e = $(e.target)
+			deleteInput = e.closest('.field-container').find('.delete-list')
+			toBeNuked = e.siblings('.title_old').val()
+			if toBeNuked != ''
+				if deleteInput.val() == ''
+					deleteInput.attr('value', e.siblings('.title_old').val())
+				else
+					deleteInput.attr('value', deleteInput.val() + '+++' + toBeNuked)
+			e.parent().remove()
+		
+		#Handler for adding track
+		
+		addTrackClick = (e) ->
+			e = $(e.target)
+			$("<div class='track-input-container'>
+			<span class='draggable-area'></span>
+			<input class='title' placeholder='Title' type='text'>
+			<input hidden>
+			<input class='romanization' placeholder='Romanization' type='text'>
+			<input hidden>
+			<input class='duration' placeholder='M:S' type='text'>
+			<input hidden>
+			<ion-icon name='ios-close' class='track-delete-btn'></ion-icon>
+			</div>").insertBefore($(this))
+			e.parent().find('.track-delete-btn').each ->
+				$(this).get()[0].removeEventListener('click', deleteTrackClick)
+				$(this).get()[0].addEventListener('click', deleteTrackClick)
+			$('.track-input-container').arrangeable({
+				dragSelector: '.draggable-area'
+				})
 
+		
+		#Handler for serializing tracklist and adding it to hidden input
+		
+		editSubmitClick = (e) ->
+			e = $(e.target)
+			rawTracks = []
+			tracklist = e.parent().find('.tracklist-submit .tracklist-edit-container .track-input-container')
+			tracklist.each((index, element) ->
+				currentTrack = index
+				rawTracks[index] = {}
+				$(element).find('input').each ->
+					rawTracks[index][$(this).attr('class')] = $(this).val()
+			)
+			serializedTracks = JSON.stringify(rawTracks)
+			e.next('.tracklist').attr('value', serializedTracks)
+			#location.reload()
+		
+		#Handler for vinyl icon hover
+		
 		vinylHoverOn = (e) ->
 			if !vinylClicked
 				e = $(e.target)
@@ -145,6 +211,25 @@ $(document).on 'turbolinks:load', ->
 				opacity.css('background', 'rgba(0, 0, 0, 0.6')
 				opacity.css('z-index', '4')
 
+
+		# Handler for report button
+		reportClick = (e) ->
+			e = $(e.target)
+			e.parent().toggleClass('report-form-hidden')
+		
+		# Handler for sending the report
+		sendReportClick = (e) ->
+			e = $(e.target)
+			$.post('/reports/create', {
+				report: {
+					album: e.closest('.info-text-container').find('.text-container .title-container h2').html(),
+					reason: e.parent().find('.report-reason').val(),
+					comment: e.parent().find('.report-comment').val()
+				}
+			},
+			(data, status) ->
+				alert('Report sent!')
+			)
 
 		# Create an album
 
@@ -201,6 +286,8 @@ $(document).on 'turbolinks:load', ->
 					</div>
 					<div class='info-container offset' id='"+id+"-info'>
 						<div class='info-wrapper'>
+							<ion-icon name='create' class='ion edit-icon'></ion-icon>
+							<ion-icon name='ios-close' class='ion close-icon'></ion-icon>
 							<div class='info-background'>"+"<img src='" + album.thumbnail + "'></div>
 							<div class='info-text-container'>
 								<div class='text-container'>
@@ -253,9 +340,77 @@ $(document).on 'turbolinks:load', ->
 											#{trackListStr}
 										</ul>
 									</div>
+                                </div>" + "<div class='report-form report-form-hidden'>
+									<button class='report-button'>Report</button>
+									<select class='report-reason'>
+										<option value='spam'>Spam</option>
+										<option value='incorrect'>Incorrect metadata</option>
+										<option value='sexual'>Sexual content</option>
+										<option value='offensive'>Offensive content</option>
+										<option value='other'>other</option>
+									</select>
+									<input class='report-comment' type='text' placeholder='comment'>
+									<button class='send-report-button'>send</button>
                                 </div>
-							</div>
-						</div>
+							</div> 
+							<div class='edit-form-container'>
+								<form enctype='multipart/form-data' action='/albums/update' accept-charset='UTF-8' data-remote='true' method='post'>
+									<div class='field-container'>
+										<div class='input-field-container'>
+											<div class='form-field'>
+												<p><label for='album_title'>Title*</label></p>
+												<input placeholder='ロートスの果実' value='#{album.title.replace("'", '&#39;')}' type='text' name='album[title]'>
+												<input value='#{album.title.replace("'", '&#39;')}' type='text' name='album[title_old]' hidden>
+											</div>
+											<div class='form-field'>
+												<p><label for='album_romanization'>Romanization</label></p>
+												<input placeholder='Lotus no Kajitsu' value='#{album.romanization.replace("'", '&#39;')}' type='text' name='album[romanization]'>
+												<input value='#{album.romanization.replace("'", '&#39;')}' type='text' name='album[romanization_old]' hidden>
+											</div>
+											<div class='form-field'>
+												<p><label for='album_japanese_artist'>Japanese artist</label></p>
+												<input placeholder='中原めいこ' value='#{album.japanese_artist.replace("'", '&#39;')}' type='text' name='album[japanese_artist]'>
+												<input value='#{album.japanese_artist.replace("'", '&#39;')}' type='text' name='album[japanese_artist_old]' hidden>
+											</div>
+											<div class='form-field'>
+												<p><label for='album_romaji_artist'>Romaji artist*</label></p>
+												<input placeholder='Meiko Nakahara' value='#{album.romaji_artist.replace("'", '&#39;')}' type='text' name='album[romaji_artist]'>
+												<input value='#{album.romaji_artist.replace("'", '&#39;')}' type='text' name='album[romaji_artist_old]' hidden>
+											</div>
+											<div class='form-field'>
+												<p><label for='album_year'>Year</label></p>
+												<input placeholder='1984' value='#{album.year.replace("'", '&#39;')}' type='text' name='album[year]'>
+												<input value='#{album.year.replace("'", '&#39;')}' type='text' name='album[year_old]' hidden>
+											</div>
+											<div class='form-field'>
+												<p><label for='album_flavor'>Flavor</label></p>
+												<input placeholder='Funk, Idol' value='#{album.flavor.replace("'", '&#39;')}' type='text' name='album[flavor]'>
+												<input value='#{album.flavor.replace("'", '&#39;')}' type='text' name='album[flavor_old]' hidden>
+											</div>
+										</div>
+										<div class='form-field description-field'>
+											<p><label for='album_description'>Description</label></p>
+											<textarea placeholder='Meiko Nakahara&#39;s 4th studio album brings the hard synths and slappy basslines.' type='text' name='album[description]'>#{album.description.replace("'", '&#39;')}</textarea>
+											<input value='#{album.description.replace("'", '&#39;')}' type=text' name='album[description_old]' hidden>
+										</div>
+										<div class='tracklist-submit'>
+											<div class='tracklist-label-text'>
+												<p><label for='album_tracklist'>Tracklist</label></p>
+												<div class='tooltip'><span class='tooltiptext'>
+													<a>Template in the form of \"&ltTrack title&gt\", \"&ltRomanization&gt\", &ltTrack Duration&gt.</a>
+												</div>
+											</div>
+											<div class='tracklist-edit-container'>
+												#{editTrackStr}
+											</div>
+										</div>
+										<input class='edit-submit-btn' type='submit' name='commit' value='Save changes' data-disable-with='Save changes'>
+										<input class='tracklist' name='tracklist' value='' hidden>
+										<input class='delete-list' name='delete_list' value='' hidden>
+									</div>
+								</form>
+							</div>" +
+						"</div>
 					</div>
 				</li>"
 				
@@ -276,6 +431,13 @@ $(document).on 'turbolinks:load', ->
 			addEventListener('.stream-arrow', 'click', streamArrowClick)
 			addEventListener('.arrow-container', 'click', albumClick)
 			addEventListener('.album-container img', 'click', albumClick)
+			addEventListener('.edit-icon', 'click', editButtonClick)
+			addEventListener('.close-icon', 'click', editButtonClick)
+			addEventListener('.track-add-btn', 'click', addTrackClick)
+			addEventListener('.track-delete-btn', 'click', deleteTrackClick)
+			addEventListener('.edit-submit-btn', 'click', editSubmitClick)
+			addEventListener(".report-button", "click", reportClick)
+			addEventListener(".send-report-button", "click", sendReportClick)
 			
 			$('.track-input-container').arrangeable({
 				dragSelector: '.draggable-area'
