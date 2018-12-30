@@ -18,21 +18,20 @@ class SessionsController < ApplicationController
     end
     
     def auth
+        @user = helpers.fetch_user
         userAuth = {}
-        if session[:user_id].to_s == params[:id]
+        userAuth['logged_in'] = false
+        userAuth['admin'] = false
+        userAuth['power_user'] = false
+        if @user.id.to_s == params[:id]
             userAuth['logged_in'] = true
-            userAuth['admin'] = false
-            userAuth['power_user'] = false
-            user = User.find_by(id: params[:id])
-            if user.admin == true
+            if @user.admin == true
                 userAuth['admin'] = true
             end
-            p user.karma
-            if user.karma >= 50
+            if @user.karma >= 50
                 userAuth['power_user'] = true
             end
-            return render :json => userAuth
         end
-        render :json => ''
+        render :json => userAuth
     end
 end

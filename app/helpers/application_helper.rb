@@ -1,10 +1,11 @@
 module ApplicationHelper
   #Expand this with params and more checks as needed for checking different flags in js.erb
-  def user_id
+  def fetch_user
     if session[:user_id]
-      return session[:user_id]
+      @user = User.find_by(id: session[:user_id])
+      return @user
     else
-      return ''
+      return nil
     end
   end
   
@@ -16,11 +17,4 @@ module ApplicationHelper
     end
   end
   
-  def load_javascript
-    if session[:user_id]
-      javascript_include_tag 'application', 'about_logged_in', 'albums_logged_in', 'cable_logged_in', 'show_logged_in', 'submit_logged_in', 'data-turbolinks-track': 'reload'
-    else
-      javascript_include_tag 'application', 'about', 'albums', 'cable', 'show', 'submit', 'data-turbolinks-track': 'reload'
-    end
-  end
 end

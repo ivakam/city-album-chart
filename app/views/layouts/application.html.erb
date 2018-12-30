@@ -10,8 +10,14 @@
 		<%= csp_meta_tag %>
 		<%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 		<link href="https://fonts.googleapis.com/css?family=Poppins|Roboto" rel="stylesheet"> 
-		<script>userId = <%= user_id %></script>
-        <%= load_javascript %>
+		<script>
+		<% if fetch_user %>
+		var userId = <%= fetch_user.id %>;
+		<% else %>
+		var userId = 'undefined';
+		<% end %>
+		</script>
+        <%= javascript_include_tag 'application' %>
 		<%= favicon_link_tag %>
 	</head>
 

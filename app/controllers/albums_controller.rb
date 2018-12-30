@@ -146,6 +146,10 @@ class AlbumsController < ApplicationController
 	end
 
 	def update
+		#Change this to admin-only
+		if !helpers.fetch_user
+			return
+		end
 		paramAlbum = params[:album]
 		paramTracks = JSON.parse(params[:tracklist])
 		p paramAlbum

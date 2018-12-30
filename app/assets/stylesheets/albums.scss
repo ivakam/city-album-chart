@@ -26,6 +26,89 @@ body {
 	}
 }
 
+#report-form-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: fixed;
+	top: calc(50vh - 350px);
+	left: calc(50vw - 300px);
+	width: 600px;
+	padding: 20px;
+	background: #171717;
+	z-index: 6;
+	border-radius: 8px;
+	border: 1px #a7a7a7 solid;
+	transition: 0.3s;
+	form {
+		display: flex;
+		height: 100%;
+		width: 100%;
+		position: relative;
+		flex-direction: column;
+		justify-content: space-between;
+		align-items: center;
+		#report-close {
+			position: absolute;
+			top: 0px;
+			right: 0px;
+			font-size: 40px;
+			color: #e8e8e8;
+			opacity: 0.6;
+			&:hover {
+				cursor: pointer;
+				opacity: 0.9;
+			}
+		}
+		#report-input-container {
+			display: flex;
+			width: 100%;
+			flex-direction: column;
+			align-items: center;
+			justify-content: space-around;
+			flex-grow: 2;
+		}
+	}
+	input, textarea, select {
+		background: #2a2a2a;
+		color: #e3e3e3;
+		border: 1px #686868 solid;
+		font-family: 'Roboto';
+		padding: 4px;
+		font-size: 18px;
+	}
+	select {
+		height: 34px;
+		width: 40%;
+		margin-bottom: 20px;
+		&:hover {
+			cursor: pointer;
+		}
+	}
+	textarea {
+		width: 90%;
+		height: 400px;
+		&:focus {
+			border: 1px royalblue solid;
+		}
+	}
+	input[type="submit"] {
+		width: 200px;
+		margin-top: 50px;
+		&:hover {
+			cursor: pointer;
+		}
+	}
+	#submit-message {
+		transition: 0.3s;
+		overflow: hidden;
+		height: 70px;
+		p {
+			font-size: 24px;
+		}
+	}
+}
+
 #albums-bg-container {
 	display: flex;
 	width: 100%;
@@ -81,7 +164,6 @@ body {
 		input {
 			max-width: 100px;
 			background: #2a2a2a;
-			border-radius: 3px;
 			border: 1px #a7a7a7 solid;
 			margin-right: 6px;
 			&[type=text], &[type=password], &[type=submit] {
@@ -92,6 +174,7 @@ body {
 			&[type=submit] {
 				cursor: pointer;
 				margin-left: 8px;
+				border-radius: 3px;
 			}
 		}
 	}
@@ -476,6 +559,9 @@ body {
 			display: none;
 			top: 7px;
 			right: 17px;
+		}
+		.flag-icon {
+			right: 64px;
 		}
 		img::after {
 			content: "";
@@ -894,7 +980,7 @@ ul {
 }
 
 .enlargened {
-	z-index: 5;
+	z-index: 6;
 	position: fixed;
 	max-width: 90vh;
 }
@@ -913,6 +999,14 @@ ul {
 
 .offset {
 	left: 0;
+}
+
+.shrunk {
+	height: 0 !important;
+}
+
+.slide-inactive {
+	top: -100vh !important;
 }
 
 div {
