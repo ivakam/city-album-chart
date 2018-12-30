@@ -16,6 +16,9 @@ class UsersController < ApplicationController
 
     def create
         @user = User.new(user_params)
+        @user.karma = 0
+        @user.banned = false
+        @user.admin = false
         @user.save
         # Automatically log in after account is created
         if @user && @user.authenticate(params[:user][:password])

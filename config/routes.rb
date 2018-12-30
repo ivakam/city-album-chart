@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   post 'albums/update', to: 'albums#update'
   post 'albums/report'
   
+  get 'sessions/auth', to: 'sessions#auth'
+  
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'

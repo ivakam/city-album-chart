@@ -10,12 +10,17 @@
 		<%= csp_meta_tag %>
 		<%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 		<link href="https://fonts.googleapis.com/css?family=Poppins|Roboto" rel="stylesheet"> 
+		<script>userId = <%= user_id %></script>
         <%= load_javascript %>
 		<%= favicon_link_tag %>
 	</head>
 
 	<body class="<%= controller_name %> <%= action_name %>">
 		<div id="wrapper">
+			<div id="header">
+				<div id="header-opacity"></div>
+				<%= inject_login %>
+			</div>
 			<%= yield %>
 			<div id="footer">
 				<ul id="link-list">
