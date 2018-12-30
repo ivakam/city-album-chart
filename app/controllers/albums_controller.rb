@@ -16,7 +16,6 @@ class AlbumsController < ApplicationController
 		albumIDs = albumIDs.gsub(/,\s+$/, '')
 		tracks = Track.find_by_sql("SELECT * FROM tracks WHERE album_id IN (#{albumIDs})")
 		tracks = tracks.sort_by(&:order)
-		p tracks
 		albumResult = []
 		albums.each_with_index do | album, index |
 			albumWithTracks = {}

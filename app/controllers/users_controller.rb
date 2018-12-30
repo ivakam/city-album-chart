@@ -23,7 +23,7 @@ class UsersController < ApplicationController
         # Automatically log in after account is created
         if @user && @user.authenticate(params[:user][:password])
             session[:user_id] = @user.id
-            redirect_to '/panel'
+            redirect_to request.referrer
         else
           render 'new'
         end
@@ -32,6 +32,6 @@ class UsersController < ApplicationController
     private
 
     def user_params
-        params.require(:user).permit(:email, :username, :password)
+        params.require(:user).permit(:email, :username, :password, :admin, :banned, :karma, :gender, :birth_year, :location, :bio)
     end
 end

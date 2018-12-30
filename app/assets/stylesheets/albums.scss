@@ -26,7 +26,7 @@ body {
 	}
 }
 
-#report-form-container {
+.slide-form-container {
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -34,7 +34,6 @@ body {
 	top: calc(50vh - 350px);
 	left: calc(50vw - 300px);
 	width: 600px;
-	padding: 20px;
 	background: #171717;
 	z-index: 6;
 	border-radius: 8px;
@@ -48,7 +47,17 @@ body {
 		flex-direction: column;
 		justify-content: space-between;
 		align-items: center;
-		#report-close {
+		> div:first-child {
+			display: flex;
+			justify-content: center;
+			border-top-left-radius: 8px;
+			border-top-right-radius: 8px;
+			align-items: center;
+			width: 100%;
+			background: #2a2a2a;
+			border-bottom: 1px #686868 solid;
+		}
+		.slide-form-close {
 			position: absolute;
 			top: 0px;
 			right: 0px;
@@ -60,13 +69,31 @@ body {
 				opacity: 0.9;
 			}
 		}
-		#report-input-container {
+		.slide-form-input-container {
 			display: flex;
 			width: 100%;
+			padding: 20px;
 			flex-direction: column;
-			align-items: center;
 			justify-content: space-around;
 			flex-grow: 2;
+		}
+		#register-input-container {
+			justify-content: flex-start;
+			flex-wrap: wrap;
+			height: 375px;
+			padding: 20px;
+			> div {
+				display: flex;
+				flex-wrap: wrap;
+				> div {
+					display: flex;
+					flex-direction: column;
+					margin-right: 20px;
+				}
+			}
+			input {
+				margin-bottom: 15px;
+			}
 		}
 	}
 	input, textarea, select {
@@ -77,16 +104,19 @@ body {
 		padding: 4px;
 		font-size: 18px;
 	}
+	input[type="email"]:invalid, input[type="password"]:invalid {
+		border: 1px red solid;
+	}
 	select {
 		height: 34px;
-		width: 40%;
+		width: 200px;
 		margin-bottom: 20px;
 		&:hover {
 			cursor: pointer;
 		}
 	}
 	textarea {
-		width: 90%;
+		width: calc(100% - 10px);
 		height: 400px;
 		&:focus {
 			border: 1px royalblue solid;
@@ -94,12 +124,13 @@ body {
 	}
 	input[type="submit"] {
 		width: 200px;
-		margin-top: 50px;
+		margin-top: 30px;
+		margin-bottom: 20px;
 		&:hover {
 			cursor: pointer;
 		}
 	}
-	#submit-message {
+	.submit-message {
 		transition: 0.3s;
 		overflow: hidden;
 		height: 70px;
@@ -196,6 +227,16 @@ body {
 		padding: 3px;
 		width: 100px;
 		text-align: center;
+	}
+	> div {
+		display: flex;
+		align-items: center;
+		p {
+			padding: 2px 10px 2px 0;
+			border-right: 1px #686868 solid;
+			font-size: 14px;
+			margin: 0px 10px 0px 0px;
+		}
 	}
 }
 
@@ -637,10 +678,10 @@ body {
 				.description-container {
 					flex-shrink: 2;
 					.label {
-						margin-bottom: 10px
+						margin-bottom: 7px;
 					}
 					.description {
-						font-size: 15px
+						font-size: 15px;
 					}
 				}
 			}
@@ -999,6 +1040,10 @@ ul {
 
 .offset {
 	left: 0;
+}
+
+.asterisk {
+	font-size: 13px;
 }
 
 .shrunk {

@@ -1,1 +1,4 @@
-<%= link_to 'Log out', 'logout', method: :delete, id: 'logout-btn' %>
+<div>
+    <p>Currently logged in as <i><%= fetch_user.username %></i></p>
+    <%= link_to 'Log out', 'logout', method: :delete, id: 'logout-btn' %>
+</div>
