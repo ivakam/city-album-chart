@@ -1,4 +1,29 @@
 $(document).on 'turbolinks:load', ->
+	
+	#Handler for clicking "create account" button
+	
+	$('#register-btn').click ->
+		$('#register-form-container').toggleClass('slide-inactive')
+		opacity = $('#opaque')
+		opacity.css('background', 'rgba(0, 0, 0, 0.6')
+		opacity.css('z-index', '5')				
+
+	#Handler for closing the zoom-mode for images
+	
+	resetFocus = () ->
+		$('img').removeClass('enlargened')
+		$('#opaque').css('background', 'rgba(0,0,0,0)')
+		$('.bigimage').attr('src', '')
+		$('#opaque').css('z-index', '0')
+		$('.slide-form-container').addClass('slide-inactive')
+		$('#report-comment').val('')
+
+	$('#opaque').click ->
+		resetFocus()
+	
+	$('.slide-form-close').click ->
+		resetFocus()
+		
 	if $('body').hasClass('albums show')
 		
 		#Global variable declaration
@@ -597,30 +622,6 @@ $(document).on 'turbolinks:load', ->
 			setTimeout( ->
 				$(container).get()[0].scrollIntoView({behaviour: 'smooth'})
 			, timer)
-		
-		#Handler for clicking "create account" button
-		
-		$('#register-btn').click ->
-			$('#register-form-container').toggleClass('slide-inactive')
-			opacity = $('#opaque')
-			opacity.css('background', 'rgba(0, 0, 0, 0.6')
-			opacity.css('z-index', '5')				
-		
-		#Handler for closing the zoom-mode for images
-		
-		resetFocus = () ->
-			$('img').removeClass('enlargened')
-			$('#opaque').css('background', 'rgba(0,0,0,0)')
-			$('.bigimage').attr('src', '')
-			$('#opaque').css('z-index', '0')
-			$('.slide-form-container').addClass('slide-inactive')
-			$('#report-comment').val('')
-		
-		$('#opaque').click ->
-			resetFocus()
-		
-		$('.slide-form-close').click ->
-			resetFocus()
 		
 		#Handler for sending report
 		

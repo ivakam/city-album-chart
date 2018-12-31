@@ -33,6 +33,12 @@
             cursor: pointer;
         }
     }
+    .admin-btn {
+        right: 180px;
+    }
+    .ban-btn {
+        right: 350px;
+    }
     > ul {
         display: flex;
         flex-direction: column;

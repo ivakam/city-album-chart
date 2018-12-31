@@ -18,6 +18,9 @@ Rails.application.routes.draw do
 
   get 'users', to: 'users#show'
   get 'users/panel', to: 'users#panel'
+  post 'users/destroy'
+  post 'users/toggle-admin', to: 'users#toggle_admin'
+  post 'users/toggle-ban', to: 'users#toggle_ban'
   
   #Helper tools - MUST BE REMOVED IN PROD!!!
   get 'users/make-admin', to: 'users#make_admin'

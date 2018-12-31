@@ -31,8 +31,15 @@
 	<div id="panel-container">
 		<h2>Overview</h2>
 		<div id="user-box" class="list-box">
+			<h2>User list</h2>
+			<div class="action-btn-container">
+				<a class="clear-btn admin-btn">Toggle admin</a>
+				<a class="clear-btn ban-btn">Toggle ban</a>
+				<a class="clear-btn nuke-btn">Nuke account</a>
+			</div>
 			<ul id="user-list">
 				<li>
+					<h3 class="checkbox-container"></h3>
 					<h3>Username</h3>
 					<h3>Email</h3>
 					<h3>Karma</h3>
@@ -46,6 +53,7 @@
 				<% User.all.each do | user | %>
 				<li>
 					<ul>
+						<li class="checkbox-container"><input type="checkbox" value="<%= user.id %>"></li>
 						<li><p><%= user.username %></p></li>
 						<li><p><%= user.email %></p></li>
 						<li><p><%= user.karma %></p></li>
