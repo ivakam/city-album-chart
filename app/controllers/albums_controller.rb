@@ -54,7 +54,7 @@ class AlbumsController < ApplicationController
 			end
 		else
             querystr = "tags LIKE '%#{params[:q].split.empty? ? '' : params[:q].split[0] }%'"
-            params[:q].split()[1..-1].each do |q|
+            params[:q].split()[1..-1].to_a.each do |q|
                 querystr << " AND tags LIKE '%#{q}%'"
             end
             @albums = Album.where(querystr)
