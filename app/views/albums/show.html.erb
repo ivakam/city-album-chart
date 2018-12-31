@@ -3,12 +3,14 @@
 <%= image_tag "varietiescropped.png", id: "alt-img" %>
 <img alt="" class="bigimage" src="">
 <div id="report-form-container" class="slide-form-container slide-inactive">
-	<form id="report-form" action="/reports/create" accept-charset="UTF-8" data-remote="true" method="post">
+	<form id="report-form" class="slide-form" action="/reports/create" accept-charset="UTF-8" data-remote="true" method="post">
 		<div>
 			<h2>Submit a report</h2>
 		</div>
 		<ion-icon name="ios-close" id="report-close" class="slide-form-close"></ion-icon>
 		<input id="report-album" type="text" name="report[album]" hidden>
+		<input type="text" name="report[report_type]" value="Album" hidden>
+		<input type="text" name="report[thread]" value="" hidden>
 		<div class="slide-form-input-container">
 			<label for="report-input-container"><p>Report reason:</p></label>
 			<select class='report-reason' name="report[reason]" form="report-form" required>

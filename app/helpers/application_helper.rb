@@ -15,6 +15,7 @@ module ApplicationHelper
 		userAuth['logged_in'] = false
 		userAuth['admin'] = false
 		userAuth['power_user'] = false
+		p @user
 		if @user != nil 
 			userAuth['logged_in'] = true
 			if @user.admin == true

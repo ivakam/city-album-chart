@@ -231,7 +231,7 @@ body {
 	> div {
 		display: flex;
 		align-items: center;
-		p {
+		> div, p {
 			padding: 2px 10px 2px 0;
 			border-right: 1px #686868 solid;
 			font-size: 14px;

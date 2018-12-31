@@ -624,11 +624,12 @@ $(document).on 'turbolinks:load', ->
 		
 		#Handler for sending report
 		
-		$('#report-form input[type=submit]').click ->
-			$('#submit-message').toggleClass('shrunk')
+		$('.slide-form input[type=submit]').click ->
+			$('.submit-message').toggleClass('shrunk')
 			setTimeout( ->
-				$('#submit-message').toggleClass('shrunk')
-			, 7000)
+				$('.submit-message').toggleClass('shrunk')
+				resetFocus()
+			, 5000)
 		
 		#Handler for clicking the 'sort' buttons
 		

@@ -1,4 +1,17 @@
 <div>
+    <% if fetch_user %>
     <p>Currently logged in as <i><%= fetch_user.username %></i></p>
-    <%= link_to 'Log out', 'logout', method: :delete, id: 'logout-btn' %>
+    <% end %>
+    <div id="profile-nav">
+        <% if fetch_user %>
+        <%= link_to 'Profile', "#{root_url}users/#{fetch_user.username}" %>
+            <% if fetch_user.admin %>
+            <%= link_to 'Panel', "#{root_url}users/panel" %>
+            <% end %>
+        <% else %>
+        <%= link_to 'Profile', "users/" %>
+        <% end %>
+
+    </div>
+    <%= link_to 'Log out', "#{root_url}logout", method: :delete, id: 'logout-btn' %>
 </div>
