@@ -14,6 +14,10 @@ def CreateAlbumWithTracks(albumParam, tracks = [])
 	#p "Cover path: " + coverPath 
 	currentAlbum.coverlink = currentAlbum.rails_blob_url(currentAlbum.cover)
 	currentAlbum.thumbnail = currentAlbum.rails_representation_url(currentAlbum.cover.variant(resize: "200x200"))
+    currentAlbum.tags = "#{albumParam[:title]} #{albumParam[:romanization]} #{albumParam[:romaji_artist]} #{albumParam[:japanese_artist]} #{albumParam[:year]} #{albumParam[:description]} #{albumParam[:flavor].gsub(/,/,'')}"
+    tracks.each do |t|
+        currentAlbum.tags << " #{t[:title]} #{t[:romanization]}"
+    end
 	tempQuality = 0
 	trackDurationCount = 0
 	tracks.each_with_index do | t, i |

@@ -53,12 +53,11 @@ class AlbumsController < ApplicationController
 				end
 			end
 		else
-			@albums = Album.where("title LIKE ? OR romanization LIKE ? OR romaji_artist LIKE ? OR japanese_artist LIKE ? OR flavor LIKE ? OR year LIKE ? OR description LIKE ?", '%' + params[:q] + '%', '%' + params[:q] + '%','%' + params[:q] + '%', '%' + params[:q] + '%', '%' + params[:q] + '%', '%' + params[:q] + '%', '%' + params[:q] + '%')
-			if params[:q_track]
-				tempAlbums = Album.joins(:tracks).where('tracks.title LIKE ? OR tracks.romanization LIKE ?', "%#{params[:q]}%", "%#{params[:q]}%")
-				albums = @albums + tempAlbums
-				@albums = Album.where(id: albums.map(&:id))
-			end
+            querystr = "tags LIKE '%#{params[:q].split.empty? ? '' : params[:q].split[0] }%'"
+            params[:q].split()[1..-1].each do |q|
+                querystr << " AND tags LIKE '%#{q}%'"
+            end
+            @albums = Album.where(querystr)
 		end
 		if params[:sort] != nil
 			params[:sort].downcase!
