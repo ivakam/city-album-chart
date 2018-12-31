@@ -231,6 +231,13 @@ body {
 	> div {
 		display: flex;
 		align-items: center;
+		#profile-nav a {
+			padding: 2px;
+			&:first-child {
+				padding-right: 6px;
+				border-right: 1px #686868 solid;
+			}
+		}
 		> div, p {
 			padding: 2px 10px 2px 0;
 			border-right: 1px #686868 solid;

@@ -30,51 +30,67 @@ class UsersController < ApplicationController
     end
     
     def destroy
-        if User.find(session[:user_id]).admin
-            JSON.parse(params[:serialized_ids]).each do | user_id |
-                @user = User.find_by(id: id)
-                @user.destroy
+        begin
+            if User.find_by(id: session[:user_id]).admin
+                JSON.parse(params[:serialized_ids]).each do | user_id |
+                    @user = User.find_by(id: id)
+                    @user.destroy
+                end
+                return
             end
-            return
+            rescueHandler('authorize_error')
+        rescue StandardError => e
+            rescueHandler('authorize_error', e)
         end
-        render 'layouts/authorize_error'
     end
     
     def toggle_admin
-        if User.find(session[:user_id]).admin
-            JSON.parse(params[:user][:serialized_ids]).each do | user_id |
-                @user = User.find_by(id: user_id)
-                if @user.admin
-                    @user.update_attribute(:admin, false)
-                else
-                    @user.update_attribute(:admin, true)
+        begin
+            if User.find_by(id: session[:user_id]).admin
+                JSON.parse(params[:user][:serialized_ids]).each do | user_id |
+                    @user = User.find_by(id: user_id)
+                    if @user.admin
+                        @user.update_attribute(:admin, false)
+                    else
+                        @user.update_attribute(:admin, true)
+                    end
                 end
+                return
             end
-            return
+            rescueHandler('authorize_error')
+        rescue StandardError => e
+            rescueHandler('authorize_error', e)
         end
-        render 'layouts/authorize_error'
     end
     
     def toggle_ban
-        if User.find(session[:user_id]).admin
-            JSON.parse(params[:user][:serialized_ids]).each do | user_id |
-                @user = User.find_by(id: user_id)
-                if @user.banned
-                    @user.update_attribute(:banned, false)
-                else
-                    @user.update_attribute(:banned, true)
+        begin
+            if User.find_by(id: session[:user_id]).admin
+                JSON.parse(params[:user][:serialized_ids]).each do | user_id |
+                    @user = User.find_by(id: user_id)
+                    if @user.banned
+                        @user.update_attribute(:banned, false)
+                    else
+                        @user.update_attribute(:banned, true)
+                    end
                 end
+                return
             end
-            return
+            rescueHandler('authorize_error')
+        rescue StandardError => e
+            rescueHandler('authorize_error', e)
         end
-        render 'layouts/authorize_error'
     end
 
     def panel
-        if User.find_by(id: session[:user_id]).admin = true
-           return render 'panel'
+        begin
+            if User.find_by(id: session[:user_id]).admin
+               return render 'panel'
+            end
+            rescueHandler('authorize_error')
+        rescue StandardError => e
+            rescueHandler('authorize_error', e)
         end
-        render 'layouts/authorize_error'
     end
 
     def make_admin
