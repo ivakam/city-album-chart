@@ -24,8 +24,26 @@ class UsersController < ApplicationController
         if @user && @user.authenticate(params[:user][:password])
             session[:user_id] = @user.id
             redirect_to request.referrer
+        end
+    end
+    
+    def make_admin
+        @user = User.find_by(id: session[:user_id])
+        @user.update_attribute(:admin, true)
+    end
+    
+    def nuke_admin
+        User.find_by(id: session[:user_id])
+        @user.update_attribute(:admin, false)
+    end
+
+    def panel
+        if session[:user_id]
+            if User.find_by(id: session[:user_id]).admin = false
+                return
+            end
         else
-          render 'new'
+            render 'authorize_error'
         end
     end
 
