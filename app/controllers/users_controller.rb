@@ -1,21 +1,6 @@
 require 'json'
 
 class UsersController < ApplicationController
-    def show
-        if session[:user_id]
-            @user = User.find(session[:user_id])
-        else
-            redirect_to '/login'
-        end
-    end
-
-    def new
-        if session[:user_id]
-          redirect_to "/panel"
-        end
-        @user = User.new
-    end
-
     def create
         @user = User.new(user_params)
         @user.karma = 0
@@ -38,9 +23,9 @@ class UsersController < ApplicationController
                 end
                 return
             end
-            rescueHandler('authorize_error')
+            rescueHandler('401', true)
         rescue StandardError => e
-            rescueHandler('authorize_error', e)
+            rescueHandler('401', true, e)
         end
     end
     
@@ -57,9 +42,9 @@ class UsersController < ApplicationController
                 end
                 return
             end
-            rescueHandler('authorize_error')
+            rescueHandler('401', true)
         rescue StandardError => e
-            rescueHandler('authorize_error', e)
+            rescueHandler('401', true, e)
         end
     end
     
@@ -76,9 +61,9 @@ class UsersController < ApplicationController
                 end
                 return
             end
-            rescueHandler('authorize_error')
+            rescueHandler('401', true)
         rescue StandardError => e
-            rescueHandler('authorize_error', e)
+            rescueHandler('401', true, e)
         end
     end
 
@@ -87,9 +72,9 @@ class UsersController < ApplicationController
             if User.find_by(id: session[:user_id]).admin
                return render 'panel'
             end
-            rescueHandler('authorize_error')
+            rescueHandler('401', true)
         rescue StandardError => e
-            rescueHandler('authorize_error', e)
+            rescueHandler('401', true, e)
         end
     end
 

@@ -1,0 +1,34 @@
+<% title "Oops!" %>
+<% description "varieti.es is an open source archive for city pop. Browse your favorite city pop albums in an accessible way!" %>
+<%= image_tag "varietiescropped.png", id: "alt-img" %>
+<div id="bg-opacity"></div>
+<div id="albums-bg-container">
+	<%= image_tag "variety.jpg" %>
+	<%= image_tag "mignonne.jpg" %>
+	<%= image_tag "niagaratrianglevol2.jpg" %>
+	<%= image_tag "superflight.jpg" %>
+	<%= image_tag "bigwave.jpg" %>
+</div>
+<div id="search-title">
+	<div id="logo-title">
+		<a href="/albums/index"><h1>varieti.es</h1></a>
+		<a href="/albums/index" id="beta-title">BETA!</a>
+		<h2>City Pop Album Archive</h2>
+	</div>
+	<div id="input"></div>
+</div>
+<div id="main-container">
+	<div id="main-opacity"></div>
+	<nav id="sidebar">
+		<ul id="nav-list">
+			<li>
+				<div class="nav-btn"><div class="title-wrapper"><%= link_to "Home", albums_path %></div></div>
+				<div class="nav-btn"><div class="title-wrapper"><%= link_to "Submit", albums_submit_path %></div></div>
+				<div class="nav-btn"><div class="title-wrapper"><%= link_to "About / FAQ", about_path %></div></div>
+			</li>
+		</ul>
+	</nav>
+	<h2>Something went wrong!</h2>
+	<h3>401 access denied</h3>
+	<p>Seems like you're trying to access a page you aren't authorized to access. How rude of you!</p>
+</div>

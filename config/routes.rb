@@ -14,7 +14,6 @@ Rails.application.routes.draw do
   post 'reports/create'
   post 'reports/destroy'
 
-  get 'users', to: 'users#show'
   get 'users/panel', to: 'users#panel'
   post 'users/destroy'
   post 'users/toggle-admin', to: 'users#toggle_admin'
@@ -26,5 +25,11 @@ Rails.application.routes.draw do
   
   resources :albums
   
+  def constraint(req)
+    p 'Path: ' + req.path
+    return req.path.scan(/\/rails\/active_storage.+/).empty?
+  end
+  
+  get '*unmatched_route', to: 'application#render_404', constraints: lambda { |request| constraint(request) }
   root 'albums#show'
 end
