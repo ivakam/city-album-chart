@@ -4,10 +4,8 @@ Rails.application.routes.draw do
   get 'albums/submit'
   get 'albums/fetch', to: 'albums#fetch'
   post 'albums/update', to: 'albums#update'
-  post 'albums/report'
   post 'albums/destroy'
   
-  get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
 

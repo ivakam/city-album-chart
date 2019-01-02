@@ -26,10 +26,11 @@ body {
 	}
 }
 
-.slide-form-container {
+.modal {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	flex-direction: column;
 	position: fixed;
 	top: calc(50vh - 350px);
 	left: calc(50vw - 300px);
@@ -39,6 +40,27 @@ body {
 	border-radius: 8px;
 	border: 1px #a7a7a7 solid;
 	transition: 0.3s;
+	.modal-close {
+		position: absolute;
+		top: 0px;
+		right: 0px;
+		font-size: 40px;
+		color: #e8e8e8;
+		opacity: 0.6;
+		&:hover {
+			cursor: pointer;
+			opacity: 0.9;
+		}
+	}
+	> div:first-child {
+		display: flex;
+		justify-content: center;
+		border-top-left-radius: 8px;
+		border-top-right-radius: 8px;
+		align-items: center;
+		width: 100%;
+		border-bottom: 1px #686868 solid;
+	}
 	form {
 		display: flex;
 		height: 100%;
@@ -47,29 +69,7 @@ body {
 		flex-direction: column;
 		justify-content: space-between;
 		align-items: center;
-		> div:first-child {
-			display: flex;
-			justify-content: center;
-			border-top-left-radius: 8px;
-			border-top-right-radius: 8px;
-			align-items: center;
-			width: 100%;
-			background: #2a2a2a;
-			border-bottom: 1px #686868 solid;
-		}
-		.slide-form-close {
-			position: absolute;
-			top: 0px;
-			right: 0px;
-			font-size: 40px;
-			color: #e8e8e8;
-			opacity: 0.6;
-			&:hover {
-				cursor: pointer;
-				opacity: 0.9;
-			}
-		}
-		.slide-form-input-container {
+		.modal-form-input-container {
 			display: flex;
 			width: 100%;
 			padding: 20px;
@@ -140,6 +140,13 @@ body {
 	}
 }
 
+.flash-modal {
+	top: 25vh;
+	left: calc(50vw - 150px);
+	background: #2a2a2a;
+	width: 300px;
+}
+
 #albums-bg-container {
 	display: flex;
 	width: 100%;
@@ -195,17 +202,19 @@ body {
 		input {
 			max-width: 100px;
 			background: #2a2a2a;
-			border: 1px #a7a7a7 solid;
+			border: 1px #686868 solid;
 			margin-right: 6px;
 			&[type=text], &[type=password], &[type=submit] {
 				font-family: 'Roboto';
-				padding: 3px;
+				padding: 5px;
+				font-size: 14px;
 				color: #e8e8e8;
 			}
 			&[type=submit] {
 				cursor: pointer;
 				margin-left: 8px;
 				border-radius: 3px;
+				padding: 5px 10px 5px 10px;
 			}
 		}
 	}
@@ -223,7 +232,7 @@ body {
 		margin-top: 0;
 		background: #2a2a2a;
 		border-radius: 3px;
-		border: 1px #a7a7a7 solid;
+		border: 1px #686868 solid;
 		padding: 3px;
 		width: 100px;
 		text-align: center;
@@ -1057,7 +1066,7 @@ ul {
 	height: 0 !important;
 }
 
-.slide-inactive {
+.modal-inactive {
 	top: -100vh !important;
 }
 

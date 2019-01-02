@@ -3,7 +3,7 @@ $(document).on 'turbolinks:load', ->
 	#Handler for clicking "create account" button
 	
 	$('#register-btn').click ->
-		$('#register-form-container').toggleClass('slide-inactive')
+		$('#register-form-container').toggleClass('modal-inactive')
 		opacity = $('#opaque')
 		opacity.css('background', 'rgba(0, 0, 0, 0.6')
 		opacity.css('z-index', '5')				
@@ -15,14 +15,19 @@ $(document).on 'turbolinks:load', ->
 		$('#opaque').css('background', 'rgba(0,0,0,0)')
 		$('.bigimage').attr('src', '')
 		$('#opaque').css('z-index', '0')
-		$('.slide-form-container').addClass('slide-inactive')
+		$('.modal').addClass('modal-inactive')
 		$('#report-comment').val('')
 
 	$('#opaque').click ->
 		resetFocus()
 	
-	$('.slide-form-close').click ->
+	$('.modal-close').click ->
 		resetFocus()
+		
+	if $('.flash-modal')[0]
+		opacity = $('#opaque')
+		opacity.css('background', 'rgba(0, 0, 0, 0.6')
+		opacity.css('z-index', '5')				
 		
 	if $('body').hasClass('albums show')
 		
@@ -162,7 +167,7 @@ $(document).on 'turbolinks:load', ->
 			e = $(e.target)
 			title = e.parent().find('.title-container h2').html()
 			$('#report-album').attr('value', title)
-			$('#report-form-container').toggleClass('slide-inactive')
+			$('#report-form-container').toggleClass('modal-inactive')
 			opacity = $('#opaque')
 			opacity.css('background', 'rgba(0, 0, 0, 0.6')
 			opacity.css('z-index', '5')
@@ -625,7 +630,7 @@ $(document).on 'turbolinks:load', ->
 		
 		#Handler for sending report
 		
-		$('.slide-form input[type=submit]').click ->
+		$('.modal input[type=submit]').click ->
 			$('.submit-message').toggleClass('shrunk')
 			setTimeout( ->
 				$('.submit-message').toggleClass('shrunk')

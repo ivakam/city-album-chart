@@ -2,16 +2,16 @@
 <% description "varieti.es is an open source archive for city pop. Browse your favorite city pop albums in an accessible way!" %>
 <%= image_tag "varietiescropped.png", id: "alt-img" %>
 <img alt="" class="bigimage" src="">
-<div id="report-form-container" class="slide-form-container slide-inactive">
-	<form id="report-form" class="slide-form" action="/reports/create" accept-charset="UTF-8" data-remote="true" method="post">
-		<div>
-			<h2>Submit a report</h2>
-		</div>
-		<ion-icon name="ios-close" id="report-close" class="slide-form-close"></ion-icon>
+<div id="report-form-container" class="modal modal-inactive">
+	<div>
+		<h2>Submit a report</h2>
+	</div>
+	<ion-icon name="ios-close" id="report-close" class="modal-close"></ion-icon>
+	<form id="report-form" class="modal-form" action="/reports/create" accept-charset="UTF-8" data-remote="true" method="post">
 		<input id="report-album" type="text" name="report[album]" hidden>
 		<input type="text" name="report[report_type]" value="Album" hidden>
 		<input type="text" name="report[thread]" value="" hidden>
-		<div class="slide-form-input-container">
+		<div class="modal-form-input-container">
 			<label for="report-input-container"><p>Report reason:</p></label>
 			<select class='report-reason' name="report[reason]" form="report-form" required>
 				<option value='Spam'><p>Spam</p></option>
