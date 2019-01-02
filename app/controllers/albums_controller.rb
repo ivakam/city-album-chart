@@ -46,7 +46,7 @@ class AlbumsController < ApplicationController
 			@albums = tPop(@albums, params)
 			return
 		end
-		if params[:q] == nil
+		if params[:q] == nil || params[:q] == ''
 			params.each do | key, value |
 				if key == "title" || key == "romaji_artist" || key == "japanese_artist" || key == "year" || key == "flavor"
 					@albums = Album.where("#{key} LIKE ?", '%' + value + '%')
@@ -86,61 +86,54 @@ class AlbumsController < ApplicationController
 	end
 	def create
 		@album = Album.new(params[:album].to_unsafe_hash)
-		if @album.scraper != ""
-			artistStr = "noImg"
-			unless @album.image.file == nil
-				artistStr = @album.image.file.filename
-			end
-			File.open("uploads/" + artistStr + "-scraper.txt", "w") do |f|
-				f.write(@album.scraper)
-			end
+		if @album.cover == nil
+			coverPath = Rails.root.join("app/assets/images/missingcover.jpg")
+			@album.cover.attach(io: File.open(coverPath), filename: "missingcover.jpg")
+			p "ERROR: Could not find cover for #{@album.title}"
 		else
-			trackString = "[\n"
-			trackStringArr = @album.temp_tracklist.split(/\n/)
-			trackStringArr.each_with_index do |currentLine, index|
-				matchArr = currentLine.split(/", /)
-				if matchArr.length == 3
-					trackString << "{\n" +
-					"title: " + matchArr[0] + "\",\n" +
-					"romanization: " + matchArr[1] + "\",\n" + 
-					"duration: \"" + matchArr[2] + "\"\n" +
-					"},\n"
-				end
-				if matchArr.length == 2
-					trackString << "{\n" +
-					"title: " + matchArr[0] + "\",\n" +
-					"romanization: " + "\"" + "\",\n" + 
-					"duration: \"" + matchArr[1] + "\"\n" +
-					"},\n"
-				end
-				if matchArr.length == 1
-					trackString << "{\n"
-					"title: " + matchArr[0] + "\",\n" +
-					"romanization: \"\",\n" + 
-					"duration: \"\"\n" +
-					"},\n"
-				end
-			end
-			trackString << "])"
-			coverString = @album.title.downcase
-			coverString = coverString.gsub(/\s+|\W|\_/, "")
-			coverString = coverString + ".jpg"
-			albumString = 
-				"CreateAlbumWithTracks({\n" +
-				"title: \'" + @album.title + "\',\n" +
-				"romanization: \'" + @album.romanization + "\',\n" +
-				"romaji_artist: \'" + @album.romaji_artist + "\',\n" +
-				"japanese_artist: \'" + @album.japanese_artist + "\',\n" +
-				"year: \'" + @album.year + "\',\n" +
-				"description: \'" + @album.description + "\',\n" +
-				"coverlink: \'" + coverString + "\',\n" +
-				"flavor: \'" + @album.flavor + "\'},\n" + trackString
-			if @album.valid?	
-				File.open("uploads/" + @album.title + ".txt", "w") do |f|
-					f << albumString
-				end
+			p "Successfully attached cover to #{@album.title}"
+		end
+		@album.coverlink = @album.rails_blob_url(@album.cover)
+		@album.thumbnail = @album.rails_representation_url(@album.cover.variant(resize: "200x200"))
+		@album.tags = "#{params[:album][:title]} #{params[:album][:romanization]} #{params[:album][:romaji_artist]} #{params[:album][:japanese_artist]} #{params[:album][:year]} #{params[:album][:description]} #{params[:album][:flavor].gsub(/,/,'')}"
+		parsedTracks = JSON.parse(params[:tracklist])
+		p parsedTracks
+		parsedTracks.each do | t |
+			@album.tags << " #{t[1][:romanization]} #{t[1][:romanization]}"
+		end
+		tempQuality = 0
+		trackDurationCount = 0
+		parsedTracks.each_with_index do | t, i |
+			t[1][:order] = i + 1
+		end
+		hasTracks = parsedTracks.empty?
+		@album.tracks = parsedTracks.map { | t | Track.new(t[1])}
+		parsedTracks.each do | t |
+			if t[1]['duration'].present?
+				trackDurationCount += 1
 			end
 		end
+		if  @album.description.present?
+			tempQuality += 5
+		end
+		if  @album.year.present?
+			tempQuality += 10
+		end
+		if  @album.flavor.present?
+			tempQuality += 5
+		end
+		if hasTracks
+			tempQuality += 30
+		end
+		if trackDurationCount == parsedTracks.length
+			tempQuality += 5
+		end
+		if @album.cover.present?
+			tempQuality += 10
+		end
+		@album.quality = tempQuality
+		@album.save
+		p "Success!"
 	end
 	def update
 		#Change this to admin-only
@@ -148,7 +141,7 @@ class AlbumsController < ApplicationController
 			return
 		end
 		paramAlbum = params[:album]
-		paramTracks = JSON.parse(params[:tracklist])
+		paramTracks = JSON.parse(params[:album][:tracklist])
 		p paramAlbum
 		@album = Album.find_by(title: paramAlbum[:title_old], romaji_artist: paramAlbum[:romaji_artist_old])
 		@album.update(
@@ -183,18 +176,29 @@ class AlbumsController < ApplicationController
 		end
 	end
 	def destroy
-		if User.find(session[:user_id]).admin
-			toBeNuked = JSON.parse(params[:to_be_nuked])
-			p toBeNuked
-			toBeNuked.each do | album |
-				@album = Album.find_by(id: album)
-				@album.destroy
+		begin
+			if User.find(session[:user_id]).admin
+				toBeNuked = JSON.parse(params[:user][:serialized_ids])
+				p toBeNuked
+				toBeNuked.each do | album |
+					@album = Album.find_by(id: album)
+					@album.destroy
+				end
+				return
 			end
-			return
+			rescueHandler('401', true)
+		rescue StandardError => e
+			rescueHandler('401', true, e)
 		end
-		render 'layouts/authorize_error'
+	end
+	def submit
+		if session[:user_id]
+			render 'submit'
+		else
+			rescueHandler('login_barrier', true)
+		end
 	end
 	private def album_params
-		params.permit(:delete_list, :description, :description_old, :tracklist, :romanization, :romanization_old, :duration, :duration_old, :image, :coverlink, :temp_tracklist, :thumbnail, :title, :title_old, :romaji_artist, :romaji_artist_old, :japanese_artist, :japanese_artist_old, :flavor, :flavor_old, :year, :year_old, :q, :offset, :limit, :sort, :sort_type, :q_track, :total_count)
+		params.permit(:delete_list, :description, :description_old, :tracklist, :romanization, :romanization_old, :duration, :duration_old, :image, :coverlink, :thumbnail, :title, :title_old, :romaji_artist, :romaji_artist_old, :japanese_artist, :japanese_artist_old, :flavor, :flavor_old, :year, :year_old, :q, :offset, :limit, :sort, :sort_type, :q_track, :total_count, album: {})
 	end
 end

@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'albums/submit'
   get 'albums/fetch', to: 'albums#fetch'
   post 'albums/update', to: 'albums#update'
+  post 'albums/create'
   post 'albums/destroy'
   
   post 'login', to: 'sessions#create'

@@ -15,6 +15,7 @@ body {
 	flex-direction: column;
 	align-items: center;
 	overflow: hidden;
+	min-height: 100vh;
 	#bg-opacity {
 		width: 100%;
 		height: 100vh;
@@ -118,17 +119,11 @@ body {
 	textarea {
 		width: calc(100% - 10px);
 		height: 400px;
-		&:focus {
-			border: 1px royalblue solid;
-		}
 	}
 	input[type="submit"] {
 		width: 200px;
 		margin-top: 30px;
 		margin-bottom: 20px;
-		&:hover {
-			cursor: pointer;
-		}
 	}
 	.submit-message {
 		transition: 0.3s;
@@ -211,7 +206,6 @@ body {
 				color: #e8e8e8;
 			}
 			&[type=submit] {
-				cursor: pointer;
 				margin-left: 8px;
 				border-radius: 3px;
 				padding: 5px 10px 5px 10px;
@@ -482,6 +476,7 @@ body {
 	align-items: center;
 	width: 100%;
 	position: relative;
+	flex-grow: 3;
 	#main-opacity {
 		opacity: 0.3;
 		background: $body-bg-color;
@@ -833,7 +828,6 @@ body {
 						}
 					}
 				}
-
 				.report-form {
 					display: flex;
 					flex-direction: row;
@@ -847,7 +841,6 @@ body {
 					}
 				}
 			}
-
 			.scroll-arrow-up, .scroll-arrow-down {
 				font-size: 40px;
 				color: #ffffff;
@@ -870,14 +863,15 @@ body {
 			overflow: hidden;
 			position: relative;
 			input, textarea {
+				font-family: 'Roboto';
 				background: #171717;
 				padding: 4px;
 				border: 1px #686868 solid;
-			}
-			input[type=text], textarea[type=text] {
-				font-family: 'Roboto';
 				color: #e3e3e3;
 				font-size: 18px;
+			}
+			input[type="submit"] {
+				background: #2a2a2a;
 			}
 			.field-container {
 				display: flex;
@@ -909,91 +903,6 @@ body {
 					width: 200px;
 					margin-left: 8px;
 				}
-				.tracklist-submit {
-					height: 449px;
-					overflow-y: scroll;
-					margin-right: 8px;
-					.tracklist-edit-container {
-						display: flex;
-						flex-direction: column;
-						align-items: center;
-						.track-add-btn {
-							font-size: 40px;
-							color: #171717;
-							transition: 0.2s;
-						}
-						.track-add-btn:hover {
-							cursor: pointer;
-							color: #e3e3e3;
-						}
-						.track-input-container {
-							display: flex;
-							margin-bottom: 5px;
-							align-items: center;
-							.draggable-area {
-								width: 15px;
-								height: 30px;
-								background: #171717;
-								border-top: 1px #686868 solid;
-								border-left: 1px #686868 solid;
-								border-bottom: 1px #686868 solid;
-								position: relative;
-								&:hover {
-									cursor: grab;
-									cursor: -webkit-grab;
-									cursor: -moz-grab;
-								}
-								&:before {
-									content: '.';
-									position: absolute;
-									left: 2px;
-									top: -10px;
-									font-size: 20px;
-									line-height: 20px;
-									color: #686868;
-									text-shadow: 5px 9px #686868,
-												0 9px #686868,
-												5px 0px #686868,
-												5px 18px,
-												0 18px;
-								}
-							}
-							.track-delete-btn {
-								font-size: 32px;
-								color: #e3e3e3;
-								opacity: 0.8;
-								margin-right: 8px;
-								transition: 0.2s;
-							}
-							.track-delete-btn:hover {
-								opacity: 1;
-								cursor: pointer;
-							}
-							input {
-								max-width: 175px;
-								&:nth-of-type(3n+0) {
-									background: #2a2a2a;
-								}
-							}
-							&:nth-of-type(even) input, &:nth-of-type(even) .draggable-area {
-								background: #2a2a2a;
-								&:nth-of-type(3n+0) {
-									background: #171717;
-								}
-							}
-							.title, .duration, .romanization {
-								border-top: 1px #686868 solid;
-								border-right: none;
-								border-bottom: 1px #686868 solid;
-								border-left: none;
-							}
-							.duration {
-								max-width: 50px;
-								border-right: 1px #686868 solid;
-							}
-						}
-					}
-				}
 			}
 			form {
 				display: flex;
@@ -1005,6 +914,111 @@ body {
 				flex-grow: 2;
 			}
 		}
+	}
+}
+
+.tracklist-submit {
+	height: 449px;
+	margin-right: 8px;
+	overflow-y: scroll;
+	.tracklist-edit-container {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		.track-add-btn {
+			font-size: 40px;
+			color: #e3e3e3;
+			opacity: 0.6;
+			transition: 0.2s;
+			align-self: center;
+		}
+		.track-add-btn:hover {
+			cursor: pointer;
+			opacity: 1;
+		}
+		.track-input-container {
+			display: flex;
+			margin-bottom: 5px;
+			align-items: center;
+			.draggable-area {
+				width: 15px;
+				height: 30px;
+				background: #171717;
+				border-top: 1px #686868 solid;
+				border-left: 1px #686868 solid;
+				border-bottom: 1px #686868 solid;
+				position: relative;
+				&:hover {
+					cursor: grab;
+					cursor: -webkit-grab;
+					cursor: -moz-grab;
+				}
+				&:before {
+					content: '.';
+					position: absolute;
+					left: 2px;
+					top: -10px;
+					font-size: 20px;
+					line-height: 20px;
+					color: #686868;
+					text-shadow: 5px 9px #686868,
+								0 9px #686868,
+								5px 0px #686868,
+								5px 18px,
+								0 18px;
+				}
+			}
+			.track-delete-btn {
+				font-size: 32px;
+				color: #e3e3e3;
+				opacity: 0.8;
+				margin-right: 8px;
+				transition: 0.2s;
+			}
+			.track-delete-btn:hover {
+				opacity: 1;
+				cursor: pointer;
+			}
+			input {
+				max-width: 175px !important;
+				&:nth-of-type(2n+0) {
+					background: #2a2a2a !important;
+				}
+			}
+			&:nth-of-type(even) input, &:nth-of-type(even) .draggable-area {
+				background: #2a2a2a !important;
+				&:nth-of-type(2n+0) {
+					background: #171717 !important;
+				}
+			}
+			.title, .duration, .romanization {
+				border-top: 1px #686868 solid !important;
+				border-right: none !important;
+				border-bottom: 1px #686868 solid !important;
+				border-left: none !important;
+				&:focus {
+					border-bottom: 1px royalblue solid !important;
+					border-top: 1px royalblue solid !important;
+				}
+			}
+			.duration {
+				max-width: 50px !important;
+				border-right: 1px #686868 solid !important;
+			}
+		}
+	}
+}
+
+
+input[type="text"]:focus, input[type="password"]:focus ,textarea:focus {
+	border: 1px royalblue solid !important;
+}
+
+input[type="submit"] {
+	transition: border .1s;
+	&:hover {
+		cursor: pointer;
+		border: 1px #e3e3e3 solid !important;
 	}
 }
 

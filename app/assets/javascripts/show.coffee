@@ -281,10 +281,10 @@ $(document).on 'turbolinks:load', ->
 					editTrackStr += "<div class='track-input-container'>
 									<span class='draggable-area'></span>
 									<input class='title' placeholder='Title' value='" + track.title.replace("'", '&#39;') + "' type='text'>
-									<input class='title_old' value='" + track.title.replace("'", '&#39;') + "' type='text' hidden>
 									<input class='romanization' placeholder='Romanization' value='" + track.romanization.replace("'", '&#39;') + "' type='text' >
-									<input class='romanization_old' value='" + track.romanization.replace("'", '&#39;') + "' type='text' hidden>
 									<input class='duration' placeholder='M:S' value='" + track.duration + "' type='text'>
+									<input class='title_old' value='" + track.title.replace("'", '&#39;') + "' type='text' hidden>
+									<input class='romanization_old' value='" + track.romanization.replace("'", '&#39;') + "' type='text' hidden>
 									<input class='duration_old' value='" + track.duration + "' type='text' hidden>
 									<ion-icon name='ios-close' class='track-delete-btn'></ion-icon>
 									</div>"
@@ -654,6 +654,7 @@ $(document).on 'turbolinks:load', ->
 			input = input.target.value
 			$('#splash-container').empty()
 			$('.spinner').removeClass('hidden')
+			console.log(input)
 			jsonAlbums = fetch("#{host}q=#{input}&q_track=true&limit=40")
 			.then (response) ->
 				return response.json()
@@ -673,7 +674,7 @@ $(document).on 'turbolinks:load', ->
 			clearTimeout(delayTimer)
 			delayTimer = setTimeout( ->
 				search(e)
-			, 150)
+			, 300)
 		)
 		
 		#Get search field query
