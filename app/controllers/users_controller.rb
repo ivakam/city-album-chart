@@ -1,6 +1,18 @@
 require 'json'
 
 class UsersController < ApplicationController
+    def show
+        @user = User.find_by(username: params[:username])
+    end
+    
+    def update
+        @user = User.find_by(id: params[:user][:id])
+        if params[:user][:avatar].present?
+            @user.avatar.attach(params[:user][:avatar])
+            redirect_to request.referrer, notice: 'Avatar successfully updated!'
+        end
+    end
+    
     def create
         @user = User.new(user_params)
         @user.karma = 0

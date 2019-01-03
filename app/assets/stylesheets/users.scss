@@ -1,3 +1,89 @@
-// Place all the styles related to the users controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+#profile-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 20px;
+    #profile-header {
+        display: flex;
+        align-self: flex-end;
+        flex-direction: row-reverse;
+        padding: 0 20px 20px 20px;
+        border-bottom: 1px #8c8c8c solid;
+        height: 180px;
+        > div:first-child {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            margin-left: 30px;
+            padding-left: 30px;
+            border-left: 1px #8c8c8c solid;
+            label { 
+                min-width: 125px;
+                min-height: 125px;
+                z-index: 3;
+            }
+            h2 {
+                margin: 5px 0 0 0;
+            }
+            input {
+                opacity: 0;
+                width: 0;
+                height: 0;
+            }
+            > form {
+                min-width: 125px;
+                max-width: 125px;
+                min-height: 125px;
+                max-height: 125px;
+                border-radius: 50%;
+                overflow: hidden;
+                position: relative;
+                display: flex;
+                > div {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    position: absolute;
+                    top: 0;
+                    bottom: 0;
+                    right: 0;
+                    left: 0;
+                    background: #2a2a2a;
+                    p {
+                        color: white;
+                        font-size: 18px;
+                    }
+                }
+                img {
+                    height: 125px;
+                    width: 125px;
+                    transition: 0.3s;
+                    opacity: 1;
+                    &:hover {
+                        cursor: pointer;
+                        filter: blur(4px);
+                        opacity: 0.3;
+                    }
+                }
+            }
+        }
+        .profile-info-container {
+            margin-left: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            > div {
+                display: flex;
+                padding: 5px;
+                border-bottom: 1px #686868 solid;
+                > p {
+                    margin-right: 10px;
+                }
+            }
+        }
+    }
+    p {
+        margin: 0;
+    }
+}

@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   delete 'logout', to: 'sessions#destroy'
 
   post 'users/create', to: 'users#create'
+  post 'users/update'
+  get 'users/:username', to: 'users#show', as: 'user'
 
   post 'reports/create'
   post 'reports/destroy'

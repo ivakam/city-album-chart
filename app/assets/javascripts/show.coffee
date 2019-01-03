@@ -28,6 +28,9 @@ $(document).on 'turbolinks:load', ->
 		opacity = $('#opaque')
 		opacity.css('background', 'rgba(0, 0, 0, 0.6')
 		opacity.css('z-index', '5')				
+		setTimeout( ->
+			resetFocus()
+		, 3000)
 		
 	if $('body').hasClass('albums show')
 		
