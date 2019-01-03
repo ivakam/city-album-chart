@@ -40,6 +40,7 @@
 			<ul id="user-list">
 				<li>
 					<h3 class="checkbox-container"></h3>
+					<h3>Id</h3>
 					<h3>Username</h3>
 					<h3>Email</h3>
 					<h3>Karma</h3>
@@ -54,6 +55,7 @@
 				<li>
 					<ul>
 						<li class="checkbox-container"><input type="checkbox" value="<%= user.id %>"></li>
+						<li><p><%= user.id %></p></li>
 						<li><p><%= user.username %></p></li>
 						<li><p><%= user.email %></p></li>
 						<li><p><%= user.karma %></p></li>
@@ -74,6 +76,7 @@
 			<ul>
 				<li>
 					<h3 class="checkbox-container"></h3>
+					<h3>Id</h3>
 					<h3>Type</h3>
 					<h3>Reason</h3>
 					<h3>Comment</h3>
@@ -84,6 +87,7 @@
 				<li>
 					<ul>
 						<li class="checkbox-container"><input type="checkbox" value="<%= report.id %>"></li>
+						<li><p><%= report.id %></p></li>
 						<li><p><%= report.report_type %>: <%= report.album + report.thread %></p></li>
 						<li><p><%= report.reason %></p></li>
 						<li><p><%= report.comment %></p></li>
@@ -104,21 +108,25 @@
 			<ul>
 				<li>
 					<h3 class="checkbox-container"></h3>
+					<h3>Id</h3>
 					<h3>Title</h3>
 					<h3>Artist</h3>
 					<h3>Year</h3>
 					<h3>Flavor</h3>
 					<h3>Quality</h3>
+					<h3>Submitter</h3>
 				</li>
 				<% Album.all.each do | album | %>
 				<li>
 					<ul>
 						<li class="checkbox-container"><input type="checkbox" value="<%= album.id %>"></li>
+						<li><p><%= album.id %></p></li>
 						<li><p><%= album.title %> <i><%= album.romanization %></i></p></li>
 						<li><p><%= album.japanese_artist %><i><%= album.romaji_artist %></i></p></li>
 						<li><p><%= album.year %></p></li>
 						<li><p><%= album.flavor %></p></li>
 						<li><p><%= album.quality %></p></li>
+						<li><p><%= User.find_by(id: album.user_id).username %></p></li>
 					</ul>
 				</li>
 				<% end %>

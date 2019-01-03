@@ -111,7 +111,7 @@
                 <br>
                 Finally, all submissions are manually looked over by me. I want this archive to stay high-quality. No amount of code will overcome that, unfortunately. Thanks for your contribution.</p>
     	    </div>
-            <%= form_with scope: :album, html: { multipart: true }, url: albums_path, remote: true do |form| %>
+            <%= form_with scope: :album, html: { multipart: true }, url: "#{root_url}albums/create", data_remote: true do |form| %>
                 <input type="hidden" name="form_type" value="submit">
                 <input id="hidden-tracklist" type="text" name="tracklist" hidden>
                 <div id="form-container">
@@ -224,8 +224,9 @@
                                 </div>
                             </div>
                             <div class="form-field submit-btn">
-                                <p><%= form.label :"Album Cover (jpg or jpeg. Max 500Kb. Preferably under 100Kb.)" %></p>
-                                <%= form.file_field :cover %>
+                                <p>Album Cover (jpg or jpeg. Max 500Kb. Preferably under 100Kb.)</p>
+                                <label for="album-cover"><ion-icon class="cover-browse" name="ios-folder-open"></ion-icon></label>
+                                <%= form.file_field :cover, id: 'album-cover' %>
                             </div>
                         </div>
                         <div class="form-field" id="scraper-input">

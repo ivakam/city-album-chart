@@ -4,7 +4,7 @@
 	<% end %>
 	<div id="profile-nav">
 		<% if fetch_user %>
-			<%= link_to 'Profile', "#{root_url}users/#{fetch_user.username}" %>
+			<%= link_to 'Profile', "#{root_url}users/#{fetch_user.username.downcase}" %>
 			<% if fetch_user.admin %>
 				<%= link_to 'Panel', "#{root_url}users/panel" %>
 			<% end %>

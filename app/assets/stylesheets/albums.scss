@@ -709,6 +709,19 @@ body {
 				position: relative;
 				//height: 410px;
 				//margin-top: 20px;
+				.contributor {
+					position: absolute;
+					bottom: 8px;
+					right: 20px;
+					padding-left: 10px;
+					border-left: 1px #686868 solid;
+					p {
+						font-size: 16px !important;
+					}
+					a {
+						text-decoration: underline;
+					}
+				}
 				.link-image-container {
 					display: flex;
 					align-items: center;
@@ -884,17 +897,23 @@ body {
 					font-family: 'Roboto';
 					font-size: 20px;
 					border-radius: 3px;
-					border: 1.3px #e3e3e3 solid;
-					transition: 0.2s;
+					border: 1.3px #686868 solid;
+					transition: 0.1s;
+					width: auto;
 				}
 				> input:hover {
 					cursor: pointer;
-					border: 1.3px white solid;
+					border: 1px #e8e8e8 solid;
+				}
+				.divider {
+					width: 0;
+					height: 200px;
+					margin: 0 25px 0 35px;
+					border-left: 1px #8c8c8c solid;
 				}
 				.input-field-container, .description-field {
 					display: flex;
 					flex-direction: column;
-					margin-right: 45px;
 					width: 400px;
 					height: 100%;
 					justify-content: space-between;

@@ -32,12 +32,13 @@ input[type=text], input[type=password] {
         max-width: 80vw;
         #submit-instructions {
             flex-shrink: 2;
-            padding: 0 20px 0 20px;
             h2 {
                 margin: 0;
             }
             p {
                 font-size: 16px;
+                padding-right: 30px;
+                border-right: 1px #686868 solid;
             }
         }
         form {
@@ -49,18 +50,45 @@ input[type=text], input[type=password] {
             textarea {
                 width: calc(100% - 12px);
             }
-            .submit-btn input {
-                font-family: "Roboto";
-                font-size: 20px;
-                cursor: pointer;
-                border: none;
-                background: none;
-                color: #e3e3e3;
+            .submit-btn {
+                overflow: hidden;
+                position: relative;
+                padding-top: 30px;
+                padding-bottom: 30px;
+                border-top: 1px #686868 solid;
+                border-bottom: 1px #686868 solid;
+                .cover-browse {
+                    color: #e3e3e3;
+                    font-size: 40px;
+                    transition: 0.1s;
+                    padding-bottom: 40px;
+                    margin-top: 5px;
+                    &:hover {
+                        cursor: pointer;
+                        color: white;
+                    }
+                }
+                input {
+                    font-family: "Roboto";
+                    font-size: 20px;
+                    cursor: pointer;
+                    border: none;
+                    background: none;
+                    color: #e3e3e3;
+                    position: absolute;
+                    left: -105px;
+                    bottom: 35px;
+                    width: auto;
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
             }
             .save-container {
                 display: flex;
                 flex-direction: column;
                 width: 100%;
+                align-items: center;
                 h2 {
                     height: 0;
                     transition: height 0.1s;
@@ -104,7 +132,7 @@ input[type=text], input[type=password] {
                     }
                     > div:first-of-type {
                         display: flex;
-                        margin-top: 15px;
+                        margin: 15px 0 15px 0;
                     }
                     .form-divider {
                         display: flex;

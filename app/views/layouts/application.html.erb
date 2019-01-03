@@ -43,21 +43,21 @@
 						<div>
 							<div>
 								<label for="username"><p>Username*</p></label>
-								<input type="text" name="user[username]" placeholder="HosonoLover123" required>
+								<input id="username" type="text" name="user[username]" placeholder="HosonoLover123" required>
 							</div>
 							<div>
 								<label for="password"><p>Password*</p></label>
-								<input type="password" name="user[password]" placeholder="Password (min 8 characters)" minlength="8" required>
+								<input id="password" type="password" name="user[password]" placeholder="Password (min 8 characters)" minlength="8" required>
 							</div>
 							<div>
 								<label for="email"><p>E-mail address*</p></label>
-								<input type="email" name="user[email" placeholder="dorothy@tinpan.com" required>
+								<input id="email" type="email" name="user[email" placeholder="dorothy@tinpan.com" required>
 							</div>
 						</div>
 						<div>
 							<div>
 								<label for="gender"><p>Gender</p></label>
-								<select class='gender-input' name="user[gender]" form="register-form" required>
+								<select id="gender" class='gender-input' name="user[gender]" form="register-form" required>
 									<option value="Male"><p>Male</p></option>
 									<option value="Female"><p>Female</p></option>
 									<option value="Other"><p>Other</p></option>
@@ -66,7 +66,7 @@
 							</div>
 							<div>
 								<label for="birth-year"><p>Year of birth</p></label>
-								<select class="age-input" name="user[birth_year]" form="register-form" required>
+								<select id="birth-year" class="age-input" name="user[birth_year]" form="register-form" required>
 									<option value="Unknown"><p>I'd rather not specify</p></option>
 									<option value="2019"><p>2019</p></option>
 									<option value="2018"><p>2018</p></option>

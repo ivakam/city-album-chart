@@ -32,12 +32,12 @@
     	<h2>You don't have access to this page. Please log in to continue.</h2>
         <form enctype="multipart/form-data" action="<%= root_url %>login" accept-charset="UTF-8" data-remote="true" method="post">
             <div>
-                <label for="username"><h3>Username</h3></label>
-                <input placeholder="Username" type="text" name="session[username]">
+                <label for="barrier-username"><h3>Username</h3></label>
+                <input id="barrier-username" placeholder="Username" type="text" name="session[username]">
             </div>
             <div>
-                <label for="password"><h3>Password</h3></label>
-                <input placeholder="Password" type="password" name="session[password]">
+                <label for="barrier-password"><h3>Password</h3></label>
+                <input id="barrier-password" placeholder="Password" type="password" name="session[password]">
             </div>
             <input value="Login" type="submit" name="commit">
             <a class="register-btn">No account? Register here</a>

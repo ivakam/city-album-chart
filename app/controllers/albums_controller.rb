@@ -22,6 +22,7 @@ class AlbumsController < ApplicationController
 			album.attributes.each_pair do | key, value |
 				albumWithTracks[key] = value
 			end
+			albumWithTracks['contributor'] = User.find_by(id: album.user_id).username
 			tempTracks = []
 			tracks.each do | track |
 				if track["album_id"] == album["id"]
@@ -86,7 +87,7 @@ class AlbumsController < ApplicationController
 	end
 	def create
 		@album = Album.new(params[:album].to_unsafe_hash)
-		if @album.cover == nil
+		if !@album.cover.attached?
 			coverPath = Rails.root.join("app/assets/images/missingcover.jpg")
 			@album.cover.attach(io: File.open(coverPath), filename: "missingcover.jpg")
 			p "ERROR: Could not find cover for #{@album.title}"
@@ -96,23 +97,26 @@ class AlbumsController < ApplicationController
 		@album.coverlink = @album.rails_blob_url(@album.cover)
 		@album.thumbnail = @album.rails_representation_url(@album.cover.variant(resize: "200x200"))
 		@album.tags = "#{params[:album][:title]} #{params[:album][:romanization]} #{params[:album][:romaji_artist]} #{params[:album][:japanese_artist]} #{params[:album][:year]} #{params[:album][:description]} #{params[:album][:flavor].gsub(/,/,'')}"
-		parsedTracks = JSON.parse(params[:tracklist])
-		p parsedTracks
-		parsedTracks.each do | t |
-			@album.tags << " #{t[1][:romanization]} #{t[1][:romanization]}"
-		end
 		tempQuality = 0
-		trackDurationCount = 0
-		parsedTracks.each_with_index do | t, i |
-			t[1][:order] = i + 1
+		if params[:tracklist] != ''
+				parsedTracks = JSON.parse(params[:tracklist])
+			parsedTracks.each do | t |
+				@album.tags << " #{t[1][:romanization]} #{t[1][:romanization]}"
+			end
+			trackDurationCount = 0
+			parsedTracks.each_with_index do | t, i |
+				t[1][:order] = i + 1
+			end
+			parsedTracks.each do | t |
+				if t[1]['duration'].present?
+					trackDurationCount += 1
+				end
+			end
+			@album.tracks = parsedTracks.map { | t | Track.new(t[1])}
+		else
+			parsedTracks = []
 		end
 		hasTracks = parsedTracks.empty?
-		@album.tracks = parsedTracks.map { | t | Track.new(t[1])}
-		parsedTracks.each do | t |
-			if t[1]['duration'].present?
-				trackDurationCount += 1
-			end
-		end
 		if  @album.description.present?
 			tempQuality += 5
 		end
@@ -134,6 +138,7 @@ class AlbumsController < ApplicationController
 		@album.quality = tempQuality
 		@album.save
 		p "Success!"
+		redirect_to '/albums/submit', notice: 'Album submitted!'
 	end
 	def update
 		#Change this to admin-only

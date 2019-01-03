@@ -15,6 +15,11 @@ def CreateAlbumWithTracks(albumParam, tracks = [])
 	currentAlbum.coverlink = currentAlbum.rails_blob_url(currentAlbum.cover)
 	currentAlbum.thumbnail = currentAlbum.rails_representation_url(currentAlbum.cover.variant(resize: "200x200"))
     currentAlbum.tags = "#{albumParam[:title]} #{albumParam[:romanization]} #{albumParam[:romaji_artist]} #{albumParam[:japanese_artist]} #{albumParam[:year]} #{albumParam[:description]} #{albumParam[:flavor].gsub(/,/,'')}"
+    if albumParam[:user_id].present?
+    	currentAlbum.user_id = albumParam[:user_id]
+    else
+    	currentAlbum.user_id = 1
+    end
     tracks.each do |t|
         currentAlbum.tags << " #{t[:title]} #{t[:romanization]}"
     end
