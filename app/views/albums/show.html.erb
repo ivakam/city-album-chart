@@ -47,32 +47,8 @@
 	</div>
 </div>
 <div id="main-container">
-	<div id="main-opacity"></div>
-	<nav id="sidebar">
-		<ul id="nav-list">
-			<li>
-				<div class="nav-btn"><div class="title-wrapper"><%= link_to "Home", albums_path %></div></div>
-				<div class="nav-btn"><div class="title-wrapper"><%= link_to "Submit", albums_submit_path %></div></div>
-				<div class="nav-btn"><div class="title-wrapper"><%= link_to "About / FAQ", about_path %></div></div>
-			</li>
-			<li>
-				<div class="nav-btn" id="filters">
-					<div class="title-wrapper">
-						<a class="btn-title" id="filter">Sort by:</a>
-					</div>
-					<ul id="sort-list">
-						<li class="sort-btn tooltip"><a>Title</a><span class="tooltiptext"><a>Sort by title, A-Z/Z-A.</a></span><ion-icon name="ios-arrow-down"></ion-icon></li>
-						<li class="sort-btn tooltip"><a>Artist</a><span class="tooltiptext"><a>Sort by artist, A-Z/Z-A.</a></span><ion-icon name="ios-arrow-down"></ion-icon></li>
-						<li class="sort-btn tooltip"><a>Year</a><span class="tooltiptext"><a>Sort by year, ascending/descending.</a></span><ion-icon name="ios-arrow-down"></ion-icon></li>
-						<li class="sort-btn tooltip"><a>Flavor</a><span class="tooltiptext"><a>Sort by flavor, A-Z/Z-A.</a></span><ion-icon name="ios-arrow-down"></ion-icon></li>
-						<li class="sort-btn tooltip"><a>Quality</a><span class="tooltiptext"><a>Sort by quality, ascending/descending (checks a number of criteria including presence of tracklist, cover, description, etc. to determine how well fleshed out the entry is - Descending is the default sort).</a></span><ion-icon name="ios-arrow-down"></ion-icon></li>
-					</ul>
-				</div>
-				<!-- Maybe this will be a reality at some point. Who knows? -->
-				<!--<div class="nav-btn" id="random"><div class="title-wrapper"><a class="btn-title">Random</a></div></div>-->
-			</li>
-		</ul>
-	</nav>
+    <div id="main-opacity"></div>
+	<%= render 'partials/navbar_full' %>
 	<%= image_tag "spinner.gif", class: "spinner hidden" %>
 	<ul id="splash-container">
 	</ul>

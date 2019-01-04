@@ -1,4 +1,4 @@
-<% title "Submit" %>
+<% title @user.username + '\'s profile' %>
 <% description "varieti.es is an open source archive for city pop. Browse your favorite city pop albums in an accessible way!" %>
 <%= image_tag "varietiescropped.png", id: "alt-img" %>
 <div id="bg-opacity"></div>
@@ -15,20 +15,10 @@
         <a href="/albums/index" id="beta-title">BETA!</a>
         <h2>City Pop Album Archive</h2>
     </div>
-    <div id="input">
-</div>
 </div>
 <div id="main-container">
     <div id="main-opacity"></div>
-    <nav id="sidebar">
-        <ul id="nav-list">
-            <li>
-                <div class="nav-btn"><div class="title-wrapper"><%= link_to "Home", albums_path %></div></div>
-                <div class="nav-btn"><div class="title-wrapper"><%= link_to "Submit", albums_submit_path %></div></div>
-                <div class="nav-btn"><div class="title-wrapper"><%= link_to "About / FAQ", about_path %></div></div>
-            </li>
-        </ul>
-    </nav>
+    <%= render 'partials/navbar_slim' %>
     <div id="profile-wrapper">
         <div id="profile-header">
             <div>

@@ -1,4 +1,65 @@
+require 'faker'
+Faker::UniqueGenerator.clear
+(0..100).each do | i |
+	user = User.new()
+	user.username = Faker::Internet.unique.username
+	user.email = Faker::Internet.unique.email
+	user.password = Faker::Internet.password(8, 16)
+	user.karma = rand(-5000..5000)
+	user.admin = rand(0..50) > 47 ? true : false
+	user.banned = false
+	user.gender = rand(0..1) == 1 ? 'Male' : 'Female'
+	user.birth_year = rand(1900..2019)
+	user.location = Faker::Address.country
+	user.bio = Faker::MostInterestingManInTheWorld.quote
+	user.save
+	p "User #{i} generated"
+end
+
+@usercount = User.all.length
+
+(0..5).each do | i |
+	thread = ForumThread.new()
+	thread.title = Faker::Book.title
+	thread.category = 'rules'
+	thread.score = rand(-50000..50000)
+	thread.stickied = true
+	thread.archived = false
+	thread.locked = false
+	thread.user = User.find(rand(1..@usercount))
+	thread.body = Faker::HitchhikersGuideToTheGalaxy.quote
+	thread.save
+	p "Thread #{i} generated"
+end
+
+(0..500).each do | i |
+	thread = ForumThread.new()
+	thread.title = Faker::Book.title
+	thread.category = 'rules'
+	thread.score = rand(-50000..50000)
+	thread.stickied = false
+	thread.archived = false
+	thread.locked = false
+	thread.user = User.find(rand(1..@usercount))
+	thread.body = Faker::HitchhikersGuideToTheGalaxy.quote
+	thread.save
+	p "Thread #{i} generated"
+end
+
+ForumThread.all.each do | parentThread |
+	(1..rand(5..200)).each do | i |
+		reply = Post.new()
+		reply.user = User.find(rand(1..@usercount))
+		reply.forum_thread = parentThread
+		reply.body = Faker::HitchhikersGuideToTheGalaxy.quote
+		reply.score = rand(-5000..5000)
+		reply.save
+	end
+	p "Thread #{i + ' ' + parentThread.title} populated"
+end
+
 def CreateAlbumWithTracks(albumParam, tracks = [])
+	return
 	currentAlbum = Album.new(albumParam)
 	coverName = currentAlbum.title.downcase.gsub(/[^[\u3000-\u303F][\u3040-\u309F][\u30A0-\u30FF][\uFF00-\uFFEF][\u4E00-\u9FAF][\u2605-\u2606][\u2190-\u2195]\u203B\p{L}\d]/, '')
 	coverPath = Dir.glob(Rails.root.join("app/assets/images/#{coverName}.*")).first

@@ -3,6 +3,9 @@ require 'json'
 class UsersController < ApplicationController
     def show
         @user = User.find_by(username: params[:username])
+        if @user == nil
+            rescueHandler('404')
+        end
     end
     
     def update

@@ -6,7 +6,7 @@
 		<% if fetch_user %>
 			<%= link_to 'Profile', "#{root_url}users/#{fetch_user.username.downcase}" %>
 			<% if fetch_user.admin %>
-				<%= link_to 'Panel', "#{root_url}users/panel" %>
+				<%= link_to 'Panel', "#{root_url}panel" %>
 			<% end %>
 		<% else %>
 			<%= link_to 'Profile', "users/" %>

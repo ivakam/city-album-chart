@@ -2,6 +2,8 @@ class User < ApplicationRecord
 	include Rails.application.routes.url_helpers
 
 	has_one_attached :avatar
+	has_many :forum_threads
+	has_many :posts
 
     before_save { self.email = email.downcase }
     validates :username, presence: true, uniqueness: { case_sensitive: false }

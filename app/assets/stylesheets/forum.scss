@@ -1,0 +1,83 @@
+#board-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    position: relative;
+    #forum-opacity {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 1;
+        opacity: 0.5;
+        background: #1b1b1b;
+    }
+    > * {
+        z-index: 3;
+    }
+    #board-list {
+        display: flex;
+        flex-direction: column;
+        width: 60vw;
+        border-left: 2px #e3e3e3 solid;
+        padding: 15px;
+        margin: 30px;
+        h2 {
+            align-self: center;
+        }
+        h3 {
+            margin: 0;
+        }
+        p {
+            margin: 0;
+        }
+        a {
+            text-decoration: underline;
+            transition: 0.1s;
+            &:hover {
+                color: white;
+                cursor: pointer;
+            }
+        }
+        > li {
+            display: flex;
+            flex-direction: column;
+            > div {
+                display: flex;
+                align-items: center;
+                ion-icon {
+                    width: 50px;
+                    height: 50px;
+                    font-size: 50px;
+                    color: #e3e3e3;
+                    transition: 0.1s;
+                    &:hover {
+                        color: white;
+                        cursor: pointer;
+                    }
+                }
+                .board-title-container {
+                    margin: 5px;
+                    padding: 5px;
+                    display: flex;
+                    border-left: 1px #686868 solid;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    flex-grow: 5;
+                }
+                > div:last-child {
+                    margin-right: 30px;
+                }
+            }
+        }
+    }
+    .divider {
+        height: 0;
+        width: 80%;
+        border-top: 1px #686868 solid;
+        margin: 25px 0 25px 0;
+        align-self: center;
+    }
+}

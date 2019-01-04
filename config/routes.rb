@@ -10,21 +10,29 @@ Rails.application.routes.draw do
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
 
-  post 'users/create', to: 'users#create'
-  post 'users/update'
-  get 'users/:username', to: 'users#show', as: 'user'
-
   post 'reports/create'
   post 'reports/destroy'
 
-  get 'users/panel', to: 'users#panel'
+  get 'panel', to: 'users#panel'
+  get 'users/:username', to: 'users#show', as: 'user'
   post 'users/destroy'
+  post 'users/create'
+  post 'users/update'
   post 'users/toggle-admin', to: 'users#toggle_admin'
   post 'users/toggle-ban', to: 'users#toggle_ban'
   
   #Helper tools - MUST BE REMOVED IN PROD!!!
-  get 'users/make-admin', to: 'users#make_admin'
-  get 'users/nuke-admin', to: 'users#nuke_admin'
+  get 'tools/make-admin', to: 'users#make_admin'
+  get 'tools/nuke-admin', to: 'users#nuke_admin'
+  
+  get 'forum', to: 'forum#show'
+  get 'forum/:category', to: 'forum#show_board', as: 'category'
+  get 'forum/:category/:thread_id', to: 'threads#show', as: 'thread'
+  get 'forum/:category/new', to: 'threads#new', as: 'board'
+  
+  post 'posts/new'
+  
+  get 'articles', to: 'articles#show'
   
   resources :albums
   
