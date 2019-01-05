@@ -5,19 +5,17 @@
     padding: 20px;
     #profile-header {
         display: flex;
-        align-self: flex-end;
-        flex-direction: row-reverse;
-        padding: 0 20px 20px 20px;
+        padding: 20px 20px 20px 0;
         border-bottom: 1px #8c8c8c solid;
-        height: 180px;
+        height: 200px;
         > div:first-child {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: space-between;
-            margin-left: 30px;
-            padding-left: 30px;
-            border-left: 1px #8c8c8c solid;
+            margin-right: 30px;
+            padding-right: 30px;
+            border-right: 1px #8c8c8c solid;
             label { 
                 min-width: 125px;
                 min-height: 125px;
@@ -31,7 +29,7 @@
                 width: 0;
                 height: 0;
             }
-            > form {
+            > form, > div {
                 min-width: 125px;
                 max-width: 125px;
                 min-height: 125px;
@@ -60,6 +58,8 @@
                     width: 125px;
                     transition: 0.3s;
                     opacity: 1;
+                }
+                .editable {
                     &:hover {
                         cursor: pointer;
                         filter: blur(4px);

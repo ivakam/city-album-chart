@@ -494,15 +494,11 @@ $(document).on 'turbolinks:load', ->
 			console.log('Error fetching from database! Error:\n' + error)
 			return
 		.then (json) ->
-			totalCount = json[json.length - 1]
-			json.pop()
 			albums = sortAlbums(json)
 		.then ->
 			displayAlbum()
 		.then ->
 			$('.spinner').addClass('hidden')
-			sessionStorage.setItem('albumCount', totalCount)
-			$('#album-total-count').text(sessionStorage.getItem('albumCount'))
 
 		#Helper method for opening an info container. Call it as 'sibling: undefined' to reset all info containers.
 		

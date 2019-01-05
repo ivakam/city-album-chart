@@ -32,9 +32,6 @@ class AlbumsController < ApplicationController
 			albumWithTracks["tracklist"] = tempTracks
 			albumResult[index] = albumWithTracks
 		end
-		if params[:total_count] == "true"
-			albumResult << @@totalAlbums
-		end
 		render :json => albumResult
 		return
 	end
@@ -42,7 +39,6 @@ class AlbumsController < ApplicationController
 	end
 	def fetch
 		@albums = Album.all
-		@@totalAlbums = @albums.count
 		if params.to_unsafe_hash.size === 2
 			@albums = tPop(@albums, params)
 			return
@@ -204,6 +200,6 @@ class AlbumsController < ApplicationController
 		end
 	end
 	private def album_params
-		params.permit(:delete_list, :description, :description_old, :tracklist, :romanization, :romanization_old, :duration, :duration_old, :image, :coverlink, :thumbnail, :title, :title_old, :romaji_artist, :romaji_artist_old, :japanese_artist, :japanese_artist_old, :flavor, :flavor_old, :year, :year_old, :q, :offset, :limit, :sort, :sort_type, :q_track, :total_count, album: {})
+		params.permit(:delete_list, :description, :description_old, :tracklist, :romanization, :romanization_old, :duration, :duration_old, :image, :coverlink, :thumbnail, :title, :title_old, :romaji_artist, :romaji_artist_old, :japanese_artist, :japanese_artist_old, :flavor, :flavor_old, :year, :year_old, :q, :offset, :limit, :sort, :sort_type, :q_track, album: {})
 	end
 end

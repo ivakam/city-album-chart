@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  resources :albums
+  
+  def constraint(req)
+    p 'Path: ' + req.path
+    return req.path.scan(/\/rails\/active_storage.+/).empty?
+  end
   
   get 'about', to: 'about#show'
   get 'albums', to: 'albums#show'
@@ -29,17 +33,14 @@ Rails.application.routes.draw do
   
   get 'forum', to: 'forum#show'
   get 'forum/:category', to: 'forum#show_board', as: 'category'
-  get '*t/:thread_id', to: 'forum_threads#show', as: 'thread'
+  get '*t/:thread_id', to: 'forum_threads#show', as: 'thread', constraints: lambda { |request| constraint(request) }
   #get 'forum/:category/new', to: 'threads#new', as: 'board'
   
   post 'posts/new'
   
   get 'articles', to: 'articles#show'
   
-  def constraint(req)
-    p 'Path: ' + req.path
-    return req.path.scan(/\/rails\/active_storage.+/).empty?
-  end
+  resources :albums
   
   get '*unmatched_route', to: 'application#render_404', constraints: lambda { |request| constraint(request) }
   root 'albums#show'

@@ -2,8 +2,8 @@ module ApplicationHelper
 	
 	def fetch_user
 		if session[:user_id]
-			@user = User.find_by(id: session[:user_id])
-			return @user
+			user = User.find_by(id: session[:user_id])
+			return user
 		else
 			return nil
 		end
@@ -34,5 +34,9 @@ module ApplicationHelper
 		else
 			render 'partials/login'
 		end
+	end
+	
+	def album_count
+		return Album.all.size
 	end
 end
