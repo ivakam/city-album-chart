@@ -12,6 +12,15 @@ class ApplicationController < ActionController::Base
         end
     end
     
+    def get_user
+		if session[:user_id]
+			user = User.find_by(id: session[:user_id])
+			return user
+		else
+			return nil
+		end
+    end
+    
     def render_404
         if params[:format].present? && params[:format] != 'html'
             head status: 404

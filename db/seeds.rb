@@ -7,7 +7,6 @@ Faker::UniqueGenerator.clear
 	user.username = Faker::Internet.unique.username
 	user.email = Faker::Internet.unique.email
 	user.password = Faker::Internet.password(8, 16)
-	user.karma = rand(-5000..5000)
 	user.admin = rand(0..50) > 47 ? true : false
 	if user.admin
 		user.account_type = 'Administrator'
@@ -27,6 +26,11 @@ Faker::UniqueGenerator.clear
 			user.badges << b
 		end
 	end
+	user.album_fav = ''
+	albums = Album.all.size
+	(0...5).each do | j |
+		user.album_fav << rand(1..albums).to_s + ' '
+	end
 	user.save
 	p "User #{i} generated"
 end
@@ -37,7 +41,6 @@ end
 	thread = ForumThread.new()
 	thread.title = Faker::Book.title
 	thread.category = 'rules'
-	thread.score = rand(-50000..50000)
 	thread.stickied = true
 	thread.archived = false
 	thread.locked = false
@@ -51,7 +54,6 @@ end
 	thread = ForumThread.new()
 	thread.title = Faker::Book.title
 	thread.category = 'rules'
-	thread.score = rand(-50000..50000)
 	thread.stickied = false
 	thread.archived = false
 	thread.locked = false
@@ -62,12 +64,18 @@ end
 end
 
 ForumThread.all.each_with_index do | parentThread, i |
-	(1..rand(5..20)).each do | i |
+	(1..rand(5..20)).each do | j |
 		reply = Post.new()
 		reply.user = User.find(rand(1..@usercount))
 		reply.forum_thread = parentThread
 		reply.body = Faker::HitchhikersGuideToTheGalaxy.quote
-		reply.score = rand(-5000..5000)
+		reply.post_index = j
+		(1..rand(5..20)).each do | k |
+			upvote = Upvote.new()
+			upvote.post = reply
+			upvote.user = User.find(rand(1..@usercount))
+			upvote.save
+		end
 		reply.save
 	end
 	p "Thread #{i.to_s + ' ' + parentThread.title} populated"

@@ -9,6 +9,18 @@ module ApplicationHelper
 		end
 	end
 	
+	def user_upvotes(user = User.find_by(id: session[:user_id]))
+		return Upvote.where(user: user).size
+	end
+	
+	def user_karma(user = User.find_by(id: session[:user_id]))
+		return Upvote.where(post: Post.where(user: user)).size
+	end
+	
+	def post_upvotes(post)
+		return Upvote.where(post: post).size
+	end
+	
 	def auth
 		@user = fetch_user
 		userAuth = {}

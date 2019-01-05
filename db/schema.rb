@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_05_161322) do
+ActiveRecord::Schema.define(version: 2019_01_05_202054) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "name", limit: 191, null: false
@@ -70,11 +70,11 @@ ActiveRecord::Schema.define(version: 2019_01_05_161322) do
 
   create_table "posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "body"
-    t.integer "score"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
     t.bigint "forum_thread_id"
+    t.integer "post_index"
     t.index ["forum_thread_id"], name: "index_posts_on_forum_thread_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
@@ -101,13 +101,21 @@ ActiveRecord::Schema.define(version: 2019_01_05_161322) do
     t.index ["album_id"], name: "index_tracks_on_album_id"
   end
 
+  create_table "upvotes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "post_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_upvotes_on_post_id"
+    t.index ["user_id"], name: "index_upvotes_on_user_id"
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "username"
     t.string "email"
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "karma"
     t.boolean "admin"
     t.boolean "banned"
     t.string "gender"

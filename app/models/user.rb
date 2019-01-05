@@ -4,6 +4,7 @@ class User < ApplicationRecord
 	has_one_attached :avatar
 	has_many :forum_threads
 	has_many :posts
+	has_many :upvotes
 
     before_save { self.email = email.downcase }
     validates :username, presence: true, uniqueness: { case_sensitive: false }

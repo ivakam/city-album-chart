@@ -37,12 +37,15 @@
         <div id="post-list">
             <ul>
                 <div id="forum-opacity" class="darker"></div>
-                <% @page_posts.each_with_index do | post, i | %>
+                <% @page_posts.each do | post | %>
                 <li>
                     <div class="post-header">
-                        <p class="post-index">#<%= i + 1 %></p>
-                        <p>Posted at <%= post.created_at %></p>
-                        <p>Score: <%= post.score %></p>
+                        <div>
+                            <p class="post-index">#<%= post.post_index %></p>
+                            <p class="post-title"><b><%= @thread.title %></b></p>
+                        </div>
+                        <p class="post-date">Posted at <%= post.created_at %></p>
+                        <p>Score: <%= post_upvotes(post) %></p>
                     </div>
                     <div class="post-body">
                         <div class="user-info">
@@ -54,13 +57,13 @@
                             </div>
                             <div class="avatar-wrapper"><a href="<%= root_url + 'users/' + post.user.username %>">
                             <% if post.user.avatar.attached? %>
-                            <%= image_tag post.user.avatar.variant(resize: "200x200") %>
+                            <%= image_tag post.user.avatar.variant(resize: "100x100") %>
                             <% else %>
                             <img src="https://i.imgur.com/ceYNiDi.png"></img>
                             <% end %>
                             </a></div>
                             <p class="user-account-type"><b><%= post.user.account_type %></b></p>
-                            <p class="user-karma"><%= post.user.karma %> karma</p>
+                            <p class="user-karma"><%= user_karma(post.user) %> karma</p>
                             <p class="user-post-count"><%= post.user.posts.length %> posts</p>
                             <p class="user-location"><b>Location:</b> <%= post.user.location %></p>
                         </div>
@@ -74,6 +77,36 @@
                         </div>
                     </div>
                 </li>
+                <% end %>
+                <% if fetch_user %>
+                <div id="reply-container">
+                    <form id="reply-form" enctype="multipart/form-data" action="<%= root_url + 'posts/create' %>" method="post" data-remote="false">
+                        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+                        <input type="text" name="post[thread_id]" value="<%= @thread.id %>" hidden>
+                        <div id="form-user-info">
+                            <% if fetch_user.avatar.attached? %>
+                            <%= image_tag fetch_user.avatar.variant(resize: "80x80") %>
+                            <% else %>
+                            <img src="https://i.imgur.com/ceYNiDi.png"></img>
+                            <% end %>
+                        </div>
+                        <div id="reply-text-container">
+                            <h3>Reply to this topic</h3>
+                            <textarea id="reply-textarea" name="post[body]" placeholder="Type your reply here."></textarea>
+                            <input type="submit" value="Submit reply" name="commit">
+                        </div>
+                    </form>
+                </div>
+                <% else %>
+                <div id="no-login-form">
+                    <h2>You must be a member to reply to this thread</h2>
+                    <form enctype="multipart/form-data" action="<%= root_url %>login" accept-charset="UTF-8" data-remote="true" method="post">
+                        <input placeholder="Username" type="text" name="session[username]">
+                        <input placeholder="Password" type="password" name="session[password]">
+                        <input value="Login" type="submit" name="commit">
+                    </form>
+                    <a id="register-btn">Create an account</a>
+                </div>
                 <% end %>
             </ul>
         </div>

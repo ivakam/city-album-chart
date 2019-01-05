@@ -36,7 +36,10 @@ Rails.application.routes.draw do
   get '*t/:thread_id', to: 'forum_threads#show', as: 'thread', constraints: lambda { |request| constraint(request) }
   #get 'forum/:category/new', to: 'threads#new', as: 'board'
   
-  post 'posts/new'
+  post 'posts/create'
+  post 'posts/update'
+  
+  post 'upvotes/create'
   
   get 'articles', to: 'articles#show'
   

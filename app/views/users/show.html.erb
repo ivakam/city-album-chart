@@ -22,7 +22,7 @@
     <div id="profile-wrapper">
         <div id="profile-header">
             <div>
-                <% if fetch_user.id == @user.id %>
+                <% if !fetch_user.nil? && fetch_user.id == @user.id %>
                     <form id="avatar-form" enctype="multipart/form-data" action="<%= root_url + '/users/update' %>" method="post" data-remote="false">
                         <label for="avatar">
                             <% if @user.avatar.attached? %>
