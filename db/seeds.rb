@@ -1,17 +1,30 @@
 require 'faker'
 Faker::UniqueGenerator.clear
-(0..100).each do | i |
+(0..50).each do | i |
 	user = User.new()
 	user.username = Faker::Internet.unique.username
 	user.email = Faker::Internet.unique.email
 	user.password = Faker::Internet.password(8, 16)
 	user.karma = rand(-5000..5000)
 	user.admin = rand(0..50) > 47 ? true : false
+	if user.admin
+		user.account_type = 'Administrator'
+	else
+		user.account_type = 'Member'
+	end
 	user.banned = false
 	user.gender = rand(0..1) == 1 ? 'Male' : 'Female'
 	user.birth_year = rand(1900..2019)
 	user.location = Faker::Address.country
 	user.bio = Faker::MostInterestingManInTheWorld.quote
+	user.signature = Faker::Dota.quote
+	badgeArr = ['Admin ', 'VIP ', 'Honorary ', 'Funk_master ', 'Oldie ']
+	user.badges = ''
+	badgeArr.each do | b |
+		if rand(0..2) == 1
+			user.badges << b
+		end
+	end
 	user.save
 	p "User #{i} generated"
 end
@@ -32,7 +45,7 @@ end
 	p "Thread #{i} generated"
 end
 
-(0..500).each do | i |
+(0..50).each do | i |
 	thread = ForumThread.new()
 	thread.title = Faker::Book.title
 	thread.category = 'rules'
@@ -46,8 +59,8 @@ end
 	p "Thread #{i} generated"
 end
 
-ForumThread.all.each do | parentThread |
-	(1..rand(5..200)).each do | i |
+ForumThread.all.each_with_index do | parentThread, i |
+	(1..rand(5..20)).each do | i |
 		reply = Post.new()
 		reply.user = User.find(rand(1..@usercount))
 		reply.forum_thread = parentThread
@@ -55,7 +68,7 @@ ForumThread.all.each do | parentThread |
 		reply.score = rand(-5000..5000)
 		reply.save
 	end
-	p "Thread #{i + ' ' + parentThread.title} populated"
+	p "Thread #{i.to_s + ' ' + parentThread.title} populated"
 end
 
 def CreateAlbumWithTracks(albumParam, tracks = [])

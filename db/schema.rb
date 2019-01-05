@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_04_030047) do
+ActiveRecord::Schema.define(version: 2019_01_05_015455) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "name", limit: 191, null: false
@@ -114,6 +114,9 @@ ActiveRecord::Schema.define(version: 2019_01_04_030047) do
     t.integer "birth_year"
     t.string "location"
     t.string "bio"
+    t.string "badges"
+    t.string "account_type"
+    t.string "signature"
   end
 
   add_foreign_key "forum_threads", "users"

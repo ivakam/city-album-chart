@@ -22,25 +22,50 @@
 	<%= image_tag "spinner.gif", class: "spinner hidden" %>
 	<div id="board-container">
 	    <div id="forum-opacity"></div>
-        <ul id="board-list">
-            <h2><%= @title %></h2>
-            <div class="divider"></div>
-            <li>
+	    <h2 id="title"><%= @title %></h2>
+        <div id="board-list">
+            <ul>
+                <div id="forum-opacity" class="darker"></div>
                 <% @stickies.each do | thread | %>
-                <div class="thread">
+                <li class="thread sticky">
                     <ion-icon class="pin-icon" name="pin"></ion-icon>
                     <div class="board-title-container">
-                        <h3><a href="<%= forum_path + '/rules' %>">Rules and guidelines</a></h3>
-                        <p>Please read these before posting</p>
+                        <h3><a href="<%= forum_path + "/#{@category}/t/" + thread.id.to_s %>"><%= thread.title %></a></h3>
+                        <p class="author">By <%= link_to thread.user.username, root_url + 'users/' + thread.user.username %></p>
                     </div>
-                    <div class="activity"><p>Placeholder</p></div>
-                </div>
+                    <div class="activity">
+                        <p><%= thread.posts.length %> replies</p>
+                        <p>Last updated at: <%= thread.updated_at.strftime("%R, %F") %></p>
+                    </div>
+                </li>
                 <% end %>
-            </li>
-            <div class="divider"></div>
-            <li>
-            </li>
-            <div class="divider"></div>
-        </ul>
+            </ul>
+            <div class="page-container">
+                <% if @page - 1 > 0 %>
+                <a class="icon" href="<%= root_url + "forum/#{@category}?p=#{@page - 1}"%>"><ion-icon name="ios-arrow-back"></ion-icon></a>
+                <% end %>
+                <% (0...(@threads.length / 10.0).ceil).each do | i | %>
+                <a class="page-btn <%= tempClass = (i + 1 == @page) ? 'underline' : '' %>" href="<%= root_url + "forum/#{@category}?p=#{i + 1}" %>"><%= i + 1 %></a>
+                <% end %>
+                <% if @page + 1 <= (@threads.length / 10.0).ceil %>
+                <a class="icon" href="<%= root_url + "forum/#{@category}?p=#{@page + 1}"%>"><ion-icon name="ios-arrow-forward"></ion-icon></a>
+                <% end %>
+            </div>
+            <ul>
+                <div id="forum-opacity" class="darker"></div>
+                <% @page_threads.each do | thread | %>
+                <li class="thread">
+                    <div class="board-title-container">
+                        <h3><a href="<%= forum_path + "/#{@category}/t/" + thread.id.to_s %>"><%= thread.title %></a></h3>
+                        <p class="author">By <%= link_to thread.user.username, root_url + 'users/' + thread.user.username %></p>
+                    </div>
+                    <div class="activity">
+                        <p><%= thread.posts.length %> replies</p>
+                        <p>Last updated at: <%= thread.updated_at.strftime("%R, %F") %></p>
+                    </div>
+                </li>
+                <% end %>
+            </ul>
+        </div>
     </div>
 </div>

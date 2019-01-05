@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :albums
+  
   get 'about', to: 'about#show'
   get 'albums', to: 'albums#show'
   get 'albums/submit'
@@ -27,14 +29,12 @@ Rails.application.routes.draw do
   
   get 'forum', to: 'forum#show'
   get 'forum/:category', to: 'forum#show_board', as: 'category'
-  get 'forum/:category/:thread_id', to: 'threads#show', as: 'thread'
-  get 'forum/:category/new', to: 'threads#new', as: 'board'
+  get '*t/:thread_id', to: 'forum_threads#show', as: 'thread'
+  #get 'forum/:category/new', to: 'threads#new', as: 'board'
   
   post 'posts/new'
   
   get 'articles', to: 'articles#show'
-  
-  resources :albums
   
   def constraint(req)
     p 'Path: ' + req.path
