@@ -8,11 +8,7 @@
                 <% if !fetch_user.nil? && fetch_user.id == @user.id %>
                     <form id="avatar-form" enctype="multipart/form-data" action="<%= root_url + '/users/update' %>" method="post" data-remote="false">
                         <label for="avatar">
-                            <% if @user.avatar.attached? %>
-                            <%= image_tag @user.avatar.variant(resize: "200x200"), class: 'editable' %>
-                            <% else %>
-                            <img class="editable" src="https://i.imgur.com/ceYNiDi.png"></img>
-                            <% end %>
+                            <%= image_tag user_avatar(@user), class: 'editable' %>
                         </label>
                         <input id="avatar" name="user[avatar]" type="file">
                         <input type="text" name="user[id]" value="<%= @user.id %>" hidden>
@@ -20,13 +16,7 @@
                         <div><p><b>Change avatar</b></p></div>
                     </form>
                 <% else %>
-                    <% if @user.avatar.attached? %>
-                        <%= image_tag @user.avatar.variant(resize: "200x200") %>
-                    <% else %>
-                        <div>
-                            <img src="https://i.imgur.com/ceYNiDi.png"></img>
-                        </div>
-                    <% end %>
+                    <%= image_tag user_avatar(@user) %>
                 <% end %>
                 <h2><%= @user.username %></h2>
             </div>

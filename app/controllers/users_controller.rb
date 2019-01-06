@@ -4,15 +4,20 @@ class UsersController < ApplicationController
     def show
         @user = User.find_by(username: params[:username])
         if @user == nil
-            rescueHandler('404')
+            render_404
         end
     end
     
     def update
         @user = User.find_by(id: params[:user][:id])
-        if params[:user][:avatar].present?
-            @user.avatar.attach(params[:user][:avatar])
-            redirect_to request.referrer, notice: 'Avatar successfully updated!'
+        if get_user == @user
+            @user = User.find_by(id: params[:user][:id])
+            if params[:user][:avatar].present?
+                @user.avatar.attach(params[:user][:avatar])
+                redirect_to request.referrer, notice: 'Avatar successfully updated!'
+            end
+        else
+            on_access_denied
         end
     end
     
@@ -31,17 +36,13 @@ class UsersController < ApplicationController
     end
     
     def destroy
-        begin
-            if User.find_by(id: session[:user_id]).admin
-                JSON.parse(params[:serialized_ids]).each do | user_id |
-                    @user = User.find_by(id: id)
-                    @user.destroy
-                end
-                return
+        if get_user && get_user.admin
+            JSON.parse(params[:serialized_ids]).each do | user_id |
+                @user = User.find_by(id: id)
+                @user.destroy
             end
-            rescueHandler('401', true)
-        rescue StandardError => e
-            rescueHandler('401', true, e)
+        else
+            on_access_denied
         end
     end
     
@@ -65,32 +66,25 @@ class UsersController < ApplicationController
     end
     
     def toggle_ban
-        begin
-            if User.find_by(id: session[:user_id]).admin
-                JSON.parse(params[:user][:serialized_ids]).each do | user_id |
-                    @user = User.find_by(id: user_id)
-                    if @user.banned
-                        @user.update_attribute(:banned, false)
-                    else
-                        @user.update_attribute(:banned, true)
-                    end
+        if get_user && get_user.admin
+            JSON.parse(params[:user][:serialized_ids]).each do | user_id |
+                @user = User.find_by(id: user_id)
+                if @user.banned
+                    @user.update_attribute(:banned, false)
+                else
+                    @user.update_attribute(:banned, true)
                 end
-                return
             end
-            rescueHandler('401', true)
-        rescue StandardError => e
-            rescueHandler('401', true, e)
+        else
+            on_access_denied
         end
     end
 
     def panel
-        begin
-            if User.find_by(id: session[:user_id]).admin
-               return render 'panel'
-            end
-            rescueHandler('401', true)
-        rescue StandardError => e
-            rescueHandler('401', true, e)
+        if get_user && get_user.admin
+           return render 'panel'
+        else
+            on_access_denied
         end
     end
 

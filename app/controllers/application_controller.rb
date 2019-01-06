@@ -2,14 +2,13 @@ class ApplicationController < ActionController::Base
     rescue_from ActiveRecord::RecordNotFound, with: :on_record_not_found
     rescue_from AbstractController::ActionNotFound, with: :on_record_not_found
     rescue_from ActionController::RoutingError, with: :on_routing_error
-
-    def rescueHandler(view, unauthorized = false, e = 'Non-internal Error')
-        p e
-        if !unauthorized
-            render "layouts/#{view}"
-        else
-            render "layouts/#{view}", :status => :unathorized
-        end
+    
+    before_action do
+        ActiveStorage::Current.host = request.base_url if Rails.application.config.active_storage.service == :local
+    end
+    
+    rescue_from StandardError do
+        render 'layouts/500'
     end
     
     def get_user
@@ -26,6 +25,14 @@ class ApplicationController < ActionController::Base
             head status: 404
         else
             render 'layouts/404', status: 404
+        end
+    end
+    
+    def login_barrier
+        if params[:format].present? && params[:format] != 'html'
+            head status: 401
+        else
+            render 'layouts/login_barrier'
         end
     end
     

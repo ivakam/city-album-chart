@@ -93,11 +93,7 @@
                             <% end %>
                             </div>
                             <div class="avatar-wrapper"><a href="<%= root_url + 'users/' + post.user.username %>">
-                            <% if post.user.avatar.attached? %>
-                            <%= image_tag post.user.avatar.variant(resize: "100x100") %>
-                            <% else %>
-                            <img src="https://i.imgur.com/ceYNiDi.png"></img>
-                            <% end %>
+                            <%= image_tag user_avatar(post.user) %>
                             </a></div>
                             <p class="user-account-type"><b><%= post.user.account_type %></b></p>
                             <p class="user-karma"><%= user_karma(post.user) %> karma</p>
@@ -121,11 +117,7 @@
                         <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
                         <input type="text" name="post[thread_id]" value="<%= @thread.id %>" hidden>
                         <div id="form-user-info">
-                            <% if fetch_user.avatar.attached? %>
-                            <%= image_tag fetch_user.avatar.variant(resize: "80x80") %>
-                            <% else %>
-                            <img src="https://i.imgur.com/ceYNiDi.png"></img>
-                            <% end %>
+                            <%= image_tag user_avatar(fetch_user) %>
                         </div>
                         <div id="reply-text-container">
                             <h3>Reply to this topic</h3>

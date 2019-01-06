@@ -1,13 +1,16 @@
 class PostsController < ApplicationController
     def create
-        @thread = ForumThread.find_by(id: params[:post][:thread_id])
-        @post = Post.new()
-        @post.body = params[:post][:body]
-        @post.user = get_user
-        @post.forum_thread = @thread
-        @post.post_index = @thread.posts.size + 1
-        @post.save
-        redirect_to forum_path + "/#{@thread.category}/t/#{@thread.id}?p=#{(@thread.posts.size / 10.0).ceil}"
+        if get_user
+            @thread = ForumThread.find_by(id: params[:post][:thread_id])
+            @post = Post.new()
+            @post.body = params[:post][:body]
+            @post.user = get_user
+            @post.forum_thread = @thread
+            @post.post_index = @thread.posts.size + 1
+            @post.save
+            redirect_to forum_path + "/#{@thread.category}/t/#{@thread.id}?p=#{(@thread.posts.size / 10.0).ceil}"
+        else
+            login_barrier
     end
     
     def update
@@ -17,7 +20,8 @@ class PostsController < ApplicationController
             @post.body = params[:post][:body]
             @post.save
             redirect_to request.referrer
-        end
+        else
+            on_access_denied
     end
     
     def destroy
@@ -26,7 +30,8 @@ class PostsController < ApplicationController
             @post = Post.find_by(params[:post][:id])
             @post.destroy
             redirect_to request.referrer
-        end
+        else
+            on_access_denied
     end
     
     private
