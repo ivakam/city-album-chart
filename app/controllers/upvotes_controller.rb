@@ -11,7 +11,7 @@ class UpvotesController < ApplicationController
         end
         @upvote = Upvote.new()
         @upvote.user = get_user
-        @upvote.post = Post.find_by(id: params[:upvote][:post_id])
+        @upvote.post =  Post.find_by(id: params[:upvote][:post_id])
         @upvote.save
     end
     

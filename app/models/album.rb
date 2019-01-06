@@ -5,19 +5,31 @@ class Album < ApplicationRecord
 	has_one_attached :cover
 	validate :form_presence
 	validate :cover_validation
+	
+    after_save do
+        update_with_user_status_service
+    end
+    
+    private
+    
+    def update_with_user_status_service
+        UserStatusService.new({
+            user: User.find_by(id: self.user_id)
+        }).update
+    end
 	 
-	private
-		def cover_validation
-			if cover.attached?
-				if cover.blob.byte_size > 500000
-					cover.purge
-					errors[:base] << "Filesize too large"
-				elsif !cover.blob.content_type.starts_with?('image/')
-					logo.purge
-					errors[:base] << 'Wrong format'
-				end
+	def cover_validation
+		if cover.attached?
+			if cover.blob.byte_size > 500000
+				cover.purge
+				errors[:base] << "Filesize too large"
+			elsif !cover.blob.content_type.starts_with?('image/')
+				logo.purge
+				errors[:base] << 'Wrong format'
 			end
 		end
+	end
+	
 	def form_presence
 		if scraper.blank?
 			if (title.blank? || romaji_artist.blank?)

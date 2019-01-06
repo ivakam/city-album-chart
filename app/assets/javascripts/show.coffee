@@ -304,7 +304,7 @@ $(document).on 'turbolinks:load', ->
 				editTrackStr += "<ion-icon name='ios-add-circle' class='track-add-btn'></ion-icon>"
 				editFormStr = ''
 				editBtnStr = ''
-				if user.logged_in
+				if user
 					editFormStr = 
 					"<div class='edit-form-container'>
 						<form action='/albums/update' accept-charset='UTF-8' data-remote='true' method='post'>

@@ -8,11 +8,6 @@ Faker::UniqueGenerator.clear
 	user.email = Faker::Internet.unique.email
 	user.password = Faker::Internet.password(8, 16)
 	user.admin = rand(0..50) > 47 ? true : false
-	if user.admin
-		user.account_type = 'Administrator'
-	else
-		user.account_type = 'Member'
-	end
 	user.banned = false
 	user.gender = rand(0..1) == 1 ? 'Male' : 'Female'
 	user.birth_year = rand(1900..2019)
@@ -76,9 +71,9 @@ ForumThread.all.each_with_index do | parentThread, i |
 			upvote.user = User.find(rand(1..@usercount))
 			upvote.save
 		end
+		p "Post #{j} for thread ##{parentThread.id} #{parentThread.title} generated"
 		reply.save
 	end
-	p "Thread #{i.to_s + ' ' + parentThread.title} populated"
 end
 
 def CreateAlbumWithTracks(albumParam, tracks = [])
@@ -101,7 +96,7 @@ def CreateAlbumWithTracks(albumParam, tracks = [])
     if albumParam[:user_id].present?
     	currentAlbum.user_id = albumParam[:user_id]
     else
-    	currentAlbum.user_id = 1
+    	currentAlbum.user_id = rand(1..51)
     end
     tracks.each do |t|
         currentAlbum.tags << " #{t[:title]} #{t[:romanization]}"

@@ -179,8 +179,7 @@ class AlbumsController < ApplicationController
 	def destroy
 		begin
 			if User.find(session[:user_id]).admin
-				toBeNuked = JSON.parse(params[:user][:serialized_ids])
-				p toBeNuked
+				toBeNuked = JSON.parse(params[:album][:serialized_ids])
 				toBeNuked.each do | album |
 					@album = Album.find_by(id: album)
 					@album.destroy
@@ -199,7 +198,10 @@ class AlbumsController < ApplicationController
 			rescueHandler('login_barrier', true)
 		end
 	end
-	private def album_params
+	
+	private 
+	
+	def album_params
 		params.permit(:delete_list, :description, :description_old, :tracklist, :romanization, :romanization_old, :duration, :duration_old, :image, :coverlink, :thumbnail, :title, :title_old, :romaji_artist, :romaji_artist_old, :japanese_artist, :japanese_artist_old, :flavor, :flavor_old, :year, :year_old, :q, :offset, :limit, :sort, :sort_type, :q_track, album: {})
 	end
 end

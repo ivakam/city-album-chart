@@ -138,5 +138,35 @@
 				<% end %>
 			</ul>
 		</div>
+		<div id="threads-box" class="list-box">
+			<div>
+				<h2>Forum threads</h2>
+				<a id="clear-thread-btn" class="clear-btn">Delete selected</a>
+			</div>
+			<ul>
+				<li>
+					<h3 class="checkbox-container"></h3>
+					<h3>Id</h3>
+					<h3>Title</h3>
+					<h3>Author</h3>
+					<h3>Board</h3>
+					<h3>Replies</h3>
+					<h3>Last activity</h3>
+				</li>
+				<% ForumThread.all.each do | thread | %>
+				<li>
+					<ul>
+						<li class="checkbox-container"><input type="checkbox" value="<%= thread.id %>"></li>
+						<li><p><%= thread.id %></p></li>
+						<li><p><a href="<%= root_url + "forum/#{thread.category}/t/#{thread.id}" %>"><%= thread.title %></a></p></li>
+						<li><p><a href="<%= root_url + "users/#{thread.user.username}" %>"><%= thread.user.username %></a></p></li>
+						<li><p><%= thread.category %></p></li>
+						<li><p><%= thread.posts.size %></p></li>
+						<li><p><%= thread.updated_at.strftime("%R %Z, %F") %></p></li>
+					</ul>
+				</li>
+				<% end %>
+			</ul>
+		</div>
 	</div>
 </div>

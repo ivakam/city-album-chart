@@ -81,18 +81,24 @@
                         </div>
                         <p class="post-date">Posted at <%= post.created_at.strftime("%R %Z, %F") %></p>
                         <div class="header-icons">
-                            <% if post.user.id == fetch_user.id %>
-                            <ion-icon class="post-icon post-edit" name="create"></ion-icon>
-                            <% end %>
-                            <% if fetch_user.admin || post.user.id == fetch_user.id %>
-                            <ion-icon class="post-icon post-trash" name="ios-trash"></ion-icon>
-                            <% end %>
-                            <ion-icon class="post-icon post-flag" name="ios-flag"></ion-icon>
+                            <% if fetch_user %>
+                                <% if post.user.id == fetch_user.id %>
+                                <ion-icon class="post-icon post-edit" name="create"></ion-icon>
+                                <% end %>
+                                <% if fetch_user.admin || post.user.id == fetch_user.id %>
+                                <ion-icon class="post-icon post-trash" name="ios-trash"></ion-icon>
+                                <% end %>
+                                <ion-icon class="post-icon post-flag" name="ios-flag"></ion-icon>
+                                <p class="post-score">Score: <%= post_upvotes(post) %></p>
+                                <% if fetch_user %>
+                                <div class="heart-container">
+                                    <ion-icon class="heart-animation hidden" name="ios-heart"></ion-icon>
+                                    <ion-icon class="post-icon post-heart <%= 'red' if Upvote.find_by(user: fetch_user, post: post).present? %>" name="ios-heart"></ion-icon>
+                                </div>
+                                <% end %>
+                            <% else %>
                             <p class="post-score">Score: <%= post_upvotes(post) %></p>
-                            <div class="heart-container">
-                                <ion-icon class="heart-animation hidden" name="ios-heart"></ion-icon>
-                                <ion-icon class="post-icon post-heart <%= 'red' if Upvote.find_by(user: fetch_user, post: post).present? %>" name="ios-heart"></ion-icon>
-                            </div>
+                            <% end %>
                         </div>
                     </div>
                     <div class="post-body">

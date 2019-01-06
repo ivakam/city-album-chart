@@ -8,9 +8,25 @@ class ForumThreadsController < ApplicationController
         render 'show'
     end
     
+    def destroy
+		begin
+			if User.find(session[:user_id]).admin
+				toBeNuked = JSON.parse(params[:thread][:serialized_ids])
+				toBeNuked.each do | thread |
+					@thread = ForumThread.find_by(id: thread)
+					@thread.destroy
+				end
+				return
+			end
+			rescueHandler('401', true)
+		rescue StandardError => e
+			rescueHandler('401', true, e)
+		end
+    end
+    
     private
     
     def forum_params
-        params.permit(:thread_id, :p)
+        params.permit(:thread_id, :p, :thread)
     end
 end

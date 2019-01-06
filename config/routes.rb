@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   post 'reports/destroy'
 
   get 'panel', to: 'users#panel'
-  get 'users/:username', to: 'users#show', as: 'user'
+  get 'users/:username', to: 'users#show', as: 'user', constraints: { :username => /[^\/]+/ }
   post 'users/destroy'
   post 'users/create'
   post 'users/update'
@@ -35,6 +35,8 @@ Rails.application.routes.draw do
   get 'forum/:category', to: 'forum#show_board', as: 'category'
   get '*t/:thread_id', to: 'forum_threads#show', as: 'thread', constraints: lambda { |request| constraint(request) }
   #get 'forum/:category/new', to: 'threads#new', as: 'board'
+  
+  post 'thread/destroy', to: 'forum_threads#destroy'
   
   post 'posts/create'
   post 'posts/update'
