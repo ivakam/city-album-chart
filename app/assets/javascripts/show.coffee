@@ -32,6 +32,15 @@ $(document).on 'turbolinks:load', ->
 			resetFocus()
 		, 3000)
 		
+	#Handler for sending report
+	
+	$('.modal input[type=submit]').click ->
+		$('.submit-message').toggleClass('shrunk')
+		setTimeout( ->
+			$('.submit-message').toggleClass('shrunk')
+			resetFocus()
+		, 5000)
+		
 	if $('body').hasClass('albums show')
 		
 		#Global variable declaration
@@ -575,15 +584,6 @@ $(document).on 'turbolinks:load', ->
 			setTimeout( ->
 				$(container).get()[0].scrollIntoView({behaviour: 'smooth'})
 			, timer)
-		
-		#Handler for sending report
-		
-		$('.modal input[type=submit]').click ->
-			$('.submit-message').toggleClass('shrunk')
-			setTimeout( ->
-				$('.submit-message').toggleClass('shrunk')
-				resetFocus()
-			, 5000)
 		
 		#Handler for clicking the 'sort' buttons
 		

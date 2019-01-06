@@ -1,7 +1,41 @@
 <% title @thread.title %>
 <% description "varieti.es is an open source archive for city pop. Browse your favorite city pop albums in an accessible way!" %>
 <%= image_tag "varietiescropped.png", id: "alt-img" %>
+<div class="modal delete-modal modal-inactive">
+	<input id="delete-post-id" type="text" name="report[post]" value="" hidden>
+	<div>
+		<h2>Confirmation</h2>
+	</div>
+	<ion-icon name="ios-close" class="modal-close"></ion-icon>
+	<p>Are you sure you want to delete this post?</p>
+	<a class="delete-confirm-btn">Yes, delete it</a>
+</div>
 <div id="bg-opacity"></div>
+<div id="report-form-container" class="modal modal-inactive">
+	<div>
+		<h2>Submit a report</h2>
+	</div>
+	<ion-icon name="ios-close" id="report-close" class="modal-close"></ion-icon>
+	<form id="report-form" class="modal-form" action="/reports/create" accept-charset="UTF-8" data-remote="true" method="post">
+		<input id="report-post" type="text" name="report[post]" value="" hidden>
+		<input type="text" name="report[report_type]" value="Post" hidden>
+		<input id="report-thread" type="text" name="report[thread]" value="<%= @thread.id %>" hidden>
+		<div class="modal-form-input-container">
+			<label for="report-input-container"><p>Report reason:</p></label>
+			<select class='report-reason' name="report[reason]" form="report-form" required>
+				<option value='Spam'><p>Spam</p></option>
+				<option value='Offensive'><p>Offensive content</p></option>
+				<option value='Other'><p>Other</p></option>
+			</select>
+			<label for="report-comment"><p>Comment:</p></label>
+			<textarea id="report-comment" placeholder="Any additional notes go here" name="report[comment]"></textarea>
+		</div>
+		<input type="submit" name="commit" value="Send Report">
+		<div class="submit-message shrunk">
+			<p>Your report has been submitted!</p>
+		</div>
+	</form>
+</div>
 <div id="albums-bg-container">
 	<%= image_tag "variety.jpg" %>
 	<%= image_tag "mignonne.jpg" %>
@@ -22,7 +56,7 @@
     <%= image_tag "spinner.gif", class: "spinner hidden" %>
     <div id="board-container">
         <div id="forum-opacity"></div>
-        <h2 id="title"><%= @thread.category.titleize %> - <%= @thread.title %></h2>
+        <h2 id="title"><a href="<%= forum_path + "/#{@thread.category}" %>"><%= @thread.category.titleize %></a> - <%= @thread.title %></h2>
         <div class="page-container">
             <% if @page - 1 > 0 %>
             <a class="icon" href="<%= root_url + "forum/#{@thread.category}/t/#{@thread.id}?p=#{@page - 1}"%>"><ion-icon name="ios-arrow-back"></ion-icon></a>
@@ -39,13 +73,27 @@
                 <div id="forum-opacity" class="darker"></div>
                 <% @page_posts.each do | post | %>
                 <li>
+                    <input class="post-id" value="<%= post.id %>" hidden>
                     <div class="post-header">
                         <div>
                             <p class="post-index">#<%= post.post_index %></p>
                             <p class="post-title"><b><%= @thread.title %></b></p>
                         </div>
-                        <p class="post-date">Posted at <%= post.created_at %></p>
-                        <p>Score: <%= post_upvotes(post) %></p>
+                        <p class="post-date">Posted at <%= post.created_at.strftime("%R %Z, %F") %></p>
+                        <div class="header-icons">
+                            <% if post.user.id == fetch_user.id %>
+                            <ion-icon class="post-icon post-edit" name="create"></ion-icon>
+                            <% end %>
+                            <% if fetch_user.admin || post.user.id == fetch_user.id %>
+                            <ion-icon class="post-icon post-trash" name="ios-trash"></ion-icon>
+                            <% end %>
+                            <ion-icon class="post-icon post-flag" name="ios-flag"></ion-icon>
+                            <p class="post-score">Score: <%= post_upvotes(post) %></p>
+                            <div class="heart-container">
+                                <ion-icon class="heart-animation hidden" name="ios-heart"></ion-icon>
+                                <ion-icon class="post-icon post-heart <%= 'red' if Upvote.find_by(user: fetch_user, post: post).present? %>" name="ios-heart"></ion-icon>
+                            </div>
+                        </div>
                     </div>
                     <div class="post-body">
                         <div class="user-info">
@@ -100,6 +148,7 @@
                 <% else %>
                 <div id="no-login-form">
                     <h2>You must be a member to reply to this thread</h2>
+                    <p>Log in or register below</p>
                     <form enctype="multipart/form-data" action="<%= root_url %>login" accept-charset="UTF-8" data-remote="true" method="post">
                         <input placeholder="Username" type="text" name="session[username]">
                         <input placeholder="Password" type="password" name="session[password]">

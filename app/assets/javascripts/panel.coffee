@@ -6,8 +6,8 @@ $(document).on 'turbolinks:load', ->
 				if $(this)[0].checked
 					rawData[$(this).val()] = $(this).val()
 			serializedData = JSON.stringify(rawData)
-			$.post( window.location.href.replace(/users\/panel/, action),
-				{ 'user[serialized_ids]': serializedData }
+			$.post( window.location.href.replace(/panel/, action),
+				{ 'report[serialized_ids]': serializedData }
 			)
 			.done( ->
 				location.reload()

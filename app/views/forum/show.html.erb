@@ -29,10 +29,10 @@
                 <li>
                     <ion-icon name="ios-arrow-dropright-circle"></ion-icon>
                     <div class="board-title-container">
-                        <h3><a href="<%= forum_path + '/rules' %>">Rules and guidelines</a></h3>
-                        <p>Please read these before posting</p>
+                        <h3><a href="<%= forum_path + '/announcements' %>">Announcements</a></h3>
+                        <p>Important announcements and PSAs</p>
                     </div>
-                    <div class="activity"><p>Placeholder</p></div>
+                    <div class="activity"><p>Last updated in thread</p></div>
                 </li>
                 <li>
                     <ion-icon name="ios-arrow-dropright-circle"></ion-icon>
@@ -40,15 +40,7 @@
                         <h3><a href="<%= forum_path + '/rules' %>">Rules and guidelines</a></h3>
                         <p>Please read these before posting</p>
                     </div>
-                    <div class="activity"><p>Placeholder</p></div>
-                </li>
-                <li>
-                    <ion-icon name="ios-arrow-dropright-circle"></ion-icon>
-                    <div class="board-title-container">
-                        <h3><a href="<%= forum_path + '/rules' %>">Rules and guidelines</a></h3>
-                        <p>Please read these before posting</p>
-                    </div>
-                    <div class="activity"><p>Placeholder</p></div>
+                    <div class="activity"><p>Last updated in thread "<%= board_last_updated('rules').title %>" at <%= board_last_updated('rules').updated_at.strftime("%R %Z, %F") %></p></div>
                 </li>
             </ul>
             <div class="divider"></div>

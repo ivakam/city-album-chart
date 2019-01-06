@@ -1,6 +1,9 @@
 <% title "Home" %>
 <% description "varieti.es is an open source archive for city pop. Browse your favorite city pop albums in an accessible way!" %>
 <%= image_tag "varietiescropped.png", id: "alt-img" %>
+<script>
+	user = <%= fetch_user.to_json.html_safe %>
+</script>
 <img alt="" class="bigimage" src="">
 <div id="report-form-container" class="modal modal-inactive">
 	<div>

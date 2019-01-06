@@ -35,7 +35,7 @@
                     </div>
                     <div class="activity">
                         <p><%= thread.posts.length %> replies</p>
-                        <p>Last updated at: <%= thread.updated_at.strftime("%R, %F") %></p>
+                        <p>Last updated at: <%= thread.updated_at.strftime("%R %Z, %F") %></p>
                     </div>
                 </li>
                 <% end %>
@@ -61,7 +61,7 @@
                     </div>
                     <div class="activity">
                         <p><%= thread.posts.length %> replies</p>
-                        <p>Last updated at: <%= thread.updated_at.strftime("%R, %F") %></p>
+                        <p>Last updated at: <%= thread.updated_at.strftime("%R %Z, %F") %></p>
                     </div>
                 </li>
                 <% end %>

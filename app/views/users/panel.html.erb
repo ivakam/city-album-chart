@@ -23,11 +23,13 @@
 	<div id="panel-container">
 		<h2>Overview</h2>
 		<div id="user-box" class="list-box">
-			<h2>User list</h2>
-			<div class="action-btn-container">
-				<a class="clear-btn admin-btn">Toggle admin</a>
-				<a class="clear-btn ban-btn">Toggle ban</a>
-				<a class="clear-btn nuke-btn">Nuke account</a>
+			<div>
+				<h2>User list</h2>
+				<div class="action-btn-container">
+					<a class="clear-btn admin-btn">Toggle admin</a>
+					<a class="clear-btn ban-btn">Toggle ban</a>
+					<a class="clear-btn nuke-btn">Nuke account</a>
+				</div>
 			</div>
 			<ul id="user-list">
 				<li>
@@ -50,7 +52,7 @@
 						<li><p><%= user.id %></p></li>
 						<li><p><%= user.username %></p></li>
 						<li><p><%= user.email %></p></li>
-						<li><p><%= user.karma %></p></li>
+						<li><p><%= user_karma(user) %></p></li>
 						<li><p><%= user.admin %></p></li>
 						<li><p><%= user.banned %></p></li>
 						<li><p><%= user.gender %></p></li>
@@ -63,8 +65,10 @@
 			</ul>
 		</div>
 		<div id="request-box" class="list-box">
-			<h2>Pending requests</h2>
-			<a id="clear-report-btn" class="clear-btn">Clear selected</a>
+			<div>
+				<h2>Pending requests</h2>
+				<a id="clear-report-btn" class="clear-btn">Clear selected</a>
+			</div>
 			<ul>
 				<li>
 					<h3 class="checkbox-container"></h3>
@@ -80,7 +84,15 @@
 					<ul>
 						<li class="checkbox-container"><input type="checkbox" value="<%= report.id %>"></li>
 						<li><p><%= report.id %></p></li>
-						<li><p><%= report.report_type %>: <%= report.album + report.thread %></p></li>
+						<li><p><%= report.report_type %> - <%= report.album if report.album.present? %>
+						<% if report.thread.present? %>
+						<% thread = ForumThread.find_by(id: report.thread) %>
+						<% post = Post.find_by(id: report.post) %>
+						<a href="<%= forum_path + "/#{thread.category}/t/#{thread.id}" %>">
+						<%= thread.title + ' - ' + post.post_index.to_s %>
+						</a>
+						<% end %>
+						</p></li>
 						<li><p><%= report.reason %></p></li>
 						<li><p><%= report.comment %></p></li>
 						<% if report.user_id %>
@@ -95,8 +107,10 @@
 			</ul>
 		</div>
 		<div id="album-box" class="list-box">
-			<h2>Albums</h2>
-			<a id="clear-album-btn" class="clear-btn">Delete selected</a>
+			<div>
+				<h2>Albums</h2>
+				<a id="clear-album-btn" class="clear-btn">Delete selected</a>
+			</div>
 			<ul>
 				<li>
 					<h3 class="checkbox-container"></h3>

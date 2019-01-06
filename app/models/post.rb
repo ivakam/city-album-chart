@@ -1,5 +1,5 @@
 class Post < ApplicationRecord
-    belongs_to :forum_thread
+    belongs_to :forum_thread, :touch => true
     belongs_to :user
-    has_many :upvotes
+    has_many :upvotes, :dependent => :destroy
 end

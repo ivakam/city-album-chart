@@ -38,6 +38,7 @@ Rails.application.routes.draw do
   
   post 'posts/create'
   post 'posts/update'
+  post 'posts/destroy'
   
   post 'upvotes/create'
   

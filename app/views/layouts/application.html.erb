@@ -10,13 +10,9 @@
 		<%= csp_meta_tag %>
 		<%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 		<link href="https://fonts.googleapis.com/css?family=Poppins|Roboto" rel="stylesheet"> 
-		<script>
-		var user = <%= auth %>;
-		</script>
         <%= javascript_include_tag 'application' %>
 		<%= favicon_link_tag %>
 	</head>
-
 	<body class="<%= controller_name %> <%= action_name %>">
 		<div id="wrapper">
 			<% flash.each do | name, msg | -%>
