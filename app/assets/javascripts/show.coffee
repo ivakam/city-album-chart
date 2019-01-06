@@ -537,7 +537,7 @@ $(document).on 'turbolinks:load', ->
 					sibling.css('display', 'flex')
 					albumOpen = true
 					setTimeout( ->
-						offset = parent.offset().top + 132
+						offset = parent.offset().top + 157
 						$('.offset').css('top', offset)
 						$('.info-wrapper').attr('class', 'info-wrapper')
 						sibling.addClass('is-open')
