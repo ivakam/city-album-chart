@@ -1,29 +1,53 @@
 Rails.application.routes.draw do
+  
+  def constraint(req)
+    p 'Path: ' + req.path
+    return req.path.scan(/\/rails\/active_storage.+/).empty?
+  end
+  
   get 'about', to: 'about#show'
   get 'albums', to: 'albums#show'
   get 'albums/submit'
   get 'albums/fetch', to: 'albums#fetch'
   post 'albums/update', to: 'albums#update'
-  post 'albums/report'
+  post 'albums/create'
   post 'albums/destroy'
   
-  get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
-
-  post 'users/create', to: 'users#create'
 
   post 'reports/create'
   post 'reports/destroy'
 
-  get 'users', to: 'users#show'
-  get 'users/panel', to: 'users#panel'
+  get 'panel', to: 'users#panel'
+  get 'users/:username', to: 'users#show', as: 'user', constraints: { :username => /[^\/]+/ }
+  post 'users/destroy'
+  post 'users/create'
+  post 'users/update'
+  post 'users/toggle-admin', to: 'users#toggle_admin'
+  post 'users/toggle-ban', to: 'users#toggle_ban'
   
   #Helper tools - MUST BE REMOVED IN PROD!!!
-  get 'users/make-admin', to: 'users#make_admin'
-  get 'users/nuke-admin', to: 'users#nuke_admin'
+  get 'tools/make-admin', to: 'users#make_admin'
+  get 'tools/nuke-admin', to: 'users#nuke_admin'
+  
+  get 'forum', to: 'forum#show'
+  get 'forum/:category', to: 'forum#show_board', as: 'category'
+  get '*t/:thread_id', to: 'forum_threads#show', as: 'thread', constraints: lambda { |request| constraint(request) }
+  #get 'forum/:category/new', to: 'threads#new', as: 'board'
+  
+  post 'thread/destroy', to: 'forum_threads#destroy'
+  
+  post 'posts/create'
+  post 'posts/update'
+  post 'posts/destroy'
+  
+  post 'upvotes/create'
+  
+  get 'articles', to: 'articles#show'
   
   resources :albums
   
+  get '*unmatched_route', to: 'application#render_404', constraints: lambda { |request| constraint(request) }
   root 'albums#show'
 end

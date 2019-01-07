@@ -19,20 +19,22 @@
 </div>
 <div id="main-container">
 	<div id="main-opacity"></div>
-	<nav id="sidebar">
-		<ul id="nav-list">
-			<li>
-				<div class="nav-btn"><div class="title-wrapper"><%= link_to "Home", albums_path %></div></div>
-				<div class="nav-btn"><div class="title-wrapper"><%= link_to "Submit", albums_submit_path %></div></div>
-				<div class="nav-btn"><div class="title-wrapper"><%= link_to "About / FAQ", about_path %></div></div>
-			</li>
-		</ul>
-	</nav>
+	<%= render 'partials/navbar_slim' %>
 	<div id="panel-container">
 		<h2>Overview</h2>
 		<div id="user-box" class="list-box">
+			<div>
+				<h2>User list</h2>
+				<div class="action-btn-container">
+					<a class="clear-btn admin-btn">Toggle admin</a>
+					<a class="clear-btn ban-btn">Toggle ban</a>
+					<a class="clear-btn nuke-btn">Nuke account</a>
+				</div>
+			</div>
 			<ul id="user-list">
 				<li>
+					<h3 class="checkbox-container"></h3>
+					<h3>Id</h3>
 					<h3>Username</h3>
 					<h3>Email</h3>
 					<h3>Karma</h3>
@@ -46,9 +48,11 @@
 				<% User.all.each do | user | %>
 				<li>
 					<ul>
+						<li class="checkbox-container"><input type="checkbox" value="<%= user.id %>"></li>
+						<li><p><%= user.id %></p></li>
 						<li><p><%= user.username %></p></li>
 						<li><p><%= user.email %></p></li>
-						<li><p><%= user.karma %></p></li>
+						<li><p><%= user_karma(user) %></p></li>
 						<li><p><%= user.admin %></p></li>
 						<li><p><%= user.banned %></p></li>
 						<li><p><%= user.gender %></p></li>
@@ -61,11 +65,14 @@
 			</ul>
 		</div>
 		<div id="request-box" class="list-box">
-			<h2>Pending requests</h2>
-			<a id="clear-report-btn" class="clear-btn">Clear selected</a>
+			<div>
+				<h2>Pending requests</h2>
+				<a id="clear-report-btn" class="clear-btn">Clear selected</a>
+			</div>
 			<ul>
 				<li>
 					<h3 class="checkbox-container"></h3>
+					<h3>Id</h3>
 					<h3>Type</h3>
 					<h3>Reason</h3>
 					<h3>Comment</h3>
@@ -76,7 +83,16 @@
 				<li>
 					<ul>
 						<li class="checkbox-container"><input type="checkbox" value="<%= report.id %>"></li>
-						<li><p><%= report.report_type %>: <%= report.album + report.thread %></p></li>
+						<li><p><%= report.id %></p></li>
+						<li><p><%= report.report_type %> - <%= report.album if report.album.present? %>
+						<% if report.thread.present? %>
+						<% thread = ForumThread.find_by(id: report.thread) %>
+						<% post = Post.find_by(id: report.post) %>
+						<a href="<%= forum_path + "/#{thread.category}/t/#{thread.id}" %>">
+						<%= thread.title + ' - ' + post.post_index.to_s %>
+						</a>
+						<% end %>
+						</p></li>
 						<li><p><%= report.reason %></p></li>
 						<li><p><%= report.comment %></p></li>
 						<% if report.user_id %>
@@ -91,26 +107,62 @@
 			</ul>
 		</div>
 		<div id="album-box" class="list-box">
-			<h2>Albums</h2>
-			<a id="clear-album-btn" class="clear-btn">Delete selected</a>
+			<div>
+				<h2>Albums</h2>
+				<a id="clear-album-btn" class="clear-btn">Delete selected</a>
+			</div>
 			<ul>
 				<li>
 					<h3 class="checkbox-container"></h3>
+					<h3>Id</h3>
 					<h3>Title</h3>
 					<h3>Artist</h3>
 					<h3>Year</h3>
 					<h3>Flavor</h3>
 					<h3>Quality</h3>
+					<h3>Submitter</h3>
 				</li>
 				<% Album.all.each do | album | %>
 				<li>
 					<ul>
 						<li class="checkbox-container"><input type="checkbox" value="<%= album.id %>"></li>
+						<li><p><%= album.id %></p></li>
 						<li><p><%= album.title %> <i><%= album.romanization %></i></p></li>
 						<li><p><%= album.japanese_artist %><i><%= album.romaji_artist %></i></p></li>
 						<li><p><%= album.year %></p></li>
 						<li><p><%= album.flavor %></p></li>
 						<li><p><%= album.quality %></p></li>
+						<li><p><%= User.find_by(id: album.user_id).username %></p></li>
+					</ul>
+				</li>
+				<% end %>
+			</ul>
+		</div>
+		<div id="threads-box" class="list-box">
+			<div>
+				<h2>Forum threads</h2>
+				<a id="clear-thread-btn" class="clear-btn">Delete selected</a>
+			</div>
+			<ul>
+				<li>
+					<h3 class="checkbox-container"></h3>
+					<h3>Id</h3>
+					<h3>Title</h3>
+					<h3>Author</h3>
+					<h3>Board</h3>
+					<h3>Replies</h3>
+					<h3>Last activity</h3>
+				</li>
+				<% ForumThread.all.each do | thread | %>
+				<li>
+					<ul>
+						<li class="checkbox-container"><input type="checkbox" value="<%= thread.id %>"></li>
+						<li><p><%= thread.id %></p></li>
+						<li><p><a href="<%= root_url + "forum/#{thread.category}/t/#{thread.id}" %>"><%= thread.title %></a></p></li>
+						<li><p><a href="<%= root_url + "users/#{thread.user.username}" %>"><%= thread.user.username %></a></p></li>
+						<li><p><%= thread.category %></p></li>
+						<li><p><%= thread.posts.size %></p></li>
+						<li><p><%= thread.updated_at.strftime("%R %Z, %F") %></p></li>
 					</ul>
 				</li>
 				<% end %>

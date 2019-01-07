@@ -1,0 +1,180 @@
+<% title @thread.title %>
+<% description "varieti.es is an open source archive for city pop. Browse your favorite city pop albums in an accessible way!" %>
+<%= image_tag "varietiescropped.png", id: "alt-img" %>
+<div class="modal delete-modal modal-inactive">
+	<input id="delete-post-id" type="text" name="report[post]" value="" hidden>
+	<div>
+		<h2>Confirmation</h2>
+	</div>
+	<ion-icon name="ios-close" class="modal-close"></ion-icon>
+	<p>Are you sure you want to delete this post?</p>
+	<a class="delete-confirm-btn">Yes, delete it</a>
+</div>
+<div id="bg-opacity"></div>
+<div id="report-form-container" class="modal modal-inactive">
+	<div>
+		<h2>Submit a report</h2>
+	</div>
+	<ion-icon name="ios-close" id="report-close" class="modal-close"></ion-icon>
+	<form id="report-form" class="modal-form" action="/reports/create" accept-charset="UTF-8" data-remote="true" method="post">
+		<input id="report-post" type="text" name="report[post]" value="" hidden>
+		<input type="text" name="report[report_type]" value="Post" hidden>
+		<input id="report-thread" type="text" name="report[thread]" value="<%= @thread.id %>" hidden>
+		<div class="modal-form-input-container">
+			<label for="report-input-container"><p>Report reason:</p></label>
+			<select class='report-reason' name="report[reason]" form="report-form" required>
+				<option value='Spam'><p>Spam</p></option>
+				<option value='Offensive'><p>Offensive content</p></option>
+				<option value='Other'><p>Other</p></option>
+			</select>
+			<label for="report-comment"><p>Comment:</p></label>
+			<textarea id="report-comment" placeholder="Any additional notes go here" name="report[comment]"></textarea>
+		</div>
+		<input type="submit" name="commit" value="Send Report">
+		<div class="submit-message shrunk">
+			<p>Your report has been submitted!</p>
+		</div>
+	</form>
+</div>
+<div id="albums-bg-container">
+	<%= image_tag "variety.jpg" %>
+	<%= image_tag "mignonne.jpg" %>
+	<%= image_tag "niagaratrianglevol2.jpg" %>
+	<%= image_tag "superflight.jpg" %>
+	<%= image_tag "bigwave.jpg" %>
+</div>
+<div id="search-title">
+	<div id="logo-title">
+		<a href="/albums/index"><h1>varieti.es</h1></a>
+		<a href="/albums/index" id="beta-title">BETA!</a>
+		<h2>City Pop Album Archive</h2>
+	</div>
+</div>
+<div id="main-container">
+    <div id="main-opacity"></div>
+    <%= render 'partials/navbar_slim' %>
+    <%= image_tag "spinner.gif", class: "spinner hidden" %>
+    <div id="board-container">
+        <div id="forum-opacity"></div>
+        <h2 id="title"><a href="<%= forum_path + "/#{@thread.category}" %>"><%= @thread.category.titleize %></a> - <%= @thread.title %></h2>
+        <div class="page-container">
+            <% if @page - 1 > 0 %>
+            <a class="icon" href="<%= root_url + "forum/#{@thread.category}/t/#{@thread.id}?p=#{@page - 1}"%>"><ion-icon name="ios-arrow-back"></ion-icon></a>
+            <% end %>
+            <% (0...(@posts.length / 10.0).ceil).each do | i | %>
+            <a class="page-btn <%= tempClass = (i + 1 == @page) ? 'underline' : '' %>" href="<%= root_url + "forum/#{@thread.category}/t/#{@thread.id}?p=#{i + 1}" %>"><%= i + 1 %></a>
+            <% end %>
+            <% if @page + 1 <= (@posts.length / 10.0).ceil %>
+            <a class="icon" href="<%= root_url + "forum/#{@thread.category}/t/#{@thread.id}?p=#{@page + 1}"%>"><ion-icon name="ios-arrow-forward"></ion-icon></a>
+            <% end %>
+        </div>
+        <div id="post-list">
+            <ul>
+                <div id="forum-opacity" class="darker"></div>
+                <% @page_posts.each do | post | %>
+                <li>
+                    <input class="post-id" value="<%= post.id %>" hidden>
+                    <div class="post-header">
+                        <div>
+                            <p class="post-index">#<%= post.post_index %></p>
+                            <p class="post-title"><b><%= @thread.title %></b></p>
+                        </div>
+                        <p class="post-date">Posted at <%= post.created_at.strftime("%R %Z, %F") %></p>
+                        <div class="header-icons">
+                            <% if fetch_user %>
+                                <% if post.user.id == fetch_user.id %>
+                                <ion-icon class="post-icon post-edit" name="create"></ion-icon>
+                                <% end %>
+                                <% if fetch_user.admin || post.user.id == fetch_user.id %>
+                                <ion-icon class="post-icon post-trash" name="ios-trash"></ion-icon>
+                                <% end %>
+                                <ion-icon class="post-icon post-flag" name="ios-flag"></ion-icon>
+                                <p class="post-score">Score: <%= post_upvotes(post) %></p>
+                                <% if fetch_user %>
+                                <div class="heart-container">
+                                    <ion-icon class="heart-animation hidden" name="ios-heart"></ion-icon>
+                                    <ion-icon class="post-icon post-heart <%= 'red' if Upvote.find_by(user: fetch_user, post: post).present? %>" name="ios-heart"></ion-icon>
+                                </div>
+                                <% end %>
+                            <% else %>
+                            <p class="post-score">Score: <%= post_upvotes(post) %></p>
+                            <% end %>
+                        </div>
+                    </div>
+                    <div class="post-body">
+                        <div class="user-info">
+                            <p class="user-name"><b><a href="<%= root_url + 'users/' + post.user.username %>"><%= post.user.username %></a></b></p>
+                            <div class="user-badges">
+                            <% get_badges(post.user).each do | badge | %>
+                            <div class="badge <%= badge.downcase %>"><p><%= badge %></p></div>
+                            <% end %>
+                            </div>
+                            <div class="avatar-wrapper"><a href="<%= root_url + 'users/' + post.user.username %>">
+                            <% if post.user.avatar.attached? %>
+                            <%= image_tag post.user.avatar.variant(resize: "100x100") %>
+                            <% else %>
+                            <img src="https://i.imgur.com/ceYNiDi.png"></img>
+                            <% end %>
+                            </a></div>
+                            <p class="user-account-type"><b><%= post.user.account_type %></b></p>
+                            <p class="user-karma"><%= user_karma(post.user) %> karma</p>
+                            <p class="user-post-count"><%= post.user.posts.length %> posts</p>
+                            <p class="user-location"><b>Location:</b> <%= post.user.location %></p>
+                        </div>
+                        <div class="text-container">
+                            <div class="post-text">
+                            <p><%= post.body %></p>
+                            </div>
+                            <div class="user-signature">
+                                <p><%= post.user.signature %></p>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <% end %>
+                <% if fetch_user %>
+                <div id="reply-container">
+                    <form id="reply-form" enctype="multipart/form-data" action="<%= root_url + 'posts/create' %>" method="post" data-remote="false">
+                        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+                        <input type="text" name="post[thread_id]" value="<%= @thread.id %>" hidden>
+                        <div id="form-user-info">
+                            <% if fetch_user.avatar.attached? %>
+                            <%= image_tag fetch_user.avatar.variant(resize: "80x80") %>
+                            <% else %>
+                            <img src="https://i.imgur.com/ceYNiDi.png"></img>
+                            <% end %>
+                        </div>
+                        <div id="reply-text-container">
+                            <h3>Reply to this topic</h3>
+                            <textarea id="reply-textarea" name="post[body]" placeholder="Type your reply here."></textarea>
+                            <input type="submit" value="Submit reply" name="commit">
+                        </div>
+                    </form>
+                </div>
+                <% else %>
+                <div id="no-login-form">
+                    <h2>You must be a member to reply to this thread</h2>
+                    <p>Log in or register below</p>
+                    <form enctype="multipart/form-data" action="<%= root_url %>login" accept-charset="UTF-8" data-remote="true" method="post">
+                        <input placeholder="Username" type="text" name="session[username]">
+                        <input placeholder="Password" type="password" name="session[password]">
+                        <input value="Login" type="submit" name="commit">
+                    </form>
+                    <a id="register-btn">Create an account</a>
+                </div>
+                <% end %>
+            </ul>
+        </div>
+        <div class="page-container">
+            <% if @page - 1 > 0 %>
+            <a class="icon" href="<%= root_url + "forum/#{@thread.category}/t/#{@thread.id}?p=#{@page - 1}"%>"><ion-icon name="ios-arrow-back"></ion-icon></a>
+            <% end %>
+            <% (0...(@posts.length / 10.0).ceil).each do | i | %>
+            <a class="page-btn <%= tempClass = (i + 1 == @page) ? 'underline' : '' %>" href="<%= root_url + "forum/#{@thread.category}/t/#{@thread.id}?p=#{i + 1}" %>"><%= i + 1 %></a>
+            <% end %>
+            <% if @page + 1 <= (@posts.length / 10.0).ceil %>
+            <a class="icon" href="<%= root_url + "forum/#{@thread.category}/t/#{@thread.id}?p=#{@page + 1}"%>"><ion-icon name="ios-arrow-forward"></ion-icon></a>
+            <% end %>
+        </div>
+    </div>
+</div>

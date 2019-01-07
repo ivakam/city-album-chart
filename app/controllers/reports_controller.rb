@@ -8,16 +8,16 @@ class ReportsController < ApplicationController
   end
   
   def destroy
-    toBeNuked = JSON.parse(params[:to_be_nuked])
-    toBeNuked.each do | report |
-      @report = Report.find_by(id: report)
+    toBeNuked = JSON.parse(params[:report][:serialized_ids])
+    toBeNuked.each do | key, value |
+      @report = Report.find_by(id: value)
       @report.destroy
     end
   end
 
   private
   def report_params
-    params.require(:report).permit(:album, :reason, :comment, :user_id, :report_type, :thread, :to_be_nuked)
+    params.require(:report).permit(:album, :reason, :comment, :user_id, :report_type, :thread, :to_be_nuked, :post)
   end
 
 end

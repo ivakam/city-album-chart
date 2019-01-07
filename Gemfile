@@ -28,15 +28,14 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-# To use controller variables as javascript variables
 gem 'js_assets'
 gem 'jquery-rails'
 gem 'rack'
-gem 'carrierwave'
 gem 'mini_magick'
 gem 'meta-tags'
 gem 'rest-client'
 gem 'bcrypt'
+gem 'faker'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'

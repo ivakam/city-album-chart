@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_31_000323) do
+ActiveRecord::Schema.define(version: 2019_01_06_002234) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "name", limit: 191, null: false
@@ -50,6 +50,33 @@ ActiveRecord::Schema.define(version: 2018_12_31_000323) do
     t.text "thumbnail"
     t.text "coverlink"
     t.text "tags"
+    t.string "tracklist"
+    t.integer "user_id"
+  end
+
+  create_table "forum_threads", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
+    t.string "title"
+    t.string "category"
+    t.integer "score"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "stickied"
+    t.boolean "archived"
+    t.boolean "locked"
+    t.text "body"
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_forum_threads_on_user_id"
+  end
+
+  create_table "posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
+    t.text "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.bigint "forum_thread_id"
+    t.integer "post_index"
+    t.index ["forum_thread_id"], name: "index_posts_on_forum_thread_id"
+    t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
   create_table "reports", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
@@ -61,6 +88,7 @@ ActiveRecord::Schema.define(version: 2018_12_31_000323) do
     t.datetime "updated_at", null: false
     t.string "report_type"
     t.string "thread"
+    t.string "post"
   end
 
   create_table "tracks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
@@ -74,19 +102,33 @@ ActiveRecord::Schema.define(version: 2018_12_31_000323) do
     t.index ["album_id"], name: "index_tracks_on_album_id"
   end
 
+  create_table "upvotes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "post_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_upvotes_on_post_id"
+    t.index ["user_id"], name: "index_upvotes_on_user_id"
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "username"
     t.string "email"
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "karma"
     t.boolean "admin"
     t.boolean "banned"
     t.string "gender"
     t.integer "birth_year"
     t.string "location"
     t.string "bio"
+    t.string "badges"
+    t.string "account_type"
+    t.string "signature"
+    t.string "album_fav"
   end
 
+  add_foreign_key "forum_threads", "users"
+  add_foreign_key "posts", "users"
 end

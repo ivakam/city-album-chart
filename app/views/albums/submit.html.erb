@@ -20,15 +20,7 @@
 </div>
 <div id="main-container">
     <div id="main-opacity"></div>
-    <nav id="sidebar">
-        <ul id="nav-list">
-            <li>
-                <div class="nav-btn"><div class="title-wrapper"><%= link_to "Home", albums_path %></div></div>
-                <div class="nav-btn"><div class="title-wrapper"><%= link_to "Submit", albums_submit_path %></div></div>
-                <div class="nav-btn"><div class="title-wrapper"><%= link_to "About / FAQ", about_path %></div></div>
-            </li>
-        </ul>
-    </nav>
+    <%= render 'partials/navbar_slim' %>
     <div id="submit-wrapper">
         <h2>Submit an Album</h2>
         <div id="submit-container">
@@ -111,90 +103,133 @@
                 <br>
                 Finally, all submissions are manually looked over by me. I want this archive to stay high-quality. No amount of code will overcome that, unfortunately. Thanks for your contribution.</p>
     	    </div>
-            <%= form_with scope: :album, html: { multipart: true }, url: albums_path, remote: true do |form| %>
+            <%= form_with scope: :album, html: { multipart: true }, url: "#{root_url}albums/create", data_remote: true do |form| %>
                 <input type="hidden" name="form_type" value="submit">
+                <input id="hidden-tracklist" type="text" name="tracklist" hidden>
                 <div id="form-container">
-                    <div id="input-container">
-                        <div class="form-divider" id="left-divider">
+                    <div>
+                        <div id="input-container">
                             <i class="hint">Have a scraper output to submit instead? <a class="hint-click">Click here.</a></i>
-                            <div class="form-field">
-                                <p><%= form.label :title %>*</p>
-                                <%= form.text_field :title, id: "title-field", placeholder: "ライドオンタイム" %>
-                                <div class="error-msg-container">
-                                    <p class="error-msg">Field must be filled out!</p>
+                            <div>
+                                <div class="form-divider" id="left-divider">
+                                    <div class="form-field">
+                                        <p><%= form.label :title %>*</p>
+                                        <%= form.text_field :title, id: "title-field", placeholder: "ライドオンタイム" %>
+                                        <div class="error-msg-container">
+                                            <p class="error-msg">Field must be filled out!</p>
+                                        </div>
+                                    </div>
+                                    <div class="form-field">
+                                        <p><%= form.label :romanization %></p>
+                                        <%= form.text_field :romanization, placeholder: "Ride on Time" %>
+                                    </div>
+                                    <div class="form-field">
+                                        <p><%= form.label :japanese_artist %></p>
+                                        <%= form.text_field :japanese_artist, placeholder: "山下達郎" %>
+                                    </div>
+                                    <div class="form-field">
+                                        <p><%= form.label :romaji_artist %>*</p>
+                                        <%= form.text_field :romaji_artist, id: "romaji-artist-field", placeholder: "Tatsuro Yamashita" %>
+                                        <div class="error-msg-container">
+                                            <p class="error-msg">Field must be filled out!</p>
+                                        </div>
+                                    </div>
+                                    <div class="form-field">
+                                        <p><%= form.label :year %></p>
+                                        <%= form.text_field :year, placeholder: "1980" %>
+                                    </div>
+                                    <div class="form-field">
+                                        <p><%= form.label :flavor %></p>
+                                        <%= form.text_field :flavor, placeholder: "Funk" %>
+                                    </div>
+                                    <i>*Required Fields.</i>
                                 </div>
-                            </div>
-                            <div class="form-field">
-                                <p><%= form.label :romanization %></p>
-                                <%= form.text_field :romanization, placeholder: "Ride on Time" %>
-                            </div>
-                            <div class="form-field">
-                                <p><%= form.label :japanese_artist %></p>
-                                <%= form.text_field :japanese_artist, placeholder: "山下達郎" %>
-                            </div>
-                            <div class="form-field">
-                                <p><%= form.label :romaji_artist %>*</p>
-                                <%= form.text_field :romaji_artist, id: "romaji-artist-field", placeholder: "Tatsuro Yamashita" %>
-                                <div class="error-msg-container">
-                                    <p class="error-msg">Field must be filled out!</p>
-                                </div>
-                            </div>
-                            <div class="form-field">
-                                <p><%= form.label :year %></p>
-                                <%= form.text_field :year, placeholder: "1980" %>
-                            </div>
-                            <div class="form-field">
-                                <p><%= form.label :flavor %></p>
-                                <%= form.text_field :flavor, placeholder: "Funk" %>
-                            </div>
-                            <i>*Required Fields.</i>
-                        </div>
-                        <div class="form-divider" id="right-divider">
-                            <div class="form-field">
-                                <p><%= form.label :description %> (Not a review)</p>
-                                <%= form.text_area :description, placeholder: "Ride on Time is the fifth studio album by Japanese singer-songwriter Tatsuro Yamashita, released in September 1980.\n\nRide on Time has been most well known by its title track. It was used on the television commercial for Maxell's audio cassette starring Yamashita, and released as a single in May 1980." %>
-                            </div>
-                            <div id="tracklist-submit">
-                                <div class="tracklist-label-text">
-                                    <p><%= form.label :"Tracklist" %> (Don't write track numbers! Just keep them in order.)</p>
-                                    <div class="tooltip"><span class="tooltiptext">
-                                        <a>Template in the form of "&ltTrack title&gt", "&ltRomanization&gt", &ltTrack Duration&gt.</a>
-                                        </span><ion-icon name="help-circle-outline"></ion-icon>
+                                <div class="form-divider" id="right-divider">
+                                    <div class="form-field">
+                                        <p><%= form.label :description %> (Not a review)</p>
+                                        <%= form.text_area :description, placeholder: "Ride on Time is the fifth studio album by Japanese singer-songwriter Tatsuro Yamashita, released in September 1980.\n\nRide on Time has been most well known by its title track. It was used on the television commercial for Maxell's audio cassette starring Yamashita, and released as a single in May 1980." %>
+                                    </div>
+                                    <div class="tracklist-submit">
+                                        <div class="tracklist-label-text">
+                                            <p><%= form.label :"Tracklist" %> (Don't write track numbers! Just keep them in order.)</p>
+                                        </div>
+                                        <div class="tracklist-edit-container">
+                                            <div class="track-input-container">
+                                                <span class="draggable-area"></span>
+                                    			<input class='title' placeholder='Title' type='text'>
+                                    			<input class='romanization' placeholder='Romanization' type='text'>
+                                    			<input class='duration' placeholder='M:S' type='text'>
+                                                <ion-icon name='ios-close' class='track-delete-btn'></ion-icon>
+                                            </div>
+                                            <div class="track-input-container">
+                                                <span class="draggable-area"></span>
+                                    			<input class='title' placeholder='Title' type='text'>
+                                    			<input class='romanization' placeholder='Romanization' type='text'>
+                                    			<input class='duration' placeholder='M:S' type='text'>
+                                                <ion-icon name='ios-close' class='track-delete-btn'></ion-icon>
+                                            </div>
+                                            <div class="track-input-container">
+                                                <span class="draggable-area"></span>
+                                    			<input class='title' placeholder='Title' type='text'>
+                                    			<input class='romanization' placeholder='Romanization' type='text'>
+                                    			<input class='duration' placeholder='M:S' type='text'>
+                                                <ion-icon name='ios-close' class='track-delete-btn'></ion-icon>
+                                            </div>
+                                            <div class="track-input-container">
+                                                <span class="draggable-area"></span>
+                                    			<input class='title' placeholder='Title' type='text'>
+                                    			<input class='romanization' placeholder='Romanization' type='text'>
+                                    			<input class='duration' placeholder='M:S' type='text'>
+                                                <ion-icon name='ios-close' class='track-delete-btn'></ion-icon>
+                                            </div>
+                                            <div class="track-input-container">
+                                                <span class="draggable-area"></span>
+                                    			<input class='title' placeholder='Title' type='text'>
+                                    			<input class='romanization' placeholder='Romanization' type='text'>
+                                    			<input class='duration' placeholder='M:S' type='text'>
+                                                <ion-icon name='ios-close' class='track-delete-btn'></ion-icon>
+                                            </div>
+                                            <div class="track-input-container">
+                                                <span class="draggable-area"></span>
+                                    			<input class='title' placeholder='Title' type='text'>
+                                    			<input class='romanization' placeholder='Romanization' type='text'>
+                                    			<input class='duration' placeholder='M:S' type='text'>
+                                                <ion-icon name='ios-close' class='track-delete-btn'></ion-icon>
+                                            </div>
+                                            <div class="track-input-container">
+                                                <span class="draggable-area"></span>
+                                    			<input class='title' placeholder='Title' type='text'>
+                                    			<input class='romanization' placeholder='Romanization' type='text'>
+                                    			<input class='duration' placeholder='M:S' type='text'>
+                                                <ion-icon name='ios-close' class='track-delete-btn'></ion-icon>
+                                            </div>
+                                            <div class="track-input-container">
+                                                <span class="draggable-area"></span>
+                                    			<input class='title' placeholder='Title' type='text'>
+                                    			<input class='romanization' placeholder='Romanization' type='text'>
+                                    			<input class='duration' placeholder='M:S' type='text'>
+                                                <ion-icon name='ios-close' class='track-delete-btn'></ion-icon>
+                                            </div>
+                                            <ion-icon name='ios-add-circle' class='track-add-btn'></ion-icon>
+                                        </div>
                                     </div>
                                 </div>
-                                <%= form.text_area :temp_tracklist, placeholder: "\"<Track title>\", \"<Romanization>\", <Track duration>\n\n" +
-                                "\"いつか\", \"Someday\", 5:46\n" +
-                                "\"空想\", \"Daydream\", 4:27\n" +
-                                "\"サイレントスクリーマー\", \"Silent Screamer\", 5:27\n" +
-                                "\"ライドオンタイム\", \"Ride On Time\", 5:51\n" +
-                                "\"夏の扉\", \"The Door Into Summer\", 4:39\n" +
-                                "\"私のシュガーベイブ\", \"My Sugar Babe\", 4:09\n" +
-                                "\"雨の日\", \"Rainy Day\", 5:16\n" +
-                                "\"雲\", \"Clouds\", 5:37\n" +
-                                "\"キス・グッドナイト\", \"Kissing Goodnight\", 1:34" %>
                             </div>
                             <div class="form-field submit-btn">
-                                <p><%= form.label :"Album Cover (jpg or jpeg. Max 500Kb. Preferably under 100Kb.)" %></p>
-                                <%= form.file_field :image %>
+                                <p>Album Cover (jpg or jpeg. Max 500Kb. Preferably under 100Kb.)</p>
+                                <label for="album-cover"><ion-icon class="cover-browse" name="ios-folder-open"></ion-icon></label>
+                                <%= form.file_field :cover, id: 'album-cover' %>
                             </div>
-                            <div class="save-container" class="submit-btn">
-                                <div class="submit-msg-container">
-                                    <p>Submitted!</p>
-                                </div>
-                                <%= form.submit "Submit", class: "save-btn" %>
-                            </div>
+                        </div>
+                        <div class="form-field" id="scraper-input">
+                            <i class="hint"><a class="hint-click">Take me back!</a></i>
+                            <p><%= form.label :scraper %> (paste your output here). Images go in a separate folder to me directly (see links in footer).</p>
+                            <%= form.text_area :scraper, id: "scraper-textarea", placeholder: "Paste scraper output here." %>
                         </div>
                     </div>
-                    <div class="form-field" id="scraper-input">
-                        <i class="hint"><a class="hint-click">Take me back!</a></i>
-                        <p><%= form.label :scraper %> (paste your output here). Images go in a separate folder to me directly (see links in footer).</p>
-                        <%= form.text_area :scraper, id: "scraper-textarea", placeholder: "Paste scraper output here." %>
-                        <div class="save-container" class="submit-btn">
-                            <div class="submit-msg-container">
-                                <p>Submitted!</p>
-                            </div>
-                            <%= form.submit "Submit", class: "save-btn" %>
-                        </div>
+                    <div class="save-container" class="submit-btn">
+                        <%= form.submit "Submit", class: "save-btn" %>
+                        <h2>Sending submission...</h2>
                     </div>
                 </div>
             <% end %>

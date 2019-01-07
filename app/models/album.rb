@@ -3,15 +3,33 @@ class Album < ApplicationRecord
 
 	has_many :tracks, dependent: :destroy
 	has_one_attached :cover
-	mount_uploader :image, ImageUploader
 	validate :form_presence
-	validates_processing_of :image
-	validate :image_size_validation
+	validate :cover_validation
+	
+    after_save do
+        update_with_user_status_service
+    end
+    
+    private
+    
+    def update_with_user_status_service
+        UserStatusService.new({
+            user: User.find_by(id: self.user_id)
+        }).update
+    end
 	 
-	private
-		def image_size_validation
-			errors[:image] << "should be less than 500KB" if image.size > 0.5.megabytes
+	def cover_validation
+		if cover.attached?
+			if cover.blob.byte_size > 500000
+				cover.purge
+				errors[:base] << "Filesize too large"
+			elsif !cover.blob.content_type.starts_with?('image/')
+				logo.purge
+				errors[:base] << 'Wrong format'
+			end
 		end
+	end
+	
 	def form_presence
 		if scraper.blank?
 			if (title.blank? || romaji_artist.blank?)

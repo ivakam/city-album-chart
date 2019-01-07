@@ -1,4 +1,46 @@
 $(document).on 'turbolinks:load', ->
+	
+	#Handler for clicking "create account" button
+	
+	$('#register-btn').click ->
+		$('#register-form-container').toggleClass('modal-inactive')
+		opacity = $('#opaque')
+		opacity.css('background', 'rgba(0, 0, 0, 0.6')
+		opacity.css('z-index', '5')				
+
+	#Handler for closing the zoom-mode for images
+	
+	resetFocus = () ->
+		$('img').removeClass('enlargened')
+		$('#opaque').css('background', 'rgba(0,0,0,0)')
+		$('.bigimage').attr('src', '')
+		$('#opaque').css('z-index', '0')
+		$('.modal').addClass('modal-inactive')
+		$('#report-comment').val('')
+
+	$('#opaque').click ->
+		resetFocus()
+	
+	$('.modal-close').click ->
+		resetFocus()
+		
+	if $('.flash-modal')[0]
+		opacity = $('#opaque')
+		opacity.css('background', 'rgba(0, 0, 0, 0.6')
+		opacity.css('z-index', '5')				
+		setTimeout( ->
+			resetFocus()
+		, 3000)
+		
+	#Handler for sending report
+	
+	$('.modal input[type=submit]').click ->
+		$('.submit-message').toggleClass('shrunk')
+		setTimeout( ->
+			$('.submit-message').toggleClass('shrunk')
+			resetFocus()
+		, 5000)
+		
 	if $('body').hasClass('albums show')
 		
 		#Global variable declaration
@@ -14,7 +56,7 @@ $(document).on 'turbolinks:load', ->
 		albums = null
 		$('#main-search').val('')
 		
-		console.log(user)
+		#console.log(user)
 		#console.log('albums.coffee is running.')
 		
 		sortAlbums = (arr) ->
@@ -137,7 +179,7 @@ $(document).on 'turbolinks:load', ->
 			e = $(e.target)
 			title = e.parent().find('.title-container h2').html()
 			$('#report-album').attr('value', title)
-			$('#report-form-container').toggleClass('slide-inactive')
+			$('#report-form-container').toggleClass('modal-inactive')
 			opacity = $('#opaque')
 			opacity.css('background', 'rgba(0, 0, 0, 0.6')
 			opacity.css('z-index', '5')
@@ -251,10 +293,10 @@ $(document).on 'turbolinks:load', ->
 					editTrackStr += "<div class='track-input-container'>
 									<span class='draggable-area'></span>
 									<input class='title' placeholder='Title' value='" + track.title.replace("'", '&#39;') + "' type='text'>
-									<input class='title_old' value='" + track.title.replace("'", '&#39;') + "' type='text' hidden>
 									<input class='romanization' placeholder='Romanization' value='" + track.romanization.replace("'", '&#39;') + "' type='text' >
-									<input class='romanization_old' value='" + track.romanization.replace("'", '&#39;') + "' type='text' hidden>
 									<input class='duration' placeholder='M:S' value='" + track.duration + "' type='text'>
+									<input class='title_old' value='" + track.title.replace("'", '&#39;') + "' type='text' hidden>
+									<input class='romanization_old' value='" + track.romanization.replace("'", '&#39;') + "' type='text' hidden>
 									<input class='duration_old' value='" + track.duration + "' type='text' hidden>
 									<ion-icon name='ios-close' class='track-delete-btn'></ion-icon>
 									</div>"
@@ -262,51 +304,53 @@ $(document).on 'turbolinks:load', ->
 				editTrackStr += "<ion-icon name='ios-add-circle' class='track-add-btn'></ion-icon>"
 				editFormStr = ''
 				editBtnStr = ''
-				if user.logged_in
+				if user
 					editFormStr = 
 					"<div class='edit-form-container'>
 						<form action='/albums/update' accept-charset='UTF-8' data-remote='true' method='post'>
 							<div class='field-container'>
 								<div class='input-field-container'>
 									<div class='form-field'>
-										<p><label for='album_title'>Title*</label></p>
-										<input placeholder='ロートスの果実' value='#{album.title.replace("'", '&#39;')}' type='text' name='album[title]'>
+										<p><label for='#{album.title}-title'>Title*</label></p>
+										<input id='#{album.title}-title' placeholder='ロートスの果実' value='#{album.title.replace("'", '&#39;')}' type='text' name='album[title]'>
 										<input value='#{album.title.replace("'", '&#39;')}' type='text' name='album[title_old]' hidden>
 									</div>
 									<div class='form-field'>
-										<p><label for='album_romanization'>Romanization</label></p>
-										<input placeholder='Lotus no Kajitsu' value='#{album.romanization.replace("'", '&#39;')}' type='text' name='album[romanization]'>
+										<p><label for='#{album.title}-romanization'>Romanization</label></p>
+										<input id='#{album.title}-romanization' placeholder='Lotus no Kajitsu' value='#{album.romanization.replace("'", '&#39;')}' type='text' name='album[romanization]'>
 										<input value='#{album.romanization.replace("'", '&#39;')}' type='text' name='album[romanization_old]' hidden>
 									</div>
 									<div class='form-field'>
-										<p><label for='album_japanese_artist'>Japanese artist</label></p>
-										<input placeholder='中原めいこ' value='#{album.japanese_artist.replace("'", '&#39;')}' type='text' name='album[japanese_artist]'>
+										<p><label for='#{album.title}-japanese-artist'>Japanese artist</label></p>
+										<input id='#{album.title}-japanese-artist' placeholder='中原めいこ' value='#{album.japanese_artist.replace("'", '&#39;')}' type='text' name='album[japanese_artist]'>
 										<input value='#{album.japanese_artist.replace("'", '&#39;')}' type='text' name='album[japanese_artist_old]' hidden>
 									</div>
 									<div class='form-field'>
-										<p><label for='album_romaji_artist'>Romaji artist*</label></p>
-										<input placeholder='Meiko Nakahara' value='#{album.romaji_artist.replace("'", '&#39;')}' type='text' name='album[romaji_artist]'>
+										<p><label for='#{album.title}-romaji-artist'>Romaji artist*</label></p>
+										<input id='#{album.title}-romaji-artist' placeholder='Meiko Nakahara' value='#{album.romaji_artist.replace("'", '&#39;')}' type='text' name='album[romaji_artist]'>
 										<input value='#{album.romaji_artist.replace("'", '&#39;')}' type='text' name='album[romaji_artist_old]' hidden>
 									</div>
 									<div class='form-field'>
-										<p><label for='album_year'>Year</label></p>
-										<input placeholder='1984' value='#{album.year.replace("'", '&#39;')}' type='text' name='album[year]'>
+										<p><label for='#{album.title}-year'>Year</label></p>
+										<input id='#{album.title}-year' placeholder='1984' value='#{album.year.replace("'", '&#39;')}' type='text' name='album[year]'>
 										<input value='#{album.year.replace("'", '&#39;')}' type='text' name='album[year_old]' hidden>
 									</div>
 									<div class='form-field'>
-										<p><label for='album_flavor'>Flavor</label></p>
-										<input placeholder='Funk, Idol' value='#{album.flavor.replace("'", '&#39;')}' type='text' name='album[flavor]'>
+										<p><label for='#{album.title}-flavor'>Flavor</label></p>
+										<input id='#{album.title}-flavor' placeholder='Funk, Idol' value='#{album.flavor.replace("'", '&#39;')}' type='text' name='album[flavor]'>
 										<input value='#{album.flavor.replace("'", '&#39;')}' type='text' name='album[flavor_old]' hidden>
 									</div>
 								</div>
+								<div class='divider'></div>
 								<div class='form-field description-field'>
-									<p><label for='album_description'>Description</label></p>
-									<textarea placeholder='Meiko Nakahara&#39;s 4th studio album brings the hard synths and slappy basslines.' name='album[description]'>#{album.description.replace("'", '&#39;')}</textarea>
+									<p><label for='#{album.title}-description'>Description</label></p>
+									<textarea id='#{album.title}-description' placeholder='Meiko Nakahara&#39;s 4th studio album brings the hard synths and slappy basslines.' name='album[description]'>#{album.description.replace("'", '&#39;')}</textarea>
 									<input value='#{album.description.replace("'", '&#39;')}' type=text' name='album[description_old]' hidden>
 								</div>
+								<div class='divider'></div>
 								<div class='tracklist-submit'>
 									<div class='tracklist-label-text'>
-										<p><label for='album_tracklist'>Tracklist</label></p>
+										<p><label for='#{album.title}-tracklist'>Tracklist</label></p>
 										<div class='tooltip'><span class='tooltiptext'>
 											<a>Template in the form of \"&ltTrack title&gt\", \"&ltRomanization&gt\", &ltTrack Duration&gt.</a>
 										</div>
@@ -394,65 +438,12 @@ $(document).on 'turbolinks:load', ->
 											#{trackListStr}
 										</ul>
 									</div>
+									<div class='contributor'>
+										<p>Contributor: <a href='#{host.replace(/albums\/fetch\?/, 'users/') + album.contributor.toLowerCase()}'>#{album.contributor}</a></p>
+									</div>
 								</div> 
 							</div> 
-							<div class='edit-form-container'>
-								<form enctype='multipart/form-data' action='/albums/update' accept-charset='UTF-8' data-remote='true' method='post'>
-									<div class='field-container'>
-										<div class='input-field-container'>
-											<div class='form-field'>
-												<p><label for='album_title'>Title*</label></p>
-												<input placeholder='ロートスの果実' value='#{album.title.replace("'", '&#39;')}' type='text' name='album[title]'>
-												<input value='#{album.title.replace("'", '&#39;')}' type='text' name='album[title_old]' hidden>
-											</div>
-											<div class='form-field'>
-												<p><label for='album_romanization'>Romanization</label></p>
-												<input placeholder='Lotus no Kajitsu' value='#{album.romanization.replace("'", '&#39;')}' type='text' name='album[romanization]'>
-												<input value='#{album.romanization.replace("'", '&#39;')}' type='text' name='album[romanization_old]' hidden>
-											</div>
-											<div class='form-field'>
-												<p><label for='album_japanese_artist'>Japanese artist</label></p>
-												<input placeholder='中原めいこ' value='#{album.japanese_artist.replace("'", '&#39;')}' type='text' name='album[japanese_artist]'>
-												<input value='#{album.japanese_artist.replace("'", '&#39;')}' type='text' name='album[japanese_artist_old]' hidden>
-											</div>
-											<div class='form-field'>
-												<p><label for='album_romaji_artist'>Romaji artist*</label></p>
-												<input placeholder='Meiko Nakahara' value='#{album.romaji_artist.replace("'", '&#39;')}' type='text' name='album[romaji_artist]'>
-												<input value='#{album.romaji_artist.replace("'", '&#39;')}' type='text' name='album[romaji_artist_old]' hidden>
-											</div>
-											<div class='form-field'>
-												<p><label for='album_year'>Year</label></p>
-												<input placeholder='1984' value='#{album.year.replace("'", '&#39;')}' type='text' name='album[year]'>
-												<input value='#{album.year.replace("'", '&#39;')}' type='text' name='album[year_old]' hidden>
-											</div>
-											<div class='form-field'>
-												<p><label for='album_flavor'>Flavor</label></p>
-												<input placeholder='Funk, Idol' value='#{album.flavor.replace("'", '&#39;')}' type='text' name='album[flavor]'>
-												<input value='#{album.flavor.replace("'", '&#39;')}' type='text' name='album[flavor_old]' hidden>
-											</div>
-										</div>
-										<div class='form-field description-field'>
-											<p><label for='album_description'>Description</label></p>
-											<textarea placeholder='Meiko Nakahara&#39;s 4th studio album brings the hard synths and slappy basslines.' type='text' name='album[description]'>#{album.description.replace("'", '&#39;')}</textarea>
-											<input value='#{album.description.replace("'", '&#39;')}' type=text' name='album[description_old]' hidden>
-										</div>
-										<div class='tracklist-submit'>
-											<div class='tracklist-label-text'>
-												<p><label for='album_tracklist'>Tracklist</label></p>
-												<div class='tooltip'><span class='tooltiptext'>
-													<a>Template in the form of \"&ltTrack title&gt\", \"&ltRomanization&gt\", &ltTrack Duration&gt.</a>
-												</div>
-											</div>
-											<div class='tracklist-edit-container'>
-												#{editTrackStr}
-											</div>
-										</div>
-										<input class='edit-submit-btn' type='submit' name='commit' value='Save changes' data-disable-with='Save changes'>
-										<input class='tracklist' name='tracklist' value='' hidden>
-										<input class='delete-list' name='delete_list' value='' hidden>
-									</div>
-								</form>
-							</div>
+							#{editFormStr}
 						</div>
 					</div>
 				</li>"
@@ -512,15 +503,11 @@ $(document).on 'turbolinks:load', ->
 			console.log('Error fetching from database! Error:\n' + error)
 			return
 		.then (json) ->
-			totalCount = json[json.length - 1]
-			json.pop()
 			albums = sortAlbums(json)
 		.then ->
 			displayAlbum()
 		.then ->
 			$('.spinner').addClass('hidden')
-			sessionStorage.setItem('albumCount', totalCount)
-			$('#album-total-count').text(sessionStorage.getItem('albumCount'))
 
 		#Helper method for opening an info container. Call it as 'sibling: undefined' to reset all info containers.
 		
@@ -598,39 +585,6 @@ $(document).on 'turbolinks:load', ->
 				$(container).get()[0].scrollIntoView({behaviour: 'smooth'})
 			, timer)
 		
-		#Handler for clicking "create account" button
-		
-		$('#register-btn').click ->
-			$('#register-form-container').toggleClass('slide-inactive')
-			opacity = $('#opaque')
-			opacity.css('background', 'rgba(0, 0, 0, 0.6')
-			opacity.css('z-index', '5')				
-		
-		#Handler for closing the zoom-mode for images
-		
-		resetFocus = () ->
-			$('img').removeClass('enlargened')
-			$('#opaque').css('background', 'rgba(0,0,0,0)')
-			$('.bigimage').attr('src', '')
-			$('#opaque').css('z-index', '0')
-			$('.slide-form-container').addClass('slide-inactive')
-			$('#report-comment').val('')
-		
-		$('#opaque').click ->
-			resetFocus()
-		
-		$('.slide-form-close').click ->
-			resetFocus()
-		
-		#Handler for sending report
-		
-		$('.slide-form input[type=submit]').click ->
-			$('.submit-message').toggleClass('shrunk')
-			setTimeout( ->
-				$('.submit-message').toggleClass('shrunk')
-				resetFocus()
-			, 5000)
-		
 		#Handler for clicking the 'sort' buttons
 		
 		$('.sort-btn').click ->
@@ -648,6 +602,7 @@ $(document).on 'turbolinks:load', ->
 			input = input.target.value
 			$('#splash-container').empty()
 			$('.spinner').removeClass('hidden')
+			console.log(input)
 			jsonAlbums = fetch("#{host}q=#{input}&q_track=true&limit=40")
 			.then (response) ->
 				return response.json()
@@ -667,7 +622,7 @@ $(document).on 'turbolinks:load', ->
 			clearTimeout(delayTimer)
 			delayTimer = setTimeout( ->
 				search(e)
-			, 150)
+			, 300)
 		)
 		
 		#Get search field query

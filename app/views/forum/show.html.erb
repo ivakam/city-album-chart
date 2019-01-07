@@ -1,0 +1,112 @@
+<% title "Forum" %>
+<% description "varieti.es is an open source archive for city pop. Browse your favorite city pop albums in an accessible way!" %>
+<%= image_tag "varietiescropped.png", id: "alt-img" %>
+<div id="bg-opacity"></div>
+<div id="albums-bg-container">
+	<%= image_tag "variety.jpg" %>
+	<%= image_tag "mignonne.jpg" %>
+	<%= image_tag "niagaratrianglevol2.jpg" %>
+	<%= image_tag "superflight.jpg" %>
+	<%= image_tag "bigwave.jpg" %>
+</div>
+<div id="search-title">
+	<div id="logo-title">
+		<a href="/albums/index"><h1>varieti.es</h1></a>
+		<a href="/albums/index" id="beta-title">BETA!</a>
+		<h2>City Pop Album Archive</h2>
+	</div>
+</div>
+<div id="main-container">
+    <div id="main-opacity"></div>
+    <%= render 'partials/navbar_slim' %>
+    <%= image_tag "spinner.gif", class: "spinner hidden" %>
+    <div id="board-container">
+        <div id="forum-opacity"></div>
+        <h2 id="title">Forum</h2>
+        <div id="board-list">
+            <ul>
+                <div id="forum-opacity" class="darker"></div>
+                <li>
+                    <ion-icon name="ios-arrow-dropright-circle"></ion-icon>
+                    <div class="board-title-container">
+                        <h3><a href="<%= forum_path + '/announcements' %>">Announcements</a></h3>
+                        <p>Important announcements and PSAs</p>
+                    </div>
+                    <div class="activity"><p>Last updated in thread</p></div>
+                </li>
+                <li>
+                    <ion-icon name="ios-arrow-dropright-circle"></ion-icon>
+                    <div class="board-title-container">
+                        <h3><a href="<%= forum_path + '/rules' %>">Rules and guidelines</a></h3>
+                        <p>Please read these before posting</p>
+                    </div>
+                    <div class="activity"><p>Last updated in thread "<%= board_last_updated('rules').title %>" at <%= board_last_updated('rules').updated_at.strftime("%R %Z, %F") %></p></div>
+                </li>
+            </ul>
+            <div class="divider"></div>
+            <ul>
+                <div id="forum-opacity" class="darker"></div>
+                <li>
+                    <ion-icon name="ios-arrow-dropright-circle"></ion-icon>
+                    <div class="board-title-container">
+                        <h3><a href="<%= forum_path + '/rules' %>">Rules and guidelines</a></h3>
+                        <p>Please read these before posting</p>
+                    </div>
+                    <div class="activity"><p>Placeholder</p></div>
+                </li>
+                <li>
+                    <ion-icon name="ios-arrow-dropright-circle"></ion-icon>
+                    <div class="board-title-container">
+                        <h3><a href="<%= forum_path + '/rules' %>">Rules and guidelines</a></h3>
+                        <p>Please read these before posting</p>
+                    </div>
+                    <div class="activity"><p>Placeholder</p></div>
+                </li>
+                <li>
+                    <ion-icon name="ios-arrow-dropright-circle"></ion-icon>
+                    <div class="board-title-container">
+                        <h3><a href="<%= forum_path + '/rules' %>">Rules and guidelines</a></h3>
+                        <p>Please read these before posting</p>
+                    </div>
+                    <div class="activity"><p>Placeholder</p></div>
+                </li>
+                <li>
+                    <ion-icon name="ios-arrow-dropright-circle"></ion-icon>
+                    <div class="board-title-container">
+                        <h3><a href="<%= forum_path + '/rules' %>">Rules and guidelines</a></h3>
+                        <p>Please read these before posting</p>
+                    </div>
+                    <div class="activity"><p>Placeholder</p></div>
+                </li>
+                <li>
+                    <ion-icon name="ios-arrow-dropright-circle"></ion-icon>
+                    <div class="board-title-container">
+                        <h3><a href="<%= forum_path + '/rules' %>">Rules and guidelines</a></h3>
+                        <p>Please read these before posting</p>
+                    </div>
+                    <div class="activity"><p>Placeholder</p></div>
+                </li>
+            </ul>
+            <div class="divider"></div>
+            <ul>
+                <div id="forum-opacity" class="darker"></div>
+                <li>
+                    <ion-icon name="ios-arrow-dropright-circle"></ion-icon>
+                    <div class="board-title-container">
+                        <h3><a href="<%= forum_path + '/rules' %>">Rules and guidelines</a></h3>
+                        <p>Please read these before posting</p>
+                    </div>
+                    <div class="activity"><p>Placeholder</p></div>
+                </li>
+                <li>
+                    <ion-icon name="ios-arrow-dropright-circle"></ion-icon>
+                    <div class="board-title-container">
+                        <h3><a href="<%= forum_path + '/rules' %>">Rules and guidelines</a></h3>
+                        <p>Please read these before posting</p>
+                    </div>
+                    <div class="activity"><p>Placeholder</p></div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

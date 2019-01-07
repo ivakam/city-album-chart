@@ -1,32 +1,29 @@
 $(document).on 'turbolinks:load', ->
 	if $('body').hasClass('users panel')
+		sendPost = (target, action, param) ->
+			rawData = {}
+			$(target).each ->
+				if $(this)[0].checked
+					rawData[$(this).val()] = $(this).val()
+			serializedData = JSON.stringify(rawData)
+			$.post( window.location.href.replace(/panel/, action),
+				{ "#{param}[serialized_ids]": serializedData }
+			)
+			.done( ->
+				location.reload()
+			)
+			.fail( ->
+				console.log('Error sending post data')
+			)
 		$('#clear-report-btn').click ->
-			reports = {}
-			$('#report-box .checkbox-container input').each ->
-				if $(this)[0].checked
-					reports[$(this).val()] = $(this).val()
-			serializedReports = JSON.stringify(reports)
-			$.post( window.location.href.replace(/users\/panel/, 'reports/destroy'),
-				{ to_be_nuked: serializedReports }
-			)
-			.done( ->
-				location.reload()
-			)
-			.fail( ->
-				console.log('Error sending report data')
-			)
+			sendPost('#request-box .checkbox-container input', 'reports/destroy', 'report')
 		$('#clear-album-btn').click ->
-			albums = {}
-			$('#album-box .checkbox-container input').each ->
-				if $(this)[0].checked
-					albums[$(this).val()] = $(this).val()
-			serializedAlbums = JSON.stringify(albums)
-			$.post( window.location.href.replace(/users\/panel/, 'albums/destroy'),
-				{ to_be_nuked: serializedAlbums }
-			)
-			.done( ->
-				location.reload()
-			)
-			.fail( ->
-				console.log('Error sending album data')
-			)
+			sendPost('#album-box .checkbox-container input', 'albums/destroy', 'album')
+		$('.admin-btn').click ->
+			sendPost('#user-box .checkbox-container input', 'users/toggle-admin', 'user')
+		$('.ban-btn').click ->
+			sendPost('#user-box .checkbox-container input', 'users/toggle-ban', 'user')
+		$('.nuke-btn').click ->
+			sendPost('#user-box .checkbox-container input', 'users/destroy', 'user')
+		$('#clear-thread-btn').click ->
+			sendPost('#threads-box .checkbox-container input', 'thread/destroy', 'thread')

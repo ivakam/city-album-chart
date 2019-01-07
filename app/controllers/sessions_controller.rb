@@ -8,13 +8,13 @@ class SessionsController < ApplicationController
             session[:user_id] = user.id
             redirect_to request.referrer
         else
-            render 'new'
+            redirect_to request.referrer, notice: 'Incorrect username or password'
         end
     end
 
     def destroy
         session.delete(:user_id)
-        redirect_to request.referrer
+        redirect_to root_url
     end
     
 end

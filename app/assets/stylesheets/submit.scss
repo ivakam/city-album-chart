@@ -1,3 +1,19 @@
+#login-container {
+    input {
+        background: #171717;
+        resize: none;
+        width: 100%;
+        overflow-y: scroll;
+        border: 1px #686868 solid;
+    }
+    input[type=text], input[type=password] {
+        font-family: "Roboto";
+        color: #e3e3e3;
+        font-size: 18px;
+        padding: 4px;
+    }
+}
+
 #submit-wrapper {
     position: relative;
     width: 100%;
@@ -5,72 +21,96 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    input, textarea {
+        background: #171717;
+        resize: none;
+        width: 100%;
+        overflow-y: scroll;
+        border: 1px #686868 solid;
+    }
+    textarea:placeholder {
+        color: #e3e3e3;  
+    }
+    
+    input[type=text], input[type=password] {
+        font-family: "Roboto";
+        color: #e3e3e3;
+        font-size: 18px;
+        padding: 4px;
+    }
     h2 {
         margin: 10px;
     }
     #submit-container {
         display: flex;
+        max-width: 80vw;
         #submit-instructions {
-            width: 45%;
-            padding: 0 20px 0 20px;
+            flex-shrink: 2;
             h2 {
                 margin: 0;
             }
             p {
                 font-size: 16px;
+                padding-right: 30px;
+                border-right: 1px #686868 solid;
             }
         }
         form {
+            display: flex;
+            overflow-x: hidden;
             #album_image {
                 overflow: visible;
             }
-            width: 55%;
-            overflow-x: hidden;
-            input, textarea {
-                background: #171717;
-                resize: none;
-                width: 100%;
-                overflow-y: scroll;
-                border: 1px #686868 solid;
+            textarea {
+                width: calc(100% - 12px);
             }
-            input[type=text] {
-                font-family: "Roboto";
-                color: #e3e3e3;
-                font-size: 20px;
-                padding: 2px;
-            }
-            textarea::placeholder {
-                color: #e3e3e3;  
-            }
-            input:focus, textarea:focus {
-                border: 1px blue solid;
-            }
-            .submit-btn input {
-                font-family: "Roboto";
-                font-size: 20px;
-                cursor: pointer;
-                border: none;
-                background: none;
-                color: #e3e3e3;
+            .submit-btn {
+                overflow: hidden;
+                position: relative;
+                padding-top: 30px;
+                padding-bottom: 30px;
+                border-top: 1px #686868 solid;
+                border-bottom: 1px #686868 solid;
+                .cover-browse {
+                    color: #e3e3e3;
+                    font-size: 40px;
+                    transition: 0.1s;
+                    padding-bottom: 40px;
+                    margin-top: 5px;
+                    &:hover {
+                        cursor: pointer;
+                        color: white;
+                    }
+                }
+                input {
+                    font-family: "Roboto";
+                    font-size: 20px;
+                    cursor: pointer;
+                    border: none;
+                    background: none;
+                    color: #e3e3e3;
+                    position: absolute;
+                    left: -105px;
+                    bottom: 35px;
+                    width: auto;
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
             }
             .save-container {
                 display: flex;
                 flex-direction: column;
-                align-items: center;
                 width: 100%;
-                .submit-msg-container {
+                align-items: center;
+                h2 {
                     height: 0;
-                    margin-bottom: 10px;
                     transition: height 0.1s;
                     overflow-y: hidden;
-                    p {
-                        margin: 0;
-                        font-size: 25px;
-                    }
                 }
                 input {
                     width: 60%;
-                    background: #171717;
+                    background: #2a2a2a;
                     border: 1px #414141 solid;
                     border-radius: 5px;
                     font-family: "Roboto";
@@ -78,84 +118,74 @@
                     color: #e3e3e3;
                     cursor: pointer;
                     padding: 5px 0 5px 0;
-                    transition: border-bottom 0.2s;
+                    transition: border 0.2s;
                     overflow: visible;
                 }
-                #save-btn:hover {
-                    border-bottom: 1px #e3e3e3 solid;
+                .save-btn:hover {
+                    border: 1px #e3e3e3 solid;
                 }
             }
             #form-container {
                 width: 100%;
                 display: flex;
+                flex-direction: column;
+                margin: 20px;
+                > div:first-child {
+                    width: 100%;
+                    display: flex;
+                    margin-bottom: 30px;
+                }
                 #input-container {
                     display: flex;
-                    justify-content: space-around;
+                    flex-direction: column;
                     min-width: 100%;
                     transition: margin 0.3s;
+                    margin-right: 20px;
+                    p {
+                        margin: 0 0 5px 0;
+                    }
+                    > div:first-of-type {
+                        display: flex;
+                        margin: 15px 0 15px 0;
+                    }
                     .form-divider {
                         display: flex;
                         flex-direction: column;
-                        margin-right: 15px;
+                        .form-field {
+                            margin-bottom: 15px;
+                        }
                         textarea {
                             height: 120px;
                             padding: 5px;
                             color: #e3e3e3;
+                            margin: 0;
                         }
-                        #tracklist-submit textarea {
-                            height: 230px;
-                        }
-                        p {
-                            margin: 15px 0 5px 0;
+                        .tracklist-submit {
+                            width: 100%;
+                            margin: 0;
+                            .tracklist-edit-container {
+                                align-items: flex-start;
+                            }
                         }
                     }
                     #left-divider {
-                        margin-top: 23px;
-                        .form-field {
-                            margin-bottom: 15px;
-                        }
+                        flex-grow: 1;
+                        margin-right: 20px;
                         .error-msg-container {
                             height: 0;
                             transition: height 0.2s;
                             font-size: 13px;
                             overflow-y: hidden;
                             font-style: italic;
+                            p {
+                                margin: 5px 0 0 0;
+                            }
                         }
                     }
                     #right-divider {
-                        margin-top: 20px;
+                        flex-grow: 3;
                         .form-field {
-                            margin: 10px 0 30px 0;
-                        }
-                        #tracklist-submit {
-                            .tracklist-label-text {
-                                display: flex;
-                                flex-wrap: wrap;
-                                align-items: center;
-                                p {
-                                    margin: 0 0 4px 0;
-                                }
-                                .tooltip {
-                                    display: flex;
-                                    align-items: center;
-                                    position: relative;
-                                    ion-icon {
-                                        font-size: 20px;
-                                        margin: 0 0 4px 8px;
-                                        color: #e3e3e3;
-                                    }
-                                    .tooltiptext {
-                                        top: -150%;
-                                        left: -1250%;
-                                        min-width: 370px;
-                                    }
-                                    .tooltiptext:after {
-                                        border-color: #2a2a2a transparent transparent transparent;
-                                        bottom: -43%;
-                                        left: 96%;
-                                    }
-                                }
-                            }
+                            margin-botton: 30px;
                         }
                     }
                 }
@@ -163,11 +193,6 @@
                     min-width: 100%;
                     display: flex;
                     flex-direction: column;
-                    align-items: center;
-                    .hint {
-                        align-self: flex-start;
-                        padding: 23px 0 0 25px;
-                    }
                     #scraper-textarea {
                         width: 60%;
                         height: 700px;
@@ -176,6 +201,54 @@
                         overflow-y: scroll;
                     }
                 }
+            }
+        }
+    }
+}
+
+#login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 50vw;
+    form { 
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-width: 500px;
+        padding: 30px;
+        margin: 30px;
+        border-top: 1px #686868 solid;
+        border-bottom: 1px #686868 solid;
+        > div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 15px;
+            h3 {
+                margin: 0 0 8px 0;
+            }
+        }
+        input {
+            background: #2a2a2a;
+            color: #e8e8e8;
+            font-family: 'Roboto';
+        }
+        input[type="submit"] {
+            margin: 15px 0 15px 0;
+            font-size: 20px;
+            border-radius: 5px;
+            max-width: 100px;
+            padding: 8px;
+            &:hover {
+            }
+        }
+        > a {
+            text-decoration: underline;
+            padding: 10px;
+            font-size: 15px;
+            &:hover {
+                cursor: pointer;
             }
         }
     }
@@ -191,7 +264,7 @@
 }
 
 .left-margin {
-    margin-left: -100%;
+    margin-left: calc(-100% - 20px);
 }
 
 .link {
