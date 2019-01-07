@@ -1,5 +1,6 @@
+require 'mini_magick'
+
 module ApplicationHelper
-	
 	def fetch_user
 		if session[:user_id]
 			user = User.find_by(id: session[:user_id])
@@ -15,6 +16,20 @@ module ApplicationHelper
 		else
 			return "https://i.imgur.com/ceYNiDi.png"
 		end
+	end
+	
+	def bg_variant(image)
+		path = Rails.root.join('app/assets/images/bg/')
+		p path
+		image_name = image
+		image = MiniMagick::Image.open(File.join(path, image))
+		image.combine_options do | b |
+			b.crop '1:1'
+			b.resize '600x600'
+			b.gravity 'center'
+		end
+		image.write(File.join(path, '/tmp/', image_name))
+		return 'https://i.imgur.com/ceYNiDi.png'
 	end
 	
 	def user_upvotes(user = User.find_by(id: session[:user_id]))

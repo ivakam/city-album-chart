@@ -599,10 +599,10 @@ $(document).on 'turbolinks:load', ->
 		
 		search = (input) ->
 			toggleAlbum(sibling: undefined)
-			input = input.target.value
+			#input = input.target.value
 			$('#splash-container').empty()
 			$('.spinner').removeClass('hidden')
-			console.log(input)
+			#console.log(input)
 			jsonAlbums = fetch("#{host}q=#{input}&q_track=true&limit=40")
 			.then (response) ->
 				return response.json()
