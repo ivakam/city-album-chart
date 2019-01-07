@@ -1,4 +1,9 @@
+require 'yaml'
 def CreateAlbumWithTracks(albumParam, tracks = [])
+    File.open('db/backup/albums.yml', "a") do |f|
+        f << albumParam.to_yaml
+        f << tracks.to_yaml
+    end
 	currentAlbum = Album.new(albumParam)
 	coverName = currentAlbum.title.downcase.gsub(/[^[\u3000-\u303F][\u3040-\u309F][\u30A0-\u30FF][\uFF00-\uFFEF][\u4E00-\u9FAF][\u2605-\u2606][\u2190-\u2195]\u203B\p{L}\d]/, '')
 	coverPath = Dir.glob(Rails.root.join("app/assets/images/#{coverName}.*")).first
