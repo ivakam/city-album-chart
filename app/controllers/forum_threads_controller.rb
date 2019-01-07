@@ -20,6 +20,27 @@ class ForumThreadsController < ApplicationController
 		end
     end
     
+    def create
+		if get_user
+			@thread = ForumThread.new()
+			@thread.title = params[:thread][:title]
+			@thread.user = get_user
+			@thread.category = params[:thread][:category]
+			@thread.stickied = false
+			@thread.archived = false
+			@thread.locked = false
+			@post = Post.new()
+			@post.user = get_user
+			@post.forum_thread = @thread
+			@post.body = params[:thread][:body]
+			@thread.save
+			@post.save
+			redirect_to forum_path + "/#{@thread.category}/t/#{@thread.id}"
+		else
+			on_access_denied
+		end
+    end
+    
     private
     
     def forum_params

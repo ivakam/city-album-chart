@@ -1,22 +1,29 @@
+#forum-opacity {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    opacity: 0.5;
+    background: #171717;
+}
+.darker, .lighter {
+    z-index: -1 !important;
+}
+.lighter {
+    opacity: 0.2 !important;
+}
+.darker {
+    opacity: 0.8 !important;
+}
+
 #board-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
     position: relative;
-    #forum-opacity {
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        z-index: 1;
-        opacity: 0.5;
-        background: #171717;
-    }
-    .darker {
-        opacity: 0.8 !important;
-    }
     > * {
         z-index: 3;
     }
@@ -29,11 +36,32 @@
     .page-container {
         width: 100%;
         display: flex;
-        justify-content: center;
         align-items: center;
+        justify-content: center;
         z-index: 3;
+        padding: 8px;
+        position: relative;
+        border-top: 1px #686868 solid;
+        border-bottom: 1px #686868 solid;
+        > div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
         a {
             padding: 6px;
+        }
+        #post-thread-btn {
+            display: flex;
+            align-items: stretch;
+            justify-content: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 150px;
+            &:hover {
+                background: #4c4c4c;
+            }
         }
         .icon {
             padding: 0;
@@ -82,12 +110,10 @@
             display: flex;
             flex-direction: column;
             width: 100%;
-            border-left: 2px #e3e3e3 solid;
-            position: relative;
             > li {
                 display: flex;
+                position: relative;
                 align-items: center;
-                border-top: 1px #8c8c8c solid;
                 padding: 15px;
                 padding-left: 8px;
                 width: 100%;
@@ -102,9 +128,6 @@
                         color: white;
                         cursor: pointer;
                     }
-                }
-                &:last-of-type {
-                    border-bottom: 1px #8c8c8c solid;
                 }
                 .pin-icon {
                     width: 25px;

@@ -40,19 +40,19 @@
     <div id="board-container">
         <div id="forum-opacity"></div>
         <h2 id="title"><a href="<%= forum_path + "/#{@thread.category}" %>"><%= @thread.category.titleize %></a> - <%= @thread.title %></h2>
-        <div class="page-container">
-            <% if @page - 1 > 0 %>
-            <a class="icon" href="<%= root_url + "forum/#{@thread.category}/t/#{@thread.id}?p=#{@page - 1}"%>"><ion-icon name="ios-arrow-back"></ion-icon></a>
-            <% end %>
-            <% (0...(@posts.length / 10.0).ceil).each do | i | %>
-            <a class="page-btn <%= tempClass = (i + 1 == @page) ? 'underline' : '' %>" href="<%= root_url + "forum/#{@thread.category}/t/#{@thread.id}?p=#{i + 1}" %>"><%= i + 1 %></a>
-            <% end %>
-            <% if @page + 1 <= (@posts.length / 10.0).ceil %>
-            <a class="icon" href="<%= root_url + "forum/#{@thread.category}/t/#{@thread.id}?p=#{@page + 1}"%>"><ion-icon name="ios-arrow-forward"></ion-icon></a>
-            <% end %>
-        </div>
         <div id="post-list">
             <ul>
+                <div class="page-container top">
+                    <% if @page - 1 > 0 %>
+                    <a class="icon" href="<%= root_url + "forum/#{@thread.category}/t/#{@thread.id}?p=#{@page - 1}"%>"><ion-icon name="ios-arrow-back"></ion-icon></a>
+                    <% end %>
+                    <% (0...(@posts.length / 10.0).ceil).each do | i | %>
+                    <a class="page-btn <%= tempClass = (i + 1 == @page) ? 'underline' : '' %>" href="<%= root_url + "forum/#{@thread.category}/t/#{@thread.id}?p=#{i + 1}" %>"><%= i + 1 %></a>
+                    <% end %>
+                    <% if @page + 1 <= (@posts.length / 10.0).ceil %>
+                    <a class="icon" href="<%= root_url + "forum/#{@thread.category}/t/#{@thread.id}?p=#{@page + 1}"%>"><ion-icon name="ios-arrow-forward"></ion-icon></a>
+                    <% end %>
+                </div>
                 <div id="forum-opacity" class="darker"></div>
                 <% @page_posts.each do | post | %>
                 <li>
@@ -102,7 +102,12 @@
                         </div>
                         <div class="text-container">
                             <div class="post-text">
-                            <p><%= post.body %></p>
+                            <% if fetch_user == post.user %>
+                            <div class="edit-post" contenteditable="false"><%= post.body %></div>
+                            <input type="submit" class="transparent" name="commit" value="Save edit">
+                            <% else %>
+                             <p><%= post.body %></p>
+                            <% end %>
                             </div>
                             <div class="user-signature">
                                 <p><%= post.user.signature %></p>
@@ -120,7 +125,7 @@
                             <%= image_tag user_avatar(fetch_user) %>
                         </div>
                         <div id="reply-text-container">
-                            <h3>Reply to this topic</h3>
+                            <h3>Reply to this thread</h3>
                             <textarea id="reply-textarea" name="post[body]" placeholder="Type your reply here."></textarea>
                             <input type="submit" value="Submit reply" name="commit">
                         </div>
@@ -135,21 +140,21 @@
                         <input placeholder="Password" type="password" name="session[password]">
                         <input value="Login" type="submit" name="commit">
                     </form>
-                    <a id="register-btn">Create an account</a>
+                    <a class="register-btn">Create an account</a>
                 </div>
                 <% end %>
+                <div class="page-container bottom">
+                    <% if @page - 1 > 0 %>
+                    <a class="icon" href="<%= root_url + "forum/#{@thread.category}/t/#{@thread.id}?p=#{@page - 1}"%>"><ion-icon name="ios-arrow-back"></ion-icon></a>
+                    <% end %>
+                    <% (0...(@posts.length / 10.0).ceil).each do | i | %>
+                    <a class="page-btn <%= tempClass = (i + 1 == @page) ? 'underline' : '' %>" href="<%= root_url + "forum/#{@thread.category}/t/#{@thread.id}?p=#{i + 1}" %>"><%= i + 1 %></a>
+                    <% end %>
+                    <% if @page + 1 <= (@posts.length / 10.0).ceil %>
+                    <a class="icon" href="<%= root_url + "forum/#{@thread.category}/t/#{@thread.id}?p=#{@page + 1}"%>"><ion-icon name="ios-arrow-forward"></ion-icon></a>
+                    <% end %>
+                </div>
             </ul>
-        </div>
-        <div class="page-container">
-            <% if @page - 1 > 0 %>
-            <a class="icon" href="<%= root_url + "forum/#{@thread.category}/t/#{@thread.id}?p=#{@page - 1}"%>"><ion-icon name="ios-arrow-back"></ion-icon></a>
-            <% end %>
-            <% (0...(@posts.length / 10.0).ceil).each do | i | %>
-            <a class="page-btn <%= tempClass = (i + 1 == @page) ? 'underline' : '' %>" href="<%= root_url + "forum/#{@thread.category}/t/#{@thread.id}?p=#{i + 1}" %>"><%= i + 1 %></a>
-            <% end %>
-            <% if @page + 1 <= (@posts.length / 10.0).ceil %>
-            <a class="icon" href="<%= root_url + "forum/#{@thread.category}/t/#{@thread.id}?p=#{@page + 1}"%>"><ion-icon name="ios-arrow-forward"></ion-icon></a>
-            <% end %>
         </div>
     </div>
 </div>

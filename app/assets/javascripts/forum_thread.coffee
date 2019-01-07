@@ -50,3 +50,29 @@ $(document).on 'turbolinks:load', ->
 			opacity = $('#opaque')
 			opacity.css('background', 'rgba(0, 0, 0, 0.6')
 			opacity.css('z-index', '5')
+		$('.post-edit').click ->
+			e = $(this)
+			bodyText = e.closest('li').find('.edit-post')
+			btn = e.closest('li').find('.post-text input')
+			bodyText.toggleClass('active')
+			if bodyText.attr('contenteditable') == 'false'
+				bodyText.attr('contenteditable', 'true')
+			else
+				bodyText.attr('contenteditable', 'false')
+			btn.toggleClass('transparent')
+		$('.post-text input').click ->
+			e = $(this)
+			bodyText = e.closest('li').find('.edit-post').html().replace(/\<\/div\>/g, '\n')
+			bodyText = bodyText.replace(/\<div\>|\<br\>/g, '')
+			data =
+				post: 
+					thread_id: $('#report-thread').val()
+					id: e.closest('li').find('.post-id').val()
+					body: bodyText
+			$.post(window.location.href.replace(/\/forum.+/, '/posts/update'), data)
+			.success( ->
+				location.reload()
+			)
+			.fail( ->
+				console.log('Error sending post data')
+			)

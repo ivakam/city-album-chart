@@ -33,15 +33,16 @@ Rails.application.routes.draw do
   
   get 'forum', to: 'forum#show'
   get 'forum/:category', to: 'forum#show_board', as: 'category'
-  get '*t/:thread_id', to: 'forum_threads#show', as: 'thread', constraints: lambda { |request| constraint(request) }
-  #get 'forum/:category/new', to: 'threads#new', as: 'board'
+  get 'forum/*category/t/:thread_id', to: 'forum_threads#show', as: 'thread', constraints: lambda { |request| constraint(request) }
   
+  get 'thread/:category/new', to: 'forum_threads#new', as: 'board'
   post 'thread/destroy', to: 'forum_threads#destroy'
+  post 'thread/create', to: 'forum_threads#create'
   
   post 'posts/create'
   post 'posts/update'
   post 'posts/destroy'
-  
+
   post 'upvotes/create'
   
   get 'articles', to: 'articles#show'

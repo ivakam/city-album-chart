@@ -16,6 +16,7 @@ class UpvotesController < ApplicationController
             @upvote.save
         else
             login_barrier
+        end
     end
     
     private

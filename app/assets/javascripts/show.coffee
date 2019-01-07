@@ -2,7 +2,7 @@ $(document).on 'turbolinks:load', ->
 	
 	#Handler for clicking "create account" button
 	
-	$('#register-btn').click ->
+	$('.register-btn').click ->
 		$('#register-form-container').toggleClass('modal-inactive')
 		opacity = $('#opaque')
 		opacity.css('background', 'rgba(0, 0, 0, 0.6')

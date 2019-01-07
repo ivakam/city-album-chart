@@ -1035,6 +1035,7 @@ input[type="text"]:focus, input[type="password"]:focus ,textarea:focus {
 
 input[type="submit"] {
 	transition: border .1s;
+	background: #2a2a2a;
 	&:hover {
 		cursor: pointer;
 		border: 1px #e3e3e3 solid !important;
