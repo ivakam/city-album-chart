@@ -13,44 +13,29 @@
                 <br>
                 <b>1. Make sure an album cover is included in the submission.</b>
                 <br>
-                If you don't have a scan, please check <a class="link" href="https://www.albumartexchange.com/">AlbumArtExchange</a> first. There is an ok placeholder image if you really can't find a scan, 
-                but please do try to include one. I have set a goal of 600px minimum for width,
-                but I know just as well as anyone that good scans 
-                sometimes just don't exist. If this is the case, a lower resolution is acceptable. 
+                If you don't have a scan, please check <a class="link" href="https://www.albumartexchange.com/">AlbumArtExchange</a> first.
+                There is an ok placeholder image if you really can't find a scan, 
+                but please do try to include one.
                 Don't use this as an excuse though, 
-                it only hurts the community in the long run. Name each image file in the same way as the 
-                "coverlink:" entry in the scraper output. Remove special characters, whitespace and capitalizition.
-                "Light'n Up" becomes "lightnup.jpg" and "An Insatiable High" becomes 
-                "aninsatiablehigh.jpg". 
-                You can just dump them all in a zip folder and send it along with the output file.
+                it only hurts the community in the long run.
                 <br>
                 <br>
                 <b>2. Fill out the "flavor" field for each album.</b>
                 <br>
                 This could be something like "Funk" or "Ballad" or "Tribute". 
                 It's basically just a way to give some form of musical description to what the album sounds like.
-                "City pop" isn't a very good descriptor of music (more on that in the FAQ).
                 <br>
                 <br>
-                <b>2. Please go through the albums and remove any and all extras from them.</b>
+                <b>3. Please don't include special editions</b>
                 <br>
                 This includes live versions (not live albums, 
-                live versions of songs as extras on studio albums.), demo versions, bonus tracks, etc. Please also remove any 
-                "25th anniversary edition" from the title field (and from the "coverlink:" field accordingly. This is to reduce clutter. If you're interested enough in an album to warrant looking for extras, do it somewhere else. 
+                live versions of songs as extras on studio albums.), demo versions, bonus tracks, etc. This is to reduce clutter. If you're interested enough in an album to warrant looking for extras, do it somewhere else. 
                 Further support for extras may come further down the line. Who knows.
                 <br>
                 <br>
-                <b>3. Please go through and check that no albums or tracks have that annoying ALL CAPS THING that some 
-                Japanese albums written in English do.</b>
+                <b>4. Please don't submit titles in all-caps</b>
                 <br>
-                If they happen to have that, please fix it. An example would 
-                be "AN INSATIABLE HIGH" -> "An Insatiable High".
-                <br>
-                <br>
-                <b>4. Please fill out the romaji artist field.</b>
-                <br>
-                This is for indexing and search purposes. If you have your artists tagged as "Romaji name (Kanji name)" 
-                you will have to manually split them up. This is easily done with any find&replace tool in a text editor.
+                "AN INSATIABLE HIGH" -> "An Insatiable High".
                 <br>
                 <br>
                 <b>5. Titles using katakana to describe English (or other foreign) words should be romanized to their actual counterpart</b>
@@ -58,31 +43,7 @@
                 "ロマンス" becomes "Romance" rather than "Romansu".
                 <br>
                 <br>
-                <b>6. Keep in mind that all albums will be submitted as-is.</b>
-                <br>
-                Neither I nor anyone else will add any missing information such as track romanization, album descriptions or similar. 
-                If you think an album deserves to stick out among the rest, a description is a fantastic way to do it 
-                (note: a description is not review. It's a description).
-                I know this may seem like a lot to do, but please do keep in mind that this is meant as a community effort.
-                You don't need to submit all of your 1300 albums. I'd much rather have you 
-                submit 20 really well done albums than 200 that are total anarchy. 
-                It really doesn't take that long and by doing this you help build an archive that may see use for years to come. 
-                If you don't have anything to contribute from your collection, 
-                things like feedback and just simply looking through albums and making sure there are no errors is also a huge help. 
-                I'm also currently on the lookout for people to moderate the submission process. 
-                By that I mean helping me look through all files that get submitted to see that everything follows the guidelines.
-                <br>
-                <br>
-                If you have a large library of files that you want to submit all at once, 
-                there is a scraper tool developed exactly for this purpose. <a class="link" href="https://github.com/IHeartGaming/varieties-metadata-scanner/releases">It can be found here.</a>
-                The scraper will output a .vms file that can be opened in any text editor (preferably a sophisticated one like N++, or even better, 
-                Sublime). This file will contain an easily readable list of your albums and the belonging tracks. (note: the program will 
-                first ask for the location of your files, and then for the desired output location and name. The windows look similar. It's 
-                a little confusing but try it and it'll kind of make sense.). There's no limit to how many output files you can submit. Just 
-                make sure all of them follow these guidelines.
-                <br>
-                <br>
-                Finally, all submissions are manually looked over by me. I want this archive to stay high-quality. No amount of code will overcome that, unfortunately. Thanks for your contribution.</p>
+                Finally, all submissions are prone to further scrutiny by me and others with edit privileges. I want this archive to stay high-quality. No amount of code will overcome that, unfortunately. Thank you for your contribution.</p>
     	    </div>
             <%= form_with scope: :album, html: { multipart: true }, url: "#{root_url}albums/create", data_remote: true do |form| %>
                 <input type="hidden" name="form_type" value="submit">

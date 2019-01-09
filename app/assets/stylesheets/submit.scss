@@ -1,12 +1,9 @@
-$lighter-bg: #2f3322;
-$darker-bg: #191b12;
-
 #login-container {
     input {
         background: $darker-bg;
         resize: none;
         width: 100%;
-        overflow-y: scroll;
+        overflow-y: auto;
         border: 1px #686868 solid;
     }
     input[type=text], input[type=password] {
@@ -29,7 +26,7 @@ $darker-bg: #191b12;
         background: $darker-bg;
         resize: none;
         width: 100%;
-        overflow-y: scroll;
+        overflow: auto;
         border: 1px #686868 solid;
     }
     textarea:placeholder {
@@ -202,7 +199,7 @@ $darker-bg: #191b12;
                         height: 700px;
                         padding: 5px;
                         color: #e3e3e3;
-                        overflow-y: scroll;
+                        overflow-y: auto;
                     }
                 }
             }

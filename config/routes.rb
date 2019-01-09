@@ -47,8 +47,10 @@ Rails.application.routes.draw do
   
   get 'articles', to: 'articles#show'
   
+  get 'feed', to: 'feed#show'
+  
   resources :albums
   
   get '*unmatched_route', to: 'application#render_404', constraints: lambda { |request| constraint(request) }
-  root 'albums#show'
+  root 'feed#show'
 end

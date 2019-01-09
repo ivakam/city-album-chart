@@ -1,6 +1,3 @@
-$lighter-bg: #2f3322;
-$darker-bg: #191b12;
-
 .delete-modal {
     .delete-confirm-btn {
         padding: 5px 10px 5px 10px;
@@ -109,6 +106,7 @@ $darker-bg: #191b12;
                     }
                     p {
                         padding: 4px;
+                        opacity: 0.9;
                         text-align: center;
                     }
                     .user-account-type {

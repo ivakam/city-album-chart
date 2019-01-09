@@ -11,10 +11,16 @@ class UsersController < ApplicationController
     def update
         @user = User.find_by(id: params[:user][:id])
         if get_user == @user
-            @user = User.find_by(id: params[:user][:id])
+            p params[:user][:avatar].present?
             if params[:user][:avatar].present?
                 @user.avatar.attach(params[:user][:avatar])
                 redirect_to request.referrer, notice: 'Avatar successfully updated!'
+            else
+                @user.update_attribute('birth_year', params[:user][:birth_year])
+                @user.update_attribute('gender', params[:user][:gender])
+                @user.update_attribute('location', params[:user][:location])
+                @user.update_attribute('bio', params[:user][:bio])
+                redirect_to request.referrer, notice: 'Account info successfull updated!'
             end
         else
             on_access_denied

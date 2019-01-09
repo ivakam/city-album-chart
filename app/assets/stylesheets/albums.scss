@@ -1,6 +1,3 @@
-$lighter-bg: #2f3322;
-$darker-bg: #191b12;
-
 body {
 	padding: 0;
 	margin: 0;
@@ -29,24 +26,27 @@ body {
 
 .modal {
 	display: flex;
-	justify-content: center;
 	align-items: center;
 	flex-direction: column;
 	position: fixed;
-	top: calc(50vh - 350px);
-	left: calc(50vw - 300px);
-	width: 600px;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 60vw;
+	max-width: 900px;
+	max-height: 80vh;
+	overflow-y: auto;
 	background: $darker-bg;
 	z-index: 6;
 	border-radius: 8px;
 	border: 1px #a7a7a7 solid;
-	transition: 0.3s;
+	transition: 0.4s;
 	.modal-close {
 		position: absolute;
 		top: 0px;
 		right: 0px;
 		font-size: 40px;
-		color: #e8e8e8;
+		color: $light-font;
 		opacity: 0.6;
 		&:hover {
 			cursor: pointer;
@@ -60,7 +60,7 @@ body {
 		border-top-right-radius: 8px;
 		align-items: center;
 		width: 100%;
-		border-bottom: 1px #686868 solid;
+		border-bottom: 1px $dark-border solid;
 	}
 	form {
 		display: flex;
@@ -99,8 +99,8 @@ body {
 	}
 	input, textarea, select {
 		background: $lighter-bg;
-		color: #e3e3e3;
-		border: 1px #686868 solid;
+		color: $dark-font;
+		border: 1px $dark-border solid;
 		font-family: 'Roboto';
 		padding: 4px;
 		font-size: 18px;
@@ -117,8 +117,8 @@ body {
 		}
 	}
 	textarea {
-		width: calc(100% - 10px);
-		height: 400px;
+		width: calc(100%);
+		height: 200px;
 	}
 	input[type="submit"] {
 		width: 200px;
@@ -194,13 +194,13 @@ body {
 		input {
 			max-width: 100px;
 			background: $lighter-bg;
-			border: 1px #686868 solid;
+			border: 1px $dark-border solid;
 			margin-right: 6px;
 			&[type=text], &[type=password], &[type=submit] {
 				font-family: 'Roboto';
 				padding: 5px;
 				font-size: 14px;
-				color: #e8e8e8;
+				color: $light-font;
 			}
 			&[type=submit] {
 				margin-left: 8px;
@@ -223,13 +223,13 @@ body {
 		margin-top: 0;
 		background: $lighter-bg;
 		border-radius: 3px;
-		border: 1px #686868 solid;
+		border: 1px $dark-border solid;
 		padding: 3px;
 		width: 100px;
 		text-align: center;
 		transition: 0.2s;
 		&:hover {
-			border: 1px #e8e8e8 solid;
+			border: 1px $light-font solid;
 		}
 	}
 	> div {
@@ -239,12 +239,12 @@ body {
 			padding: 2px;
 			&:first-child {
 				padding-right: 6px;
-				border-right: 1px #686868 solid;
+				border-right: 1px $dark-border solid;
 			}
 		}
 		> div, p {
 			padding: 2px 10px 2px 0;
-			border-right: 1px #686868 solid;
+			border-right: 1px $dark-border solid;
 			font-size: 14px;
 			margin: 0px 10px 0px 0px;
 		}
@@ -279,10 +279,10 @@ body {
 			}
 		}
 		li:nth-of-type(3) {
-			border-left: 1px #686868 solid;
+			border-left: 1px $dark-border solid;
 		}
 		li:nth-of-type(4) {
-			border-right: 1px #686868 solid;
+			border-right: 1px $dark-border solid;
 		}
 	}
 	#disclaimers {
@@ -382,7 +382,7 @@ body {
 			}
 			.nav-arrow {
 				position: absolute;
-				color: #e8e8e8;
+				color: $light-font;
 				top: 16px;
 				right: 20px;
 				transition: 0.1s;
@@ -399,8 +399,8 @@ body {
 	flex-grow: 3;
 	> div:not(#main-opacity), > div:not(#search), > div:not(#filters) {
 		position: relative;
-		border-top: 1px #686868 solid;
-		border-bottom: 1px #686868 solid;
+		border-top: 1px $dark-border solid;
+		border-bottom: 1px $dark-border solid;
 		min-height: calc(100vh - 329px);
 	}
 	#main-opacity {
@@ -436,12 +436,12 @@ body {
 			border-radius: 5px;
 			font-family: "Roboto";
 			font-size: 20px;
-			color: #e8e8e8;
+			color: $light-font;
 			padding: 4px 8px 4px 8px;
 			&::placeholder {
 				font-size: 20px;
 				font-family: "Roboto";
-				color: #e8e8e8;
+				color: $light-font;
 			}
 		}
 	}
@@ -474,13 +474,13 @@ body {
 				}
 			}
 			ion-icon {
-				color: #e8e8e8;
+				color: $light-font;
 				font-size: 14px;
 				transition: 0.2s;
 				margin-left: 10px;
 			}
 			.selected {
-				border-bottom: 1px #e8e8e8 solid;
+				border-bottom: 1px $light-font solid;
 			}
 			.rotated {
 				transform: rotate(180deg);
@@ -542,7 +542,7 @@ body {
 						transition: 0.1s;
 						box-sizing: content-box;
 						&:hover {
-							border: 1px #e3e3e3 solid;
+							border: 1px $dark-font solid;
 						}
 						&:after {
 							content: "";
@@ -560,9 +560,9 @@ body {
 					width: 100%;
 					display: flex;
 					justify-content: center;
-					border-bottom: 1px #8c8c8c solid;
+					border-bottom: 1px $light-border solid;
 					.album-arrow {
-						color: #e8e8e8;
+						color: $light-font;
 						font-size: 22px;
 						align-self: center;
 						transition: 0.3s;
@@ -662,7 +662,7 @@ body {
 			.text-container {
 				display: flex;
 				flex-direction: row;
-				border-bottom: 1px #8c8c8c solid;
+				border-bottom: 1px $light-border solid;
 				position: relative;
 				p,h2,h3 {
 					margin: 0;
@@ -701,7 +701,7 @@ body {
 				margin: 0 30px 0 15px ;
 				height: 161.5px;
 				width: 0;
-				border-right: 1px #8c8c8c solid;
+				border-right: 1px $light-border solid;
 			}
 			.track-grow-wrapper {
 				display: flex;
@@ -715,7 +715,7 @@ body {
 					bottom: 8px;
 					right: 20px;
 					padding-left: 10px;
-					border-left: 1px #686868 solid;
+					border-left: 1px $dark-border solid;
 					p {
 						font-size: 16px !important;
 					}
@@ -880,8 +880,8 @@ body {
 				font-family: 'Roboto';
 				background: $darker-bg;
 				padding: 4px;
-				border: 1px #686868 solid;
-				color: #e3e3e3;
+				border: 1px $dark-border solid;
+				color: $dark-font;
 				font-size: 18px;
 			}
 			input[type="submit"] {
@@ -893,24 +893,24 @@ body {
 				align-items: center;
 				> input {
 					padding: 8px;
-					color: #e3e3e3;
+					color: $dark-font;
 					align-self: flex-end;
 					font-family: 'Roboto';
 					font-size: 20px;
 					border-radius: 3px;
-					border: 1.3px #686868 solid;
+					border: 1.3px $dark-border solid;
 					transition: 0.1s;
 					width: auto;
 				}
 				> input:hover {
 					cursor: pointer;
-					border: 1px #e8e8e8 solid;
+					border: 1px $light-font solid;
 				}
 				.divider {
 					width: 0;
 					height: 200px;
 					margin: 0 25px 0 35px;
-					border-left: 1px #8c8c8c solid;
+					border-left: 1px $light-border solid;
 				}
 				.input-field-container, .description-field {
 					display: flex;
@@ -940,14 +940,14 @@ body {
 .tracklist-submit {
 	height: 449px;
 	margin-right: 8px;
-	overflow-y: scroll;
+	overflow: auto;
 	.tracklist-edit-container {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		.track-add-btn {
 			font-size: 40px;
-			color: #e3e3e3;
+			color: $dark-font;
 			opacity: 0.6;
 			transition: 0.2s;
 			align-self: center;
@@ -964,9 +964,9 @@ body {
 				width: 15px;
 				height: 32px;
 				background: $darker-bg;
-				border-top: 1px #686868 solid;
-				border-left: 1px #686868 solid;
-				border-bottom: 1px #686868 solid;
+				border-top: 1px $dark-border solid;
+				border-left: 1px $dark-border solid;
+				border-bottom: 1px $dark-border solid;
 				position: relative;
 				&:hover {
 					cursor: grab;
@@ -980,17 +980,17 @@ body {
 					top: -10px;
 					font-size: 20px;
 					line-height: 20px;
-					color: #686868;
-					text-shadow: 5px 9px #686868,
-								0 9px #686868,
-								5px 0px #686868,
+					color: $dark-border;
+					text-shadow: 5px 9px $dark-border,
+								0 9px $dark-border,
+								5px 0px $dark-border,
 								5px 18px,
 								0 18px;
 				}
 			}
 			.track-delete-btn {
 				font-size: 32px;
-				color: #e3e3e3;
+				color: $dark-font;
 				opacity: 0.8;
 				margin-right: 8px;
 				transition: 0.2s;
@@ -1012,9 +1012,9 @@ body {
 				}
 			}
 			.title, .duration, .romanization {
-				border-top: 1px #686868 solid !important;
+				border-top: 1px $dark-border solid !important;
 				border-right: none !important;
-				border-bottom: 1px #686868 solid !important;
+				border-bottom: 1px $dark-border solid !important;
 				border-left: none !important;
 				&:focus {
 					border-bottom: 1px royalblue solid !important;
@@ -1023,7 +1023,7 @@ body {
 			}
 			.duration {
 				max-width: 50px !important;
-				border-right: 1px #686868 solid !important;
+				border-right: 1px $dark-border solid !important;
 			}
 		}
 	}
@@ -1039,11 +1039,13 @@ input[type="submit"] {
 	background: $darker-bg;
 	&:hover {
 		cursor: pointer;
-		border: 1px #e3e3e3 solid !important;
+		border: 1px $dark-font solid !important;
 	}
 }
 
-input {
+input, textarea {
+	font-family: 'Roboto';
+	border: $dark-border;
 	background: $darker-bg;
 }
 
@@ -1053,7 +1055,7 @@ iframe {
 
 h2,h3,p,a,i {
 	font-family: "Roboto";
-	color: #e8e8e8;
+	color: $light-font;
 	text-decoration: none;
 }
 
@@ -1094,7 +1096,7 @@ ul {
 }
 
 .image-border {
-	border: 1px #e3e3e3 solid;
+	border: 1px $dark-font solid;
 }
 
 .offset {
