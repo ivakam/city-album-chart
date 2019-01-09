@@ -52,7 +52,7 @@ $(document).on 'turbolinks:load', ->
 		titleReplaceRegex = /[\s\'\"\.\(\)\!\#\%\&\\\*]/g
 		window.albumsNameSpace = {}
 		ytAPIkey = 'AIzaSyAA9tEp3x9uIC60zQfLds8ZlNrwRCBwc5Q'
-		totalCount = 0
+		totalCount = $('#album-count').html()
 		albums = null
 		$('#main-search').val('')
 		
@@ -169,7 +169,7 @@ $(document).on 'turbolinks:load', ->
 			e.css('opacity', 0)
 			e.css('display', 'none')
 			if (parseInt(parent.css('margin-top')) > -10)
-				parent.css('margin-top', -1 * parent.height())
+				parent.css('margin-top', -1 * (parent.height() + 15))
 			else
 				parent.css('margin-top', '0')
 		
@@ -294,7 +294,7 @@ $(document).on 'turbolinks:load', ->
 									<span class='draggable-area'></span>
 									<input class='title' placeholder='Title' value='" + track.title.replace("'", '&#39;') + "' type='text'>
 									<input class='romanization' placeholder='Romanization' value='" + track.romanization.replace("'", '&#39;') + "' type='text' >
-									<input class='duration' placeholder='M:S' value='" + track.duration + "' type='text'>
+									<input class='duration' placeholder='4:54' value='" + track.duration + "' type='text'>
 									<input class='title_old' value='" + track.title.replace("'", '&#39;') + "' type='text' hidden>
 									<input class='romanization_old' value='" + track.romanization.replace("'", '&#39;') + "' type='text' hidden>
 									<input class='duration_old' value='" + track.duration + "' type='text' hidden>
@@ -537,7 +537,7 @@ $(document).on 'turbolinks:load', ->
 					sibling.css('display', 'flex')
 					albumOpen = true
 					setTimeout( ->
-						offset = parent.offset().top + 157
+						offset = parent.offset().top + 115
 						$('.offset').css('top', offset)
 						$('.info-wrapper').attr('class', 'info-wrapper')
 						sibling.addClass('is-open')
@@ -621,7 +621,7 @@ $(document).on 'turbolinks:load', ->
 			searched = true
 			clearTimeout(delayTimer)
 			delayTimer = setTimeout( ->
-				search(e)
+				search(e.target.value)
 			, 300)
 		)
 		

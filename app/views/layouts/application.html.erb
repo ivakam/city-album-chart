@@ -194,13 +194,13 @@
 			<%= image_tag "varietiescropped.png", id: "alt-img" %>
 			<div id="bg-opacity"></div>
 			<div id="albums-bg-container">
+				<%= image_tag 'bg/minibus.jpg' %>
 				<%= image_tag 'bg/black-car.jpg' %>
 				<%= image_tag 'bg/bonchi.jpg' %>
 				<%= image_tag 'bg/busy-street.jpg' %>
 				<%= image_tag 'bg/coca-cola.jpg' %>
 				<%= image_tag 'bg/liquor-store.jpg' %>
 				<%= image_tag 'bg/market-stall.jpg' %>
-				<%= image_tag 'bg/minibus.jpg' %>
 				<%= image_tag 'bg/moped-man.jpg' %>
 				<%= image_tag 'bg/music-city.jpg' %>
 				<%= image_tag 'bg/night-neon.jpg' %>
@@ -236,7 +236,7 @@
 					<li><a href="https://docs.google.com/spreadsheets/d/1UumcUXF3QvJgoQ3j8SsAnPtdbarhFD_wTmguK0RuZbs/edit?usp=sharing">My personal spreadsheet</a></li>
 				</ul>
 				<div id="disclaimers">
-					<p>Site currently hosting <%= album_count %> albums</p>
+					<p>Site currently hosting&nbsp;</p><p id="album-count"><%= album_count.to_s %></p><p>&nbsp;albums</p>
 					<p>Thanks to the people behind <a href="https://ionicons.com/">ionicons</a> for providing amazing assets for free.</p>
 				</div>
 			</div>

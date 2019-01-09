@@ -1,21 +1,15 @@
+$lighter-bg: #2f3322;
+$darker-bg: #191b12;
+
 #forum-opacity {
     position: absolute;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
-    z-index: 1;
+    z-index: -1;
     opacity: 0.5;
-    background: #171717;
-}
-.darker, .lighter {
-    z-index: -1 !important;
-}
-.lighter {
-    opacity: 0.2 !important;
-}
-.darker {
-    opacity: 0.8 !important;
+    background: $darker-bg;
 }
 
 #board-container {
@@ -39,10 +33,7 @@
         align-items: center;
         justify-content: center;
         z-index: 3;
-        padding: 8px;
         position: relative;
-        border-top: 1px #686868 solid;
-        border-bottom: 1px #686868 solid;
         > div {
             display: flex;
             justify-content: center;
@@ -50,17 +41,21 @@
         }
         a {
             padding: 6px;
+            transition: 0.1s;
+            &:hover {
+                opacity: 1 !important;
+            }
         }
         #post-thread-btn {
             display: flex;
             align-items: stretch;
             justify-content: center;
             position: absolute;
-            top: 0;
+            transition: 0.1s;
             left: 0;
             width: 150px;
             &:hover {
-                background: #4c4c4c;
+                background: #2f3322;
             }
         }
         .icon {
@@ -71,6 +66,9 @@
         }
         .underline {
             text-decoration: underline;
+        }
+        .inactive {
+            opacity: 0.6;
         }
         ion-icon {
             color: #e8e8e8;
@@ -89,7 +87,6 @@
         flex-direction: column;
         align-items: center;
         width: 70vw;
-        margin: 30px;
         position: relative;
         h3 {
             margin: 0;
@@ -159,6 +156,9 @@
                 }
             }
         }
+    }
+    .forum-margin {
+        margin-top: 30px;
     }
     .divider {
         height: 0;

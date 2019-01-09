@@ -1,15 +1,14 @@
 <% title "Forum" %>
 <div id="main-container">
-    <div id="main-opacity"></div>
     <%= render 'partials/navbar_slim' %>
     <%= image_tag "spinner.gif", class: "spinner hidden" %>
     <div id="board-container">
-        <div id="forum-opacity"></div>
+        <div id="main-opacity"></div>
         <h2 id="title">Forum</h2>
-        <div id="board-list">
+        <div id="board-list" class="forum-margin">
             <ul>
                 <li>
-                    <div id="forum-opacity" class="darker"></div>
+                    <div id="forum-opacity"></div>
                     <ion-icon name="ios-arrow-dropright-circle"></ion-icon>
                     <div class="board-title-container">
                         <h3><a href="<%= forum_path + '/announcements' %>">Announcements</a></h3>
@@ -18,7 +17,6 @@
                     <div class="activity"><p>Last updated in thread</p></div>
                 </li>
                 <li>
-                    <div id="forum-opacity" class="lighter"></div>
                     <ion-icon name="ios-arrow-dropright-circle"></ion-icon>
                     <div class="board-title-container">
                         <h3><a href="<%= forum_path + '/rules' %>">Rules and guidelines</a></h3>
@@ -30,7 +28,7 @@
             <div class="divider"></div>
             <ul>
                 <li>
-                    <div id="forum-opacity" class="darker"></div>
+                    <div id="forum-opacity"></div>
                     <ion-icon name="ios-arrow-dropright-circle"></ion-icon>
                     <div class="board-title-container">
                         <h3><a href="<%= forum_path + '/rules' %>">Rules and guidelines</a></h3>
@@ -39,7 +37,6 @@
                     <div class="activity"><p>Placeholder</p></div>
                 </li>
                 <li>
-                    <div id="forum-opacity" class="lighter"></div>
                     <ion-icon name="ios-arrow-dropright-circle"></ion-icon>
                     <div class="board-title-container">
                         <h3><a href="<%= forum_path + '/rules' %>">Rules and guidelines</a></h3>
@@ -48,7 +45,7 @@
                     <div class="activity"><p>Placeholder</p></div>
                 </li>
                 <li>
-                    <div id="forum-opacity" class="darker"></div>
+                    <div id="forum-opacity"></div>
                     <ion-icon name="ios-arrow-dropright-circle"></ion-icon>
                     <div class="board-title-container">
                         <h3><a href="<%= forum_path + '/rules' %>">Rules and guidelines</a></h3>
@@ -57,7 +54,6 @@
                     <div class="activity"><p>Placeholder</p></div>
                 </li>
                 <li>
-                    <div id="forum-opacity" class="lighter"></div>
                     <ion-icon name="ios-arrow-dropright-circle"></ion-icon>
                     <div class="board-title-container">
                         <h3><a href="<%= forum_path + '/rules' %>">Rules and guidelines</a></h3>
@@ -66,7 +62,7 @@
                     <div class="activity"><p>Placeholder</p></div>
                 </li>
                 <li>
-                    <div id="forum-opacity" class="darker"></div>
+                    <div id="forum-opacity"></div>
                     <ion-icon name="ios-arrow-dropright-circle"></ion-icon>
                     <div class="board-title-container">
                         <h3><a href="<%= forum_path + '/rules' %>">Rules and guidelines</a></h3>
@@ -78,7 +74,7 @@
             <div class="divider"></div>
             <ul>
                 <li>
-                    <div id="forum-opacity" class="darker"></div>
+                    <div id="forum-opacity"></div>
                     <ion-icon name="ios-arrow-dropright-circle"></ion-icon>
                     <div class="board-title-container">
                         <h3><a href="<%= forum_path + '/rules' %>">Rules and guidelines</a></h3>
@@ -87,7 +83,6 @@
                     <div class="activity"><p>Placeholder</p></div>
                 </li>
                 <li>
-                    <div id="forum-opacity" class="lighter"></div>
                     <ion-icon name="ios-arrow-dropright-circle"></ion-icon>
                     <div class="board-title-container">
                         <h3><a href="<%= forum_path + '/rules' %>">Rules and guidelines</a></h3>

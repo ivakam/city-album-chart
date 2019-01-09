@@ -1,34 +1,31 @@
 <% title @title %>
 <div id="main-container">
-    <div id="main-opacity"></div>
 	<%= render 'partials/navbar_slim' %>
 	<%= image_tag "spinner.gif", class: "spinner hidden" %>
 	<div id="board-container">
-	    <div id="forum-opacity"></div>
+	    <div id="main-opacity"></div>
 	    <h2 id="title"><%= @title %></h2>
+        <div class="page-container top">
+            <a href="<%= root_url + "thread/#{@category}/new" %>" id="post-thread-btn">Create new thread</a>
+            <div>
+                <% if @page - 1 > 0 %>
+                <a class="icon" href="<%= root_url + "forum/#{@category}?p=#{@page - 1}"%>"><ion-icon name="ios-arrow-back"></ion-icon></a>
+                <% end %>
+                <% (0...(@threads.length / 10.0).ceil).each do | i | %>
+                <a class="page-btn <%= tempClass = (i + 1 == @page) ? 'underline' : 'inactive' %>" href="<%= root_url + "forum/#{@category}?p=#{i + 1}" %>"><%= i + 1 %></a>
+                <% end %>
+                <% if @page + 1 <= (@threads.length / 10.0).ceil %>
+                <a class="icon" href="<%= root_url + "forum/#{@category}?p=#{@page + 1}"%>"><ion-icon name="ios-arrow-forward"></ion-icon></a>
+                <% end %>
+            </div>
+        </div>
         <div id="board-list">
             <ul>
-                <div class="page-container top">
-                    <div id="forum-opacity" class="lighter"></div>
-                    <a href="<%= root_url + "thread/#{@category}/new" %>" id="post-thread-btn">Create new thread</a>
-                    <div>
-                        <% if @page - 1 > 0 %>
-                        <a class="icon" href="<%= root_url + "forum/#{@category}?p=#{@page - 1}"%>"><ion-icon name="ios-arrow-back"></ion-icon></a>
-                        <% end %>
-                        <% (0...(@threads.length / 10.0).ceil).each do | i | %>
-                        <a class="page-btn <%= tempClass = (i + 1 == @page) ? 'underline' : '' %>" href="<%= root_url + "forum/#{@category}?p=#{i + 1}" %>"><%= i + 1 %></a>
-                        <% end %>
-                        <% if @page + 1 <= (@threads.length / 10.0).ceil %>
-                        <a class="icon" href="<%= root_url + "forum/#{@category}?p=#{@page + 1}"%>"><ion-icon name="ios-arrow-forward"></ion-icon></a>
-                        <% end %>
-                    </div>
-                </div>
                 <% @stickies.each_with_index do | thread, i | %>
                 <li class="thread sticky">
                     <% if i % 2 == 0 %>
-                    <div id="forum-opacity" class="darker"></div>
+                    <div id="forum-opacity"></div>
                     <% else %>
-                    <div id="forum-opacity" class="lighter"></div>
                     <% end %>
                     <ion-icon class="pin-icon" name="pin"></ion-icon>
                     <div class="board-title-container">
@@ -44,9 +41,8 @@
                 <% @page_threads.each_with_index do | thread, i | %>
                 <li class="thread">
                     <% if i % 2 == 0 %>
-                    <div id="forum-opacity" class="darker"></div>
+                    <div id="forum-opacity"></div>
                     <% else %>
-                    <div id="forum-opacity" class="lighter"></div>
                     <% end %>
                     <div class="board-title-container">
                         <h3><a href="<%= forum_path + "/#{@category}/t/" + thread.id.to_s %>"><%= thread.title %></a></h3>
@@ -59,7 +55,6 @@
                 </li>
                 <% end %>
                 <div class="page-container bottom">
-                    <div id="forum-opacity" class="lighter"></div>
                     <% if @page - 1 > 0 %>
                     <a class="icon" href="<%= root_url + "forum/#{@category}?p=#{@page - 1}"%>"><ion-icon name="ios-arrow-back"></ion-icon></a>
                     <% end %>

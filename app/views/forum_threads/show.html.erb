@@ -34,56 +34,28 @@
 	</form>
 </div>
 <div id="main-container">
-    <div id="main-opacity"></div>
     <%= render 'partials/navbar_slim' %>
     <%= image_tag "spinner.gif", class: "spinner hidden" %>
     <div id="board-container">
-        <div id="forum-opacity"></div>
-        <h2 id="title"><a href="<%= forum_path + "/#{@thread.category}" %>"><%= @thread.category.titleize %></a> - <%= @thread.title %></h2>
+        <div id="main-opacity"></div>
+        <h2 id="title"><a href="<%= forum_path + "/#{@thread.category}" %>"><%= @thread.category.titleize %></a> > <%= @thread.title %></h2>
+        <div class="page-container top">
+            <% if @page - 1 > 0 %>
+            <a class="icon" href="<%= root_url + "forum/#{@thread.category}/t/#{@thread.id}?p=#{@page - 1}"%>"><ion-icon name="ios-arrow-back"></ion-icon></a>
+            <% end %>
+            <% (0...(@posts.length / 10.0).ceil).each do | i | %>
+            <a class="page-btn <%= tempClass = (i + 1 == @page) ? 'underline' : 'inactive' %>" href="<%= root_url + "forum/#{@thread.category}/t/#{@thread.id}?p=#{i + 1}" %>"><%= i + 1 %></a>
+            <% end %>
+            <% if @page + 1 <= (@posts.length / 10.0).ceil %>
+            <a class="icon" href="<%= root_url + "forum/#{@thread.category}/t/#{@thread.id}?p=#{@page + 1}"%>"><ion-icon name="ios-arrow-forward"></ion-icon></a>
+            <% end %>
+        </div>
         <div id="post-list">
             <ul>
-                <div class="page-container top">
-                    <% if @page - 1 > 0 %>
-                    <a class="icon" href="<%= root_url + "forum/#{@thread.category}/t/#{@thread.id}?p=#{@page - 1}"%>"><ion-icon name="ios-arrow-back"></ion-icon></a>
-                    <% end %>
-                    <% (0...(@posts.length / 10.0).ceil).each do | i | %>
-                    <a class="page-btn <%= tempClass = (i + 1 == @page) ? 'underline' : '' %>" href="<%= root_url + "forum/#{@thread.category}/t/#{@thread.id}?p=#{i + 1}" %>"><%= i + 1 %></a>
-                    <% end %>
-                    <% if @page + 1 <= (@posts.length / 10.0).ceil %>
-                    <a class="icon" href="<%= root_url + "forum/#{@thread.category}/t/#{@thread.id}?p=#{@page + 1}"%>"><ion-icon name="ios-arrow-forward"></ion-icon></a>
-                    <% end %>
-                </div>
-                <div id="forum-opacity" class="darker"></div>
+                <div id="forum-opacity"></div>
                 <% @page_posts.each do | post | %>
                 <li>
                     <input class="post-id" value="<%= post.id %>" hidden>
-                    <div class="post-header">
-                        <div>
-                            <p class="post-index">#<%= post.post_index %></p>
-                            <p class="post-title"><b><%= @thread.title %></b></p>
-                        </div>
-                        <p class="post-date">Posted at <%= post.created_at.strftime("%R %Z, %F") %></p>
-                        <div class="header-icons">
-                            <% if fetch_user %>
-                                <% if post.user.id == fetch_user.id %>
-                                <ion-icon class="post-icon post-edit" name="create"></ion-icon>
-                                <% end %>
-                                <% if fetch_user.admin || post.user.id == fetch_user.id %>
-                                <ion-icon class="post-icon post-trash" name="ios-trash"></ion-icon>
-                                <% end %>
-                                <ion-icon class="post-icon post-flag" name="ios-flag"></ion-icon>
-                                <p class="post-score">Score: <%= post_upvotes(post) %></p>
-                                <% if fetch_user %>
-                                <div class="heart-container">
-                                    <ion-icon class="heart-animation hidden" name="ios-heart"></ion-icon>
-                                    <ion-icon class="post-icon post-heart <%= 'red' if Upvote.find_by(user: fetch_user, post: post).present? %>" name="ios-heart"></ion-icon>
-                                </div>
-                                <% end %>
-                            <% else %>
-                            <p class="post-score">Score: <%= post_upvotes(post) %></p>
-                            <% end %>
-                        </div>
-                    </div>
                     <div class="post-body">
                         <div class="user-info">
                             <p class="user-name"><b><a href="<%= root_url + 'users/' + post.user.username %>"><%= post.user.username %></a></b></p>
@@ -101,13 +73,36 @@
                             <p class="user-location"><b>Location:</b> <%= post.user.location %></p>
                         </div>
                         <div class="text-container">
+                            <div class="header-icons">
+                                <% if fetch_user %>
+                                    <% if fetch_user.admin || post.user.id == fetch_user.id %>
+                                    <ion-icon class="post-icon post-trash" name="ios-trash"></ion-icon>
+                                    <% end %>
+                                    <% if post.user != fetch_user %>
+                                    <ion-icon class="post-icon post-flag" name="ios-flag"></ion-icon>
+                                    <% end %>
+                                    <% if post.user.id == fetch_user.id %>
+                                    <ion-icon class="post-icon post-edit" name="create"></ion-icon>
+                                    <% end %>
+                                    <% if fetch_user && fetch_user != post.user %>
+                                    <div class="heart-container">
+                                        <ion-icon class="heart-animation hidden" name="ios-heart"></ion-icon>
+                                        <ion-icon class="post-icon post-heart <%= 'red' if Upvote.find_by(user: fetch_user, post: post).present? %>" name="ios-heart"></ion-icon>
+                                    </div>
+                                    <% end %>
+                                <% end %>
+                            </div>
                             <div class="post-text">
                             <% if fetch_user == post.user %>
-                            <div class="edit-post" contenteditable="false"><%= post.body %></div>
+                            <div class="edit-post" contenteditable="false"><%= get_body(post) %></div>
                             <input type="submit" class="transparent" name="commit" value="Save edit">
                             <% else %>
-                             <p><%= post.body %></p>
+                             <p class="padded-right"><%= post.body %></p>
                             <% end %>
+                            </div>
+                            <div class="index-date">
+                                <p class="post-date">#<%= post.post_index %> Posted at <%= post.created_at.strftime("%R %Z, %F") %></p>
+                                <p class="post-score">Score: <%= post_upvotes(post) %></p>
                             </div>
                             <div class="user-signature">
                                 <p><%= post.user.signature %></p>
@@ -148,7 +143,7 @@
                     <a class="icon" href="<%= root_url + "forum/#{@thread.category}/t/#{@thread.id}?p=#{@page - 1}"%>"><ion-icon name="ios-arrow-back"></ion-icon></a>
                     <% end %>
                     <% (0...(@posts.length / 10.0).ceil).each do | i | %>
-                    <a class="page-btn <%= tempClass = (i + 1 == @page) ? 'underline' : '' %>" href="<%= root_url + "forum/#{@thread.category}/t/#{@thread.id}?p=#{i + 1}" %>"><%= i + 1 %></a>
+                    <a class="page-btn <%= tempClass = (i + 1 == @page) ? 'underline' : 'inactive' %>" href="<%= root_url + "forum/#{@thread.category}/t/#{@thread.id}?p=#{i + 1}" %>"><%= i + 1 %></a>
                     <% end %>
                     <% if @page + 1 <= (@posts.length / 10.0).ceil %>
                     <a class="icon" href="<%= root_url + "forum/#{@thread.category}/t/#{@thread.id}?p=#{@page + 1}"%>"><ion-icon name="ios-arrow-forward"></ion-icon></a>

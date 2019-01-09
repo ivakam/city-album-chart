@@ -54,7 +54,9 @@ $(document).on 'turbolinks:load', ->
 			e = $(this)
 			bodyText = e.closest('li').find('.edit-post')
 			btn = e.closest('li').find('.post-text input')
+			headerIcon = e.closest('li').find('.header-icons')
 			bodyText.toggleClass('active')
+			headerIcon.toggleClass('padded')
 			if bodyText.attr('contenteditable') == 'false'
 				bodyText.attr('contenteditable', 'true')
 			else

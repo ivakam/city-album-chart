@@ -1,8 +1,8 @@
 <% title @user.username + '\'s profile' %>
 <div id="main-container">
-    <div id="main-opacity"></div>
     <%= render 'partials/navbar_slim' %>
     <div id="profile-wrapper">
+        <div id="main-opacity"></div>
         <div id="profile-header">
             <div>
                 <% if !fetch_user.nil? && fetch_user.id == @user.id %>

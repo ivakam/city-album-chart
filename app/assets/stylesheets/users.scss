@@ -1,13 +1,19 @@
+$lighter-bg: #2f3322;
+$darker-bg: #191b12;
+
 #profile-wrapper {
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 70vw;
     padding: 20px;
     #profile-header {
         display: flex;
         padding: 20px 20px 20px 0;
         border-bottom: 1px #8c8c8c solid;
         height: 200px;
+        > * {
+            z-index: 3;
+        }
         > div:first-child {
             display: flex;
             flex-direction: column;
@@ -47,7 +53,7 @@
                     bottom: 0;
                     right: 0;
                     left: 0;
-                    background: #2a2a2a;
+                    background: $lighter-bg;
                     p {
                         color: white;
                         font-size: 18px;

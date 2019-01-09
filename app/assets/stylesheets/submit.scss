@@ -1,6 +1,9 @@
+$lighter-bg: #2f3322;
+$darker-bg: #191b12;
+
 #login-container {
     input {
-        background: #171717;
+        background: $darker-bg;
         resize: none;
         width: 100%;
         overflow-y: scroll;
@@ -21,8 +24,9 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 20px;
     input, textarea {
-        background: #171717;
+        background: $darker-bg;
         resize: none;
         width: 100%;
         overflow-y: scroll;
@@ -40,10 +44,12 @@
     }
     h2 {
         margin: 10px;
+        z-index: 3;
     }
     #submit-container {
         display: flex;
-        max-width: 80vw;
+        max-width: 70vw;
+        z-index: 3;
         #submit-instructions {
             flex-shrink: 2;
             h2 {
@@ -58,11 +64,9 @@
         form {
             display: flex;
             overflow-x: hidden;
+            flex-grow: 2.3;
             #album_image {
                 overflow: visible;
-            }
-            textarea {
-                width: calc(100% - 12px);
             }
             .submit-btn {
                 overflow: hidden;
@@ -129,7 +133,7 @@
                 width: 100%;
                 display: flex;
                 flex-direction: column;
-                margin: 20px;
+                margin-left: 20px;
                 > div:first-child {
                     width: 100%;
                     display: flex;
@@ -210,7 +214,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    max-width: 50vw;
+    width: 70vw;
+    > * {
+        z-index: 3;
+    }
     form { 
         display: flex;
         flex-direction: column;
