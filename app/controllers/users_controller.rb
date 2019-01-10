@@ -33,7 +33,11 @@ class UsersController < ApplicationController
         @user.admin = false
         @user.badges = ''
         @user.account_type = 'Member'
-        @user.save
+        if @user.save.valid?
+            @user.save
+        else
+           redirect_to request.referrer, notice: 'Please fill out all of the required fields.'
+        end
         # Automatically log in after account is created
         if @user && @user.authenticate(params[:user][:password])
             session[:user_id] = @user.id
@@ -43,8 +47,29 @@ class UsersController < ApplicationController
     
     def destroy
         if get_user && get_user.admin
-            JSON.parse(params[:serialized_ids]).each do | user_id |
-                @user = User.find_by(id: id)
+            JSON.parse(params[:user][:serialized_ids]).each do | user_id |
+                @user = User.find_by(id: user_id)
+                dummy = User.find(1)
+                @user.forum_threads.each do | t |
+                    t.user = dummy
+                    t.save
+                end
+                @user.posts.each do | t |
+                    t.user = dummy
+                    t.save
+                end
+                @user.albums.each do | t |
+                    t.user_id = dummy.id
+                    t.save
+                end
+                @user.articles.each do | t |
+                    t.user = dummy
+                    t.save
+                end
+                @user.comments.each do | t |
+                    t.user = dummy
+                    t.save
+                end
                 @user.destroy
             end
         else

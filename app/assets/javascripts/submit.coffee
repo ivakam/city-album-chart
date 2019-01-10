@@ -36,7 +36,7 @@ $(document).on 'turbolinks:load', ->
 			<span class='draggable-area'></span>
 			<input class='title' placeholder='Title' type='text'>
 			<input class='romanization' placeholder='Romanization' type='text'>
-			<input class='duration' placeholder='M:S' type='text'>
+			<input class='duration' placeholder='4:54' type='text'>
 			<ion-icon name='ios-close' class='track-delete-btn'></ion-icon>
 			</div>").insertBefore($(this))
 			e.parent().find('.track-delete-btn').each ->
@@ -48,9 +48,3 @@ $(document).on 'turbolinks:load', ->
 		
 		$('.track-delete-btn').click ->
 			$(this).parent().remove()
-			
-		$('.register-btn').click ->
-			$('#register-form-container').toggleClass('modal-inactive')
-			opacity = $('#opaque')
-			opacity.css('background', 'rgba(0, 0, 0, 0.6')
-			opacity.css('z-index', '5')

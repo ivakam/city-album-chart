@@ -1,3 +1,10 @@
+$lighter-bg: #2f3322;
+$darker-bg: #191b12;
+$dark-border: #686868;
+$light-border: #8c8c8c;
+$dark-font: #e3e3e3;
+$light-font: #e8e8e8;
+
 #login-container {
     input {
         background: $darker-bg;
@@ -16,16 +23,14 @@
 
 #submit-wrapper {
     position: relative;
-    width: 100%;
+    width: 70vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
     padding: 20px;
     input, textarea {
         background: $darker-bg;
         resize: none;
-        width: 100%;
         overflow: auto;
         border: 1px #686868 solid;
     }
@@ -42,13 +47,14 @@
     h2 {
         margin: 10px;
         z-index: 3;
+        align-self: center;
     }
     #submit-container {
         display: flex;
-        max-width: 70vw;
         z-index: 3;
         #submit-instructions {
             flex-shrink: 2;
+            min-width: 40%;
             h2 {
                 margin: 0;
             }
@@ -138,25 +144,28 @@
                 }
                 #input-container {
                     display: flex;
-                    flex-direction: column;
                     min-width: 100%;
+                    flex-direction: column;
                     transition: margin 0.3s;
-                    margin-right: 20px;
                     p {
                         margin: 0 0 5px 0;
                     }
                     > div:first-of-type {
                         display: flex;
-                        margin: 15px 0 15px 0;
+                        padding: 15px 20px 15px 0;
                     }
                     .form-divider {
                         display: flex;
                         flex-direction: column;
                         .form-field {
                             margin-bottom: 15px;
+                            input {
+                                width: 100%;
+                            }
                         }
                         textarea {
-                            height: 120px;
+                            width: 100%;
+                            height: 150px;
                             padding: 5px;
                             color: #e3e3e3;
                             margin: 0;
@@ -170,8 +179,8 @@
                         }
                     }
                     #left-divider {
-                        flex-grow: 1;
                         margin-right: 20px;
+                        width: calc(40% - 20px);
                         .error-msg-container {
                             height: 0;
                             transition: height 0.2s;
@@ -184,7 +193,7 @@
                         }
                     }
                     #right-divider {
-                        flex-grow: 3;
+                        width: 60%;
                         .form-field {
                             margin-botton: 30px;
                         }
@@ -192,11 +201,12 @@
                 }
                 #scraper-input {
                     min-width: 100%;
+                    padding: 20px;
                     display: flex;
                     flex-direction: column;
                     #scraper-textarea {
-                        width: 60%;
-                        height: 700px;
+                        width: 100%;
+                        height: 500px;
                         padding: 5px;
                         color: #e3e3e3;
                         overflow-y: auto;

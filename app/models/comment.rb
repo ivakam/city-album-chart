@@ -1,8 +1,7 @@
-class Upvote < ApplicationRecord
-    belongs_to :user
-    belongs_to :post
-    belongs_to :article
-    belongs_to :comment
+class Comment < ApplicationRecord
+    belongs_to :user, :touch => true
+    belongs_to :article, :touch => true
+    has_many :upvotes, :dependent => :destroy
     
     after_save do
         update_with_user_status_service
@@ -12,7 +11,7 @@ class Upvote < ApplicationRecord
     
     def update_with_user_status_service
         UserStatusService.new({
-            upvote: self
+            user: self.user
         }).update
     end
 end

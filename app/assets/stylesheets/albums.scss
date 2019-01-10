@@ -1,3 +1,10 @@
+$lighter-bg: #2f3322;
+$darker-bg: #191b12;
+$dark-border: #686868;
+$light-border: #8c8c8c;
+$dark-font: #e3e3e3;
+$light-font: #e8e8e8;
+
 body {
 	padding: 0;
 	margin: 0;
@@ -25,15 +32,11 @@ body {
 }
 
 .modal {
-	display: flex;
-	align-items: center;
-	flex-direction: column;
 	position: fixed;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	width: 60vw;
-	max-width: 900px;
+	max-width: 700px;
 	max-height: 80vh;
 	overflow-y: auto;
 	background: $darker-bg;
@@ -79,10 +82,6 @@ body {
 			flex-grow: 2;
 		}
 		#register-input-container {
-			justify-content: flex-start;
-			flex-wrap: wrap;
-			height: 375px;
-			padding: 20px;
 			> div {
 				display: flex;
 				flex-wrap: wrap;
@@ -136,10 +135,11 @@ body {
 }
 
 .flash-modal {
-	top: 25vh;
-	left: calc(50vw - 150px);
 	background: $lighter-bg;
 	width: 300px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 #albums-bg-container {
@@ -196,6 +196,7 @@ body {
 			background: $lighter-bg;
 			border: 1px $dark-border solid;
 			margin-right: 6px;
+			height: 28px;
 			&[type=text], &[type=password], &[type=submit] {
 				font-family: 'Roboto';
 				padding: 5px;
@@ -351,34 +352,40 @@ body {
 		li {
 			display: flex;
 			flex-grow: 1;
-			.nav-btn {
-				min-height: 40px;
+			a {
 				flex-grow: 0.4;
 				display: flex;
 				align-items: center;
 				justify-content: center;
+				position: relative;
+				text-decoration: none;
 				transition: 0.1s;
 				opacity: 0.8;
-				.title-wrapper {
+				padding: 10px 20px 10px 20px;
+				color: white;
+				&:before {
+					content: '';
+					position: absolute;
 					width: 100%;
-					height: 40px;
-					a {
-						display: flex;
-						align-items: center;
-						justify-content: center;
-						width: 100%;
-						height: 100%;
-						color: white;
+					height: 1px;
+					bottom: 0;
+					left: 0;
+					background-color: white;
+					opacity: 0.8;
+					visibility: hidden;
+					-webkit-transform: scaleX(0);
+					transform: scaleX(0);
+					-webkit-transition: all 0.3s ease-in-out 0s;
+					transition: all 0.3s ease-in-out 0s;
+				}
+				&:hover {
+					cursor: pointer;
+					&:before {
+						visibility: visible;
+						-webkit-transform: scaleX(1);
+						transform: scaleX(1);
 					}
 				}
-				#random .title-wrapper {
-					height: 23px;
-					border-left: 1px #414141 solid;
-				}
-			}
-			.nav-btn:hover {
-				background: #2f3322;
-				cursor: pointer;
 			}
 			.nav-arrow {
 				position: absolute;
@@ -708,8 +715,6 @@ body {
 				align-items: center;
 				height: 410px;
 				position: relative;
-				//height: 410px;
-				//margin-top: 20px;
 				.contributor {
 					position: absolute;
 					bottom: 8px;
@@ -938,7 +943,6 @@ body {
 }
 
 .tracklist-submit {
-	height: 449px;
 	margin-right: 8px;
 	overflow: auto;
 	.tracklist-edit-container {
@@ -958,6 +962,7 @@ body {
 		}
 		.track-input-container {
 			display: flex;
+			width: 100%;
 			margin-bottom: 5px;
 			align-items: center;
 			.draggable-area {
@@ -992,7 +997,6 @@ body {
 				font-size: 32px;
 				color: $dark-font;
 				opacity: 0.8;
-				margin-right: 8px;
 				transition: 0.2s;
 			}
 			.track-delete-btn:hover {
@@ -1000,7 +1004,7 @@ body {
 				cursor: pointer;
 			}
 			input {
-				max-width: 175px !important;
+				height: 32px;
 				&:nth-of-type(2n+0) {
 					background: $lighter-bg !important;
 				}
@@ -1037,6 +1041,10 @@ input[type="text"]:focus, input[type="password"]:focus ,textarea:focus {
 input[type="submit"] {
 	transition: border .1s;
 	background: $darker-bg;
+	overflow: hidden;
+	font-size: 20px;
+	height: 42px;
+	border-radius: 5px;
 	&:hover {
 		cursor: pointer;
 		border: 1px $dark-font solid !important;
@@ -1047,6 +1055,7 @@ input, textarea {
 	font-family: 'Roboto';
 	border: $dark-border;
 	background: $darker-bg;
+	height: 35px;
 }
 
 iframe {

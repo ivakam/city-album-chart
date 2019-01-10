@@ -7,7 +7,8 @@ class ApplicationController < ActionController::Base
         ActiveStorage::Current.host = request.base_url if Rails.application.config.active_storage.service == :local
     end
     
-    rescue_from StandardError do
+    rescue_from StandardError do | e |
+        p e
         render 'layouts/500'
     end
     

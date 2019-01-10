@@ -1,0 +1,55 @@
+<% title 'Home' %>
+<div id="main-container">
+    <%= render 'partials/navbar_slim' %>
+    <%= image_tag "spinner.gif", class: "spinner hidden" %>
+    <div id="home-container">
+        <div id="main-opacity"></div>
+        <div id="announcements">
+        </div>
+        <h3 id="activity">Recent activity</h2>
+        <div id="content">
+            <div id="feed">
+                <% @content[:posts].each do | post | %>
+                <div class="post-card">
+                    <div class="card-opacity"></div>
+                    <h4><a href="<%= "#{forum_path}/#{post.forum_thread.category}/t/#{post.forum_thread.id}" %>"><%= post.user.username %> posted in thread <i><%= post.forum_thread.title %></i> :</a></h4>
+                    <p class="post-score">Score: <%= post_upvotes(post) %></p>
+                    <div class="post-container">
+                        <div class="user-info">
+                            <div class="user-badges">
+                            </div>
+                            <div class="avatar-wrapper"><a href="<%= root_url + 'users/' + post.user.username %>">
+                            <%= image_tag user_avatar(post.user) %>
+                            </a></div>
+                        </div>
+                        <div class="text-container">
+                            <div class="post-text">
+                            <p class="padded-right"><%= post.body %></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <% end %>
+            </div>
+            <div id="right-panel">
+                <div id="recent-albums">
+                    <h3>Recent albums</h3>
+                    <% @content[:albums].each do | album | %>
+                    <div class="album-container">
+                        <%= image_tag album.thumbnail %>
+                        <div class="album-info">
+                            <p><%= album.title %></p>
+                            <p><%= album.romaji_artist %></p>
+                            <p><%= album.year %></p>
+                        </div>
+                    </div>
+                    <% end %>
+                    <div class="card-opacity"></div>
+                </div>
+                <div id="gallery">
+                    <h3>Placeholder</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

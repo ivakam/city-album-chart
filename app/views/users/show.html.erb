@@ -161,7 +161,9 @@
                         <div><p><b>Change avatar</b></p></div>
                     </form>
                 <% else %>
+                <div>
                     <%= image_tag user_avatar(@user) %>
+                </div>
                 <% end %>
                 <h2><%= @user.username %></h2>
             </div>
@@ -197,7 +199,9 @@
                     </p>
                 </div>
             </div>
+            <% if fetch_user == @user %>
             <ion-icon id="profile-edit-btn" name="create"></ion-icon>
+            <% end %>
         </div>
         <div id="favorites-display">
             

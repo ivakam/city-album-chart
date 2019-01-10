@@ -94,7 +94,7 @@
                             </div>
                             <div class="post-text">
                             <% if fetch_user == post.user %>
-                            <div class="edit-post" contenteditable="false"><%= get_body(post) %></div>
+                            <div class="edit-post padded-right" contenteditable="false"><%= get_body(post) %></div>
                             <input type="submit" class="transparent" name="commit" value="Save edit">
                             <% else %>
                              <p class="padded-right"><%= post.body %></p>

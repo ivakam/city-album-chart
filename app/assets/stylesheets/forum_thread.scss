@@ -1,3 +1,10 @@
+$lighter-bg: #2f3322;
+$darker-bg: #191b12;
+$dark-border: #686868;
+$light-border: #8c8c8c;
+$dark-font: #e3e3e3;
+$light-font: #e8e8e8;
+
 .delete-modal {
     .delete-confirm-btn {
         padding: 5px 10px 5px 10px;
@@ -134,7 +141,7 @@
                         right: 0;
                         top: 0;
                         z-index: 5;
-                        padding-left: 8px;
+                        padding-left: 10px;
                         border-left: 1px #686868 solid;
                         .post-icon {
                             width: 20px;
@@ -142,7 +149,9 @@
                             color: #e8e8e8;
                             opacity: 0.6;
                             transition: 0.2s;
-                            margin-right: 10px;
+                            &:not(:last-child) {
+                                margin-right: 10px;
+                            }
                             &:hover {
                                 opacity: 0.9;
                                 cursor: pointer;
@@ -197,14 +206,14 @@
                         right: 8px;
                     }
                     .padded-right {
-                        padding-right: 120px;
-                        width: 100%;
+                        padding-right: 120px !important;
                     }
                     .post-text {
                         position: relative;
                         display: flex;
                         margin-bottom: 10px;
                         flex-grow: 1;
+                        word-break: break-all;
                         .edit-post {
                             background: rgba(0, 0, 0, 0);
                             width: 100%;

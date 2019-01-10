@@ -2,6 +2,26 @@ require 'faker'
 require 'yaml'
 Faker::UniqueGenerator.clear
 
+def orphan_dummy
+	user = User.new()
+	user.username = '<Deleted>'
+	user.email = 'deleted@dummy.com'
+	user.password = Faker::Internet.password(8, 16)
+	user.admin = false
+	user.banned = false
+	user.gender = 'Unknown'
+	user.birth_year = 'Unknown'
+	user.location = ''
+	user.bio = ''
+	user.signature = ''
+	user.badges = ''
+	user.album_fav = ''
+	user.save
+	p "Dummy generated"
+end
+
+orphan_dummy
+
 (0..50).each do | i |
 	user = User.new()
 	user.username = Faker::Internet.unique.username
@@ -39,7 +59,7 @@ end
 	thread.stickied = true
 	thread.archived = false
 	thread.locked = false
-	thread.user = User.find(rand(1..@usercount))
+	thread.user = User.find(rand(2..@usercount))
 	thread.body = Faker::HitchhikersGuideToTheGalaxy.quote
 	thread.save
 	p "Thread #{i} generated"
@@ -52,7 +72,7 @@ end
 	thread.stickied = false
 	thread.archived = false
 	thread.locked = false
-	thread.user = User.find(rand(1..@usercount))
+	thread.user = User.find(rand(2..@usercount))
 	thread.body = Faker::HitchhikersGuideToTheGalaxy.quote
 	thread.save
 	p "Thread #{i} generated"
@@ -61,17 +81,50 @@ end
 ForumThread.all.each_with_index do | parentThread, i |
 	(1..rand(5..20)).each do | j |
 		reply = Post.new()
-		reply.user = User.find(rand(1..@usercount))
+		reply.user = User.find(rand(2..@usercount))
 		reply.forum_thread = parentThread
 		reply.body = Faker::HitchhikersGuideToTheGalaxy.quote
 		reply.post_index = j
 		(1..rand(5..20)).each do | k |
 			upvote = Upvote.new()
 			upvote.post = reply
-			upvote.user = User.find(rand(1..@usercount))
+			upvote.user = User.find(rand(2..@usercount))
 			upvote.save
 		end
 		p "Post #{j} for thread ##{parentThread.id} #{parentThread.title} generated"
+		reply.save
+	end
+end
+
+(0..10).each do | i |
+	article = Article.new()
+	article.user = User.find(rand(2..@usercount))
+	article.title = Faker::Book.title
+	article.subtitle = Faker::Lorem.sentence(4, false, 5)
+	article.body = Faker::Lorem.paragraphs(5)
+	article.featured = rand(0...8) == 1 ? true : false
+	(1..rand(5..20)).each do | k |
+		upvote = Upvote.new()
+		upvote.article = article
+		upvote.user = User.find(rand(2..@usercount))
+		upvote.save
+	end
+	p "Article #{i} generated"
+end
+
+Article.all.each_with_index do | article, i |
+	(1..rand(5..20)).each do | j |
+		reply = Comment.new()
+		reply.user = User.find(rand(2..@usercount))
+		reply.article = article
+		reply.body = Faker::HitchhikersGuideToTheGalaxy.quote
+		(1..rand(5..20)).each do | k |
+			upvote = Upvote.new()
+			upvote.comment = reply
+			upvote.user = User.find(rand(2..@usercount))
+			upvote.save
+		end
+		p "Comment #{j} for article ##{article.id} #{article.title} generated"
 		reply.save
 	end
 end
@@ -96,7 +149,7 @@ def CreateAlbumWithTracks(albumParam, tracks = [])
     if albumParam[:user_id].present?
     	currentAlbum.user_id = albumParam[:user_id]
     else
-    	currentAlbum.user_id = rand(1..51)
+    	currentAlbum.user_id = rand(2..User.all.size)
     end
     tracks.each do |t|
         currentAlbum.tags << " #{t[:title]} #{t[:romanization]}"

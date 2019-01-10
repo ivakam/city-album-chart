@@ -35,11 +35,12 @@ $(document).on 'turbolinks:load', ->
 	#Handler for sending report
 	
 	$('.modal input[type=submit]').click ->
-		$('.submit-message').toggleClass('shrunk')
-		setTimeout( ->
+		if $(this).closest('.modal').find('input:invalid').length == 0
 			$('.submit-message').toggleClass('shrunk')
-			resetFocus()
-		, 5000)
+			setTimeout( ->
+				$('.submit-message').toggleClass('shrunk')
+				resetFocus()
+			, 4000)
 		
 	if $('body').hasClass('albums show')
 		
