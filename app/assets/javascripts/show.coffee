@@ -2,7 +2,7 @@ $(document).on 'turbolinks:load', ->
 	
 	#Handler for clicking "create account" button
 	
-	$('#register-btn').click ->
+	$('.register-btn').click ->
 		$('#register-form-container').toggleClass('modal-inactive')
 		opacity = $('#opaque')
 		opacity.css('background', 'rgba(0, 0, 0, 0.6')
@@ -35,11 +35,12 @@ $(document).on 'turbolinks:load', ->
 	#Handler for sending report
 	
 	$('.modal input[type=submit]').click ->
-		$('.submit-message').toggleClass('shrunk')
-		setTimeout( ->
+		if $(this).closest('.modal').find('input:invalid').length == 0
 			$('.submit-message').toggleClass('shrunk')
-			resetFocus()
-		, 5000)
+			setTimeout( ->
+				$('.submit-message').toggleClass('shrunk')
+				resetFocus()
+			, 4000)
 		
 	if $('body').hasClass('albums show')
 		
@@ -52,7 +53,7 @@ $(document).on 'turbolinks:load', ->
 		titleReplaceRegex = /[\s\'\"\.\(\)\!\#\%\&\\\*]/g
 		window.albumsNameSpace = {}
 		ytAPIkey = 'AIzaSyAA9tEp3x9uIC60zQfLds8ZlNrwRCBwc5Q'
-		totalCount = 0
+		totalCount = $('#album-count').html()
 		albums = null
 		$('#main-search').val('')
 		
@@ -169,7 +170,7 @@ $(document).on 'turbolinks:load', ->
 			e.css('opacity', 0)
 			e.css('display', 'none')
 			if (parseInt(parent.css('margin-top')) > -10)
-				parent.css('margin-top', -1 * parent.height())
+				parent.css('margin-top', -1 * (parent.height() + 15))
 			else
 				parent.css('margin-top', '0')
 		
@@ -294,7 +295,7 @@ $(document).on 'turbolinks:load', ->
 									<span class='draggable-area'></span>
 									<input class='title' placeholder='Title' value='" + track.title.replace("'", '&#39;') + "' type='text'>
 									<input class='romanization' placeholder='Romanization' value='" + track.romanization.replace("'", '&#39;') + "' type='text' >
-									<input class='duration' placeholder='M:S' value='" + track.duration + "' type='text'>
+									<input class='duration' placeholder='4:54' value='" + track.duration + "' type='text'>
 									<input class='title_old' value='" + track.title.replace("'", '&#39;') + "' type='text' hidden>
 									<input class='romanization_old' value='" + track.romanization.replace("'", '&#39;') + "' type='text' hidden>
 									<input class='duration_old' value='" + track.duration + "' type='text' hidden>
@@ -537,7 +538,7 @@ $(document).on 'turbolinks:load', ->
 					sibling.css('display', 'flex')
 					albumOpen = true
 					setTimeout( ->
-						offset = parent.offset().top + 132
+						offset = parent.offset().top + 115
 						$('.offset').css('top', offset)
 						$('.info-wrapper').attr('class', 'info-wrapper')
 						sibling.addClass('is-open')
@@ -599,10 +600,10 @@ $(document).on 'turbolinks:load', ->
 		
 		search = (input) ->
 			toggleAlbum(sibling: undefined)
-			input = input.target.value
+			#input = input.target.value
 			$('#splash-container').empty()
 			$('.spinner').removeClass('hidden')
-			console.log(input)
+			#console.log(input)
 			jsonAlbums = fetch("#{host}q=#{input}&q_track=true&limit=40")
 			.then (response) ->
 				return response.json()
@@ -621,7 +622,7 @@ $(document).on 'turbolinks:load', ->
 			searched = true
 			clearTimeout(delayTimer)
 			delayTimer = setTimeout( ->
-				search(e)
+				search(e.target.value)
 			, 300)
 		)
 		

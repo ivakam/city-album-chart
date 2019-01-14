@@ -1,22 +1,27 @@
+$lighter-bg: #2f3322;
+$darker-bg: #191b12;
+$dark-border: #686868;
+$light-border: #8c8c8c;
+$dark-font: #e3e3e3;
+$light-font: #e8e8e8;
+
+#forum-opacity {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    opacity: 0.5;
+    background: $darker-bg;
+}
+
 #board-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
     position: relative;
-    #forum-opacity {
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        z-index: 1;
-        opacity: 0.5;
-        background: #171717;
-    }
-    .darker {
-        opacity: 0.8 !important;
-    }
     > * {
         z-index: 3;
     }
@@ -29,11 +34,33 @@
     .page-container {
         width: 100%;
         display: flex;
-        justify-content: center;
         align-items: center;
+        justify-content: center;
         z-index: 3;
+        position: relative;
+        > div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
         a {
             padding: 6px;
+            transition: 0.1s;
+            &:hover {
+                opacity: 1 !important;
+            }
+        }
+        #post-thread-btn {
+            display: flex;
+            align-items: stretch;
+            justify-content: center;
+            position: absolute;
+            transition: 0.1s;
+            left: 0;
+            width: 150px;
+            &:hover {
+                background: #2f3322;
+            }
         }
         .icon {
             padding: 0;
@@ -43,6 +70,9 @@
         }
         .underline {
             text-decoration: underline;
+        }
+        .inactive {
+            opacity: 0.6;
         }
         ion-icon {
             color: #e8e8e8;
@@ -61,7 +91,6 @@
         flex-direction: column;
         align-items: center;
         width: 70vw;
-        margin: 30px;
         position: relative;
         h3 {
             margin: 0;
@@ -82,12 +111,10 @@
             display: flex;
             flex-direction: column;
             width: 100%;
-            border-left: 2px #e3e3e3 solid;
-            position: relative;
             > li {
                 display: flex;
+                position: relative;
                 align-items: center;
-                border-top: 1px #8c8c8c solid;
                 padding: 15px;
                 padding-left: 8px;
                 width: 100%;
@@ -102,9 +129,6 @@
                         color: white;
                         cursor: pointer;
                     }
-                }
-                &:last-of-type {
-                    border-bottom: 1px #8c8c8c solid;
                 }
                 .pin-icon {
                     width: 25px;
@@ -136,6 +160,9 @@
                 }
             }
         }
+    }
+    .forum-margin {
+        margin-top: 30px;
     }
     .divider {
         height: 0;

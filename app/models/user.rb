@@ -4,6 +4,9 @@ class User < ApplicationRecord
 	has_one_attached :avatar
 	has_many :forum_threads
 	has_many :posts
+	has_many :articles
+	has_many :comments
+	has_many :albums
 	has_many :upvotes, :dependent => :destroy
 
     before_save { self.email = email.downcase }

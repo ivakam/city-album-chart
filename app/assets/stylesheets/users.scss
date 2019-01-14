@@ -1,13 +1,37 @@
+$lighter-bg: #2f3322;
+$darker-bg: #191b12;
+$dark-border: #686868;
+$light-border: #8c8c8c;
+$dark-font: #e3e3e3;
+$light-font: #e8e8e8;
+
 #profile-wrapper {
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 70vw;
     padding: 20px;
     #profile-header {
         display: flex;
         padding: 20px 20px 20px 0;
         border-bottom: 1px #8c8c8c solid;
         height: 200px;
+        position: relative;
+        > * {
+            z-index: 3;
+        }
+        #profile-edit-btn {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 25px;
+            height: 25px;
+            color: $dark-font;
+            opacity: 0.7;
+            &:hover {
+                opacity: 0.9;
+                cursor: pointer;
+            }
+        }
         > div:first-child {
             display: flex;
             flex-direction: column;
@@ -47,7 +71,7 @@
                     bottom: 0;
                     right: 0;
                     left: 0;
-                    background: #2a2a2a;
+                    background: $lighter-bg;
                     p {
                         color: white;
                         font-size: 18px;

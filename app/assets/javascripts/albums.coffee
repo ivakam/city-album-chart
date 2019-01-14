@@ -9,5 +9,5 @@ $(document).on "turbolinks:load", ->
             chosenAlbum = 1
         backgrounds.css("opacity", "0")
         $("#albums-bg-container img:nth-child(" + chosenAlbum + ")").css("opacity", "1")
-    , 15000)
+    , 120000)
     

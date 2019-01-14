@@ -9,18 +9,35 @@ class ForumThreadsController < ApplicationController
     end
     
     def destroy
-		begin
-			if User.find(session[:user_id]).admin
-				toBeNuked = JSON.parse(params[:thread][:serialized_ids])
-				toBeNuked.each do | thread |
-					@thread = ForumThread.find_by(id: thread)
-					@thread.destroy
-				end
-				return
+		if get_user.admin
+			toBeNuked = JSON.parse(params[:thread][:serialized_ids])
+			toBeNuked.each do | thread |
+				@thread = ForumThread.find_by(id: thread)
+				@thread.destroy
 			end
-			rescueHandler('401', true)
-		rescue StandardError => e
-			rescueHandler('401', true, e)
+		else
+			on_access_denied
+		end
+    end
+    
+    def create
+		if get_user
+			@thread = ForumThread.new()
+			@thread.title = params[:thread][:title]
+			@thread.user = get_user
+			@thread.category = params[:thread][:category]
+			@thread.stickied = false
+			@thread.archived = false
+			@thread.locked = false
+			@post = Post.new()
+			@post.user = get_user
+			@post.forum_thread = @thread
+			@post.body = params[:thread][:body]
+			@thread.save
+			@post.save
+			redirect_to forum_path + "/#{@thread.category}/t/#{@thread.id}"
+		else
+			on_access_denied
 		end
     end
     

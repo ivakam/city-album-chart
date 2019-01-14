@@ -7,6 +7,10 @@ Rails.application.configure do
   # and recreated between test runs. Don't rely on the data there!
   config.cache_classes = true
 
+  hostFile = File.read(File.expand_path(Rails.root + 'host_path.json'))
+  config.action_mailer.default_url_options = { :host => JSON.parse(hostFile)['path'] }
+  Rails.application.routes.default_url_options[:host] = JSON.parse(hostFile)['path']
+
   # Do not eager load code on boot. This avoids loading your whole application
   # just for the purpose of running a single test. If you are using a tool that
   # preloads Rails for running tests, you may have to set it to true.

@@ -2,7 +2,7 @@
 <html lang="en">
 	<head>
 		<script src="https://cdn.polyfill.io/v2/polyfill.js?features=fetch,Promise"></script>
-		<%= display_meta_tags site: 'varieti.es' %>
+		<%= display_meta_tags site: 'SuperKayo' %>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -190,6 +190,42 @@
 					</div>
 				</form>
 			</div>
+			<% description "SuperKayo is an open source community for Japanese kayo music. Talk about your favorite albums and read interesting articles in an accessible way!" %>
+			<%= image_tag "varietiescropped.png", id: "alt-img" %>
+			<div id="bg-opacity"></div>
+			<div id="albums-bg-container">
+				<%= image_tag 'bg/minibus.jpg' %>
+				<%= image_tag 'bg/black-car.jpg' %>
+				<%= image_tag 'bg/bonchi.jpg' %>
+				<%= image_tag 'bg/busy-street.jpg' %>
+				<%= image_tag 'bg/coca-cola.jpg' %>
+				<%= image_tag 'bg/liquor-store.jpg' %>
+				<%= image_tag 'bg/market-stall.jpg' %>
+				<%= image_tag 'bg/moped-man.jpg' %>
+				<%= image_tag 'bg/music-city.jpg' %>
+				<%= image_tag 'bg/night-neon.jpg' %>
+				<%= image_tag 'bg/nikon.jpg' %>
+				<%= image_tag 'bg/rural-street.jpg' %>
+				<%= image_tag 'bg/sub-gate.jpg' %>
+				<%= image_tag 'bg/sunset.jpg' %>
+				<%= image_tag 'bg/takomatsu.jpg' %>
+				<%= image_tag 'bg/train-crossing.jpg' %>
+				<%= image_tag 'bg/train-platform-2.jpg' %>
+				<%= image_tag 'bg/red-train.jpg' %>
+				<%= image_tag 'bg/train-platform.jpg' %>
+				<%= image_tag 'bg/tram.jpg' %>
+				<%= image_tag 'bg/us-navy.jpg' %>
+				<%= image_tag 'bg/vending-machine.jpg' %>
+				<%= image_tag 'bg/white-car.jpg' %>
+				<%= image_tag 'bg/yellow-car.jpg' %>
+			</div>
+			<div id="search-title">
+				<div id="logo-title">
+					<a href="/"><h1>SuperKayo</h1></a>
+					<a href="/albums/index" id="beta-title">BETA!</a>
+					<h2>- Your hub for anything Kayo -</h2>
+				</div>
+			</div>
 			<%= yield %>
 			<div id="footer">
 				<ul id="link-list">
@@ -200,7 +236,7 @@
 					<li><a href="https://docs.google.com/spreadsheets/d/1UumcUXF3QvJgoQ3j8SsAnPtdbarhFD_wTmguK0RuZbs/edit?usp=sharing">My personal spreadsheet</a></li>
 				</ul>
 				<div id="disclaimers">
-					<p>Site currently hosting <%= album_count %> albums</p>
+					<p>Site currently hosting&nbsp;</p><p id="album-count"><%= album_count.to_s %></p><p>&nbsp;albums</p>
 					<p>Thanks to the people behind <a href="https://ionicons.com/">ionicons</a> for providing amazing assets for free.</p>
 				</div>
 			</div>

@@ -6,6 +6,7 @@ $(document).on 'turbolinks:load', ->
 				if $(this)[0].checked
 					rawData[$(this).val()] = $(this).val()
 			serializedData = JSON.stringify(rawData)
+			console.log(serializedData)
 			$.post( window.location.href.replace(/panel/, action),
 				{ "#{param}[serialized_ids]": serializedData }
 			)
