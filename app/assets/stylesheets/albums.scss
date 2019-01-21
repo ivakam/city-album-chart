@@ -716,6 +716,7 @@ body {
 				height: 410px;
 				position: relative;
 				.contributor {
+					display: flex;
 					position: absolute;
 					bottom: 8px;
 					right: 20px;
@@ -723,6 +724,7 @@ body {
 					border-left: 1px $dark-border solid;
 					p {
 						font-size: 16px !important;
+						margin-left: 10px;
 					}
 					a {
 						text-decoration: underline;
@@ -1062,7 +1064,7 @@ iframe {
 	background: black;
 }
 
-h2,h3,p,a,i {
+h2,h3,p,a,i,h4 {
 	font-family: "Roboto";
 	color: $light-font;
 	text-decoration: none;

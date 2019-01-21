@@ -46,6 +46,7 @@ Rails.application.routes.draw do
   post 'upvotes/create'
   
   get 'articles', to: 'articles#show'
+  get 'articles/:article_id', to: 'articles#show_article', as: 'article'
   
   get 'home', to: 'home#show'
   

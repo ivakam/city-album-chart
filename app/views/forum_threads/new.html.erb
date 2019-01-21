@@ -1,23 +1,25 @@
 <% title 'New thread' %>
 <div id="main-container">
-    <div id="main-opacity"></div>
 	<%= render 'partials/navbar_slim' %>
 	<%= image_tag "spinner.gif", class: "spinner hidden" %>
-	<form id="thread-form" action="/thread/create" accept-charset="UTF-8" data-remote="true" method="post">
-        <div id="forum-opacity" class="lighter"></div>
-        <div class="thread-header">
-            <h2>Create new thread</h2>
-        </div>
-        <div class="thread-body">
-            <input type="hidden" name="thread[category]" value="<%= params[:category] %>">
-            <label for="thread-title"><p>Thread title</p></label>
-            <input id="thread-title" type="text" name="thread[title]" placeholder="Title">
-            <label for="thread-body"><p>Text</p></label>
-            <textarea id="thread-body" name="thread[body]" placeholder="Type your text here"></textarea>
-            <input type="submit" id="thread-submit-btn" name="commit" value="Post thread">
-        </div>
-        <div class="thread-footer">
-            <p>Placeholder</p>
-        </div>
-    </form>
+	<div id="barrier-wrapper">
+        <div id="main-opacity"></div>
+    	<form id="thread-form" action="/thread/create" accept-charset="UTF-8" data-remote="true" method="post">
+            <div id="forum-opacity" class="lighter"></div>
+            <div class="thread-header">
+                <h2>Create new thread</h2>
+            </div>
+            <div class="thread-body">
+                <input type="hidden" name="thread[category]" value="<%= params[:category] %>">
+                <label for="thread-title"><p>Thread title</p></label>
+                <input id="thread-title" type="text" name="thread[title]" placeholder="Title">
+                <label for="thread-body"><p>Text</p></label>
+                <textarea id="thread-body" name="thread[body]" placeholder="Type your text here"></textarea>
+                <input type="submit" id="thread-submit-btn" name="commit" value="Post thread">
+            </div>
+            <div class="thread-footer">
+                <p>Placeholder</p>
+            </div>
+        </form>
+    </div>
 </div>

@@ -4,8 +4,45 @@
     <%= image_tag "spinner.gif", class: "spinner hidden" %>
     <div id="articles-container">
         <div id="main-opacity"></div>
-        <ul id="article-list">
-            <h2>Popular articles</h2>
-        </ul>
+        <div id="featured-article">
+            <div class="article-opacity"></div>
+            <h2>Featured article</h2>
+            <div class="article featured">
+                <div class="article-info">
+                    <p>By <%= @featured.user.username %></p>
+                    <p>Published at <%= @featured.created_at.strftime('%d-%m-%Y') %></p>
+                    <p>Last updated at <%= @featured.updated_at.strftime('%d-%m-%Y') %></p>
+                    <p>Score: <%= article_upvotes(@featured) %></p>
+                </div>
+                <h2><%= @featured.title %></h2>
+                <h4><%= @featured.subtitle %></h4>
+                <p><%= @featured.body %></p>
+            </div>
+        </div>
+        <div id="by-category">
+            <div class="article-opacity"></div>
+            <h2>Browse by category</h2>
+            <ul id="article-list">
+                <% Article.distinct(:catergory).each do | article | %>
+                <li class="article">
+                    <div class="article-info">
+                        <p>By <%= article.user.username %></p>
+                        <p>Published at <%= article.created_at.strftime('%d-%m-%Y') %></p>
+                        <p>Last updated at <%= article.updated_at.strftime('%d-%m-%Y') %></p>
+                        <p>Score: <%= article_upvotes(article) %></p>
+                    </div>
+                    <h2><%= article.title %></h2>
+                    <h4><%= article.subtitle %></h4>
+                    <p><%= article.body %></p>
+                    <div class="show-more">
+                        <div class="article-link-container">
+                            <a href="<%= articles_path + '/' + article.id.to_s %>">Show full article</a>
+                            <ion-icon name="ios-arrow-forward"></ion-icon>
+                        </div>
+                    </div>
+                </li>
+                <% end %>
+            </ul>
+        </div>
     </div>
 </div>

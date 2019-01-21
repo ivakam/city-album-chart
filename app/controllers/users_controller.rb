@@ -33,15 +33,20 @@ class UsersController < ApplicationController
         @user.admin = false
         @user.badges = ''
         @user.account_type = 'Member'
-        if @user.save.valid?
+        if @user.valid?
             @user.save
+            # Automatically log in after account is created
+            if @user && @user.authenticate(params[:user][:password])
+                session[:user_id] = @user.id
+                redirect_to request.referrer
+            end
         else
-           redirect_to request.referrer, notice: 'Please fill out all of the required fields.'
-        end
-        # Automatically log in after account is created
-        if @user && @user.authenticate(params[:user][:password])
-            session[:user_id] = @user.id
-            redirect_to request.referrer
+            if User.exists?(:username => @user.username)
+                redirect_to request.referrer, notice: 'Username already exists'
+            end
+            if User.exists?(:email => @user.email)
+                redirect_to request.referrer, notice: 'User with the provided email already exists'
+            end
         end
     end
     

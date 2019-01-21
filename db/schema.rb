@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_09_184912) do
+ActiveRecord::Schema.define(version: 2019_01_11_194130) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "name", limit: 191, null: false
@@ -61,6 +61,8 @@ ActiveRecord::Schema.define(version: 2019_01_09_184912) do
     t.boolean "featured"
     t.string "category"
     t.string "subtitle"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_articles_on_user_id"
   end
 
@@ -69,6 +71,8 @@ ActiveRecord::Schema.define(version: 2019_01_09_184912) do
     t.bigint "user_id"
     t.boolean "pinned"
     t.bigint "article_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["article_id"], name: "index_comments_on_article_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end

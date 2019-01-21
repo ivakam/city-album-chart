@@ -36,7 +36,7 @@
                     <h3>Recent albums</h3>
                     <% @content[:albums].each do | album | %>
                     <div class="album-container">
-                        <%= image_tag album.thumbnail %>
+                        <%= image_tag album.cover.variant(resize: '80x80').processed.service_url %>
                         <div class="album-info">
                             <p><%= album.title %></p>
                             <p><%= album.romaji_artist %></p>

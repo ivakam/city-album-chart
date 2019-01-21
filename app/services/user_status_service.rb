@@ -5,6 +5,7 @@ class UserStatusService
     end
     
     def update
+        return
         if @upvote
             @user = @upvote.post.user
         end

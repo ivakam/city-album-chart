@@ -20,7 +20,7 @@ class Album < ApplicationRecord
 	 
 	def cover_validation
 		if cover.attached?
-			if cover.blob.byte_size > 500000
+			if cover.blob.byte_size > 5000000
 				cover.purge
 				errors[:base] << "Filesize too large"
 			elsif !cover.blob.content_type.starts_with?('image/')

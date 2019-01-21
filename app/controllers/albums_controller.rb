@@ -23,7 +23,11 @@ class AlbumsController < ApplicationController
 			album.attributes.each_pair do | key, value |
 				albumWithTracks[key] = value
 			end
-			albumWithTracks['contributor'] =  (album.user_id.nil?) ? User.find_by(id: album.user_id).username : 'Unknown'
+			p album.id
+			albumWithTracks['contributor'] =  (!album.user_id.nil?) ? User.find_by(id: album.user_id).username : 'Unknown'
+			albumWithTracks['upload_date'] = album.created_at.strftime("%d-%m-%Y")
+			albumWithTracks['thumbnail'] = album.cover.variant(resize: '200x200').processed.service_url
+			albumWithTracks['coverlink'] = album.cover.service_url
 			tempTracks = []
 			tracks.each do | track |
 				if track["album_id"] == album["id"]
@@ -96,8 +100,6 @@ class AlbumsController < ApplicationController
 				else
 					p "Successfully attached cover to #{@album.title}"
 				end
-				@album.coverlink = @album.rails_blob_url(@album.cover)
-				@album.thumbnail = @album.rails_representation_url(@album.cover.variant(resize: "200x200"))
 				@album.tags = "#{params[:album][:title]} #{params[:album][:romanization]} #{params[:album][:romaji_artist]} #{params[:album][:japanese_artist]} #{params[:album][:year]} #{params[:album][:description]} #{params[:album][:flavor].gsub(/,/,'')}"
 				tempQuality = 0
 				if params[:tracklist] != ''
