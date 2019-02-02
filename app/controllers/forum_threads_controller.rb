@@ -20,6 +20,14 @@ class ForumThreadsController < ApplicationController
 		end
     end
     
+    def new
+    	if get_user
+    		render 'new'
+    	else
+    		login_barrier
+    	end
+    end
+    
     def create
 		if get_user
 			@thread = ForumThread.new()

@@ -73,7 +73,7 @@ end
 	thread.archived = false
 	thread.locked = false
 	thread.user = User.find(rand(2..@usercount))
-	thread.body = Faker::HitchhikersGuideToTheGalaxy.quote
+	thread.body = '<p>' + Faker::HitchhikersGuideToTheGalaxy.quote + '</p>'
 	thread.save
 	p "Thread #{i} generated"
 end

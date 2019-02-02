@@ -24,7 +24,7 @@
                         </div>
                         <div class="text-container">
                             <div class="post-text">
-                            <p class="padded-right"><%= post.body %></p>
+                                <%= sanitize(post.body.split(/\n/)[0]) + '<p>&nbsp;...</p>'.html_safe %>
                             </div>
                         </div>
                     </div>

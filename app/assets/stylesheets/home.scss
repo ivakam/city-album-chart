@@ -43,7 +43,7 @@ $light-font: #e8e8e8;
                 flex-direction: column;
                 position: relative;
                 box-shadow: 4px 4px 10px 0 #0f0f0f;
-                border: 1px transparent solid;
+                border: 1px rgba(25, 27, 18, 0.6) solid;
                 border-radius: 12px;
                 margin-bottom: 15px;
                 transition: 0.2s;
@@ -107,7 +107,7 @@ $light-font: #e8e8e8;
                             display: flex;
                             flex-grow: 1;
                             font-size: 15px;
-                            p {
+                            > p {
                                 margin: 0;
                                 text-overflow: ellipsis;
                                 overflow: hidden;
