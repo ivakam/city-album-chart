@@ -97,7 +97,7 @@
                             <div class="edit-post padded-right" contenteditable="false"><%= get_body(post) %></div>
                             <input type="submit" class="transparent" name="commit" value="Save edit">
                             <% else %>
-                             <p class="padded-right"><%= post.body %></p>
+                             <p class="padded-right"><%= sanitize(post.body) %></p>
                             <% end %>
                             </div>
                             <div class="index-date">

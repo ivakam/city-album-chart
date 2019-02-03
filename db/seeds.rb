@@ -83,7 +83,7 @@ ForumThread.all.each_with_index do | parentThread, i |
 		reply = Post.new()
 		reply.user = User.find(rand(2..@usercount))
 		reply.forum_thread = parentThread
-		reply.body = Faker::HitchhikersGuideToTheGalaxy.quote
+		reply.body = '<p>' + Faker::HitchhikersGuideToTheGalaxy.quote + '</p>'
 		reply.post_index = j
 		(1..rand(5..20)).each do | k |
 			upvote = Upvote.new()
@@ -101,8 +101,15 @@ end
 	article.user = User.find(rand(2..@usercount))
 	article.title = Faker::Book.title
 	article.subtitle = Faker::Lorem.sentence(4, false, 5)
-	article.body = Faker::Lorem.paragraphs(5)
+	article.body = Faker::Lorem.paragraph(15)
+	article.body << '<br>' + Faker::Lorem.paragraph(15)
+	article.body << '<br>' + Faker::Lorem.paragraph(15)
+	article.body << '<br>' + Faker::Lorem.paragraph(15)
+	article.body << '<br>' + Faker::Lorem.paragraph(15)
 	article.featured = rand(0...8) == 1 ? true : false
+	articleBanner =  Dir.glob(Rails.root.join("app/assets/images/bg/*.*"))[rand(0..Dir.glob(Rails.root.join("app/assets/images/bg/*.*")).size)]
+	p articleBanner
+	article.banner.attach(io: File.open(articleBanner), filename: articleBanner.split(/\/bg\//)[1])
 	categories = ['Review', 'Essay', 'Opinion piece', 'History']
 	article.category = categories[rand(0..3)]
 	article.save
