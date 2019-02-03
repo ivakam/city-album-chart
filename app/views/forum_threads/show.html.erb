@@ -14,9 +14,8 @@
 	</div>
 	<ion-icon name="ios-close" id="report-close" class="modal-close"></ion-icon>
 	<form id="report-form" class="modal-form" action="/reports/create" accept-charset="UTF-8" data-remote="true" method="post">
-		<input id="report-post" type="text" name="report[post]" value="" hidden>
-		<input type="text" name="report[report_type]" value="Post" hidden>
-		<input id="report-thread" type="text" name="report[thread]" value="<%= @thread.id %>" hidden>
+		<input id="report-target" type="text" name="report[target_id]" value="" hidden>
+		<input type="text" name="report[report_type]" value="post" hidden>
 		<div class="modal-form-input-container">
 			<label for="report-input-container"><p>Report reason:</p></label>
 			<select class='report-reason' name="report[reason]" form="report-form" required>
@@ -97,7 +96,7 @@
                             <div class="edit-post padded-right" contenteditable="false"><%= get_body(post) %></div>
                             <input type="submit" class="transparent" name="commit" value="Save edit">
                             <% else %>
-                             <p class="padded-right"><%= sanitize(post.body) %></p>
+                            <%= sanitize(post.body) %>
                             <% end %>
                             </div>
                             <div class="index-date">

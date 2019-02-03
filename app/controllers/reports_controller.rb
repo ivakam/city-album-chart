@@ -17,7 +17,7 @@ class ReportsController < ApplicationController
 
   private
   def report_params
-    params.require(:report).permit(:album, :reason, :comment, :user_id, :report_type, :thread, :to_be_nuked, :post)
+    params.require(:report).permit(:reason, :comment, :user_id, :report_type, :target_id, :to_be_nuked)
   end
 
 end

@@ -3,7 +3,7 @@ $(document).on 'turbolinks:load', ->
 		$('.post-flag').click ->
 			e = $(this)
 			id = e.closest('li').find('.post-id').val()
-			$('#report-post').attr('value', id)
+			$('#report-target').attr('value', id)
 			$('#report-form-container').toggleClass('modal-inactive')
 			opacity = $('#opaque')
 			opacity.css('background', 'rgba(0, 0, 0, 0.6')

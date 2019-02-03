@@ -1,11 +1,23 @@
 $(document).on 'turbolinks:load', ->
 	if $('body').hasClass('articles show_article')
-		$('.post-flag').click ->
+		$('.article-flag').click ->
 			$('#report-form-container').toggleClass('modal-inactive')
+			$('#report-type').attr('value', 'article')
+			id = $('#report-article').val()
+			$('#report-target').attr('value', id)
 			opacity = $('#opaque')
 			opacity.css('background', 'rgba(0, 0, 0, 0.6')
 			opacity.css('z-index', '5')
 		
+		$('.comment-flag').click ->
+            $('#report-form-container').toggleClass('modal-inactive')
+            $('#report-type').attr('value', 'comment')
+            id = $(this).closest('.comment').find('.comment-id').val()
+            $('#report-target').attr('value', id)
+            opacity = $('#opaque')
+            opacity.css('background', 'rgba(0, 0, 0, 0.6')
+            opacity.css('z-index', '5')
+			
 		$('.delete-article-confirm-btn').click ->
 			data =
 				article: 

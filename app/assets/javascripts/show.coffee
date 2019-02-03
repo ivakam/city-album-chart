@@ -179,7 +179,7 @@ $(document).on 'turbolinks:load', ->
 		flagButtonClick = (e) ->
 			e = $(e.target)
 			title = e.parent().find('.title-container h2').html()
-			$('#report-album').attr('value', title)
+			$('#report-target').attr('value', title)
 			$('#report-form-container').toggleClass('modal-inactive')
 			opacity = $('#opaque')
 			opacity.css('background', 'rgba(0, 0, 0, 0.6')

@@ -1,5 +1,5 @@
-$lighter-bg: #2f3322;
-$darker-bg: #191b12;
+$lighter-bg: #211c08;
+$darker-bg: #1b180b;
 $dark-border: #686868;
 $light-border: #8c8c8c;
 $dark-font: #e3e3e3;
@@ -105,6 +105,7 @@ $light-font: #e8e8e8;
         }
         .show-more {
             width: 100%;
+            min-height: 40px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -224,7 +225,7 @@ $light-font: #e8e8e8;
                     justify-content: space-between;
                     align-items: center;
                     border-top: 1px $dark-border solid;
-                    &:last-child {
+                    &:last-of-type {
                         border-bottom: 1px $dark-border solid;
                     }
                     ion-icon {
@@ -242,7 +243,7 @@ $light-font: #e8e8e8;
         width: 100%;
         height: auto;
         margin: 0;
-        padding: 20px 0 0 0;
+        padding: 0;
         flex-grow: 1;
         .article-header {
             min-height: 200px;
