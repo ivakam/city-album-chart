@@ -51,6 +51,7 @@ Rails.application.routes.draw do
   
   resources :albums
   
+  
   get '*unmatched_route', to: 'application#render_404', constraints: lambda { |request| constraint(request) }
   root 'home#show'
 end

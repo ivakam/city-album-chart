@@ -33,16 +33,18 @@ class UsersController < ApplicationController
         @user.admin = false
         @user.badges = ''
         @user.account_type = 'Member'
+        logger.debug "-----------------------------------------------> saving user"
+        UserMailer.with(user: @user).email_confirmation.deliver_now
         if @user.save.valid?
             @user.save
+            #redirect_to request.referrer, notice: 'Account successfully created, please confirm your email address now'
         else
            redirect_to request.referrer, notice: 'Please fill out all of the required fields.'
         end
         # Automatically log in after account is created
-        if @user && @user.authenticate(params[:user][:password])
-            session[:user_id] = @user.id
-            redirect_to request.referrer
-        end
+        #if @user && @user.authenticate(params[:user][:password])
+            #session[:user_id] = @user.id
+        #end
     end
     
     def destroy
