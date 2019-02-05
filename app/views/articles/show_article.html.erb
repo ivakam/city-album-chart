@@ -49,8 +49,8 @@
         <div class="article-opacity"></div>
         <div class="article focused">
             <div class="article-header">
-                    <a href="<%= articles_path + '/' + @article.id.to_s %>"><img src="<%= @article.banner.variant(resize: "600x600").processed.service_url %>"></a>
-                    <a href="<%= articles_path + '/' + @article.id.to_s %>"><h2><%= @article.title %></h2></a>
+                    <a><img src="<%= @article.banner.variant(resize: "600x600").processed.service_url %>"></a>
+                    <a><h2><%= @article.title %></h2></a>
                 <div>
                     <div>
                         <div class="avatar-wrapper">
@@ -61,6 +61,7 @@
                         <p>By <a href="<%= root_url + 'users/' + @article.user.username %>"><%= @article.user.username %></a></p>
                     </div>
                     <p>&nbsp;- <%= @article.created_at.strftime('%-d %b, %Y') %></p>
+                    <p class="article-score">Score: <%= article_upvotes(@article) %></p>
                 </div>
             </div>
             <div class="article-body">
@@ -78,7 +79,7 @@
                         <% if fetch_user && fetch_user != @article.user %>
                         <div class="heart-container">
                             <ion-icon class="heart-animation hidden" name="ios-heart"></ion-icon>
-                            <ion-icon class="post-icon post-heart <%= 'red' if Upvote.find_by(user: fetch_user, article: @article).present? %>" name="ios-heart"></ion-icon>
+                            <ion-icon class="post-icon post-heart <%= 'red' if Upvote.find_by(user: fetch_user, upvote_type: 'article', target_id: @article.id).present? %>" name="ios-heart"></ion-icon>
                         </div>
                         <% end %>
                     <% end %>
@@ -108,7 +109,7 @@
                             <% if fetch_user && fetch_user != @article.user %>
                             <div class="heart-container">
                                 <ion-icon class="heart-animation hidden" name="ios-heart"></ion-icon>
-                                <ion-icon class="post-icon post-heart <%= 'red' if Upvote.find_by(user: fetch_user, article: @article).present? %>" name="ios-heart"></ion-icon>
+                                <ion-icon class="post-icon comment-heart <%= 'red' if Upvote.find_by(user: fetch_user, upvote_type: 'comment', target_id: comment.id).present? %>" name="ios-heart"></ion-icon>
                             </div>
                             <% end %>
                         <% end %>
@@ -175,6 +176,7 @@
                                     <p>By <a href="<%= root_url + 'users/' + article.user.username %>"><%= article.user.username %></a></p>
                                 </div>
                                 <p>&nbsp;- <%= article.created_at.strftime('%-d %b, %Y') %></p>
+                                <p class="article-score">Score: <%= article_upvotes(article) %></p>
                             </div>
                         </div>
                         <div class="article-body">

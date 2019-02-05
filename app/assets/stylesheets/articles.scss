@@ -62,6 +62,9 @@ $light-font: #e8e8e8;
                 justify-content: center;
                 top: 50%;
                 transform: translate(0, -50%);
+                &:last-of-type {
+                    z-index: 2;
+                }
                 > img {
                     width: 100%;
                     filter: blur(4px) brightness(0.5);
@@ -76,12 +79,14 @@ $light-font: #e8e8e8;
             > div {
                 display: flex;
                 flex-direction: row;
+                position: relative;
                 align-items: flex-end;
                 max-width: 900px;
                 width: 100%;
                 p {
                     opacity: 0.8;
                     margin: 0;
+                    z-index: 10;
                 }
                 > div {
                     display: flex;
@@ -100,6 +105,17 @@ $light-font: #e8e8e8;
                             height: 100%;
                         }
                     }
+                    p a {
+                        transition: 0.2s;
+                        &:hover {
+                            color: white;
+                        }
+                    }
+                }
+                .article-score {
+                    position: absolute;
+                    right: 0;
+                    bottom: 0;
                 }
             }
         }
@@ -309,7 +325,7 @@ $light-font: #e8e8e8;
                     align-items: center;
                     height: 25px;
                     width: 25px;
-                    .post-heart {
+                    .post-heart, .comment-heart {
                         margin-right: 0 !important;
                         transition: 0.25s;
                         width: 20px;

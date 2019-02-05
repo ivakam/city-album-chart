@@ -38,15 +38,19 @@ module ApplicationHelper
 	end
 	
 	def user_karma(user = User.find_by(id: session[:user_id]))
-		return Upvote.where(post: Post.where(user: user)).size
+		return Upvote.where(upvote_type: 'article', target_id: Post.where(user: user)).size
 	end
 	
 	def post_upvotes(postIn)
-		return Upvote.where(post: postIn).size
+		return Upvote.where(upvote_type: 'post', target_id: postIn.id).size
 	end
 	
 	def article_upvotes(article)
-		return Upvote.where(article: article).size
+		return Upvote.where(upvote_type: 'article', target_id: article.id).size
+	end
+	
+	def comment_upvotes(comment)
+		return Upvote.where(upvote_type: 'comment', target_id: comment.id).size
 	end
 	
 	def inject_login

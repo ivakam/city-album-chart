@@ -39,8 +39,8 @@ $(document).on 'turbolinks:load', ->
 				, 1250)
 			data =
 				upvote: 
-					thread_id: $('#report-thread').val()
-					post_id: $(this).closest('li').find('.post-id').val()
+					upvote_type: 'post'
+					target_id: $(this).closest('li').find('.post-id').val()
 			$.post(window.location.href.replace(/\/forum.+/, '/upvotes/create'), data)
 			.fail( ->
 				console.log('Error sending post data')
