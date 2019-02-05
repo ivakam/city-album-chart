@@ -34,7 +34,7 @@ $light-font: #e8e8e8;
     .page-container {
         width: 100%;
         display: flex;
-        align-items: center;
+        align-items: stretch;
         justify-content: center;
         z-index: 3;
         position: relative;
@@ -77,9 +77,9 @@ $light-font: #e8e8e8;
         ion-icon {
             color: #e8e8e8;
             opacity: 0.7;
-            height: 100%;
             font-size: 20px;
             padding: 4px;
+            transition: 0.1s;
             &:hover {
                 opacity: 0.9;
                 cursor: pointer;

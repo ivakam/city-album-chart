@@ -1,8 +1,8 @@
 class Upvote < ApplicationRecord
-    belongs_to :user
-    belongs_to :post
-    belongs_to :article
-    belongs_to :comment
+    belongs_to :user, optional: true
+    belongs_to :post, optional: true
+    belongs_to :article, optional: true
+    belongs_to :comment, optional: true
     
     after_save do
         update_with_user_status_service

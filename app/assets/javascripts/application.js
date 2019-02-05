@@ -16,4 +16,4 @@
 //= require turbolinks
 //= require_tree .
 //= require drag-arrange.min
-//= require tinymce-jquery
+//= require easymde.min

@@ -92,12 +92,7 @@
                                 <% end %>
                             </div>
                             <div class="post-text">
-                            <% if fetch_user == post.user %>
-                            <div class="edit-post padded-right" contenteditable="false"><%= get_body(post) %></div>
-                            <input type="submit" class="transparent" name="commit" value="Save edit">
-                            <% else %>
-                            <%= sanitize(post.body) %>
-                            <% end %>
+                            <%= parse_markdown(post.body) %>
                             </div>
                             <div class="index-date">
                                 <p class="post-date">#<%= post.post_index %> Posted at <%= post.created_at.strftime("%R %Z, %F") %></p>
@@ -120,8 +115,10 @@
                         </div>
                         <div id="reply-text-container">
                             <h3>Reply to this thread</h3>
-                            <textarea id="reply-textarea" class="tinymce" name="post[body]" placeholder="Type your reply here."></textarea>
-                            <%= tinymce %>
+                            <textarea id="reply-textarea" name="post[body]" placeholder="Type your reply here."></textarea>
+                            <script>
+                                var replyContent = new EasyMDE({ element: $('#reply-textarea')[0] });
+                            </script>
                             <input type="submit" value="Submit reply" name="commit">
                         </div>
                     </form>

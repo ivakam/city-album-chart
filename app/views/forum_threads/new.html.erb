@@ -1,5 +1,4 @@
 <% title 'New thread' %>
-<%= tinymce_assets %>
 <div id="main-container">
 	<%= render 'partials/navbar_slim' %>
 	<%= image_tag "spinner.gif", class: "spinner hidden" %>
@@ -16,11 +15,10 @@
                 <input id="thread-title" type="text" name="thread[title]" placeholder="Title">
                 <label for="thread-body"><p>Text</p></label>
                 <textarea id="thread-body" class="tinymce" name="thread[body]" placeholder="Type your text here"></textarea>
+                <script>
+                    var threadContent = new EasyMDE({ element: $('#thread-body')[0] });
+                </script>
                 <input type="submit" id="thread-submit-btn" name="commit" value="Post thread">
-                <%= tinymce %>
-            </div>
-            <div class="thread-footer">
-                <p>Placeholder</p>
             </div>
         </form>
     </div>

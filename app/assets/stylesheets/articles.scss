@@ -53,21 +53,25 @@ $light-font: #e8e8e8;
             flex-direction: column;
             justify-content: flex-end;
             align-items: center;
-            > img {
-                position: absolute;
-                top: 0;
-                left: 0;
+            > a {
                 width: 100%;
-                filter: blur(4px) brightness(0.5);
-                z-index: -1;
-            }
-            h2 {
-                margin: 0 50px;
-                padding: 8px;
-                align-self: center;
+                height: 500px;
                 position: absolute;
+                display: flex;
+                align-items: center;
+                justify-content: center;
                 top: 50%;
                 transform: translate(0, -50%);
+                > img {
+                    width: 100%;
+                    filter: blur(4px) brightness(0.5);
+                    z-index: -1;
+                }
+            }
+            h2 {
+                margin: 0;
+                padding: 8px 50px;
+                text-align: center;
             }
             > div {
                 display: flex;
@@ -84,6 +88,7 @@ $light-font: #e8e8e8;
                     flex-direction: column;
                     padding-left: 6px;
                     .avatar-wrapper {
+                        z-index: 10;
                         border-radius: 50%;
                         overflow: hidden;
                         min-width: 40px;
@@ -483,22 +488,6 @@ $light-font: #e8e8e8;
                         h3 {
                             margin: 4px 0;
                         }
-                        &:before {
-                            content: '';
-                            width: 15px;
-                            height: 15px;
-                            position: absolute;
-                            top: 56px;
-                            left: -7px;
-                            transform: rotate(45deg);
-                            background: $darker-bg;
-                            border-left: 1px #686868 solid;
-                            border-bottom: 1px #686868 solid;
-                            z-index: 3;
-                        }
-                        &:focus-within:before {
-                            border-color: royalblue;
-                        }
                         textarea {
                             width: 100%;
                             margin: 5px 0 5px 0;
@@ -587,21 +576,5 @@ $light-font: #e8e8e8;
                 }
             }
         }
-    }
-}
-.mce-edit-area {
-    position: relative !important;
-    &:before {
-        content: '';
-        width: 15px;
-        height: 15px;
-        position: absolute;
-        top: 6px;
-        left: -9px;
-        transform: rotate(45deg);
-        background: $lighter-bg;
-        border-left: 1px #686868 solid;
-        border-bottom: 1px #686868 solid;
-        z-index: 3;
     }
 }

@@ -50,6 +50,7 @@ $(document).on 'turbolinks:load', ->
 		albumOpen = false
 		delayTimer = null
 		vinylClicked = false
+		fetchInProgress = false
 		titleReplaceRegex = /[\s\'\"\.\(\)\!\#\%\&\\\*]/g
 		window.albumsNameSpace = {}
 		ytAPIkey = 'AIzaSyAA9tEp3x9uIC60zQfLds8ZlNrwRCBwc5Q'
@@ -64,7 +65,7 @@ $(document).on 'turbolinks:load', ->
 			if arr[0] == 'Out of albums to render!'
 				return new Map()
 			popTemp = (a, i, arr) ->
-				tempAlbums.set(a.title.replace(titleReplaceRegex, ''), arr[i])
+				tempAlbums.set(a.title.replace(titleReplaceRegex, '').trim(), arr[i])
 			tempAlbums = new Map()
 			popTemp(a, i, arr) for a, i in arr
 			return tempAlbums
@@ -312,46 +313,46 @@ $(document).on 'turbolinks:load', ->
 							<div class='field-container'>
 								<div class='input-field-container'>
 									<div class='form-field'>
-										<p><label for='#{album.title}-title'>Title*</label></p>
-										<input id='#{album.title}-title' placeholder='ロートスの果実' value='#{album.title.replace("'", '&#39;')}' type='text' name='album[title]'>
+										<p><label for='#{album.title.replace("'", '&#39;').replace(/\s+/, '')}-title'>Title*</label></p>
+										<input id='#{album.title.replace("'", '&#39;').replace(/\s+/, '')}-title' placeholder='ロートスの果実' value='#{album.title.replace("'", '&#39;')}' type='text' name='album[title]'>
 										<input value='#{album.title.replace("'", '&#39;')}' type='text' name='album[title_old]' hidden>
 									</div>
 									<div class='form-field'>
-										<p><label for='#{album.title}-romanization'>Romanization</label></p>
-										<input id='#{album.title}-romanization' placeholder='Lotus no Kajitsu' value='#{album.romanization.replace("'", '&#39;')}' type='text' name='album[romanization]'>
+										<p><label for='#{album.title.replace("'", '&#39;').replace(/\s+/, '')}-romanization'>Romanization</label></p>
+										<input id='#{album.title.replace("'", '&#39;').replace(/\s+/, '')}-romanization' placeholder='Lotus no Kajitsu' value='#{album.romanization.replace("'", '&#39;')}' type='text' name='album[romanization]'>
 										<input value='#{album.romanization.replace("'", '&#39;')}' type='text' name='album[romanization_old]' hidden>
 									</div>
 									<div class='form-field'>
-										<p><label for='#{album.title}-japanese-artist'>Japanese artist</label></p>
-										<input id='#{album.title}-japanese-artist' placeholder='中原めいこ' value='#{album.japanese_artist.replace("'", '&#39;')}' type='text' name='album[japanese_artist]'>
+										<p><label for='#{album.title.replace("'", '&#39;').replace(/\s+/, '')}-japanese-artist'>Japanese artist</label></p>
+										<input id='#{album.title.replace("'", '&#39;').replace(/\s+/, '')}-japanese-artist' placeholder='中原めいこ' value='#{album.japanese_artist.replace("'", '&#39;')}' type='text' name='album[japanese_artist]'>
 										<input value='#{album.japanese_artist.replace("'", '&#39;')}' type='text' name='album[japanese_artist_old]' hidden>
 									</div>
 									<div class='form-field'>
-										<p><label for='#{album.title}-romaji-artist'>Romaji artist*</label></p>
-										<input id='#{album.title}-romaji-artist' placeholder='Meiko Nakahara' value='#{album.romaji_artist.replace("'", '&#39;')}' type='text' name='album[romaji_artist]'>
+										<p><label for='#{album.title.replace("'", '&#39;').replace(/\s+/, '')}-romaji-artist'>Romaji artist*</label></p>
+										<input id='#{album.title.replace("'", '&#39;').replace(/\s+/, '')}-romaji-artist' placeholder='Meiko Nakahara' value='#{album.romaji_artist.replace("'", '&#39;')}' type='text' name='album[romaji_artist]'>
 										<input value='#{album.romaji_artist.replace("'", '&#39;')}' type='text' name='album[romaji_artist_old]' hidden>
 									</div>
 									<div class='form-field'>
-										<p><label for='#{album.title}-year'>Year</label></p>
-										<input id='#{album.title}-year' placeholder='1984' value='#{album.year.replace("'", '&#39;')}' type='text' name='album[year]'>
+										<p><label for='#{album.title.replace("'", '&#39;').replace(/\s+/, '')}-year'>Year</label></p>
+										<input id='#{album.title.replace("'", '&#39;').replace(/\s+/, '')}-year' placeholder='1984' value='#{album.year.replace("'", '&#39;')}' type='text' name='album[year]'>
 										<input value='#{album.year.replace("'", '&#39;')}' type='text' name='album[year_old]' hidden>
 									</div>
 									<div class='form-field'>
-										<p><label for='#{album.title}-flavor'>Flavor</label></p>
-										<input id='#{album.title}-flavor' placeholder='Funk, Idol' value='#{album.flavor.replace("'", '&#39;')}' type='text' name='album[flavor]'>
+										<p><label for='#{album.title.replace("'", '&#39;').replace(/\s+/, '')}-flavor'>Flavor</label></p>
+										<input id='#{album.title.replace("'", '&#39;').replace(/\s+/, '')}-flavor' placeholder='Funk, Idol' value='#{album.flavor.replace("'", '&#39;')}' type='text' name='album[flavor]'>
 										<input value='#{album.flavor.replace("'", '&#39;')}' type='text' name='album[flavor_old]' hidden>
 									</div>
 								</div>
 								<div class='divider'></div>
 								<div class='form-field description-field'>
-									<p><label for='#{album.title}-description'>Description</label></p>
-									<textarea id='#{album.title}-description' placeholder='Meiko Nakahara&#39;s 4th studio album brings the hard synths and slappy basslines.' name='album[description]'>#{album.description.replace("'", '&#39;')}</textarea>
+									<p><label for='#{album.title.replace("'", '&#39;').replace(/\s+/, '')}-description'>Description</label></p>
+									<textarea id='#{album.title.replace("'", '&#39;').replace(/\s+/, '')}-description' placeholder='Meiko Nakahara&#39;s 4th studio album brings the hard synths and slappy basslines.' name='album[description]'>#{album.description.replace("'", '&#39;')}</textarea>
 									<input value='#{album.description.replace("'", '&#39;')}' type=text' name='album[description_old]' hidden>
 								</div>
 								<div class='divider'></div>
 								<div class='tracklist-submit'>
 									<div class='tracklist-label-text'>
-										<p><label for='#{album.title}-tracklist'>Tracklist</label></p>
+										<p><label for='#{album.title.replace("'", '&#39;').replace(/\s+/, '')}-tracklist'>Tracklist</label></p>
 										<div class='tooltip'><span class='tooltiptext'>
 											<a>Template in the form of \"&ltTrack title&gt\", \"&ltRomanization&gt\", &ltTrack Duration&gt.</a>
 										</div>
@@ -669,8 +670,9 @@ $(document).on 'turbolinks:load', ->
 			)
 		
 		$(window).scroll ->
-			if $(window).scrollTop() + $(window).height() >= $(document).height() and $(document).height() > $(window).height()
+			if $(window).scrollTop() + $(window).height() >= $(document).height() and $(document).height() > $(window).height() and !fetchInProgress
 				offset = albums.size
+				fetchInProgress = true
 				if albums.size >= totalCount - 1
 					return
 				else if albums.size + 40 > totalCount - 1
@@ -694,3 +696,5 @@ $(document).on 'turbolinks:load', ->
 					concatMaps(albums, sortAlbums(json))
 				.then ->
 					displayAlbum(false)
+				.then ->
+					fetchInProgress = false
