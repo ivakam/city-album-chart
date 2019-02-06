@@ -4,8 +4,82 @@
     <%= image_tag "spinner.gif", class: "spinner hidden" %>
     <div id="articles-container">
         <div id="main-opacity"></div>
-        <ul id="article-list">
-            <h2>Popular articles</h2>
-        </ul>
+        <div id="featured-article">
+            <div class="article-opacity"></div>
+            <div class="article featured">
+                <div class="article-header">
+                    <img src="<%= @featured.banner.variant(resize: "600x600").processed.service_url %>">
+                    <h2><a><%= @featured.title %></a></h2>
+                    <div>
+                        <div>
+                            <div class="avatar-wrapper">
+                                <a href="<%= root_url + 'users/' + @featured.user.username %>">
+                                    <%= image_tag user_avatar(@featured.user) %>
+                                </a>
+                            </div>
+                            <p>By <a href="<%= root_url + 'users/' + @featured.user.username %>"><%= @featured.user.username %></a></p>
+                        </div>
+                        <p>&nbsp;- <%= @featured.created_at.strftime('%-d %b, %Y') %></p>
+                    </div>
+                </div>
+                <div class="article-body">
+                    <h4><%= @featured.subtitle %></h4>
+                    <p><%= sanitize(@featured.body) %></p>
+                </div>
+                <div class="show-more">
+                    <div class="article-link-container">
+                        <a href="<%= articles_path + '/' + @featured.id.to_s %>">Show full article</a>
+                        <ion-icon name="ios-arrow-forward"></ion-icon>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="main-content">
+            <div class="article-opacity"></div>
+            <div id="article-feed">
+                <ul id="article-list">
+                    <% Article.all.order(:created_at).each do | article | %>
+                    <li class="article">
+                        <div class="article-header">
+                            <img src="<%= article.banner.variant(resize: "600x600").processed.service_url %>">
+                            <h2><a><%= article.title %></a></h2>
+                            <div>
+                                <div>
+                                    <div class="avatar-wrapper">
+                                        <a href="<%= root_url + 'users/' + article.user.username %>">
+                                            <%= image_tag user_avatar(article.user) %>
+                                        </a>
+                                    </div>
+                                    <p>By <a href="<%= root_url + 'users/' + article.user.username %>"><%= article.user.username %></a></p>
+                                </div>
+                                <p>&nbsp;- <%= article.created_at.strftime('%-d %b, %Y') %></p>
+                            </div>
+                        </div>
+                        <div class="article-body">
+                            <h4><%= article.subtitle %></h4>
+                            <p><%= article.body %></p>
+                        </div>
+                        <div class="show-more">
+                            <div class="article-link-container">
+                                <a href="<%= articles_path + '/' + article.id.to_s %>">Show full article</a>
+                                <ion-icon name="ios-arrow-forward"></ion-icon>
+                            </div>
+                        </div>
+                    </li>
+                    <% end %>
+                </ul>
+            </div>
+            <div id="article-sidebar">
+                <div id="article-categories">
+                    <h2>Popular categories</h2>
+                    <% Article.select(:category).distinct.each do | article | %>
+                    <a class="article-category" href="<%= articles_path + '?category=' + article.category.downcase %>">
+                        <p><%= article.category %></p>
+                        <ion-icon name="ios-arrow-forward"></ion-icon>
+                    <a>
+                    <% end %>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

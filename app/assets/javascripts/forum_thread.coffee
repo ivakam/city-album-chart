@@ -3,11 +3,12 @@ $(document).on 'turbolinks:load', ->
 		$('.post-flag').click ->
 			e = $(this)
 			id = e.closest('li').find('.post-id').val()
-			$('#report-post').attr('value', id)
+			$('#report-target').attr('value', id)
 			$('#report-form-container').toggleClass('modal-inactive')
 			opacity = $('#opaque')
 			opacity.css('background', 'rgba(0, 0, 0, 0.6')
 			opacity.css('z-index', '5')
+			
 		$('.delete-confirm-btn').click ->
 			data =
 				post: 
@@ -20,6 +21,7 @@ $(document).on 'turbolinks:load', ->
 			.fail( ->
 				console.log('Error sending post data')
 			)
+			
 		$('.post-heart').click ->
 			e = $(this)
 			e.toggleClass('red')
@@ -43,6 +45,7 @@ $(document).on 'turbolinks:load', ->
 			.fail( ->
 				console.log('Error sending post data')
 			)
+			
 		$('.post-trash').click ->
 			id = $(this).closest('li').find('.post-id').val()
 			$('#delete-post-id').attr('value', id)
@@ -50,6 +53,7 @@ $(document).on 'turbolinks:load', ->
 			opacity = $('#opaque')
 			opacity.css('background', 'rgba(0, 0, 0, 0.6')
 			opacity.css('z-index', '5')
+			
 		$('.post-edit').click ->
 			e = $(this)
 			bodyText = e.closest('li').find('.edit-post')
@@ -62,6 +66,7 @@ $(document).on 'turbolinks:load', ->
 			else
 				bodyText.attr('contenteditable', 'false')
 			btn.toggleClass('transparent')
+			
 		$('.post-text input').click ->
 			e = $(this)
 			bodyText = e.closest('li').find('.edit-post').html().replace(/\<\/div\>/g, '\n')

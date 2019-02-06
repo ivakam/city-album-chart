@@ -65,15 +65,21 @@
 				<li>
 					<ul>
 						<li class="checkbox-container"><input type="checkbox" value="<%= report.id %>"></li>
-						<li><p><%= report.id %></p></li>
-						<li><p><%= report.report_type %> - <%= report.album if report.album.present? %>
-						<% if report.thread.present? %>
-						<% thread = ForumThread.find_by(id: report.thread) %>
-						<% post = Post.find_by(id: report.post) %>
-						<a href="<%= forum_path + "/#{thread.category}/t/#{thread.id}" %>">
-						<%= thread.title + ' - ' + post.post_index.to_s %>
-						</a>
-						<% end %>
+						<li>
+							<% p report %>
+							<% if report.report_type != 'album' %>
+								<% if report.report_type == 'post' %>
+								<a href="<%= root_url + 'forum/t/' + Post.find_by(id: report.target_id).forum_thread_id.to_s %>"><%= report.target_id %></a>
+								<% elsif report.report_type == 'comment' %>
+								<a href="<%= root_url + 'articles/' + Comment.find_by(id: report.target_id).article_id.to_s %>"><%= report.target_id %></a>
+								<% else %>
+								<a href="<%= root_url + report.report_type + 's/' + report.target_id.to_s %>"><%= report.target_id %></a>
+								<% end %>
+							<% else %>
+							<p><%= report.target_id %></p>
+							<% end %>
+						</li>
+						<li><p><%= report.report_type %>
 						</p></li>
 						<li><p><%= report.reason %></p></li>
 						<li><p><%= report.comment %></p></li>

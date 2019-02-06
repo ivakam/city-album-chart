@@ -40,8 +40,12 @@ module ApplicationHelper
 		return Upvote.where(post: Post.where(user: user)).size
 	end
 	
-	def post_upvotes(post)
-		return Upvote.where(post: post).size
+	def post_upvotes(postIn)
+		return Upvote.where(post: postIn).size
+	end
+	
+	def article_upvotes(article)
+		return Upvote.where(article: article).size
 	end
 	
 	def inject_login

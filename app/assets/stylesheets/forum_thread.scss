@@ -1,11 +1,14 @@
-$lighter-bg: #2f3322;
-$darker-bg: #191b12;
+$lighter-bg: #211c08;
+$darker-bg: #1b180b;
 $dark-border: #686868;
 $light-border: #8c8c8c;
 $dark-font: #e3e3e3;
 $light-font: #e8e8e8;
 
 .delete-modal {
+    p {
+        padding: 0 8px;
+    }
     .delete-confirm-btn {
         padding: 5px 10px 5px 10px;
         font-size: 18px;
@@ -14,11 +17,11 @@ $light-font: #e8e8e8;
         border-radius: 5px;
         transition: 0.2s;
         margin-bottom: 15px;
+        align-self: center;
         &:hover {
             background: red;
             border: 1px white solid;
             cursor: pointer;
-            
         }
     }
 }
@@ -214,6 +217,10 @@ $light-font: #e8e8e8;
                         margin-bottom: 10px;
                         flex-grow: 1;
                         word-break: break-all;
+                        p {
+                            font-family: 'Open Sans';
+                            padding-right: 110px;
+                        }
                         .edit-post {
                             background: rgba(0, 0, 0, 0);
                             width: 100%;
@@ -296,23 +303,8 @@ $light-font: #e8e8e8;
                     display: flex;
                     flex-grow: 3;
                     flex-direction: column;
-                    position: relative;
-                    &:before {
-                        content: '';
-                        width: 15px;
-                        height: 15px;
-                        position: absolute;
-                        top: 57px;
-                        left: -8px;
-                        transform: rotate(45deg);
-                        background: $darker-bg;
-                        border-left: 1px #686868 solid;
-                        border-bottom: 1px #686868 solid;
-                        z-index: 3;
-                    }
-                    &:focus-within:before {
-                        border-left: 1px royalblue solid;
-                        border-bottom: 1px royalblue solid;
+                    h3 {
+                        margin-bottom: 15px;
                     }
                     textarea {
                         width: 100%;
@@ -328,6 +320,7 @@ $light-font: #e8e8e8;
                         padding: 5px 10px 5px 10px;
                         background: $lighter-bg;
                         font-family: 'Roboto';
+                        margin-top: 15px;
                         font-size: 20px;
                         max-width: 20%;
                         color: #e3e3e3;
@@ -388,56 +381,61 @@ $light-font: #e8e8e8;
     }
 }
 
-#thread-form {
+#thread-create-wrapper {
     display: flex;
     flex-direction: column;
-    position: relative;
-    margin: 30px;
-    border-top: 1px #8c8c8c solid;
-    border-bottom: 1px #8c8c8c solid;
-    padding: 15px;
-    input, textarea {
-        background: $darker-bg;
-        font-family: 'Roboto';
-        font-size: 18px;
-        padding: 7px;
-        border: 1px #686868 solid;
-        color: #e3e3e3;
-    }
-    .thread-header {
+    align-items: center;
+    #thread-form {
         display: flex;
-        justify-content: center;
-        align-items: center
-    }
-    .thread-body {
-        display: flex;
+        width: 70vw;
         flex-direction: column;
+        position: relative;
+        border-bottom: 1px #8c8c8c solid;
         padding: 15px;
-        border-top: 1px #686868 solid;
-        border-bottom: 1px #686868 solid;
-        p {
-            font-size: 20px;
-            margin-bottom: 5px;
+        input, textarea {
+            background: $darker-bg;
+            font-family: 'Roboto';
+            font-size: 18px;
+            padding: 7px;
+            border: 1px #686868 solid;
+            color: #e3e3e3;
         }
-        #thread-title {
-            border-radius: 4px;
-            width: 40%;
+        .thread-header {
+            display: flex;
+            justify-content: center;
+            align-items: center
         }
-        textarea {
-            width: 40vw;
-            height: 50vh;
-            margin-bottom: 25px;
+        .thread-body {
+            display: flex;
+            flex-direction: column;
+            padding: 15px;
+            border-top: 1px #686868 solid;
+            border-bottom: 1px #686868 solid;
+            p {
+                font-size: 20px;
+                margin-bottom: 5px;
+            }
+            #thread-title {
+                border-radius: 4px;
+                width: 40%;
+            }
+            textarea {
+                width: 40vw;
+                height: 50vh;
+                margin-bottom: 25px;
+            }
+            #thread-submit-btn {
+                background: $lighter-bg;
+                width: 30%;
+                align-self: center;
+                border-radius: 4px;
+                margin-top: 15px;
+            }
         }
-        #thread-submit-btn {
-            background: $lighter-bg;
-            width: 30%;
-            align-self: center;
-            border-radius: 4px;
+        .thread-footer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
-    }
-    .thread-footer {
-        display: flex;
-        justify-content: center;
-        align-items: center;
     }
 }

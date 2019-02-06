@@ -73,7 +73,7 @@ end
 	thread.archived = false
 	thread.locked = false
 	thread.user = User.find(rand(2..@usercount))
-	thread.body = Faker::HitchhikersGuideToTheGalaxy.quote
+	thread.body = '<p>' + Faker::HitchhikersGuideToTheGalaxy.quote + '</p>'
 	thread.save
 	p "Thread #{i} generated"
 end
@@ -83,7 +83,7 @@ ForumThread.all.each_with_index do | parentThread, i |
 		reply = Post.new()
 		reply.user = User.find(rand(2..@usercount))
 		reply.forum_thread = parentThread
-		reply.body = Faker::HitchhikersGuideToTheGalaxy.quote
+		reply.body = '<p>' + Faker::HitchhikersGuideToTheGalaxy.quote + '</p>'
 		reply.post_index = j
 		(1..rand(5..20)).each do | k |
 			upvote = Upvote.new()
@@ -101,8 +101,18 @@ end
 	article.user = User.find(rand(2..@usercount))
 	article.title = Faker::Book.title
 	article.subtitle = Faker::Lorem.sentence(4, false, 5)
-	article.body = Faker::Lorem.paragraphs(5)
+	article.body = Faker::Lorem.paragraph(15)
+	article.body << '<br>' + Faker::Lorem.paragraph(15)
+	article.body << '<br>' + Faker::Lorem.paragraph(15)
+	article.body << '<br>' + Faker::Lorem.paragraph(15)
+	article.body << '<br>' + Faker::Lorem.paragraph(15)
 	article.featured = rand(0...8) == 1 ? true : false
+	articleBanner =  Dir.glob(Rails.root.join("app/assets/images/bg/*.*"))[rand(0..Dir.glob(Rails.root.join("app/assets/images/bg/*.*")).size)]
+	p articleBanner
+	article.banner.attach(io: File.open(articleBanner), filename: articleBanner.split(/\/bg\//)[1])
+	categories = ['Review', 'Essay', 'Opinion piece', 'History']
+	article.category = categories[rand(0..3)]
+	article.save
 	(1..rand(5..20)).each do | k |
 		upvote = Upvote.new()
 		upvote.article = article
@@ -142,9 +152,7 @@ def CreateAlbumWithTracks(albumParam, tracks = [])
 	else
 		currentAlbum.cover.attach(io: File.open(coverPath), filename: coverPath[/(#{coverName})\..+$/, 0])
 	end
-	#p "Cover path: " + coverPath 
-	currentAlbum.coverlink = currentAlbum.rails_blob_url(currentAlbum.cover)
-	currentAlbum.thumbnail = currentAlbum.rails_representation_url(currentAlbum.cover.variant(resize: "200x200"))
+	p "Cover path: " + coverPath.to_s
     currentAlbum.tags = "#{albumParam[:title]} #{albumParam[:romanization]} #{albumParam[:romaji_artist]} #{albumParam[:japanese_artist]} #{albumParam[:year]} #{albumParam[:description]} #{albumParam[:flavor].gsub(/,/,'')}"
     if albumParam[:user_id].present?
     	currentAlbum.user_id = albumParam[:user_id]
@@ -191,7 +199,7 @@ def CreateAlbumWithTracks(albumParam, tracks = [])
 	end
 	currentAlbum.quality = tempQuality
 	currentAlbum.save
-	p "Success!"
+	p "ID: " + currentAlbum.id.to_s
 end
 
 @albumData = YAML::load(File.open('albums.yml', 'r'))

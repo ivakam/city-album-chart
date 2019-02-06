@@ -1,0 +1,10 @@
+toolbar:
+  - undo redo | bold italic underline strikethrough | blockquote bullist numlist emoticons | alignleft aligncenter alignright | image link | preview code
+menubar: false
+skin: superkayo
+plugins:
+  - image
+  - link
+  - preview
+  - code
+  - emoticons

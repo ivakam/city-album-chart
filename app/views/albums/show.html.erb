@@ -9,9 +9,8 @@
 	</div>
 	<ion-icon name="ios-close" id="report-close" class="modal-close"></ion-icon>
 	<form id="report-form" class="modal-form" action="/reports/create" accept-charset="UTF-8" data-remote="true" method="post">
-		<input id="report-album" type="text" name="report[album]" hidden>
-		<input type="text" name="report[report_type]" value="Album" hidden>
-		<input type="text" name="report[thread]" value="" hidden>
+		<input id="report-target" type="text" name="report[target_id]" hidden>
+		<input type="text" name="report[report_type]" value="album" hidden>
 		<div class="modal-form-input-container">
 			<label for="report-input-container"><p>Report reason:</p></label>
 			<select class='report-reason' name="report[reason]" form="report-form" required>

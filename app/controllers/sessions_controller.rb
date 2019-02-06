@@ -5,12 +5,12 @@ class SessionsController < ApplicationController
     def create
         user = User.find_by(username: params[:session][:username].downcase)
         if user && user.authenticate(params[:session][:password]) 
-            if user.email_confirmed
+            #if user.email_confirmed
                 session[:user_id] = user.id
                 redirect_to request.referrer
-            else
+            #else
                 redirect_to request.referrer, notice: 'Please confirm your email'
-            end
+            #end
         else
             redirect_to request.referrer, notice: 'Incorrect username or password'
         end

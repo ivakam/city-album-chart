@@ -46,6 +46,10 @@ Rails.application.routes.draw do
   post 'upvotes/create'
   
   get 'articles', to: 'articles#show'
+  get 'articles/:article_id', to: 'articles#show_article', as: 'article', constraints: lambda { |request| constraint(request) }
+  
+  post 'comments/create'
+  post 'comments/destroy'
   
   get 'home', to: 'home#show'
   

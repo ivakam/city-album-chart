@@ -33,18 +33,24 @@ class UsersController < ApplicationController
         @user.admin = false
         @user.badges = ''
         @user.account_type = 'Member'
-        logger.debug "-----------------------------------------------> saving user"
-        UserMailer.with(user: @user).email_confirmation.deliver_now
-        if @user.save.valid?
+        if @user.valid?
             @user.save
-            #redirect_to request.referrer, notice: 'Account successfully created, please confirm your email address now'
+            logger.debug "-----------------------------------------------> saving user"
+            UserMailer.with(user: @user).email_confirmation.deliver_later
+            # Automatically log in after account is created
+            if @user && @user.authenticate(params[:user][:password])
+                session[:user_id] = @user.id
+                logger.debug "-----------------------------------------------> logging user in"
+                redirect_to request.referrer
+            end
         else
-           redirect_to request.referrer, notice: 'Please fill out all of the required fields.'
+            if User.exists?(:username => @user.username)
+                redirect_to request.referrer, notice: 'Username already exists'
+            end
+            if User.exists?(:email => @user.email)
+                redirect_to request.referrer, notice: 'User with the provided email already exists'
+            end
         end
-        # Automatically log in after account is created
-        #if @user && @user.authenticate(params[:user][:password])
-            #session[:user_id] = @user.id
-        #end
     end
     
     def destroy

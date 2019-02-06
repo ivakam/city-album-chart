@@ -1,7 +1,8 @@
 class Article < ApplicationRecord
-    belongs_to :user, :touch => true
+    belongs_to :user
     has_many :comments, :dependent => :destroy
     has_many :upvotes, :dependent => :destroy
+    has_one_attached :banner
     
     after_save do
         update_with_user_status_service

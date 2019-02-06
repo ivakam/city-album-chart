@@ -30,7 +30,7 @@ $(document).on 'turbolinks:load', ->
 		opacity.css('z-index', '5')				
 		setTimeout( ->
 			resetFocus()
-		, 3000)
+		, 10000)
 		
 	#Handler for sending report
 	
@@ -179,7 +179,7 @@ $(document).on 'turbolinks:load', ->
 		flagButtonClick = (e) ->
 			e = $(e.target)
 			title = e.parent().find('.title-container h2').html()
-			$('#report-album').attr('value', title)
+			$('#report-target').attr('value', title)
 			$('#report-form-container').toggleClass('modal-inactive')
 			opacity = $('#opaque')
 			opacity.css('background', 'rgba(0, 0, 0, 0.6')
@@ -440,6 +440,7 @@ $(document).on 'turbolinks:load', ->
 										</ul>
 									</div>
 									<div class='contributor'>
+										<p>Uploaded at #{album.upload_date},</p>
 										<p>Contributor: <a href='#{host.replace(/albums\/fetch\?/, 'users/') + album.contributor.toLowerCase()}'>#{album.contributor}</a></p>
 									</div>
 								</div> 
@@ -674,8 +675,11 @@ $(document).on 'turbolinks:load', ->
 					return
 				else if albums.size + 40 > totalCount - 1
 					offset = totalCount - (totalCount - albums.size)
-				sortClass = if $('#splash-container').attr('class') is undefined then '' else $('#splash-container').attr('class')
-				sortStr = sortClass.split(/-/)
+				if $('#splash-container').attr('class') == undefined
+					@sortClass = ''
+				else 
+					@sortClass = $('#splash-container').attr('class')
+				sortStr = sortClass.split(/-/).toString
 				if sortStr.length > 0
 					fetchStr = "#{host}#{searchQ()}limit=40&offset=#{offset}&sort=#{sortStr[2]}&sort_type=#{sortStr[1]}"
 				else
