@@ -6,17 +6,12 @@ class UpvotesController < ApplicationController
     
     def create
         if get_user
-            @upvote ||= Upvote.find_by(user: get_user, post: params[:upvote][:post_id])
-            @upvote ||= Upvote.find_by(user: get_user, article: params[:upvote][:article_id])
-            @upvote ||= Upvote.find_by(user: get_user, comment: params[:upvote][:comment_id])
+            @upvote = Upvote.find_by(user: get_user, upvote_type: params[:upvote][:upvote_type], target_id: params[:upvote][:target_id])
             if @upvote.present?
                 return destroy
             end
-            @upvote = Upvote.new()
+            @upvote = Upvote.new(upvote_params)
             @upvote.user = get_user
-            @upvote.post = Post.find_by(id: params[:upvote][:post_id])
-            @upvote.article = Article.find_by(id: params[:upvote][:article_id])
-            @upvote.comment = Comment.find_by(id: params[:upvote][:comment_id])
             @upvote.save
         else
             login_barrier
@@ -26,6 +21,6 @@ class UpvotesController < ApplicationController
     private
     
     def upvote_params
-        params.require(:upvote).permit(:post_id, :user_id)
+        params.require(:upvote).permit(:target_id, :upvote_type, :user_id)
     end
 end

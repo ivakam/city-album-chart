@@ -87,7 +87,8 @@ ForumThread.all.each_with_index do | parentThread, i |
 		reply.post_index = j
 		(1..rand(5..20)).each do | k |
 			upvote = Upvote.new()
-			upvote.post = reply
+			upvote.target_id = reply.id
+			upvote.upvote_type = 'post'
 			upvote.user = User.find(rand(2..@usercount))
 			upvote.save
 		end
@@ -115,7 +116,8 @@ end
 	article.save
 	(1..rand(5..20)).each do | k |
 		upvote = Upvote.new()
-		upvote.article = article
+		upvote.upvote_type = 'article'
+		upvote.target_id = article.id
 		upvote.user = User.find(rand(2..@usercount))
 		upvote.save
 	end
@@ -130,7 +132,8 @@ Article.all.each_with_index do | article, i |
 		reply.body = Faker::HitchhikersGuideToTheGalaxy.quote
 		(1..rand(5..20)).each do | k |
 			upvote = Upvote.new()
-			upvote.comment = reply
+			upvote.upvote_type = 'comment'
+			upvote.target_id = reply.id
 			upvote.user = User.find(rand(2..@usercount))
 			upvote.save
 		end

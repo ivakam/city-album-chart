@@ -8,8 +8,8 @@
             <div class="article-opacity"></div>
             <div class="article featured">
                 <div class="article-header">
-                    <img src="<%= @featured.banner.variant(resize: "600x600").processed.service_url %>">
-                    <h2><a><%= @featured.title %></a></h2>
+                    <a href="<%= articles_path + '/' + @featured.id.to_s %>"><img src="<%= @featured.banner.variant(resize: "600x600").processed.service_url %>"></a>
+                    <a href="<%= articles_path + '/' + @featured.id.to_s %>"><h2><%= @featured.title %></h2></a>
                     <div>
                         <div>
                             <div class="avatar-wrapper">
@@ -20,6 +20,7 @@
                             <p>By <a href="<%= root_url + 'users/' + @featured.user.username %>"><%= @featured.user.username %></a></p>
                         </div>
                         <p>&nbsp;- <%= @featured.created_at.strftime('%-d %b, %Y') %></p>
+                        <p class="article-score">Score: <%= article_upvotes(@featured) %></p>
                     </div>
                 </div>
                 <div class="article-body">
@@ -41,8 +42,8 @@
                     <% Article.all.order(:created_at).each do | article | %>
                     <li class="article">
                         <div class="article-header">
-                            <img src="<%= article.banner.variant(resize: "600x600").processed.service_url %>">
-                            <h2><a><%= article.title %></a></h2>
+                            <a href="<%= articles_path + '/' + article.id.to_s %>"><img src="<%= article.banner.variant(resize: "600x600").processed.service_url %>"></a>
+                            <a href="<%= articles_path + '/' + article.id.to_s %>"><h2><%= article.title %></h2></a>
                             <div>
                                 <div>
                                     <div class="avatar-wrapper">
@@ -53,6 +54,7 @@
                                     <p>By <a href="<%= root_url + 'users/' + article.user.username %>"><%= article.user.username %></a></p>
                                 </div>
                                 <p>&nbsp;- <%= article.created_at.strftime('%-d %b, %Y') %></p>
+                                <p class="article-score">Score: <%= article_upvotes(article) %></p>
                             </div>
                         </div>
                         <div class="article-body">

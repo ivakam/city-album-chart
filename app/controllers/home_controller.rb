@@ -1,12 +1,12 @@
 class HomeController < ApplicationController
     def show
         @content = generate_feed(0)
-        p @content
+        @content
     end
     
     def fetch
         @content = generate_feed
-        p @content
+        @content
     end
     
     private

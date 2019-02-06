@@ -10,25 +10,23 @@
         <div id="content">
             <div id="feed">
                 <% @content[:posts].each do | post | %>
-                <div class="post-card">
+                <a href="<%= "#{forum_path}/#{post.forum_thread.category}/t/#{post.forum_thread.id}" %>" class="post-card">
                     <div class="card-opacity"></div>
-                    <h4><a href="<%= "#{forum_path}/#{post.forum_thread.category}/t/#{post.forum_thread.id}" %>"><%= post.user.username %> posted in thread <i><%= post.forum_thread.title %></i> :</a></h4>
+                    <h4><%= post.user.username %> posted in thread <i><%= post.forum_thread.title %></i> :</h4>
                     <p class="post-score">Score: <%= post_upvotes(post) %></p>
                     <div class="post-container">
                         <div class="user-info">
-                            <div class="user-badges">
+                            <div class="avatar-wrapper">
+                                <%= image_tag user_avatar(post.user) %>
                             </div>
-                            <div class="avatar-wrapper"><a href="<%= root_url + 'users/' + post.user.username %>">
-                            <%= image_tag user_avatar(post.user) %>
-                            </a></div>
                         </div>
                         <div class="text-container">
                             <div class="post-text">
-                                <%= sanitize(post.body.split(/\n/)[0]) + '<p>&nbsp;...</p>'.html_safe %>
+                                <p><%= parse_markdown(post.body.split(/\n/)[0], true) %></p>
                             </div>
                         </div>
                     </div>
-                </div>
+                </a>
                 <% end %>
             </div>
             <div id="right-panel">
@@ -47,7 +45,6 @@
                     <div class="card-opacity"></div>
                 </div>
                 <div id="gallery">
-                    <h3>Placeholder</h3>
                 </div>
             </div>
         </div>

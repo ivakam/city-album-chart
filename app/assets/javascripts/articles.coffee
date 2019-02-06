@@ -59,7 +59,33 @@ $(document).on 'turbolinks:load', ->
 				, 1250)
 			data =
 				upvote: 
-					article_id: $('#report-article').val()
+					target_id: $('#report-article').val()
+					upvote_type: 'article'
+			$.post(window.location.href.replace(/\/articles.+/, '/upvotes/create'), data)
+			.fail( ->
+				console.log('Error sending post data')
+			)
+			
+		$('.comment-heart').click ->
+			e = $(this)
+			id = e.closest('.comment').find('.comment-id').val()
+			e.toggleClass('red')
+			if e.hasClass('red')
+				heart = e.parent().find('.heart-animation')
+				e.toggleClass('expanded')
+				heart.toggleClass('hidden')
+				heart.toggleClass('animated')
+				setTimeout( ->
+					e.toggleClass('expanded')
+				, 250)
+				setTimeout( ->
+					heart.toggleClass('hidden')
+					heart.toggleClass('animated')
+				, 1250)
+			data =
+				upvote: 
+					target_id: id
+					upvote_type: 'comment'
 			$.post(window.location.href.replace(/\/articles.+/, '/upvotes/create'), data)
 			.fail( ->
 				console.log('Error sending post data')

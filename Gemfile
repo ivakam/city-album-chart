@@ -37,7 +37,7 @@ gem 'rest-client'
 gem 'bcrypt'
 gem 'faker'
 gem 'sprockets', '~> 3.7.1'
-gem 'tinymce-rails'
+gem 'redcarpet'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'

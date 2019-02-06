@@ -36,10 +36,12 @@ body {
 	flex-direction: column;
 	align-items: center;
 	justify-content: space-around;
+	margin: 1px;
 	position: fixed;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
+	min-width: 35vw;
 	max-width: 700px;
 	min-height: 250px;
 	max-height: 80vh;
@@ -85,6 +87,9 @@ body {
 			flex-direction: column;
 			justify-content: space-around;
 			flex-grow: 2;
+			input {
+				max-width: 250px;
+			}
 		}
 		#register-input-container {
 			> div {
@@ -243,9 +248,9 @@ body {
 		align-items: center;
 		#profile-nav a {
 			padding: 2px;
-			&:first-child {
-				padding-right: 6px;
-				border-right: 1px $dark-border solid;
+			&:nth-of-type(2) {
+				padding-left: 6px;
+				border-left: 1px $dark-border solid;
 			}
 		}
 		> div, p {
@@ -594,7 +599,6 @@ body {
 	.info-wrapper {
 		display: none;
 		flex-direction: column;
-		justify-content: space-between;
 		width: 100%;
 		height: 475px;
 		padding: 0px;
@@ -667,6 +671,7 @@ body {
 			display: flex;
 			flex-direction: column;
 			width: 100%;
+			margin-bottom: 12px;
 			height: 460px;
 			justify-content: space-between;
 			flex-shrink: 0;
@@ -902,7 +907,8 @@ body {
 			.field-container {
 				display: flex;
 				justify-content: space-between;
-				align-items: center;
+				align-items: flex-start;
+				min-height: 450px;
 				> input {
 					padding: 8px;
 					color: $dark-font;
@@ -921,8 +927,9 @@ body {
 				.divider {
 					width: 0;
 					height: 200px;
-					margin: 0 25px 0 35px;
+					margin: 0 25px 0 25px;
 					border-left: 1px $light-border solid;
+					align-self: center;
 				}
 				.input-field-container, .description-field {
 					display: flex;
@@ -952,6 +959,8 @@ body {
 .tracklist-submit {
 	margin-right: 8px;
 	overflow: auto;
+	max-height: 450px;
+	width: 580px;
 	.tracklist-edit-container {
 		display: flex;
 		flex-direction: column;
@@ -1034,6 +1043,7 @@ body {
 			}
 			.duration {
 				max-width: 50px !important;
+				min-width: 50px !important;
 				border-right: 1px $dark-border solid !important;
 			}
 		}
@@ -1063,6 +1073,10 @@ input, textarea {
 	border: $dark-border;
 	background: $darker-bg;
 	height: 35px;
+}
+
+textarea {
+	font-size: 16px;
 }
 
 iframe {

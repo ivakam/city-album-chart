@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   
   def constraint(req)
-    p 'Path: ' + req.path
     return req.path.scan(/\/rails\/active_storage.+/).empty?
   end
   

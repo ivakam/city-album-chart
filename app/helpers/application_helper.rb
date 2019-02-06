@@ -1,4 +1,5 @@
 require 'mini_magick'
+require 'redcarpet'
 
 module ApplicationHelper
 	def fetch_user
@@ -37,15 +38,19 @@ module ApplicationHelper
 	end
 	
 	def user_karma(user = User.find_by(id: session[:user_id]))
-		return Upvote.where(post: Post.where(user: user)).size
+		return Upvote.where(upvote_type: 'article', target_id: Post.where(user: user)).size
 	end
 	
 	def post_upvotes(postIn)
-		return Upvote.where(post: postIn).size
+		return Upvote.where(upvote_type: 'post', target_id: postIn.id).size
 	end
 	
 	def article_upvotes(article)
-		return Upvote.where(article: article).size
+		return Upvote.where(upvote_type: 'article', target_id: article.id).size
+	end
+	
+	def comment_upvotes(comment)
+		return Upvote.where(upvote_type: 'comment', target_id: comment.id).size
 	end
 	
 	def inject_login
@@ -58,5 +63,14 @@ module ApplicationHelper
 	
 	def album_count
 		return Album.all.size
+	end
+	
+	def parse_markdown(text = '', preview = false)
+		renderer = Redcarpet::Render::HTML.new(filter_html: true)
+		if preview
+			renderer = Redcarpet::Render::HTML.new(no_links: true, no_images: true, filter_html: true)
+		end
+		markdown = Redcarpet::Markdown.new(renderer, autolink: true)
+		return markdown.render(text).html_safe
 	end
 end

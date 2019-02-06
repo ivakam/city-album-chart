@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_03_234110) do
+ActiveRecord::Schema.define(version: 2019_02_05_231357) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "name", limit: 191, null: false
@@ -125,14 +125,10 @@ ActiveRecord::Schema.define(version: 2019_02_03_234110) do
 
   create_table "upvotes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.bigint "user_id"
-    t.bigint "post_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "comment_id"
-    t.bigint "article_id"
-    t.index ["article_id"], name: "index_upvotes_on_article_id"
-    t.index ["comment_id"], name: "index_upvotes_on_comment_id"
-    t.index ["post_id"], name: "index_upvotes_on_post_id"
+    t.string "upvote_type"
+    t.bigint "target_id"
     t.index ["user_id"], name: "index_upvotes_on_user_id"
   end
 
