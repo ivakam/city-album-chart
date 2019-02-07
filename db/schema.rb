@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 2019_02_05_231357) do
     t.integer "user_id"
   end
 
-  create_table "articles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
+  create_table "articles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title"
     t.text "body"
     t.bigint "user_id"
@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(version: 2019_02_05_231357) do
     t.index ["user_id"], name: "index_articles_on_user_id"
   end
 
-  create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
+  create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "body"
     t.bigint "user_id"
     t.boolean "pinned"
@@ -77,7 +77,7 @@ ActiveRecord::Schema.define(version: 2019_02_05_231357) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
-  create_table "forum_threads", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
+  create_table "forum_threads", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title"
     t.string "category"
     t.datetime "created_at", null: false
@@ -90,7 +90,7 @@ ActiveRecord::Schema.define(version: 2019_02_05_231357) do
     t.index ["user_id"], name: "index_forum_threads_on_user_id"
   end
 
-  create_table "posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
+  create_table "posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -123,7 +123,7 @@ ActiveRecord::Schema.define(version: 2019_02_05_231357) do
     t.index ["album_id"], name: "index_tracks_on_album_id"
   end
 
-  create_table "upvotes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
+  create_table "upvotes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -148,8 +148,6 @@ ActiveRecord::Schema.define(version: 2019_02_05_231357) do
     t.string "account_type"
     t.string "signature"
     t.string "album_fav"
-    t.boolean "email_confirmed", default: false
-    t.string "confirm_token"
   end
 
   add_foreign_key "forum_threads", "users"
