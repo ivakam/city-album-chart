@@ -33,6 +33,7 @@ class UsersController < ApplicationController
         @user.admin = false
         @user.badges = ''
         @user.account_type = 'Member'
+<<<<<<< HEAD
         if @user.valid?
             @user.save
             logger.debug "-----------------------------------------------> saving user"
@@ -43,6 +44,10 @@ class UsersController < ApplicationController
                 logger.debug "-----------------------------------------------> logging user in"
                 redirect_to request.referrer
             end
+=======
+        if @user.save.valid?
+            @user.save
+>>>>>>> parent of 74a9058... add mailer for users\n- sending, but needs configuration
         else
             if User.exists?(:username => @user.username)
                 redirect_to request.referrer, notice: 'Username already exists'
@@ -51,6 +56,14 @@ class UsersController < ApplicationController
                 redirect_to request.referrer, notice: 'User with the provided email already exists'
             end
         end
+<<<<<<< HEAD
+=======
+        # Automatically log in after account is created
+        if @user && @user.authenticate(params[:user][:password])
+            session[:user_id] = @user.id
+            redirect_to request.referrer
+        end
+>>>>>>> parent of 74a9058... add mailer for users\n- sending, but needs configuration
     end
     
     def destroy
