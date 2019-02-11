@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   post 'users/update'
   post 'users/toggle-admin', to: 'users#toggle_admin'
   post 'users/toggle-ban', to: 'users#toggle_ban'
+  get 'users/:id/confirm_email', to: 'users#confirm_email'
   
   #Helper tools - MUST BE REMOVED IN PROD!!!
   get 'tools/make-admin', to: 'users#make_admin'
