@@ -83,7 +83,7 @@
                                     <% if post.user.id == fetch_user.id %>
                                     <ion-icon class="post-icon post-edit" name="create"></ion-icon>
                                     <% end %>
-                                    <% if fetch_user && fetch_user != post.user %>
+                                    <% if fetch_user && fetch_user != post.user && fetch_user.email_confirmed %>
                                     <div class="heart-container">
                                         <ion-icon class="heart-animation hidden" name="ios-heart"></ion-icon>
                                         <ion-icon class="post-icon post-heart <%= 'red' if Upvote.find_by(user: fetch_user, upvote_type: 'post', target_id: post.id).present? %>" name="ios-heart"></ion-icon>

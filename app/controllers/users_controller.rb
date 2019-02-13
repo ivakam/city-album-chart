@@ -35,12 +35,10 @@ class UsersController < ApplicationController
         @user.account_type = 'Member'
         if @user.valid?
             @user.save
-            logger.debug "-----------------------------------------------> saving user"
-            UserMailer.with(user: @user).email_confirmation.deliver_now
+            UserMailer.with(user: @user).email_confirmation.deliver_later
             # Automatically log in after account is created
             if @user && @user.authenticate(params[:user][:password])
                 session[:user_id] = @user.id
-                logger.debug "-----------------------------------------------> logging user in"
                 redirect_to request.referrer
             end
         else
@@ -135,6 +133,11 @@ class UsersController < ApplicationController
     def nuke_admin
         User.find_by(id: session[:user_id])
         @user.update_attribute(:admin, false)
+    end
+
+    def resend_confirmation_email
+      UserMailer.with(user: get_user).email_confirmation.deliver_later
+      redirect_to request.referrer, notice: "The email has been sent"
     end
 
 	def confirm_email

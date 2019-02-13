@@ -6,6 +6,7 @@ class UpvotesController < ApplicationController
     
     def create
         if get_user
+          if get_user.email_confirmed
             @upvote = Upvote.find_by(user: get_user, upvote_type: params[:upvote][:upvote_type], target_id: params[:upvote][:target_id])
             if @upvote.present?
                 return destroy
@@ -13,6 +14,8 @@ class UpvotesController < ApplicationController
             @upvote = Upvote.new(upvote_params)
             @upvote.user = get_user
             @upvote.save
+          else
+            activation_barrier
         else
             login_barrier
         end

@@ -91,62 +91,66 @@ class AlbumsController < ApplicationController
 	
 	def create
 		if get_user
-			if params[:album][:title].present? && params[:album][:romaji_artist].present?
-				@album = Album.new(params[:album].to_unsafe_hash)
-				if !@album.cover.attached?
-					coverPath = Rails.root.join("app/assets/images/missingcover.jpg")
-					@album.cover.attach(io: File.open(coverPath), filename: "missingcover.jpg")
-					p "ERROR: Could not find cover for #{@album.title}"
-				else
-					p "Successfully attached cover to #{@album.title}"
-				end
-				@album.tags = "#{params[:album][:title]} #{params[:album][:romanization]} #{params[:album][:romaji_artist]} #{params[:album][:japanese_artist]} #{params[:album][:year]} #{params[:album][:description]} #{params[:album][:flavor].gsub(/,/,'')}"
-				tempQuality = 0
-				if params[:tracklist] != ''
-						parsedTracks = JSON.parse(params[:tracklist])
-					parsedTracks.each do | t |
-						@album.tags << " #{t[1][:romanization]} #{t[1][:romanization]}"
-					end
-					trackDurationCount = 0
-					parsedTracks.each_with_index do | t, i |
-						t[1][:order] = i + 1
-					end
-					parsedTracks.each do | t |
-						if t[1]['duration'].present?
-							trackDurationCount += 1
-						end
-					end
-					@album.tracks = parsedTracks.map { | t | Track.new(t[1])}
-				else
-					parsedTracks = []
-				end
-				hasTracks = parsedTracks.empty?
-				if  @album.description.present?
-					tempQuality += 5
-				end
-				if  @album.year.present?
-					tempQuality += 10
-				end
-				if  @album.flavor.present?
-					tempQuality += 5
-				end
-				if hasTracks
-					tempQuality += 30
-				end
-				if trackDurationCount == parsedTracks.length
-					tempQuality += 5
-				end
-				if @album.cover.present?
-					tempQuality += 10
-				end
-				@album.quality = tempQuality
-				@album.user_id = get_user.id
-				@album.save
-				p "Success!"
-				redirect_to '/albums/submit', notice: 'Album submitted!'
-			else
-				p 'Invalid parameters for album'
-			end
+            if get_user.email_confirmed
+			    if params[:album][:title].present? && params[:album][:romaji_artist].present?
+				    @album = Album.new(params[:album].to_unsafe_hash)
+				    if !@album.cover.attached?
+					    coverPath = Rails.root.join("app/assets/images/missingcover.jpg")
+					    @album.cover.attach(io: File.open(coverPath), filename: "missingcover.jpg")
+					    p "ERROR: Could not find cover for #{@album.title}"
+				    else
+					    p "Successfully attached cover to #{@album.title}"
+				    end
+				    @album.tags = "#{params[:album][:title]} #{params[:album][:romanization]} #{params[:album][:romaji_artist]} #{params[:album][:japanese_artist]} #{params[:album][:year]} #{params[:album][:description]} #{params[:album][:flavor].gsub(/,/,'')}"
+				    tempQuality = 0
+				    if params[:tracklist] != ''
+						    parsedTracks = JSON.parse(params[:tracklist])
+					    parsedTracks.each do | t |
+						    @album.tags << " #{t[1][:romanization]} #{t[1][:romanization]}"
+					    end
+					    trackDurationCount = 0
+					    parsedTracks.each_with_index do | t, i |
+						    t[1][:order] = i + 1
+					    end
+					    parsedTracks.each do | t |
+						    if t[1]['duration'].present?
+							    trackDurationCount += 1
+						    end
+					    end
+					    @album.tracks = parsedTracks.map { | t | Track.new(t[1])}
+				    else
+					    parsedTracks = []
+				    end
+				    hasTracks = parsedTracks.empty?
+				    if  @album.description.present?
+					    tempQuality += 5
+				    end
+				    if  @album.year.present?
+					    tempQuality += 10
+				    end
+				    if  @album.flavor.present?
+					    tempQuality += 5
+				    end
+				    if hasTracks
+					    tempQuality += 30
+				    end
+				    if trackDurationCount == parsedTracks.length
+					    tempQuality += 5
+				    end
+				    if @album.cover.present?
+					    tempQuality += 10
+				    end
+				    @album.quality = tempQuality
+				    @album.user_id = get_user.id
+				    @album.save
+				    p "Success!"
+				    redirect_to '/albums/submit', notice: 'Album submitted!'
+			    else
+				    p 'Invalid parameters for album'
+			    end
+            else
+                activation_barrier
+            end
 		else
 			login_barrier
 		end
@@ -206,11 +210,13 @@ class AlbumsController < ApplicationController
 	end
 	
 	def submit
-		if get_user
-			render 'submit'
-		else
-			login_barrier
-		end
+        if !get_user
+            login_barrier
+        elsif get_user && !get_user.email_confirmed
+            activation_barrier
+        else
+		    render 'submit'
+        end
 	end
 	
 	private 

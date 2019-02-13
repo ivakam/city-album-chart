@@ -37,6 +37,14 @@ class ApplicationController < ActionController::Base
         end
     end
     
+    def activation_barrier
+        if params[:format].present? && params[:format] != 'html'
+          head status 401
+        else
+          render 'layouts/activation_barrier'
+        end
+    end
+
     def on_access_denied
         if params[:format].present? && params[:format] != 'html'
             head status: 401

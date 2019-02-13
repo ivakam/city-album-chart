@@ -2,9 +2,13 @@ require 'json'
 
 class ReportsController < ApplicationController
   def create
-    params[:report][:user_id] = session[:user_id]
-    @report = Report.new(report_params)
-    @report.save
+    if !get_user.email_confirmed
+      redirect_to request.referrer, notice: 'Please activate your email before sending reports'
+    else
+      params[:report][:user_id] = session[:user_id]
+      @report = Report.new(report_params)
+      @report.save
+    end
   end
   
   def destroy

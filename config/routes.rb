@@ -19,13 +19,14 @@ Rails.application.routes.draw do
   post 'reports/destroy'
 
   get 'panel', to: 'users#panel'
+  get 'users/resend-email', to: 'users#resend_confirmation_email'
   get 'users/:username', to: 'users#show', as: 'user', constraints: { :username => /[^\/]+/ }
   post 'users/destroy'
   post 'users/create'
   post 'users/update'
   post 'users/toggle-admin', to: 'users#toggle_admin'
   post 'users/toggle-ban', to: 'users#toggle_ban'
-  get 'users/:id/confirm_email', to: 'users#confirm_email'
+  get 'users/:id/confirm-email', to: 'users#confirm_email'
   
   #Helper tools - MUST BE REMOVED IN PROD!!!
   get 'tools/make-admin', to: 'users#make_admin'
