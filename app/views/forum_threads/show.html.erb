@@ -8,6 +8,7 @@
 	<p>Are you sure you want to delete this post?</p>
 	<a class="delete-confirm-btn">Yes, delete it</a>
 </div>
+<% if fetch_user.email_confirmed %>
 <div id="report-form-container" class="modal modal-inactive">
 	<div>
 		<h2>Submit a report</h2>
@@ -32,6 +33,7 @@
 		</div>
 	</form>
 </div>
+<% end %>
 <div id="main-container">
     <%= render 'partials/navbar_slim' %>
     <%= image_tag "spinner.gif", class: "spinner hidden" %>
@@ -77,13 +79,13 @@
                                     <% if fetch_user.admin || post.user.id == fetch_user.id %>
                                     <ion-icon class="post-icon post-trash" name="ios-trash"></ion-icon>
                                     <% end %>
-                                    <% if post.user != fetch_user %>
+                                    <% if post.user != fetch_user && fetch_user.email_confirmed%>
                                     <ion-icon class="post-icon post-flag" name="ios-flag"></ion-icon>
                                     <% end %>
                                     <% if post.user.id == fetch_user.id %>
                                     <ion-icon class="post-icon post-edit" name="create"></ion-icon>
                                     <% end %>
-                                    <% if fetch_user && fetch_user != post.user %>
+                                    <% if fetch_user && fetch_user != post.user && fetch_user.email_confirmed %>
                                     <div class="heart-container">
                                         <ion-icon class="heart-animation hidden" name="ios-heart"></ion-icon>
                                         <ion-icon class="post-icon post-heart <%= 'red' if Upvote.find_by(user: fetch_user, upvote_type: 'post', target_id: post.id).present? %>" name="ios-heart"></ion-icon>
