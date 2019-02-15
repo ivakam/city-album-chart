@@ -1,0 +1,44 @@
+<% title 'New article' %>
+<div id="main-container">
+	<%= render 'partials/navbar_slim' %>
+	<%= image_tag "spinner.gif", class: "spinner hidden" %>
+	<div id="article-create-wrapper">
+        <div id="main-opacity"></div>
+        <%= form_for @article, url: {action: 'create'}, html: {id: 'article-form'} do | f | %>
+            <div id="forum-opacity" class="lighter"></div>
+            <div class="article-header">
+                <h2>Create new article</h2>
+            </div>
+            <div class="article-body">
+                <label for="article-title"><p>Title</p></label>
+                <input id="article-title" type="text" name="article[title]" placeholder="Title">
+                <div class="article-info-container">
+                    <div>
+                        <label for="article-subtitle"><p>Subtitle</p></label>
+                        <input id="article-subtitle" type="text" name="article[subtitle]" placeholder="Subtitle">
+                    </div>
+                    <div>
+                        <label for="article-category"><p class="category-label">Category:</p></label>
+                        <select id="article-category" name="article[category]" form="article-form" required>
+                            <option value="review">Review</option>
+                            <option value="opinion_piece">Opinion piece</option>
+                            <option value="essay">Essay</option>
+                            <option value="history">History</option>
+                        </select>
+                    </div>
+                    <div>
+                        <p>Banner image (jpg or jpeg. Max 500Kb. Preferably under 100Kb.)</p>
+                        <label for="article-banner"><ion-icon class="banner-browse" name="ios-folder-open"></ion-icon></label>
+                        <%= f.file_field :banner, id: 'article-banner' %>
+                    </div>
+                </div>
+                <label for="article-body"><p>Text</p></label>
+                <textarea id="article-body" name="article[body]" placeholder="Type your text here"></textarea>
+                <script>
+                    var articleContent = new EasyMDE({ element: $('#article-body')[0] });
+                </script>
+                <input type="submit" id="article-submit-btn" name="commit" value="Submit article">
+            </div>
+        <% end %>
+    </div>
+</div>

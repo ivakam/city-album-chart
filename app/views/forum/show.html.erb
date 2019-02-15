@@ -9,86 +9,86 @@
             <ul>
                 <li>
                     <div id="forum-opacity"></div>
-                    <ion-icon name="ios-arrow-dropright-circle"></ion-icon>
+                    <a href="<%= forum_path + '/announcements' %>"><ion-icon name="ios-arrow-dropright-circle"></ion-icon></a>
                     <div class="board-title-container">
                         <h3><a href="<%= forum_path + '/announcements' %>">Announcements</a></h3>
-                        <p>Important announcements and PSAs</p>
+                        <p>Important announcements and PSAs.</p>
                     </div>
-                    <div class="activity"><p>Last updated in thread</p></div>
+                    <div class="activity"><p>Last updated in thread "<%= board_last_updated('announcements').title %>" <br> at <%= board_last_updated('announcements').updated_at.strftime("%R %Z, %F") %></p></div>
                 </li>
                 <li>
-                    <ion-icon name="ios-arrow-dropright-circle"></ion-icon>
+                    <a href="<%= forum_path + '/rules' %>"><ion-icon name="ios-arrow-dropright-circle"></ion-icon></a>
                     <div class="board-title-container">
                         <h3><a href="<%= forum_path + '/rules' %>">Rules and guidelines</a></h3>
-                        <p>Please read these before posting</p>
+                        <p>Please read these before posting.</p>
                     </div>
-                    <div class="activity"><p>Last updated in thread "<%= board_last_updated('rules').title %>" at <%= board_last_updated('rules').updated_at.strftime("%R %Z, %F") %></p></div>
-                </li>
-            </ul>
-            <div class="divider"></div>
-            <ul>
-                <li>
-                    <div id="forum-opacity"></div>
-                    <ion-icon name="ios-arrow-dropright-circle"></ion-icon>
-                    <div class="board-title-container">
-                        <h3><a href="<%= forum_path + '/rules' %>">Rules and guidelines</a></h3>
-                        <p>Please read these before posting</p>
-                    </div>
-                    <div class="activity"><p>Placeholder</p></div>
-                </li>
-                <li>
-                    <ion-icon name="ios-arrow-dropright-circle"></ion-icon>
-                    <div class="board-title-container">
-                        <h3><a href="<%= forum_path + '/rules' %>">Rules and guidelines</a></h3>
-                        <p>Please read these before posting</p>
-                    </div>
-                    <div class="activity"><p>Placeholder</p></div>
-                </li>
-                <li>
-                    <div id="forum-opacity"></div>
-                    <ion-icon name="ios-arrow-dropright-circle"></ion-icon>
-                    <div class="board-title-container">
-                        <h3><a href="<%= forum_path + '/rules' %>">Rules and guidelines</a></h3>
-                        <p>Please read these before posting</p>
-                    </div>
-                    <div class="activity"><p>Placeholder</p></div>
-                </li>
-                <li>
-                    <ion-icon name="ios-arrow-dropright-circle"></ion-icon>
-                    <div class="board-title-container">
-                        <h3><a href="<%= forum_path + '/rules' %>">Rules and guidelines</a></h3>
-                        <p>Please read these before posting</p>
-                    </div>
-                    <div class="activity"><p>Placeholder</p></div>
-                </li>
-                <li>
-                    <div id="forum-opacity"></div>
-                    <ion-icon name="ios-arrow-dropright-circle"></ion-icon>
-                    <div class="board-title-container">
-                        <h3><a href="<%= forum_path + '/rules' %>">Rules and guidelines</a></h3>
-                        <p>Please read these before posting</p>
-                    </div>
-                    <div class="activity"><p>Placeholder</p></div>
+                    <div class="activity"><p>Last updated in thread "<%= board_last_updated('rules').title %>" <br> at <%= board_last_updated('rules').updated_at.strftime("%R %Z, %F") %></p></div>
                 </li>
             </ul>
             <div class="divider"></div>
             <ul>
                 <li>
                     <div id="forum-opacity"></div>
-                    <ion-icon name="ios-arrow-dropright-circle"></ion-icon>
+                    <a href="<%= forum_path + '/general' %>"><ion-icon name="ios-arrow-dropright-circle"></ion-icon></a>
                     <div class="board-title-container">
-                        <h3><a href="<%= forum_path + '/rules' %>">Rules and guidelines</a></h3>
-                        <p>Please read these before posting</p>
+                        <h3><a href="<%= forum_path + '/general' %>">General talk</a></h3>
+                        <p>Found a new tune? Think obis are the ugliest thing since plastic CD covers? Discuss it here!</p>
                     </div>
-                    <div class="activity"><p>Placeholder</p></div>
+                    <div class="activity"><p>Last updated in thread "<%= board_last_updated('general').title %>" <br> at <%= board_last_updated('general').updated_at.strftime("%R %Z, %F") %></p></div>
                 </li>
                 <li>
-                    <ion-icon name="ios-arrow-dropright-circle"></ion-icon>
+                    <a href="<%= forum_path + '/newcomer' %>"><ion-icon name="ios-arrow-dropright-circle"></ion-icon></a>
                     <div class="board-title-container">
-                        <h3><a href="<%= forum_path + '/rules' %>">Rules and guidelines</a></h3>
-                        <p>Please read these before posting</p>
+                        <h3><a href="<%= forum_path + '/newcomer' %>">Newcomer board</a></h3>
+                        <p>Tell us a bit about yourself!</p>
                     </div>
-                    <div class="activity"><p>Placeholder</p></div>
+                    <div class="activity"><p>Last updated in thread "<%= board_last_updated('newcomer').title %>" <br> at <%= board_last_updated('newcomer').updated_at.strftime("%R %Z, %F") %></p></div>
+                </li>
+                <li>
+                    <div id="forum-opacity"></div>
+                    <a href="<%= forum_path + '/album-discussion' %>"><ion-icon name="ios-arrow-dropright-circle"></ion-icon></a>
+                    <div class="board-title-container">
+                        <h3><a href="<%= forum_path + '/album-discussion' %>">Album discussion</a></h3>
+                        <p>Discuss your favorite (and least favorite) albums to your heart's content!</p>
+                    </div>
+                    <div class="activity"><p>Last updated in thread "<%= board_last_updated('album-discussion').title %>" <br> at <%= board_last_updated('album-discussion').updated_at.strftime("%R %Z, %F") %></p></div>
+                </li>
+                <li>
+                    <a href="<%= forum_path + '/gear' %>"><ion-icon name="ios-arrow-dropright-circle"></ion-icon></a>
+                    <div class="board-title-container">
+                        <h3><a href="<%= forum_path + '/gear' %>">Gear and hardware</a></h3>
+                        <p>Got a new turntable to show off? Not sure what guitar to buy next? This is your board.</p>
+                    </div>
+                    <div class="activity"><p>Last updated in thread "<%= board_last_updated('gear').title %>" <br> at <%= board_last_updated('gear').updated_at.strftime("%R %Z, %F") %></p></div>
+                </li>
+                <li>
+                    <div id="forum-opacity"></div>
+                    <a href="<%= forum_path + '/etc' %>"><ion-icon name="ios-arrow-dropright-circle"></ion-icon></a>
+                    <div class="board-title-container">
+                        <h3><a href="<%= forum_path + '/etc' %>">Shitposts</a></h3>
+                        <p>Post your garbage here.</p>
+                    </div>
+                    <div class="activity"><p>Last updated in thread "<%= board_last_updated('etc').title %>" <br> at <%= board_last_updated('etc').updated_at.strftime("%R %Z, %F") %></p></div>
+                </li>
+            </ul>
+            <div class="divider"></div>
+            <ul>
+                <li>
+                    <div id="forum-opacity"></div>
+                    <a href="<%= forum_path + '/feedback' %>"><ion-icon name="ios-arrow-dropright-circle"></ion-icon></a>
+                    <div class="board-title-container">
+                        <h3><a href="<%= forum_path + '/feedback' %>">Feedback and bug reports</a></h3>
+                        <p>Want a feature? Is something broken? Post about it here.</p>
+                    </div>
+                    <div class="activity"><p>Last updated in thread "<%= board_last_updated('feedback').title %>" <br> at <%= board_last_updated('feedback').updated_at.strftime("%R %Z, %F") %></p></div>
+                </li>
+                <li>
+                    <a href="<%= forum_path + '/archive' %>"><ion-icon name="ios-arrow-dropright-circle"></ion-icon></a>
+                    <div class="board-title-container">
+                        <h3><a href="<%= forum_path + '/archive' %>">Archived threads</a></h3>
+                        <p>Archived threads.</p>
+                    </div>
+                    <div class="activity"><p>Last updated in thread "<%= board_last_updated('archive').title %>" <br> at <%= board_last_updated('archive').updated_at.strftime("%R %Z, %F") %></p></div>
                 </li>
             </ul>
         </div>

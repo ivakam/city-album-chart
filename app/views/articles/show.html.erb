@@ -72,6 +72,9 @@
                 </ul>
             </div>
             <div id="article-sidebar">
+                <div id="article-submit">
+                    <a class="article-submit-btn" href="articles/new">Submit an article <ion-icon name="ios-add"></ion-icon></a>
+                </div>
                 <div id="article-categories">
                     <h2>Popular categories</h2>
                     <% Article.select(:category).distinct.each do | article | %>

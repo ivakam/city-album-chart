@@ -34,6 +34,27 @@
 	</form>
 </div>
 <% end %>
+<div id="edit-form-container" class="modal modal-inactive">
+	<div>
+		<h2>Edit post</h2>
+	</div>
+	<ion-icon name="ios-close" id="report-close" class="modal-close"></ion-icon>
+	<form id="edit-form" class="modal-form" action="/posts/update" accept-charset="UTF-8" data-remote="true" method="post">
+		<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+		<input id="edit-id" type="text" name="post[post_id]" value="" hidden>
+		<div class="modal-form-input-container">
+			<label for="edit-body"><p>Text:</p></label>
+			<textarea id="edit-body" placeholder="Type your text here" name="post[body]"></textarea>
+            <script>
+                var editContent = new EasyMDE({ element: $('#edit-body')[0] });
+            </script>
+		</div>
+		<input class="edit-submit-btn" type="submit" name="commit" value="Save edit">
+		<div class="submit-message shrunk">
+			<p>Your comment has been edited!</p>
+		</div>
+	</form>
+</div>
 <div id="main-container">
     <%= render 'partials/navbar_slim' %>
     <%= image_tag "spinner.gif", class: "spinner hidden" %>
@@ -57,6 +78,7 @@
                 <% @page_posts.each do | post | %>
                 <li>
                     <input class="post-id" value="<%= post.id %>" hidden>
+                    <input class="post-markdown" value="<%= post.body %>" hidden>
                     <div class="post-body">
                         <div class="user-info">
                             <p class="user-name"><b><a href="<%= root_url + 'users/' + post.user.username %>"><%= post.user.username %></a></b></p>

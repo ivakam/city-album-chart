@@ -1,6 +1,5 @@
 class Album < ApplicationRecord
 	include Rails.application.routes.url_helpers
-
 	has_many :tracks, dependent: :destroy
 	has_one_attached :cover
 	validate :form_presence
@@ -24,7 +23,7 @@ class Album < ApplicationRecord
 				cover.purge
 				errors[:base] << "Filesize too large"
 			elsif !cover.blob.content_type.starts_with?('image/')
-				logo.purge
+				banner.purge
 				errors[:base] << 'Wrong format'
 			end
 		end
