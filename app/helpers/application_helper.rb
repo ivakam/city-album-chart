@@ -54,7 +54,7 @@ module ApplicationHelper
 	end
 	
 	def inject_login
-		if session[:user_id]
+		if fetch_user
 			render 'partials/logout' 
 		else
 			render 'partials/login'
