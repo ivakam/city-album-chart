@@ -165,7 +165,7 @@
                         <div class="form-field" id="scraper-input">
                             <i class="hint"><a class="hint-click">Take me back!</a></i>
                             <p><%= form.label :scraper %> (paste your output here). Images go in a separate folder to me directly (see links in footer).</p>
-                            <%= form.text_area :scraper, id: "scraper-textarea", placeholder: "Paste scraper output here." %>
+                            <%= form.file_field :scraper, id: 'albums-input', multiple: true %>
                         </div>
                     </div>
                     <div class="save-container" class="submit-btn">

@@ -13,10 +13,52 @@
 	</div>
 	<input type="text" id="comment-id" value="" name="comment_id" hidden>
 	<ion-icon name="ios-close" class="modal-close"></ion-icon>
-	<p>Are you sure you want to delete this article?</p>
+	<p>Are you sure you want to delete this comment?</p>
 	<a class="delete-confirm-btn delete-comment-confirm-btn">Yes, delete it</a>
 </div>
-<% if fetch_user.email_confirmed %>
+<% if fetch_user && fetch_user.email_confirmed %>
+<div id="edit-comment-form-container" class="modal modal-inactive">
+	<div>
+		<h2>Edit comment</h2>
+	</div>
+	<ion-icon name="ios-close" id="report-close" class="modal-close"></ion-icon>
+	<form id="edit-form" class="modal-form" action="/comments/update" accept-charset="UTF-8" data-remote="true" method="post">
+		<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+		<input id="edit-comment-id" type="text" name="comment[comment_id]" value="" hidden>
+		<div class="modal-form-input-container">
+			<label for="edit-comment-body"><p>Text:</p></label>
+			<textarea id="edit-comment-body" placeholder="Type your text here" name="comment[body]"></textarea>
+            <script>
+                var commentContent = new EasyMDE({ element: $('#edit-comment-body')[0] });
+            </script>
+		</div>
+		<input class="edit-submit-btn" type="submit" name="commit" value="Save edit">
+		<div class="submit-message shrunk">
+			<p>Your comment has been edited!</p>
+		</div>
+	</form>
+</div>
+<div id="edit-article-form-container" class="modal modal-inactive">
+	<div>
+		<h2>Edit article</h2>
+	</div>
+	<ion-icon name="ios-close" id="report-close" class="modal-close"></ion-icon>
+	<form id="edit-form" class="modal-form" action="/articles/update" accept-charset="UTF-8" data-remote="true" method="post">
+		<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+		<input id="edit-article-id" type="text" name="article[article_id]" value="" hidden>
+		<div class="modal-form-input-container">
+			<label for="edit-article-body"><p>Text:</p></label>
+			<textarea id="edit-article-body" placeholder="Type your text here" name="article[body]"></textarea>
+            <script>
+                var articleContent = new EasyMDE({ element: $('#edit-article-body')[0] });
+            </script>
+		</div>
+		<input class="edit-submit-btn" type="submit" name="commit" value="Save edit">
+		<div class="submit-message shrunk">
+			<p>Your article has been edited!</p>
+		</div>
+	</form>
+</div>
 <div id="report-form-container" class="modal modal-inactive">
 	<div>
 		<h2>Submit a report</h2>
@@ -50,7 +92,9 @@
         <div id="main-opacity"></div>
         <div class="article-opacity"></div>
         <div class="article focused">
-            <div class="article-header">
+            <input type="text" id="article-id" value="<%= @article.id %>" hidden>
+            <input type="text" id="article-markdown" value="<%= @article.body %>" hidden>
+            <div class="article-header focused-featured">
                     <a><img src="<%= @article.banner.variant(resize: "600x600").processed.service_url %>"></a>
                     <a><h2><%= @article.title %></h2></a>
                 <div>
@@ -97,18 +141,19 @@
                 <div class="comment">
                     <div class="article-opacity"></div>
                     <input type="text" name="comment_id" value="<%= comment.id %>" class="comment-id" hidden>
+                    <input class="comment-markdown" type="text" value="<%= comment.body %>" hidden>
                     <div id="comment-toolbar">
                         <% if fetch_user %>
-                            <% if fetch_user.admin || @article.user.id == fetch_user.id %>
+                            <% if fetch_user.admin || comment.user.id == fetch_user.id %>
                             <ion-icon class="post-icon post-trash comment-trash" name="ios-trash"></ion-icon>
                             <% end %>
-                            <% if @article.user != fetch_user && fetch_user.email_confirmed %>
+                            <% if comment.user != fetch_user && fetch_user.email_confirmed %>
                             <ion-icon class="post-icon post-flag comment-flag" name="ios-flag"></ion-icon>
                             <% end %>
-                            <% if @article.user.id == fetch_user.id %>
+                            <% if comment.user.id == fetch_user.id %>
                             <ion-icon class="post-icon post-edit comment-edit" name="create"></ion-icon>
                             <% end %>
-                            <% if fetch_user && fetch_user != @article.user && fetch_user.email_confirmed %>
+                            <% if fetch_user && fetch_user != comment.user && fetch_user.email_confirmed %>
                             <div class="heart-container">
                                 <ion-icon class="heart-animation hidden" name="ios-heart"></ion-icon>
                                 <ion-icon class="post-icon comment-heart <%= 'red' if Upvote.find_by(user: fetch_user, upvote_type: 'comment', target_id: comment.id).present? %>" name="ios-heart"></ion-icon>
@@ -126,6 +171,10 @@
                     <div class="comment-body">
                         <p><a href="<%= root_url + 'users/' + comment.user.username %>"><%= comment.user.username %></a> says:</p>
                         <p><%= parse_markdown(comment.body) %></p>
+                    </div>
+                    <div class="comment-date-score">
+                        <p class="comment-date">Posted at <%= comment.created_at.strftime("%R %Z, %F") %></p>
+                        <p class="comment-score">Score: <%= comment_upvotes(comment) %></p>
                     </div>
                 </div>
                 <% end %>

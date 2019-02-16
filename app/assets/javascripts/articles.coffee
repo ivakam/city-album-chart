@@ -1,5 +1,10 @@
 $(document).on 'turbolinks:load', ->
 	if $('body').hasClass('articles show_article')
+		$('.edit-submit-btn').click ->
+			setTimeout( ->
+				location.reload()
+			, 500)
+		
 		$('.article-flag').click ->
 			$('#report-form-container').toggleClass('modal-inactive')
 			$('#report-type').attr('value', 'article')
@@ -21,8 +26,8 @@ $(document).on 'turbolinks:load', ->
 		$('.delete-article-confirm-btn').click ->
 			data =
 				article: 
-					id: $('#report-article').val()
-			$.post(window.location.href.replace(/\d+$/, '/articles/destroy'), data)
+					article_id: $('#report-article').val()
+			$.post(window.location.href.replace(/\d+$/, 'destroy'), data)
 			.done( ->
 				location.reload()
 			)
@@ -32,8 +37,8 @@ $(document).on 'turbolinks:load', ->
 		
 		$('.delete-comment-confirm-btn').click ->
 			data =
-				article: 
-					id: $('#comment-id').val()
+				comment: 
+					comment_id: $('#comment-id').val()
 			$.post(window.location.href.replace(/articles.+$/, 'comments/destroy'), data)
 			.done( ->
 				location.reload()
@@ -105,18 +110,27 @@ $(document).on 'turbolinks:load', ->
             opacity.css('background', 'rgba(0, 0, 0, 0.6')
             opacity.css('z-index', '5')
         
-		$('.post-edit').click ->
+		$('.comment-edit').click ->
 			e = $(this)
-			bodyText = e.closest('li').find('.edit-post')
-			btn = e.closest('li').find('.post-text input')
-			headerIcon = e.closest('li').find('.header-icons')
-			bodyText.toggleClass('active')
-			headerIcon.toggleClass('padded')
-			if bodyText.attr('contenteditable') == 'false'
-				bodyText.attr('contenteditable', 'true')
-			else
-				bodyText.attr('contenteditable', 'false')
-			btn.toggleClass('transparent')
+			id = e.closest('.comment').find('.comment-id').val()
+			bodyText = e.closest('.comment').find('.comment-markdown').val()
+			$('#edit-comment-id').attr('value', id)
+			commentContent.value(bodyText)
+			$('#edit-comment-form-container').toggleClass('modal-inactive')
+			opacity = $('#opaque')
+			opacity.css('background', 'rgba(0, 0, 0, 0.6')
+			opacity.css('z-index', '5')
+			
+		$('.article-edit').click ->
+			e = $(this)
+			id = e.closest('.article').find('#article-id').val()
+			bodyText = e.closest('.article').find('#article-markdown').val()
+			$('#edit-article-id').attr('value', id)
+			articleContent.value(bodyText)
+			$('#edit-article-form-container').toggleClass('modal-inactive')
+			opacity = $('#opaque')
+			opacity.css('background', 'rgba(0, 0, 0, 0.6')
+			opacity.css('z-index', '5')
 		
 		$('.post-text input').click ->
 			e = $(this)

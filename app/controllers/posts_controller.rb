@@ -15,7 +15,7 @@ class PostsController < ApplicationController
     end
     
     def update
-        @post = Post.find_by(id: params[:post][:id])
+        @post = Post.find_by(id: params[:post][:post_id])
         if get_user == @post.user || get_user.admin
             @post.body = params[:post][:body]
             @post.save

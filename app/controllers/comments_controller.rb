@@ -14,7 +14,7 @@ class CommentsController < ApplicationController
     end
     
     def destroy
-        @comment = Comment.find_by(id: params[:article][:id])
+        @comment = Comment.find_by(id: params[:comment][:comment_id])
         if get_user == @comment.user || get_user.admin
             @comment.destroy
         else

@@ -17,3 +17,6 @@
 //= require_tree .
 //= require drag-arrange.min
 //= require easymde.min
+//= require jsmediatags.min
+//= require musicmetadata.js
+//= require metadata-scanner.js

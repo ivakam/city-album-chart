@@ -119,7 +119,7 @@ $light-font: #e8e8e8;
                 padding-left: 8px;
                 width: 100%;
                 z-index: 3;
-                > ion-icon {
+                a > ion-icon {
                     width: 40px;
                     height: 40px;
                     color: #e3e3e3;
@@ -142,6 +142,7 @@ $light-font: #e8e8e8;
                 .board-title-container {
                     margin-left: 2px;
                     display: flex;
+                    max-width: 40%;
                     flex-direction: column;
                     justify-content: space-between;
                     flex-grow: 5;
@@ -152,8 +153,11 @@ $light-font: #e8e8e8;
                 }
                 > .activity {
                     display: flex;
+                    position: absolute;
+                    right: 8px;
                     flex-direction: column;
                     align-items: flex-end;
+                    text-align: right;
                     p:last-child {
                         opacity: 0.7;
                     }

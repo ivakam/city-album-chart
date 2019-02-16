@@ -6,5 +6,4 @@ class UserMailer < ApplicationMailer
         @user = params[:user]
         mail(:to => "#{@user.username} <#{@user.email}>", :subject => "Email Confirmation")
      end
-
 end

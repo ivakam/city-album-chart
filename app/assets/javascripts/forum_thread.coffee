@@ -9,6 +9,11 @@ $(document).on 'turbolinks:load', ->
 			opacity.css('background', 'rgba(0, 0, 0, 0.6')
 			opacity.css('z-index', '5')
 			
+		$('.edit-submit-btn').click ->
+			setTimeout( ->
+				location.reload()
+			, 500)
+			
 		$('.delete-confirm-btn').click ->
 			data =
 				post: 
@@ -56,16 +61,14 @@ $(document).on 'turbolinks:load', ->
 			
 		$('.post-edit').click ->
 			e = $(this)
-			bodyText = e.closest('li').find('.edit-post')
-			btn = e.closest('li').find('.post-text input')
-			headerIcon = e.closest('li').find('.header-icons')
-			bodyText.toggleClass('active')
-			headerIcon.toggleClass('padded')
-			if bodyText.attr('contenteditable') == 'false'
-				bodyText.attr('contenteditable', 'true')
-			else
-				bodyText.attr('contenteditable', 'false')
-			btn.toggleClass('transparent')
+			id = e.closest('li').find('.post-id').val()
+			bodyText = e.closest('li').find('.post-markdown').val()
+			$('#edit-id').attr('value', id)
+			editContent.value(bodyText)
+			$('#edit-form-container').toggleClass('modal-inactive')
+			opacity = $('#opaque')
+			opacity.css('background', 'rgba(0, 0, 0, 0.6')
+			opacity.css('z-index', '5')
 			
 		$('.post-text input').click ->
 			e = $(this)
