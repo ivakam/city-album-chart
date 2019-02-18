@@ -32,6 +32,18 @@ $light-font: #e8e8e8;
                 cursor: pointer;
             }
         }
+        #resend-email-btn {
+            text-decoration: underline;
+            font-size: 12px;
+            transition: 0.2s;
+            position: absolute;
+            opacity: 0.8;
+            right: 0;
+            bottom: 4px;
+            &:hover {
+                opacity: 1;
+            }
+        }
         > div:first-child {
             display: flex;
             flex-direction: column;
@@ -109,5 +121,16 @@ $light-font: #e8e8e8;
     }
     p {
         margin: 0;
+    }
+    > h2 {
+        display: table;
+        z-index: 5;
+        padding: 4px;
+        border-bottom: 1px $dark-border solid;
+    }
+    #feed {
+        max-height: 800px;
+        overflow-y: auto;
+        padding-right: 40px;
     }
 }

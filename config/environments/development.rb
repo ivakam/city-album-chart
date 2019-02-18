@@ -38,6 +38,8 @@ Rails.application.configure do
   config.action_mailer.perform_caching = false
 
   config.action_mailer.delivery_method = :smtp
+  
+  hostFile = File.read(File.expand_path(Rails.root + 'host_path.json'))
 
   ActionMailer::Base.smtp_settings = {
   	:address              => "smtp.gmail.com",
@@ -45,8 +47,8 @@ Rails.application.configure do
   	:domain               => "gmail.com",
   	#:user_name            => ENV["EMAIL"],
   	#:password             => ENV["EMAIL_PASSWORD"],
-  	:user_name            => "turk.po.burk@gmail.com",
-  	:password             => "Motor7huv",
+  	:user_name            => JSON.parse(hostFile)['email'],
+  	:password             => JSON.parse(hostFile)['password'],
   	:authentication       => "plain",
   	:enable_starttls_auto => true
   }

@@ -7,6 +7,14 @@ $(document).on 'turbolinks:load', ->
 		opacity = $('#opaque')
 		opacity.css('background', 'rgba(0, 0, 0, 0.6')
 		opacity.css('z-index', '5')				
+		
+	#Handler for clicking "reset password" button
+	
+	$('.password-reset-btn').click ->
+		$('#password-reset-form-container').toggleClass('modal-inactive')
+		opacity = $('#opaque')
+		opacity.css('background', 'rgba(0, 0, 0, 0.6')
+		opacity.css('z-index', '5')				
 
 	#Handler for closing the zoom-mode for images
 	

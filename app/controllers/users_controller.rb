@@ -3,6 +3,11 @@ require 'json'
 class UsersController < ApplicationController
     def show
         @user = User.find_by(username: params[:username])
+        @activity = {}
+        @activity[:articles] = Article.where(user: @user).order('created_at')
+        @activity[:posts] = Post.where(user: @user).order('created_at')
+        @activity[:threads] = ForumThread.where(user: @user).order('created_at')
+        @activity[:comments] = Comment.where(user: @user).order('created_at')
         if @user == nil
             render_404
         end

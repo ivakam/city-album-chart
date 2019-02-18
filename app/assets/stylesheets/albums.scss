@@ -243,6 +243,11 @@ body {
 			border: 1px $light-font solid;
 		}
 	}
+    #login-links {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
 	> div {
 		display: flex;
 		align-items: center;
@@ -292,9 +297,6 @@ body {
 		li:nth-of-type(3) {
 			border-left: 1px $dark-border solid;
 		}
-		li:nth-of-type(4) {
-			border-right: 1px $dark-border solid;
-		}
 	}
 	#disclaimers {
 		display: flex;
@@ -331,6 +333,10 @@ body {
 		justify-content: space-around;
 		margin-bottom: 20px;
 		position: relative;
+		transition: transform 0.5s;
+		&:hover {
+			transform: scale(1.015);
+		}
 		h1 {
 			font-family: "Poppins";
 			font-weight: bold;

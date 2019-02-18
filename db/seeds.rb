@@ -103,11 +103,11 @@ end
 	article.title = Faker::Book.title
 	article.subtitle = Faker::Lorem.sentence(4, false, 5)
 	article.body = Faker::Lorem.paragraph(15)
-	article.body << '<br>' + Faker::Lorem.paragraph(15)
-	article.body << '<br>' + Faker::Lorem.paragraph(15)
-	article.body << '<br>' + Faker::Lorem.paragraph(15)
-	article.body << '<br>' + Faker::Lorem.paragraph(15)
-	article.featured = rand(0...8) == 1 ? true : false
+	article.body << '\n' + Faker::Lorem.paragraph(15)
+	article.body << '\n' + Faker::Lorem.paragraph(15)
+	article.body << '\n' + Faker::Lorem.paragraph(15)
+	article.body << '\n' + Faker::Lorem.paragraph(15)
+	article.featured = i == 1 ? true : false
     articleBanner =  Dir.glob(Rails.root.join("app/assets/images/bg/*.*"))[rand(0...Dir.glob(Rails.root.join("app/assets/images/bg/*.*")).size)]
 	p articleBanner
 	article.banner.attach(io: File.open(articleBanner), filename: articleBanner.split(/\/bg\//)[1])
