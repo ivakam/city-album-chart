@@ -56,6 +56,9 @@ Rails.application.routes.draw do
   post 'comments/create'
   post 'comments/destroy'
   
+  post 'subscriptions/create'
+  post 'subscriptions/destroy'
+  
   get 'home', to: 'home#show'
   
   resources :albums

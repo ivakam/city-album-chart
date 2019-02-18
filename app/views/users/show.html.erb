@@ -206,30 +206,38 @@
             <a id="resend-email-btn" href="<%= root_url + 'users/resend-email' %>">Resend confirmation email</a>
             <% end %>
         </div>
-        <h2>Recent activity:</h2>
-        <div id="feed">
-            <% @activity[:posts].each do | post | %>
-            <a href="<%= "#{forum_path}/#{post.forum_thread.category}/t/#{post.forum_thread.id}" %>" class="post-card">
-                <div class="card-opacity"></div>
-                <h4><%= post.user.username %> posted in thread <i><%= post.forum_thread.title %></i> :</h4>
-                <p class="post-score">Score: <%= post_upvotes(post) %></p>
-                <div class="post-container">
-                    <div class="user-info">
-                        <div class="avatar-wrapper">
-                            <%= image_tag user_avatar(post.user) %>
-                        </div>
-                    </div>
-                    <div class="text-container">
-                        <div class="post-text">
-                            <p><%= parse_markdown(post.body.split(/\n/)[0], true) %></p>
-                        </div>
-                    </div>
-                </div>
-            </a>
-            <% end %>
-        </div>
-        <div id="favorites-display">
-            
+        <div id="activity-container">
+			<h2>Recent activity:</h2>
+			<div id="feed">
+				<% @activity[:posts].each do | post | %>
+				<a href="<%= "#{forum_path}/#{post.forum_thread.category}/t/#{post.forum_thread.id}" %>" class="post-card">
+					<div class="card-opacity"></div>
+					<h4><%= post.user.username %> posted in thread <i><%= post.forum_thread.title %></i> :</h4>
+					<p class="post-score">Score: <%= post_upvotes(post) %></p>
+					<div class="post-container">
+						<div class="user-info">
+							<div class="avatar-wrapper">
+								<%= image_tag user_avatar(post.user) %>
+							</div>
+						</div>
+						<div class="text-container">
+							<div class="post-text">
+								<p><%= parse_markdown(post.body.split(/\n/)[0], true) %></p>
+							</div>
+						</div>
+					</div>
+				</a>
+				<% end %>
+			</div>
+		</div>
+        <div id="user-sidebar">
+            <div id="notification-panel">
+            	<% Notification.where(user: @user).each do |n| %>
+            	<div class="notification">
+            		<p>Type: <%= n.notification_type + ' ID: ' + n.id.to_s %></p>
+            	</div>
+            	<% end %>
+            </div>
         </div>
 	</div>
 </div>

@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
     
     before_action do
         ActiveStorage::Current.host = request.base_url if Rails.application.config.active_storage.service == :local
+        set_user
     end
     
     rescue_from StandardError do | e |
@@ -59,5 +60,11 @@ class ApplicationController < ActionController::Base
     
     def on_routing_error
         render_404
+    end
+    
+    private
+    
+    def set_user
+        UserInfo.get_user = session[:user_id]
     end
 end

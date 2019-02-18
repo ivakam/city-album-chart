@@ -86,3 +86,14 @@ $(document).on 'turbolinks:load', ->
 			.fail( ->
 				console.log('Error sending post data')
 			)
+
+		$('.subscribe-btn').click ->
+			e = $(this)
+			data =
+				subscription:
+					target_id: threadId
+					subscription_type: 'ForumThread'
+			$.post(window.location.href.replace(/\/forum.+/, '/subscriptions/create'), data)
+			.fail( ->
+				console.log('Error sending post data')
+			)

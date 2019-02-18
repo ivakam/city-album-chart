@@ -26,6 +26,26 @@ $light-font: #e8e8e8;
     }
 }
 
+#board-container {
+    position: relative;
+}
+
+.subscribe-btn {
+    padding: 8px 15px;
+    background: $lighter-bg;
+    border: 1px $dark-border solid;
+    border-radius: 4px;
+    transition: 0.3s;
+    position: absolute;
+    left: 8px;
+    top: 53px;
+    z-index: 10;
+    &:hover {
+        border: 1px $light-font solid;
+        cursor: pointer;
+    }
+}
+
 #post-list {
     .page-container {
         a:hover {

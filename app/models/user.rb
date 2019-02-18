@@ -7,6 +7,8 @@ class User < ApplicationRecord
 	has_many :articles
 	has_many :comments
 	has_many :albums
+	has_many :notifications, :dependent => :destroy
+	has_many :subscriptions, :dependent => :destroy
 	has_many :upvotes, :dependent => :destroy
 
     before_create :confirmation_token
