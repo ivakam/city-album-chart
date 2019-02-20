@@ -103,10 +103,10 @@ end
 	article.title = Faker::Book.title
 	article.subtitle = Faker::Lorem.sentence(4, false, 5)
 	article.body = Faker::Lorem.paragraph(15)
-	article.body << '\n' + Faker::Lorem.paragraph(15)
-	article.body << '\n' + Faker::Lorem.paragraph(15)
-	article.body << '\n' + Faker::Lorem.paragraph(15)
-	article.body << '\n' + Faker::Lorem.paragraph(15)
+	article.body << '\n ' + Faker::Lorem.paragraph(15)
+	article.body << '\n ' + Faker::Lorem.paragraph(15)
+	article.body << '\n ' + Faker::Lorem.paragraph(15)
+	article.body << '\n ' + Faker::Lorem.paragraph(15)
 	article.featured = i == 1 ? true : false
     articleBanner =  Dir.glob(Rails.root.join("app/assets/images/bg/*.*"))[rand(0...Dir.glob(Rails.root.join("app/assets/images/bg/*.*")).size)]
 	p articleBanner
@@ -167,16 +167,14 @@ def CreateAlbumWithTracks(albumParam, tracks = [])
     end
 	tempQuality = 0
 	trackDurationCount = 0
-	tracks.each_with_index do | t, i |
-		t[:order] = i + 1
-	end
 	hasTracks = (tracks == []) ? false : true
-	tracks.each do | t |
+	tracks.each_with_index do | t, i |
 		albumTrack = Track.new()
 		albumTrack.title = t[:title]
 		albumTrack.romanization = t[:romanization]
 		albumTrack.duration = t[:duration]
 		albumTrack.album = currentAlbum
+		albumTrack.order = i + 1
 		albumTrack.save
 		if t[:duration].present?
 			trackDurationCount += 1

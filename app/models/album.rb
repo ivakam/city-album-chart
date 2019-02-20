@@ -2,7 +2,6 @@ class Album < ApplicationRecord
 	include Rails.application.routes.url_helpers
 	has_many :tracks, dependent: :destroy
 	has_one_attached :cover
-	validate :form_presence
 	validate :cover_validation
 	
     after_save do
@@ -26,14 +25,6 @@ class Album < ApplicationRecord
 				banner.purge
 				errors[:base] << 'Wrong format'
 			end
-		end
-	end
-	
-	def form_presence
-		if scraper.blank?
-			if (title.blank? || romaji_artist.blank?)
-		  		errors.add(:base, "All required fields must be filled out.")
-		  	end
 		end
 	end
 end

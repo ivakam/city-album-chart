@@ -57,9 +57,12 @@ $light-font: #e8e8e8;
             position: absolute;
             transition: 0.1s;
             left: 0;
+            bottom: 0;
             width: 150px;
+            border-top: 1px $dark-border solid;
+            border-bottom: 1px $dark-border solid;
             &:hover {
-                background: #2f3322;
+                background: $lighter-bg;
             }
         }
         .icon {

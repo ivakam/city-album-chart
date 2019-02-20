@@ -3,11 +3,12 @@ require 'json'
 class UsersController < ApplicationController
     def show
         @user = User.find_by(username: params[:username])
-        @activity = {}
-        @activity[:articles] = Article.where(user: @user).order('created_at')
-        @activity[:posts] = Post.where(user: @user).order('created_at')
-        @activity[:threads] = ForumThread.where(user: @user).order('created_at')
-        @activity[:comments] = Comment.where(user: @user).order('created_at')
+        @activity = Article.where(user: @user) + Post.where(user: @user) + ForumThread.where(user: @user) + Comment.where(user: @user)
+        @activity = @activity.sort_by { |m| m.created_at }
+        @activity = @activity.slice(0, 25)
+        if @user == get_user
+            @notifications = Notification.where(user: get_user).order('created_at').reverse_order.limit(25)
+        end
         if @user == nil
             render_404
         end

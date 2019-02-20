@@ -63,7 +63,7 @@
     <%= image_tag "spinner.gif", class: "spinner hidden" %>
     <div id="board-container">
         <div id="main-opacity"></div>
-        <a class="subscribe-btn">Subscribe to this thread</a>
+        <ion-icon class="post-icon post-bell <%= 'green' if Subscription.find_by(user: fetch_user, subscription_type: 'ForumThread', target_id: @thread.id).present? %>" name="ios-notifications"></ion-icon>
         <h2 id="title"><a href="<%= forum_path + "/#{@thread.category}" %>"><%= @thread.category.titleize %></a> > <%= @thread.title %></h2>
         <div class="page-container top">
             <% if @page - 1 > 0 %>

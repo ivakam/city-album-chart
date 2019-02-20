@@ -14,8 +14,19 @@ $(document).on 'turbolinks:load', ->
 		$('#password-reset-form-container').toggleClass('modal-inactive')
 		opacity = $('#opaque')
 		opacity.css('background', 'rgba(0, 0, 0, 0.6')
-		opacity.css('z-index', '5')				
-
+		opacity.css('z-index', '5')
+	
+	#Handler for clicking the notifications button
+	
+	$('#notification-btn').click ->
+		$('#notification-list').toggleClass('hidden')
+		if $(this).hasClass('unread-notifications')
+			$('#notification-btn').removeClass('unread-notifications')
+			$('#notification-btn').find('ion-icon')[0].outerHTML = '<ion-icon name="ios-mail" role="img" class="hydrated" aria-label="mail"></ion-icon>'
+			$.post(window.location.origin + '/notifications/mark-as-read')
+			.fail( ->
+				console.log('Error sending post data')
+			)
 	#Handler for closing the zoom-mode for images
 	
 	resetFocus = () ->
@@ -274,6 +285,13 @@ $(document).on 'turbolinks:load', ->
 				opacity.css('background', 'rgba(0, 0, 0, 0.6')
 				opacity.css('z-index', '5')
 		
+		#Updating selected file for cover editing
+		
+		updateSelectedCover = (e) ->
+			e = $(e.target)
+			selectedCoverText = e.parent().parent().find('.selected-cover')
+			selectedCoverText.html('Currently selected file: ' + e[0].value.split(/(\\|\/)/g).pop())
+		
 		# Create an album
 		
 		displayAlbum = (refreshSplash = true) ->
@@ -317,8 +335,20 @@ $(document).on 'turbolinks:load', ->
 				if user
 					editFormStr = 
 					"<div class='edit-form-container'>
-						<form action='/albums/update' accept-charset='UTF-8' data-remote='true' method='post'>
+						<form action='/albums/update' accept-charset='UTF-8' data-remote='true' method='post' enctype='multipart/form-data'>
 							<div class='field-container'>
+								<div class='cover-edit-container'>
+									<p>Album cover</p>
+									<div>
+										<label for='#{album.title.replace("'", '&#39;').replace(/\s+/, '')}-cover'>
+										    <img src='' class='cover-editable'>
+										</label>
+										<input class='album-edit-cover' id='#{album.title.replace("'", '&#39;').replace(/\s+/, '')}-cover' name='album[cover]' type='file'>
+										<div><p><b>Update cover</b></p></div>
+									</div>
+									<p class='selected-cover'>No cover selected</p>
+								</div>
+								<div class='divider'></div>
 								<div class='input-field-container'>
 									<div class='form-field'>
 										<p><label for='#{album.title.replace("'", '&#39;').replace(/\s+/, '')}-title'>Title*</label></p>
@@ -449,7 +479,7 @@ $(document).on 'turbolinks:load', ->
 										</ul>
 									</div>
 									<div class='contributor'>
-										<p>Uploaded at #{album.upload_date},</p>
+										<p>Uploaded on #{album.upload_date},</p>
 										<p>Contributor: <a href='#{host.replace(/albums\/fetch\?/, 'users/') + album.contributor.toLowerCase()}'>#{album.contributor}</a></p>
 									</div>
 								</div> 
@@ -482,6 +512,7 @@ $(document).on 'turbolinks:load', ->
 			addEventListener('.track-add-btn', 'click', addTrackClick)
 			addEventListener('.track-delete-btn', 'click', deleteTrackClick)
 			addEventListener('.edit-submit-btn', 'click', editSubmitClick)
+			addEventListener('.album-edit-cover', 'change', updateSelectedCover)
 
 			$('.track-input-container').arrangeable({
 				dragSelector: '.draggable-area'
@@ -553,8 +584,10 @@ $(document).on 'turbolinks:load', ->
 						$('.info-wrapper').attr('class', 'info-wrapper')
 						sibling.addClass('is-open')
 						expandImg = sibling.find('.expandable-img')
+						editImg = sibling.find('.cover-editable')
 						if expandImg.attr('src') == ''
 							expandImg.attr('src', albums.get(title).coverlink)
+							editImg.attr('src', albums.get(title).coverlink)
 						sibling.find('.info-background img').css('display', 'block')
 						arrow.css('transform', 'rotate(180deg)')
 						parent.css('height', '820px')

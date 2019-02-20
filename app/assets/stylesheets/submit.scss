@@ -11,11 +11,11 @@ $light-font: #e8e8e8;
         resize: none;
         width: 100%;
         overflow-y: auto;
-        border: 1px #686868 solid;
+        border: 1px $dark-border solid;
     }
     input[type=text], input[type=password] {
         font-family: "Roboto";
-        color: #e3e3e3;
+        color: $dark-font;
         font-size: 18px;
         padding: 4px;
     }
@@ -32,15 +32,15 @@ $light-font: #e8e8e8;
         background: $darker-bg;
         resize: none;
         overflow: auto;
-        border: 1px #686868 solid;
+        border: 1px $dark-border solid;
     }
     textarea:placeholder {
-        color: #e3e3e3;  
+        color: $dark-font;  
     }
     
     input[type=text], input[type=password] {
         font-family: "Roboto";
-        color: #e3e3e3;
+        color: $dark-font;
         font-size: 18px;
         padding: 4px;
     }
@@ -52,6 +52,17 @@ $light-font: #e8e8e8;
     #submit-container {
         display: flex;
         z-index: 3;
+        .cover-browse {
+            color: $dark-font;
+            font-size: 40px;
+            transition: 0.1s;
+            padding-bottom: 40px;
+            margin-top: 5px;
+            &:hover {
+                cursor: pointer;
+                color: white;
+            }
+        }
         #submit-instructions {
             flex-shrink: 2;
             min-width: 40%;
@@ -61,7 +72,7 @@ $light-font: #e8e8e8;
             p {
                 font-size: 16px;
                 padding-right: 30px;
-                border-right: 1px #686868 solid;
+                border-right: 1px $dark-border solid;
             }
         }
         form {
@@ -76,26 +87,15 @@ $light-font: #e8e8e8;
                 position: relative;
                 padding-top: 30px;
                 padding-bottom: 30px;
-                border-top: 1px #686868 solid;
-                border-bottom: 1px #686868 solid;
-                .cover-browse {
-                    color: #e3e3e3;
-                    font-size: 40px;
-                    transition: 0.1s;
-                    padding-bottom: 40px;
-                    margin-top: 5px;
-                    &:hover {
-                        cursor: pointer;
-                        color: white;
-                    }
-                }
+                border-top: 1px $dark-border solid;
+                border-bottom: 1px $dark-border solid;
                 input {
                     font-family: "Roboto";
                     font-size: 20px;
                     cursor: pointer;
                     border: none;
                     background: none;
-                    color: #e3e3e3;
+                    color: $dark-font;
                     position: absolute;
                     left: -105px;
                     bottom: 35px;
@@ -108,6 +108,7 @@ $light-font: #e8e8e8;
             .save-container {
                 display: flex;
                 flex-direction: column;
+                margin-top: 20px;
                 width: 100%;
                 align-items: center;
                 h2 {
@@ -117,19 +118,19 @@ $light-font: #e8e8e8;
                 }
                 input {
                     width: 60%;
-                    background: #2a2a2a;
-                    border: 1px #414141 solid;
+                    background: $lighter-bg;
+                    border: 1px $dark-border solid;
                     border-radius: 5px;
                     font-family: "Roboto";
                     font-size: 25px;
-                    color: #e3e3e3;
+                    color: $dark-font;
                     cursor: pointer;
                     padding: 5px 0 5px 0;
                     transition: border 0.2s;
                     overflow: visible;
                 }
                 .save-btn:hover {
-                    border: 1px #e3e3e3 solid;
+                    border: 1px $dark-font solid;
                 }
             }
             #form-container {
@@ -167,7 +168,7 @@ $light-font: #e8e8e8;
                             width: 100%;
                             height: 150px;
                             padding: 5px;
-                            color: #e3e3e3;
+                            color: $dark-font;
                             margin: 0;
                         }
                         .tracklist-submit {
@@ -204,12 +205,42 @@ $light-font: #e8e8e8;
                     padding: 20px;
                     display: flex;
                     flex-direction: column;
-                    #scraper-textarea {
-                        width: 100%;
-                        height: 500px;
-                        padding: 5px;
-                        color: #e3e3e3;
-                        overflow-y: auto;
+                    input {
+                        width: 0;
+                        height: 0;
+                        padding: 0;
+                        margin: 0;
+                        opacity: 0;
+                        z-index: -5;
+                    }
+                    h2 {
+                        margin: 0;
+                    }
+                    ion-icon {
+                        padding: 0;
+                        margin: 5px 0;
+                    }
+                    #scraper-submit-btn {
+                        padding: 8px 15px;
+                        font-size: 25px;
+                        background: $lighter-bg;
+                        border: 1px $dark-border solid;
+                        border-radius: 4px;
+                        transition: 0.2s;
+                        width: 30%;
+                        text-align: center;
+                        margin-top: 15px;
+                        &:hover {
+                            cursor: pointer;
+                            border: 1px $light-border solid;
+                        }
+                    }
+                    .transparent {
+                        opacity: 0.7 !important;
+                        &:hover {
+                            cursor: default !important;
+                            border: 1px $dark-border solid !important;
+                        }
                     }
                 }
             }
@@ -232,8 +263,8 @@ $light-font: #e8e8e8;
         min-width: 500px;
         padding: 30px;
         margin: 30px;
-        border-top: 1px #686868 solid;
-        border-bottom: 1px #686868 solid;
+        border-top: 1px $dark-border solid;
+        border-bottom: 1px $dark-border solid;
         > div {
             display: flex;
             flex-direction: column;
@@ -244,7 +275,7 @@ $light-font: #e8e8e8;
             }
         }
         input {
-            color: #e8e8e8;
+            color: $light-font;
             font-family: 'Roboto';
         }
         input[type="submit"] {

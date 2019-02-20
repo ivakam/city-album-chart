@@ -95,6 +95,19 @@ $(document).on 'turbolinks:load', ->
 			.fail( ->
 				console.log('Error sending post data')
 			)
+			
+		$('.article-bell').click ->
+			e = $(this)
+			id = $('#article-id').val()
+			e.toggleClass('green')
+			data =
+				subscription:
+					target_id: id
+					subscription_type: 'Article'
+			$.post(window.location.href.replace(/\/articles.+/, '/subscriptions/create'), data)
+			.fail( ->
+				console.log('Error sending post data')
+			)
 		
 		$('.article-trash').click ->
 			$('#article-delete-modal').toggleClass('modal-inactive')
@@ -148,3 +161,4 @@ $(document).on 'turbolinks:load', ->
 			.fail( ->
 				console.log('Error sending post data')
 			)
+		

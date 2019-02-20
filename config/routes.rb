@@ -59,6 +59,8 @@ Rails.application.routes.draw do
   post 'subscriptions/create'
   post 'subscriptions/destroy'
   
+  post 'notifications/mark-as-read', to: 'notifications#mark_as_read'
+  
   get 'home', to: 'home#show'
   
   resources :albums

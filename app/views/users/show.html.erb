@@ -206,38 +206,110 @@
             <a id="resend-email-btn" href="<%= root_url + 'users/resend-email' %>">Resend confirmation email</a>
             <% end %>
         </div>
-        <div id="activity-container">
-			<h2>Recent activity:</h2>
-			<div id="feed">
-				<% @activity[:posts].each do | post | %>
-				<a href="<%= "#{forum_path}/#{post.forum_thread.category}/t/#{post.forum_thread.id}" %>" class="post-card">
-					<div class="card-opacity"></div>
-					<h4><%= post.user.username %> posted in thread <i><%= post.forum_thread.title %></i> :</h4>
-					<p class="post-score">Score: <%= post_upvotes(post) %></p>
-					<div class="post-container">
-						<div class="user-info">
-							<div class="avatar-wrapper">
-								<%= image_tag user_avatar(post.user) %>
+        <div id="profile-body">
+			<div id="activity-container">
+				<h2>Recent activity:</h2>
+				<div id="feed">
+				<% @activity.each do | a | %>
+					<% if a.class.name == 'Post' %> 
+					<a href="<%= "#{forum_path}/#{a.forum_thread.category}/t/#{a.forum_thread.id}" %>" class="post-card">
+						<div class="card-opacity"></div>
+						<h4><%= a.user.username %> posted in thread <i><%= a.forum_thread.title %></i> :</h4>
+						<p class="post-score">Score: <%= post_upvotes(a) %></p>
+						<div class="post-container">
+							<div class="user-info">
+								<div class="avatar-wrapper">
+									<%= image_tag user_avatar(a.user) %>
+								</div>
+							</div>
+							<div class="text-container">
+								<div class="post-text">
+									<p><%= parse_markdown(a.body.split(/\n/)[0], true) %></p>
+								</div>
 							</div>
 						</div>
-						<div class="text-container">
-							<div class="post-text">
-								<p><%= parse_markdown(post.body.split(/\n/)[0], true) %></p>
-							</div>
-						</div>
-					</div>
-				</a>
+					</a>
+					<% end %>
+					<% if a.class.name == 'Article' %>
+                    <a class="article post-card" href="<%= articles_path + '/' + a.id.to_s %>">
+                    	<div class="card-opacity"></div>
+                    	<h4><%= @user.username %> published an article:</h4>
+                        <div class="article-header">
+                            <div class="header-positioner"><img src="<%= a.banner.variant(resize: "600x600").processed.service_url %>"></div>
+                            <div class="header-positioner"><h2><%= a.title %></h2></div>
+                            <div>
+                                <div>
+                                    <div class="avatar-wrapper">
+                                        <%= image_tag user_avatar(a.user) %>
+                                    </div>
+                                    <p>By <%= a.user.username %></p>
+                                </div>
+                                <p>&nbsp;- <%= a.created_at.strftime('%-d %b, %Y') %></p>
+                                <p class="article-score">Score: <%= article_upvotes(a) %></p>
+                            </div>
+                        </div>
+                        <div class="article-body">
+                            <h4><%= a.subtitle %></h4>
+                            <p><%= parse_markdown(a.body) %></p>
+                        </div>
+                    </a>
+					<% end %>
+				<% end %>
+				</div>
+			</div>
+			<div id="user-sidebar">
+				<% if fetch_user == @user %>
+				<div id="notification-panel">
+					<h3>Recent notifications:</h3>
+					<% if !@notifications.present? %>
+					<i>No notifications to display!</i>
+					<% else %>
+						<% @notifications.each do | n | %>
+							<% if n.notification_type == 'ForumThread' %>
+							<% @post = Post.find_by(id: n.target_id) %>
+							<% @thread = @post.forum_thread %>
+							<a class="notification-card" href="<%= forum_path + "/#{@thread.category}/t/#{@thread.id}" %>">
+								<div class="notification-opacity"></div>
+								<div class="notification-header">
+									<h4><%= @post.user.username %> posted in <%= @thread.title %>:</h4>
+									<p>Posted <%= @post.created_at.strftime('%b %d') %></p>
+								</div>
+								<div class="notification-divider"></div>
+								<div class="notification-body">
+		                            <div class="avatar-wrapper">
+		                                <%= image_tag user_avatar(@post.user) %>
+		                            </div>
+		                            <div class="text-container">
+										<p><%= parse_markdown(@post.body.split(/\n/)[0], true) %></p>
+									</div>
+								</div>
+							</a>
+							<% elsif n.notification_type == 'Article' %>
+							<% @comment = Comment.find_by(id: n.target_id) %>
+							<% @article = @comment.article %>
+							<a class="notification-card" href="<%= articles_path + "/#{@article.id}" %>">
+								<div class="notification-opacity"></div>
+								<div class="notification-header">
+									<h4><%= @comment.user.username %> commented on <%= @article.title %>:</h4>
+									<p>Posted <%= @comment.created_at.strftime('%b %d') %></p>
+								</div>
+								<div class="notification-divider"></div>
+								<div class="notification-body">
+		                            <div class="avatar-wrapper">
+		                                <%= image_tag user_avatar(@comment.user) %>
+		                            </div>
+		                            <div class="text-container">
+										<p><%= parse_markdown(@comment.body.split(/\n/)[0], true) %></p>
+									</div>
+								</div>
+							</a>
+							<% end %>
+						<% end %>
+					<% end %>
+					<!--<a id="see-all" href="">See all</a>-->
+				</div>
 				<% end %>
 			</div>
 		</div>
-        <div id="user-sidebar">
-            <div id="notification-panel">
-            	<% Notification.where(user: @user).each do |n| %>
-            	<div class="notification">
-            		<p>Type: <%= n.notification_type + ' ID: ' + n.id.to_s %></p>
-            	</div>
-            	<% end %>
-            </div>
-        </div>
 	</div>
 </div>

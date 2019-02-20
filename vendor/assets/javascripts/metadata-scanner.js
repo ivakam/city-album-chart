@@ -2,7 +2,7 @@ window.onload = function() {
     if (document.body.classList.contains('albums') && document.body.classList.contains('submit')) {
         console.log('Scraper is running');
         class Album {
-            constructor(title, artist, year, artwork) {
+            constructor(title, artist, year, artwork = null) {
                 this.title = title;
                 this.artist = artist;
                 this.year = year;
@@ -28,43 +28,41 @@ window.onload = function() {
         }
         
         // Declare and instantiate array, counter, and FileList length variables.
-        let albumObjects = new Array(0);
+        window.scraper = {}
+        window.scraper.albumObjects = [];
         let processedFiles = 0;
         let fileListLength = 0;
-        
+        let submitBtn = document.getElementById('scraper-submit-btn')
         let fileInputElement = document.getElementById('albums-input');
+        let statusDisplay = document.getElementById('scraper-status');
         fileInputElement.addEventListener('change', processFiles)
         
-        async function processFiles() {
+        function processFiles() {
+            window.scraper.albumObjects = []
             let files = this.files;
             fileListLength = files.length;
+            submitBtn.classList.add('transparent')
+            statusDisplay.innerHTML = 'Processing... This may take a few seconds.'
             // files is a FileList object and must be iterated through this way.
             for (let filesIndex = 0; filesIndex < files.length; filesIndex++) {
                 if ((files[filesIndex].name.endsWith(".flac")) ||
                     (files[filesIndex].name.endsWith(".m4a")) ||
                     (files[filesIndex].name.endsWith(".mp3"))) {
-                    await analyzeTags(files[filesIndex]);
+                    analyzeTags(files[filesIndex]);
                 } else {
                     // The file is not able to be analyzed.
-                    await fileProcessed();
+                    fileProcessed();
                 }
             }
-            console.log(albumObjects);
         }
         
         function analyzeTags(inputFile) {
             if (inputFile.name.endsWith(".mp3")) {
-                return new Promise(resolve => { 
-                    analyzeRegular(inputFile);
-                });
+                analyzeRegular(inputFile);
             } else if (inputFile.name.endsWith(".m4a")) {
-                return new Promise(resolve => {
-                    analyzeM4a(inputFile);
-                });
+                analyzeM4a(inputFile);
             } else if (inputFile.name.endsWith(".flac")) {
-                return new Promise(resolve => {
-                    analyzeFlac(inputFile);
-                });
+                analyzeFlac(inputFile);
             }
         }
         
@@ -79,7 +77,7 @@ window.onload = function() {
                     let lengthSeconds = 0;
                     let length = '';
                     let track = '';
-                    let albumArt = null;
+                    //let albumArt = null;
         
                     let audioObjectUrl = URL.createObjectURL(inputFile);
                     let audioFile = new Audio(audioObjectUrl);
@@ -132,7 +130,7 @@ window.onload = function() {
                         }
         
                         // Read album artwork.
-                        albumArt = tag.tags.picture;
+                        //albumArt = tag.tags.picture;
         
                         // After processing, ensure that year and track are both integers.
                         year = parseInt(year);
@@ -140,13 +138,13 @@ window.onload = function() {
         
                         // Create a new album object and add the current track to its tracklist if no other songs from the album have been processed.
                         // Otherwise, find the object for the current album and add the current track to its tracklist.
-                        let currentAlbum = new Album(album, albumArtist, year, albumArt);
+                        let currentAlbum = new Album(album, albumArtist, year);
                         let currentTrack = new Track(track, title, artist, length);
                         if (albumExists(currentAlbum)) {
-                            albumObjects[currentAlbumIndex(currentAlbum)].tracklist.push(currentTrack);
+                            window.scraper.albumObjects[currentAlbumIndex(currentAlbum)].tracklist.push(currentTrack);
                         } else {
-                            albumObjects.push(currentAlbum);
-                            albumObjects[albumObjects.length - 1].tracklist.push(currentTrack);
+                            window.scraper.albumObjects.push(currentAlbum);
+                            window.scraper.albumObjects[window.scraper.albumObjects.length - 1].tracklist.push(currentTrack);
                         }
                         fileProcessed();
                     });
@@ -194,7 +192,7 @@ window.onload = function() {
                 let lengthSeconds = 0;
                 let length = '';
                 let track = '';
-                let albumArt = null;
+                //let albumArt = null;
         
                 // Read length in seconds once the audio file is loaded.
                 lengthSeconds = result.duration;
@@ -240,7 +238,7 @@ window.onload = function() {
                 track = result.track.no;
         
                 // Read album artwork.
-                albumArt = result.picture;
+                //albumArt = result.picture;
         
                 // After processing, ensure that year and track are both integers.
                 year = parseInt(year);
@@ -248,13 +246,13 @@ window.onload = function() {
         
                 // Create a new album object and add the current track to its tracklist if no other songs from the album have been processed.
                 // Otherwise, find the object for the current album and add the current track to its tracklist.
-                let currentAlbum = new Album(album, albumArtist, year, albumArt);
+                let currentAlbum = new Album(album, albumArtist, year);
                 let currentTrack = new Track(track, title, artist, length);
                 if (albumExists(currentAlbum)) {
-                    albumObjects[currentAlbumIndex(currentAlbum)].tracklist.push(currentTrack);
+                    window.scraper.albumObjects[currentAlbumIndex(currentAlbum)].tracklist.push(currentTrack);
                 } else {
-                    albumObjects.push(currentAlbum);
-                    albumObjects[albumObjects.length - 1].tracklist.push(currentTrack);
+                    window.scraper.albumObjects.push(currentAlbum);
+                    window.scraper.albumObjects[window.scraper.albumObjects.length - 1].tracklist.push(currentTrack);
                 }
                 fileProcessed();
             });
@@ -271,7 +269,7 @@ window.onload = function() {
                     let lengthSeconds = 0;
                     let length = 'ALAC length not supported.';
                     let track = '';
-                    let albumArt = null;
+                    //let albumArt = null;
         
                     // Read year.
                     year = tag.tags.year;
@@ -305,7 +303,7 @@ window.onload = function() {
                     }
         
                     // Read album artwork.
-                    albumArt = tag.tags.picture;
+                    //albumArt = tag.tags.picture;
         
                     // After processing, ensure that year and track are both integers.
                     year = parseInt(year);
@@ -313,13 +311,13 @@ window.onload = function() {
         
                     // Create a new album object and add the current track to its tracklist if no other songs from the album have been processed.
                     // Otherwise, find the object for the current album and add the current track to its tracklist.
-                    let currentAlbum = new Album(album, albumArtist, year, albumArt);
+                    let currentAlbum = new Album(album, albumArtist, year);
                     let currentTrack = new Track(track, title, artist, length);
                     if (albumExists(currentAlbum)) {
-                        albumObjects[currentAlbumIndex(currentAlbum)].tracklist.push(currentTrack);
+                        window.scraper.albumObjects[currentAlbumIndex(currentAlbum)].tracklist.push(currentTrack);
                     } else {
-                        albumObjects.push(currentAlbum);
-                        albumObjects[albumObjects.length - 1].tracklist.push(currentTrack);
+                        window.scraper.albumObjects.push(currentAlbum);
+                        window.scraper.albumObjects[window.scraper.albumObjects.length - 1].tracklist.push(currentTrack);
                     }
                     fileProcessed();
                 },
@@ -331,14 +329,14 @@ window.onload = function() {
         }
         
         function albumExists(inputAlbumObject) {
-            if (albumObjects.length === 0) {
+            if (window.scraper.albumObjects.length === 0) {
                 return false;
             } else {
-                if (albumObjects[albumObjects.length - 1].equals(inputAlbumObject)) {
+                if (window.scraper.albumObjects[window.scraper.albumObjects.length - 1].equals(inputAlbumObject)) {
                     return true;
                 } else {
-                    for (let albumIndex = 0; albumIndex < albumObjects.length; albumIndex++) {
-                        if (albumObjects[albumIndex].equals(inputAlbumObject)) {
+                    for (let albumIndex = 0; albumIndex < window.scraper.albumObjects.length; albumIndex++) {
+                        if (window.scraper.albumObjects[albumIndex].equals(inputAlbumObject)) {
                             return true;
                         }
                     }
@@ -348,8 +346,8 @@ window.onload = function() {
         }
         
         function currentAlbumIndex(inputAlbumObject) {
-            for (let albumIndex = 0; albumIndex < albumObjects.length; albumIndex++) {
-                if (albumObjects[albumIndex].equals(inputAlbumObject)) {
+            for (let albumIndex = 0; albumIndex < window.scraper.albumObjects.length; albumIndex++) {
+                if (window.scraper.albumObjects[albumIndex].equals(inputAlbumObject)) {
                     return albumIndex;
                 }
             }
@@ -361,12 +359,15 @@ window.onload = function() {
                 // All files have been processed. Sort tracklists and clear track numbers.
                 sortTracklists();
                 console.log('All files have been processed.');
+                submitBtn.classList.remove('transparent')
+                statusDisplay.innerHTML = 'Ready for submission!'
+                console.log(window.scraper.albumObjects);
             }
         }
         
         function sortTracklists() {
-            for (let albumIndex = 0; albumIndex < albumObjects.length; albumIndex++) {
-                albumObjects[albumIndex].tracklist.sort(function (a, b) {
+            for (let albumIndex = 0; albumIndex < window.scraper.albumObjects.length; albumIndex++) {
+                window.scraper.albumObjects[albumIndex].tracklist.sort(function (a, b) {
                     if (a.trackNumber < b.trackNumber) {
                         return -1;
                     } else if (a.trackNumber > b.trackNumber) {
@@ -379,7 +380,7 @@ window.onload = function() {
         }
         
         function exportData() {
-            return albumObjects;
+            return window.scraper.albumObjects;
         }
     }
 }

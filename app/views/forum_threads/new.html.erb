@@ -11,14 +11,14 @@
             </div>
             <div class="thread-body">
                 <input type="hidden" name="thread[category]" value="<%= params[:category] %>">
-                <label for="thread-title"><p>Thread title</p></label>
-                <input id="thread-title" type="text" name="thread[title]" placeholder="Title">
-                <label for="thread-body"><p>Text</p></label>
+                <div id="title-subtitle">
+                    <input id="thread-title" type="text" name="thread[title]" placeholder="Title">
+                </div>
                 <textarea id="thread-body" name="thread[body]" placeholder="Type your text here"></textarea>
                 <script>
                     var threadContent = new EasyMDE({ element: $('#thread-body')[0] });
                 </script>
-                <input type="submit" id="thread-submit-btn" name="commit" value="Post thread">
+                <input type="submit" id="thread-submit-btn" name="commit" value="Submit thread">
             </div>
         </form>
     </div>
