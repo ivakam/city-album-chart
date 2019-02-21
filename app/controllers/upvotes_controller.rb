@@ -15,6 +15,7 @@ class UpvotesController < ApplicationController
                 @upvote.save
             else
                 activation_barrier
+            end
         else
             login_barrier
         end

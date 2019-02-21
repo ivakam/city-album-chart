@@ -3,12 +3,19 @@ class Album < ApplicationRecord
 	has_many :tracks, dependent: :destroy
 	has_one_attached :cover
 	validate :cover_validation
+	before_destroy :clean_with_association_cleanup_service
 	
     after_save do
         update_with_user_status_service
     end
     
     private
+    
+    def clean_with_association_cleanup_service
+        AssociationCleanupService.new({
+            model: self
+        }).clean
+    end
     
     def update_with_user_status_service
         UserStatusService.new({

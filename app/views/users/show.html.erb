@@ -7,15 +7,15 @@
 	<form id="profile-form" class="modal-form" action="/users/update" accept-charset="UTF-8" data-remote="true" method="post">
 		<input id="profile-id" type="text" name="user[id]" value="<%= @user.id %>" hidden>
 		<div class="modal-form-input-container">
-			<label for="gender"><p>Gender</p></label>
-			<select id="gender" class='gender-input' name="user[gender]" form="profile-form" required>
+			<label for="profile-gender"><p>Gender</p></label>
+			<select id="profile-gender" class='gender-input' name="user[gender]" form="profile-form" required>
 				<option value="Male"><p>Male</p></option>
 				<option value="Female"><p>Female</p></option>
 				<option value="Other"><p>Other</p></option>
 				<option value="Unknown"><p>I'd rather not specify</p></option>
 			</select>
-			<label for="birth-year"><p>Year of birth</p></label>
-			<select id="birth-year" class="age-input" name="user[birth_year]" form="profile-form" required>
+			<label for="profile-birth-year"><p>Year of birth</p></label>
+			<select id="profile-birth-year" class="age-input" name="user[birth_year]" form="profile-form" required>
 				<option value="Unknown"><p>I'd rather not specify</p></option>
 				<option value="2019"><p>2019</p></option>
 				<option value="2018"><p>2018</p></option>
@@ -250,7 +250,7 @@
                         </div>
                         <div class="article-body">
                             <h4><%= a.subtitle %></h4>
-                            <p><%= parse_markdown(a.body) %></p>
+                            <p class="paragraph"><%= parse_markdown(a.body) %></p>
                         </div>
                     </a>
 					<% end %>
@@ -285,6 +285,7 @@
 								</div>
 							</a>
 							<% elsif n.notification_type == 'Article' %>
+							<% p n %>
 							<% @comment = Comment.find_by(id: n.target_id) %>
 							<% @article = @comment.article %>
 							<a class="notification-card" href="<%= articles_path + "/#{@article.id}" %>">

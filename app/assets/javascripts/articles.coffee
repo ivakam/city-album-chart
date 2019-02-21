@@ -7,21 +7,21 @@ $(document).on 'turbolinks:load', ->
 		
 		$('.article-flag').click ->
 			$('#report-form-container').toggleClass('modal-inactive')
-			$('#report-type').attr('value', 'article')
+			$('#report-type').attr('value', 'Article')
 			id = $('#report-article').val()
 			$('#report-target').attr('value', id)
 			opacity = $('#opaque')
 			opacity.css('background', 'rgba(0, 0, 0, 0.6')
-			opacity.css('z-index', '5')
+			opacity.css('z-index', '10')
 		
 		$('.comment-flag').click ->
             $('#report-form-container').toggleClass('modal-inactive')
-            $('#report-type').attr('value', 'comment')
+            $('#report-type').attr('value', 'Comment')
             id = $(this).closest('.comment').find('.comment-id').val()
             $('#report-target').attr('value', id)
             opacity = $('#opaque')
             opacity.css('background', 'rgba(0, 0, 0, 0.6')
-            opacity.css('z-index', '5')
+            opacity.css('z-index', '10')
 			
 		$('.delete-article-confirm-btn').click ->
 			data =
@@ -65,7 +65,7 @@ $(document).on 'turbolinks:load', ->
 			data =
 				upvote: 
 					target_id: $('#report-article').val()
-					upvote_type: 'article'
+					upvote_type: 'Article'
 			$.post(window.location.href.replace(/\/articles.+/, '/upvotes/create'), data)
 			.fail( ->
 				console.log('Error sending post data')
@@ -90,7 +90,7 @@ $(document).on 'turbolinks:load', ->
 			data =
 				upvote: 
 					target_id: id
-					upvote_type: 'comment'
+					upvote_type: 'Comment'
 			$.post(window.location.href.replace(/\/articles.+/, '/upvotes/create'), data)
 			.fail( ->
 				console.log('Error sending post data')
@@ -113,7 +113,7 @@ $(document).on 'turbolinks:load', ->
 			$('#article-delete-modal').toggleClass('modal-inactive')
 			opacity = $('#opaque')
 			opacity.css('background', 'rgba(0, 0, 0, 0.6')
-			opacity.css('z-index', '5')
+			opacity.css('z-index', '10')
 	
 		$('.comment-trash').click ->
             id = $(this).closest('.comment').find('.comment-id').val()
@@ -121,7 +121,7 @@ $(document).on 'turbolinks:load', ->
             $('#comment-id').attr('value', id)
             opacity = $('#opaque')
             opacity.css('background', 'rgba(0, 0, 0, 0.6')
-            opacity.css('z-index', '5')
+            opacity.css('z-index', '10')
         
 		$('.comment-edit').click ->
 			e = $(this)
@@ -132,7 +132,7 @@ $(document).on 'turbolinks:load', ->
 			$('#edit-comment-form-container').toggleClass('modal-inactive')
 			opacity = $('#opaque')
 			opacity.css('background', 'rgba(0, 0, 0, 0.6')
-			opacity.css('z-index', '5')
+			opacity.css('z-index', '10')
 			
 		$('.article-edit').click ->
 			e = $(this)
@@ -143,7 +143,7 @@ $(document).on 'turbolinks:load', ->
 			$('#edit-article-form-container').toggleClass('modal-inactive')
 			opacity = $('#opaque')
 			opacity.css('background', 'rgba(0, 0, 0, 0.6')
-			opacity.css('z-index', '5')
+			opacity.css('z-index', '10')
 		
 		$('.post-text input').click ->
 			e = $(this)

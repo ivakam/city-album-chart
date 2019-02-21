@@ -7,7 +7,7 @@ $(document).on 'turbolinks:load', ->
 			$('#report-form-container').toggleClass('modal-inactive')
 			opacity = $('#opaque')
 			opacity.css('background', 'rgba(0, 0, 0, 0.6')
-			opacity.css('z-index', '5')
+			opacity.css('z-index', '10')
 			
 		$('.edit-submit-btn').click ->
 			setTimeout( ->
@@ -44,7 +44,7 @@ $(document).on 'turbolinks:load', ->
 				, 1250)
 			data =
 				upvote: 
-					upvote_type: 'post'
+					upvote_type: 'Post'
 					target_id: $(this).closest('li').find('.post-id').val()
 			$.post(window.location.href.replace(/\/forum.+/, '/upvotes/create'), data)
 			.fail( ->
@@ -57,7 +57,7 @@ $(document).on 'turbolinks:load', ->
 			$('.delete-modal').toggleClass('modal-inactive')
 			opacity = $('#opaque')
 			opacity.css('background', 'rgba(0, 0, 0, 0.6')
-			opacity.css('z-index', '5')
+			opacity.css('z-index', '10')
 			
 		$('.post-edit').click ->
 			e = $(this)
@@ -68,7 +68,7 @@ $(document).on 'turbolinks:load', ->
 			$('#edit-form-container').toggleClass('modal-inactive')
 			opacity = $('#opaque')
 			opacity.css('background', 'rgba(0, 0, 0, 0.6')
-			opacity.css('z-index', '5')
+			opacity.css('z-index', '10')
 			
 		$('.post-text input').click ->
 			e = $(this)

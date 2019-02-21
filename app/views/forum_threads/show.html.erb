@@ -19,7 +19,7 @@
 	<ion-icon name="ios-close" id="report-close" class="modal-close"></ion-icon>
 	<form id="report-form" class="modal-form" action="/reports/create" accept-charset="UTF-8" data-remote="true" method="post">
 		<input id="report-target" type="text" name="report[target_id]" value="" hidden>
-		<input type="text" name="report[report_type]" value="post" hidden>
+		<input type="text" name="report[report_type]" value="Post" hidden>
 		<div class="modal-form-input-container">
 			<label for="report-input-container"><p>Report reason:</p></label>
 			<select class='report-reason' name="report[reason]" form="report-form" required>
@@ -119,7 +119,7 @@
                                     <% end %>
                                 <% end %>
                             </div>
-                            <div class="post-text">
+                            <div class="post-text paragraph">
                             <%= parse_markdown(post.body) %>
                             </div>
                             <div class="index-date">

@@ -10,6 +10,7 @@ class User < ApplicationRecord
 	has_many :notifications, :dependent => :destroy
 	has_many :subscriptions, :dependent => :destroy
 	has_many :upvotes, :dependent => :destroy
+	has_many :announcements
 
     before_create :confirmation_token
     before_save { self.email = email.downcase }

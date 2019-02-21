@@ -4,7 +4,7 @@ class UsersController < ApplicationController
     def show
         @user = User.find_by(username: params[:username])
         @activity = Article.where(user: @user) + Post.where(user: @user) + ForumThread.where(user: @user) + Comment.where(user: @user)
-        @activity = @activity.sort_by { |m| m.created_at }
+        @activity = @activity.sort_by{ |m| m.created_at }.reverse!
         @activity = @activity.slice(0, 25)
         if @user == get_user
             @notifications = Notification.where(user: get_user).order('created_at').reverse_order.limit(25)

@@ -1,4 +1,6 @@
 class ForumThread < ApplicationRecord
+    before_destroy :clean_with_association_cleanup_service
+    
     has_many :posts, dependent: :destroy
     belongs_to :user
     
@@ -7,6 +9,13 @@ class ForumThread < ApplicationRecord
     end
     
     private
+    
+    def clean_with_association_cleanup_service
+        AssociationCleanupService.new({
+            model: self,
+            children: self.posts
+        }).clean
+    end
     
     def subscribe_with_auto_subscribe_service
         AutoSubscriptionService.new({

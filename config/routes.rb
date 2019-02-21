@@ -63,6 +63,9 @@ Rails.application.routes.draw do
   
   get 'home', to: 'home#show'
   
+  post 'announcements/create'
+  post 'announcements/destroy'
+  
   resources :albums
   
   get '*unmatched_route', to: 'application#render_404', constraints: lambda { |request| constraint(request) }

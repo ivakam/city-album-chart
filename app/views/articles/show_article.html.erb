@@ -134,7 +134,7 @@
                     <% end %>
                 </div>
                 <h4><%= @article.subtitle %></h4>
-                <p><%= parse_markdown(@article.body) %></p>
+                <p class="paragraph"><%= parse_markdown(@article.body) %></p>
             </div>
         </div>
         <div id="comments-sidebar">
@@ -171,9 +171,9 @@
                             </a>
                         </div>
                     </div>
-                    <div class="comment-body">
-                        <p><a href="<%= root_url + 'users/' + comment.user.username %>"><%= comment.user.username %></a> says:</p>
-                        <p><%= parse_markdown(comment.body) %></p>
+                    <div class="comment-body paragraph">
+                        <p><a href="<%= root_url + 'users/' + comment.user.username %>"><%= comment.user.username %></a> <a>says:</a></p>
+                        <%= parse_markdown(comment.body) %>
                     </div>
                     <div class="comment-date-score">
                         <p class="comment-date">Posted at <%= comment.created_at.strftime("%R %Z, %F") %></p>

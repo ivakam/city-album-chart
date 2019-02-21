@@ -1,4 +1,8 @@
 class Article < ApplicationRecord
+    
+    before_destroy :clean_with_association_cleanup_service
+    
+    
     belongs_to :user
     has_many :comments, :dependent => :destroy
     has_one_attached :banner
@@ -10,6 +14,13 @@ class Article < ApplicationRecord
     end
     
     private
+    
+    def clean_with_association_cleanup_service
+        AssociationCleanupService.new({
+            model: self,
+            children: self.comments
+        }).clean
+    end
     
     def subscribe_with_auto_subscribe_service
         AutoSubscriptionService.new({

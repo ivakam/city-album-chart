@@ -39,7 +39,6 @@ $light-font: #e8e8e8;
     }
     
     input[type=text], input[type=password] {
-        font-family: "Roboto";
         color: $dark-font;
         font-size: 18px;
         padding: 4px;
@@ -56,7 +55,6 @@ $light-font: #e8e8e8;
             color: $dark-font;
             font-size: 40px;
             transition: 0.1s;
-            padding-bottom: 40px;
             margin-top: 5px;
             &:hover {
                 cursor: pointer;
@@ -90,19 +88,12 @@ $light-font: #e8e8e8;
                 border-top: 1px $dark-border solid;
                 border-bottom: 1px $dark-border solid;
                 input {
-                    font-family: "Roboto";
-                    font-size: 20px;
-                    cursor: pointer;
+                    width: 0;
+                    height: 0;
+                    padding: 0;
                     border: none;
-                    background: none;
-                    color: $dark-font;
-                    position: absolute;
-                    left: -105px;
-                    bottom: 35px;
-                    width: auto;
-                    &:hover {
-                        cursor: pointer;
-                    }
+                    opacity: 0;
+                    margin: 0;
                 }
             }
             .save-container {
@@ -121,7 +112,6 @@ $light-font: #e8e8e8;
                     background: $lighter-bg;
                     border: 1px $dark-border solid;
                     border-radius: 5px;
-                    font-family: "Roboto";
                     font-size: 25px;
                     color: $dark-font;
                     cursor: pointer;

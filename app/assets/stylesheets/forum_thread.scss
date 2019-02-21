@@ -243,7 +243,6 @@ $light-font: #e8e8e8;
                         flex-grow: 1;
                         word-break: break-all;
                         p, a, h1, h2, h3, h4, i, em, b {
-                            font-family: 'Open Sans';
                             padding-right: 110px;
                             color: #e8e8e8;
                         }
@@ -300,7 +299,6 @@ $light-font: #e8e8e8;
                     input[type="submit"] {
                         padding: 5px 10px 5px 10px;
                         background: $lighter-bg;
-                        font-family: 'Roboto';
                         margin-top: 15px;
                         font-size: 20px;
                         min-width: 135px;

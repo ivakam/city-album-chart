@@ -4,6 +4,10 @@ $dark-border: #686868;
 $light-border: #8c8c8c;
 $dark-font: #e3e3e3;
 $light-font: #e8e8e8;
+$title-font: 'Poppins';
+$header-font: 'News Cycle';
+$body-font: 'Roboto Condensed';
+$paragraph-font: 'Open Sans';
 
 body {
 	padding: 0;
@@ -47,7 +51,7 @@ body {
 	max-height: 80vh;
 	overflow-y: auto;
 	background: $darker-bg;
-	z-index: 6;
+	z-index: 15;
 	border-radius: 8px;
 	border: 1px #a7a7a7 solid;
 	transition: 0.4s;
@@ -110,7 +114,6 @@ body {
 		background: $lighter-bg;
 		color: $dark-font;
 		border: 1px $dark-border solid;
-		font-family: 'Roboto';
 		padding: 4px;
 		font-size: 18px;
 	}
@@ -118,7 +121,7 @@ body {
 		border: 1px red solid;
 	}
 	select {
-		height: 34px;
+		min-height: 34px;
 		width: 200px;
 		margin-bottom: 20px;
 		&:hover {
@@ -146,6 +149,8 @@ body {
 
 .flash-modal {
 	background: $lighter-bg;
+	max-width: 300px;
+	min-width: 300px;
 	width: 300px;
 	display: flex;
 	flex-direction: column;
@@ -208,7 +213,6 @@ body {
 			margin-right: 6px;
 			height: 28px;
 			&[type=text], &[type=password], &[type=submit] {
-				font-family: 'Roboto';
 				padding: 5px;
 				font-size: 14px;
 				color: $light-font;
@@ -228,6 +232,13 @@ body {
 		transition: 0.1s;
 		&:hover {
 			opacity: 0.9;
+		}
+	}
+	.unread-notifications ion-icon {
+		color: red !important;
+		opacity: 0.8;
+		&:hover {
+			opacity: 1 !important;
 		}
 	}
 	a {
@@ -335,6 +346,9 @@ body {
 				.notification-body {
 					width: 100%;
 					display: flex;
+					p {
+						word-break: break-all;
+					}
 				}
 				.notification-divider {
 					align-self: center;
@@ -468,6 +482,7 @@ body {
 				opacity: 0.8;
 				padding: 10px 20px 10px 20px;
 				color: white;
+				font-family: $header-font;
 				&:before {
 					content: '';
 					position: absolute;
@@ -1222,8 +1237,8 @@ input[type="submit"] {
 	}
 }
 
-input, textarea {
-	font-family: 'Roboto';
+input, textarea, .button {
+	font-family: $body-font;
 	border: $dark-border;
 	background: $darker-bg;
 	height: 35px;
@@ -1237,10 +1252,37 @@ iframe {
 	background: black;
 }
 
-h2,h3,p,a,i,h4 {
-	font-family: "Roboto";
+h1 {
+	font-family: $title-font;
 	color: $light-font;
 	text-decoration: none;
+}
+
+h2,h3,h4 {
+	font-family: $header-font;
+	color: $light-font;
+	text-decoration: none;
+}
+
+p,a,i {
+	font-family: $body-font;
+	color: $light-font;
+	text-decoration: none;
+}
+
+.paragraph {
+	font-family: $paragraph-font;
+	color: $light-font;
+	p {
+		font-family: $paragraph-font !important;
+	}
+}
+
+blockquote {
+	margin: 8px 4px;
+	padding: 2px 16px;
+	border-left: 1px $dark-border solid;
+	opacity: 0.8;
 }
 
 ul {

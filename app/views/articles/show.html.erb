@@ -25,7 +25,7 @@
                 </div>
                 <div class="article-body">
                     <h4><%= @featured.subtitle %></h4>
-                    <p><%= parse_markdown(@featured.body) %></p>
+                    <p class="paragraph"><%= parse_markdown(@featured.body) %></p>
                 </div>
                 <div class="show-more">
                     <div class="article-link-container">
@@ -59,7 +59,7 @@
                         </div>
                         <div class="article-body">
                             <h4><%= article.subtitle %></h4>
-                            <p><%= parse_markdown(article.body) %></p>
+                            <p class="paragraph"><%= parse_markdown(article.body) %></p>
                         </div>
                         <div class="show-more">
                             <div class="article-link-container">

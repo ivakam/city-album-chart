@@ -61,6 +61,10 @@ $light-font: #e8e8e8;
             margin: 0;
             padding: 8px 50px;
             text-align: center;
+            max-width: 750px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
         }
         > div {
             display: flex;
@@ -109,6 +113,14 @@ $light-font: #e8e8e8;
         min-height: 50px;
         overflow: hidden;
         flex-grow: 1;
+        ol, ul {
+            color: $light-font;
+            font-family: 'Open Sans';
+           li {
+                color: $light-font;
+                font-family: 'Open Sans';
+           } 
+        }
     }
     .show-more {
         width: 100%;
@@ -200,6 +212,13 @@ $light-font: #e8e8e8;
             margin: 0;
             padding: 0;
             width: 100%;
+            .article-header {
+                min-height: 150px;
+                h2 {
+                    font-size: 24px;
+                    white-space: normal;
+                }
+            }
             .article-body {
                 padding: 8px;
                 max-width: 900px;
@@ -300,6 +319,7 @@ $light-font: #e8e8e8;
             min-height: 200px;
             h2 {
                 font-size: 40px;
+                white-space: normal;
             }
             > div {
                 padding-left: 16px;
@@ -422,7 +442,6 @@ $light-font: #e8e8e8;
                 }
                 p, a {
                     font-size: 14px;
-                    font-family: 'Open Sans';
                 }
                 .comment-date-score {
                     position: absolute;
@@ -567,18 +586,18 @@ $light-font: #e8e8e8;
                             font-family: 'Roboto';
                         }
                         input[type="submit"] {
-                            padding: 3px 8px 3px 8px;
+                            padding: 8px 15px;
                             background: $lighter-bg;
                             font-family: 'Roboto';
                             margin-top: 15px;
-                            font-size: 15px;
-                            width: 30%;
-                            max-width: 170px;
+                            font-size: 20px;
+                            width: 100%;
+                            max-width: 190px;
                             color: #e3e3e3;
                             border: 1px #686868 solid;
                             transition: 0.2s;
                             border-radius: 3px;
-                            height: 30px;
+                            height: 40px;
                         }
                     }
                 }

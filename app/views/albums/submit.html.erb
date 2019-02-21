@@ -160,6 +160,7 @@
                                 <p>Album Cover (jpg or jpeg. Max 500Kb. Preferably under 100Kb.)</p>
                                 <label for="album-cover"><ion-icon class="cover-browse" name="ios-folder-open"></ion-icon></label>
                                 <%= form.file_field :cover, id: 'album-cover' %>
+                                <p id="selected-cover">No file selected</p>
                             </div>
                             <div class="save-container" class="submit-btn">
                                 <%= form.submit "Submit", class: "save-btn" %>

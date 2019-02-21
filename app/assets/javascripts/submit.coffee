@@ -60,3 +60,7 @@ $(document).on 'turbolinks:load', ->
 				.fail( ->
 					console.log('Error sending post data')
 				)
+			
+		$('#album-cover').change ->
+			e = $(this)
+			$('#selected-cover').html('Currently selected file: ' + e[0].value.split(/(\\|\/)/g).pop())	

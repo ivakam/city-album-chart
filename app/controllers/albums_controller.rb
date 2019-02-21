@@ -233,7 +233,7 @@ class AlbumsController < ApplicationController
 					@album.cover.attach(paramAlbum[:cover])
 				end
 			end
-			#redirect_to request.referrer, notice: "Album updated!"
+			redirect_to request.referrer, notice: "Album updated!"
 		else
 			on_access_denied
 		end

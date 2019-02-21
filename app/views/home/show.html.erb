@@ -1,14 +1,43 @@
 <% title 'Home' %>
+<% if fetch_user && fetch_user.admin %>
+<div id="announcement-form-container" class="modal modal-inactive">
+	<div>
+		<h2>Make announcement</h2>
+	</div>
+	<ion-icon name="ios-close" id="report-close" class="modal-close"></ion-icon>
+	<form id="announcement-form" class="modal-form" action="/announcements/create" accept-charset="UTF-8" data-remote="true" method="post">
+		<div class="modal-form-input-container">
+		    <label for="announcement-title"><p>Title:</p></label>
+		    <input type="text" id="announcement-title" placeholder="Title" name="announcement[title]" required>
+			<label for="announcement-body"><p>Text:</p></label>
+			<textarea id="announcement-body" placeholder="Type your text here" name="announcement[body]" required></textarea>
+		</div>
+		<input type="submit" name="commit" value="Send Report">
+		<div class="submit-message shrunk">
+			<p>Your announcement has been made!</p>
+		</div>
+	</form>
+</div>
+<% end %>
 <div id="main-container">
     <%= render 'partials/navbar_slim' %>
     <%= image_tag "spinner.gif", class: "spinner hidden" %>
     <div id="home-container">
         <div id="main-opacity"></div>
-        <div id="announcements">
+        <div id="welcome">
+            <div id="welcome-splash">
+                <div id="welcome-banner">
+                    <div id="welcome-bg-container"></div>
+                    <div>
+                        <h2>Welcome to SuperKayo!</h2>
+                        <h3>The staff wishes you a pleasant stay!</h3>
+                    </div>
+                </div>
+            </div>
         </div>
-        <h3 id="activity">Recent activity</h2>
         <div id="content">
             <div id="feed">
+                <h3 id="activity">Recent activity</h2>
                 <% @content[:posts].each do | post | %>
                 <a href="<%= "#{forum_path}/#{post.forum_thread.category}/t/#{post.forum_thread.id}" %>" class="post-card">
                     <div class="card-opacity"></div>
@@ -22,7 +51,7 @@
                         </div>
                         <div class="text-container">
                             <div class="post-text">
-                                <p><%= parse_markdown(post.body.split(/\n/)[0], true) %></p>
+                                <p class="paragraph"><%= parse_markdown(post.body.split(/\n/)[0], true) %></p>
                             </div>
                         </div>
                     </div>
@@ -30,8 +59,25 @@
                 <% end %>
             </div>
             <div id="right-panel">
-                <div id="recent-albums">
-                    <h3>Recent albums</h3>
+                <div id="announcements" class="right-panel-module">
+                    <h3>Announcements</h3>
+                    <% @content[:announcements].each do | a | %>
+                    <div class="announcement-container">
+                        <h4><%= a.title %></h4>
+                        <p><%= a.body %></p>
+                        <div class="panel-divider"></div>
+                        <div>
+                            <a href="<%= root_url + 'users/' + a.user.username %>">By <%= a.user.username %></a>
+                            <p><%= a.created_at.strftime('%-d %b, %Y') %></p>
+                        </div>
+                    </div>
+                    <% end %>
+                    <% if fetch_user && fetch_user.admin %>
+                    <a id="announcement-btn">Make announcement</a>
+                    <% end %>
+                </div>
+                <div id="recent-albums" class="right-panel-module">
+                    <h3>Recently submitted albums</h3>
                     <% @content[:albums].each do | album | %>
                     <div class="album-container">
                         <%= image_tag album.cover.variant(resize: '80x80').processed.service_url %>
@@ -42,10 +88,10 @@
                         </div>
                     </div>
                     <% end %>
-                    <div class="card-opacity"></div>
                 </div>
                 <div id="gallery">
                 </div>
+                <div class="card-opacity"></div>
             </div>
         </div>
     </div>

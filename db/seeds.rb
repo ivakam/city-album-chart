@@ -88,7 +88,7 @@ ForumThread.all.each_with_index do | parentThread, i |
 		(1..rand(5..20)).each do | k |
 			upvote = Upvote.new()
 			upvote.target_id = reply.id
-			upvote.upvote_type = 'post'
+			upvote.upvote_type = 'Post'
 			upvote.user = User.find(rand(2..@usercount))
 			upvote.save
 		end
@@ -111,12 +111,12 @@ end
     articleBanner =  Dir.glob(Rails.root.join("app/assets/images/bg/*.*"))[rand(0...Dir.glob(Rails.root.join("app/assets/images/bg/*.*")).size)]
 	p articleBanner
 	article.banner.attach(io: File.open(articleBanner), filename: articleBanner.split(/\/bg\//)[1])
-	categories = ['Review', 'Essay', 'Opinion piece', 'History']
+	categories = ['review', 'essay', 'opinion_piece', 'history']
 	article.category = categories[rand(0..3)]
 	article.save
 	(1..rand(5..20)).each do | k |
 		upvote = Upvote.new()
-		upvote.upvote_type = 'article'
+		upvote.upvote_type = 'Article'
 		upvote.target_id = article.id
 		upvote.user = User.find(rand(2..@usercount))
 		upvote.save
@@ -132,7 +132,7 @@ Article.all.each_with_index do | article, i |
 		reply.body = Faker::HitchhikersGuideToTheGalaxy.quote
 		(1..rand(5..20)).each do | k |
 			upvote = Upvote.new()
-			upvote.upvote_type = 'comment'
+			upvote.upvote_type = 'Comment'
 			upvote.target_id = reply.id
 			upvote.user = User.find(rand(2..@usercount))
 			upvote.save
