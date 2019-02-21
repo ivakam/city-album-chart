@@ -1,5 +1,5 @@
 class UserMailer < ApplicationMailer
-    default from: 'noreply@superkayo.com'
+    default from: 'staff@superkayo.xyz'
 
     def email_confirmation
         logger.debug "-------------------------------------------> sending email"

@@ -42,9 +42,9 @@ Rails.application.configure do
   hostFile = File.read(File.expand_path(Rails.root + 'host_path.json'))
 
   ActionMailer::Base.smtp_settings = {
-  	:address              => "smtp.gmail.com",
+  	:address              => "mail.privateemail.com",
   	:port                 => "587",
-  	:domain               => "gmail.com",
+  	:domain               => "superkayo.xyz",
   	#:user_name            => ENV["EMAIL"],
   	#:password             => ENV["EMAIL_PASSWORD"],
   	:user_name            => JSON.parse(hostFile)['email'],
