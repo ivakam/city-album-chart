@@ -6,10 +6,12 @@ class AutoSubscriptionService
     end
     
     def auto_subscribe
-        @subscription = Subscription.new()
-        @subscription.user = @user
-        @subscription.target_id = @target_id
-        @subscription.subscription_type = @subscription_type
-        @subscription.save
+        if !Subscription.where(user: @user, target_id: @target_id, subscription_type: @subscription_type).present?
+            @subscription = Subscription.new()
+            @subscription.user = @user
+            @subscription.target_id = @target_id
+            @subscription.subscription_type = @subscription_type
+            @subscription.save
+        end
     end
 end

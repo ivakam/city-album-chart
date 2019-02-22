@@ -122,6 +122,9 @@
                         <% if @article.user.id == fetch_user.id %>
                         <ion-icon class="post-icon post-edit article-edit" name="create"></ion-icon>
                         <% end %>
+                        <% if fetch_user.admin %>
+                        <ion-icon class="post-icon post-edit article-pin <%= 'green' if @article.featured %>" name="ios-pin"></ion-icon>
+                        <% end %>
                         <% if fetch_user %>
                         <ion-icon class="post-icon post-bell article-bell <%= 'green' if Subscription.find_by(user: fetch_user, subscription_type: 'Article', target_id: @article.id).present? %>" name="ios-notifications"></ion-icon>
                         <% end %>

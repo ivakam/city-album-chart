@@ -109,6 +109,18 @@ $(document).on 'turbolinks:load', ->
 				console.log('Error sending post data')
 			)
 		
+		$('.article-pin').click ->
+			e = $(this)
+			id = $('#article-id').val()
+			e.toggleClass('green')
+			data =
+				article:
+					article_id: id
+			$.post(window.location.href.replace(/\/articles.+/, '/articles/toggle-featured'), data)
+			.fail( ->
+				console.log('Error sending post data')
+			)
+		
 		$('.article-trash').click ->
 			$('#article-delete-modal').toggleClass('modal-inactive')
 			opacity = $('#opaque')

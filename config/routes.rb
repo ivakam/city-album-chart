@@ -52,6 +52,7 @@ Rails.application.routes.draw do
   post 'articles/create'
   post 'articles/update'
   post 'articles/destroy'
+  post 'articles/toggle-featured', to: 'articles#toggle_featured'
   
   post 'comments/create'
   post 'comments/destroy'

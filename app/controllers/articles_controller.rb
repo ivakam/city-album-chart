@@ -3,8 +3,8 @@ require 'json'
 class ArticlesController < ApplicationController
     def show
         @articles = Article.where(category: params[:category]).order(:created_at)
-        @featured = Article.find_by(featured: true)
-        @articles ||= Article.all.order(:created_at)
+        @featured = Article.where(featured: true).order('RAND()').first
+        @articles ||= Article.all.order(:created_at).reverse_order.limit(20)
     end
     
     def show_article
@@ -22,6 +22,9 @@ class ArticlesController < ApplicationController
             if !@article.banner.attached?
                 bannerPath = Rails.root.join("app/assets/images/bg/busy-street.jpg")
                 @article.banner.attach(io: File.open(bannerPath), filename: 'busy-street.jpg')
+            end
+            if !get_user.admin
+                @article.featured = false
             end
             @article.user = get_user
             @article.save
@@ -59,9 +62,23 @@ class ArticlesController < ApplicationController
         end
     end
     
+    def toggle_featured
+        if get_user && get_user.admin
+            @article = Article.find_by(id: params[:article][:article_id])
+            if !@article.featured
+                @article.featured = true
+            else
+                @article.featured = false
+            end
+            @article.save
+        else
+            on_access_denied
+        end
+    end
+    
     private
     
     def article_params
-        params.require(:article).permit(:body, :title, :subtitle, :category, :banner)
+        params.require(:article).permit(:body, :title, :subtitle, :category, :banner, :featured)
     end
 end

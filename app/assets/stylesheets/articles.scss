@@ -686,7 +686,6 @@ $light-font: #e8e8e8;
         padding: 15px;
         input, textarea, select {
             background: $darker-bg;
-            font-family: 'Roboto';
             font-size: 18px;
             padding: 7px;
             border: 1px $light-border solid;
@@ -734,6 +733,14 @@ $light-font: #e8e8e8;
                     display: flex;
                     flex-direction: column;
                     justify-content: center;
+                }
+                #featured-container {
+                    flex-direction: row;
+                    align-items: center;
+                    max-width: 120px;
+                    input {
+                        width: auto;
+                    }
                 }
                 #banner-image-container {
                     flex-direction: row;
