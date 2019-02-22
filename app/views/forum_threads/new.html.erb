@@ -18,6 +18,9 @@
                 <script>
                     var threadContent = new EasyMDE({ element: $('#thread-body')[0] });
                 </script>
+                <div id="pinned-container">
+                    <input id="thread-pinned" type="checkbox" name="thread[pinned]" value="true"><label for="pinned-featured"><p>Pinned</p></label>
+                </div>
                 <input type="submit" id="thread-submit-btn" name="commit" value="Submit thread">
             </div>
         </form>

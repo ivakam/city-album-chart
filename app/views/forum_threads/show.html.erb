@@ -64,6 +64,9 @@
     <div id="board-container">
         <div id="main-opacity"></div>
         <ion-icon class="post-icon post-bell <%= 'green' if Subscription.find_by(user: fetch_user, subscription_type: 'ForumThread', target_id: @thread.id).present? %>" name="ios-notifications"></ion-icon>
+        <% if fetch_user.admin %>
+        <ion-icon class="post-icon thread-pin <%= 'green' if @thread.stickied %>" name="ios-pin"></ion-icon>
+        <% end %>
         <h2 id="title"><a href="<%= forum_path + "/#{@thread.category}" %>"><%= @thread.category.titleize %></a> > <%= @thread.title %></h2>
         <div class="page-container top">
             <% if @page - 1 > 0 %>

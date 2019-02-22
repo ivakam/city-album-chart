@@ -86,7 +86,7 @@ $(document).on 'turbolinks:load', ->
 			.fail( ->
 				console.log('Error sending post data')
 			)
-
+		
 		$('.post-bell').click ->
 			e = $(this)
 			id = threadId
@@ -96,6 +96,18 @@ $(document).on 'turbolinks:load', ->
 					target_id: id
 					subscription_type: 'ForumThread'
 			$.post(window.location.href.replace(/\/forum.+/, '/subscriptions/create'), data)
+			.fail( ->
+				console.log('Error sending post data')
+			)
+			
+		$('.thread-pin').click ->
+			e = $(this)
+			id = threadId
+			e.toggleClass('green')
+			data =
+				thread:
+					thread_id: id
+			$.post(window.location.href.replace(/\/forum.+/, '/thread/toggle-pinned'), data)
 			.fail( ->
 				console.log('Error sending post data')
 			)

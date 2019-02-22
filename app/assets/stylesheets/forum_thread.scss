@@ -28,7 +28,7 @@ $light-font: #e8e8e8;
 
 #board-container {
     position: relative;
-    .post-bell {
+    .post-bell, .thread-pin {
         color: $light-font;
         opacity: 0.8;
         transition: 0.3s;
@@ -43,7 +43,9 @@ $light-font: #e8e8e8;
             cursor: pointer;
         }
     }
-    
+    .thread-pin {
+        right: 65px;
+    }
     .green {
         color: #20de0d;
     }
@@ -375,7 +377,6 @@ $light-font: #e8e8e8;
         padding: 15px;
         input, textarea, select {
             background: $darker-bg;
-            font-family: 'Roboto';
             font-size: 18px;
             padding: 7px;
             border: 1px $light-border solid;
@@ -486,6 +487,18 @@ $light-font: #e8e8e8;
                     border: none;
                     padding: 0;
                     margin: 0;
+                }
+            }
+            #pinned-container {
+                display: flex;
+                flex-direction: row;
+                max-width: 120px;
+                align-items: center;
+                input {
+                    max-width: 20px;
+                }
+                p {
+                    margin: 8px;
                 }
             }
         }

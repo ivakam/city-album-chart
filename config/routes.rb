@@ -39,6 +39,7 @@ Rails.application.routes.draw do
   get 'thread/:category/new', to: 'forum_threads#new', as: 'board'
   post 'thread/destroy', to: 'forum_threads#destroy'
   post 'thread/create', to: 'forum_threads#create'
+  post 'thread/toggle-pinned', to: 'forum_threads#toggle_pinned'
   
   post 'posts/create'
   post 'posts/update'

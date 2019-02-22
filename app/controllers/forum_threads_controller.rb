@@ -34,7 +34,8 @@ class ForumThreadsController < ApplicationController
 			@thread.title = params[:thread][:title]
 			@thread.user = get_user
 			@thread.category = params[:thread][:category]
-			@thread.stickied = false
+			p params[:thread][:pinned]
+			@thread.stickied = params[:thread][:pinned] === 'true' ? true : false
 			@thread.archived = false
 			@thread.locked = false
 			@post = Post.new()
@@ -47,6 +48,20 @@ class ForumThreadsController < ApplicationController
 		else
 			on_access_denied
 		end
+    end
+    
+    def toggle_pinned
+        if get_user && get_user.admin
+            @thread = ForumThread.find_by(id: params[:thread][:thread_id])
+            if !@thread.stickied
+                @thread.stickied = true
+            else
+                @thread.stickied = false
+            end
+            @thread.save
+        else
+            on_access_denied
+        end
     end
     
     private
