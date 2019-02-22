@@ -28,9 +28,11 @@
                             <option value="history">History</option>
                         </select>
                     </div>
+                    <% if fetch_user.admin %>
                     <div id="featured-container">
                         <input id="article-featured" type="checkbox" name="article[featured]" value="true"><label for="article-featured"><p>Featured</p></label>
                     </div>
+                    <% end %>
                     <div id="banner-image-container">
                         <p>Banner image (jpg or jpeg. Max 500Kb. Preferably under 100Kb.)</p>
                         <label for="article-banner"><ion-icon class="banner-browse" name="ios-folder-open"></ion-icon></label>
