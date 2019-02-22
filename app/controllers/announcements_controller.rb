@@ -17,6 +17,8 @@ class AnnouncementsController < ApplicationController
                 announcement.destroy
             end
         else
+            on_access_denied
+        end
     end
     
     private
