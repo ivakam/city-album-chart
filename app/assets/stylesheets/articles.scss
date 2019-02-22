@@ -437,9 +437,6 @@ $light-font: #e8e8e8;
                 .article-opacity {
                     border-radius: 8px;
                 }
-                p, b, strong, i, a, h1, h2, h3, h4 {
-                    word-break: break-all;
-                }
                 p, a {
                     font-size: 14px;
                 }
@@ -572,23 +569,13 @@ $light-font: #e8e8e8;
                         flex-grow: 3;
                         flex-direction: column;
                         position: relative;
+                        max-width: calc(100% - 100px);
                         h3 {
                             margin: 4px 0;
-                        }
-                        textarea {
-                            width: 100%;
-                            margin: 5px 0 5px 0;
-                            min-height: 150px;
-                            background: $darker-bg;
-                            color: #e3e3e3;
-                            padding: 10px;
-                            border: 1px #686868 solid;
-                            font-family: 'Roboto';
                         }
                         input[type="submit"] {
                             padding: 8px 15px;
                             background: $lighter-bg;
-                            font-family: 'Roboto';
                             margin-top: 15px;
                             font-size: 20px;
                             width: 100%;

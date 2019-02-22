@@ -35,6 +35,7 @@ $(document).on 'turbolinks:load', ->
 		$('.bigimage').attr('src', '')
 		$('#opaque').css('z-index', '0')
 		$('.modal').addClass('modal-inactive')
+		$('.submit-message').addClass('shrunk')
 		$('#report-comment').val('')
 
 	$('#opaque').click ->
@@ -55,11 +56,10 @@ $(document).on 'turbolinks:load', ->
 	
 	$('.modal input[type=submit]').click ->
 		if $(this).closest('.modal').find('input:invalid').length == 0
-			$('.submit-message').toggleClass('shrunk')
+			$('.submit-message').removeClass('shrunk')
 			setTimeout( ->
-				$('.submit-message').toggleClass('shrunk')
 				resetFocus()
-			, 4000)
+			, 3000)
 		
 	if $('body').hasClass('albums show')
 		
@@ -167,6 +167,8 @@ $(document).on 'turbolinks:load', ->
 			e = $(e.target)
 			rightArrow = e.hasClass('stream-arrow-right') ? true : false
 			firstChild = e.siblings('.video-slider').children('iframe:first-child')
+			$('iframe').each ->
+				this.contentWindow.postMessage('{"event":"command","func":"stopVideo","args":""}', '*')
 			if Number.isInteger(parseInt(firstChild.css('margin-left')) / 600)
 				if rightArrow
 					if parseInt(firstChild.css('margin-left')) > -2400

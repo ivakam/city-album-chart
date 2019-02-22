@@ -64,7 +64,7 @@
                     <% @content[:announcements].each do | a | %>
                     <div class="announcement-container">
                         <h4><%= a.title %></h4>
-                        <p><%= a.body %></p>
+                        <p><%= parse_markdown(a.body) %></p>
                         <div class="panel-divider"></div>
                         <div>
                             <a href="<%= root_url + 'users/' + a.user.username %>">By <%= a.user.username %></a>

@@ -154,6 +154,7 @@ $light-font: #e8e8e8;
                     justify-content: space-between;
                     flex-grow: 3;
                     position: relative;
+                    max-width: calc(100% - 150px);
                     img {
                         max-width: 100%;
                         max-height: 1000px;
@@ -243,7 +244,6 @@ $light-font: #e8e8e8;
                     .post-text {
                         margin-bottom: 10px;
                         flex-grow: 1;
-                        word-break: break-all;
                         p, a, h1, h2, h3, h4, i, em, b {
                             padding-right: 110px;
                             color: #e8e8e8;
@@ -265,23 +265,28 @@ $light-font: #e8e8e8;
         #reply-container {
             z-index: 3;
             display: flex;
-            padding: 18px;
             form {
                 display: flex;
                 width: 100%;
+                padding: 18px;
                 #form-user-info {
                     display: flex;
-                    height: 80px;
-                    width: 80px;
+                    max-height: 80px;
+                    min-height: 80px;
+                    max-width: 80px;
+                    min-width: 80px;
                     border-radius: 25%;
                     overflow: hidden;
                     margin-right: 20px;
                     img {
                         max-height: 80px;
+                        min-height: 80px;
                         max-width: 80px;
+                        min-width: 80px;
                     }
                 }
                 #reply-text-container {
+                    max-width: calc(100% - 100px);
                     display: flex;
                     flex-grow: 3;
                     flex-direction: column;
@@ -338,7 +343,6 @@ $light-font: #e8e8e8;
                     color: #e3e3e3;
                     margin: 5px;
                     padding: 8px;
-                    font-family: 'Roboto';
                     font-size: 18px;
                 }
                 input[type="submit"] {

@@ -29,6 +29,7 @@
 				<%= inject_login %>
 			</div>
 			<div id="opaque"></div>
+			<% if !fetch_user %>
 			<div id="register-form-container" class="modal modal-inactive">
 				<div>
 					<h2>Create an account</h2>
@@ -206,6 +207,7 @@
 					</div>
 				</form>
 			</div>
+			<% end %>
 			<% description "SuperKayo is an open source community for Japanese kayo music. Talk about your favorite albums and read interesting articles to your heart's content!" %>
 			<%= image_tag "varietiescropped.png", id: "alt-img" %>
 			<div id="bg-opacity"></div>

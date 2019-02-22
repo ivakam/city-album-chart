@@ -289,6 +289,7 @@ body {
 			display: flex;
 			flex-direction: column;
 			width: 400px;
+			z-index: 12;
 			box-shadow: 4px 4px 10px 0 #0f0f0f;
 			&::before {
 				content: '';
@@ -300,7 +301,7 @@ body {
 				transform: rotate(45deg);
 				border-top: 1px $light-border solid;
 				border-left: 1px $light-border solid;
-				z-index: 10;
+				z-index: 13;
 				background: $lighter-bg;
 			}
 			h3 {
@@ -1248,6 +1249,18 @@ textarea {
 
 iframe {
 	background: black;
+}
+
+p, b, strong, i, a, h1, h2, h3, h4 {
+	word-break: break-all;
+	word-break: break-word;
+	word-break: keep-all;
+	word-wrap: break-word;
+	overflow-wrap: break-word;
+	-webkit-hyphens: auto;
+	-moz-hyphens: auto;
+	-ms-hyphens: auto;
+	hyphens: auto;
 }
 
 h1 {

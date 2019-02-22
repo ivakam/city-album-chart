@@ -11,7 +11,7 @@ $(document).on 'turbolinks:load', ->
 				{ "#{param}[serialized_ids]": serializedData }
 			)
 			.done( ->
-				#location.reload()
+				location.reload()
 			)
 			.fail( ->
 				console.log('Error sending post data')
