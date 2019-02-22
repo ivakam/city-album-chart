@@ -1006,7 +1006,6 @@ body {
 			position: relative;
 			overflow-x: auto;
 			input, textarea {
-				font-family: 'Roboto';
 				background: $darker-bg;
 				padding: 4px;
 				border: 1px $dark-border solid;
@@ -1082,7 +1081,6 @@ body {
 					padding: 8px;
 					color: $dark-font;
 					align-self: flex-end;
-					font-family: 'Roboto';
 					font-size: 20px;
 					border-radius: 3px;
 					border: 1.3px $dark-border solid;
