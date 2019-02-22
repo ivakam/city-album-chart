@@ -4,6 +4,7 @@
     <%= image_tag "spinner.gif", class: "spinner hidden" %>
     <div id="articles-container">
         <div id="main-opacity"></div>
+        <% if @featured.present? %>
         <div id="featured-article">
             <div class="article-opacity"></div>
             <div class="article featured">
@@ -35,6 +36,7 @@
                 </div>
             </div>
         </div>
+        <% end %>
         <div id="main-content">
             <div class="article-opacity"></div>
             <div id="article-feed">

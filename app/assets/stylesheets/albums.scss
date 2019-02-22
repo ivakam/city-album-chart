@@ -561,13 +561,11 @@ body {
 			background: $lighter-bg;
 			border: 1px #a7a7a7 solid;
 			border-radius: 5px;
-			font-family: "Roboto";
 			font-size: 20px;
 			color: $light-font;
 			padding: 4px 8px 4px 8px;
 			&::placeholder {
 				font-size: 20px;
-				font-family: "Roboto";
 				color: $light-font;
 			}
 		}
