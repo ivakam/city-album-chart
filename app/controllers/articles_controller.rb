@@ -13,7 +13,11 @@ class ArticlesController < ApplicationController
     end
     
     def new
-        @article = Article.new()
+    	if get_user
+    		render 'new'
+    	else
+    		login_barrier
+    	end
     end
     
     def create
