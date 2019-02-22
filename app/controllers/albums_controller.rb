@@ -180,7 +180,7 @@ class AlbumsController < ApplicationController
 	end
 	
 	def update
-		if get_user && get_user.admin
+		if get_user && get_user.email_confirmed
 			paramAlbum = params[:album]
 			paramTracks = JSON.parse(params[:tracklist])
 			@album = Album.find_by(title: paramAlbum[:title_old], romaji_artist: paramAlbum[:romaji_artist_old])
