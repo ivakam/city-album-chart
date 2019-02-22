@@ -102,8 +102,6 @@ class AlbumsController < ApplicationController
 						album.romanization = ''
 						album.title = a[:title]
 						album.romaji_artist = a[:artist]
-						coverPath = Rails.root.join("app/assets/images/missingcover.jpg")
-						album.cover.attach(io: File.open(coverPath), filename: "missingcover.jpg")
 						album.year = a[:year]
 						album.user_id = get_user.id
 						album.tags = "#{album.title} #{album.romaji_artist} #{album.year}"
@@ -124,13 +122,6 @@ class AlbumsController < ApplicationController
 					redirect_to '/albums/submit', notice: 'Album submitted!', turbolinks: false
 				elsif params[:album][:title].present? && params[:album][:romaji_artist].present?
 					@album = Album.new(album_params)
-					if !@album.cover.attached?
-						coverPath = Rails.root.join("app/assets/images/missingcover.jpg")
-						@album.cover.attach(io: File.open(coverPath), filename: "missingcover.jpg")
-						p "ERROR: Could not find cover for #{@album.title}"
-					else
-						p "Successfully attached cover to #{@album.title}"
-					end
 					@album.tags = "#{params[:album][:title]} #{params[:album][:romanization]} #{params[:album][:romaji_artist]} #{params[:album][:japanese_artist]} #{params[:album][:year]} #{params[:album][:description]} #{params[:album][:flavor].gsub(/,/,'')}"
 					tempQuality = 0
 					if params[:tracklist] != ''
@@ -172,9 +163,11 @@ class AlbumsController < ApplicationController
 					end
 					@album.quality = tempQuality
 					@album.user_id = get_user.id
-					@album.save
-					p "Success!"
-					redirect_to '/albums/submit', notice: 'Album submitted!'
+					if @album.save
+						redirect_to '/albums/submit', notice: 'Album submitted!'
+					else
+						redirect_to '/albums/submit', notice: @album.errors[:base][0]
+					end
 				else
 				    p 'Invalid parameters for album'
 				end
@@ -264,6 +257,6 @@ class AlbumsController < ApplicationController
 	private 
 	
 	def album_params
-		params.require(:album).permit(:description, :romanization, :duration, :image, :coverlink, :title, :romaji_artist, :japanese_artist, :flavor, :year)
+		params.require(:album).permit(:description, :romanization, :duration, :image, :title, :romaji_artist, :japanese_artist, :flavor, :year, :cover)
 	end
 end

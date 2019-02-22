@@ -24,12 +24,16 @@ class Album < ApplicationRecord
     end
 	 
 	def cover_validation
-		if cover.attached?
-			if cover.blob.byte_size > 5000000
+		p cover.attached?
+		if !cover.attached?
+			coverPath = Rails.root.join("app/assets/images/missingcover.jpg")
+			cover.attach(io: File.open(coverPath), filename: "missingcover.jpg")
+		else
+			if cover.blob.byte_size > 1000000
 				cover.purge
-				errors[:base] << "Filesize too large"
+				errors[:base] << 'Album cover too large! Max filesize 1MB'
 			elsif !cover.blob.content_type.starts_with?('image/')
-				banner.purge
+				cover.purge
 				errors[:base] << 'Wrong format'
 			end
 		end
