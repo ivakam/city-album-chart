@@ -38,25 +38,51 @@
         <div id="content">
             <div id="feed">
                 <h3 id="activity">Recent activity</h2>
-                <% @content[:posts].each do | post | %>
-                <a href="<%= "#{forum_path}/#{post.forum_thread.category}/t/#{post.forum_thread.id}" %>" class="post-card">
-                    <div class="card-opacity"></div>
-                    <h4><%= post.user.username %> posted in thread <i><%= post.forum_thread.title %></i> :</h4>
-                    <p class="post-score">Score: <%= post_upvotes(post) %></p>
-                    <div class="post-container">
-                        <div class="user-info">
-                            <div class="avatar-wrapper">
-                                <%= image_tag user_avatar(post.user) %>
+				<% @content[:activity].each do | a | %>
+					<% if a.class.name == 'Post' %> 
+					<a href="<%= "#{forum_path}/#{a.forum_thread.category}/t/#{a.forum_thread.id}" %>" class="post-card">
+						<div class="card-opacity"></div>
+						<h4><%= a.user.username %> posted in thread <i><%= a.forum_thread.title %></i> :</h4>
+						<p class="post-score">Score: <%= post_upvotes(a) %></p>
+						<div class="post-container">
+							<div class="user-info">
+								<div class="avatar-wrapper">
+									<%= image_tag user_avatar(a.user) %>
+								</div>
+							</div>
+							<div class="text-container">
+								<div class="post-text">
+									<p><%= parse_markdown(a.body.split(/\n/)[0], true) %></p>
+								</div>
+							</div>
+						</div>
+					</a>
+					<% end %>
+					<% if a.class.name == 'Article' %>
+                    <a class="article post-card" href="<%= articles_path + '/' + a.id.to_s %>">
+                    	<div class="card-opacity"></div>
+                    	<h4><%= a.user.username %> published an article:</h4>
+                        <div class="article-header">
+                            <div class="header-positioner"><img src="<%= a.banner.variant(resize: "600x600").processed.service_url %>"></div>
+                            <div class="header-positioner"><h2><%= a.title %></h2></div>
+                            <div>
+                                <div>
+                                    <div class="avatar-wrapper">
+                                        <%= image_tag user_avatar(a.user) %>
+                                    </div>
+                                    <p>By <%= a.user.username %></p>
+                                </div>
+                                <p>&nbsp;- <%= a.created_at.strftime('%-d %b, %Y') %></p>
+                                <p class="article-score">Score: <%= article_upvotes(a) %></p>
                             </div>
                         </div>
-                        <div class="text-container">
-                            <div class="post-text">
-                                <p class="paragraph"><%= parse_markdown(post.body.split(/\n/)[0], true) %></p>
-                            </div>
+                        <div class="article-body">
+                            <h4><%= a.subtitle %></h4>
+                            <p class="paragraph"><%= parse_markdown(a.body) %></p>
                         </div>
-                    </div>
-                </a>
-                <% end %>
+                    </a>
+					<% end %>
+				<% end %>
             </div>
             <div id="right-panel">
                 <div id="announcements" class="right-panel-module">

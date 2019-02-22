@@ -32,16 +32,18 @@ $light-font: #e8e8e8;
                 cursor: pointer;
             }
         }
-        #resend-email-btn {
-            text-decoration: underline;
-            font-size: 12px;
-            transition: 0.2s;
+        #email-div {
             position: absolute;
-            opacity: 0.8;
             right: 0;
             bottom: 4px;
-            &:hover {
-                opacity: 1;
+            font-size: 12px;
+            transition: 0.2s;
+            opacity: 0.8;
+            #resend-email-btn {
+                text-decoration: underline;
+                &:hover {
+                    opacity: 1;
+                }
             }
         }
         > div:first-child {
