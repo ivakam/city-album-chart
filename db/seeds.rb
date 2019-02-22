@@ -22,6 +22,7 @@ end
 
 orphan_dummy
 
+=begin
 (0..50).each do | i |
 	user = User.new()
 	user.username = Faker::Internet.unique.username
@@ -142,6 +143,8 @@ Article.all.each_with_index do | article, i |
 	end
 end
 
+=end
+
 def CreateAlbumWithTracks(albumParam, tracks = [])
 	currentAlbum = Album.new(albumParam)
 	coverName = currentAlbum.title.downcase.gsub(/[^[\u3000-\u303F][\u3040-\u309F][\u30A0-\u30FF][\uFF00-\uFFEF][\u4E00-\u9FAF][\u2605-\u2606][\u2190-\u2195]\u203B\p{L}\d\\]/, '')
@@ -160,7 +163,8 @@ def CreateAlbumWithTracks(albumParam, tracks = [])
     if albumParam[:user_id].present?
     	currentAlbum.user_id = albumParam[:user_id]
     else
-    	currentAlbum.user_id = rand(2..User.all.size)
+    	currentAlbum.user_id = 1
+    	#currentAlbum.user_id = rand(2..User.all.size)
     end
     tracks.each do |t|
         currentAlbum.tags << " #{t[:title]} #{t[:romanization]}"
