@@ -436,6 +436,7 @@ $(document).on 'turbolinks:load', ->
 										<h3><i>"+album.romanization+"</i></h3>
 									</div>
 									<div class='artist-container'>
+										<p class='label'>Artist:</p>
 										<p>"+album.romaji_artist+"</p>
 										<p class='label'>"+album.japanese_artist+"</p>
 									</div>
