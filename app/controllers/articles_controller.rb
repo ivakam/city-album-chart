@@ -14,6 +14,7 @@ class ArticlesController < ApplicationController
     
     def new
     	if get_user
+    	    @article = Article.new()
     		render 'new'
     	else
     		login_barrier
