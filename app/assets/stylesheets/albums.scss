@@ -819,6 +819,9 @@ body {
 					.description {
 						font-size: 15px;
 						hyphens: auto;
+						white-space: normal;
+						max-height: 70px;
+						overflow-y: auto;
 					}
 				}
 			}
