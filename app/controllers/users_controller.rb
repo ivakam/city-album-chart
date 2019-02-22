@@ -131,15 +131,15 @@ class UsersController < ApplicationController
         end
     end
 
-    def make_admin
-        @user = User.find_by(id: session[:user_id])
-        @user.update_attribute(:admin, true)
-    end
+    # def make_admin
+    #     @user = User.find_by(id: session[:user_id])
+    #     @user.update_attribute(:admin, true)
+    # end
     
-    def nuke_admin
-        User.find_by(id: session[:user_id])
-        @user.update_attribute(:admin, false)
-    end
+    # def nuke_admin
+    #     User.find_by(id: session[:user_id])
+    #     @user.update_attribute(:admin, false)
+    # end
 
     def resend_confirmation_email
       UserMailer.with(user: get_user).email_confirmation.deliver_later
