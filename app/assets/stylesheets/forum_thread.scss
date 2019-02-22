@@ -248,6 +248,10 @@ $light-font: #e8e8e8;
                             padding-right: 110px;
                             color: #e8e8e8;
                         }
+                        ul, ol {
+                            list-style-type: initial;
+                            font-size: 14px;
+                        }
                     }
                 }
                 .index-date {
@@ -376,7 +380,7 @@ $light-font: #e8e8e8;
         flex-direction: column;
         align-items: center;
         position: relative;
-        border-bottom: 1px #8c8c8c solid;
+        width: 100%;
         padding: 15px;
         input, textarea, select {
             background: $darker-bg;

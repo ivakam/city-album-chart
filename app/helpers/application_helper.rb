@@ -78,7 +78,8 @@ module ApplicationHelper
 	end
 	
 	def parse_markdown(text = '', preview = false)
-		renderer = Redcarpet::Render::HTML.new(filter_html: true)
+		p text
+		renderer = Redcarpet::Render::HTML.new(filter_html: true, hard_wrap: true)
 		if preview
 			renderer = Redcarpet::Render::HTML.new(no_links: true, no_images: true, filter_html: true)
 		end
