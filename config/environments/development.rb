@@ -38,8 +38,6 @@ Rails.application.configure do
   config.action_mailer.perform_caching = false
 
   config.action_mailer.delivery_method = :smtp
-  
-  hostFile = File.read(File.expand_path(Rails.root + 'host_path.json'))
 
   ActionMailer::Base.smtp_settings = {
   	:address              => "mail.privateemail.com",
