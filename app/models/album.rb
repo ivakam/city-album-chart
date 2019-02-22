@@ -24,7 +24,6 @@ class Album < ApplicationRecord
     end
 	 
 	def cover_validation
-		p cover.attached?
 		if !cover.attached?
 			coverPath = Rails.root.join("app/assets/images/missingcover.jpg")
 			cover.attach(io: File.open(coverPath), filename: "missingcover.jpg")
