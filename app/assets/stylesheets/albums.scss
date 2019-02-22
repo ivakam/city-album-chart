@@ -530,6 +530,10 @@ body {
 		border-top: 1px $dark-border solid;
 		border-bottom: 1px $dark-border solid;
 		min-height: calc(100vh - 329px);
+		width: 100vw;
+		@media (min-width: 800px) {
+			width: 70vw;
+		}
 	}
 	#main-opacity {
 		opacity: 0.5;
@@ -595,6 +599,9 @@ body {
 				align-items: center;
 				width: 50%;
 				position: relative;
+				a {
+					hyphens: none;
+				}
 				&:hover {
 					cursor: pointer;
 				}
@@ -614,7 +621,7 @@ body {
 		}
 	}
 	#album-container {
-		width: 100vw;
+		width: 100vw !important;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
@@ -1420,41 +1427,34 @@ html {
 		#main-container #splash-container {
 			width: 660px !important;
 		}	
-		@media (min-width: 850px) {
-			#nav-list {
-				flex-direction: row !important;
-				li {
-					border: none !important;
-				}
-			}
-			@media (min-width: 901px) {
+		@media (min-width: 901px) {
+			#main-container #splash-container {
+				width: 880px !important;
+			}	
+			@media (min-width: 1121px) {
 				#main-container #splash-container {
-					width: 880px !important;
+					width: 1100px !important;
 				}	
-				@media (min-width: 1121px) {
+				@media (min-width: 1341px) {
 					#main-container #splash-container {
-						width: 1100px !important;
-					}	
-					@media (min-width: 1341px) {
-						#main-container #splash-container {
-							width: 1320px !important;
+						width: 1320px !important;
+					}
+					@media (min-width: 1380px) {
+						#nav-list {
+							width: 70% !important;
 						}
-						@media (min-width: 1380px) {
-							#nav-list {
-								width: 70% !important;
+						
+						@media (min-width: 1561px) {
+							#main-container #splash-container {
+								width: 1540px !important;
 							}
-							@media (min-width: 1561px) {
+							@media (min-width: 1781px) {
 								#main-container #splash-container {
-									width: 1540px !important;
-								}
-								@media (min-width: 1781px) {
+									width: 1760px !important;
+								}	
+								@media (min-width: 2001px) {
 									#main-container #splash-container {
 										width: 1760px !important;
-									}	
-									@media (min-width: 2001px) {
-										#main-container #splash-container {
-											width: 1760px !important;
-										}
 									}
 								}
 							}

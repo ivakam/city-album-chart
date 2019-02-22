@@ -9,6 +9,7 @@ $light-font: #e8e8e8;
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100vw !important;
     margin-bottom: 40px;
     > h2 {
         z-index: 3;
