@@ -1,8 +1,6 @@
 class Article < ApplicationRecord
     
     before_destroy :clean_with_association_cleanup_service
-    
-    
     belongs_to :user
     has_many :comments, :dependent => :destroy
     has_one_attached :banner
@@ -35,10 +33,13 @@ class Article < ApplicationRecord
     end
     
 	def banner_validation
-		if banner.attached?
-			if banner.blob.byte_size > 5000000
+	    bannerPath = Rails.root.join("app/assets/images/bg/busy-street.jpg")
+        if !banner.attached?
+            banner.attach(io: File.open(bannerPath), filename: 'busy-street.jpg')
+		else
+			if banner.blob.byte_size > 2000000
 				banner.purge
-				errors[:base] << "Filesize too large"
+				errors[:base] << "Banner too large! Max filesize 2MB"
 			elsif !banner.blob.content_type.starts_with?('image/')
 				banner.purge
 				errors[:base] << 'Wrong format'

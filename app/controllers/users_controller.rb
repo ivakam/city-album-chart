@@ -17,16 +17,19 @@ class UsersController < ApplicationController
     def update
         @user = User.find_by(id: params[:user][:id])
         if get_user == @user
-            p params[:user][:avatar].present?
             if params[:user][:avatar].present?
                 @user.avatar.attach(params[:user][:avatar])
-                redirect_to request.referrer, notice: 'Avatar successfully updated!'
+                if @user.valid?
+                    redirect_to request.referrer, notice: 'Avatar successfully updated!'
+                else
+                    redirect_to request.referrer, notice: @user.errors[:base][0]
+                end
             else
                 @user.update_attribute('birth_year', params[:user][:birth_year])
                 @user.update_attribute('gender', params[:user][:gender])
                 @user.update_attribute('location', params[:user][:location])
                 @user.update_attribute('bio', params[:user][:bio])
-                redirect_to request.referrer, notice: 'Account info successfull updated!'
+                redirect_to request.referrer, notice: 'Account info successfully updated!'
             end
         else
             on_access_denied
@@ -50,9 +53,11 @@ class UsersController < ApplicationController
         else
             if User.exists?(:username => @user.username)
                 redirect_to request.referrer, notice: 'Username already exists'
+                return
             end
             if User.exists?(:email => @user.email)
                 redirect_to request.referrer, notice: 'User with the provided email already exists'
+                return
             end
         end
     end

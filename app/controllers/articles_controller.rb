@@ -24,15 +24,14 @@ class ArticlesController < ApplicationController
     def create
         if get_user
             @article = Article.new(article_params)
-            if !@article.banner.attached?
-                bannerPath = Rails.root.join("app/assets/images/bg/busy-street.jpg")
-                @article.banner.attach(io: File.open(bannerPath), filename: 'busy-street.jpg')
-            end
             if !get_user.admin
                 @article.featured = false
             end
             @article.user = get_user
-            @article.save
+            if !@article.save
+                redirect_to request.referrer, notice: @article.errors[:base][0]
+                return
+            end
             redirect_to articles_path + '/' + @article.id.to_s
         else
             on_access_denied

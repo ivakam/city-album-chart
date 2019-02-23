@@ -41,14 +41,17 @@
         <div id="profile-header">
             <div>
                 <% if !fetch_user.nil? && fetch_user.id == @user.id %>
-                    <form id="avatar-form" enctype="multipart/form-data" action="<%= root_url + '/users/update' %>" method="post" data-remote="false">
+                    <form id="avatar-form" enctype="multipart/form-data" action="<%= root_url + 'users/update' %>" method="post" data-remote="false">
                         <label for="avatar">
                             <%= image_tag user_avatar(@user), class: 'editable' %>
                         </label>
                         <input id="avatar" name="user[avatar]" type="file">
                         <input type="text" name="user[id]" value="<%= @user.id %>" hidden>
                         <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-                        <div><p><b>Change avatar</b></p></div>
+                        <div>
+                        	<p><b>Change avatar</b></p>
+                        	<p>Max filesize 1MB</p>
+                        </div>
                     </form>
                 <% else %>
                 <div>

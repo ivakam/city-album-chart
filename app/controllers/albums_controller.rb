@@ -125,40 +125,40 @@ class AlbumsController < ApplicationController
 					@album.tags = "#{params[:album][:title]} #{params[:album][:romanization]} #{params[:album][:romaji_artist]} #{params[:album][:japanese_artist]} #{params[:album][:year]} #{params[:album][:description]} #{params[:album][:flavor].gsub(/,/,'')}"
 					tempQuality = 0
 					if params[:tracklist] != ''
-						    parsedTracks = JSON.parse(params[:tracklist])
-					    parsedTracks.each do | t |
-						    @album.tags << " #{t[1][:romanization]} #{t[1][:title]}"
-					    end
-					    trackDurationCount = 0
-					    parsedTracks.each_with_index do | t, i |
-						    t[1][:order] = i + 1
-					    end
-					    parsedTracks.each do | t |
-						    if t[1]['duration'].present?
-							    trackDurationCount += 1
-						    end
-					    end
-					    @album.tracks = parsedTracks.map { | t | Track.new(t[1])}
-				    else
-					    parsedTracks = []
-				    end
-				    hasTracks = parsedTracks.empty?
-				    if  @album.description.present?
+							parsedTracks = JSON.parse(params[:tracklist])
+						parsedTracks.each do | t |
+							@album.tags << " #{t[1][:romanization]} #{t[1][:title]}"
+						end
+						trackDurationCount = 0
+						parsedTracks.each_with_index do | t, i |
+						t[1][:order] = i + 1
+						end
+						parsedTracks.each do | t |
+							if t[1]['duration'].present?
+								trackDurationCount += 1
+							end
+						end
+						@album.tracks = parsedTracks.map { | t | Track.new(t[1])}
+					else
+						parsedTracks = []
+					end
+					hasTracks = parsedTracks.empty?
+					if  @album.description.present?
 					    tempQuality += 5
-				    end
-				    if  @album.year.present?
+					end
+					if  @album.year.present?
 					    tempQuality += 10
-				    end
-				    if  @album.flavor.present?
+					end
+					if  @album.flavor.present?
 					    tempQuality += 5
-				    end
-				    if hasTracks
+					end
+					if hasTracks
 					    tempQuality += 30
-				    end
-				    if trackDurationCount == parsedTracks.length
+					end
+					if trackDurationCount == parsedTracks.length
 					    tempQuality += 5
-				    end
-				    if @album.cover.present?
+					end
+					if @album.cover.present?
 					    tempQuality += 10
 					end
 					@album.quality = tempQuality
@@ -169,7 +169,7 @@ class AlbumsController < ApplicationController
 						redirect_to '/albums/submit', notice: @album.errors[:base][0]
 					end
 				else
-				    p 'Invalid parameters for album'
+					p 'Invalid parameters for album'
 				end
             else
                 activation_barrier
@@ -224,6 +224,13 @@ class AlbumsController < ApplicationController
 					@album.cover.attach(paramAlbum[:cover])
 				else
 					@album.cover.attach(paramAlbum[:cover])
+				end
+				if !@album.save
+					coverPath = Rails.root.join("app/assets/images/missingcover.jpg")
+					@album.cover.purge
+					@album.cover.attach(io: File.open(coverPath), filename: "missingcover.jpg")
+					redirect_to request.referrer, notice: @album.errors[:base][0]
+					return
 				end
 			end
 			redirect_to request.referrer, notice: "Album updated!"
