@@ -93,7 +93,7 @@
         <div class="article-opacity"></div>
         <div class="article focused">
             <input type="text" id="article-id" value="<%= @article.id %>" hidden>
-            <input type="text" id="article-markdown" value="<%= @article.body %>" hidden>
+            <input type="text" id="article-markdown" value="<%= @article.body.gsub(/\r\n/, '(NEWLINE)') %>" hidden>
             <div class="article-header focused-featured">
                     <a><img src="<%= @article.banner.variant(resize: "600x600").processed.service_url %>"></a>
                     <a><h2><%= @article.title %></h2></a>
@@ -147,7 +147,7 @@
                 <div class="comment">
                     <div class="article-opacity"></div>
                     <input type="text" name="comment_id" value="<%= comment.id %>" class="comment-id" hidden>
-                    <input class="comment-markdown" type="text" value="<%= comment.body %>" hidden>
+                    <input class="comment-markdown" type="text" value="<%= comment.body.gsub(/\r\n/, '(NEWLINE)') %>" hidden>
                     <div id="comment-toolbar">
                         <% if fetch_user %>
                             <% if fetch_user.admin || comment.user.id == fetch_user.id %>
@@ -158,6 +158,9 @@
                             <% end %>
                             <% if comment.user.id == fetch_user.id %>
                             <ion-icon class="post-icon post-edit comment-edit" name="create"></ion-icon>
+                            <% end %>
+                            <% if fetch_user %>
+                            <ion-icon class="post-icon comment-quote" name="md-return-left"></ion-icon>
                             <% end %>
                             <% if fetch_user && fetch_user != comment.user && fetch_user.email_confirmed %>
                             <div class="heart-container">

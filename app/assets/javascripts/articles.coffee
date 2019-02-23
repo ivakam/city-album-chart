@@ -138,7 +138,7 @@ $(document).on 'turbolinks:load', ->
 		$('.comment-edit').click ->
 			e = $(this)
 			id = e.closest('.comment').find('.comment-id').val()
-			bodyText = e.closest('.comment').find('.comment-markdown').val()
+			bodyText = e.closest('.comment').find('.comment-markdown').val().replace(/\(NEWLINE\)/g, '\n')
 			$('#edit-comment-id').attr('value', id)
 			commentContent.value(bodyText)
 			$('#edit-comment-form-container').toggleClass('modal-inactive')
@@ -149,7 +149,7 @@ $(document).on 'turbolinks:load', ->
 		$('.article-edit').click ->
 			e = $(this)
 			id = e.closest('.article').find('#article-id').val()
-			bodyText = e.closest('.article').find('#article-markdown').val()
+			bodyText = e.closest('.article').find('#article-markdown').val().replace(/\(NEWLINE\)/g, '\n')
 			$('#edit-article-id').attr('value', id)
 			articleContent.value(bodyText)
 			$('#edit-article-form-container').toggleClass('modal-inactive')
@@ -157,20 +157,10 @@ $(document).on 'turbolinks:load', ->
 			opacity.css('background', 'rgba(0, 0, 0, 0.6')
 			opacity.css('z-index', '13')
 		
-		$('.post-text input').click ->
+		$('.comment-quote').click ->
 			e = $(this)
-			bodyText = e.closest('li').find('.edit-post').html().replace(/\<\/div\>/g, '\n')
-			bodyText = bodyText.replace(/\<div\>|\<br\>/g, '')
-			data =
-				post: 
-					thread_id: $('#report-thread').val()
-					id: e.closest('li').find('.post-id').val()
-					body: bodyText
-			$.post(window.location.href.replace(/\/forum.+/, '/posts/update'), data)
-			.success( ->
-				location.reload()
-			)
-			.fail( ->
-				console.log('Error sending post data')
-			)
-		
+			text = '>' + e.closest('.comment').find('.comment-markdown').val().replace(/\(NEWLINE\)/g, '\n>')
+			threadContent.value(text)
+			$('html, body').animate({
+				scrollTop: $('#reply-text-container').offset().top
+			}, 400)

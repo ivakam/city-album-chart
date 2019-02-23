@@ -62,30 +62,13 @@ $(document).on 'turbolinks:load', ->
 		$('.post-edit').click ->
 			e = $(this)
 			id = e.closest('li').find('.post-id').val()
-			bodyText = e.closest('li').find('.post-markdown').val()
+			bodyText = e.closest('li').find('.post-markdown').val().replace(/\(NEWLINE\)/g, '\n')
 			$('#edit-id').attr('value', id)
 			editContent.value(bodyText)
 			$('#edit-form-container').toggleClass('modal-inactive')
 			opacity = $('#opaque')
 			opacity.css('background', 'rgba(0, 0, 0, 0.6')
 			opacity.css('z-index', '13')
-			
-		$('.post-text input').click ->
-			e = $(this)
-			bodyText = e.closest('li').find('.edit-post').html().replace(/\<\/div\>/g, '\n')
-			bodyText = bodyText.replace(/\<div\>|\<br\>/g, '')
-			data =
-				post: 
-					thread_id: $('#report-thread').val()
-					id: e.closest('li').find('.post-id').val()
-					body: bodyText
-			$.post(window.location.href.replace(/\/forum.+/, '/posts/update'), data)
-			.success( ->
-				location.reload()
-			)
-			.fail( ->
-				console.log('Error sending post data')
-			)
 		
 		$('.post-bell').click ->
 			e = $(this)
@@ -99,6 +82,14 @@ $(document).on 'turbolinks:load', ->
 			.fail( ->
 				console.log('Error sending post data')
 			)
+		
+		$('.post-quote').click ->
+			e = $(this)
+			text = '>' + e.closest('li').find('.post-markdown').val().replace(/\(NEWLINE\)/g, '\n>')
+			replyContent.value(text)
+			$('html, body').animate({
+				scrollTop: $('#reply-text-container').offset().top
+			}, 400)
 			
 		$('.thread-pin').click ->
 			e = $(this)

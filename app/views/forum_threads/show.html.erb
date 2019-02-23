@@ -87,7 +87,7 @@
                 <% @page_posts.each do | post | %>
                 <li>
                     <input class="post-id" value="<%= post.id %>" hidden>
-                    <input class="post-markdown" value="<%= post.body %>" hidden>
+                    <input class="post-markdown" value="<%= post.body.gsub(/\r\n/, '(NEWLINE)') %>" hidden>
                     <div class="post-body">
                         <div class="user-info">
                             <p class="user-name"><b><a href="<%= root_url + 'users/' + post.user.username %>"><%= post.user.username %></a></b></p>
@@ -115,6 +115,9 @@
                                     <% end %>
                                     <% if post.user.id == fetch_user.id %>
                                     <ion-icon class="post-icon post-edit" name="create"></ion-icon>
+                                    <% end %>
+                                    <% if fetch_user %>
+                                    <ion-icon class="post-icon post-quote" name="md-return-left"></ion-icon>
                                     <% end %>
                                     <% if fetch_user && fetch_user != post.user && fetch_user.email_confirmed %>
                                     <div class="heart-container">
