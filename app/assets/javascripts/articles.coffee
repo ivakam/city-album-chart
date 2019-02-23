@@ -12,7 +12,7 @@ $(document).on 'turbolinks:load', ->
 			$('#report-target').attr('value', id)
 			opacity = $('#opaque')
 			opacity.css('background', 'rgba(0, 0, 0, 0.6')
-			opacity.css('z-index', '10')
+			opacity.css('z-index', '13')
 		
 		$('.comment-flag').click ->
             $('#report-form-container').toggleClass('modal-inactive')
@@ -21,7 +21,7 @@ $(document).on 'turbolinks:load', ->
             $('#report-target').attr('value', id)
             opacity = $('#opaque')
             opacity.css('background', 'rgba(0, 0, 0, 0.6')
-            opacity.css('z-index', '10')
+            opacity.css('z-index', '13')
 			
 		$('.delete-article-confirm-btn').click ->
 			data =
@@ -125,7 +125,7 @@ $(document).on 'turbolinks:load', ->
 			$('#article-delete-modal').toggleClass('modal-inactive')
 			opacity = $('#opaque')
 			opacity.css('background', 'rgba(0, 0, 0, 0.6')
-			opacity.css('z-index', '10')
+			opacity.css('z-index', '13')
 	
 		$('.comment-trash').click ->
             id = $(this).closest('.comment').find('.comment-id').val()
@@ -133,7 +133,7 @@ $(document).on 'turbolinks:load', ->
             $('#comment-id').attr('value', id)
             opacity = $('#opaque')
             opacity.css('background', 'rgba(0, 0, 0, 0.6')
-            opacity.css('z-index', '10')
+            opacity.css('z-index', '13')
         
 		$('.comment-edit').click ->
 			e = $(this)
@@ -144,7 +144,7 @@ $(document).on 'turbolinks:load', ->
 			$('#edit-comment-form-container').toggleClass('modal-inactive')
 			opacity = $('#opaque')
 			opacity.css('background', 'rgba(0, 0, 0, 0.6')
-			opacity.css('z-index', '10')
+			opacity.css('z-index', '13')
 			
 		$('.article-edit').click ->
 			e = $(this)
@@ -155,7 +155,7 @@ $(document).on 'turbolinks:load', ->
 			$('#edit-article-form-container').toggleClass('modal-inactive')
 			opacity = $('#opaque')
 			opacity.css('background', 'rgba(0, 0, 0, 0.6')
-			opacity.css('z-index', '10')
+			opacity.css('z-index', '13')
 		
 		$('.post-text input').click ->
 			e = $(this)

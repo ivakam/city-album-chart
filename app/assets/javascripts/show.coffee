@@ -6,7 +6,7 @@ $(document).on 'turbolinks:load', ->
 		$('#register-form-container').toggleClass('modal-inactive')
 		opacity = $('#opaque')
 		opacity.css('background', 'rgba(0, 0, 0, 0.6')
-		opacity.css('z-index', '10')				
+		opacity.css('z-index', '13')				
 		
 	#Handler for clicking "reset password" button
 	
@@ -14,7 +14,7 @@ $(document).on 'turbolinks:load', ->
 		$('#password-reset-form-container').toggleClass('modal-inactive')
 		opacity = $('#opaque')
 		opacity.css('background', 'rgba(0, 0, 0, 0.6')
-		opacity.css('z-index', '10')
+		opacity.css('z-index', '13')
 	
 	#Handler for clicking the notifications button
 	
@@ -47,7 +47,7 @@ $(document).on 'turbolinks:load', ->
 	if $('.flash-modal')[0]
 		opacity = $('#opaque')
 		opacity.css('background', 'rgba(0, 0, 0, 0.6')
-		opacity.css('z-index', '10')				
+		opacity.css('z-index', '13')				
 		setTimeout( ->
 			resetFocus()
 		, 10000)
@@ -205,7 +205,7 @@ $(document).on 'turbolinks:load', ->
 			$('#report-form-container').toggleClass('modal-inactive')
 			opacity = $('#opaque')
 			opacity.css('background', 'rgba(0, 0, 0, 0.6')
-			opacity.css('z-index', '5')
+			opacity.css('z-index', '3')
 		
 		#Handler for deleting tracks
 		
@@ -285,7 +285,7 @@ $(document).on 'turbolinks:load', ->
 				$('.enlargened').css('left', ($(window).width() / 2) - offset)
 				$('.enlargened').css('top', ($(window).height() / 2) - offset)
 				opacity.css('background', 'rgba(0, 0, 0, 0.6')
-				opacity.css('z-index', '5')
+				opacity.css('z-index', '13')
 		
 		#Updating selected file for cover editing
 		

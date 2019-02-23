@@ -7,7 +7,7 @@ $(document).on 'turbolinks:load', ->
 			$('#report-form-container').toggleClass('modal-inactive')
 			opacity = $('#opaque')
 			opacity.css('background', 'rgba(0, 0, 0, 0.6')
-			opacity.css('z-index', '10')
+			opacity.css('z-index', '13')
 			
 		$('.edit-submit-btn').click ->
 			setTimeout( ->
@@ -57,7 +57,7 @@ $(document).on 'turbolinks:load', ->
 			$('.delete-modal').toggleClass('modal-inactive')
 			opacity = $('#opaque')
 			opacity.css('background', 'rgba(0, 0, 0, 0.6')
-			opacity.css('z-index', '10')
+			opacity.css('z-index', '13')
 			
 		$('.post-edit').click ->
 			e = $(this)
@@ -68,7 +68,7 @@ $(document).on 'turbolinks:load', ->
 			$('#edit-form-container').toggleClass('modal-inactive')
 			opacity = $('#opaque')
 			opacity.css('background', 'rgba(0, 0, 0, 0.6')
-			opacity.css('z-index', '10')
+			opacity.css('z-index', '13')
 			
 		$('.post-text input').click ->
 			e = $(this)

@@ -12,6 +12,8 @@
 		<link href="https://fonts.googleapis.com/css?family=Poppins|News+Cycle|Open+Sans|Roboto+Condensed" rel="stylesheet"> 
         <%= javascript_include_tag 'application' %>
 		<%= favicon_link_tag %>
+		<link rel="canonical" href="<%= request.original_url %>">
+		<meta name="description" content="SuperKayo is an open source community for Japanese kayo music. Talk about your favorite albums and read interesting articles to your heart's content!">
 	</head>
 	<body class="<%= controller_name %> <%= action_name %>">
 		<div id="wrapper">
@@ -208,7 +210,6 @@
 				</form>
 			</div>
 			<% end %>
-			<% description "SuperKayo is an open source community for Japanese kayo music. Talk about your favorite albums and read interesting articles to your heart's content!" %>
 			<%= image_tag "varietiescropped.png", id: "alt-img" %>
 			<div id="albums-bg-container">
 				<%= image_tag 'bg/minibus.jpg' %>

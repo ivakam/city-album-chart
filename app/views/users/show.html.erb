@@ -82,7 +82,7 @@
                     <p><b>Bio: </b></p>
                     <p>
                         <% if @user.bio.present? %>
-                        <%= @user.bio %>
+                        <%= parse_markdown(@user.bio) %>
                         <% else %>
                         No bio provided
                         <% end %>
