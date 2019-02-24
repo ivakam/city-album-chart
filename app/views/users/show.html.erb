@@ -83,17 +83,15 @@
                 </div>
                 <div>
                     <p><b>Bio: </b></p>
-                    <p>
-                        <% if @user.bio.present? %>
-                        <%= parse_markdown(@user.bio) %>
-                        <% else %>
-                        No bio provided
-                        <% end %>
-                    </p>
+                    <% if @user.bio.present? %>
+                    <%= parse_markdown(@user.bio) %>
+                    <% else %>
+                    <p>No bio provided</p>
+                    <% end %>
                 </div>
             </div>
             <% if fetch_user == @user %>
-            <ion-icon id="profile-edit-btn" name="create"></ion-icon>
+            <ion-icon id="profile-edit-btn" name="create" title="Edit profile info"></ion-icon>
             <% end %>
             <div id="email-div">
 				<% if fetch_user == @user && !fetch_user.email_confirmed %>

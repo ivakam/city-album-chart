@@ -1,17 +1,17 @@
 <div>
 	<p>Currently logged in as <i><%= fetch_user.username %></i></p>
 	<div id="profile-nav">
-		<a href="<%= root_url + 'users/' + fetch_user.username.downcase %>"><ion-icon name="md-person"></ion-icon></a>
+		<a href="<%= root_url + 'users/' + fetch_user.username.downcase %>"><ion-icon name="md-person" title="Profile"></ion-icon></a>
 		<% if Notification.where(user: fetch_user, unread: true).present? %>
-		<a id="notification-btn" class="unread-notifications"><ion-icon name="ios-mail-unread"></ion-icon></a>
+		<a id="notification-btn" class="unread-notifications"><ion-icon name="ios-mail-unread" title="Notifications"></ion-icon></a>
 		<% else %>
-		<a id="notification-btn"><ion-icon name="ios-mail"></ion-icon></a>
+		<a id="notification-btn"><ion-icon name="ios-mail" title="Notifications"></ion-icon></a>
 		<% end %>
 		<% if fetch_user.admin %>
-		<a href="<%= root_url + 'panel' %>"><ion-icon name="ios-settings"></ion-icon></a>
+		<a href="<%= root_url + 'panel' %>"><ion-icon name="ios-settings" title="Panel"></ion-icon></a>
 		<% end %>
 	</div>
-	<a id="logout-btn" rel="nofollow" data-method="delete" href="<%= root_url + 'logout' %>"><ion-icon name="ios-log-out"></ion-icon></a>
+	<a id="logout-btn" rel="nofollow" data-method="delete" href="<%= root_url + 'logout' %>"><ion-icon name="ios-log-out" title="Log out"></ion-icon></a>
 	<div id="notification-list" class="hidden">
 		<h3>Recent notifications:</h3>
 		<% @notifications = Notification.where(user: fetch_user, unread: true).order('created_at').reverse_order.limit(5) %>

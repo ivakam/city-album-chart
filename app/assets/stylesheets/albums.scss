@@ -1286,6 +1286,7 @@ p,a,i {
 .paragraph {
 	font-family: $paragraph-font;
 	color: $light-font;
+	overflow-x: auto;
 	p {
 		font-family: $paragraph-font !important;
 		margin: 0.8em 0 !important;
@@ -1297,6 +1298,9 @@ p,a,i {
 			color: #5ea9fe !important;
 		}
 		text-decoration: underline;
+	}
+	pre {
+		overflow-x: auto;
 	}
 }
 

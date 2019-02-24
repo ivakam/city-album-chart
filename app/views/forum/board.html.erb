@@ -33,7 +33,7 @@
                         <p class="author">By <%= link_to thread.user.username, root_url + 'users/' + thread.user.username %>, at <%= thread.created_at.strftime("%F") %></p>
                     </div>
                     <div class="activity">
-                        <p><%= thread.posts.length %> replies</p>
+                        <p><%= thread.posts.length - 1 %> replies</p>
                         <p>Last updated at: <%= thread.updated_at.strftime("%R %Z, %F") %></p>
                     </div>
                 </li>
