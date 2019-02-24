@@ -165,92 +165,87 @@ $light-font: #e8e8e8;
                         max-height: 120px;
                         padding: 20px 10px 0 10px;
                     }
-                    .header-icons {
+                    .body-icon-container {
                         display: flex;
-                        justify-content: flex-end;
-                        align-items: center;
-                        position: absolute;
-                        transition: 0.3s;
-                        right: 0;
-                        top: 0;
-                        z-index: 5;
-                        padding-left: 10px;
-                        border-left: 1px #686868 solid;
-                        .post-icon {
-                            width: 20px;
-                            height: 20px;
-                            color: #e8e8e8;
-                            opacity: 0.6;
-                            transition: 0.2s;
-                            &:not(:last-child) {
-                                margin-right: 10px;
-                            }
-                            &:hover {
-                                opacity: 0.9;
-                                cursor: pointer;
-                            }
-                        }
-                        .heart-container {
-                            position: relative;
+                        flex-grow: 1;
+                        .header-icons {
                             display: flex;
-                            flex-direction: row-reverse;
-                            justify-content: center;
+                            justify-content: flex-end;
                             align-items: center;
-                            height: 25px;
-                            width: 25px;
-                            .post-heart {
-                                margin-right: 0 !important;
-                                transition: 0.25s;
+                            transition: 0.3s;
+                            max-height: 25px;
+                            margin-left: 4px;
+                            z-index: 5;
+                            padding-left: 10px;
+                            border-left: 1px #686868 solid;
+                            .post-icon {
                                 width: 20px;
                                 height: 20px;
-                                margin: 0 !important;
+                                color: #e8e8e8;
+                                opacity: 0.6;
+                                transition: 0.2s;
+                                &:not(:last-child) {
+                                    margin-right: 10px;
+                                }
+                                &:hover {
+                                    opacity: 0.9;
+                                    cursor: pointer;
+                                }
                             }
-                            .expanded {
-                                width: 24px !important;
-                                height: 24px !important;
-                            }
-                            .red {
-                                color: red !important;
-                            }
-                            .heart-animation {
-                                transition: margin 1.5s, transform 1.5s, opacity 1.5s;
-                                opacity: 1;
-                                position: absolute;
-                                width: 22px;
-                                height: 22px;
-                                margin-bottom: 0px;
-                                top: 0;
-                                left: 0;
-                                color: red;
-                                transform: rotate(0deg);
-                                margin: 0 !important;
-                                padding: 0 !important;
-                            }
-                            .animated {
-                                z-index: 10;
-                                opacity: 0 !important;
-                                margin-top: -20px !important;
-                                transform: rotate(45deg) !important;
+                            .heart-container {
+                                position: relative;
+                                display: flex;
+                                flex-direction: row-reverse;
+                                justify-content: center;
+                                align-items: center;
+                                height: 25px;
+                                width: 25px;
+                                .post-heart {
+                                    margin-right: 0 !important;
+                                    transition: 0.25s;
+                                    width: 20px;
+                                    height: 20px;
+                                    margin: 0 !important;
+                                }
+                                .expanded {
+                                    width: 24px !important;
+                                    height: 24px !important;
+                                }
+                                .red {
+                                    color: red !important;
+                                }
+                                .heart-animation {
+                                    transition: margin 1.5s, transform 1.5s, opacity 1.5s;
+                                    opacity: 1;
+                                    position: absolute;
+                                    width: 22px;
+                                    height: 22px;
+                                    margin-bottom: 0px;
+                                    top: 0;
+                                    left: 0;
+                                    color: red;
+                                    transform: rotate(0deg);
+                                    margin: 0 !important;
+                                    padding: 0 !important;
+                                }
+                                .animated {
+                                    z-index: 10;
+                                    opacity: 0 !important;
+                                    margin-top: -20px !important;
+                                    transform: rotate(45deg) !important;
+                                }
                             }
                         }
-                    }
-                    .padded {
-                        top: 8px;
-                        right: 8px;
-                    }
-                    .padded-right {
-                        padding-right: 120px !important;
-                    }
-                    .post-text {
-                        margin-bottom: 10px;
-                        flex-grow: 1;
-                        p, a, h1, h2, h3, h4, i, em, b {
-                            padding-right: 110px;
-                            color: #e8e8e8;
-                        }
-                        ul, ol {
-                            list-style-type: initial;
-                            font-size: 14px;
+                        .post-text {
+                            margin-bottom: 10px;
+                            flex-grow: 1;
+                            p, a, h1, h2, h3, h4, i, em, b {
+                                color: #e8e8e8;
+                            }
+                            ul, ol {
+                                list-style-type: initial;
+                                font-size: 14px;
+                            }
                         }
                     }
                 }

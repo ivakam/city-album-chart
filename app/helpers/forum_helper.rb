@@ -14,6 +14,10 @@ module ForumHelper
             'No threads in board'
         end
         
+        def id
+            'NaN'
+        end
+        
         def updated_at
             DateTime.new(2001,2,3,4,5,6)
         end
