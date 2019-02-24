@@ -1290,6 +1290,13 @@ p,a,i {
 		font-family: $paragraph-font !important;
 		margin: 0.8em 0 !important;
 	}
+	a {
+		color: royalblue !important;
+		&:hover {
+			color: #5ea9fe !important;
+		}
+		text-decoration: underline;
+	}
 }
 
 blockquote {
