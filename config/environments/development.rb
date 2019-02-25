@@ -39,25 +39,25 @@ Rails.application.configure do
 
   config.action_mailer.delivery_method = :smtp
 
-  #ActionMailer::Base.smtp_settings = {
-  	#:address              => "mail.privateemail.com",
-  	#:port                 => "587",
-  	#:domain               => "superkayo.xyz",
-  	#:user_name            => JSON.parse(hostFile)['email'],
-  	#:password             => JSON.parse(hostFile)['password'],
-  	#:authentication       => "plain",
-  	#:enable_starttls_auto => true
-  #}
-
   ActionMailer::Base.smtp_settings = {
-  	:address              => "smtp.gmail.com",
+  	:address              => "mail.privateemail.com",
   	:port                 => "587",
-  	:domain               => "gmail.com",
-  	:user_name            => ENV["EMAIL"],
-  	:password             => ENV["EMAIL_PASSWORD"],
+  	:domain               => "superkayo.xyz",
+  	:user_name            => JSON.parse(hostFile)['email'],
+  	:password             => JSON.parse(hostFile)['password'],
   	:authentication       => "plain",
   	:enable_starttls_auto => true
   }
+
+  #ActionMailer::Base.smtp_settings = {
+  	#:address              => "smtp.gmail.com",
+  	#:port                 => "587",
+  	#:domain               => "gmail.com",
+  	#:user_name            => ENV["EMAIL"],
+  	#:password             => ENV["EMAIL_PASSWORD"],
+  	#:authentication       => "plain",
+  	#:enable_starttls_auto => true
+  #}
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
