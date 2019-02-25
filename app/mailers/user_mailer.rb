@@ -1,8 +1,13 @@
 class UserMailer < ApplicationMailer
-    default from: 'noreply@superkayo.xyz'
+    default from: 'staff@superkayo.xyz'
 
-     def email_confirmation
+    def email_confirmation
         @user = params[:user]
         mail(:to => "#{@user.username} <#{@user.email}>", :subject => "Email Confirmation")
-     end
+    end
+
+    def password_reset
+        @user = params[:user]
+        mail(:to => "#{@user.username} <#{@user.email}>", :subject => "Password Reset")
+    end
 end

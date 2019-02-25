@@ -50,7 +50,7 @@
                 <div id="form-container">
                     <div>
                         <div id="input-container">
-                            <i class="hint">Have a scraper output to submit instead? <a class="hint-click">Click here.</a></i>
+                            <i class="hint">Have multiple albums to submit? <a class="hint-click">Click here.</a></i>
                             <div>
                                 <div class="form-divider" id="left-divider">
                                     <div class="form-field">
@@ -81,7 +81,7 @@
                                     </div>
                                     <div class="form-field">
                                         <p><%= form.label :flavor %></p>
-                                        <%= form.text_field :flavor, placeholder: "Funk" %>
+                                        <%= form.text_field :flavor, placeholder: "Funk, Rock, Soul" %>
                                     </div>
                                     <i>*Required Fields.</i>
                                 </div>
@@ -157,20 +157,27 @@
                                 </div>
                             </div>
                             <div class="form-field submit-btn">
-                                <p>Album Cover (jpg or jpeg. Max 500Kb. Preferably under 100Kb.)</p>
+                                <p>Album Cover (jpg or jpeg. Max 1Mb. Preferably under 500Kb.)</p>
                                 <label for="album-cover"><ion-icon class="cover-browse" name="ios-folder-open"></ion-icon></label>
                                 <%= form.file_field :cover, id: 'album-cover' %>
+                                <p id="selected-cover">No file selected</p>
+                            </div>
+                            <div class="save-container" class="submit-btn">
+                                <%= form.submit "Submit", class: "save-btn" %>
+                                <h2>Sending submission...</h2>
                             </div>
                         </div>
                         <div class="form-field" id="scraper-input">
                             <i class="hint"><a class="hint-click">Take me back!</a></i>
-                            <p><%= form.label :scraper %> (paste your output here). Images go in a separate folder to me directly (see links in footer).</p>
-                            <%= form.file_field :scraper, id: 'albums-input', multiple: true %>
+                            <p>Select the folder you would like to submit. The scraper will gather any music files it can find. Album covers are still a WIP (as is a better interface), so for now we'll have to get by on manually editing the covers in after the fact.</p>
+                            <p>Browse:</p>
+                            <label for="albums-input"><ion-icon class="cover-browse" name="ios-folder-open"></ion-icon></label>
+                            <input id="albums-input" multiple="multiple" type="file" name="album[scraper][]" webkitdirectory mozdirectory msdirectory odirectory directory>
+                            <div>
+                                <h2 id="scraper-status">Waiting for files...</h2>
+                            </div>
+                            <a id="scraper-submit-btn" class="transparent">Submit</a>
                         </div>
-                    </div>
-                    <div class="save-container" class="submit-btn">
-                        <%= form.submit "Submit", class: "save-btn" %>
-                        <h2>Sending submission...</h2>
                     </div>
                 </div>
             <% end %>

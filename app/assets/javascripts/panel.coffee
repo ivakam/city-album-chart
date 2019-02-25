@@ -28,3 +28,7 @@ $(document).on 'turbolinks:load', ->
 			sendPost('#user-box .checkbox-container input', 'users/destroy', 'user')
 		$('#clear-thread-btn').click ->
 			sendPost('#threads-box .checkbox-container input', 'thread/destroy', 'thread')
+		$('#clear-article-btn').click ->
+			sendPost('#articles-box .checkbox-container input', 'articles/destroy', 'article')
+		$('#clear-announcement-btn').click ->
+			sendPost('#announcements-box .checkbox-container input', 'announcements/destroy', 'announcement')

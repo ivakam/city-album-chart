@@ -1,21 +1,21 @@
 class UpvotesController < ApplicationController
-    
     def destroy
         @upvote.destroy
     end
     
     def create
         if get_user
-          if get_user.email_confirmed
-            @upvote = Upvote.find_by(user: get_user, upvote_type: params[:upvote][:upvote_type], target_id: params[:upvote][:target_id])
-            if @upvote.present?
-                return destroy
+            if get_user.email_confirmed
+                @upvote = Upvote.find_by(user: get_user, upvote_type: params[:upvote][:upvote_type], target_id: params[:upvote][:target_id])
+                if @upvote.present?
+                    return destroy
+                end
+                @upvote = Upvote.new(upvote_params)
+                @upvote.user = get_user
+                @upvote.save
+            else
+                activation_barrier
             end
-            @upvote = Upvote.new(upvote_params)
-            @upvote.user = get_user
-            @upvote.save
-          else
-            activation_barrier
         else
             login_barrier
         end

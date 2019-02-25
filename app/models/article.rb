@@ -1,4 +1,8 @@
 class Article < ApplicationRecord
+    
+    before_destroy :clean_with_association_cleanup_service
+    
+    
     belongs_to :user
     has_many :comments, :dependent => :destroy
     has_one_attached :banner
@@ -6,9 +10,23 @@ class Article < ApplicationRecord
     
     after_save do
         update_with_user_status_service
+        subscribe_with_auto_subscribe_service
     end
     
     private
+    
+    def clean_with_association_cleanup_service
+        AssociationCleanupService.new({
+            model: self,
+            children: self.comments
+        }).clean
+    end
+    
+    def subscribe_with_auto_subscribe_service
+        AutoSubscriptionService.new({
+            model: self
+        }).auto_subscribe
+    end
     
     def update_with_user_status_service
         UserStatusService.new({

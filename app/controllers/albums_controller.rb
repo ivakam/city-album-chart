@@ -23,7 +23,6 @@ class AlbumsController < ApplicationController
 			album.attributes.each_pair do | key, value |
 				albumWithTracks[key] = value
 			end
-			p album.id
 			albumWithTracks['contributor'] =  (!album.user_id.nil?) ? User.find_by(id: album.user_id).username : 'Unknown'
 			albumWithTracks['upload_date'] = album.created_at.strftime("%d-%m-%Y")
 			albumWithTracks['thumbnail'] = album.cover.variant(resize: '200x200').processed.service_url
@@ -92,21 +91,43 @@ class AlbumsController < ApplicationController
 	def create
 		if get_user
             if get_user.email_confirmed
-			    if params[:album][:title].present? && params[:album][:romaji_artist].present?
-				    @album = Album.new(params[:album].to_unsafe_hash)
-				    if !@album.cover.attached?
-					    coverPath = Rails.root.join("app/assets/images/missingcover.jpg")
-					    @album.cover.attach(io: File.open(coverPath), filename: "missingcover.jpg")
-					    p "ERROR: Could not find cover for #{@album.title}"
-				    else
-					    p "Successfully attached cover to #{@album.title}"
-				    end
-				    @album.tags = "#{params[:album][:title]} #{params[:album][:romanization]} #{params[:album][:romaji_artist]} #{params[:album][:japanese_artist]} #{params[:album][:year]} #{params[:album][:description]} #{params[:album][:flavor].gsub(/,/,'')}"
-				    tempQuality = 0
-				    if params[:tracklist] != ''
+				if params[:scraper].present?
+					scraperAlbums = params[:scraper]
+					scraperAlbums.each do | a |
+						a = a[1]
+						album = Album.new()
+						album.flavor = ''
+						album.japanese_artist = ''
+						album.description = ''
+						album.romanization = ''
+						album.title = a[:title]
+						album.romaji_artist = a[:artist]
+						album.year = a[:year]
+						album.user_id = get_user.id
+						album.tags = "#{album.title} #{album.romaji_artist} #{album.year}"
+						album.quality = album.year.present? ? 45 : 35
+						album.save
+						a[:tracklist].each do | t |
+							t = t[1]
+							track = Track.new()
+							track.title = t[:title]
+							track.romanization = ''
+							track.duration = t[:length]
+							track.album = album
+							track.order = t[:trackNumber]
+							album.tags << " #{track.title}"
+							track.save
+						end
+					end
+					redirect_to '/albums/submit', notice: 'Album submitted!', turbolinks: false
+				elsif params[:album][:title].present? && params[:album][:romaji_artist].present?
+					@album = Album.new(album_params)
+					@album.tags = "#{params[:album][:title]} #{params[:album][:romanization]} #{params[:album][:romaji_artist]} #{params[:album][:japanese_artist]} #{params[:album][:year]} #{params[:album][:description]} #{params[:album][:flavor].gsub(/,/,'')}"
+					tempQuality = 0
+					if params[:tracklist] != ''
 						    parsedTracks = JSON.parse(params[:tracklist])
 					    parsedTracks.each do | t |
-						    @album.tags << " #{t[1][:romanization]} #{t[1][:romanization]}"
+						    @album.tags << " #{t[1][:romanization]} #{t[1][:title]}"
 					    end
 					    trackDurationCount = 0
 					    parsedTracks.each_with_index do | t, i |
@@ -139,15 +160,17 @@ class AlbumsController < ApplicationController
 				    end
 				    if @album.cover.present?
 					    tempQuality += 10
-				    end
-				    @album.quality = tempQuality
-				    @album.user_id = get_user.id
-				    @album.save
-				    p "Success!"
-				    redirect_to '/albums/submit', notice: 'Album submitted!'
-			    else
+					end
+					@album.quality = tempQuality
+					@album.user_id = get_user.id
+					if @album.save
+						redirect_to '/albums/submit', notice: 'Album submitted!'
+					else
+						redirect_to '/albums/submit', notice: @album.errors[:base][0]
+					end
+				else
 				    p 'Invalid parameters for album'
-			    end
+				end
             else
                 activation_barrier
             end
@@ -157,10 +180,9 @@ class AlbumsController < ApplicationController
 	end
 	
 	def update
-		if get_user && get_user.admin
+		if get_user && get_user.email_confirmed
 			paramAlbum = params[:album]
-			paramTracks = JSON.parse(params[:album][:tracklist])
-			p paramAlbum
+			paramTracks = JSON.parse(params[:tracklist])
 			@album = Album.find_by(title: paramAlbum[:title_old], romaji_artist: paramAlbum[:romaji_artist_old])
 			@album.update(
 				title: paramAlbum[:title],
@@ -169,7 +191,8 @@ class AlbumsController < ApplicationController
 				romaji_artist: paramAlbum[:romaji_artist],
 				year: paramAlbum[:year],
 				flavor: paramAlbum[:flavor],
-				description: paramAlbum[:description]
+				description: paramAlbum[:description],
+				tags: "#{params[:album][:title]} #{params[:album][:romanization]} #{params[:album][:romaji_artist]} #{params[:album][:japanese_artist]} #{params[:album][:year]} #{params[:album][:description]} #{params[:album][:flavor].gsub(/,/,'')}"
 			)
 			deleteList = params[:delete_list].split(/\+\+\+/)
 			deleteList.each do | track |
@@ -192,6 +215,18 @@ class AlbumsController < ApplicationController
 					)
 				end
 			end
+			@album.tracks.each do | t |
+				@album.tags << " #{t.title} #{t.romanization}"
+			end
+			if paramAlbum[:cover].present?
+				if @album.cover.attached?
+					@album.cover.purge
+					@album.cover.attach(paramAlbum[:cover])
+				else
+					@album.cover.attach(paramAlbum[:cover])
+				end
+			end
+			redirect_to request.referrer, notice: "Album updated!"
 		else
 			on_access_denied
 		end
@@ -222,6 +257,6 @@ class AlbumsController < ApplicationController
 	private 
 	
 	def album_params
-		params.permit(:delete_list, :description, :description_old, :tracklist, :romanization, :romanization_old, :duration, :duration_old, :image, :coverlink, :thumbnail, :title, :title_old, :romaji_artist, :romaji_artist_old, :japanese_artist, :japanese_artist_old, :flavor, :flavor_old, :year, :year_old, :q, :offset, :limit, :sort, :sort_type, :q_track, album: {})
+		params.require(:album).permit(:description, :romanization, :duration, :image, :title, :romaji_artist, :japanese_artist, :flavor, :year, :cover)
 	end
 end

@@ -1,16 +1,53 @@
 <div>
-	<% if fetch_user %>
-		<p>Currently logged in as <i><%= fetch_user.username %></i></p>
-	<% end %>
+	<p>Currently logged in as <i><%= fetch_user.username %></i></p>
 	<div id="profile-nav">
-		<% if fetch_user %>
-			<%= link_to 'Profile', "#{root_url}users/#{fetch_user.username.downcase}" %>
-			<% if fetch_user.admin %>
-				<%= link_to 'Panel', "#{root_url}panel" %>
-			<% end %>
+		<a href="<%= root_url + 'users/' + fetch_user.username.downcase %>"><ion-icon name="md-person"></ion-icon></a>
+		<% if Notification.where(user: fetch_user, unread: true).present? %>
+		<a id="notification-btn" class="unread-notifications"><ion-icon name="ios-mail-unread"></ion-icon></a>
 		<% else %>
-			<%= link_to 'Profile', "users/" %>
+		<a id="notification-btn"><ion-icon name="ios-mail"></ion-icon></a>
+		<% end %>
+		<% if fetch_user.admin %>
+		<a href="<%= root_url + 'panel' %>"><ion-icon name="ios-settings"></ion-icon></a>
 		<% end %>
 	</div>
-	<%= link_to 'Log out', "#{root_url}logout", method: :delete, id: 'logout-btn' %>
+	<a id="logout-btn" rel="nofollow" data-method="delete" href="<%= root_url + 'logout' %>"><ion-icon name="ios-log-out"></ion-icon></a>
+	<div id="notification-list" class="hidden">
+		<h3>Recent notifications:</h3>
+		<% @notifications = Notification.where(user: fetch_user, unread: true).order('created_at').reverse_order.limit(5) %>
+		<% if !@notifications.present? %>
+		<i>No unread notifications!</i>
+		<% else %>
+			<% @notifications.each do | n | %>
+				<% if n.notification_type == 'ForumThread' %>
+				<% @post = Post.find_by(id: n.target_id) %>
+				<% @thread = @post.forum_thread %>
+				<a class="notification-card" href="<%= forum_path + "/#{@thread.category}/t/#{@thread.id}" %>">
+					<div class="notification-header">
+						<h4><%= @post.user.username %> posted in <%= @thread.title %>:</h4>
+						<p>Posted <%= @post.created_at.strftime('%b %d') %></p>
+					</div>
+					<div class="notification-divider"></div>
+					<div class="notification-body">
+						<p><%= parse_markdown(@post.body.split(/\n/)[0], true) %></p>
+					</div>
+				</a>
+				<% elsif n.notification_type == 'Article' %>
+				<% @comment = Comment.find_by(id: n.target_id) %>
+				<% @article = @comment.article %>
+				<a class="notification-card" href="<%= articles_path + "/#{@article.id}" %>">
+					<div class="notification-header">
+						<h4><%= @comment.user.username %> commented on <%= @article.title %>:</h4>
+						<p>Posted <%= @comment.created_at.strftime('%b %d') %></p>
+					</div>
+					<div class="notification-divider"></div>
+					<div class="notification-body">
+						<p><%= parse_markdown(@comment.body.split(/\n/)[0], true) %></p>
+					</div>
+				</a>
+				<% end %>
+			<% end %>
+		<% end %>
+		<a id="see-all" href="<%= root_url + 'users/' + fetch_user.username.downcase %>">See all</a>
+	</div>
 </div>

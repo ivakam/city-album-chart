@@ -22,6 +22,7 @@ end
 
 orphan_dummy
 
+=begin
 (0..50).each do | i |
 	user = User.new()
 	user.username = Faker::Internet.unique.username
@@ -88,7 +89,7 @@ ForumThread.all.each_with_index do | parentThread, i |
 		(1..rand(5..20)).each do | k |
 			upvote = Upvote.new()
 			upvote.target_id = reply.id
-			upvote.upvote_type = 'post'
+			upvote.upvote_type = 'Post'
 			upvote.user = User.find(rand(2..@usercount))
 			upvote.save
 		end
@@ -103,20 +104,20 @@ end
 	article.title = Faker::Book.title
 	article.subtitle = Faker::Lorem.sentence(4, false, 5)
 	article.body = Faker::Lorem.paragraph(15)
-	article.body << '<br>' + Faker::Lorem.paragraph(15)
-	article.body << '<br>' + Faker::Lorem.paragraph(15)
-	article.body << '<br>' + Faker::Lorem.paragraph(15)
-	article.body << '<br>' + Faker::Lorem.paragraph(15)
-	article.featured = rand(0...8) == 1 ? true : false
+	article.body << '\n ' + Faker::Lorem.paragraph(15)
+	article.body << '\n ' + Faker::Lorem.paragraph(15)
+	article.body << '\n ' + Faker::Lorem.paragraph(15)
+	article.body << '\n ' + Faker::Lorem.paragraph(15)
+	article.featured = i == 1 ? true : false
     articleBanner =  Dir.glob(Rails.root.join("app/assets/images/bg/*.*"))[rand(0...Dir.glob(Rails.root.join("app/assets/images/bg/*.*")).size)]
 	p articleBanner
 	article.banner.attach(io: File.open(articleBanner), filename: articleBanner.split(/\/bg\//)[1])
-	categories = ['Review', 'Essay', 'Opinion piece', 'History']
+	categories = ['review', 'essay', 'opinion_piece', 'history']
 	article.category = categories[rand(0..3)]
 	article.save
 	(1..rand(5..20)).each do | k |
 		upvote = Upvote.new()
-		upvote.upvote_type = 'article'
+		upvote.upvote_type = 'Article'
 		upvote.target_id = article.id
 		upvote.user = User.find(rand(2..@usercount))
 		upvote.save
@@ -132,7 +133,7 @@ Article.all.each_with_index do | article, i |
 		reply.body = Faker::HitchhikersGuideToTheGalaxy.quote
 		(1..rand(5..20)).each do | k |
 			upvote = Upvote.new()
-			upvote.upvote_type = 'comment'
+			upvote.upvote_type = 'Comment'
 			upvote.target_id = reply.id
 			upvote.user = User.find(rand(2..@usercount))
 			upvote.save
@@ -141,6 +142,8 @@ Article.all.each_with_index do | article, i |
 		reply.save
 	end
 end
+
+=end
 
 def CreateAlbumWithTracks(albumParam, tracks = [])
 	currentAlbum = Album.new(albumParam)
@@ -160,23 +163,22 @@ def CreateAlbumWithTracks(albumParam, tracks = [])
     if albumParam[:user_id].present?
     	currentAlbum.user_id = albumParam[:user_id]
     else
-    	currentAlbum.user_id = rand(2..User.all.size)
+    	currentAlbum.user_id = 1
+    	#currentAlbum.user_id = rand(2..User.all.size)
     end
     tracks.each do |t|
         currentAlbum.tags << " #{t[:title]} #{t[:romanization]}"
     end
 	tempQuality = 0
 	trackDurationCount = 0
-	tracks.each_with_index do | t, i |
-		t[:order] = i + 1
-	end
 	hasTracks = (tracks == []) ? false : true
-	tracks.each do | t |
+	tracks.each_with_index do | t, i |
 		albumTrack = Track.new()
 		albumTrack.title = t[:title]
 		albumTrack.romanization = t[:romanization]
 		albumTrack.duration = t[:duration]
 		albumTrack.album = currentAlbum
+		albumTrack.order = i + 1
 		albumTrack.save
 		if t[:duration].present?
 			trackDurationCount += 1

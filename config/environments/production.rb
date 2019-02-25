@@ -69,11 +69,33 @@ Rails.application.configure do
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "albumchart_#{Rails.env}"
 
-  config.action_mailer.perform_caching = false
-
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
+  
+  # Don't care if the mailer can't send.
+  config.action_mailer.raise_delivery_errors = true
+
+  config.action_mailer.perform_caching = false
+
+  config.action_mailer.delivery_method = :smtp
+
+  ActionMailer::Base.smtp_settings = {
+  	:address              => "mail.privateemail.com",
+  	:port                 => "587",
+  	:domain               => "superkayo.xyz",
+  	#:user_name            => ENV["EMAIL"],
+  	#:password             => ENV["EMAIL_PASSWORD"],
+  	:user_name            => JSON.parse(hostFile)['email'],
+  	:password             => JSON.parse(hostFile)['password'],
+  	:authentication       => "plain",
+  	:enable_starttls_auto => true
+  }
+
+  config.public_file_server.headers = {
+    'Cache-Control' => 'public, s-maxage=31536000, max-age=15552000',
+    'Expires' => "#{1.year.from_now.to_formatted_s(:rfc822)}"
+  }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).

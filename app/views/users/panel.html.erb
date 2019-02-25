@@ -156,5 +156,59 @@
 				<% end %>
 			</ul>
 		</div>
+		<div id="articles-box" class="list-box">
+			<div>
+				<h2>Articles</h2>
+				<a id="clear-article-btn" class="clear-btn">Delete selected</a>
+			</div>
+			<ul>
+				<li>
+					<h3 class="checkbox-container"></h3>
+					<h3>Id</h3>
+					<h3>Title</h3>
+					<h3>Author</h3>
+					<h3>Category</h3>
+					<h3>Replies</h3>
+					<h3>Last activity</h3>
+				</li>
+				<% Article.all.each do | article | %>
+				<li>
+					<ul>
+						<li class="checkbox-container"><input type="checkbox" value="<%= article.id %>"></li>
+						<li><p><%= article.id %></p></li>
+						<li><p><a href="<%= root_url + "forum/#{article.category}/t/#{article.id}" %>"><%= article.title %></a></p></li>
+						<li><p><a href="<%= root_url + "users/#{article.user.username}" %>"><%= article.user.username %></a></p></li>
+						<li><p><%= article.category %></p></li>
+						<li><p><%= article.comments.size %></p></li>
+						<li><p><%= article.updated_at.strftime("%R %Z, %F") %></p></li>
+					</ul>
+				</li>
+				<% end %>
+			</ul>
+		</div>
+		<div id="announcements-box" class="list-box">
+			<div>
+				<h2>Announcements</h2>
+				<a id="clear-announcement-btn" class="clear-btn">Delete selected</a>
+			</div>
+			<ul>
+				<li>
+					<h3 class="checkbox-container"></h3>
+					<h3>Id</h3>
+					<h3>Title</h3>
+					<h3>Author</h3>
+				</li>
+				<% Announcement.all.each do | announcement | %>
+				<li>
+					<ul>
+						<li class="checkbox-container"><input type="checkbox" value="<%= announcement.id %>"></li>
+						<li><p><%= announcement.id %></p></li>
+						<li><p><%= announcement.title %></p></li>
+						<li><p><a href="<%= root_url + "users/#{announcement.user.username}" %>"><%= announcement.user.username %></a></p></li>
+					</ul>
+				</li>
+				<% end %>
+			</ul>
+		</div>
 	</div>
 </div>

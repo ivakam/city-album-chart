@@ -7,7 +7,7 @@ $(document).on 'turbolinks:load', ->
 			$('#report-form-container').toggleClass('modal-inactive')
 			opacity = $('#opaque')
 			opacity.css('background', 'rgba(0, 0, 0, 0.6')
-			opacity.css('z-index', '5')
+			opacity.css('z-index', '13')
 			
 		$('.edit-submit-btn').click ->
 			setTimeout( ->
@@ -44,7 +44,7 @@ $(document).on 'turbolinks:load', ->
 				, 1250)
 			data =
 				upvote: 
-					upvote_type: 'post'
+					upvote_type: 'Post'
 					target_id: $(this).closest('li').find('.post-id').val()
 			$.post(window.location.href.replace(/\/forum.+/, '/upvotes/create'), data)
 			.fail( ->
@@ -57,32 +57,48 @@ $(document).on 'turbolinks:load', ->
 			$('.delete-modal').toggleClass('modal-inactive')
 			opacity = $('#opaque')
 			opacity.css('background', 'rgba(0, 0, 0, 0.6')
-			opacity.css('z-index', '5')
+			opacity.css('z-index', '13')
 			
 		$('.post-edit').click ->
 			e = $(this)
 			id = e.closest('li').find('.post-id').val()
-			bodyText = e.closest('li').find('.post-markdown').val()
+			bodyText = e.closest('li').find('.post-markdown').val().replace(/\(NEWLINE\)/g, '\n')
 			$('#edit-id').attr('value', id)
 			editContent.value(bodyText)
 			$('#edit-form-container').toggleClass('modal-inactive')
 			opacity = $('#opaque')
 			opacity.css('background', 'rgba(0, 0, 0, 0.6')
-			opacity.css('z-index', '5')
-			
-		$('.post-text input').click ->
+			opacity.css('z-index', '13')
+		
+		$('.post-bell').click ->
 			e = $(this)
-			bodyText = e.closest('li').find('.edit-post').html().replace(/\<\/div\>/g, '\n')
-			bodyText = bodyText.replace(/\<div\>|\<br\>/g, '')
+			id = threadId
+			e.toggleClass('green')
 			data =
-				post: 
-					thread_id: $('#report-thread').val()
-					id: e.closest('li').find('.post-id').val()
-					body: bodyText
-			$.post(window.location.href.replace(/\/forum.+/, '/posts/update'), data)
-			.success( ->
-				location.reload()
+				subscription:
+					target_id: id
+					subscription_type: 'ForumThread'
+			$.post(window.location.href.replace(/\/forum.+/, '/subscriptions/create'), data)
+			.fail( ->
+				console.log('Error sending post data')
 			)
+		
+		$('.post-quote').click ->
+			e = $(this)
+			text = '>' + e.closest('li').find('.post-markdown').val().replace(/\(NEWLINE\)/g, '\n>')
+			replyContent.value(text)
+			$('html, body').animate({
+				scrollTop: $('#reply-text-container').offset().top
+			}, 400)
+			
+		$('.thread-pin').click ->
+			e = $(this)
+			id = threadId
+			e.toggleClass('green')
+			data =
+				thread:
+					thread_id: id
+			$.post(window.location.href.replace(/\/forum.+/, '/thread/toggle-pinned'), data)
 			.fail( ->
 				console.log('Error sending post data')
 			)

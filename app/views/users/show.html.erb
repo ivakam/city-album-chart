@@ -4,145 +4,35 @@
 		<h2>Edit your information</h2>
 	</div>
 	<ion-icon name="ios-close" id="profile-close" class="modal-close"></ion-icon>
+	<% if fetch_user && fetch_user == @user %>
 	<form id="profile-form" class="modal-form" action="/users/update" accept-charset="UTF-8" data-remote="true" method="post">
 		<input id="profile-id" type="text" name="user[id]" value="<%= @user.id %>" hidden>
 		<div class="modal-form-input-container">
-			<label for="gender"><p>Gender</p></label>
-			<select id="gender" class='gender-input' name="user[gender]" form="profile-form" required>
-				<option value="Male"><p>Male</p></option>
-				<option value="Female"><p>Female</p></option>
-				<option value="Other"><p>Other</p></option>
-				<option value="Unknown"><p>I'd rather not specify</p></option>
+			<label for="profile-gender"><p>Gender</p></label>
+			<select id="profile-gender" class='gender-input' name="user[gender]" form="profile-form" required>
+				<option value="Male" <%= 'selected' if fetch_user.gender == 'Male' %>><p>Male</p></option>
+				<option value="Female" <%= 'selected' if fetch_user.gender == 'Female' %>><p>Female</p></option>
+				<option value="Other" <%= 'selected' if fetch_user.gender == 'Other' %>><p>Other</p></option>
+				<option value="Unknown" <%= 'selected' if fetch_user.gender == 'Unknown' %>><p>I'd rather not specify</p></option>
 			</select>
-			<label for="birth-year"><p>Year of birth</p></label>
-			<select id="birth-year" class="age-input" name="user[birth_year]" form="profile-form" required>
-				<option value="Unknown"><p>I'd rather not specify</p></option>
-				<option value="2019"><p>2019</p></option>
-				<option value="2018"><p>2018</p></option>
-				<option value="2017"><p>2017</p></option>
-				<option value="2016"><p>2016</p></option>
-				<option value="2015"><p>2015</p></option>
-				<option value="2014"><p>2014</p></option>
-				<option value="2013"><p>2013</p></option>
-				<option value="2012"><p>2012</p></option>
-				<option value="2011"><p>2011</p></option>
-				<option value="2010"><p>2010</p></option>
-				<option value="2009"><p>2009</p></option>
-				<option value="2008"><p>2008</p></option>
-				<option value="2007"><p>2007</p></option>
-				<option value="2006"><p>2006</p></option>
-				<option value="2005"><p>2005</p></option>
-				<option value="2004"><p>2004</p></option>
-				<option value="2003"><p>2003</p></option>
-				<option value="2002"><p>2002</p></option>
-				<option value="2001"><p>2001</p></option>
-				<option value="2000"><p>2000</p></option>
-				<option value="1999"><p>1999</p></option>
-				<option value="1998"><p>1998</p></option>
-				<option value="1997"><p>1997</p></option>
-				<option value="1996"><p>1996</p></option>
-				<option value="1995"><p>1995</p></option>
-				<option value="1994"><p>1994</p></option>
-				<option value="1993"><p>1993</p></option>
-				<option value="1992"><p>1992</p></option>
-				<option value="1991"><p>1991</p></option>
-				<option value="1990"><p>1990</p></option>
-				<option value="1989"><p>1989</p></option>
-				<option value="1988"><p>1988</p></option>
-				<option value="1987"><p>1987</p></option>
-				<option value="1986"><p>1986</p></option>
-				<option value="1985"><p>1985</p></option>
-				<option value="1984"><p>1984</p></option>
-				<option value="1983"><p>1983</p></option>
-				<option value="1982"><p>1982</p></option>
-				<option value="1981"><p>1981</p></option>
-				<option value="1980"><p>1980</p></option>
-				<option value="1979"><p>1979</p></option>
-				<option value="1978"><p>1978</p></option>
-				<option value="1977"><p>1977</p></option>
-				<option value="1976"><p>1976</p></option>
-				<option value="1975" selected><p>1975</p></option>
-				<option value="1974"><p>1974</p></option>
-				<option value="1973"><p>1973</p></option>
-				<option value="1972"><p>1972</p></option>
-				<option value="1971"><p>1971</p></option>
-				<option value="1970"><p>1970</p></option>
-				<option value="1969"><p>1969</p></option>
-				<option value="1968"><p>1968</p></option>
-				<option value="1967"><p>1967</p></option>
-				<option value="1966"><p>1966</p></option>
-				<option value="1965"><p>1965</p></option>
-				<option value="1964"><p>1964</p></option>
-				<option value="1963"><p>1963</p></option>
-				<option value="1962"><p>1962</p></option>
-				<option value="1961"><p>1961</p></option>
-				<option value="1960"><p>1960</p></option>
-				<option value="1959"><p>1959</p></option>
-				<option value="1958"><p>1958</p></option>
-				<option value="1957"><p>1957</p></option>
-				<option value="1956"><p>1956</p></option>
-				<option value="1955"><p>1955</p></option>
-				<option value="1954"><p>1954</p></option>
-				<option value="1953"><p>1953</p></option>
-				<option value="1952"><p>1952</p></option>
-				<option value="1951"><p>1951</p></option>
-				<option value="1950"><p>1950</p></option>
-				<option value="1949"><p>1949</p></option>
-				<option value="1948"><p>1948</p></option>
-				<option value="1947"><p>1947</p></option>
-				<option value="1946"><p>1946</p></option>
-				<option value="1945"><p>1945</p></option>
-				<option value="1944"><p>1944</p></option>
-				<option value="1943"><p>1943</p></option>
-				<option value="1942"><p>1942</p></option>
-				<option value="1941"><p>1941</p></option>
-				<option value="1940"><p>1940</p></option>
-				<option value="1939"><p>1939</p></option>
-				<option value="1938"><p>1938</p></option>
-				<option value="1937"><p>1937</p></option>
-				<option value="1936"><p>1936</p></option>
-				<option value="1935"><p>1935</p></option>
-				<option value="1934"><p>1934</p></option>
-				<option value="1933"><p>1933</p></option>
-				<option value="1932"><p>1932</p></option>
-				<option value="1931"><p>1931</p></option>
-				<option value="1930"><p>1930</p></option>
-				<option value="1929"><p>1929</p></option>
-				<option value="1928"><p>1928</p></option>
-				<option value="1927"><p>1927</p></option>
-				<option value="1926"><p>1926</p></option>
-				<option value="1925"><p>1925</p></option>
-				<option value="1924"><p>1924</p></option>
-				<option value="1923"><p>1923</p></option>
-				<option value="1922"><p>1922</p></option>
-				<option value="1921"><p>1921</p></option>
-				<option value="1920"><p>1920</p></option>
-				<option value="1919"><p>1919</p></option>
-				<option value="1918"><p>1918</p></option>
-				<option value="1917"><p>1917</p></option>
-				<option value="1916"><p>1916</p></option>
-				<option value="1915"><p>1915</p></option>
-				<option value="1914"><p>1914</p></option>
-				<option value="1913"><p>1913</p></option>
-				<option value="1912"><p>1912</p></option>
-				<option value="1911"><p>1911</p></option>
-				<option value="1910"><p>1910</p></option>
-				<option value="1909"><p>1909</p></option>
-				<option value="1908"><p>1908</p></option>
-				<option value="1907"><p>1907</p></option>
-				<option value="1906"><p>1906</p></option>
-				<option value="1905"><p>1905</p></option>
+			<label for="profile-birth-year"><p>Year of birth</p></label>
+			<select id="profile-birth-year" class="age-input" name="user[birth_year]" form="profile-form" required>
+				<option value="Unknown" <%= 'selected' if fetch_user.birth_year == 'Unknown' %>><p>I'd rather not specify</p></option>
+				<% (1905..2019).each do | i | %> 
+				<option value="<%= i %>" <%= 'selected' if fetch_user.birth_year == i %>><p><%= i %></p></option>
+				<% end %>
 			</select>
 			<label for="profile-location"><p>Location:</p></label>
-			<input type="text" id="profile-location" placeholder="Location" name="user[location]">
+			<input type="text" id="profile-location" placeholder="Location" name="user[location]" value="<%= fetch_user.location %>">
 			<label for="profile-bio"><p>Bio:</p></label>
-			<textarea id="profile-bio" placeholder="What's your story?" name="user[bio]"></textarea>
+			<textarea id="profile-bio" placeholder="What's your story?" name="user[bio]"><%= fetch_user.bio %></textarea>
 		</div>
 		<input id="update-submit-btn" type="submit" name="commit" value="Save changes">
 		<div class="submit-message shrunk">
 			<p>Profile updated!</p>
 		</div>
 	</form>
+	<% end %>
 </div>
 <div id="main-container">
     <%= render 'partials/navbar_slim' %>
@@ -192,7 +82,7 @@
                     <p><b>Bio: </b></p>
                     <p>
                         <% if @user.bio.present? %>
-                        <%= @user.bio %>
+                        <%= parse_markdown(@user.bio) %>
                         <% else %>
                         No bio provided
                         <% end %>
@@ -202,9 +92,118 @@
             <% if fetch_user == @user %>
             <ion-icon id="profile-edit-btn" name="create"></ion-icon>
             <% end %>
+            <div id="email-div">
+				<% if fetch_user == @user && !fetch_user.email_confirmed %>
+				<a id="resend-email-btn" href="<%= root_url + 'users/resend-email' %>">Resend confirmation email</a>
+				<% end %>
+				<p>Member since: <%= @user.created_at.strftime('%B %-d, %Y') %></p>
+            </div>
         </div>
-        <div id="favorites-display">
-            
-        </div>
+        <div id="profile-body">
+			<div id="activity-container">
+				<h2>Recent activity:</h2>
+				<div id="feed">
+				<% @activity.each do | a | %>
+					<% if a.class.name == 'Post' %> 
+					<a href="<%= "#{forum_path}/#{a.forum_thread.category}/t/#{a.forum_thread.id}" %>" class="post-card">
+						<div class="card-opacity"></div>
+						<h4><%= a.user.username %> posted in thread <i><%= a.forum_thread.title %></i> :</h4>
+						<p class="post-score">Score: <%= post_upvotes(a) %></p>
+						<div class="post-container">
+							<div class="user-info">
+								<div class="avatar-wrapper">
+									<%= image_tag user_avatar(a.user) %>
+								</div>
+							</div>
+							<div class="text-container">
+								<div class="post-text">
+									<p><%= parse_markdown(a.body.split(/\n/)[0], true) %></p>
+								</div>
+							</div>
+						</div>
+					</a>
+					<% end %>
+					<% if a.class.name == 'Article' %>
+                    <a class="article post-card" href="<%= articles_path + '/' + a.id.to_s %>">
+                    	<div class="card-opacity"></div>
+                    	<h4><%= @user.username %> published an article:</h4>
+                        <div class="article-header">
+                            <div class="header-positioner"><img src="<%= a.banner.variant(resize: "600x600").processed.service_url %>"></div>
+                            <div class="header-positioner"><h2><%= a.title %></h2></div>
+                            <div>
+                                <div>
+                                    <div class="avatar-wrapper">
+                                        <%= image_tag user_avatar(a.user) %>
+                                    </div>
+                                    <p>By <%= a.user.username %></p>
+                                </div>
+                                <p>&nbsp;- <%= a.created_at.strftime('%-d %b, %Y') %></p>
+                                <p class="article-score">Score: <%= article_upvotes(a) %></p>
+                            </div>
+                        </div>
+                        <div class="article-body">
+                            <h4><%= a.subtitle %></h4>
+                            <p class="paragraph"><%= parse_markdown(a.body) %></p>
+                        </div>
+                    </a>
+					<% end %>
+				<% end %>
+				</div>
+			</div>
+			<div id="user-sidebar">
+				<% if fetch_user == @user %>
+				<div id="notification-panel">
+					<h3>Recent notifications:</h3>
+					<% if !@notifications.present? %>
+					<i>No notifications to display!</i>
+					<% else %>
+						<% @notifications.each do | n | %>
+							<% if n.notification_type == 'ForumThread' %>
+							<% @post = Post.find_by(id: n.target_id) %>
+							<% @thread = @post.forum_thread %>
+							<a class="notification-card" href="<%= forum_path + "/#{@thread.category}/t/#{@thread.id}" %>">
+								<div class="notification-opacity"></div>
+								<div class="notification-header">
+									<h4><%= @post.user.username %> posted in <%= @thread.title %>:</h4>
+									<p>Posted <%= @post.created_at.strftime('%b %d') %></p>
+								</div>
+								<div class="notification-divider"></div>
+								<div class="notification-body">
+		                            <div class="avatar-wrapper">
+		                                <%= image_tag user_avatar(@post.user) %>
+		                            </div>
+		                            <div class="text-container">
+										<p><%= parse_markdown(@post.body.split(/\n/)[0], true) %></p>
+									</div>
+								</div>
+							</a>
+							<% elsif n.notification_type == 'Article' %>
+							<% p n %>
+							<% @comment = Comment.find_by(id: n.target_id) %>
+							<% @article = @comment.article %>
+							<a class="notification-card" href="<%= articles_path + "/#{@article.id}" %>">
+								<div class="notification-opacity"></div>
+								<div class="notification-header">
+									<h4><%= @comment.user.username %> commented on <%= @article.title %>:</h4>
+									<p>Posted <%= @comment.created_at.strftime('%b %d') %></p>
+								</div>
+								<div class="notification-divider"></div>
+								<div class="notification-body">
+		                            <div class="avatar-wrapper">
+		                                <%= image_tag user_avatar(@comment.user) %>
+		                            </div>
+		                            <div class="text-container">
+										<p><%= parse_markdown(@comment.body.split(/\n/)[0], true) %></p>
+									</div>
+								</div>
+							</a>
+							<% end %>
+						<% end %>
+					<% end %>
+					<!--<a id="see-all" href="">See all</a>-->
+				</div>
+				<% end %>
+			</div>
+		</div>
 	</div>
 </div>

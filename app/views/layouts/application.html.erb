@@ -9,9 +9,11 @@
 		<%= csrf_meta_tags %>
 		<%= csp_meta_tag %>
 		<%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-		<link href="https://fonts.googleapis.com/css?family=Poppins|Roboto|Open Sans" rel="stylesheet"> 
+		<link href="https://fonts.googleapis.com/css?family=Poppins|News+Cycle|Open+Sans|Roboto+Condensed" rel="stylesheet"> 
         <%= javascript_include_tag 'application' %>
 		<%= favicon_link_tag %>
+		<link rel="canonical" href="<%= request.original_url %>">
+		<meta name="description" content="SuperKayo is an open source community for Japanese kayo music. Talk about your favorite albums and read interesting articles to your heart's content!">
 	</head>
 	<body class="<%= controller_name %> <%= action_name %>">
 		<div id="wrapper">
@@ -29,6 +31,7 @@
 				<%= inject_login %>
 			</div>
 			<div id="opaque"></div>
+			<% if !fetch_user %>
 			<div id="register-form-container" class="modal modal-inactive">
 				<div>
 					<h2>Create an account</h2>
@@ -190,9 +193,24 @@
 					</div>
 				</form>
 			</div>
-			<% description "SuperKayo is an open source community for Japanese kayo music. Talk about your favorite albums and read interesting articles in an accessible way!" %>
+			<div id="password-reset-form-container" class="modal modal-inactive">
+				<div>
+					<h2>Reset password</h2>
+				</div>
+				<ion-icon name="ios-close" id="report-close" class="modal-close"></ion-icon>
+				<form id="password-reset-form" class="modal-form" action="/users/password-reset" accept-charset="UTF-8" data-remote="true" method="post">
+					<div class="modal-form-input-container">
+						<label for="reset-email"><p>Please enter your email:</p></label>
+						<input id="reset-email" placeholder="Email" name="reset-email">
+					</div>
+					<input type="submit" name="commit" value="Send Link">
+					<div class="submit-message shrunk">
+						<p>The email has been sent!</p>
+					</div>
+				</form>
+			</div>
+			<% end %>
 			<%= image_tag "varietiescropped.png", id: "alt-img" %>
-			<div id="bg-opacity"></div>
 			<div id="albums-bg-container">
 				<%= image_tag 'bg/minibus.jpg' %>
 				<%= image_tag 'bg/black-car.jpg' %>
@@ -223,17 +241,15 @@
 				<div id="logo-title">
 					<a href="/"><h1>SuperKayo</h1></a>
 					<a href="/" id="beta-title">BETA!</a>
-					<h2>- Your hub for anything Kayo -</h2>
+					<h2>Your hub for anything Kayo</h2>
 				</div>
 			</div>
 			<%= yield %>
 			<div id="footer">
 				<ul id="link-list">
 					<li><a href="https://github.com/ivakam/city-album-chart">GitHub</a></li>
-					<li><a href="mailto:ivar.kamsvag@gmail.com">Email</a></li>
+					<li><a href="mailto:staff@superkayo.xyz">Email</a></li>
 					<li><a href="https://discord.gg/ejewttb">City pop Discord server</a></li>
-					<li><a href="https://github.com/IHeartGaming/varieties-metadata-scanner/releases">Data scraper</a></li>
-					<li><a href="https://docs.google.com/spreadsheets/d/1UumcUXF3QvJgoQ3j8SsAnPtdbarhFD_wTmguK0RuZbs/edit?usp=sharing">My personal spreadsheet</a></li>
 				</ul>
 				<div id="disclaimers">
 					<p>Site currently hosting&nbsp;</p><p id="album-count"><%= album_count.to_s %></p><p>&nbsp;albums</p>

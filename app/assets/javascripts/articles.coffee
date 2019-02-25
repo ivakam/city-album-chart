@@ -7,21 +7,21 @@ $(document).on 'turbolinks:load', ->
 		
 		$('.article-flag').click ->
 			$('#report-form-container').toggleClass('modal-inactive')
-			$('#report-type').attr('value', 'article')
+			$('#report-type').attr('value', 'Article')
 			id = $('#report-article').val()
 			$('#report-target').attr('value', id)
 			opacity = $('#opaque')
 			opacity.css('background', 'rgba(0, 0, 0, 0.6')
-			opacity.css('z-index', '5')
+			opacity.css('z-index', '13')
 		
 		$('.comment-flag').click ->
             $('#report-form-container').toggleClass('modal-inactive')
-            $('#report-type').attr('value', 'comment')
+            $('#report-type').attr('value', 'Comment')
             id = $(this).closest('.comment').find('.comment-id').val()
             $('#report-target').attr('value', id)
             opacity = $('#opaque')
             opacity.css('background', 'rgba(0, 0, 0, 0.6')
-            opacity.css('z-index', '5')
+            opacity.css('z-index', '13')
 			
 		$('.delete-article-confirm-btn').click ->
 			data =
@@ -65,7 +65,7 @@ $(document).on 'turbolinks:load', ->
 			data =
 				upvote: 
 					target_id: $('#report-article').val()
-					upvote_type: 'article'
+					upvote_type: 'Article'
 			$.post(window.location.href.replace(/\/articles.+/, '/upvotes/create'), data)
 			.fail( ->
 				console.log('Error sending post data')
@@ -90,8 +90,33 @@ $(document).on 'turbolinks:load', ->
 			data =
 				upvote: 
 					target_id: id
-					upvote_type: 'comment'
+					upvote_type: 'Comment'
 			$.post(window.location.href.replace(/\/articles.+/, '/upvotes/create'), data)
+			.fail( ->
+				console.log('Error sending post data')
+			)
+			
+		$('.article-bell').click ->
+			e = $(this)
+			id = $('#article-id').val()
+			e.toggleClass('green')
+			data =
+				subscription:
+					target_id: id
+					subscription_type: 'Article'
+			$.post(window.location.href.replace(/\/articles.+/, '/subscriptions/create'), data)
+			.fail( ->
+				console.log('Error sending post data')
+			)
+		
+		$('.article-pin').click ->
+			e = $(this)
+			id = $('#article-id').val()
+			e.toggleClass('green')
+			data =
+				article:
+					article_id: id
+			$.post(window.location.href.replace(/\/articles.+/, '/articles/toggle-featured'), data)
 			.fail( ->
 				console.log('Error sending post data')
 			)
@@ -100,7 +125,7 @@ $(document).on 'turbolinks:load', ->
 			$('#article-delete-modal').toggleClass('modal-inactive')
 			opacity = $('#opaque')
 			opacity.css('background', 'rgba(0, 0, 0, 0.6')
-			opacity.css('z-index', '5')
+			opacity.css('z-index', '13')
 	
 		$('.comment-trash').click ->
             id = $(this).closest('.comment').find('.comment-id').val()
@@ -108,43 +133,34 @@ $(document).on 'turbolinks:load', ->
             $('#comment-id').attr('value', id)
             opacity = $('#opaque')
             opacity.css('background', 'rgba(0, 0, 0, 0.6')
-            opacity.css('z-index', '5')
+            opacity.css('z-index', '13')
         
 		$('.comment-edit').click ->
 			e = $(this)
 			id = e.closest('.comment').find('.comment-id').val()
-			bodyText = e.closest('.comment').find('.comment-markdown').val()
+			bodyText = e.closest('.comment').find('.comment-markdown').val().replace(/\(NEWLINE\)/g, '\n')
 			$('#edit-comment-id').attr('value', id)
 			commentContent.value(bodyText)
 			$('#edit-comment-form-container').toggleClass('modal-inactive')
 			opacity = $('#opaque')
 			opacity.css('background', 'rgba(0, 0, 0, 0.6')
-			opacity.css('z-index', '5')
+			opacity.css('z-index', '13')
 			
 		$('.article-edit').click ->
 			e = $(this)
 			id = e.closest('.article').find('#article-id').val()
-			bodyText = e.closest('.article').find('#article-markdown').val()
+			bodyText = e.closest('.article').find('#article-markdown').val().replace(/\(NEWLINE\)/g, '\n')
 			$('#edit-article-id').attr('value', id)
 			articleContent.value(bodyText)
 			$('#edit-article-form-container').toggleClass('modal-inactive')
 			opacity = $('#opaque')
 			opacity.css('background', 'rgba(0, 0, 0, 0.6')
-			opacity.css('z-index', '5')
+			opacity.css('z-index', '13')
 		
-		$('.post-text input').click ->
+		$('.comment-quote').click ->
 			e = $(this)
-			bodyText = e.closest('li').find('.edit-post').html().replace(/\<\/div\>/g, '\n')
-			bodyText = bodyText.replace(/\<div\>|\<br\>/g, '')
-			data =
-				post: 
-					thread_id: $('#report-thread').val()
-					id: e.closest('li').find('.post-id').val()
-					body: bodyText
-			$.post(window.location.href.replace(/\/forum.+/, '/posts/update'), data)
-			.success( ->
-				location.reload()
-			)
-			.fail( ->
-				console.log('Error sending post data')
-			)
+			text = '>' + e.closest('.comment').find('.comment-markdown').val().replace(/\(NEWLINE\)/g, '\n>')
+			threadContent.value(text)
+			$('html, body').animate({
+				scrollTop: $('#reply-text-container').offset().top
+			}, 400)

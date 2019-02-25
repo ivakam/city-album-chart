@@ -1,37 +1,109 @@
-<% title 'Home' %>
+<% title 'Discover and discuss your favorite Japanese oldies' %>
+<% if fetch_user && fetch_user.admin %>
+<div id="announcement-form-container" class="modal modal-inactive">
+	<div>
+		<h2>Make announcement</h2>
+	</div>
+	<ion-icon name="ios-close" id="report-close" class="modal-close"></ion-icon>
+	<form id="announcement-form" class="modal-form" action="/announcements/create" accept-charset="UTF-8" data-remote="true" method="post">
+		<div class="modal-form-input-container">
+		    <label for="announcement-title"><p>Title:</p></label>
+		    <input type="text" id="announcement-title" placeholder="Title" name="announcement[title]" required>
+			<label for="announcement-body"><p>Text:</p></label>
+			<textarea id="announcement-body" placeholder="Type your text here" name="announcement[body]" required></textarea>
+		</div>
+		<input type="submit" name="commit" value="Send Report">
+		<div class="submit-message shrunk">
+			<p>Your announcement has been made!</p>
+		</div>
+	</form>
+</div>
+<% end %>
 <div id="main-container">
     <%= render 'partials/navbar_slim' %>
     <%= image_tag "spinner.gif", class: "spinner hidden" %>
     <div id="home-container">
         <div id="main-opacity"></div>
-        <div id="announcements">
+        <div id="welcome">
+            <div id="welcome-splash">
+                <div id="welcome-banner">
+                    <div id="welcome-bg-container"></div>
+                    <div>
+                        <h2>Welcome to SuperKayo!</h2>
+                        <h3>The staff wishes you a pleasant stay!</h3>
+                    </div>
+                </div>
+            </div>
         </div>
-        <h3 id="activity">Recent activity</h2>
         <div id="content">
             <div id="feed">
-                <% @content[:posts].each do | post | %>
-                <a href="<%= "#{forum_path}/#{post.forum_thread.category}/t/#{post.forum_thread.id}" %>" class="post-card">
-                    <div class="card-opacity"></div>
-                    <h4><%= post.user.username %> posted in thread <i><%= post.forum_thread.title %></i> :</h4>
-                    <p class="post-score">Score: <%= post_upvotes(post) %></p>
-                    <div class="post-container">
-                        <div class="user-info">
-                            <div class="avatar-wrapper">
-                                <%= image_tag user_avatar(post.user) %>
+                <h3 id="activity">Recent activity</h2>
+				<% @content[:activity].each do | a | %>
+					<% if a.class.name == 'Post' %> 
+					<a href="<%= "#{forum_path}/#{a.forum_thread.category}/t/#{a.forum_thread.id}" %>" class="post-card">
+						<div class="card-opacity"></div>
+						<h4><%= a.user.username %> posted in thread <i><%= a.forum_thread.title %></i> :</h4>
+						<p class="post-score">Score: <%= post_upvotes(a) %></p>
+						<div class="post-container">
+							<div class="user-info">
+								<div class="avatar-wrapper">
+									<%= image_tag user_avatar(a.user) %>
+								</div>
+							</div>
+							<div class="text-container">
+								<div class="post-text">
+									<p><%= parse_markdown(a.body.split(/\n/)[0], true) %></p>
+								</div>
+							</div>
+						</div>
+					</a>
+					<% end %>
+					<% if a.class.name == 'Article' %>
+                    <a class="article post-card" href="<%= articles_path + '/' + a.id.to_s %>">
+                    	<div class="card-opacity"></div>
+                    	<h4><%= a.user.username %> published an article:</h4>
+                        <div class="article-header">
+                            <div class="header-positioner"><img src="<%= a.banner.variant(resize: "600x600").processed.service_url %>"></div>
+                            <div class="header-positioner"><h2><%= a.title %></h2></div>
+                            <div>
+                                <div>
+                                    <div class="avatar-wrapper">
+                                        <%= image_tag user_avatar(a.user) %>
+                                    </div>
+                                    <p>By <%= a.user.username %></p>
+                                </div>
+                                <p>&nbsp;- <%= a.created_at.strftime('%-d %b, %Y') %></p>
+                                <p class="article-score">Score: <%= article_upvotes(a) %></p>
                             </div>
                         </div>
-                        <div class="text-container">
-                            <div class="post-text">
-                                <p><%= parse_markdown(post.body.split(/\n/)[0], true) %></p>
-                            </div>
+                        <div class="article-body">
+                            <h4><%= a.subtitle %></h4>
+                            <p class="paragraph"><%= parse_markdown(a.body) %></p>
                         </div>
-                    </div>
-                </a>
-                <% end %>
+                    </a>
+					<% end %>
+				<% end %>
             </div>
             <div id="right-panel">
-                <div id="recent-albums">
-                    <h3>Recent albums</h3>
+                <div id="announcements" class="right-panel-module">
+                    <h3>Announcements</h3>
+                    <% @content[:announcements].each do | a | %>
+                    <div class="announcement-container">
+                        <h4><%= a.title %></h4>
+                        <p><%= parse_markdown(a.body) %></p>
+                        <div class="panel-divider"></div>
+                        <div>
+                            <a href="<%= root_url + 'users/' + a.user.username %>">By <%= a.user.username %></a>
+                            <p><%= a.created_at.strftime('%-d %b, %Y') %></p>
+                        </div>
+                    </div>
+                    <% end %>
+                    <% if fetch_user && fetch_user.admin %>
+                    <a id="announcement-btn">Make announcement</a>
+                    <% end %>
+                </div>
+                <div id="recent-albums" class="right-panel-module">
+                    <h3>Recently submitted albums</h3>
                     <% @content[:albums].each do | album | %>
                     <div class="album-container">
                         <%= image_tag album.cover.variant(resize: '80x80').processed.service_url %>
@@ -42,10 +114,10 @@
                         </div>
                     </div>
                     <% end %>
-                    <div class="card-opacity"></div>
                 </div>
                 <div id="gallery">
                 </div>
+                <div class="card-opacity"></div>
             </div>
         </div>
     </div>

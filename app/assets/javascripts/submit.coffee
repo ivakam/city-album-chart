@@ -4,6 +4,7 @@ $(document).on 'turbolinks:load', ->
 		
 		$('.hint-click').click ->
 			$('#submit-wrapper').find('input[type=text], input[type=file], textarea').val('')
+			window.scraper.albumObjects = []
 			$('#input-container').toggleClass('left-margin')
 			
 		$('.save-btn').click ->
@@ -48,3 +49,18 @@ $(document).on 'turbolinks:load', ->
 		
 		$('.track-delete-btn').click ->
 			$(this).parent().remove()
+		
+		$('#scraper-submit-btn').click ->
+			e = $(this)
+			scraperAlbums = window.scraper.albumObjects
+			if !e.hasClass('transparent')
+				data = 
+					scraper: scraperAlbums
+				$.post(window.location.href.replace(/submit/, 'create'), data)
+				.fail( ->
+					console.log('Error sending post data')
+				)
+			
+		$('#album-cover').change ->
+			e = $(this)
+			$('#selected-cover').html('Currently selected file: ' + e[0].value.split(/(\\|\/)/g).pop())	

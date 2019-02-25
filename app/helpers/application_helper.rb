@@ -37,10 +37,6 @@ module ApplicationHelper
 		return Upvote.where(user: user).size
 	end
 	
-	def user_karma(user = User.find_by(id: session[:user_id]))
-		return Upvote.where(upvote_type: 'article', target_id: Post.where(user: user)).size
-	end
-	
 	def post_upvotes(postIn)
 		return Upvote.where(upvote_type: 'post', target_id: postIn.id).size
 	end
@@ -51,6 +47,22 @@ module ApplicationHelper
 	
 	def comment_upvotes(comment)
 		return Upvote.where(upvote_type: 'comment', target_id: comment.id).size
+	end
+	
+	def user_karma(user = User.find_by(id: session[:user_id]))
+		karma = 0
+		user.posts.each do | post |
+			p 'posts'
+			karma += post_upvotes(post)
+		end
+		user.articles.each do | a |
+			karma += article_upvotes(a)
+		end
+		user.comments.each do | c |
+			karma += comment_upvotes(c)
+		end
+		p karma
+		return karma
 	end
 	
 	def inject_login
@@ -66,7 +78,7 @@ module ApplicationHelper
 	end
 	
 	def parse_markdown(text = '', preview = false)
-		renderer = Redcarpet::Render::HTML.new(filter_html: true)
+		renderer = Redcarpet::Render::HTML.new(filter_html: true, hard_wrap: true)
 		if preview
 			renderer = Redcarpet::Render::HTML.new(no_links: true, no_images: true, filter_html: true)
 		end

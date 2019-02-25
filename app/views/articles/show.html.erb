@@ -4,6 +4,7 @@
     <%= image_tag "spinner.gif", class: "spinner hidden" %>
     <div id="articles-container">
         <div id="main-opacity"></div>
+        <% if @featured.present? %>
         <div id="featured-article">
             <div class="article-opacity"></div>
             <div class="article featured">
@@ -25,7 +26,7 @@
                 </div>
                 <div class="article-body">
                     <h4><%= @featured.subtitle %></h4>
-                    <p><%= sanitize(@featured.body) %></p>
+                    <p class="paragraph"><%= parse_markdown(@featured.body) %></p>
                 </div>
                 <div class="show-more">
                     <div class="article-link-container">
@@ -35,6 +36,7 @@
                 </div>
             </div>
         </div>
+        <% end %>
         <div id="main-content">
             <div class="article-opacity"></div>
             <div id="article-feed">
@@ -59,7 +61,7 @@
                         </div>
                         <div class="article-body">
                             <h4><%= article.subtitle %></h4>
-                            <p><%= article.body %></p>
+                            <p class="paragraph"><%= parse_markdown(article.body) %></p>
                         </div>
                         <div class="show-more">
                             <div class="article-link-container">
@@ -79,7 +81,7 @@
                     <h2>Popular categories</h2>
                     <% Article.select(:category).distinct.each do | article | %>
                     <a class="article-category" href="<%= articles_path + '?category=' + article.category.downcase %>">
-                        <p><%= article.category %></p>
+                        <p><%= article.category.titleize %></p>
                         <ion-icon name="ios-arrow-forward"></ion-icon>
                     <a>
                     <% end %>

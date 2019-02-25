@@ -16,5 +16,9 @@ module ForumHelper
         def updated_at
             DateTime.new(2001,2,3,4,5,6)
         end
+        
+        def user
+            User.find_by(id: 1)
+        end
     end
 end

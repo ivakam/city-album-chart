@@ -26,6 +26,31 @@ $light-font: #e8e8e8;
     }
 }
 
+#board-container {
+    position: relative;
+    .post-bell, .thread-pin {
+        color: $light-font;
+        opacity: 0.8;
+        transition: 0.3s;
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        right: 15px;
+        top: 65px;
+        z-index: 10;
+        &:hover {
+            transform: scale(1.1);
+            cursor: pointer;
+        }
+    }
+    .thread-pin {
+        right: 65px;
+    }
+    .green {
+        color: #20de0d;
+    }
+}
+
 #post-list {
     .page-container {
         a:hover {
@@ -129,6 +154,7 @@ $light-font: #e8e8e8;
                     justify-content: space-between;
                     flex-grow: 3;
                     position: relative;
+                    max-width: calc(100% - 150px);
                     img {
                         max-width: 100%;
                         max-height: 1000px;
@@ -218,11 +244,13 @@ $light-font: #e8e8e8;
                     .post-text {
                         margin-bottom: 10px;
                         flex-grow: 1;
-                        word-break: break-all;
                         p, a, h1, h2, h3, h4, i, em, b {
-                            font-family: 'Open Sans';
                             padding-right: 110px;
                             color: #e8e8e8;
+                        }
+                        ul, ol {
+                            list-style-type: initial;
+                            font-size: 14px;
                         }
                     }
                 }
@@ -241,23 +269,28 @@ $light-font: #e8e8e8;
         #reply-container {
             z-index: 3;
             display: flex;
-            padding: 18px;
             form {
                 display: flex;
                 width: 100%;
+                padding: 18px;
                 #form-user-info {
                     display: flex;
-                    height: 80px;
-                    width: 80px;
+                    max-height: 80px;
+                    min-height: 80px;
+                    max-width: 80px;
+                    min-width: 80px;
                     border-radius: 25%;
                     overflow: hidden;
                     margin-right: 20px;
                     img {
                         max-height: 80px;
+                        min-height: 80px;
                         max-width: 80px;
+                        min-width: 80px;
                     }
                 }
                 #reply-text-container {
+                    max-width: calc(100% - 100px);
                     display: flex;
                     flex-grow: 3;
                     flex-direction: column;
@@ -277,7 +310,6 @@ $light-font: #e8e8e8;
                     input[type="submit"] {
                         padding: 5px 10px 5px 10px;
                         background: $lighter-bg;
-                        font-family: 'Roboto';
                         margin-top: 15px;
                         font-size: 20px;
                         min-width: 135px;
@@ -315,7 +347,6 @@ $light-font: #e8e8e8;
                     color: #e3e3e3;
                     margin: 5px;
                     padding: 8px;
-                    font-family: 'Roboto';
                     font-size: 18px;
                 }
                 input[type="submit"] {
@@ -346,15 +377,13 @@ $light-font: #e8e8e8;
     align-items: center;
     #thread-form {
         display: flex;
-        width: 70vw;
         flex-direction: column;
         align-items: center;
         position: relative;
-        border-bottom: 1px #8c8c8c solid;
+        width: 100%;
         padding: 15px;
         input, textarea, select {
             background: $darker-bg;
-            font-family: 'Roboto';
             font-size: 18px;
             padding: 7px;
             border: 1px $light-border solid;
@@ -406,6 +435,77 @@ $light-font: #e8e8e8;
                     display: flex;
                     justify-content: flex-end;
                     flex-direction: column;
+                }
+            }
+            > input[type="text"] {
+                width: 100%;
+                background: $lighter-bg;
+                padding: 8px;
+                min-width: 100%;
+                height: auto;
+                border-radius: 0;
+                border-left: 1px ;
+                &:focus {
+                    border: none !important;
+                }
+            }
+            #title-subtitle {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                border-top-left-radius: 4px;
+                border-top-right-radius: 4px;
+                border-top: 1px $light-border solid;
+                border-left: 1px $light-border solid;
+                border-right: 1px $light-border solid;
+                overflow: hidden;
+                input[type="text"] {
+                    border: none;
+                    border-radius: 0;
+                    width: 100%;
+                    min-width: 100%;
+                    max-width: 100%;
+                    height: auto;
+                }
+                #thread-title {
+                    font-size: 40px;
+                    &:focus {
+                        border: none !important;
+                    }
+                }
+                #thread-subtitle {
+                    font-size: 30px;
+                    border-top: 1px $dark-border solid;
+                    &:focus {
+                        border: none !important;
+                        border-top: 1px $dark-border solid !important;
+                    }
+                }
+            }
+            .editor-toolbar {
+                border-top-left-radius: 0;
+                border-top-right-radius: 0;
+                border-left: 1px $light-border solid;
+                border-right: 1px $light-border solid;
+                &::before {
+                    width: 0;
+                    height: 0;
+                    opacity: 0;
+                    border: none;
+                    padding: 0;
+                    margin: 0;
+                }
+            }
+            #pinned-container {
+                display: flex;
+                flex-direction: row;
+                max-width: 120px;
+                align-items: center;
+                input {
+                    max-width: 20px;
+                }
+                p {
+                    margin: 8px;
                 }
             }
         }
