@@ -85,9 +85,13 @@ $light-font: #e8e8e8;
                     right: 0;
                     left: 0;
                     background: $lighter-bg;
+                    flex-direction: column;
                     p {
                         color: white;
                         font-size: 18px;
+                        &:not(:first-child) {
+                            font-size: 13px;
+                        }
                     }
                 }
                 img {

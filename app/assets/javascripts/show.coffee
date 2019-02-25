@@ -346,7 +346,10 @@ $(document).on 'turbolinks:load', ->
 										    <img src='' class='cover-editable'>
 										</label>
 										<input class='album-edit-cover' id='#{album.title.replace("'", '&#39;').replace(/\s+/, '')}-cover' name='album[cover]' type='file'>
-										<div><p><b>Update cover</b></p></div>
+										<div>
+											<p><b>Update cover</b></p>
+											<p>Max filesize 1MB</p>
+										</div>
 									</div>
 									<p class='selected-cover'>No cover selected</p>
 								</div>

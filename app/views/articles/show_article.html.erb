@@ -114,30 +114,30 @@
                 <div id="article-toolbar">
                     <% if fetch_user %>
                         <% if fetch_user.admin || @article.user.id == fetch_user.id %>
-                        <ion-icon class="post-icon post-trash article-trash" name="ios-trash"></ion-icon>
+                        <ion-icon class="post-icon post-trash article-trash" name="ios-trash" title="Delete article"></ion-icon>
                         <% end %>
                         <% if @article.user != fetch_user && fetch_user.email_confirmed %>
-                        <ion-icon class="post-icon post-flag article-flag" name="ios-flag"></ion-icon>
+                        <ion-icon class="post-icon post-flag article-flag" name="ios-flag" title="Report article"></ion-icon>
                         <% end %>
                         <% if @article.user.id == fetch_user.id %>
-                        <ion-icon class="post-icon post-edit article-edit" name="create"></ion-icon>
+                        <ion-icon class="post-icon post-edit article-edit" name="create" title="Edit article"></ion-icon>
                         <% end %>
                         <% if fetch_user.admin %>
-                        <ion-icon class="post-icon post-edit article-pin <%= 'green' if @article.featured %>" name="ios-pin"></ion-icon>
+                        <ion-icon class="post-icon post-edit article-pin <%= 'green' if @article.featured %>" name="ios-pin" title="Toggle featured"></ion-icon>
                         <% end %>
                         <% if fetch_user %>
-                        <ion-icon class="post-icon post-bell article-bell <%= 'green' if Subscription.find_by(user: fetch_user, subscription_type: 'Article', target_id: @article.id).present? %>" name="ios-notifications"></ion-icon>
+                        <ion-icon class="post-icon post-bell article-bell <%= 'green' if Subscription.find_by(user: fetch_user, subscription_type: 'Article', target_id: @article.id).present? %>" name="ios-notifications" title="Toogle notifications"></ion-icon>
                         <% end %>
                         <% if fetch_user && fetch_user != @article.user && fetch_user.email_confirmed %>
                         <div class="heart-container">
                             <ion-icon class="heart-animation hidden" name="ios-heart"></ion-icon>
-                            <ion-icon class="post-icon post-heart <%= 'red' if Upvote.find_by(user: fetch_user, upvote_type: 'article', target_id: @article.id).present? %>" name="ios-heart"></ion-icon>
+                            <ion-icon class="post-icon post-heart <%= 'red' if Upvote.find_by(user: fetch_user, upvote_type: 'article', target_id: @article.id).present? %>" name="ios-heart" title="Upvote article"></ion-icon>
                         </div>
                         <% end %>
                     <% end %>
                 </div>
                 <h4><%= @article.subtitle %></h4>
-                <p class="paragraph"><%= parse_markdown(@article.body) %></p>
+                <div class="paragraph"><%= parse_markdown(@article.body) %></div>
             </div>
         </div>
         <div id="comments-sidebar">
@@ -151,21 +151,21 @@
                     <div id="comment-toolbar">
                         <% if fetch_user %>
                             <% if fetch_user.admin || comment.user.id == fetch_user.id %>
-                            <ion-icon class="post-icon post-trash comment-trash" name="ios-trash"></ion-icon>
+                            <ion-icon class="post-icon post-trash comment-trash" name="ios-trash" title="Delete comment"></ion-icon>
                             <% end %>
                             <% if comment.user != fetch_user && fetch_user.email_confirmed %>
-                            <ion-icon class="post-icon post-flag comment-flag" name="ios-flag"></ion-icon>
+                            <ion-icon class="post-icon post-flag comment-flag" name="ios-flag" title="Report comment"></ion-icon>
                             <% end %>
                             <% if comment.user.id == fetch_user.id %>
-                            <ion-icon class="post-icon post-edit comment-edit" name="create"></ion-icon>
+                            <ion-icon class="post-icon post-edit comment-edit" name="create" title="Edit comment"></ion-icon>
                             <% end %>
                             <% if fetch_user %>
-                            <ion-icon class="post-icon comment-quote" name="md-return-left"></ion-icon>
+                            <ion-icon class="post-icon comment-quote" name="md-return-left" title="Quote"></ion-icon>
                             <% end %>
                             <% if fetch_user && fetch_user != comment.user && fetch_user.email_confirmed %>
                             <div class="heart-container">
                                 <ion-icon class="heart-animation hidden" name="ios-heart"></ion-icon>
-                                <ion-icon class="post-icon comment-heart <%= 'red' if Upvote.find_by(user: fetch_user, upvote_type: 'comment', target_id: comment.id).present? %>" name="ios-heart"></ion-icon>
+                                <ion-icon class="post-icon comment-heart <%= 'red' if Upvote.find_by(user: fetch_user, upvote_type: 'comment', target_id: comment.id).present? %>" name="ios-heart" title="Upvote comment"></ion-icon>
                             </div>
                             <% end %>
                         <% end %>
@@ -177,9 +177,11 @@
                             </a>
                         </div>
                     </div>
-                    <div class="comment-body paragraph">
+                    <div class="comment-text">
                         <p><a href="<%= root_url + 'users/' + comment.user.username %>"><%= comment.user.username %></a> <a>says:</a></p>
-                        <%= parse_markdown(comment.body) %>
+                        <div class="comment-body paragraph">
+                            <%= parse_markdown(comment.body) %>
+                        </div>
                     </div>
                     <div class="comment-date-score">
                         <p class="comment-date">Posted at <%= comment.created_at.strftime("%R %Z, %F") %></p>

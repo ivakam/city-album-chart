@@ -1043,6 +1043,7 @@ body {
 						display: flex;
 						align-items: center;
 						justify-content: center;
+						flex-direction: column;
 						position: absolute;
 						top: 0;
 						bottom: 0;
@@ -1051,8 +1052,11 @@ body {
 						border-radius: 25%;
 						background: $lighter-bg;
 						p {
-						    color: white;
-						    font-size: 18px;
+							color: white;
+							font-size: 24px;
+							&:not(:first-child) {
+								font-size: 18px;
+							}
 						}
 					}
 					img {
@@ -1282,9 +1286,21 @@ p,a,i {
 .paragraph {
 	font-family: $paragraph-font;
 	color: $light-font;
+	overflow-x: auto;
 	p {
 		font-family: $paragraph-font !important;
 		margin: 0.8em 0 !important;
+	}
+	a {
+		color: royalblue !important;
+		font-family: $paragraph-font !important;
+		&:hover {
+			color: #5ea9fe !important;
+		}
+		text-decoration: underline;
+	}
+	pre {
+		overflow-x: auto;
 	}
 }
 

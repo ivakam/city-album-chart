@@ -13,12 +13,35 @@ module ForumHelper
         def title
             'No threads in board'
         end
+        
+        def id
+            'NaN'
+        end
+        
         def updated_at
             DateTime.new(2001,2,3,4,5,6)
         end
         
+        def posts
+            DummyPosts.new()
+        end
+    end
+    
+    class DummyPosts
+        def order(dummy_param)
+            [DummyPost.new()]
+        end
+    end
+    
+    class DummyPost
         def user
-            User.find_by(id: 1)
+            DummyUser.new()
+        end
+    end
+    
+    class DummyUser
+        def username 
+            'N/A'
         end
     end
 end

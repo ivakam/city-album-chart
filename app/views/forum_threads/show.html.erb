@@ -64,10 +64,10 @@
     <div id="board-container">
         <div id="main-opacity"></div>
         <% if fetch_user %>
-        <ion-icon class="post-icon post-bell <%= 'green' if Subscription.find_by(user: fetch_user, subscription_type: 'ForumThread', target_id: @thread.id).present? %>" name="ios-notifications"></ion-icon>
+        <ion-icon class="post-icon post-bell <%= 'green' if Subscription.find_by(user: fetch_user, subscription_type: 'ForumThread', target_id: @thread.id).present? %>" name="ios-notifications" title="Toggle notifications"></ion-icon>
         <% end %>
         <% if fetch_user && fetch_user.admin %>
-        <ion-icon class="post-icon thread-pin <%= 'green' if @thread.stickied %>" name="ios-pin"></ion-icon>
+        <ion-icon class="post-icon thread-pin <%= 'green' if @thread.stickied %>" name="ios-pin" title="Pin thread"></ion-icon>
         <% end %>
         <h2 id="title"><a href="<%= forum_path + "/#{@thread.category}" %>"><%= @thread.category.titleize %></a> > <%= @thread.title %></h2>
         <div class="page-container top">
@@ -105,30 +105,32 @@
                             <p class="user-location"><b>Location:</b> <%= post.user.location %></p>
                         </div>
                         <div class="text-container">
-                            <div class="header-icons">
-                                <% if fetch_user %>
-                                    <% if fetch_user.admin || post.user.id == fetch_user.id %>
-                                    <ion-icon class="post-icon post-trash" name="ios-trash"></ion-icon>
-                                    <% end %>
-                                    <% if post.user != fetch_user && fetch_user.email_confirmed%>
-                                    <ion-icon class="post-icon post-flag" name="ios-flag"></ion-icon>
-                                    <% end %>
-                                    <% if post.user.id == fetch_user.id %>
-                                    <ion-icon class="post-icon post-edit" name="create"></ion-icon>
-                                    <% end %>
+                            <div class="body-icon-container">
+                                <div class="post-text paragraph">
+                                <%= parse_markdown(post.body) %>
+                                </div>
+                                <div class="header-icons">
                                     <% if fetch_user %>
-                                    <ion-icon class="post-icon post-quote" name="md-return-left"></ion-icon>
+                                        <% if fetch_user.admin || post.user.id == fetch_user.id %>
+                                        <ion-icon class="post-icon post-trash" name="ios-trash" title="Delete post"></ion-icon>
+                                        <% end %>
+                                        <% if post.user != fetch_user && fetch_user.email_confirmed%>
+                                        <ion-icon class="post-icon post-flag" name="ios-flag" title="Report post"></ion-icon>
+                                        <% end %>
+                                        <% if post.user.id == fetch_user.id %>
+                                        <ion-icon class="post-icon post-edit" name="create" title="Edit post"></ion-icon>
+                                        <% end %>
+                                        <% if fetch_user %>
+                                        <ion-icon class="post-icon post-quote" name="md-return-left" title="Quote"></ion-icon>
+                                        <% end %>
+                                        <% if fetch_user && fetch_user != post.user && fetch_user.email_confirmed %>
+                                        <div class="heart-container">
+                                            <ion-icon class="heart-animation hidden" name="ios-heart"></ion-icon>
+                                            <ion-icon class="post-icon post-heart <%= 'red' if Upvote.find_by(user: fetch_user, upvote_type: 'post', target_id: post.id).present? %>" name="ios-heart" title="Upvote"></ion-icon>
+                                        </div>
+                                        <% end %>
                                     <% end %>
-                                    <% if fetch_user && fetch_user != post.user && fetch_user.email_confirmed %>
-                                    <div class="heart-container">
-                                        <ion-icon class="heart-animation hidden" name="ios-heart"></ion-icon>
-                                        <ion-icon class="post-icon post-heart <%= 'red' if Upvote.find_by(user: fetch_user, upvote_type: 'post', target_id: post.id).present? %>" name="ios-heart"></ion-icon>
-                                    </div>
-                                    <% end %>
-                                <% end %>
-                            </div>
-                            <div class="post-text paragraph">
-                            <%= parse_markdown(post.body) %>
+                                </div>
                             </div>
                             <div class="index-date">
                                 <p class="post-date">#<%= post.post_index %> Posted at <%= post.created_at.strftime("%R %Z, %F") %></p>
