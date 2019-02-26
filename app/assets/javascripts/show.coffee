@@ -205,7 +205,7 @@ $(document).on 'turbolinks:load', ->
 			$('#report-form-container').toggleClass('modal-inactive')
 			opacity = $('#opaque')
 			opacity.css('background', 'rgba(0, 0, 0, 0.6')
-			opacity.css('z-index', '3')
+			opacity.css('z-index', '13')
 		
 		#Handler for deleting tracks
 		
@@ -334,6 +334,8 @@ $(document).on 'turbolinks:load', ->
 				editTrackStr += "<ion-icon name='ios-add-circle' class='track-add-btn'></ion-icon>"
 				editFormStr = ''
 				editBtnStr = ''
+				reportBtnStr = ''
+				reportBtnStr = "<ion-icon name='ios-flag' class='ion flag-icon'></ion-icon>" if user
 				if user
 					editFormStr = 
 					"<div class='edit-form-container'>
@@ -428,7 +430,7 @@ $(document).on 'turbolinks:load', ->
 					</div>
 					<div class='info-container offset' id='"+id+"-info'>
 						<div class='info-wrapper'>
-							<ion-icon name='ios-flag' class='ion flag-icon'></ion-icon>
+							#{reportBtnStr}
 							#{editBtnStr}
 							<ion-icon name='ios-close' class='ion close-icon'></ion-icon>
 							<div class='info-background'>"+"<img src='" + album.thumbnail + "'></div>

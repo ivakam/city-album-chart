@@ -6,7 +6,7 @@ class Article < ApplicationRecord
     has_one_attached :banner
     validate :banner_validation
     
-    after_save do
+    after_create do
         update_with_user_status_service
         subscribe_with_auto_subscribe_service
     end

@@ -1,7 +1,7 @@
 class Upvote < ApplicationRecord
     belongs_to :user
     
-    after_save do
+    after_create do
         update_with_user_status_service
     end
     

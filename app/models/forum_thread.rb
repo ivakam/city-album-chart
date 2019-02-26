@@ -4,7 +4,7 @@ class ForumThread < ApplicationRecord
     has_many :posts, dependent: :destroy
     belongs_to :user
     
-    after_save do
+    after_create do
         subscribe_with_auto_subscribe_service
     end
     
