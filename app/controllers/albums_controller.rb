@@ -125,7 +125,7 @@ class AlbumsController < ApplicationController
 							t = t[1]
 							track = Track.new()
 							track.title = t[".title"]
-							track.romanization = ''
+							track.romanization = t[".romanization"]
 							track.duration = t[".duration"]
 							track.album = album
 							track.order = t[".order"]
