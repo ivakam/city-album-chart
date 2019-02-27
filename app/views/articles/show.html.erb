@@ -20,7 +20,7 @@
                             </div>
                             <p>By <a href="<%= root_url + 'users/' + @featured.user.username %>"><%= @featured.user.username %></a></p>
                         </div>
-                        <p>&nbsp;- <%= @featured.created_at.strftime('%-d %b, %Y') %></p>
+                        <p>&nbsp;- <%= @featured.created_at.strftime('%-d %b %Y') %></p>
                         <p class="article-score">Score: <%= article_upvotes(@featured) %></p>
                     </div>
                 </div>

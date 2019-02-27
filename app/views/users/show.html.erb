@@ -97,7 +97,7 @@
 				<% if fetch_user == @user && !fetch_user.email_confirmed %>
 				<a id="resend-email-btn" href="<%= root_url + 'users/resend-email' %>">Resend confirmation email</a>
 				<% end %>
-				<p>Member since: <%= @user.created_at.strftime('%B %-d, %Y') %></p>
+				<p>Member since: <%= @user.created_at.strftime('%-d %B %Y') %></p>
             </div>
         </div>
         <div id="profile-body">

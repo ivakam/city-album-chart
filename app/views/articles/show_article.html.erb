@@ -106,7 +106,7 @@
                         </div>
                         <p>By <a href="<%= root_url + 'users/' + @article.user.username %>"><%= @article.user.username %></a></p>
                     </div>
-                    <p>&nbsp;- <%= @article.created_at.strftime('%-d %b, %Y') %></p>
+                    <p>&nbsp;- <%= @article.created_at.strftime('%-d %b %Y') %></p>
                     <p class="article-score">Score: <%= article_upvotes(@article) %></p>
                 </div>
             </div>
