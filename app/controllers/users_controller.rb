@@ -151,6 +151,42 @@ class UsersController < ApplicationController
       redirect_to request.referrer, notice: "The email has been sent"
     end
 
+    def send_password_reset_email
+        @user = User.find_by(email: params['reset-email'])
+        if @user
+            @user.update_attribute(:reset_password_token, SecureRandom.urlsafe_base64.to_s)
+            @user.update_attribute(:password_token_expired, false)
+            UserMailer.with(user: User.find_by(email: params['reset-email'])).password_reset.deliver_later
+        else
+            redirect_to request.referrer, notice: "A user with that email doesn't exist"
+        end
+    end
+
+    def password_reset
+        @user = User.find_by(reset_password_token: params[:reset_password_token])
+        if !@user
+            redirect_to '/', notice: 'Invalid link'
+        elsif @user.password_token_expired
+            redirect_to '/', notice: 'That link has expired. Please request a new email'
+        end
+    end
+
+    def password_update
+        user = User.find_by(reset_password_token: params[:reset_password_token])
+        if params['user']['password'] == params['user']['password_retype']
+            if params['user']['password'].length >= 8
+                user.password = params['user']['password']
+                user.password_token_expired = true
+                user.save
+                redirect_to '/', notice: "Your password was sucessfully changed"
+            else
+                redirect_to request.referrer, notice: "The password needs to be a minimum of 8 characters"
+            end
+        else
+            redirect_to request.referrer, notice: "The passwords didn't match"
+        end
+    end
+
 	def confirm_email
     	user = User.find_by_confirm_token(params[:id])
     	if user

@@ -13,6 +13,7 @@ class User < ApplicationRecord
 	has_many :announcements
 
     before_create :confirmation_token
+    before_create :create_reset_password_token
     before_save { self.email = email.downcase }
     validates :username, presence: true, uniqueness: { case_sensitive: false }
     validates :email, presence: true, format: {with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }, uniqueness: { case_sensitive: false }
@@ -32,6 +33,11 @@ class User < ApplicationRecord
       	if self.confirm_token.blank?
             self.confirm_token = SecureRandom.urlsafe_base64.to_s
         end
+    end
+
+    def create_reset_password_token
+        self.reset_password_token = SecureRandom.urlsafe_base64.to_s
+        self.password_token_expired = true
     end
     
 	def avatar_validation
