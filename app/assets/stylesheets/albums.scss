@@ -521,7 +521,7 @@ body {
 		position: relative;
 		border-top: 1px $dark-border solid;
 		border-bottom: 1px $dark-border solid;
-		min-height: calc(100vh - 329px);
+		min-height: calc(100vh - 345px);
 		width: 100vw;
 		@media (min-width: 800px) {
 			width: 70vw;
@@ -593,6 +593,7 @@ body {
 				position: relative;
 				a {
 					hyphens: none;
+					white-space: nowrap;
 				}
 				&:hover {
 					cursor: pointer;

@@ -41,6 +41,11 @@ class AlbumsController < ApplicationController
 	end
 	
 	def show
+		@albums = Album.all.order('quality desc').limit(40)
+		@albums.each do | a |
+			a.thumbnail = a.cover.variant(resize: '200x200').processed.service_url
+			a.coverlink = a.cover.service_url
+		end
 	end
 	
 	def fetch

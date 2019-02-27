@@ -69,8 +69,6 @@
                     <p><b>Gender: </b></p>
                     <p><%= @user.gender %></p>
                 </div>
-            </div>
-            <div class="profile-info-container">
                 <div>
                     <p><b>Location: </b></p>
                     <p>
@@ -81,6 +79,8 @@
                         <% end %>
                     </p>
                 </div>
+            </div>
+            <div class="profile-info-container bio">
                 <div>
                     <p><b>Bio: </b></p>
                     <% if @user.bio.present? %>

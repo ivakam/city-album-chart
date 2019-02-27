@@ -63,7 +63,7 @@ $(document).on 'turbolinks:load', ->
 		
 	if $('body').hasClass('albums show')
 		
-		#Global variable declaration
+		#Variable declarations
 		
 		host = window.location.href.replace(/\/albums.+$|\/albums$/, '') + '/albums/fetch?'
 		albumOpen = false
@@ -74,11 +74,7 @@ $(document).on 'turbolinks:load', ->
 		window.albumsNameSpace = {}
 		ytAPIkey = 'AIzaSyAA9tEp3x9uIC60zQfLds8ZlNrwRCBwc5Q'
 		totalCount = $('#album-count').html()
-		albums = null
 		$('#main-search').val('')
-		
-		#console.log(user)
-		#console.log('albums.coffee is running.')
 		
 		sortAlbums = (arr) ->
 			if arr[0] == 'Out of albums to render!'
@@ -93,7 +89,7 @@ $(document).on 'turbolinks:load', ->
 		
 		albumClick = (e) ->
 			e = $(e.target)
-			title = e.closest('.album-container').find('.text-size-wrapper h2').text().replace(titleReplaceRegex, '')
+			title = e.closest('.album-container').attr('id')
 			sibling = $("##{title}-info").find('.info-wrapper')
 			parent = $("##{title}")
 			arrow = parent.find('.album-arrow')
@@ -502,10 +498,7 @@ $(document).on 'turbolinks:load', ->
 					createAlbum(value)
 			)
 			$('#splash-container').append(albumLi)
-			addEventListener = (element, event, func) ->
-				$(element).each ->
-					$(this).get()[0].removeEventListener(event, func)
-					$(this).get()[0].addEventListener(event, func)
+
 			addEventListener('.expandable-img', 'click', clickImage)
 			addEventListener('.vinyl-icon', 'click', vinylClick)
 			addEventListener('.vinyl-icon', 'mouseover', vinylHoverOn)
@@ -527,7 +520,7 @@ $(document).on 'turbolinks:load', ->
 				})
 			
 			#Adjusts text size to make sure the titles fit within their containers
-				
+			
 			if refreshSplash
 				$('#splash-container').show(400, ->
 					$('.text-size-wrapper h2, .artist-year-container p').each ->
@@ -543,20 +536,40 @@ $(document).on 'turbolinks:load', ->
 						$(this).css('font-size', fontSize -= 0.5)
 						padding = Math.pow(fontSize, -fontSize * 0.6)
 		
-		$('.spinner').removeClass('hidden')
-		jsonAlbums = fetch("#{host}limit=40&total_count=true")
-		.then (response) ->
-			return response.json()
-		.catch (error) ->
-			console.log('Error fetching from database! Error:\n' + error)
-			return
-		.then (json) ->
-			albums = sortAlbums(json)
-		.then ->
-			displayAlbum()
-		.then ->
-			$('.spinner').addClass('hidden')
+		addEventListener = (element, event, func) ->
+			$(element).each ->
+				$(this).get()[0].removeEventListener(event, func)
+				$(this).get()[0].addEventListener(event, func)
+		addEventListener('.expandable-img', 'click', clickImage)
+		addEventListener('.vinyl-icon', 'click', vinylClick)
+		addEventListener('.vinyl-icon', 'mouseover', vinylHoverOn)
+		addEventListener('.vinyl-icon', 'mouseout', vinylHoverOff)
+		addEventListener('.stream-close', 'click', streamCloseClick)
+		addEventListener('.stream-arrow', 'click', streamArrowClick)
+		addEventListener('.arrow-container', 'click', albumClick)
+		addEventListener('.album-container img', 'click', albumClick)
+		addEventListener('.edit-icon', 'click', editButtonClick)
+		addEventListener('.close-icon', 'click', editButtonClick)
+		addEventListener('.flag-icon', 'click', flagButtonClick)
+		addEventListener('.track-add-btn', 'click', addTrackClick)
+		addEventListener('.track-delete-btn', 'click', deleteTrackClick)
+		addEventListener('.edit-submit-btn', 'click', editSubmitClick)
+		addEventListener('.album-edit-cover', 'change', updateSelectedCover)
 
+		$('.track-input-container').arrangeable({
+			dragSelector: '.draggable-area'
+			})
+		
+		albums = sortAlbums(window.archive.albums)
+		
+		#Adjusts text size to make sure the titles fit within their containers
+			
+		$('.text-size-wrapper h2, .artist-year-container p').each ->
+			fontSize = 20
+			while $(this).width() > $(this).parent().width()
+				$(this).css('font-size', fontSize -= 0.5)
+				padding = Math.pow(fontSize, -fontSize * 0.6)
+		
 		#Helper method for opening an info container. Call it as 'sibling: undefined' to reset all info containers.
 		
 		toggleAlbum = (title, sibling, parent, arrow) ->
@@ -692,6 +705,7 @@ $(document).on 'turbolinks:load', ->
 			$('.spinner').removeClass('hidden')
 			$('#splash-container').removeClass()
 			dirStr = if dir then 'asc' else 'desc'
+			string = 'created_at' if string == 'Last submitted'
 			$('#splash-container').addClass("sorted-#{string}-#{dirStr}")
 			fetch("#{host}#{searchQ()}sort=#{dirStr}&sort_type=#{string}&limit=40")
 			.then (response) ->

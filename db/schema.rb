@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 2019_02_24_193305) do
     t.integer "user_id"
   end
 
-  create_table "announcements", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
+  create_table "announcements", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
     t.string "title"
     t.text "body"
@@ -99,7 +99,7 @@ ActiveRecord::Schema.define(version: 2019_02_24_193305) do
     t.index ["user_id"], name: "index_forum_threads_on_user_id"
   end
 
-  create_table "notifications", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
+  create_table "notifications", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
     t.string "notification_type"
     t.bigint "target_id"
@@ -131,7 +131,7 @@ ActiveRecord::Schema.define(version: 2019_02_24_193305) do
     t.string "target_id"
   end
 
-  create_table "subscriptions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
+  create_table "subscriptions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
     t.string "subscription_type"
     t.bigint "target_id"
