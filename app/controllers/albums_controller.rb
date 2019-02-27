@@ -96,30 +96,41 @@ class AlbumsController < ApplicationController
 					scraperAlbums.each do | a |
 						a = a[1]
 						album = Album.new()
-						album.flavor = ''
-						album.japanese_artist = ''
-						album.description = ''
-						album.romanization = ''
-						album.title = a[:title]
-						album.romaji_artist = a[:artist]
-						album.year = a[:year]
+						album.flavor = a[".flavor"]
+						album.description = a[".description"]
+						album.romanization = a[".romanization"]
+						album.title = a[".title"]
+						album.japanese_artist = a[".japanese_artist"]
+						album.romaji_artist = a[".romaji_artist"]
+						album.year = a[".year"]
 						album.user_id = get_user.id
 						album.tags = "#{album.title} #{album.romaji_artist} #{album.year}"
 						album.quality = album.year.present? ? 45 : 35
-						album.save
-						a[:tracklist].each do | t |
+						album.cover.attach(a[".cover"])
+						if !album.save
+							coverPath = Rails.root.join("app/assets/images/missingcover.jpg")
+							album.cover.purge
+							album.cover.attach(io: File.open(coverPath), filename: "missingcover.jpg")
+							flash[:notice] = album.errors[:base][0]
+							flash.keep(:notice)
+							
+							return
+						end
+						a[".tracklist"].each do | t |
 							t = t[1]
 							track = Track.new()
-							track.title = t[:title]
+							track.title = t[".title"]
 							track.romanization = ''
-							track.duration = t[:length]
+							track.duration = t[".duration"]
 							track.album = album
-							track.order = t[:trackNumber]
+							track.order = t[".order"]
 							album.tags << " #{track.title}"
 							track.save
 						end
 					end
-					redirect_to '/albums/submit', notice: 'Album submitted!', turbolinks: false
+					flash[:notice] = 'Album submitted!'
+					flash.keep(:notice)
+					render js: "location.reload()"
 				elsif params[:album][:title].present? && params[:album][:romaji_artist].present?
 					@album = Album.new(album_params)
 					@album.tags = "#{params[:album][:title]} #{params[:album][:romanization]} #{params[:album][:romaji_artist]} #{params[:album][:japanese_artist]} #{params[:album][:year]} #{params[:album][:description]} #{params[:album][:flavor].gsub(/,/,'')}"

@@ -28,21 +28,21 @@ window.onload = function() {
         }
         
         // Declare and instantiate array, counter, and FileList length variables.
-        window.scraper = {}
         window.scraper.albumObjects = [];
         let processedFiles = 0;
         let fileListLength = 0;
-        let submitBtn = document.getElementById('scraper-submit-btn')
+        let submitBtn = document.getElementById('scraper-submit-btn');
         let fileInputElement = document.getElementById('albums-input');
         let statusDisplay = document.getElementById('scraper-status');
-        fileInputElement.addEventListener('change', processFiles)
+        fileInputElement.addEventListener('change', processFiles);
         
         function processFiles() {
-            window.scraper.albumObjects = []
+            window.scraper.albumObjects = [];
+            processedFiles = 0;
             let files = this.files;
             fileListLength = files.length;
-            submitBtn.classList.add('transparent')
-            statusDisplay.innerHTML = 'Processing... This may take a few seconds.'
+            submitBtn.classList.add('transparent');
+            statusDisplay.innerHTML = 'Processing... This may take a few seconds.';
             // files is a FileList object and must be iterated through this way.
             for (let filesIndex = 0; filesIndex < files.length; filesIndex++) {
                 if ((files[filesIndex].name.endsWith(".flac")) ||
@@ -267,7 +267,7 @@ window.onload = function() {
                     let albumArtist = '';
                     let title = '';
                     let lengthSeconds = 0;
-                    let length = 'ALAC length not supported.';
+                    let length = '';
                     let track = '';
                     //let albumArt = null;
         
@@ -359,9 +359,9 @@ window.onload = function() {
                 // All files have been processed. Sort tracklists and clear track numbers.
                 sortTracklists();
                 console.log('All files have been processed.');
-                submitBtn.classList.remove('transparent')
-                statusDisplay.innerHTML = 'Ready for submission!'
-                console.log(window.scraper.albumObjects);
+                submitBtn.classList.remove('transparent');
+                statusDisplay.innerHTML = 'Ready for submission!';
+                window.scraper.generateScraperUI();
             }
         }
         

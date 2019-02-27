@@ -255,7 +255,7 @@ $(document).on 'turbolinks:load', ->
 			)
 			serializedTracks = JSON.stringify(rawTracks)
 			e.next('.tracklist').attr('value', serializedTracks)
-			#location.reload()
+			location.reload()
 		
 		#Handler for vinyl icon hover
 		
@@ -542,8 +542,6 @@ $(document).on 'turbolinks:load', ->
 					while $(this).width() > $(this).parent().width()
 						$(this).css('font-size', fontSize -= 0.5)
 						padding = Math.pow(fontSize, -fontSize * 0.6)
-		
-		#Session storage population
 		
 		$('.spinner').removeClass('hidden')
 		jsonAlbums = fetch("#{host}limit=40&total_count=true")
