@@ -384,7 +384,7 @@ window.onload = function() {
                 sortTracklists();
                 convertArtworksToBase64();
                 console.log('All files have been processed.');
-                console.log(window.scraper.albumObjects);
+                //console.log(window.scraper.albumObjects);
                 submitBtn.classList.remove('transparent');
                 statusDisplay.innerHTML = 'Ready for submission!';
                 window.scraper.generateScraperUI();

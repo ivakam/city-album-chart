@@ -192,7 +192,7 @@ $(document).on 'turbolinks:load', ->
                         </div>
                         <p class='size-error shrunk'>Image too large!</p>
                         <p class='type-error shrunk'>Wrong file type! Only jpg</p>
-                        <p class='selected-cover'>No cover selected</p>
+                        <p class='selected-cover'>Using scraped cover</p>
                     </div>
                     <div class='input-field-container'>
                         <input class='japanese-artist' id='#{title.replace("'", '&#39;').replace(/\s+/, '')}-japanese-artist' placeholder='Japanese artist' value='' type='text'>
