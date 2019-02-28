@@ -4,7 +4,8 @@
     window.archive = {};
     window.archive.albums = [];
     <% @albums.each_with_index do | a, i | %>
-    window.archive.albums[<%= i %>] = <%= a.to_json.html_safe %>;
+    window.archive.albums[<%= i %>] = <%= a.to_json(:include => :tracks).html_safe %>;
+    window.archive.albums[<%= i %>].contributor = '<%= User.find_by(id: a.user_id).username %>';
     <% end %>
 </script>
 <img alt="" class="bigimage" src="">

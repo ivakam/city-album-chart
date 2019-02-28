@@ -99,6 +99,7 @@ $(document).on 'turbolinks:load', ->
                 a.flavor = c.find('.input-field-container .flavor').val()
                 a.description = c.find('.input-field-container .description').val()
                 a.cover = c.find('.album-edit-cover')[0].files[0]
+                a.cover_base64 = c.find('.album-edit-base64').val()
                 a.tracklist = []
                 c.find('.track-input-container').each (index) ->
                     t = $(this)
@@ -110,6 +111,7 @@ $(document).on 'turbolinks:load', ->
                 processedAlbums[index] = a
             if !e.hasClass('transparent')
                 formAlbums = objectToFormData(processedAlbums, 'scraper')
+                $('#scraper-status').html('Submitting album...')
                 $.ajax({
                     url: window.location.href.replace(/submit/, 'create'),
                     type: 'POST',
@@ -146,6 +148,21 @@ $(document).on 'turbolinks:load', ->
             reader.readAsDataURL(selectedFile)
             parent.find('.selected-cover').html('Currently selected file: ' + this.value.split(/(\\|\/)/g).pop())
         
+        countStrBytes = (str) ->
+            bytes = 0
+            codePoint = null
+            len = str.length
+            countBytes = (i) ->
+                codePoint = str.charCodeAt(i);
+                if codePoint >= 0xD800 and codePoint < 0xE000 
+                    if codePoint < 0xDC00 and i + 1 < len 
+                        next = str.charCodeAt(i + 1)
+                        if next >= 0xDC00 and next < 0xE000
+                            bytes += 4
+                bytes += codePoint < 0x80 ? 1 : (codePoint < 0x800 ? 2 : 3)
+            countBytes(i) for i in [0..str.length]
+            return bytes
+        
         window.scraper.generateScraperUI = () ->
             generateEditTrackStr = (track) ->
                 return "<div class='track-input-container'>
@@ -155,7 +172,7 @@ $(document).on 'turbolinks:load', ->
                             <input class='duration' placeholder='4:54' value='" + track.length + "' type='text'>
                             <ion-icon name='ios-close' class='track-delete-btn'></ion-icon>
                         </div>"
-            albumStr = (title, artist, tracklist, year) ->
+            albumStr = (title, artist, tracklist, year, artwork) ->
                 "<div class='album-container'>
                     <ion-icon class='album-trash-btn' name='ios-trash' title='Remove album'></ion-icon>
                     <div class='submit-opacity'></div>
@@ -164,9 +181,10 @@ $(document).on 'turbolinks:load', ->
                         <input class='romanization' id='#{title.replace("'", '&#39;').replace(/\s+/, '')}-romanization' placeholder='Romanization' value='' type='text'>
                         <div>
                             <label for='#{title.replace("'", '&#39;').replace(/\s+/, '')}-cover'>
-                                <img src='https://i.imgur.com/ofBhRrr.jpg' class='cover-editable'>
+                                <img src='#{artwork}' class='cover-editable'>
                             </label>
                             <input class='album-edit-cover' id='#{title.replace("'", '&#39;').replace(/\s+/, '')}-cover' type='file'>
+                            <input class='album-edit-base64' type='text' value='#{artwork}' hidden>
                             <div>
                                 <p><b>Update cover</b></p>
                                 <p>Max filesize 1MB</p>
@@ -193,7 +211,7 @@ $(document).on 'turbolinks:load', ->
                     <input class='tracklist' value='' hidden>
                 </div>"
             $('#scraper-form').empty()
-            $('#scraper-form').append(albumStr(a.title, a.artist, a.tracklist, a.year)) for a in window.scraper.albumObjects
+            $('#scraper-form').append(albumStr(a.title, a.artist, a.tracklist, a.year, a.artwork)) for a in window.scraper.albumObjects
             $('.album-edit-cover').each ->
                 $(this).get()[0].addEventListener('change', scraperAlbumCover)
             $('.track-delete-btn').each ->
@@ -205,3 +223,7 @@ $(document).on 'turbolinks:load', ->
             $('.track-input-container').arrangeable({
             dragSelector: '.draggable-area'
             })
+            $('.album-edit-base64').each ->
+                if countStrBytes(this.value) > 1000000
+                    $(this).parent().addClass('invalid')
+                    $(this).closest('.album-container').find('.size-error').removeClass('shrunk')

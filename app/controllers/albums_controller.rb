@@ -1,4 +1,5 @@
 require 'json'
+require 'base64'
 
 class AlbumsController < ApplicationController
 	def contains_cjk?
@@ -33,7 +34,7 @@ class AlbumsController < ApplicationController
 					tempTracks.push(track)
 				end
 			end
-			albumWithTracks["tracklist"] = tempTracks
+			albumWithTracks["tracks"] = tempTracks
 			albumResult[index] = albumWithTracks
 		end
 		render :json => albumResult
@@ -111,14 +112,27 @@ class AlbumsController < ApplicationController
 						album.user_id = get_user.id
 						album.tags = "#{album.title} #{album.romaji_artist} #{album.year}"
 						album.quality = album.year.present? ? 45 : 35
-						album.cover.attach(a[".cover"])
+						coverPath = Rails.root.join("app/assets/images/missingcover.jpg")
+						if a[".cover"].present?
+							album.cover.attach(a[".cover"])
+						elsif a[".cover_base64"].present?
+							regex = /\Adata:image\/(.+)?;base64,(.*)/m
+							data_uri_parts = a[".cover_base64"].match(regex) || []
+							extension = data_uri_parts[1]
+							file_name = "temp_cover.#{extension}"
+							File.open(file_name, 'wb') do | f |
+								f.write(Base64.decode64(data_uri_parts[2]))
+							end
+							album.cover.attach(io: File.open(file_name), filename: file_name)
+							File.delete(file_name) if File.exists?(file_name)
+						else
+							album.cover.attach(io: File.open(coverPath), filename: "missingcover.jpg")
+						end
 						if !album.save
-							coverPath = Rails.root.join("app/assets/images/missingcover.jpg")
 							album.cover.purge
 							album.cover.attach(io: File.open(coverPath), filename: "missingcover.jpg")
 							flash[:notice] = album.errors[:base][0]
 							flash.keep(:notice)
-							
 							return
 						end
 						a[".tracklist"].each do | t |

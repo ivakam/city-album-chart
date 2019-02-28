@@ -17,7 +17,7 @@
 			</select>
 			<label for="profile-birth-year"><p>Year of birth</p></label>
 			<select id="profile-birth-year" class="age-input" name="user[birth_year]" form="profile-form" required>
-				<option value="Unknown" <%= 'selected' if fetch_user.birth_year == 'Unknown' %>><p>I'd rather not specify</p></option>
+				<option value="Unknown" <%= 'selected' if fetch_user.birth_year == 0 %>><p>I'd rather not specify</p></option>
 				<% (1905..2019).each do | i | %> 
 				<option value="<%= i %>" <%= 'selected' if fetch_user.birth_year == i %>><p><%= i %></p></option>
 				<% end %>
@@ -63,7 +63,7 @@
             <div class="profile-info-container">
                 <div>
                     <p><b>Birth year: </b></p>
-                    <p><%= @user.birth_year %></p>
+                    <p><%= @birth_year %></p>
                 </div>
                 <div>
                     <p><b>Gender: </b></p>

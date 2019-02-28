@@ -12,6 +12,7 @@ class UsersController < ApplicationController
         if @user == nil
             render_404
         end
+        @birth_year = @user.birth_year == 0 ? 'Unknown' : @user.birth_year
     end
     
     def update

@@ -77,7 +77,7 @@ window.onload = function() {
                     let lengthSeconds = 0;
                     let length = '';
                     let track = '';
-                    //let albumArt = null;
+                    let albumArt = null;
         
                     let audioObjectUrl = URL.createObjectURL(inputFile);
                     let audioFile = new Audio(audioObjectUrl);
@@ -130,7 +130,7 @@ window.onload = function() {
                         }
         
                         // Read album artwork.
-                        //albumArt = tag.tags.picture;
+                        albumArt = tag.tags.picture;
         
                         // After processing, ensure that year and track are both integers.
                         year = parseInt(year);
@@ -138,7 +138,7 @@ window.onload = function() {
         
                         // Create a new album object and add the current track to its tracklist if no other songs from the album have been processed.
                         // Otherwise, find the object for the current album and add the current track to its tracklist.
-                        let currentAlbum = new Album(album, albumArtist, year);
+                        let currentAlbum = new Album(album, albumArtist, year, albumArt);
                         let currentTrack = new Track(track, title, artist, length);
                         if (albumExists(currentAlbum)) {
                             window.scraper.albumObjects[currentAlbumIndex(currentAlbum)].tracklist.push(currentTrack);
@@ -192,7 +192,7 @@ window.onload = function() {
                 let lengthSeconds = 0;
                 let length = '';
                 let track = '';
-                //let albumArt = null;
+                let albumArt = null;
         
                 // Read length in seconds once the audio file is loaded.
                 lengthSeconds = result.duration;
@@ -238,7 +238,7 @@ window.onload = function() {
                 track = result.track.no;
         
                 // Read album artwork.
-                //albumArt = result.picture;
+                albumArt = result.picture;
         
                 // After processing, ensure that year and track are both integers.
                 year = parseInt(year);
@@ -246,7 +246,7 @@ window.onload = function() {
         
                 // Create a new album object and add the current track to its tracklist if no other songs from the album have been processed.
                 // Otherwise, find the object for the current album and add the current track to its tracklist.
-                let currentAlbum = new Album(album, albumArtist, year);
+                let currentAlbum = new Album(album, albumArtist, year, albumArt);
                 let currentTrack = new Track(track, title, artist, length);
                 if (albumExists(currentAlbum)) {
                     window.scraper.albumObjects[currentAlbumIndex(currentAlbum)].tracklist.push(currentTrack);
@@ -269,7 +269,7 @@ window.onload = function() {
                     let lengthSeconds = 0;
                     let length = '';
                     let track = '';
-                    //let albumArt = null;
+                    let albumArt = null;
         
                     // Read year.
                     year = tag.tags.year;
@@ -303,7 +303,7 @@ window.onload = function() {
                     }
         
                     // Read album artwork.
-                    //albumArt = tag.tags.picture;
+                    albumArt = tag.tags.picture;
         
                     // After processing, ensure that year and track are both integers.
                     year = parseInt(year);
@@ -311,7 +311,7 @@ window.onload = function() {
         
                     // Create a new album object and add the current track to its tracklist if no other songs from the album have been processed.
                     // Otherwise, find the object for the current album and add the current track to its tracklist.
-                    let currentAlbum = new Album(album, albumArtist, year);
+                    let currentAlbum = new Album(album, albumArtist, year, albumArt);
                     let currentTrack = new Track(track, title, artist, length);
                     if (albumExists(currentAlbum)) {
                         window.scraper.albumObjects[currentAlbumIndex(currentAlbum)].tracklist.push(currentTrack);
@@ -353,12 +353,38 @@ window.onload = function() {
             }
         }
         
+        function convertArtworksToBase64() {
+            window.scraper.albumObjects.forEach(function(e) {
+                if (e.artwork[0]) {
+                    let binary = '';
+                    let buffer = e.artwork[0].data.buffer;
+                    let bytes = new Uint8Array(buffer);
+                    let len = bytes.byteLength;
+                    for (let i = 0; i < len; i++) {
+                        binary += String.fromCharCode(bytes[ i ]);
+                    }
+                    e.artwork = 'data:image/jpg;base64, ' + window.btoa(binary);
+                }
+                else {
+                    let CHUNK_SZ = 0x8000;
+                    let c = [];
+                    let u8a = new Uint8Array(e.artwork.data);
+                    for (let i = 0; i < u8a.length; i += CHUNK_SZ) {
+                        c.push(String.fromCharCode.apply(null, u8a.subarray(i, i+CHUNK_SZ)));
+                    }
+                    e.artwork = 'data:image/jpeg;base64, ' + window.btoa(c.join(""));
+                }
+            });
+        }
+
         function fileProcessed() {
             processedFiles++;
             if (processedFiles === fileListLength) {
                 // All files have been processed. Sort tracklists and clear track numbers.
                 sortTracklists();
+                convertArtworksToBase64();
                 console.log('All files have been processed.');
+                console.log(window.scraper.albumObjects);
                 submitBtn.classList.remove('transparent');
                 statusDisplay.innerHTML = 'Ready for submission!';
                 window.scraper.generateScraperUI();

@@ -312,7 +312,7 @@ $(document).on 'turbolinks:load', ->
 					</li>
 					"
 				trackListStr = ''
-				trackListStr += addTrack(track, i) for track, i in album.tracklist
+				trackListStr += addTrack(track, i) for track, i in album.tracks
 				id = album.title.replace(titleReplaceRegex, '')
 				editTrackStr = ''
 				generateEditTrackStr = (track) ->
@@ -326,7 +326,7 @@ $(document).on 'turbolinks:load', ->
 									<input class='duration_old' value='" + track.duration + "' type='text' hidden>
 									<ion-icon name='ios-close' class='track-delete-btn'></ion-icon>
 									</div>"
-				generateEditTrackStr(track) for track in album.tracklist
+				generateEditTrackStr(track) for track in album.tracks
 				editTrackStr += "<ion-icon name='ios-add-circle' class='track-add-btn'></ion-icon>"
 				editFormStr = ''
 				editBtnStr = ''
@@ -561,6 +561,9 @@ $(document).on 'turbolinks:load', ->
 			})
 		
 		albums = sortAlbums(window.archive.albums)
+		albums.forEach((value, key) ->
+			value.loaded = true
+		)
 		
 		#Adjusts text size to make sure the titles fit within their containers
 			
