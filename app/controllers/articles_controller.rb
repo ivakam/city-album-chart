@@ -2,7 +2,7 @@ require 'json'
 
 class ArticlesController < ApplicationController
     def show
-        @articles = Article.where(category: params[:category]).order(:created_at)
+        @articles = Article.where(category: params[:category]).order(:created_at).reverse_order
         @featured = Article.where(featured: true).order('RAND()').first
         @articles ||= Article.all.order(:created_at).reverse_order.limit(20)
     end

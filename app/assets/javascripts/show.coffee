@@ -60,7 +60,21 @@ $(document).on 'turbolinks:load', ->
 			setTimeout( ->
 				resetFocus()
 			, 3000)
-		
+	
+	#Clear duplicate SimpleMDE containers
+	
+	clearDuplicateMDE = () ->
+		toolbar = $('#reply-container .editor-toolbar')
+		toolbar.first().remove() if toolbar.length > 1
+		body = $('#reply-container .CodeMirror')
+		body.first().remove() if body.length > 1
+		preview = $('#reply-container .editor-preview-side')
+		preview.first().remove() if preview.length > 1
+		statusbar = $('#reply-container .editor-statusbar')
+		statusbar.first().remove() if statusbar.length > 1
+	
+	clearDuplicateMDE()
+	
 	if $('body').hasClass('albums show')
 		
 		#Variable declarations

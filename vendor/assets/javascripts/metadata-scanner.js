@@ -385,8 +385,6 @@ window.onload = function() {
                 convertArtworksToBase64();
                 console.log('All files have been processed.');
                 //console.log(window.scraper.albumObjects);
-                submitBtn.classList.remove('transparent');
-                statusDisplay.innerHTML = 'Ready for submission!';
                 window.scraper.generateScraperUI();
             }
         }

@@ -10,6 +10,8 @@ $(document).on 'turbolinks:load', ->
             $('#submit-wrapper').find('input[type=text], input[type=file], textarea').val('')
             window.scraper.albumObjects = []
             $('#input-container').toggleClass('left-margin')
+            $('#scraper-status').html('Waiting for files')
+            $('#scraper-form').empty()
             
         $('.save-btn').click ->
             toBreak = false
@@ -43,7 +45,7 @@ $(document).on 'turbolinks:load', ->
             <input class='romanization' placeholder='Romanization' type='text'>
             <input class='duration' placeholder='4:54' type='text'>
             <ion-icon name='ios-close' class='track-delete-btn'></ion-icon>
-            </div>").insertBefore($(this))
+            </div>").insertBefore(e)
             e.parent().find('.track-delete-btn').each ->
                 $(this).get()[0].removeEventListener('click', deleteTrackClick)
                 $(this).get()[0].addEventListener('click', deleteTrackClick)
@@ -55,8 +57,8 @@ $(document).on 'turbolinks:load', ->
             e = $(e.target)
             e.closest('.album-container').remove()
         
-        $('.track-add-btn').click ->
-            deleteTrackClick
+        $('.track-add-btn').click (e) ->
+            addTrackClick(e)
         
         $('.track-delete-btn').click ->
             $(this).parent().remove()
@@ -164,6 +166,8 @@ $(document).on 'turbolinks:load', ->
             return bytes
         
         window.scraper.generateScraperUI = () ->
+            $('#scraper-submit-btn').removeClass('transparent')
+            $('#scraper-status').html('Ready for submission!')
             generateEditTrackStr = (track) ->
                 return "<div class='track-input-container'>
                             <span class='draggable-area'></span>

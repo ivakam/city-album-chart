@@ -32,12 +32,12 @@ $light-font: #e8e8e8;
         text-align: center;
     }
     .page-container {
-        width: 100%;
+        width: 50%;
         display: flex;
         align-items: stretch;
         justify-content: center;
-        z-index: 3;
         position: relative;
+        align-self: center;
         > div {
             display: flex;
             justify-content: center;
