@@ -7450,42 +7450,42 @@ Love:
   :album_info:
     :title: Love
     :romanization: ''
-    :romaji_artist: Hiromi Iwasaki
-    :japanese_artist: 岩崎宏美
-    :year: '2013'
+    :romaji_artist: So Nice
+    :japanese_artist:
+    :year: '1979'
     :description: ''
-    :flavor: Disco, Idol
+    :flavor: Funk, Rock
   :tracks:
-  - :title: タペストリー
-    :romanization: Tapestry
-    :duration: '5:54'
-  - :title: 抱きしめてよ、ミラクル
-    :romanization: Dakishimete yo, Miracle
-    :duration: '3:49'
-  - :title: Love
+  - :title: So Nice
+    :romanization:
+    :duration: '1:33'
+  - :title: 光速道路
+    :romanization: Kōsoku dōro
+    :duration: '4:10'
+  - :title: Last Kiss
     :romanization: ''
-    :duration: '4:39'
-  - :title: プロポーズのとき
-    :romanization: Puropōzu no Toki
-    :duration: '4:50'
-  - :title: 時の針
-    :romanization: Toki no Hari
+    :duration: '5:12'
+  - :title: 陽だまり
+    :romanization: Hidamari
+    :duration: '4:57'
+  - :title: Tight Night
+    :romanization:
+    :duration: '5:48'
+  - :title: Love Sick
+    :romanization: 
+    :duration: '4:52'
+  - :title: かけぬける風
+    :romanization: Kakenukeru kaze
+    :duration: '7:04'
+  - :title: Earth Mover
+    :romanization:
     :duration: '5:56'
-  - :title: ベリー
-    :romanization: Berry
-    :duration: '3:53'
-  - :title: 明日、笑顔で
-    :romanization: Ashita, Egao de
-    :duration: '5:03'
-  - :title: 糸遊(かげろう)
-    :romanization: Shiyū (kagerō)
-    :duration: '3:18'
-  - :title: ケセラ~愛のためのいくつかの法則~
-    :romanization: Quecera ~ Ai no Tame no Ikutsu ka no Hōsoku ~
-    :duration: '4:26'
-  - :title: あなたにだから
-    :romanization: Anata ni Dakara
-    :duration: '5:31'
+  - :title: 別離 (わかれ)
+    :romanization: Betsuri (wakare)
+    :duration: '6:01'
+  - :title: Dancing All Night Long
+    :romanization:
+    :duration: '4:22'
 
 Ring-a-Ding:
   :album_info:

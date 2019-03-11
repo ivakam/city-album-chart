@@ -33,7 +33,7 @@ $(document).on 'turbolinks:load', ->
 		$('img').removeClass('enlargened')
 		$('#opaque').css('background', 'rgba(0,0,0,0)')
 		$('.bigimage').attr('src', '')
-		$('#opaque').css('z-index', '0')
+		$('#opaque').css('z-index', '-2')
 		$('.modal').addClass('modal-inactive')
 		$('.submit-message').addClass('shrunk')
 		$('#report-comment').val('')

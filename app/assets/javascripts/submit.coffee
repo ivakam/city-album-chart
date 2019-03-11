@@ -220,7 +220,7 @@ $(document).on 'turbolinks:load', ->
                 $(this).get()[0].addEventListener('change', scraperAlbumCover)
             $('.track-delete-btn').each ->
                 $(this).get()[0].addEventListener('click', deleteTrackClick)
-            $('.track-add-btn').each ->
+            $('.album-container .track-add-btn').each ->
                 $(this).get()[0].addEventListener('click', addTrackClick)
             $('.album-trash-btn').each ->
                 $(this).get()[0].addEventListener('click', trashAlbum)
