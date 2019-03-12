@@ -38,6 +38,7 @@
 				</div>
 				<ion-icon name="ios-close" id="register-close" class="modal-close"></ion-icon>
 				<form id="register-form" class="modal-form" action="/users/create" accept-charset="UTF-8" data-remote="true" method="post">
+					<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
 					<div id="register-input-container" class="modal-form-input-container">
 						<div>
 							<div>
